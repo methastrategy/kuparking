@@ -103,14 +103,9 @@
             transform: scale(0.975);
         }
 
-        /* Pulse Ring for Hotspots */
-        @keyframes pulse-ring {
-            0% { transform: scale(0.92); opacity: 0.85; }
-            50% { transform: scale(1.4); opacity: 0; }
-            100% { transform: scale(0.92); opacity: 0.85; }
-        }
-        .animate-pulse-ring {
-            animation: pulse-ring 2.2s cubic-bezier(0.2, 0, 0.3, 1) infinite;
+        /* Architectural Status Halo (Calm, Non-Straining Ambient Glow) */
+        .status-halo {
+            transition: background-color 0.3s ease, opacity 0.3s ease;
         }
 
         /* Floating Festivity Animation */
@@ -180,7 +175,7 @@
                         <span>KU PARKING & EVENT</span>
                     </h1>
                     <span class="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.5 rounded-full">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
                         LIVE
                     </span>
                 </div>
@@ -211,13 +206,202 @@
             <!-- Clean 2.5D Vector Campus Map based on QGIS -->
             <img src="assets/map-loykrathong.svg" alt="KU Campus Map" class="w-full h-full object-fill block pointer-events-none select-none drop-shadow-2xl">
 
+            <!-- ================= BTS SKYTRAIN INTERACTIVE ANIMATION LAYER ================= -->
+            <svg id="btsOverlay" viewBox="0 0 1600 1000" class="absolute inset-0 w-full h-full pointer-events-none z-10">
+                <defs>
+                    <!-- Train Shading Filter -->
+                    <filter id="btsTrainShadow" x="-60%" y="-40%" width="220%" height="180%">
+                        <feGaussianBlur stdDeviation="6" result="blur" />
+                        <feOffset dx="-3" dy="10" />
+                        <feComponentTransfer><feFuncA type="linear" slope="0.75" /></feComponentTransfer>
+                        <feMerge>
+                            <feMergeNode />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <!-- Forward Headlight Cones Beam -->
+                    <radialGradient id="btsHeadlightBeam" cx="50%" cy="0%" r="90%">
+                        <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.9" />
+                        <stop offset="35%" stop-color="#FDE047" stop-opacity="0.5" />
+                        <stop offset="75%" stop-color="#FACC15" stop-opacity="0.15" />
+                        <stop offset="100%" stop-color="#FACC15" stop-opacity="0" />
+                    </radialGradient>
+                    <!-- Metallic Pearl White Car Body -->
+                    <linearGradient id="btsBodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#FFFFFF" />
+                        <stop offset="30%" stop-color="#F1F5F9" />
+                        <stop offset="70%" stop-color="#E2E8F0" />
+                        <stop offset="100%" stop-color="#CBD5E1" />
+                    </linearGradient>
+                    <!-- Saloon Window Interior Glow -->
+                    <linearGradient id="btsWindowGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#E0F2FE" />
+                        <stop offset="50%" stop-color="#BAE6FD" />
+                        <stop offset="100%" stop-color="#7DD3FC" />
+                    </linearGradient>
+                </defs>
+
+                <!-- Interactive Corridor Hitbox for Phahonyothin Road (Hover / Touch Trigger) -->
+                <rect id="phahonHoverHitbox" x="1440" y="0" width="120" height="1000" fill="transparent" class="pointer-events-auto cursor-pointer" />
+
+                <!-- 4-CAR BTS SKYTRAIN GROUP (Accelerated via GPU translate3d in RAF loop) -->
+                <g id="btsTrainGroup" class="pointer-events-auto cursor-pointer group" transform="translate(1480, -260)" filter="url(#btsTrainShadow)">
+                    
+                    <!-- Headlight Beams Casting onto Viaduct Ahead (Facing South) -->
+                    <polygon id="btsHeadlightCones" points="-6,32 -30,120 30,120 6,32" fill="url(#btsHeadlightBeam)" opacity="0.8" />
+
+                    <!-- ============================================ -->
+                    <!-- CAR 1: LEADING DRIVING MOTOR CAB (Heading South)-->
+                    <!-- ============================================ -->
+                    <g id="btsCar1" transform="translate(0, 0)">
+                        <!-- Main Composite Body Shell -->
+                        <path d="M -9,-14 L 9,-14 L 9,20 Q 9,32 0,32 Q -9,32 -9,20 Z" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
+                        <!-- BTS Royal Blue Upper Belt Stripe -->
+                        <path d="M -9,-8 L 9,-8 L 9,-4 L -9,-4 Z" fill="#1D4ED8" />
+                        <!-- BTS Emerald Green Lower Belt Stripe -->
+                        <path d="M -9,16 L 9,16 L 9,22 Q 9,29 0,29 Q -9,29 -9,22 Z" fill="#10B981" />
+                        <!-- Front Aerodynamic Cab Windshield (Dark Blue Glass with Highlight) -->
+                        <path d="M -7,20 L 7,20 L 5.5,27 Q 0,30 -5.5,27 Z" fill="#0369A1" stroke="#38BDF8" stroke-width="0.6" />
+                        <line x1="-3" y1="22" x2="3" y2="22" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7" />
+                        <!-- High-Intensity Twin LED Headlights (Warm Golden White) -->
+                        <circle cx="-5" cy="28.5" r="1.8" fill="#FFFBEB" stroke="#FEF08A" stroke-width="0.8" />
+                        <circle cx="5" cy="28.5" r="1.8" fill="#FFFBEB" stroke="#FEF08A" stroke-width="0.8" />
+                        <!-- Illuminated Passenger Saloon Windows -->
+                        <g fill="url(#btsWindowGlow)" stroke="#0284C7" stroke-width="0.4">
+                            <rect x="-8" y="-12" width="3.5" height="5" rx="1" />
+                            <rect x="4.5" y="-12" width="3.5" height="5" rx="1" />
+                            <rect x="-8" y="-2" width="3.5" height="6" rx="1" />
+                            <rect x="4.5" y="-2" width="3.5" height="6" rx="1" />
+                            <rect x="-8" y="7" width="3.5" height="6" rx="1" />
+                            <rect x="4.5" y="7" width="3.5" height="6" rx="1" />
+                        </g>
+                        <!-- Rooftop AC Module -->
+                        <rect x="-4.5" y="-6" width="9" height="14" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
+                        <line x1="-3" y1="-2" x2="3" y2="-2" stroke="#475569" stroke-width="0.6" />
+                        <line x1="-3" y1="2" x2="3" y2="2" stroke="#475569" stroke-width="0.6" />
+                    </g>
+
+                    <!-- Accordion Gangway Coupler 1-2 -->
+                    <rect x="-5" y="-20" width="10" height="6" rx="1" fill="#0F172A" stroke="#334155" stroke-width="0.6" />
+
+                    <!-- ============================================ -->
+                    <!-- CAR 2: INTERMEDIATE TRAILER CAR               -->
+                    <!-- ============================================ -->
+                    <g id="btsCar2" transform="translate(0, -20)">
+                        <rect x="-9" y="-42" width="18" height="42" rx="2" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
+                        <!-- Blue & Green Livery Stripes -->
+                        <rect x="-9" y="-36" width="18" height="4" fill="#1D4ED8" />
+                        <rect x="-9" y="-10" width="18" height="4" fill="#10B981" />
+                        <!-- Passenger Windows -->
+                        <g fill="url(#btsWindowGlow)" stroke="#0284C7" stroke-width="0.4">
+                            <rect x="-8" y="-39" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="-39" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="-29" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="-29" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="-19" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="-19" width="3.5" height="5.5" rx="1" />
+                        </g>
+                        <!-- Rooftop AC Module -->
+                        <rect x="-4.5" y="-30" width="9" height="16" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
+                    </g>
+
+                    <!-- Accordion Gangway Coupler 2-3 -->
+                    <rect x="-5" y="-68" width="10" height="6" rx="1" fill="#0F172A" stroke="#334155" stroke-width="0.6" />
+
+                    <!-- ============================================ -->
+                    <!-- CAR 3: INTERMEDIATE MOTOR CAR                 -->
+                    <!-- ============================================ -->
+                    <g id="btsCar3" transform="translate(0, -68)">
+                        <rect x="-9" y="-42" width="18" height="42" rx="2" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
+                        <!-- Blue & Green Livery Stripes -->
+                        <rect x="-9" y="-36" width="18" height="4" fill="#1D4ED8" />
+                        <rect x="-9" y="-10" width="18" height="4" fill="#10B981" />
+                        <!-- Passenger Windows -->
+                        <g fill="url(#btsWindowGlow)" stroke="#0284C7" stroke-width="0.4">
+                            <rect x="-8" y="-39" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="-39" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="-29" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="-29" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="-19" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="-19" width="3.5" height="5.5" rx="1" />
+                        </g>
+                        <!-- Rooftop AC & Pantograph Detailing -->
+                        <rect x="-4.5" y="-30" width="9" height="16" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
+                        <line x1="-3" y1="-8" x2="3" y2="-8" stroke="#EF4444" stroke-width="0.8" />
+                    </g>
+
+                    <!-- Accordion Gangway Coupler 3-4 -->
+                    <rect x="-5" y="-116" width="10" height="6" rx="1" fill="#0F172A" stroke="#334155" stroke-width="0.6" />
+
+                    <!-- ============================================ -->
+                    <!-- CAR 4: REAR DRIVING MOTOR CAB (Facing North) -->
+                    <!-- ============================================ -->
+                    <g id="btsCar4" transform="translate(0, -116)">
+                        <path d="M -9,0 L 9,0 L 9,-34 Q 9,-46 0,-46 Q -9,-46 -9,-34 Z" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
+                        <!-- Blue & Green Livery Stripes -->
+                        <path d="M -9,-22 L 9,-22 L 9,-18 L -9,-18 Z" fill="#1D4ED8" />
+                        <path d="M -9,-34 Q -9,-41 0,-41 Q 9,-41 9,-34 L 9,-30 Q 9,-37 0,-37 Q -9,-37 -9,-30 Z" fill="#10B981" />
+                        <!-- Rear Cab Windshield -->
+                        <path d="M -7,-34 L 7,-34 L 5.5,-41 Q 0,-44 -5.5,-41 Z" fill="#0369A1" stroke="#38BDF8" stroke-width="0.6" />
+                        <!-- Rear Red Tail LED Markers -->
+                        <circle cx="-5" cy="-42" r="1.6" fill="#EF4444" stroke="#B91C1C" stroke-width="0.6" />
+                        <circle cx="5" cy="-42" r="1.6" fill="#EF4444" stroke="#B91C1C" stroke-width="0.6" />
+                        <!-- Passenger Windows -->
+                        <g fill="url(#btsWindowGlow)" stroke="#0284C7" stroke-width="0.4">
+                            <rect x="-8" y="-12" width="3.5" height="6" rx="1" />
+                            <rect x="4.5" y="-12" width="3.5" height="6" rx="1" />
+                            <rect x="-8" y="-22" width="3.5" height="6" rx="1" />
+                            <rect x="4.5" y="-22" width="3.5" height="6" rx="1" />
+                            <rect x="-8" y="-31" width="3.5" height="5" rx="1" />
+                            <rect x="4.5" y="-31" width="3.5" height="5" rx="1" />
+                        </g>
+                        <!-- Rooftop AC Module -->
+                        <rect x="-4.5" y="-18" width="9" height="14" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
+                    </g>
+
+                </g>
+
+                <!-- Interactive BTS Station Clickable Area & Touch Target (x=1536, y=730) -->
+                <g id="btsStationHotspot" transform="translate(1536, 730)" class="pointer-events-auto cursor-pointer group" onclick="openBtsModal()">
+                    <rect x="-32" y="-60" width="64" height="120" rx="32" fill="transparent" />
+                </g>
+            </svg>
+
+            <!-- ================= BTS STATION & ARRIVAL FLOATING HUD CARD ================= -->
+            <div id="btsInfoCard" class="absolute right-[6.5%] top-[73%] -translate-y-1/2 z-30 pointer-events-none opacity-0 translate-x-3 transition-all duration-300">
+                <div class="glass-panel p-3 rounded-2xl border border-emerald-500/40 shadow-2xl backdrop-blur-xl flex flex-col space-y-2 w-64 pointer-events-auto">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-6 h-6 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xs font-black text-emerald-400">BTS</span>
+                            <span class="text-xs font-bold text-white">สถานี ม.เกษตรศาสตร์</span>
+                        </div>
+                        <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">N13</span>
+                    </div>
+                    
+                    <div class="bg-black/40 rounded-xl p-2 border border-slate-800 text-[10px] space-y-1">
+                        <div class="flex items-center space-x-1.5">
+                            <span id="btsIndicatorDot" class="w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400"></span>
+                            <span id="btsLiveStatusText" class="font-bold text-emerald-300">กำลังจอดเทียบชานชาลา</span>
+                        </div>
+                        <p class="text-slate-400 text-[9.5px] leading-tight">
+                            🚶 เดินสกายวอล์กเข้า <span class="text-emerald-300 font-bold">ประตูพหลโยธิน 1</span> (~150 ม.) ตรงเข้าสู่สระพระพิรุณ (งานลอยกระทง)
+                        </p>
+                    </div>
+
+                    <button onclick="openBtsModal()" class="touch-target-44 w-full min-h-[44px] py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs flex items-center justify-center space-x-1.5 shadow-md transition">
+                        <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
+                        <span>ดูแผนผัง & ทางเข้างาน</span>
+                    </button>
+                </div>
+            </div>
+
             <!-- ================= INTERACTIVE HOTSPOTS ================= -->
 
             <!-- [1] งามวงศ์วาน 1 (อยู่แนวงามวงศ์วาน ด้านขวา ติดกับอาคาร 2, Rooftop: 1000, 735) -->
             <div id="hotspot-ngam1" onclick="openParkingModal('ngam1')" class="absolute left-[62.5%] top-[73.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-ngam1" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500 pointer-events-none"></div>
-                    <div id="badge-ngam1" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
+                    <div id="ring-ngam1" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-500 blur-xs pointer-events-none status-halo"></div>
+                    <div id="badge-ngam1" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-emerald-400/40 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
                         <i data-lucide="car" class="w-3.5 h-3.5"></i>
                         <span>งามวงศ์วาน 1</span>
                         <span id="text-status-ngam1" class="text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded">เปิดบริการ</span>
@@ -229,8 +413,8 @@
             <!-- [2] งามวงศ์วาน 2 (อยู่แนวงามวงศ์วาน ด้านซ้าย ติดกับอาคาร 1, Rooftop: 830, 735) -->
             <div id="hotspot-ngam2" onclick="openParkingModal('ngam2')" class="absolute left-[51.9%] top-[73.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-ngam2" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500 pointer-events-none"></div>
-                    <div id="badge-ngam2" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
+                    <div id="ring-ngam2" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-500 blur-xs pointer-events-none status-halo"></div>
+                    <div id="badge-ngam2" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-emerald-400/40 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
                         <i data-lucide="car" class="w-3.5 h-3.5"></i>
                         <span>งามวงศ์วาน 2</span>
                         <span id="text-status-ngam2" class="text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded">เปิดบริการ</span>
@@ -242,8 +426,8 @@
             <!-- [3] อาคารวิภาวดี (อยู่ฝั่งซ้ายของถนนเส้นทางเข้า ประตูวิภาวดี, Rooftop: 175, 350) -->
             <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[11.0%] top-[35.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-vipa" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500 pointer-events-none"></div>
-                    <div id="badge-vipa" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
+                    <div id="ring-vipa" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-500 blur-xs pointer-events-none status-halo"></div>
+                    <div id="badge-vipa" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-emerald-400/40 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
                         <i data-lucide="car" class="w-3.5 h-3.5"></i>
                         <span>วิภาวดี</span>
                         <span id="text-status-vipa" class="text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded">เปิดบริการ</span>
@@ -252,8 +436,8 @@
                 </div>
             </div>
 
-            <!-- [4] จุดจัดงานลอยกระทง (สระพระพิรุณ หน้ามอ มุมงามวงศ์วาน-พหลโยธิน, Center: 1330, 770) -->
-            <div id="hotspot-pond" onclick="openEventModal()" class="absolute left-[83.1%] top-[77.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
+            <!-- [4] จุดจัดงานลอยกระทง (สระพระพิรุณ หน้ามอ มุมงามวงศ์วาน-พหลโยธิน, Center: 1300, 660) -->
+            <div id="hotspot-pond" onclick="openEventModal()" class="absolute left-[81.25%] top-[66.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center animate-float">
                     <div class="px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-bold text-[11px] sm:text-xs shadow-2xl border-2 border-amber-200 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
                         <span class="text-sm">🪔</span>
@@ -268,7 +452,7 @@
         <!-- FLOATING 3D PERSPECTIVE CONTROLS -->
         <div class="absolute top-3.5 right-3.5 z-30 flex flex-col space-y-2">
             <!-- 3D / 2D Tilt Toggle Button (44px HIG Target) -->
-            <button id="btnToggle3D" onclick="toggle3DMode()" class="touch-target-44 px-3 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-90 border border-slate-700/80 text-amber-300 text-xs font-bold shadow-xl backdrop-blur-md flex items-center space-x-1.5 transition">
+            <button id="btnToggle3D" onclick="toggle3DMode()" class="touch-target-44 min-h-[44px] min-w-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-90 border border-slate-700/80 text-amber-300 text-xs font-bold shadow-xl backdrop-blur-md flex items-center space-x-1.5 transition">
                 <i data-lucide="layers" class="w-4 h-4 text-amber-400"></i>
                 <span id="label3D">มุมมอง 3D</span>
             </button>
@@ -290,7 +474,7 @@
                     <span>แตะอาคารเพื่อเปิด Google Maps นำทาง:</span>
                 </span>
                 <span class="text-emerald-400 font-semibold flex items-center space-x-1.5">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
                     <span class="text-[10px] tracking-wide uppercase">สถานะเรียลไทม์</span>
                 </span>
             </div>
@@ -356,7 +540,7 @@
         <div id="modalBox" class="bg-[#0D1527] border border-slate-700/80 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative text-center modal-enter">
             
             <!-- Close Button (44px HIG Touch Target) -->
-            <button onclick="closeParkingModal()" class="touch-target-44 absolute top-3.5 right-3.5 text-slate-400 hover:text-white p-2 rounded-full bg-slate-800/80 active:scale-90 transition">
+            <button onclick="closeParkingModal()" class="touch-target-44 w-11 h-11 absolute top-3.5 right-3.5 text-slate-400 hover:text-white rounded-full bg-slate-800/80 active:scale-90 transition flex items-center justify-center">
                 <i data-lucide="x" class="w-4 h-4"></i>
             </button>
 
@@ -550,6 +734,15 @@
             mapUrl: "https://maps.google.com/?q=13.8475,100.5725"
         };
 
+        const BTS_STATION_CONFIG = {
+            name: "สถานีรถไฟฟ้า BTS มหาวิทยาลัยเกษตรศาสตร์ (N13)",
+            gate: "ทางออกประตู 1: สกายวอล์กข้ามถนนพหลโยธิน เชื่อมเข้าประตูพหลโยธิน 1 สู่สระพระพิรุณ (~150 ม.)",
+            desc: "รถไฟฟ้าสายสุขุมวิท (สีเขียว) ให้บริการตลอดเส้นทาง สะดวก รวดเร็ว เลี่ยงปัญหารถติดวันงานลอยกระทง",
+            capacity: "เปิดให้บริการปกติ (ความถี่ทุก 3-5 นาที)",
+            status: "open",
+            mapUrl: "https://maps.google.com/?q=BTS+Kasetsart+University"
+        };
+
         function getParkingData() {
             try {
                 const stored = localStorage.getItem('ku_loykrathong_parking');
@@ -575,32 +768,32 @@
 
                 if (status === 'full') {
                     if (textStatus) { textStatus.innerText = 'ที่จอดเต็ม'; textStatus.className = 'text-red-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
-                    if (ring) ring.className = 'status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-red-500';
-                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-red-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
+                    if (ring) ring.className = 'status-ring absolute -inset-1 rounded-full opacity-30 bg-red-500 blur-xs pointer-events-none status-halo';
+                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-red-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-red-400/40 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
                         cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-red-500/20 text-red-400 border border-red-500/30';
                         cardBadge.innerText = 'เต็ม';
                     }
                 } else if (status === 'warning') {
                     if (textStatus) { textStatus.innerText = 'ใกล้เต็ม'; textStatus.className = 'text-amber-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
-                    if (ring) ring.className = 'status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-amber-500';
-                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-amber-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
+                    if (ring) ring.className = 'status-ring absolute -inset-1 rounded-full opacity-30 bg-amber-500 blur-xs pointer-events-none status-halo';
+                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-amber-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-amber-400/40 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
                         cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30';
                         cardBadge.innerText = 'ใกล้เต็ม';
                     }
                 } else if (status === 'closed') {
                     if (textStatus) { textStatus.innerText = 'งดบริการ'; textStatus.className = 'text-slate-200 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
-                    if (ring) ring.className = 'status-ring absolute -inset-2.5 rounded-full opacity-0';
-                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-slate-700 text-slate-300 font-bold text-[10px] sm:text-[11px] shadow-2xl border border-slate-600 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
+                    if (ring) ring.className = 'status-ring absolute -inset-1 rounded-full opacity-0 pointer-events-none status-halo';
+                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-slate-700/95 text-slate-300 font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-slate-600/40 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
                         cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-slate-700 text-slate-400 border border-slate-600';
                         cardBadge.innerText = 'ปิด';
                     }
                 } else {
                     if (textStatus) { textStatus.innerText = 'เปิดบริการ'; textStatus.className = 'text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
-                    if (ring) ring.className = 'status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500';
-                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
+                    if (ring) ring.className = 'status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-500 blur-xs pointer-events-none status-halo';
+                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-emerald-400/40 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
                         cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
                         cardBadge.innerText = 'เปิด';
@@ -725,6 +918,199 @@
                 navigator.clipboard.writeText(window.location.href);
                 alert('คัดลอกลิงก์แผนที่เรียบร้อยแล้ว');
             }
+        });
+
+        function openBtsModal() {
+            currentActiveItem = BTS_STATION_CONFIG;
+            document.getElementById('modalIconBox').innerHTML = '🚆';
+            document.getElementById('modalIconBox').className = 'w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-3.5 text-3xl shadow-inner';
+            document.getElementById('modalLotTitle').innerText = BTS_STATION_CONFIG.name;
+            document.getElementById('modalLotGate').innerText = BTS_STATION_CONFIG.gate;
+            document.getElementById('modalStatsBox').classList.remove('hidden');
+            document.getElementById('modalLotCapacity').innerText = BTS_STATION_CONFIG.capacity;
+            document.getElementById('modalLotStatusBadge').innerText = 'เปิดให้บริการ';
+            document.getElementById('modalLotStatusBadge').className = 'text-xs font-bold text-emerald-400';
+            document.getElementById('modalMapBtn').href = BTS_STATION_CONFIG.mapUrl;
+            document.getElementById('modalMapBtn').className = 'w-full min-h-[48px] bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-500 hover:from-emerald-500 hover:to-teal-400 active:scale-95 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-950/80 transition text-sm';
+            document.getElementById('modalBtnText').innerText = 'เปิด Google Maps นำทางสู่สถานี BTS';
+            document.getElementById('copyLinkText').innerText = 'คัดลอกลิงก์สถานี BTS';
+
+            parkingModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modalBox.classList.remove('modal-enter');
+                modalBox.classList.add('modal-active');
+            });
+        }
+
+        // ========================================================
+        // BTS SKYTRAIN ANIMATION & INTERACTION CONTROLLER
+        // ========================================================
+        const btsTrainGroup = document.getElementById('btsTrainGroup');
+        const btsInfoCard = document.getElementById('btsInfoCard');
+        const btsLiveStatusText = document.getElementById('btsLiveStatusText');
+        const btsIndicatorDot = document.getElementById('btsIndicatorDot');
+        const phahonHoverHitbox = document.getElementById('phahonHoverHitbox');
+        const btsStationHotspot = document.getElementById('btsStationHotspot');
+
+        const BTS_PARAMS = {
+            stationY: 730,
+            startY: -260,
+            endY: 1260,
+            decelStartY: 460,
+            accelEndY: 920,
+            vCruise: 68,     // px/s
+            vFast: 190,      // px/s when summoned to station
+            dwellDuration: 3800 // ms dwell at station
+        };
+
+        let btsY = BTS_PARAMS.startY;
+        let btsState = 'CRUISING'; // 'CRUISING' | 'DECELERATING' | 'DWELLING' | 'ACCELERATING' | 'SUMMONED'
+        let btsDwellStart = 0;
+        let isHovered = false;
+        let unhoverTimer = null;
+        let lastBtsTimestamp = performance.now();
+
+        function updateBtsStatusUI(isStopped, text) {
+            if (btsLiveStatusText) btsLiveStatusText.innerText = text;
+            if (btsIndicatorDot) {
+                if (isStopped) {
+                    btsIndicatorDot.className = 'w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400';
+                } else {
+                    btsIndicatorDot.className = 'w-2 h-2 rounded-full bg-amber-400 shadow-sm shadow-amber-400';
+                }
+            }
+        }
+
+        function showBtsCard() {
+            if (btsInfoCard) {
+                btsInfoCard.classList.remove('opacity-0', 'translate-x-3', 'pointer-events-none');
+                btsInfoCard.classList.add('opacity-100', 'translate-x-0', 'pointer-events-auto');
+            }
+        }
+
+        function hideBtsCard() {
+            if (btsInfoCard && !isHovered) {
+                btsInfoCard.classList.remove('opacity-100', 'translate-x-0', 'pointer-events-auto');
+                btsInfoCard.classList.add('opacity-0', 'translate-x-3', 'pointer-events-none');
+            }
+        }
+
+        function triggerBtsHover(active) {
+            if (active) {
+                if (unhoverTimer) {
+                    clearTimeout(unhoverTimer);
+                    unhoverTimer = null;
+                }
+                isHovered = true;
+                showBtsCard();
+
+                // If train is already parked at station, keep it dwelling
+                if (btsState === 'DWELLING' && Math.abs(btsY - BTS_PARAMS.stationY) < 2) {
+                    btsDwellStart = performance.now();
+                    updateBtsStatusUI(true, 'จอดเทียบชานชาลา (เปิดประตูชานชาลา)');
+                    return;
+                }
+
+                // If not at station, summon it!
+                btsState = 'SUMMONED';
+                updateBtsStatusUI(false, 'กำลังเข้าสู่สถานี ม.เกษตรศาสตร์...');
+            } else {
+                isHovered = false;
+                unhoverTimer = setTimeout(() => {
+                    hideBtsCard();
+                    if (btsState === 'DWELLING') {
+                        btsDwellStart = 0; // release dwell
+                    }
+                }, 2200);
+            }
+        }
+
+        // Attach interactive hover & touch events
+        [phahonHoverHitbox, btsStationHotspot, btsTrainGroup].forEach(el => {
+            if (!el) return;
+            el.addEventListener('mouseenter', () => triggerBtsHover(true));
+            el.addEventListener('mouseleave', () => triggerBtsHover(false));
+            el.addEventListener('touchstart', () => triggerBtsHover(true), { passive: true });
+        });
+
+        if (btsInfoCard) {
+            btsInfoCard.addEventListener('mouseenter', () => triggerBtsHover(true));
+            btsInfoCard.addEventListener('mouseleave', () => triggerBtsHover(false));
+        }
+
+        // High-Precision 60/120fps Animation Loop
+        function animateBts(now) {
+            const dt = Math.min(0.1, (now - lastBtsTimestamp) / 1000);
+            lastBtsTimestamp = now;
+
+            if (btsState === 'CRUISING') {
+                btsY += BTS_PARAMS.vCruise * dt;
+                if (btsY >= BTS_PARAMS.decelStartY && btsY < BTS_PARAMS.stationY) {
+                    btsState = 'DECELERATING';
+                    updateBtsStatusUI(false, 'กำลังชะลอจอด สถานี ม.เกษตรศาสตร์');
+                } else if (btsY >= BTS_PARAMS.endY) {
+                    btsY = BTS_PARAMS.startY;
+                }
+            } else if (btsState === 'DECELERATING') {
+                const distRemaining = Math.max(0, BTS_PARAMS.stationY - btsY);
+                const progress = distRemaining / (BTS_PARAMS.stationY - BTS_PARAMS.decelStartY);
+                const currentV = Math.max(14, BTS_PARAMS.vCruise * Math.sqrt(progress));
+                btsY += currentV * dt;
+
+                if (btsY >= BTS_PARAMS.stationY) {
+                    btsY = BTS_PARAMS.stationY;
+                    btsState = 'DWELLING';
+                    btsDwellStart = now;
+                    updateBtsStatusUI(true, 'จอดเทียบชานชาลา (เปิดประตูชานชาลา)');
+                }
+            } else if (btsState === 'DWELLING') {
+                btsY = BTS_PARAMS.stationY;
+                if (!isHovered && (now - btsDwellStart >= BTS_PARAMS.dwellDuration)) {
+                    btsState = 'ACCELERATING';
+                    updateBtsStatusUI(false, 'กำลังออกจากสถานี มุ่งหน้าแยกลาดพร้าว');
+                }
+            } else if (btsState === 'ACCELERATING') {
+                const distTraveled = Math.max(0, btsY - BTS_PARAMS.stationY);
+                const progress = Math.min(1, distTraveled / (BTS_PARAMS.accelEndY - BTS_PARAMS.stationY));
+                const currentV = Math.min(BTS_PARAMS.vCruise, 14 + (BTS_PARAMS.vCruise - 14) * (progress * progress));
+                btsY += currentV * dt;
+
+                if (btsY >= BTS_PARAMS.accelEndY) {
+                    btsState = 'CRUISING';
+                }
+            } else if (btsState === 'SUMMONED') {
+                if (btsY > BTS_PARAMS.stationY + 20) {
+                    btsY += BTS_PARAMS.vFast * dt;
+                    if (btsY >= BTS_PARAMS.endY) {
+                        btsY = BTS_PARAMS.startY;
+                    }
+                } else if (btsY < BTS_PARAMS.decelStartY) {
+                    btsY += BTS_PARAMS.vFast * dt;
+                } else {
+                    const distRemaining = Math.max(0, BTS_PARAMS.stationY - btsY);
+                    const progress = distRemaining / (BTS_PARAMS.stationY - BTS_PARAMS.decelStartY);
+                    const currentV = Math.max(16, BTS_PARAMS.vFast * progress);
+                    btsY += currentV * dt;
+
+                    if (btsY >= BTS_PARAMS.stationY) {
+                        btsY = BTS_PARAMS.stationY;
+                        btsState = 'DWELLING';
+                        btsDwellStart = now;
+                        updateBtsStatusUI(true, 'จอดเทียบชานชาลา (เปิดประตูชานชาลา)');
+                    }
+                }
+            }
+
+            if (btsTrainGroup) {
+                btsTrainGroup.setAttribute('transform', `translate(1480, ${btsY.toFixed(1)})`);
+            }
+
+            requestAnimationFrame(animateBts);
+        }
+
+        requestAnimationFrame((now) => {
+            lastBtsTimestamp = now;
+            requestAnimationFrame(animateBts);
         });
 
         renderUI();
