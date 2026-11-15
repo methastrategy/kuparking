@@ -37,6 +37,22 @@
             position: fixed;
             touch-action: manipulation;
         }
+
+        /* 3D Maps Perspective Viewport */
+        .map-stage {
+            perspective: 1200px;
+            perspective-origin: 50% 55%;
+        }
+        .map-board {
+            transform-style: preserve-3d;
+            will-change: transform;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mode-3d .map-board {
+            transform: rotateX(24deg) rotateZ(-3deg) scale(0.92) translateY(20px);
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8);
+        }
+
         @keyframes pulse-ring {
             0% { transform: scale(0.95); opacity: 0.8; }
             50% { transform: scale(1.35); opacity: 0; }
@@ -74,22 +90,22 @@
 
         <div class="flex items-center space-x-2">
             <!-- Share Button -->
-            <button id="btnShare" title="แชร์แผนที่" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 border border-slate-700 transition">
+            <button id="btnShare" title="แชร์แผนที่" class="p-2 min-w-[38px] min-h-[38px] rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 border border-slate-700 transition flex items-center justify-center">
                 <i data-lucide="share-2" class="w-4 h-4"></i>
             </button>
             <!-- Admin Controller Link -->
-            <a href="admin.html" target="_blank" title="สำหรับสต๊าฟอัปเดตสถานะ" class="p-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/50 text-emerald-300 text-xs flex items-center space-x-1 transition">
+            <a href="admin.html" target="_blank" title="สำหรับสต๊าฟอัปเดตสถานะ" class="px-2.5 py-1.5 min-h-[38px] rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/50 text-emerald-300 text-xs flex items-center space-x-1 transition">
                 <i data-lucide="shield" class="w-3.5 h-3.5"></i>
-                <span class="hidden sm:inline text-[11px]">สต๊าฟ</span>
+                <span class="text-[11px]">สต๊าฟ</span>
             </a>
         </div>
     </header>
 
-    <!-- 2. MAIN MAP VIEWPORT (FITS 100% PERFECTLY, ZERO SCROLL, ZERO OVERFLOW) -->
-    <main class="flex-1 w-full relative flex items-center justify-center overflow-hidden p-1.5 sm:p-3">
+    <!-- 2. MAIN MAP VIEWPORT (FITS 100% PERFECTLY WITH 3D TILT EFFECT) -->
+    <main id="mapViewport" class="flex-1 w-full relative flex items-center justify-center overflow-hidden p-1.5 sm:p-3 map-stage">
         
-        <!-- Aspect-Ratio Container that fits inside parent viewport -->
-        <div class="relative w-full h-full max-w-[1600px] max-h-[1000px] aspect-[16/10] flex items-center justify-center">
+        <!-- Aspect-Ratio 3D Transform Container -->
+        <div id="mapBoard" class="relative w-full h-full max-w-[1600px] max-h-[1000px] aspect-[16/10] flex items-center justify-center map-board">
             
             <!-- Clean 2.5D Vector Campus Map based on QGIS -->
             <img src="assets/map-loykrathong.svg" alt="KU Campus Map" class="w-full h-full object-contain pointer-events-none select-none drop-shadow-2xl">
@@ -148,6 +164,18 @@
 
         </div>
 
+        <!-- FLOATING 3D PERSPECTIVE CONTROLS (เหมือน GOOGLE / APPLE MAPS 3D) -->
+        <div class="absolute top-4 right-4 z-30 flex flex-col space-y-2">
+            <!-- 3D / 2D Tilt Toggle Button -->
+            <button id="btnToggle3D" onclick="toggle3DMode()" class="px-2.5 py-1.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-90 border border-slate-700/80 text-amber-300 text-xs font-bold shadow-xl backdrop-blur-md flex items-center space-x-1.5 transition">
+                <span id="label3D">📐 มุมมอง 3D</span>
+            </button>
+            <!-- Compass Reset Orientation -->
+            <button onclick="resetOrientation()" title="รีเซ็ตทิศเหนือ / มุมมอง 2D" class="w-9 h-9 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-90 border border-slate-700/80 text-slate-300 flex items-center justify-center shadow-xl backdrop-blur-md transition">
+                <i data-lucide="compass" class="w-5 h-5 text-red-400"></i>
+            </button>
+        </div>
+
     </main>
 
     <!-- 3. BOTTOM QUICK ACTION BAR (ONE-TOUCH GOOGLE MAPS) -->
@@ -156,12 +184,15 @@
             
             <div class="flex items-center justify-between text-[11px] text-slate-400 px-1">
                 <span>แตะเพื่อเปิด Google Maps นำทาง:</span>
-                <span class="text-emerald-400 font-semibold">● สถานะอัปเดตแบบเรียลไทม์</span>
+                <span class="text-emerald-400 font-semibold flex items-center space-x-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>สถานะเรียลไทม์</span>
+                </span>
             </div>
 
             <div class="grid grid-cols-4 gap-1.5 sm:gap-2">
                 <!-- Button Ngam 1 -->
-                <button onclick="openParkingModal('ngam1')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition">
+                <button onclick="openParkingModal('ngam1')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition min-h-[46px]">
                     <div class="flex items-center justify-between w-full">
                         <span class="text-[10px] sm:text-[11px] font-bold text-slate-200 truncate">งามวงศ์วาน 1</span>
                         <span id="card-badge-ngam1" class="text-[8px] font-bold px-1 rounded bg-emerald-500/20 text-emerald-400">เปิด</span>
@@ -173,7 +204,7 @@
                 </button>
 
                 <!-- Button Ngam 2 -->
-                <button onclick="openParkingModal('ngam2')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition">
+                <button onclick="openParkingModal('ngam2')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition min-h-[46px]">
                     <div class="flex items-center justify-between w-full">
                         <span class="text-[10px] sm:text-[11px] font-bold text-slate-200 truncate">งามวงศ์วาน 2</span>
                         <span id="card-badge-ngam2" class="text-[8px] font-bold px-1 rounded bg-emerald-500/20 text-emerald-400">เปิด</span>
@@ -185,7 +216,7 @@
                 </button>
 
                 <!-- Button Vibhavadi -->
-                <button onclick="openParkingModal('vipa')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition">
+                <button onclick="openParkingModal('vipa')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition min-h-[46px]">
                     <div class="flex items-center justify-between w-full">
                         <span class="text-[10px] sm:text-[11px] font-bold text-slate-200 truncate">วิภาวดี</span>
                         <span id="card-badge-vipa" class="text-[8px] font-bold px-1 rounded bg-emerald-500/20 text-emerald-400">เปิด</span>
@@ -197,7 +228,7 @@
                 </button>
 
                 <!-- Button Loy Krathong Event -->
-                <button onclick="openEventModal()" class="bg-amber-950/40 hover:bg-amber-900/50 active:scale-95 border border-amber-600/60 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition">
+                <button onclick="openEventModal()" class="bg-amber-950/40 hover:bg-amber-900/50 active:scale-95 border border-amber-600/60 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition min-h-[46px]">
                     <div class="flex items-center justify-between w-full">
                         <span class="text-[10px] sm:text-[11px] font-bold text-amber-200 truncate">จุดลอยกระทง</span>
                         <span class="text-[8px] font-bold px-1 rounded bg-amber-500/20 text-amber-300">งานหลัก</span>
@@ -257,16 +288,54 @@
     <script>
         lucide.createIcons();
 
+        let is3DMode = false;
+        const mapViewport = document.getElementById('mapViewport');
+        const mapBoard = document.getElementById('mapBoard');
+        const label3D = document.getElementById('label3D');
+
+        // Toggle 3D Perspective Mode
+        function toggle3DMode() {
+            is3DMode = !is3DMode;
+            if (is3DMode) {
+                mapViewport.classList.add('mode-3d');
+                label3D.innerText = '🗺️ มุมมอง 2D';
+            } else {
+                mapViewport.classList.remove('mode-3d');
+                mapBoard.style.transform = '';
+                label3D.innerText = '📐 มุมมอง 3D';
+            }
+        }
+
+        function resetOrientation() {
+            is3DMode = false;
+            mapViewport.classList.remove('mode-3d');
+            mapBoard.style.transform = '';
+            label3D.innerText = '📐 มุมมอง 3D';
+        }
+
+        // Dynamic 3D Parallax Tilt based on mouse move
+        mapViewport.addEventListener('mousemove', (e) => {
+            if (!is3DMode) return;
+            const rect = mapViewport.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            const rotX = 24 - (y * 10);
+            const rotZ = -3 + (x * 8);
+            mapBoard.style.transform = `rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(0.92) translateY(20px)`;
+        });
+
+        mapViewport.addEventListener('mouseleave', () => {
+            if (!is3DMode) return;
+            mapBoard.style.transform = 'rotateX(24deg) rotateZ(-3deg) scale(0.92) translateY(20px)';
+        });
+
         // Official verified capacities from Kasetsart University records:
-        // - Ngamwongwan 1: ~289 slots
-        // - Ngamwongwan 2: ~192 slots
-        // - Vibhavadi: ~150 slots
         const PARKING_CONFIG = {
             ngam1: {
                 name: "อาคารจอดรถงามวงศ์วาน 1",
                 gate: "ทางเข้า: ประตูงามวงศ์วาน 1 (ติดถนนสายในหน้าอาคาร)",
                 capacity: "ความจุตามผัง ~289 คัน",
-                status: "open", // open | warning | full | closed
+                status: "open",
                 mapUrl: "https://goo.gl/maps/NW36hyxkDMBuzc1V8"
             },
             ngam2: {
@@ -310,7 +379,6 @@
                 const lot = (data.lots && data.lots[id]) || PARKING_CONFIG[id];
                 const status = lot.status || 'open';
 
-                // Map Hotspot text and ring
                 const textStatus = document.getElementById(`text-status-${id}`);
                 const ring = document.getElementById(`ring-${id}`);
                 const badge = document.getElementById(`badge-${id}`);
