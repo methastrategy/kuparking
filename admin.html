@@ -21,11 +21,11 @@
                 🔐
             </div>
             <h2 class="text-lg font-bold text-slate-100">ระบบเจ้าหน้าที่ประจำจุด</h2>
-            <p class="text-xs text-slate-400 mt-1 mb-6">สำหรับอัปเดตจำนวนที่จอดรถ มหาวิทยาลัยเกษตรศาสตร์</p>
+            <p class="text-xs text-slate-400 mt-1 mb-6">สำหรับอัปเดตสถานะเปิด/เต็มของอาคารจอดรถ</p>
 
             <div class="space-y-4">
                 <div>
-                    <input id="pinInput" type="password" maxlength="6" placeholder="ใส่รหัส PIN (ค่าเริ่มต้น: 1234)" class="w-full text-center text-xl tracking-widest bg-slate-950 border border-slate-700 rounded-xl py-3 text-white focus:outline-none focus:border-emerald-500">
+                    <input id="pinInput" type="password" maxlength="6" placeholder="ใส่รหัส PIN (1234)" class="w-full text-center text-xl tracking-widest bg-slate-950 border border-slate-700 rounded-xl py-3 text-white focus:outline-none focus:border-emerald-500">
                 </div>
                 <button onclick="checkPin()" class="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold py-3 rounded-xl shadow-lg transition">
                     เข้าสู่ระบบ
@@ -43,8 +43,8 @@
             <div class="flex items-center space-x-2">
                 <span class="text-xl">🚗</span>
                 <div>
-                    <h1 class="font-bold text-sm text-slate-100 leading-tight">ระบบคุมที่จอดรถ (Staff)</h1>
-                    <span class="text-[10px] text-emerald-400">● เชื่อมต่อสด</span>
+                    <h1 class="font-bold text-sm text-slate-100 leading-tight">ระบบคุมสถานะอาคารจอดรถ</h1>
+                    <span class="text-[10px] text-emerald-400">● เชื่อมต่อสดแบบเรียลไทม์</span>
                 </div>
             </div>
             <div class="flex items-center space-x-2">
@@ -58,148 +58,83 @@
             </div>
         </div>
 
-        <!-- BROADCAST ANNOUNCEMENT SENDER -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 mb-4">
-            <label class="text-xs font-semibold text-amber-300 flex items-center space-x-1.5 mb-2">
-                <i data-lucide="megaphone" class="w-3.5 h-3.5"></i>
-                <span>ข้อความประกาศด่วน (วิ่งบนหน้าเว็บผู้ใช้)</span>
-            </label>
-            <div class="flex space-x-2">
-                <input id="broadcastInput" type="text" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500" placeholder="เช่น วิภาวดีเต็มแล้ว แนะนำให้ไปงามวงศ์วาน 2">
-                <button onclick="saveBroadcast()" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold px-3 py-2 rounded-xl transition">
-                    ส่ง
-                </button>
-            </div>
-        </div>
-
         <!-- 3 PARKING BUILDINGS CONTROLLERS -->
         <div class="space-y-4 flex-1">
 
             <!-- 1. งามวงศ์วาน 1 -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 relative overflow-hidden">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
                 <div class="flex items-center justify-between mb-3">
                     <div>
-                        <span class="text-[10px] text-slate-400 font-bold uppercase">อาคารจอดรถ</span>
+                        <span class="text-[10px] text-slate-400 font-bold">ความจุตามผัง ~289 คัน</span>
                         <h2 class="text-base font-bold text-white">งามวงศ์วาน 1</h2>
                     </div>
-                    <div id="statusBadge-ngam1" class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                        ว่างปกติ
+                    <div id="statusBadge-ngam1" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                        เปิดให้บริการ
                     </div>
                 </div>
 
-                <!-- Number Display -->
-                <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-3 flex items-center justify-between mb-3">
-                    <span class="text-xs text-slate-400">ช่องว่างคงเหลือ:</span>
-                    <div class="flex items-baseline space-x-1">
-                        <input id="remainInput-ngam1" type="number" class="w-20 text-right bg-transparent text-2xl font-black text-emerald-400 focus:outline-none" value="160" onchange="manualUpdate('ngam1')">
-                        <span class="text-xs text-slate-500">คัน</span>
-                    </div>
-                </div>
-
-                <!-- Step Adjusters -->
-                <div class="grid grid-cols-4 gap-2 mb-3">
-                    <button onclick="adjustLot('ngam1', -10)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">-10</button>
-                    <button onclick="adjustLot('ngam1', -1)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">-1</button>
-                    <button onclick="adjustLot('ngam1', 1)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">+1</button>
-                    <button onclick="adjustLot('ngam1', 10)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">+10</button>
-                </div>
-
-                <!-- Preset Quick States -->
+                <!-- 1-Click Status Toggles -->
                 <div class="grid grid-cols-3 gap-2">
-                    <button onclick="setQuickState('ngam1', 'available')" class="bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-600/50 text-emerald-300 text-xs py-2 rounded-xl font-semibold">
-                        🟢 ว่าง (>50)
+                    <button onclick="setStatus('ngam1', 'open')" class="bg-emerald-950/80 hover:bg-emerald-900 active:scale-95 border border-emerald-600/50 text-emerald-300 text-xs py-2.5 rounded-xl font-semibold">
+                        🟢 เปิดบริการ
                     </button>
-                    <button onclick="setQuickState('ngam1', 'warning')" class="bg-amber-950/80 hover:bg-amber-900 border border-amber-600/50 text-amber-300 text-xs py-2 rounded-xl font-semibold">
-                        🟡 ใกล้เต็ม (20)
+                    <button onclick="setStatus('ngam1', 'warning')" class="bg-amber-950/80 hover:bg-amber-900 active:scale-95 border border-amber-600/50 text-amber-300 text-xs py-2.5 rounded-xl font-semibold">
+                        🟡 ใกล้เต็ม
                     </button>
-                    <button onclick="setQuickState('ngam1', 'full')" class="bg-red-950/80 hover:bg-red-900 border border-red-600/50 text-red-300 text-xs py-2 rounded-xl font-semibold">
-                        🔴 เต็ม (0)
+                    <button onclick="setStatus('ngam1', 'full')" class="bg-red-950/80 hover:bg-red-900 active:scale-95 border border-red-600/50 text-red-300 text-xs py-2.5 rounded-xl font-semibold">
+                        🔴 ที่จอดเต็ม
                     </button>
                 </div>
             </div>
 
             <!-- 2. งามวงศ์วาน 2 -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 relative overflow-hidden">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
                 <div class="flex items-center justify-between mb-3">
                     <div>
-                        <span class="text-[10px] text-slate-400 font-bold uppercase">อาคารจอดรถ</span>
+                        <span class="text-[10px] text-slate-400 font-bold">ความจุตามผัง ~192 คัน</span>
                         <h2 class="text-base font-bold text-white">งามวงศ์วาน 2</h2>
                     </div>
-                    <div id="statusBadge-ngam2" class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                        ว่างปกติ
+                    <div id="statusBadge-ngam2" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                        เปิดให้บริการ
                     </div>
                 </div>
 
-                <!-- Number Display -->
-                <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-3 flex items-center justify-between mb-3">
-                    <span class="text-xs text-slate-400">ช่องว่างคงเหลือ:</span>
-                    <div class="flex items-baseline space-x-1">
-                        <input id="remainInput-ngam2" type="number" class="w-20 text-right bg-transparent text-2xl font-black text-emerald-400 focus:outline-none" value="180" onchange="manualUpdate('ngam2')">
-                        <span class="text-xs text-slate-500">คัน</span>
-                    </div>
-                </div>
-
-                <!-- Step Adjusters -->
-                <div class="grid grid-cols-4 gap-2 mb-3">
-                    <button onclick="adjustLot('ngam2', -10)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">-10</button>
-                    <button onclick="adjustLot('ngam2', -1)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">-1</button>
-                    <button onclick="adjustLot('ngam2', 1)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">+1</button>
-                    <button onclick="adjustLot('ngam2', 10)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">+10</button>
-                </div>
-
-                <!-- Preset Quick States -->
+                <!-- 1-Click Status Toggles -->
                 <div class="grid grid-cols-3 gap-2">
-                    <button onclick="setQuickState('ngam2', 'available')" class="bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-600/50 text-emerald-300 text-xs py-2 rounded-xl font-semibold">
-                        🟢 ว่าง (>50)
+                    <button onclick="setStatus('ngam2', 'open')" class="bg-emerald-950/80 hover:bg-emerald-900 active:scale-95 border border-emerald-600/50 text-emerald-300 text-xs py-2.5 rounded-xl font-semibold">
+                        🟢 เปิดบริการ
                     </button>
-                    <button onclick="setQuickState('ngam2', 'warning')" class="bg-amber-950/80 hover:bg-amber-900 border border-amber-600/50 text-amber-300 text-xs py-2 rounded-xl font-semibold">
-                        🟡 ใกล้เต็ม (20)
+                    <button onclick="setStatus('ngam2', 'warning')" class="bg-amber-950/80 hover:bg-amber-900 active:scale-95 border border-amber-600/50 text-amber-300 text-xs py-2.5 rounded-xl font-semibold">
+                        🟡 ใกล้เต็ม
                     </button>
-                    <button onclick="setQuickState('ngam2', 'full')" class="bg-red-950/80 hover:bg-red-900 border border-red-600/50 text-red-300 text-xs py-2 rounded-xl font-semibold">
-                        🔴 เต็ม (0)
+                    <button onclick="setStatus('ngam2', 'full')" class="bg-red-950/80 hover:bg-red-900 active:scale-95 border border-red-600/50 text-red-300 text-xs py-2.5 rounded-xl font-semibold">
+                        🔴 ที่จอดเต็ม
                     </button>
                 </div>
             </div>
 
             <!-- 3. วิภาวดี -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 relative overflow-hidden">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4">
                 <div class="flex items-center justify-between mb-3">
                     <div>
-                        <span class="text-[10px] text-slate-400 font-bold uppercase">อาคารจอดรถ</span>
+                        <span class="text-[10px] text-slate-400 font-bold">ความจุตามผัง ~150 คัน</span>
                         <h2 class="text-base font-bold text-white">วิภาวดี</h2>
                     </div>
-                    <div id="statusBadge-vipa" class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                        ว่างปกติ
+                    <div id="statusBadge-vipa" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                        เปิดให้บริการ
                     </div>
                 </div>
 
-                <!-- Number Display -->
-                <div class="bg-slate-950 border border-slate-800/80 rounded-xl p-3 flex items-center justify-between mb-3">
-                    <span class="text-xs text-slate-400">ช่องว่างคงเหลือ:</span>
-                    <div class="flex items-baseline space-x-1">
-                        <input id="remainInput-vipa" type="number" class="w-20 text-right bg-transparent text-2xl font-black text-emerald-400 focus:outline-none" value="200" onchange="manualUpdate('vipa')">
-                        <span class="text-xs text-slate-500">คัน</span>
-                    </div>
-                </div>
-
-                <!-- Step Adjusters -->
-                <div class="grid grid-cols-4 gap-2 mb-3">
-                    <button onclick="adjustLot('vipa', -10)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">-10</button>
-                    <button onclick="adjustLot('vipa', -1)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">-1</button>
-                    <button onclick="adjustLot('vipa', 1)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">+1</button>
-                    <button onclick="adjustLot('vipa', 10)" class="bg-slate-800 hover:bg-slate-700 active:scale-95 text-xs font-bold py-2 rounded-lg text-slate-200 border border-slate-700">+10</button>
-                </div>
-
-                <!-- Preset Quick States -->
+                <!-- 1-Click Status Toggles -->
                 <div class="grid grid-cols-3 gap-2">
-                    <button onclick="setQuickState('vipa', 'available')" class="bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-600/50 text-emerald-300 text-xs py-2 rounded-xl font-semibold">
-                        🟢 ว่าง (>50)
+                    <button onclick="setStatus('vipa', 'open')" class="bg-emerald-950/80 hover:bg-emerald-900 active:scale-95 border border-emerald-600/50 text-emerald-300 text-xs py-2.5 rounded-xl font-semibold">
+                        🟢 เปิดบริการ
                     </button>
-                    <button onclick="setQuickState('vipa', 'warning')" class="bg-amber-950/80 hover:bg-amber-900 border border-amber-600/50 text-amber-300 text-xs py-2 rounded-xl font-semibold">
-                        🟡 ใกล้เต็ม (20)
+                    <button onclick="setStatus('vipa', 'warning')" class="bg-amber-950/80 hover:bg-amber-900 active:scale-95 border border-amber-600/50 text-amber-300 text-xs py-2.5 rounded-xl font-semibold">
+                        🟡 ใกล้เต็ม
                     </button>
-                    <button onclick="setQuickState('vipa', 'full')" class="bg-red-950/80 hover:bg-red-900 border border-red-600/50 text-red-300 text-xs py-2 rounded-xl font-semibold">
-                        🔴 เต็ม (0)
+                    <button onclick="setStatus('vipa', 'full')" class="bg-red-950/80 hover:bg-red-900 active:scale-95 border border-red-600/50 text-red-300 text-xs py-2.5 rounded-xl font-semibold">
+                        🔴 ที่จอดเต็ม
                     </button>
                 </div>
             </div>
@@ -215,11 +150,10 @@
         const channel = new BroadcastChannel('ku_parking_sync');
 
         const DEFAULT_DATA = {
-            broadcast: "เปิดให้บริการ 3 อาคาร: งามวงศ์วาน 1, งามวงศ์วาน 2 และ อาคารวิภาวดี",
             lots: {
-                ngam1: { name: "งามวงศ์วาน 1", max: 350, remain: 160, status: "available" },
-                ngam2: { name: "งามวงศ์วาน 2", max: 400, remain: 180, status: "available" },
-                vipa:  { name: "วิภาวดี",     max: 450, remain: 200, status: "available" }
+                ngam1: { name: "งามวงศ์วาน 1", status: "open" },
+                ngam2: { name: "งามวงศ์วาน 2", status: "open" },
+                vipa:  { name: "วิภาวดี",     status: "open" }
             }
         };
 
@@ -246,7 +180,7 @@
                 document.getElementById('adminPanel').classList.remove('hidden');
                 renderAdmin();
             } else {
-                alert('รหัส PIN ไม่ถูกต้อง (ลองใส่ 1234)');
+                alert('รหัส PIN ไม่ถูกต้อง (ใส่ 1234)');
             }
         }
 
@@ -255,7 +189,6 @@
             location.reload();
         }
 
-        // Auto login if session exists
         if (sessionStorage.getItem('staff_auth') === 'true') {
             document.getElementById('loginScreen').classList.add('hidden');
             document.getElementById('adminPanel').classList.remove('hidden');
@@ -264,80 +197,36 @@
 
         function renderAdmin() {
             const data = getData();
-            document.getElementById('broadcastInput').value = data.broadcast || "";
 
             ['ngam1', 'ngam2', 'vipa'].forEach(id => {
-                const lot = data.lots[id];
-                if (!lot) return;
-
-                const input = document.getElementById(`remainInput-${id}`);
-                if (input) input.value = lot.remain;
-
+                const lot = (data.lots && data.lots[id]) || { status: 'open' };
                 const badge = document.getElementById(`statusBadge-${id}`);
+                const status = lot.status || 'open';
+
                 if (badge) {
-                    if (lot.remain <= 0 || lot.status === 'full') {
-                        badge.className = 'text-xs font-bold px-2.5 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/30';
+                    if (status === 'full') {
+                        badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/30';
                         badge.innerText = 'ที่จอดเต็ม';
-                    } else if (lot.remain < 30 || lot.status === 'warning') {
-                        badge.className = 'text-xs font-bold px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30';
+                    } else if (status === 'warning') {
+                        badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30';
                         badge.innerText = 'ใกล้เต็ม';
+                    } else if (status === 'closed') {
+                        badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-slate-700 text-slate-400 border border-slate-600';
+                        badge.innerText = 'ปิดอาคาร';
                     } else {
-                        badge.className = 'text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
-                        badge.innerText = 'ว่างปกติ';
+                        badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+                        badge.innerText = 'เปิดให้บริการ';
                     }
                 }
             });
         }
 
-        function adjustLot(id, delta) {
+        function setStatus(id, newStatus) {
             const data = getData();
-            if (!data.lots[id]) return;
-
-            data.lots[id].remain = Math.max(0, Math.min(data.lots[id].max, data.lots[id].remain + delta));
-            if (data.lots[id].remain === 0) data.lots[id].status = 'full';
-            else if (data.lots[id].remain < 30) data.lots[id].status = 'warning';
-            else data.lots[id].status = 'available';
-
+            if (!data.lots) data.lots = {};
+            if (!data.lots[id]) data.lots[id] = {};
+            data.lots[id].status = newStatus;
             saveData(data);
-        }
-
-        function setQuickState(id, state) {
-            const data = getData();
-            if (!data.lots[id]) return;
-
-            if (state === 'full') {
-                data.lots[id].remain = 0;
-                data.lots[id].status = 'full';
-            } else if (state === 'warning') {
-                data.lots[id].remain = 20;
-                data.lots[id].status = 'warning';
-            } else {
-                data.lots[id].remain = Math.round(data.lots[id].max * 0.4);
-                data.lots[id].status = 'available';
-            }
-
-            saveData(data);
-        }
-
-        function manualUpdate(id) {
-            const val = parseInt(document.getElementById(`remainInput-${id}`).value) || 0;
-            const data = getData();
-            if (!data.lots[id]) return;
-
-            data.lots[id].remain = Math.max(0, Math.min(data.lots[id].max, val));
-            if (data.lots[id].remain === 0) data.lots[id].status = 'full';
-            else if (data.lots[id].remain < 30) data.lots[id].status = 'warning';
-            else data.lots[id].status = 'available';
-
-            saveData(data);
-        }
-
-        function saveBroadcast() {
-            const text = document.getElementById('broadcastInput').value.trim();
-            const data = getData();
-            data.broadcast = text;
-            saveData(data);
-            alert('อัปเดตข้อความประกาศเรียบร้อย!');
         }
     </script>
 </body>
