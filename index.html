@@ -244,131 +244,135 @@
                 <!-- Interactive Corridor Hitbox for Phahonyothin Road (Hover / Touch Trigger) -->
                 <rect id="phahonHoverHitbox" x="1440" y="0" width="120" height="1000" fill="transparent" class="pointer-events-auto cursor-pointer" />
 
-                <!-- 4-CAR BTS SKYTRAIN GROUP (Accelerated via GPU translate3d in RAF loop) -->
-                <g id="btsTrainGroup" class="pointer-events-auto cursor-pointer group" transform="translate(1480, -260)" filter="url(#btsTrainShadow)">
+                <!-- 4-CAR BTS SKYTRAIN GROUP (Symmetrically centered at y=0, length 176px from y=-88 to y=+88) -->
+                <g id="btsTrainGroup" class="pointer-events-auto cursor-pointer group" transform="translate(1480, -200)" filter="url(#btsTrainShadow)" onclick="openBtsModal()">
                     
-                    <!-- Headlight Beams Casting onto Viaduct Ahead (Facing South) -->
-                    <polygon id="btsHeadlightCones" points="-6,32 -30,120 30,120 6,32" fill="url(#btsHeadlightBeam)" opacity="0.8" />
+                    <!-- Headlight Beams Casting onto Viaduct Ahead (Facing South from Cab Nose at y=+88) -->
+                    <polygon id="btsHeadlightCones" points="-6,86 -34,180 34,180 6,86" fill="url(#btsHeadlightBeam)" opacity="0.85" />
 
                     <!-- ============================================ -->
-                    <!-- CAR 1: LEADING DRIVING MOTOR CAB (Heading South)-->
+                    <!-- CAR 1: LEADING DRIVING MOTOR CAB (Heading South, y=+48 to +88) -->
                     <!-- ============================================ -->
-                    <g id="btsCar1" transform="translate(0, 0)">
+                    <g id="btsCar1">
                         <!-- Main Composite Body Shell -->
-                        <path d="M -9,-14 L 9,-14 L 9,20 Q 9,32 0,32 Q -9,32 -9,20 Z" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
+                        <path d="M -9,48 L 9,48 L 9,76 Q 9,88 0,88 Q -9,88 -9,76 Z" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
                         <!-- BTS Royal Blue Upper Belt Stripe -->
-                        <path d="M -9,-8 L 9,-8 L 9,-4 L -9,-4 Z" fill="#1D4ED8" />
+                        <path d="M -9,54 L 9,54 L 9,58 L -9,58 Z" fill="#1D4ED8" />
                         <!-- BTS Emerald Green Lower Belt Stripe -->
-                        <path d="M -9,16 L 9,16 L 9,22 Q 9,29 0,29 Q -9,29 -9,22 Z" fill="#10B981" />
+                        <path d="M -9,74 L 9,74 L 9,80 Q 9,86 0,86 Q -9,86 -9,80 Z" fill="#10B981" />
                         <!-- Front Aerodynamic Cab Windshield (Dark Blue Glass with Highlight) -->
-                        <path d="M -7,20 L 7,20 L 5.5,27 Q 0,30 -5.5,27 Z" fill="#0369A1" stroke="#38BDF8" stroke-width="0.6" />
-                        <line x1="-3" y1="22" x2="3" y2="22" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7" />
+                        <path d="M -7,76 L 7,76 L 5.5,83 Q 0,86 -5.5,83 Z" fill="#0369A1" stroke="#38BDF8" stroke-width="0.6" />
+                        <line x1="-3" y1="78" x2="3" y2="78" stroke="#FFFFFF" stroke-width="0.5" opacity="0.7" />
                         <!-- High-Intensity Twin LED Headlights (Warm Golden White) -->
-                        <circle cx="-5" cy="28.5" r="1.8" fill="#FFFBEB" stroke="#FEF08A" stroke-width="0.8" />
-                        <circle cx="5" cy="28.5" r="1.8" fill="#FFFBEB" stroke="#FEF08A" stroke-width="0.8" />
+                        <circle cx="-5" cy="84.5" r="1.8" fill="#FFFBEB" stroke="#FEF08A" stroke-width="0.8" />
+                        <circle cx="5" cy="84.5" r="1.8" fill="#FFFBEB" stroke="#FEF08A" stroke-width="0.8" />
                         <!-- Illuminated Passenger Saloon Windows -->
                         <g fill="url(#btsWindowGlow)" stroke="#0284C7" stroke-width="0.4">
-                            <rect x="-8" y="-12" width="3.5" height="5" rx="1" />
-                            <rect x="4.5" y="-12" width="3.5" height="5" rx="1" />
-                            <rect x="-8" y="-2" width="3.5" height="6" rx="1" />
-                            <rect x="4.5" y="-2" width="3.5" height="6" rx="1" />
-                            <rect x="-8" y="7" width="3.5" height="6" rx="1" />
-                            <rect x="4.5" y="7" width="3.5" height="6" rx="1" />
+                            <rect x="-8" y="50" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="50" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="59" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="59" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="67" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="67" width="3.5" height="5.5" rx="1" />
                         </g>
                         <!-- Rooftop AC Module -->
-                        <rect x="-4.5" y="-6" width="9" height="14" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
-                        <line x1="-3" y1="-2" x2="3" y2="-2" stroke="#475569" stroke-width="0.6" />
-                        <line x1="-3" y1="2" x2="3" y2="2" stroke="#475569" stroke-width="0.6" />
+                        <rect x="-4.5" y="54" width="9" height="15" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
+                        <line x1="-3" y1="58" x2="3" y2="58" stroke="#475569" stroke-width="0.6" />
+                        <line x1="-3" y1="63" x2="3" y2="63" stroke="#475569" stroke-width="0.6" />
                     </g>
 
-                    <!-- Accordion Gangway Coupler 1-2 -->
-                    <rect x="-5" y="-20" width="10" height="6" rx="1" fill="#0F172A" stroke="#334155" stroke-width="0.6" />
+                    <!-- Accordion Gangway Coupler 1-2 (y=+42 to +48) -->
+                    <rect x="-5" y="42" width="10" height="6" rx="1" fill="#0F172A" stroke="#334155" stroke-width="0.6" />
 
                     <!-- ============================================ -->
-                    <!-- CAR 2: INTERMEDIATE TRAILER CAR               -->
+                    <!-- CAR 2: INTERMEDIATE TRAILER CAR (y=+3 to +42) -->
                     <!-- ============================================ -->
-                    <g id="btsCar2" transform="translate(0, -20)">
-                        <rect x="-9" y="-42" width="18" height="42" rx="2" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
+                    <g id="btsCar2">
+                        <rect x="-9" y="3" width="18" height="39" rx="2" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
                         <!-- Blue & Green Livery Stripes -->
-                        <rect x="-9" y="-36" width="18" height="4" fill="#1D4ED8" />
-                        <rect x="-9" y="-10" width="18" height="4" fill="#10B981" />
+                        <rect x="-9" y="8" width="18" height="4" fill="#1D4ED8" />
+                        <rect x="-9" y="32" width="18" height="4" fill="#10B981" />
+                        <!-- Passenger Windows -->
+                        <g fill="url(#btsWindowGlow)" stroke="#0284C7" stroke-width="0.4">
+                            <rect x="-8" y="6" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="6" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="15" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="15" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="24" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="24" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="33" width="3.5" height="5" rx="1" />
+                            <rect x="4.5" y="33" width="3.5" height="5" rx="1" />
+                        </g>
+                        <!-- Rooftop AC Module -->
+                        <rect x="-4.5" y="14" width="9" height="16" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
+                    </g>
+
+                    <!-- Accordion Gangway Coupler 2-3 (y=-3 to +3) -->
+                    <rect x="-5" y="-3" width="10" height="6" rx="1" fill="#0F172A" stroke="#334155" stroke-width="0.6" />
+
+                    <!-- ============================================ -->
+                    <!-- CAR 3: INTERMEDIATE MOTOR CAR (y=-42 to -3)    -->
+                    <!-- ============================================ -->
+                    <g id="btsCar3">
+                        <rect x="-9" y="-42" width="18" height="39" rx="2" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
+                        <!-- Blue & Green Livery Stripes -->
+                        <rect x="-9" y="-37" width="18" height="4" fill="#1D4ED8" />
+                        <rect x="-9" y="-13" width="18" height="4" fill="#10B981" />
                         <!-- Passenger Windows -->
                         <g fill="url(#btsWindowGlow)" stroke="#0284C7" stroke-width="0.4">
                             <rect x="-8" y="-39" width="3.5" height="5.5" rx="1" />
                             <rect x="4.5" y="-39" width="3.5" height="5.5" rx="1" />
-                            <rect x="-8" y="-29" width="3.5" height="5.5" rx="1" />
-                            <rect x="4.5" y="-29" width="3.5" height="5.5" rx="1" />
-                            <rect x="-8" y="-19" width="3.5" height="5.5" rx="1" />
-                            <rect x="4.5" y="-19" width="3.5" height="5.5" rx="1" />
-                        </g>
-                        <!-- Rooftop AC Module -->
-                        <rect x="-4.5" y="-30" width="9" height="16" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
-                    </g>
-
-                    <!-- Accordion Gangway Coupler 2-3 -->
-                    <rect x="-5" y="-68" width="10" height="6" rx="1" fill="#0F172A" stroke="#334155" stroke-width="0.6" />
-
-                    <!-- ============================================ -->
-                    <!-- CAR 3: INTERMEDIATE MOTOR CAR                 -->
-                    <!-- ============================================ -->
-                    <g id="btsCar3" transform="translate(0, -68)">
-                        <rect x="-9" y="-42" width="18" height="42" rx="2" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
-                        <!-- Blue & Green Livery Stripes -->
-                        <rect x="-9" y="-36" width="18" height="4" fill="#1D4ED8" />
-                        <rect x="-9" y="-10" width="18" height="4" fill="#10B981" />
-                        <!-- Passenger Windows -->
-                        <g fill="url(#btsWindowGlow)" stroke="#0284C7" stroke-width="0.4">
-                            <rect x="-8" y="-39" width="3.5" height="5.5" rx="1" />
-                            <rect x="4.5" y="-39" width="3.5" height="5.5" rx="1" />
-                            <rect x="-8" y="-29" width="3.5" height="5.5" rx="1" />
-                            <rect x="4.5" y="-29" width="3.5" height="5.5" rx="1" />
-                            <rect x="-8" y="-19" width="3.5" height="5.5" rx="1" />
-                            <rect x="4.5" y="-19" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="-30" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="-30" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="-21" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="-21" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="-11" width="3.5" height="5" rx="1" />
+                            <rect x="4.5" y="-11" width="3.5" height="5" rx="1" />
                         </g>
                         <!-- Rooftop AC & Pantograph Detailing -->
                         <rect x="-4.5" y="-30" width="9" height="16" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
                         <line x1="-3" y1="-8" x2="3" y2="-8" stroke="#EF4444" stroke-width="0.8" />
                     </g>
 
-                    <!-- Accordion Gangway Coupler 3-4 -->
-                    <rect x="-5" y="-116" width="10" height="6" rx="1" fill="#0F172A" stroke="#334155" stroke-width="0.6" />
+                    <!-- Accordion Gangway Coupler 3-4 (y=-48 to -42) -->
+                    <rect x="-5" y="-48" width="10" height="6" rx="1" fill="#0F172A" stroke="#334155" stroke-width="0.6" />
 
                     <!-- ============================================ -->
-                    <!-- CAR 4: REAR DRIVING MOTOR CAB (Facing North) -->
+                    <!-- CAR 4: REAR DRIVING MOTOR CAB (Facing North, y=-88 to -48) -->
                     <!-- ============================================ -->
-                    <g id="btsCar4" transform="translate(0, -116)">
-                        <path d="M -9,0 L 9,0 L 9,-34 Q 9,-46 0,-46 Q -9,-46 -9,-34 Z" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
+                    <g id="btsCar4">
+                        <path d="M -9,-48 L 9,-48 L 9,-76 Q 9,-88 0,-88 Q -9,-88 -9,-76 Z" fill="url(#btsBodyGrad)" stroke="#64748B" stroke-width="0.8" />
                         <!-- Blue & Green Livery Stripes -->
-                        <path d="M -9,-22 L 9,-22 L 9,-18 L -9,-18 Z" fill="#1D4ED8" />
-                        <path d="M -9,-34 Q -9,-41 0,-41 Q 9,-41 9,-34 L 9,-30 Q 9,-37 0,-37 Q -9,-37 -9,-30 Z" fill="#10B981" />
+                        <path d="M -9,-58 L 9,-58 L 9,-54 L -9,-54 Z" fill="#1D4ED8" />
+                        <path d="M -9,-76 Q -9,-84 0,-84 Q 9,-84 9,-76 L 9,-72 Q 9,-80 0,-80 Q -9,-80 -9,-72 Z" fill="#10B981" />
                         <!-- Rear Cab Windshield -->
-                        <path d="M -7,-34 L 7,-34 L 5.5,-41 Q 0,-44 -5.5,-41 Z" fill="#0369A1" stroke="#38BDF8" stroke-width="0.6" />
+                        <path d="M -7,-76 L 7,-76 L 5.5,-83 Q 0,-86 -5.5,-83 Z" fill="#0369A1" stroke="#38BDF8" stroke-width="0.6" />
                         <!-- Rear Red Tail LED Markers -->
-                        <circle cx="-5" cy="-42" r="1.6" fill="#EF4444" stroke="#B91C1C" stroke-width="0.6" />
-                        <circle cx="5" cy="-42" r="1.6" fill="#EF4444" stroke="#B91C1C" stroke-width="0.6" />
+                        <circle cx="-5" cy="-84.5" r="1.6" fill="#EF4444" stroke="#B91C1C" stroke-width="0.6" />
+                        <circle cx="5" cy="-84.5" r="1.6" fill="#EF4444" stroke="#B91C1C" stroke-width="0.6" />
                         <!-- Passenger Windows -->
                         <g fill="url(#btsWindowGlow)" stroke="#0284C7" stroke-width="0.4">
-                            <rect x="-8" y="-12" width="3.5" height="6" rx="1" />
-                            <rect x="4.5" y="-12" width="3.5" height="6" rx="1" />
-                            <rect x="-8" y="-22" width="3.5" height="6" rx="1" />
-                            <rect x="4.5" y="-22" width="3.5" height="6" rx="1" />
-                            <rect x="-8" y="-31" width="3.5" height="5" rx="1" />
-                            <rect x="4.5" y="-31" width="3.5" height="5" rx="1" />
+                            <rect x="-8" y="-55" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="-55" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="-64" width="3.5" height="5.5" rx="1" />
+                            <rect x="4.5" y="-64" width="3.5" height="5.5" rx="1" />
+                            <rect x="-8" y="-72" width="3.5" height="5" rx="1" />
+                            <rect x="4.5" y="-72" width="3.5" height="5" rx="1" />
                         </g>
                         <!-- Rooftop AC Module -->
-                        <rect x="-4.5" y="-18" width="9" height="14" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
+                        <rect x="-4.5" y="-68" width="9" height="15" rx="2" fill="#94A3B8" stroke="#475569" stroke-width="0.6" />
                     </g>
 
                 </g>
 
-                <!-- Interactive BTS Station Clickable Area & Touch Target (x=1536, y=730) -->
-                <g id="btsStationHotspot" transform="translate(1536, 730)" class="pointer-events-auto cursor-pointer group" onclick="openBtsModal()">
-                    <rect x="-32" y="-60" width="64" height="120" rx="32" fill="transparent" />
+                <!-- Interactive BTS Station Clickable Area & Touch Target (Centered at x=1480, y=720) -->
+                <g id="btsStationHotspot" transform="translate(1480, 720)" class="pointer-events-auto cursor-pointer group" onclick="openBtsModal()">
+                    <rect x="-35" y="-115" width="70" height="230" rx="20" fill="transparent" />
                 </g>
             </svg>
 
             <!-- ================= BTS STATION & ARRIVAL FLOATING HUD CARD ================= -->
-            <div id="btsInfoCard" class="absolute right-[6.5%] top-[73%] -translate-y-1/2 z-30 pointer-events-none opacity-0 translate-x-3 transition-all duration-300">
+            <div id="btsInfoCard" class="absolute right-[13.5%] top-[72%] -translate-y-1/2 z-30 pointer-events-none opacity-0 translate-x-3 transition-all duration-300">
                 <div class="glass-panel p-3 rounded-2xl border border-emerald-500/40 shadow-2xl backdrop-blur-xl flex flex-col space-y-2 w-64 pointer-events-auto">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-1.5">
@@ -444,6 +448,19 @@
                         <span>สระพระพิรุณ (งานลอยกระทง)</span>
                     </div>
                     <div class="w-2.5 h-2.5 bg-amber-500 rotate-45 -mt-1 shadow"></div>
+                </div>
+            </div>
+
+            <!-- [5] สถานี BTS มหาวิทยาลัยเกษตรศาสตร์ (N13) หน้ามอ ประตูพหลโยธิน 1 (Center: 1480, 720) -->
+            <div id="hotspot-bts" onclick="openBtsModal()" class="absolute left-[92.5%] top-[72.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
+                <div class="relative flex flex-col items-center">
+                    <div id="ring-bts" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-400 blur-xs pointer-events-none status-halo"></div>
+                    <div id="badge-bts" class="px-2.5 sm:px-3 py-1 rounded-full bg-slate-900/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-emerald-400/60 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
+                        <span class="w-4 h-4 rounded-md bg-emerald-500 flex items-center justify-center text-[9px] font-black text-slate-950">BTS</span>
+                        <span>สถานี BTS ม.เกษตรฯ</span>
+                        <span class="text-emerald-300 font-extrabold text-[9.5px] bg-emerald-950/60 border border-emerald-500/30 px-1 py-0.2 rounded">N13</span>
+                    </div>
+                    <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
                 </div>
             </div>
 
@@ -951,16 +968,17 @@
         const btsIndicatorDot = document.getElementById('btsIndicatorDot');
         const phahonHoverHitbox = document.getElementById('phahonHoverHitbox');
         const btsStationHotspot = document.getElementById('btsStationHotspot');
+        const hotspotBts = document.getElementById('hotspot-bts');
 
         const BTS_PARAMS = {
-            stationY: 730,
-            startY: -260,
-            endY: 1260,
+            stationY: 720,
+            startY: -200,
+            endY: 1200,
             decelStartY: 460,
-            accelEndY: 920,
-            vCruise: 68,     // px/s
-            vFast: 190,      // px/s when summoned to station
-            dwellDuration: 3800 // ms dwell at station
+            accelEndY: 940,
+            vCruise: 70,        // px/s
+            vFast: 180,         // px/s when summoned to station
+            dwellDuration: 4000 // ms dwell at station
         };
 
         let btsY = BTS_PARAMS.startY;
@@ -1005,7 +1023,7 @@
                 showBtsCard();
 
                 // If train is already parked at station, keep it dwelling
-                if (btsState === 'DWELLING' && Math.abs(btsY - BTS_PARAMS.stationY) < 2) {
+                if (btsState === 'DWELLING') {
                     btsDwellStart = performance.now();
                     updateBtsStatusUI(true, 'จอดเทียบชานชาลา (เปิดประตูชานชาลา)');
                     return;
@@ -1013,20 +1031,25 @@
 
                 // If not at station, summon it!
                 btsState = 'SUMMONED';
-                updateBtsStatusUI(false, 'กำลังเข้าสู่สถานี ม.เกษตรศาสตร์...');
+                if (btsY < BTS_PARAMS.stationY) {
+                    updateBtsStatusUI(false, 'กำลังเข้าสู่สถานี ม.เกษตรศาสตร์...');
+                } else {
+                    updateBtsStatusUI(false, 'กำลังวนกลับมาจอดที่สถานี ม.เกษตรศาสตร์...');
+                }
             } else {
                 isHovered = false;
+                if (unhoverTimer) clearTimeout(unhoverTimer);
                 unhoverTimer = setTimeout(() => {
                     hideBtsCard();
                     if (btsState === 'DWELLING') {
-                        btsDwellStart = 0; // release dwell
+                        btsDwellStart = performance.now() - BTS_PARAMS.dwellDuration + 800; // depart smoothly
                     }
-                }, 2200);
+                }, 2000);
             }
         }
 
         // Attach interactive hover & touch events
-        [phahonHoverHitbox, btsStationHotspot, btsTrainGroup].forEach(el => {
+        [phahonHoverHitbox, btsStationHotspot, btsTrainGroup, hotspotBts].forEach(el => {
             if (!el) return;
             el.addEventListener('mouseenter', () => triggerBtsHover(true));
             el.addEventListener('mouseleave', () => triggerBtsHover(false));
@@ -1050,11 +1073,12 @@
                     updateBtsStatusUI(false, 'กำลังชะลอจอด สถานี ม.เกษตรศาสตร์');
                 } else if (btsY >= BTS_PARAMS.endY) {
                     btsY = BTS_PARAMS.startY;
+                    updateBtsStatusUI(false, 'มุ่งหน้าสู่สถานี ม.เกษตรศาสตร์');
                 }
             } else if (btsState === 'DECELERATING') {
                 const distRemaining = Math.max(0, BTS_PARAMS.stationY - btsY);
                 const progress = distRemaining / (BTS_PARAMS.stationY - BTS_PARAMS.decelStartY);
-                const currentV = Math.max(14, BTS_PARAMS.vCruise * Math.sqrt(progress));
+                const currentV = Math.max(12, BTS_PARAMS.vCruise * Math.sqrt(progress));
                 btsY += currentV * dt;
 
                 if (btsY >= BTS_PARAMS.stationY) {
@@ -1072,21 +1096,26 @@
             } else if (btsState === 'ACCELERATING') {
                 const distTraveled = Math.max(0, btsY - BTS_PARAMS.stationY);
                 const progress = Math.min(1, distTraveled / (BTS_PARAMS.accelEndY - BTS_PARAMS.stationY));
-                const currentV = Math.min(BTS_PARAMS.vCruise, 14 + (BTS_PARAMS.vCruise - 14) * (progress * progress));
+                const currentV = Math.min(BTS_PARAMS.vCruise, 12 + (BTS_PARAMS.vCruise - 12) * (progress * progress));
                 btsY += currentV * dt;
 
                 if (btsY >= BTS_PARAMS.accelEndY) {
                     btsState = 'CRUISING';
+                    updateBtsStatusUI(false, 'มุ่งหน้าสู่แยกลาดพร้าว');
                 }
             } else if (btsState === 'SUMMONED') {
-                if (btsY > BTS_PARAMS.stationY + 20) {
+                if (btsY >= BTS_PARAMS.stationY) {
+                    // Past station: continue forward smoothly at vFast to loop back around
                     btsY += BTS_PARAMS.vFast * dt;
                     if (btsY >= BTS_PARAMS.endY) {
                         btsY = BTS_PARAMS.startY;
+                        updateBtsStatusUI(false, 'กำลังเข้าสู่สถานี ม.เกษตรศาสตร์...');
                     }
                 } else if (btsY < BTS_PARAMS.decelStartY) {
+                    // Approaching from north: speed up smoothly towards decel zone
                     btsY += BTS_PARAMS.vFast * dt;
                 } else {
+                    // In deceleration zone:
                     const distRemaining = Math.max(0, BTS_PARAMS.stationY - btsY);
                     const progress = distRemaining / (BTS_PARAMS.stationY - BTS_PARAMS.decelStartY);
                     const currentV = Math.max(16, BTS_PARAMS.vFast * progress);

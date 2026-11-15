@@ -265,47 +265,53 @@
 
     <!-- ======================================================== -->
     <!-- BTS SKYTRAIN STATION: มหาวิทยาลัยเกษตรศาสตร์ (N13)       -->
-    <!-- Positioned directly at university frontage (x=1480, y=730)-->
+    <!-- Architectural Elevated Station with Central Guideway       -->
+    <!-- Platform spans y=610 to y=830 (Length=220, Center at y=720)-->
     <!-- ======================================================== -->
     <g id="station-bts-kaset" filter="url(#building3DShadow)">
       <!-- Concrete Station Platform Base & Concourse (Lower Floor) -->
-      <rect x="1462" y="660" width="36" height="140" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.8" />
+      <rect x="1456" y="610" width="48" height="220" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1.8" />
       
-      <!-- Pedestrian Skybridge Connecting Station Directly to KU Gate 1 (Westbound) -->
-      <path d="M 1462,730 L 1425,730 L 1425,670" stroke="#1E293B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-      <path d="M 1462,730 L 1425,730 L 1425,670" stroke="#059669" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9" />
+      <!-- Direct Pedestrian Skybridge Connecting Station Exit 1 Directly to KU Gate 1 (Westbound at y=670) -->
+      <path d="M 1456,670 L 1410,670" stroke="#1E293B" stroke-width="12" stroke-linecap="round" fill="none" />
+      <path d="M 1456,670 L 1410,670" stroke="#059669" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.9" />
       <!-- Skybridge Glass Canopy Roof -->
-      <path d="M 1462,728 L 1425,728 L 1425,668" stroke="#38BDF8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.7" />
+      <path d="M 1456,668 L 1410,668" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.8" />
       <!-- Skybridge Walkway Tag -->
-      <g transform="translate(1415, 715)">
-        <rect x="-85" y="-8" width="85" height="16" rx="8" fill="#0B132B" stroke="#10B981" stroke-width="1" />
-        <text x="-42" y="3.5" fill="#A7F3D0" font-size="7.5" font-weight="800" text-anchor="middle">🚶 สกายวอล์กเข้า มก.</text>
+      <g transform="translate(1420, 650)">
+        <rect x="-85" y="-8" width="90" height="16" rx="8" fill="#0B132B" stroke="#10B981" stroke-width="1" />
+        <text x="-40" y="3.5" fill="#A7F3D0" font-size="7.5" font-weight="800" text-anchor="middle">🚶 สกายวอล์กเข้า มก.</text>
       </g>
 
-      <!-- Upper Platform Deck (Floor Tile Pavement) -->
-      <rect x="1464" y="664" width="32" height="132" rx="6" fill="#1E293B" stroke="#059669" stroke-width="1" />
+      <!-- West Platform Floor Deck (KU Side) -->
+      <rect x="1458" y="614" width="13" height="212" rx="4" fill="#1E293B" stroke="#059669" stroke-width="1" />
+      <!-- East Platform Floor Deck (Highway Side) -->
+      <rect x="1489" y="614" width="13" height="212" rx="4" fill="#1E293B" stroke="#059669" stroke-width="1" />
       
-      <!-- Platform Safety Edge Line & Tactile Paving (BTS Yellow Guideway) -->
-      <line x1="1467" y1="668" x2="1467" y2="792" stroke="#FBBF24" stroke-width="1.2" opacity="0.9" stroke-dasharray="4,2" />
-      <line x1="1493" y1="668" x2="1493" y2="792" stroke="#FBBF24" stroke-width="1.2" opacity="0.9" stroke-dasharray="4,2" />
+      <!-- Platform Tactile Yellow Safety Lines & Platform Screen Door Edges -->
+      <line x1="1470" y1="616" x2="1470" y2="824" stroke="#FBBF24" stroke-width="1.2" opacity="0.95" stroke-dasharray="4,2" />
+      <line x1="1490" y1="616" x2="1490" y2="824" stroke="#FBBF24" stroke-width="1.2" opacity="0.95" stroke-dasharray="4,2" />
 
-      <!-- Station Curved Roof Canopy (หลังคาทรงกระบอกโค้งสถานีสายสีเขียว) -->
-      <rect x="1460" y="668" width="40" height="124" rx="12" fill="url(#btsPlatformRoof)" stroke="#10B981" stroke-width="1.5" opacity="0.88" />
-      <!-- Longitudinal Skylight & Steel Arch Ribs -->
-      <line x1="1480" y1="672" x2="1480" y2="788" stroke="#6EE7B7" stroke-width="2" opacity="0.75" />
-      <line x1="1464" y1="695" x2="1496" y2="695" stroke="#064E3B" stroke-width="1.2" opacity="0.8" />
-      <line x1="1464" y1="720" x2="1496" y2="720" stroke="#064E3B" stroke-width="1.2" opacity="0.8" />
-      <line x1="1464" y1="745" x2="1496" y2="745" stroke="#064E3B" stroke-width="1.2" opacity="0.8" />
-      <line x1="1464" y1="770" x2="1496" y2="770" stroke="#064E3B" stroke-width="1.2" opacity="0.8" />
+      <!-- Architectural Curved Glass Canopies over Side Platforms -->
+      <rect x="1456" y="616" width="15" height="208" rx="6" fill="url(#btsPlatformRoof)" stroke="#10B981" stroke-width="1.2" opacity="0.85" />
+      <rect x="1489" y="616" width="15" height="208" rx="6" fill="url(#btsPlatformRoof)" stroke="#10B981" stroke-width="1.2" opacity="0.85" />
+
+      <!-- Steel Arch Trusses Spanning Across the Station -->
+      <line x1="1456" y1="635" x2="1504" y2="635" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
+      <line x1="1456" y1="670" x2="1504" y2="670" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
+      <line x1="1456" y1="705" x2="1504" y2="705" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
+      <line x1="1456" y1="740" x2="1504" y2="740" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
+      <line x1="1456" y1="775" x2="1504" y2="775" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
+      <line x1="1456" y1="810" x2="1504" y2="810" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
     </g>
 
-    <!-- BTS Station Official Signage Badge (East Side of Highway) -->
-    <g transform="translate(1536, 730)">
-      <rect x="-16" y="-55" width="32" height="110" rx="16" fill="#0B132B" stroke="#10B981" stroke-width="2" filter="url(#building3DShadow)" />
-      <circle cx="0" cy="-36" r="10" fill="#10B981" />
-      <text x="0" y="-32.5" fill="#FFFFFF" font-size="9.5" font-weight="900" text-anchor="middle">BTS</text>
-      <text x="0" y="-14" fill="#38BDF8" font-size="8.5" font-weight="900" text-anchor="middle">N13</text>
-      <text x="0" y="22" fill="#A7F3D0" font-size="9" font-weight="800" text-anchor="middle" transform="rotate(90 0,22)">ม.เกษตรศาสตร์</text>
+    <!-- BTS Station Official Signage Badge (East Side of Highway at y=720) -->
+    <g transform="translate(1536, 720)">
+      <rect x="-16" y="-60" width="32" height="120" rx="16" fill="#0B132B" stroke="#10B981" stroke-width="2" filter="url(#building3DShadow)" />
+      <circle cx="0" cy="-40" r="10" fill="#10B981" />
+      <text x="0" y="-36.5" fill="#FFFFFF" font-size="9" font-weight="900" text-anchor="middle">BTS</text>
+      <text x="0" y="-18" fill="#38BDF8" font-size="8.5" font-weight="900" text-anchor="middle">N13</text>
+      <text x="0" y="24" fill="#A7F3D0" font-size="9" font-weight="800" text-anchor="middle" transform="rotate(90 0,24)">ม.เกษตรศาสตร์</text>
     </g>
 
     <!-- Phahonyothin Road Label -->
@@ -340,8 +346,14 @@
     <!-- Gate Vibhavadi Entrance Artery -->
     <path d="M 120,300 L 230,300 L 230,470" stroke-width="38" />
 
-    <!-- Upper Horizontal Road: (230,470) -> (1210,470) -->
-    <path d="M 230,470 L 1210,470" stroke-width="38" />
+    <!-- Upper Horizontal Road: (230,470) across campus to (1280,470) -->
+    <path d="M 230,470 L 1280,470" stroke-width="38" />
+
+    <!-- East North-South Connector: from Upper Avenue down to Pond Loop -->
+    <path d="M 1280,470 L 1280,560" stroke-width="36" />
+
+    <!-- East Turnaround Loop Artery connecting Upper Avenue to Gate P1 Corridor -->
+    <path d="M 1280,470 C 1370,470 1415,510 1390,560" stroke-width="36" />
 
     <!-- Curved West Ramp: (270,470) down to (440,670) -->
     <path d="M 270,470 C 270,570 330,670 440,670" stroke-width="36" />
@@ -372,7 +384,9 @@
   <!-- Asphalt Inner Pavement Surface -->
   <g stroke="#24334C" stroke-linecap="round" stroke-linejoin="round" fill="none">
     <path d="M 120,300 L 230,300 L 230,470" stroke-width="30" />
-    <path d="M 230,470 L 1210,470" stroke-width="30" />
+    <path d="M 230,470 L 1280,470" stroke-width="30" />
+    <path d="M 1280,470 L 1280,560" stroke-width="28" />
+    <path d="M 1280,470 C 1370,470 1415,510 1390,560" stroke-width="28" />
     <path d="M 270,470 C 270,570 330,670 440,670" stroke-width="28" />
     <path d="M 440,670 L 1210,670" stroke-width="28" />
     <path d="M 460,880 L 460,470" stroke-width="26" />
@@ -387,7 +401,9 @@
   <!-- High-Precision Road Lane Dividers (Refined Static White/Slate Lines) -->
   <g stroke="#64748B" stroke-width="1.8" stroke-dasharray="10,12" opacity="0.65" fill="none">
     <path d="M 130,300 L 230,300 L 230,470" />
-    <path d="M 230,470 L 1210,470" />
+    <path d="M 230,470 L 1280,470" />
+    <path d="M 1280,470 L 1280,560" />
+    <path d="M 1280,470 C 1370,470 1415,510 1390,560" />
     <path d="M 270,470 C 270,570 330,670 440,670" />
     <path d="M 440,670 L 1210,670" />
     <path d="M 460,865 L 460,485" />
@@ -462,38 +478,38 @@
   <!-- ======================================================== -->
   <g id="event-zone-loykrathong" transform="translate(1300, 660)" filter="url(#building3DShadow)">
     
-    <!-- Stone Promenade Esplanade Surrounding Rectangular Pond -->
-    <rect x="-82" y="-76" width="164" height="152" rx="14" fill="url(#promenadeStone)" stroke="#334155" stroke-width="2" />
-    <rect x="-74" y="-68" width="148" height="136" rx="10" fill="#0B132B" stroke="#0284C7" stroke-width="1.5" />
+    <!-- Stone Promenade Esplanade Surrounding Vertical Rectangular Pond (Per User Sketch & QGIS) -->
+    <rect x="-54" y="-84" width="108" height="168" rx="12" fill="url(#promenadeStone)" stroke="#334155" stroke-width="2" />
+    <rect x="-48" y="-78" width="96" height="156" rx="10" fill="#0B132B" stroke="#0284C7" stroke-width="1.5" />
 
-    <!-- RECTANGULAR WATER SURFACE OF PHRA PHIRUN POND -->
-    <!-- (Per User Constraint: สระพระพิรุณอยู่ตรงกลางเป็นทรงสี่เหลี่ยม) -->
-    <rect x="-64" y="-58" width="128" height="116" rx="6" fill="url(#pondWaterGrad)" stroke="#38BDF8" stroke-width="1" filter="url(#pondSoftGlow)" />
+    <!-- VERTICAL RECTANGULAR WATER SURFACE OF PHRA PHIRUN POND -->
+    <!-- (Per User Sketch & QGIS: สระพระพิรุณเป็นทรงสี่เหลี่ยมแนวตั้งยาวเหนือ-ใต้) -->
+    <rect x="-40" y="-70" width="80" height="140" rx="6" fill="url(#pondWaterGrad)" stroke="#38BDF8" stroke-width="1" filter="url(#pondSoftGlow)" />
 
     <!-- Subtle Calm Reflecting Water Highlights (Non-distracting, serene) -->
-    <line x1="-50" y1="-30" x2="50" y2="-30" stroke="#7DD3FC" stroke-width="1" opacity="0.35" stroke-dasharray="14,12" />
-    <line x1="-40" y1="0" x2="40" y2="0" stroke="#7DD3FC" stroke-width="1" opacity="0.3" stroke-dasharray="10,14" />
-    <line x1="-52" y1="30" x2="48" y2="30" stroke="#7DD3FC" stroke-width="1" opacity="0.35" stroke-dasharray="12,10" />
+    <line x1="-30" y1="-42" x2="30" y2="-42" stroke="#7DD3FC" stroke-width="1" opacity="0.35" stroke-dasharray="10,8" />
+    <line x1="-25" y1="0" x2="25" y2="0" stroke="#7DD3FC" stroke-width="1" opacity="0.3" stroke-dasharray="8,10" />
+    <line x1="-28" y1="42" x2="28" y2="42" stroke="#7DD3FC" stroke-width="1" opacity="0.35" stroke-dasharray="10,8" />
 
     <!-- Floating Krathongs on the Pond (Lotus Blossom + Candle Flame) -->
-    <!-- Krathong 1 -->
-    <g transform="translate(-28, -12)">
+    <!-- Krathong 1 (North) -->
+    <g transform="translate(0, -32)">
       <ellipse cx="0" cy="2" rx="7" ry="3.5" fill="#047857" stroke="#10B981" stroke-width="0.8" />
       <polygon points="0,-9 2,-2 6,-1 3,2 4,6 0,3 -4,6 -3,2 -6,-1 -2,-2" fill="#FBBF24" filter="url(#krathongFlame)" />
       <circle cx="0" cy="-4" r="2" fill="#EF4444" />
       <circle cx="0" cy="-5" r="1.1" fill="#FFFBEB" />
     </g>
 
-    <!-- Krathong 2 -->
-    <g transform="translate(22, 14)">
+    <!-- Krathong 2 (Center) -->
+    <g transform="translate(10, 6)">
       <ellipse cx="0" cy="2" rx="8" ry="4" fill="#065F46" stroke="#34D399" stroke-width="0.8" />
       <polygon points="0,-10 2,-2 7,-1 3,2 4,7 0,4 -4,7 -3,2 -7,-1 -2,-2" fill="#F59E0B" filter="url(#krathongFlame)" />
       <circle cx="0" cy="-5" r="2.2" fill="#DC2626" />
       <circle cx="0" cy="-6" r="1.2" fill="#FEF08A" />
     </g>
 
-    <!-- Krathong 3 -->
-    <g transform="translate(18, -26)">
+    <!-- Krathong 3 (South) -->
+    <g transform="translate(-10, 40)">
       <ellipse cx="0" cy="2" rx="6" ry="3" fill="#047857" />
       <polygon points="0,-7 1.5,-1.5 5,-1 2.5,1.5 3,5 0,2.5 -3,5 -2.5,1.5 -5,-1 -1.5,-1.5" fill="#FDE047" filter="url(#krathongFlame)" />
       <circle cx="0" cy="-3.5" r="1.2" fill="#F97316" />
@@ -501,12 +517,12 @@
 
     <!-- Promenade Festive Lantern Posts (Warm Serene Ambient Lights) -->
     <g fill="#FDE047" opacity="0.85">
-      <circle cx="-68" cy="-40" r="2" />
-      <circle cx="-68" cy="40" r="2" />
-      <circle cx="68" cy="-40" r="2" />
-      <circle cx="68" cy="40" r="2" />
-      <circle cx="0" cy="-62" r="2" />
-      <circle cx="0" cy="62" r="2" />
+      <circle cx="-50" cy="-55" r="2" />
+      <circle cx="50" cy="-55" r="2" />
+      <circle cx="-50" cy="0" r="2" />
+      <circle cx="50" cy="0" r="2" />
+      <circle cx="-50" cy="55" r="2" />
+      <circle cx="50" cy="55" r="2" />
     </g>
 
     <!-- KU Main Auditorium (หอประชุมใหญ่ มก.) Situated Immediately North of Pond -->
@@ -523,10 +539,12 @@
     </g>
 
     <!-- Discreet Architectural Identification Badge -->
-    <g transform="translate(0, 54)">
+    <g transform="translate(0, 94)">
       <rect x="-82" y="-10" width="164" height="20" rx="10" fill="#0B132B" stroke="#F59E0B" stroke-width="1.2" />
       <text x="0" y="3.5" fill="#FDE047" font-size="9" font-weight="700" text-anchor="middle">
         🪔 สระพระพิรุณ (จุดจัดงานลอยกระทง)
+      </text>
+    </g>
       </text>
     </g>
   </g>
