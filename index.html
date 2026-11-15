@@ -369,6 +369,12 @@
                 <g id="btsStationHotspot" transform="translate(1480, 720)" class="pointer-events-auto cursor-pointer group" onclick="openBtsModal()">
                     <rect x="-35" y="-115" width="70" height="230" rx="20" fill="transparent" />
                 </g>
+
+                <!-- Direct Building Hitboxes (Clicking 3D Building Directly Opens Modal) -->
+                <rect id="hitbox-vipa" x="130" y="325" width="100" height="95" rx="10" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('vipa')" />
+                <rect id="hitbox-ngam2" x="775" y="705" width="120" height="95" rx="10" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('ngam2')" />
+                <rect id="hitbox-ngam1" x="945" y="705" width="120" height="95" rx="10" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('ngam1')" />
+                <rect id="hitbox-pond" x="1245" y="530" width="110" height="215" rx="14" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openEventModal()" />
             </svg>
 
             <!-- ================= BTS STATION & ARRIVAL FLOATING HUD CARD ================= -->
