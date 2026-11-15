@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="h-full w-full overflow-hidden">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>KU Parking - ตรวจสอบอาคารจอดรถ มหาวิทยาลัยเกษตรศาสตร์</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KU Parking - แผนที่อาคารจอดรถ ม.เกษตรศาสตร์</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,373 +13,287 @@
                     colors: {
                         kugreen: '#006633',
                         kugreenLight: '#008744',
-                        darkNavy: '#0B132B',
-                        surfaceNavy: '#1C2541'
+                        darkNavy: '#0B132B'
                     }
                 }
             }
         }
     </script>
-    <!-- Panzoom library for smooth mobile pan & pinch-zoom -->
-    <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { font-family: 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif; }
-        .touch-pan-zoom { touch-action: none; }
+        * { 
+            font-family: 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+        }
+        html, body {
+            height: 100%;
+            height: 100dvh;
+            width: 100%;
+            overflow: hidden !important;
+            position: fixed;
+            touch-action: manipulation;
+        }
         @keyframes pulse-ring {
             0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.3); opacity: 0; }
+            50% { transform: scale(1.35); opacity: 0; }
             100% { transform: scale(0.95); opacity: 0; }
         }
         .animate-pulse-ring {
             animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #0B132B; }
-        ::-webkit-scrollbar-thumb { background: #3A506B; border-radius: 999px; }
     </style>
 </head>
-<body class="bg-[#0A0F1D] text-slate-100 min-h-screen flex flex-col select-none overflow-x-hidden">
+<body class="bg-[#080E1E] text-slate-100 h-full w-full flex flex-col justify-between overflow-hidden select-none">
 
-    <!-- TOP HEADER -->
-    <header class="bg-[#111827]/95 backdrop-blur-md border-b border-slate-800 sticky top-0 z-40 px-4 py-3 flex items-center justify-between shadow-lg">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-500/20 text-white font-black text-lg">
+    <!-- 1. TOP HEADER (COMPACT & FIXED) -->
+    <header class="h-14 bg-[#111827]/95 backdrop-blur-md border-b border-slate-800/80 px-4 flex items-center justify-between shrink-0 z-30">
+        <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center font-black text-white text-base shadow-md shadow-emerald-900/40">
                 P
             </div>
             <div>
-                <div class="flex items-center space-x-2">
-                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                    <h1 class="font-bold text-sm sm:text-base text-white leading-tight">KU PARKING</h1>
-                    <span class="text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded border border-emerald-500/30">LIVE</span>
+                <div class="flex items-center space-x-1.5">
+                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <h1 class="font-bold text-sm text-white leading-tight">KU PARKING</h1>
+                    <span class="text-[9px] font-semibold bg-emerald-500/20 text-emerald-300 px-1 py-0.2 rounded border border-emerald-500/30">LIVE</span>
                 </div>
-                <p class="text-xs text-slate-400">สถานะที่จอดรถ 3 อาคารหลัก มหาวิทยาลัยเกษตรศาสตร์</p>
+                <p class="text-[11px] text-slate-400">จิ้มที่อาคารเพื่อเปิด Google Maps นำทาง</p>
             </div>
         </div>
 
         <div class="flex items-center space-x-2">
-            <!-- Reset Zoom Button -->
-            <button id="btnResetZoom" title="รีเซ็ตมุมมองแผนที่" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 border border-slate-700 transition">
-                <i data-lucide="maximize" class="w-4 h-4"></i>
-            </button>
             <!-- Share Button -->
-            <button id="btnShare" title="แชร์แผนที่นี้" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 border border-slate-700 transition">
+            <button id="btnShare" title="แชร์แผนที่" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 border border-slate-700 transition">
                 <i data-lucide="share-2" class="w-4 h-4"></i>
             </button>
-            <!-- Admin Link Button -->
-            <a href="admin.html" target="_blank" title="สำหรับเจ้าหน้าที่อัปเดตสถานะ" class="p-2 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/50 text-emerald-300 text-xs flex items-center space-x-1 transition">
+            <!-- Admin Controller Link -->
+            <a href="admin.html" target="_blank" title="สำหรับสต๊าฟ" class="p-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/50 text-emerald-300 text-xs flex items-center space-x-1 transition">
                 <i data-lucide="shield" class="w-3.5 h-3.5"></i>
-                <span class="hidden sm:inline">สต๊าฟ</span>
+                <span class="hidden sm:inline text-[11px]">สต๊าฟ</span>
             </a>
         </div>
     </header>
 
-    <!-- ANNOUNCEMENT BANNER -->
-    <div id="alertBanner" class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/60 px-4 py-2 text-xs flex items-center justify-between text-slate-200">
-        <div class="flex items-center space-x-2 truncate">
-            <span class="text-emerald-400 text-sm">ℹ️</span>
-            <span id="broadcastText" class="truncate font-medium">เปิดให้บริการ 3 อาคาร: งามวงศ์วาน 1, งามวงศ์วาน 2 และ อาคารวิภาวดี</span>
-        </div>
-        <span class="text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded text-emerald-300 whitespace-nowrap ml-2">อัปเดตสด</span>
-    </div>
-
-    <!-- MAIN INTERACTIVE MAP VIEWPORT -->
-    <main class="relative flex-1 w-full bg-[#050811] overflow-hidden flex items-center justify-center min-h-[360px] sm:min-h-[500px]">
+    <!-- 2. MAIN MAP VIEWPORT (FITS 100% PERFECTLY, ZERO SCROLL, ZERO OVERFLOW) -->
+    <main class="flex-1 w-full relative flex items-center justify-center overflow-hidden p-1.5 sm:p-3">
         
-        <!-- Interactive Panzoom Map Wrapper -->
-        <div id="mapViewport" class="w-full h-full cursor-grab active:cursor-grabbing touch-pan-zoom flex items-center justify-center">
-            <div id="mapContainer" class="relative inline-block transition-transform duration-75 origin-center">
-                
-                <!-- Base Campus Map: Custom 2.5D Vector Map -->
-                <img id="baseMap" src="assets/map-loykrathong.svg" alt="KU Campus Map" class="max-w-none w-[1300px] sm:w-[1500px] h-auto block select-none pointer-events-none drop-shadow-2xl">
+        <!-- Aspect-Ratio Container that fits inside parent viewport -->
+        <div class="relative w-full h-full max-w-[1600px] max-h-[1000px] aspect-[16/10] flex items-center justify-center">
+            
+            <!-- Clean 2.5D Vector Campus Map -->
+            <img src="assets/map-loykrathong.svg" alt="KU Campus Map" class="w-full h-full object-contain pointer-events-none select-none drop-shadow-2xl">
 
-                <!-- OVERLAY: Interactive Parking Hotspots -->
-                
-                <!-- 1. งามวงศ์วาน 1 (Ngamwongwan 1) -->
-                <div id="marker-ngam1" onclick="selectParking('ngam1')" class="absolute left-[14.5%] top-[62%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-20">
-                    <div class="relative flex flex-col items-center">
-                        <div class="status-ring absolute -inset-3 rounded-full opacity-60 animate-pulse-ring bg-emerald-500"></div>
-                        <div class="status-badge px-3 py-1.5 rounded-full bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-xl border-2 border-white/80 flex items-center space-x-1.5 group-hover:scale-110 transition-transform">
-                            <i data-lucide="car" class="w-3.5 h-3.5"></i>
-                            <span class="parking-title">งามวงศ์วาน 1:</span>
-                            <span class="parking-remain text-amber-200 font-extrabold">160</span>
-                            <span class="text-[10px] text-white/80">คัน</span>
-                        </div>
-                        <div class="w-0.5 h-4 bg-emerald-500 shadow"></div>
+            <!-- ================= INTERACTIVE HOTSPOTS ================= -->
+
+            <!-- [1] งามวงศ์วาน 1 -->
+            <div id="hotspot-ngam1" onclick="openParkingModal('ngam1')" class="absolute left-[14.4%] top-[62%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group">
+                <div class="relative flex flex-col items-center">
+                    <div class="status-ring absolute -inset-3 rounded-full opacity-70 animate-pulse-ring bg-emerald-500"></div>
+                    <div class="status-badge px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-emerald-600 text-white font-bold text-[11px] sm:text-xs shadow-2xl border-2 border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform">
+                        <i data-lucide="car" class="w-3.5 h-3.5"></i>
+                        <span>งามวงศ์วาน 1:</span>
+                        <span class="parking-remain text-amber-200 font-extrabold" id="marker-remain-ngam1">160</span>
+                        <span class="text-[9px] text-white/80">คัน</span>
                     </div>
+                    <div class="w-0.5 h-3 bg-emerald-500 shadow"></div>
                 </div>
-
-                <!-- 2. งามวงศ์วาน 2 (Ngamwongwan 2) -->
-                <div id="marker-ngam2" onclick="selectParking('ngam2')" class="absolute left-[15.8%] top-[41%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-20">
-                    <div class="relative flex flex-col items-center">
-                        <div class="status-ring absolute -inset-3 rounded-full opacity-60 animate-pulse-ring bg-emerald-500"></div>
-                        <div class="status-badge px-3 py-1.5 rounded-full bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-xl border-2 border-white/80 flex items-center space-x-1.5 group-hover:scale-110 transition-transform">
-                            <i data-lucide="car" class="w-3.5 h-3.5"></i>
-                            <span class="parking-title">งามวงศ์วาน 2:</span>
-                            <span class="parking-remain text-amber-200 font-extrabold">180</span>
-                            <span class="text-[10px] text-white/80">คัน</span>
-                        </div>
-                        <div class="w-0.5 h-4 bg-emerald-500 shadow"></div>
-                    </div>
-                </div>
-
-                <!-- 3. อาคารวิภาวดี (Vibhavadi) -->
-                <div id="marker-vipa" onclick="selectParking('vipa')" class="absolute left-[65.6%] top-[24%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-20">
-                    <div class="relative flex flex-col items-center">
-                        <div class="status-ring absolute -inset-3 rounded-full opacity-60 animate-pulse-ring bg-emerald-500"></div>
-                        <div class="status-badge px-3 py-1.5 rounded-full bg-emerald-600 text-white font-bold text-xs sm:text-sm shadow-xl border-2 border-white/80 flex items-center space-x-1.5 group-hover:scale-110 transition-transform">
-                            <i data-lucide="car" class="w-3.5 h-3.5"></i>
-                            <span class="parking-title">วิภาวดี:</span>
-                            <span class="parking-remain text-amber-200 font-extrabold">200</span>
-                            <span class="text-[10px] text-white/80">คัน</span>
-                        </div>
-                        <div class="w-0.5 h-4 bg-emerald-500 shadow"></div>
-                    </div>
-                </div>
-
             </div>
-        </div>
 
-        <!-- FLOATING MAP CONTROLS -->
-        <div class="absolute bottom-4 right-4 z-30 flex flex-col space-y-2">
-            <button id="btnZoomIn" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center shadow-lg active:scale-90 transition">
-                <i data-lucide="plus" class="w-5 h-5"></i>
-            </button>
-            <button id="btnZoomOut" class="w-10 h-10 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center shadow-lg active:scale-90 transition">
-                <i data-lucide="minus" class="w-5 h-5"></i>
-            </button>
-        </div>
-
-        <!-- HINT CHIP -->
-        <div class="absolute top-3 left-4 z-30 pointer-events-none">
-            <div class="bg-slate-900/80 backdrop-blur-sm border border-slate-700/60 rounded-full px-3 py-1 text-[11px] text-slate-300 flex items-center space-x-1.5 shadow">
-                <i data-lucide="move" class="w-3.5 h-3.5 text-emerald-400"></i>
-                <span>แตะลาก / ซูมดูแผนที่ / คลิกอาคารเพื่อนำทาง</span>
+            <!-- [2] งามวงศ์วาน 2 -->
+            <div id="hotspot-ngam2" onclick="openParkingModal('ngam2')" class="absolute left-[15.6%] top-[41%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group">
+                <div class="relative flex flex-col items-center">
+                    <div class="status-ring absolute -inset-3 rounded-full opacity-70 animate-pulse-ring bg-emerald-500"></div>
+                    <div class="status-badge px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-emerald-600 text-white font-bold text-[11px] sm:text-xs shadow-2xl border-2 border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform">
+                        <i data-lucide="car" class="w-3.5 h-3.5"></i>
+                        <span>งามวงศ์วาน 2:</span>
+                        <span class="parking-remain text-amber-200 font-extrabold" id="marker-remain-ngam2">180</span>
+                        <span class="text-[9px] text-white/80">คัน</span>
+                    </div>
+                    <div class="w-0.5 h-3 bg-emerald-500 shadow"></div>
+                </div>
             </div>
+
+            <!-- [3] อาคารวิภาวดี -->
+            <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[65.6%] top-[24%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group">
+                <div class="relative flex flex-col items-center">
+                    <div class="status-ring absolute -inset-3 rounded-full opacity-70 animate-pulse-ring bg-emerald-500"></div>
+                    <div class="status-badge px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-emerald-600 text-white font-bold text-[11px] sm:text-xs shadow-2xl border-2 border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform">
+                        <i data-lucide="car" class="w-3.5 h-3.5"></i>
+                        <span>วิภาวดี:</span>
+                        <span class="parking-remain text-amber-200 font-extrabold" id="marker-remain-vipa">200</span>
+                        <span class="text-[9px] text-white/80">คัน</span>
+                    </div>
+                    <div class="w-0.5 h-3 bg-emerald-500 shadow"></div>
+                </div>
+            </div>
+
         </div>
+
     </main>
 
-    <!-- BOTTOM SHEET: 3 ACTIVE PARKING LOTS & NAVIGATION -->
-    <section class="bg-[#0D1527] border-t border-slate-800/80 p-4 z-30 shadow-[0_-10px_25px_-5px_rgba(0,0,0,0.5)]">
-        <div class="max-w-5xl mx-auto">
+    <!-- 3. BOTTOM QUICK ACTION BAR (ONE-TOUCH GOOGLE MAPS) -->
+    <footer class="bg-[#0D1527] border-t border-slate-800/90 px-3 py-2 sm:py-3 shrink-0 z-30 shadow-[0_-8px_20px_rgba(0,0,0,0.5)]">
+        <div class="max-w-4xl mx-auto flex flex-col space-y-1.5">
             
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center space-x-2">
-                    <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">อาคารจอดรถที่เปิดให้บริการ</span>
-                    <span class="text-[11px] bg-slate-800 px-2 py-0.5 rounded-full text-slate-300 border border-slate-700">3 แห่ง</span>
+            <div class="flex items-center justify-between text-[11px] text-slate-400 px-1">
+                <span>แตะอาคารเพื่อเปิดแผนที่นำทาง:</span>
+                <span>ว่างรวม: <b id="totalAvailable" class="text-emerald-400 font-bold">540</b> คัน</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2">
+                <!-- Button Ngam 1 -->
+                <button onclick="openParkingModal('ngam1')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-2 text-left flex flex-col justify-between transition">
+                    <div class="flex items-center justify-between w-full">
+                        <span class="text-[11px] font-bold text-slate-200 truncate">งามวงศ์วาน 1</span>
+                        <span id="card-badge-ngam1" class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400">ว่าง</span>
+                    </div>
+                    <div class="mt-1 flex items-center justify-between text-xs">
+                        <span class="font-extrabold text-emerald-400" id="card-num-ngam1">160 คัน</span>
+                        <i data-lucide="navigation" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    </div>
+                </button>
+
+                <!-- Button Ngam 2 -->
+                <button onclick="openParkingModal('ngam2')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-2 text-left flex flex-col justify-between transition">
+                    <div class="flex items-center justify-between w-full">
+                        <span class="text-[11px] font-bold text-slate-200 truncate">งามวงศ์วาน 2</span>
+                        <span id="card-badge-ngam2" class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400">ว่าง</span>
+                    </div>
+                    <div class="mt-1 flex items-center justify-between text-xs">
+                        <span class="font-extrabold text-emerald-400" id="card-num-ngam2">180 คัน</span>
+                        <i data-lucide="navigation" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    </div>
+                </button>
+
+                <!-- Button Vibhavadi -->
+                <button onclick="openParkingModal('vipa')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-2 text-left flex flex-col justify-between transition">
+                    <div class="flex items-center justify-between w-full">
+                        <span class="text-[11px] font-bold text-slate-200 truncate">วิภาวดี</span>
+                        <span id="card-badge-vipa" class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400">ว่าง</span>
+                    </div>
+                    <div class="mt-1 flex items-center justify-between text-xs">
+                        <span class="font-extrabold text-emerald-400" id="card-num-vipa">200 คัน</span>
+                        <i data-lucide="navigation" class="w-3.5 h-3.5 text-amber-400"></i>
+                    </div>
+                </button>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- 4. MODAL POPUP FOR GOOGLE MAPS NAVIGATION -->
+    <div id="parkingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-sm w-full p-5 shadow-2xl relative text-center">
+            
+            <button onclick="closeParkingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-full bg-slate-800">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+
+            <div class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl">
+                🚗
+            </div>
+
+            <h3 id="modalLotTitle" class="text-lg font-bold text-white">อาคารจอดรถงามวงศ์วาน 1</h3>
+            <p id="modalLotGate" class="text-xs text-slate-400 mt-1">เข้าทางประตูงามวงศ์วาน 1</p>
+
+            <div class="bg-slate-950 border border-slate-800 rounded-2xl p-3 my-4 flex items-center justify-around">
+                <div>
+                    <span class="text-[10px] text-slate-500 block">สถานะปัจจุบัน</span>
+                    <span id="modalLotStatusBadge" class="text-xs font-bold text-emerald-400">ว่างปกติ</span>
                 </div>
-                <div class="text-[11px] text-slate-400">
-                    ช่องจอดว่างรวม: <span id="totalAvailable" class="text-emerald-400 font-bold text-sm">540</span> คัน
+                <div class="w-px h-8 bg-slate-800"></div>
+                <div>
+                    <span class="text-[10px] text-slate-500 block">ช่องจอดว่าง</span>
+                    <span id="modalLotRemain" class="text-xl font-black text-emerald-400">160 คัน</span>
                 </div>
             </div>
 
-            <!-- PARKING CARDS GRID -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- Big Direct Google Maps Button -->
+            <a id="modalMapBtn" href="#" target="_blank" rel="noopener" class="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold py-3.5 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-950 transition text-sm">
+                <i data-lucide="navigation" class="w-4 h-4"></i>
+                <span>เปิดแผนที่นำทาง (Google Maps)</span>
+            </a>
 
-                <!-- 1. งามวงศ์วาน 1 -->
-                <div id="card-ngam1" class="bg-slate-900/90 rounded-2xl p-3.5 border border-slate-800 hover:border-emerald-500/50 transition flex flex-col justify-between relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-emerald-500/10 rounded-bl-full pointer-events-none"></div>
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-semibold text-slate-300">อาคารจอดรถ</span>
-                            <span id="badge-ngam1" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                                ว่าง
-                            </span>
-                        </div>
-                        <h3 class="font-bold text-base text-slate-100 mt-0.5">งามวงศ์วาน 1</h3>
-                        <p class="text-xs text-slate-400 mt-1 flex items-center space-x-1">
-                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
-                            <span>เข้าทางประตูงามวงศ์วาน 1</span>
-                        </p>
-                        
-                        <div class="mt-2 flex items-baseline space-x-1.5">
-                            <span class="text-2xl font-black text-emerald-400" id="num-ngam1">160</span>
-                            <span class="text-xs text-slate-400">ช่องว่าง (จาก 350)</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-3 pt-2 border-t border-slate-800 flex items-center space-x-2">
-                        <a href="https://goo.gl/maps/NW36hyxkDMBuzc1V8" target="_blank" rel="noopener" class="flex-1 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-semibold py-2 px-3 rounded-xl flex items-center justify-center space-x-1.5 shadow-md shadow-emerald-950 transition">
-                            <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
-                            <span>นำทาง Google Maps</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 2. งามวงศ์วาน 2 -->
-                <div id="card-ngam2" class="bg-slate-900/90 rounded-2xl p-3.5 border border-slate-800 hover:border-emerald-500/50 transition flex flex-col justify-between relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-emerald-500/10 rounded-bl-full pointer-events-none"></div>
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-semibold text-slate-300">อาคารจอดรถ</span>
-                            <span id="badge-ngam2" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                                ว่าง
-                            </span>
-                        </div>
-                        <h3 class="font-bold text-base text-slate-100 mt-0.5">งามวงศ์วาน 2</h3>
-                        <p class="text-xs text-slate-400 mt-1 flex items-center space-x-1">
-                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
-                            <span>เข้าทางประตูงามวงศ์วาน 2-3</span>
-                        </p>
-                        
-                        <div class="mt-2 flex items-baseline space-x-1.5">
-                            <span class="text-2xl font-black text-emerald-400" id="num-ngam2">180</span>
-                            <span class="text-xs text-slate-400">ช่องว่าง (จาก 400)</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-3 pt-2 border-t border-slate-800 flex items-center space-x-2">
-                        <a href="https://goo.gl/maps/LbTes9jEivaYcsHSA" target="_blank" rel="noopener" class="flex-1 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-semibold py-2 px-3 rounded-xl flex items-center justify-center space-x-1.5 shadow-md shadow-emerald-950 transition">
-                            <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
-                            <span>นำทาง Google Maps</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 3. วิภาวดี -->
-                <div id="card-vipa" class="bg-slate-900/90 rounded-2xl p-3.5 border border-slate-800 hover:border-emerald-500/50 transition flex flex-col justify-between relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-emerald-500/10 rounded-bl-full pointer-events-none"></div>
-                    <div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-semibold text-slate-300">อาคารจอดรถ</span>
-                            <span id="badge-vipa" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                                ว่าง
-                            </span>
-                        </div>
-                        <h3 class="font-bold text-base text-slate-100 mt-0.5">วิภาวดี</h3>
-                        <p class="text-xs text-slate-400 mt-1 flex items-center space-x-1">
-                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400"></i>
-                            <span>เข้าทางประตูวิภาวดีรังสิต</span>
-                        </p>
-                        
-                        <div class="mt-2 flex items-baseline space-x-1.5">
-                            <span class="text-2xl font-black text-emerald-400" id="num-vipa">200</span>
-                            <span class="text-xs text-slate-400">ช่องว่าง (จาก 450)</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-3 pt-2 border-t border-slate-800 flex items-center space-x-2">
-                        <a href="https://goo.gl/maps/Vx99HQNPCcgQcWU26" target="_blank" rel="noopener" class="flex-1 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-semibold py-2 px-3 rounded-xl flex items-center justify-center space-x-1.5 shadow-md shadow-emerald-950 transition">
-                            <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
-                            <span>นำทาง Google Maps</span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- FOOTER INFO -->
-            <div class="mt-3 text-center text-[11px] text-slate-500 flex items-center justify-center space-x-2">
-                <span>© มหาวิทยาลัยเกษตรศาสตร์ (บางเขน) • ระบบตรวจสอบอาคารจอดรถ</span>
+            <div class="mt-3">
+                <button onclick="copyMapLink()" class="text-xs text-slate-400 hover:text-slate-200 underline">
+                    คัดลอกลิงก์ Google Maps
+                </button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- SCRIPT LOGIC -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Init Lucide Icons
         lucide.createIcons();
 
-        // State Store (Syncs with LocalStorage & Admin Panel)
-        const DEFAULT_DATA = {
-            broadcast: "เปิดให้บริการ 3 อาคาร: งามวงศ์วาน 1, งามวงศ์วาน 2 และ อาคารวิภาวดี",
-            lots: {
-                ngam1: { name: "งามวงศ์วาน 1", max: 350, remain: 160, status: "available", mapUrl: "https://goo.gl/maps/NW36hyxkDMBuzc1V8" },
-                ngam2: { name: "งามวงศ์วาน 2", max: 400, remain: 180, status: "available", mapUrl: "https://goo.gl/maps/LbTes9jEivaYcsHSA" },
-                vipa:  { name: "วิภาวดี",     max: 450, remain: 200, status: "available", mapUrl: "https://goo.gl/maps/Vx99HQNPCcgQcWU26" }
+        const PARKING_CONFIG = {
+            ngam1: {
+                name: "อาคารจอดรถงามวงศ์วาน 1",
+                gate: "ทางเข้า: ประตูงามวงศ์วาน 1",
+                max: 350,
+                remain: 160,
+                status: "available",
+                mapUrl: "https://goo.gl/maps/NW36hyxkDMBuzc1V8"
+            },
+            ngam2: {
+                name: "อาคารจอดรถงามวงศ์วาน 2",
+                gate: "ทางเข้า: ประตูงามวงศ์วาน 2 หรือ 3",
+                max: 400,
+                remain: 180,
+                status: "available",
+                mapUrl: "https://goo.gl/maps/LbTes9jEivaYcsHSA"
+            },
+            vipa: {
+                name: "อาคารจอดรถวิภาวดี",
+                gate: "ทางเข้า: ประตูวิภาวดีรังสิต",
+                max: 450,
+                remain: 200,
+                status: "available",
+                mapUrl: "https://goo.gl/maps/Vx99HQNPCcgQcWU26"
             }
         };
 
         function getParkingData() {
             try {
                 const stored = localStorage.getItem('ku_loykrathong_parking');
-                return stored ? JSON.parse(stored) : DEFAULT_DATA;
+                return stored ? JSON.parse(stored) : { lots: PARKING_CONFIG };
             } catch (e) {
-                return DEFAULT_DATA;
+                return { lots: PARKING_CONFIG };
             }
         }
 
-        // Initialize Panzoom
-        const mapContainer = document.getElementById('mapContainer');
-        const panzoom = Panzoom(mapContainer, {
-            maxScale: 3,
-            minScale: 0.6,
-            contain: 'outside',
-            cursor: 'grab'
-        });
+        let currentActiveLot = null;
 
-        // Enable mousewheel zoom
-        mapContainer.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
-
-        document.getElementById('btnZoomIn').addEventListener('click', () => panzoom.zoomIn());
-        document.getElementById('btnZoomOut').addEventListener('click', () => panzoom.zoomOut());
-        document.getElementById('btnResetZoom').addEventListener('click', () => {
-            panzoom.reset();
-        });
-
-        // Render UI with Live Data
-        function renderLiveUI() {
+        function renderUI() {
             const data = getParkingData();
-
-            // Update Broadcast Text
-            if (data.broadcast) {
-                document.getElementById('broadcastText').innerText = data.broadcast;
-            }
-
             let totalAvail = 0;
 
             ['ngam1', 'ngam2', 'vipa'].forEach(id => {
-                const lot = data.lots[id];
-                if (!lot) return;
-
+                const lot = (data.lots && data.lots[id]) || PARKING_CONFIG[id];
                 totalAvail += lot.remain;
 
-                // Numbers in cards
-                const numEl = document.getElementById(`num-${id}`);
-                if (numEl) numEl.innerText = lot.remain;
+                // Update marker on map
+                const markerRemain = document.getElementById(`marker-remain-${id}`);
+                if (markerRemain) markerRemain.innerText = lot.remain;
 
-                // Marker text on map
-                const marker = document.getElementById(`marker-${id}`);
-                if (marker) {
-                    const remainSpan = marker.querySelector('.parking-remain');
-                    if (remainSpan) remainSpan.innerText = lot.remain;
+                // Update bottom buttons
+                const cardNum = document.getElementById(`card-num-${id}`);
+                if (cardNum) cardNum.innerText = `${lot.remain} คัน`;
 
-                    const ring = marker.querySelector('.status-ring');
-                    const badge = marker.querySelector('.status-badge');
-
-                    // Reset classes
-                    ring.className = 'status-ring absolute -inset-3 rounded-full opacity-60 animate-pulse-ring';
-                    badge.className = 'status-badge px-3 py-1.5 rounded-full text-white font-bold text-xs sm:text-sm shadow-xl border-2 border-white/80 flex items-center space-x-1.5 transition-transform';
-
-                    if (lot.remain <= 0 || lot.status === 'full') {
-                        ring.classList.add('bg-red-500');
-                        badge.classList.add('bg-red-600');
-                        if (remainSpan) remainSpan.innerText = 'เต็ม';
-                    } else if (lot.remain < 30 || lot.status === 'warning') {
-                        ring.classList.add('bg-amber-500');
-                        badge.classList.add('bg-amber-500');
-                    } else {
-                        ring.classList.add('bg-emerald-500');
-                        badge.classList.add('bg-emerald-600');
-                    }
-                }
-
-                // Card Badge
-                const cardBadge = document.getElementById(`badge-${id}`);
+                const cardBadge = document.getElementById(`card-badge-${id}`);
                 if (cardBadge) {
                     if (lot.remain <= 0 || lot.status === 'full') {
-                        cardBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-500/20 text-red-400 border border-red-500/30';
-                        cardBadge.innerText = 'ที่จอดเต็ม';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded bg-red-500/20 text-red-400';
+                        cardBadge.innerText = 'เต็ม';
                     } else if (lot.remain < 30 || lot.status === 'warning') {
-                        cardBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-400';
                         cardBadge.innerText = 'ใกล้เต็ม';
                     } else {
-                        cardBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400';
                         cardBadge.innerText = 'ว่าง';
                     }
                 }
@@ -388,49 +302,66 @@
             document.getElementById('totalAvailable').innerText = totalAvail;
         }
 
-        // Highlight selected parking card
-        function selectParking(id) {
-            const card = document.getElementById(`card-${id}`);
-            if (card) {
-                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                card.classList.add('ring-2', 'ring-amber-400');
-                setTimeout(() => {
-                    card.classList.remove('ring-2', 'ring-amber-400');
-                }, 1800);
+        function openParkingModal(id) {
+            const data = getParkingData();
+            const lot = (data.lots && data.lots[id]) || PARKING_CONFIG[id];
+            currentActiveLot = lot;
+
+            document.getElementById('modalLotTitle').innerText = lot.name;
+            document.getElementById('modalLotGate').innerText = lot.gate;
+            document.getElementById('modalLotRemain').innerText = `${lot.remain} คัน`;
+            document.getElementById('modalMapBtn').href = lot.mapUrl;
+
+            const badge = document.getElementById('modalLotStatusBadge');
+            if (lot.remain <= 0 || lot.status === 'full') {
+                badge.innerText = "ที่จอดเต็ม";
+                badge.className = "text-xs font-bold text-red-400";
+            } else if (lot.remain < 30 || lot.status === 'warning') {
+                badge.innerText = "ใกล้เต็ม";
+                badge.className = "text-xs font-bold text-amber-400";
+            } else {
+                badge.innerText = "ว่างปกติ";
+                badge.className = "text-xs font-bold text-emerald-400";
+            }
+
+            document.getElementById('parkingModal').classList.remove('hidden');
+        }
+
+        function closeParkingModal() {
+            document.getElementById('parkingModal').classList.add('hidden');
+        }
+
+        function copyMapLink() {
+            if (currentActiveLot && currentActiveLot.mapUrl) {
+                navigator.clipboard.writeText(currentActiveLot.mapUrl);
+                alert('คัดลอกลิงก์ Google Maps แล้ว: ' + currentActiveLot.mapUrl);
             }
         }
 
-        // Listen for Realtime Sync from Admin Tab / BroadcastChannel
+        // BroadcastChannel sync from Admin
         const channel = new BroadcastChannel('ku_parking_sync');
-        channel.onmessage = (event) => {
-            if (event.data === 'UPDATE') {
-                renderLiveUI();
-            }
+        channel.onmessage = (e) => {
+            if (e.data === 'UPDATE') renderUI();
         };
 
-        // Window storage listener (for cross-tab sync)
-        window.addEventListener('storage', () => {
-            renderLiveUI();
-        });
+        window.addEventListener('storage', () => renderUI());
 
-        // Native Web Share API
+        // Native share
         document.getElementById('btnShare').addEventListener('click', async () => {
             if (navigator.share) {
                 try {
                     await navigator.share({
-                        title: 'KU Parking - เช็คที่จอดรถ มก. บางเขน',
-                        text: 'เช็คสถานะที่จอดรถว่าง 3 อาคารหลัก มหาวิทยาลัยเกษตรศาสตร์ (บางเขน)',
+                        title: 'KU Parking - แผนที่อาคารจอดรถ มก. บางเขน',
                         url: window.location.href
                     });
-                } catch (err) {}
+                } catch(e) {}
             } else {
                 navigator.clipboard.writeText(window.location.href);
                 alert('คัดลอกลิงก์เรียบร้อยแล้ว');
             }
         });
 
-        // Initial Render
-        renderLiveUI();
+        renderUI();
     </script>
 </body>
 </html>
