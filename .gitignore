@@ -1,1 +1,6 @@
 .vercel
+.env*
+node_modules
+edge_test_user_data*
+tools/
+

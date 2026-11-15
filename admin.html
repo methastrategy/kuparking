@@ -168,16 +168,23 @@
                     </div>
                 </div>
 
-                <!-- 1-Click Status Toggles -->
-                <div class="grid grid-cols-3 gap-2">
-                    <button id="btn-ngam1-open" onclick="setStatus('ngam1', 'open')" class="touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold transition flex flex-col items-center justify-center gap-1">
-                        <span>🟢 เปิดบริการ</span>
+                <!-- 1-Click Status Toggles (4 States: Open, Warning, Full, Closed) -->
+                <div class="grid grid-cols-4 gap-1.5 sm:gap-2">
+                    <button id="btn-ngam1-open" onclick="setStatus('ngam1', 'open')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">🟢 เปิด</span>
+                        <span class="text-[9px] opacity-80">ว่าง</span>
                     </button>
-                    <button id="btn-ngam1-warning" onclick="setStatus('ngam1', 'warning')" class="touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold transition flex flex-col items-center justify-center gap-1">
-                        <span>🟡 ใกล้เต็ม</span>
+                    <button id="btn-ngam1-warning" onclick="setStatus('ngam1', 'warning')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">🟡 เตือน</span>
+                        <span class="text-[9px] opacity-80">ใกล้เต็ม</span>
                     </button>
-                    <button id="btn-ngam1-full" onclick="setStatus('ngam1', 'full')" class="touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold transition flex flex-col items-center justify-center gap-1">
-                        <span>🔴 ที่จอดเต็ม</span>
+                    <button id="btn-ngam1-full" onclick="setStatus('ngam1', 'full')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">🔴 เต็ม</span>
+                        <span class="text-[9px] opacity-80">งดรับรถ</span>
+                    </button>
+                    <button id="btn-ngam1-closed" onclick="setStatus('ngam1', 'closed')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">⚪ ปิด</span>
+                        <span class="text-[9px] opacity-80">ปิดอาคาร</span>
                     </button>
                 </div>
             </div>
@@ -198,16 +205,23 @@
                     </div>
                 </div>
 
-                <!-- 1-Click Status Toggles -->
-                <div class="grid grid-cols-3 gap-2">
-                    <button id="btn-ngam2-open" onclick="setStatus('ngam2', 'open')" class="touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold transition flex flex-col items-center justify-center gap-1">
-                        <span>🟢 เปิดบริการ</span>
+                <!-- 1-Click Status Toggles (4 States: Open, Warning, Full, Closed) -->
+                <div class="grid grid-cols-4 gap-1.5 sm:gap-2">
+                    <button id="btn-ngam2-open" onclick="setStatus('ngam2', 'open')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">🟢 เปิด</span>
+                        <span class="text-[9px] opacity-80">ว่าง</span>
                     </button>
-                    <button id="btn-ngam2-warning" onclick="setStatus('ngam2', 'warning')" class="touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold transition flex flex-col items-center justify-center gap-1">
-                        <span>🟡 ใกล้เต็ม</span>
+                    <button id="btn-ngam2-warning" onclick="setStatus('ngam2', 'warning')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">🟡 เตือน</span>
+                        <span class="text-[9px] opacity-80">ใกล้เต็ม</span>
                     </button>
-                    <button id="btn-ngam2-full" onclick="setStatus('ngam2', 'full')" class="touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold transition flex flex-col items-center justify-center gap-1">
-                        <span>🔴 ที่จอดเต็ม</span>
+                    <button id="btn-ngam2-full" onclick="setStatus('ngam2', 'full')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">🔴 เต็ม</span>
+                        <span class="text-[9px] opacity-80">งดรับรถ</span>
+                    </button>
+                    <button id="btn-ngam2-closed" onclick="setStatus('ngam2', 'closed')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">⚪ ปิด</span>
+                        <span class="text-[9px] opacity-80">ปิดอาคาร</span>
                     </button>
                 </div>
             </div>
@@ -228,16 +242,23 @@
                     </div>
                 </div>
 
-                <!-- 1-Click Status Toggles -->
-                <div class="grid grid-cols-3 gap-2">
-                    <button id="btn-vipa-open" onclick="setStatus('vipa', 'open')" class="touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold transition flex flex-col items-center justify-center gap-1">
-                        <span>🟢 เปิดบริการ</span>
+                <!-- 1-Click Status Toggles (4 States: Open, Warning, Full, Closed) -->
+                <div class="grid grid-cols-4 gap-1.5 sm:gap-2">
+                    <button id="btn-vipa-open" onclick="setStatus('vipa', 'open')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">🟢 เปิด</span>
+                        <span class="text-[9px] opacity-80">ว่าง</span>
                     </button>
-                    <button id="btn-vipa-warning" onclick="setStatus('vipa', 'warning')" class="touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold transition flex flex-col items-center justify-center gap-1">
-                        <span>🟡 ใกล้เต็ม</span>
+                    <button id="btn-vipa-warning" onclick="setStatus('vipa', 'warning')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">🟡 เตือน</span>
+                        <span class="text-[9px] opacity-80">ใกล้เต็ม</span>
                     </button>
-                    <button id="btn-vipa-full" onclick="setStatus('vipa', 'full')" class="touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold transition flex flex-col items-center justify-center gap-1">
-                        <span>🔴 ที่จอดเต็ม</span>
+                    <button id="btn-vipa-full" onclick="setStatus('vipa', 'full')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">🔴 เต็ม</span>
+                        <span class="text-[9px] opacity-80">งดรับรถ</span>
+                    </button>
+                    <button id="btn-vipa-closed" onclick="setStatus('vipa', 'closed')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
+                        <span class="text-xs">⚪ ปิด</span>
+                        <span class="text-[9px] opacity-80">ปิดอาคาร</span>
                     </button>
                 </div>
             </div>
@@ -285,6 +306,15 @@
             checkPin();
         }
 
+        const pinInput = document.getElementById('pinInput');
+        if (pinInput) {
+            pinInput.addEventListener('input', () => {
+                if (pinInput.value.trim().length === 4) {
+                    checkPin();
+                }
+            });
+        }
+
         function checkPin() {
             const input = document.getElementById('pinInput').value.trim();
             if (input === DEFAULT_PIN) {
@@ -292,7 +322,7 @@
                 document.getElementById('loginScreen').classList.add('hidden');
                 document.getElementById('adminPanel').classList.remove('hidden');
                 renderAdmin();
-            } else {
+            } else if (input.length >= 4) {
                 alert('รหัส PIN ไม่ถูกต้อง (ใส่ 1234)');
             }
         }
@@ -338,7 +368,7 @@
                         badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30';
                         badge.innerText = 'ใกล้เต็ม';
                     } else if (status === 'closed') {
-                        badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-slate-700 text-slate-400 border border-slate-600';
+                        badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-slate-700 text-slate-300 border border-slate-600';
                         badge.innerText = 'ปิดอาคาร';
                     } else {
                         badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
@@ -347,21 +377,23 @@
                 }
 
                 // Update Toggle Buttons Styling to reflect active state
-                const states = ['open', 'warning', 'full'];
+                const states = ['open', 'warning', 'full', 'closed'];
                 states.forEach(st => {
                     const btn = document.getElementById(`btn-${id}-${st}`);
                     if (!btn) return;
 
                     if (st === status) {
                         if (st === 'open') {
-                            btn.className = 'touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold bg-emerald-500/25 text-emerald-300 border-2 border-emerald-400 shadow-md shadow-emerald-950 scale-[1.02] flex flex-col items-center justify-center gap-1';
+                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-emerald-500/25 text-emerald-300 border-2 border-emerald-400 shadow-md shadow-emerald-950 scale-[1.02] flex flex-col items-center justify-center gap-0.5';
                         } else if (st === 'warning') {
-                            btn.className = 'touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold bg-amber-500/25 text-amber-300 border-2 border-amber-400 shadow-md shadow-amber-950 scale-[1.02] flex flex-col items-center justify-center gap-1';
+                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-amber-500/25 text-amber-300 border-2 border-amber-400 shadow-md shadow-amber-950 scale-[1.02] flex flex-col items-center justify-center gap-0.5';
                         } else if (st === 'full') {
-                            btn.className = 'touch-target-44 rounded-xl text-xs py-2.5 px-2 font-bold bg-red-500/25 text-red-300 border-2 border-red-400 shadow-md shadow-red-950 scale-[1.02] flex flex-col items-center justify-center gap-1';
+                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-red-500/25 text-red-300 border-2 border-red-400 shadow-md shadow-red-950 scale-[1.02] flex flex-col items-center justify-center gap-0.5';
+                        } else if (st === 'closed') {
+                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-slate-700/70 text-slate-200 border-2 border-slate-400 shadow-md scale-[1.02] flex flex-col items-center justify-center gap-0.5';
                         }
                     } else {
-                        btn.className = 'touch-target-44 rounded-xl text-xs py-2.5 px-2 font-medium bg-slate-900/60 hover:bg-slate-800 text-slate-400 border border-slate-800 active:scale-95 flex flex-col items-center justify-center gap-1 transition';
+                        btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-medium bg-slate-900/60 hover:bg-slate-800 text-slate-400 border border-slate-800 active:scale-95 flex flex-col items-center justify-center gap-0.5 transition';
                     }
                 });
             });
@@ -375,7 +407,7 @@
             saveData(data);
 
             const lotName = id === 'ngam1' ? 'งามวงศ์วาน 1' : (id === 'ngam2' ? 'งามวงศ์วาน 2' : 'วิภาวดี');
-            const statusLabel = newStatus === 'open' ? 'เปิดบริการ' : (newStatus === 'warning' ? 'ใกล้เต็ม' : 'ที่จอดเต็ม');
+            const statusLabel = newStatus === 'open' ? 'เปิดบริการ' : (newStatus === 'warning' ? 'ใกล้เต็ม' : (newStatus === 'full' ? 'ที่จอดเต็ม' : 'งดบริการ (ปิด)'));
             showToast(`อัปเดต ${lotName} → [${statusLabel}] สำเร็จ`);
         }
     </script>

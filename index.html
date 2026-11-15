@@ -62,18 +62,18 @@
         /* 3D Maps Perspective Viewport & Stage */
         .map-stage {
             perspective: 1400px;
-            perspective-origin: 50% 52%;
+            perspective-origin: 50% 50%;
         }
 
         .map-board {
             transform-style: preserve-3d;
             will-change: transform;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
         }
 
         .mode-3d .map-board {
-            transform: rotateX(26deg) rotateZ(-3.5deg) scale(0.92) translateY(18px);
-            box-shadow: 0 45px 90px -25px rgba(0, 0, 0, 0.85);
+            transform: rotateX(24deg) rotateZ(-3deg) scale(0.92) translateY(12px);
+            box-shadow: 0 45px 90px -25px rgba(0, 0, 0, 0.9);
         }
 
         /* Concentric Glassmorphic Highlights */
@@ -205,18 +205,18 @@
     <!-- 2. MAIN MAP VIEWPORT (FITS 100% PERFECTLY WITH 3D TILT EFFECT) -->
     <main id="mapViewport" class="flex-1 w-full relative flex items-center justify-center overflow-hidden p-1.5 sm:p-3 map-stage">
         
-        <!-- Aspect-Ratio 3D Transform Container -->
-        <div id="mapBoard" class="relative w-full h-full max-w-[1600px] max-h-[1000px] aspect-[16/10] flex items-center justify-center map-board">
+        <!-- Aspect-Ratio 3D Transform Container (dynamically fitted to 16:10) -->
+        <div id="mapBoard" class="relative max-w-[1600px] max-h-[1000px] flex items-center justify-center map-board select-none">
             
             <!-- Clean 2.5D Vector Campus Map based on QGIS -->
-            <img src="assets/map-loykrathong.svg" alt="KU Campus Map" class="w-full h-full object-contain pointer-events-none select-none drop-shadow-2xl">
+            <img src="assets/map-loykrathong.svg" alt="KU Campus Map" class="w-full h-full object-fill block pointer-events-none select-none drop-shadow-2xl">
 
             <!-- ================= INTERACTIVE HOTSPOTS ================= -->
 
-            <!-- [1] งามวงศ์วาน 1 (อยู่แนวงามวงศ์วาน ระหว่าง ประตู 1 และ 2) -->
-            <div id="hotspot-ngam1" onclick="openParkingModal('ngam1')" class="absolute left-[54.8%] top-[73.4%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group touch-target-44">
+            <!-- [1] งามวงศ์วาน 1 (อยู่แนวงามวงศ์วาน ด้านขวา ติดกับอาคาร 2, Rooftop: 1000, 735) -->
+            <div id="hotspot-ngam1" onclick="openParkingModal('ngam1')" class="absolute left-[62.5%] top-[73.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-ngam1" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500"></div>
+                    <div id="ring-ngam1" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500 pointer-events-none"></div>
                     <div id="badge-ngam1" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
                         <i data-lucide="car" class="w-3.5 h-3.5"></i>
                         <span>งามวงศ์วาน 1</span>
@@ -226,10 +226,10 @@
                 </div>
             </div>
 
-            <!-- [2] งามวงศ์วาน 2 (อยู่ติดกับ อาคาร 1) -->
-            <div id="hotspot-ngam2" onclick="openParkingModal('ngam2')" class="absolute left-[46.1%] top-[73.4%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group touch-target-44">
+            <!-- [2] งามวงศ์วาน 2 (อยู่แนวงามวงศ์วาน ด้านซ้าย ติดกับอาคาร 1, Rooftop: 830, 735) -->
+            <div id="hotspot-ngam2" onclick="openParkingModal('ngam2')" class="absolute left-[51.9%] top-[73.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-ngam2" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500"></div>
+                    <div id="ring-ngam2" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500 pointer-events-none"></div>
                     <div id="badge-ngam2" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
                         <i data-lucide="car" class="w-3.5 h-3.5"></i>
                         <span>งามวงศ์วาน 2</span>
@@ -239,10 +239,10 @@
                 </div>
             </div>
 
-            <!-- [3] อาคารวิภาวดี (อยู่ฝั่งซ้ายของถนนเส้นทางเข้า ประตูวิภาวดี) -->
-            <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[20.6%] top-[11.5%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group touch-target-44">
+            <!-- [3] อาคารวิภาวดี (อยู่ฝั่งซ้ายของถนนเส้นทางเข้า ประตูวิภาวดี, Rooftop: 175, 350) -->
+            <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[11.0%] top-[35.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-vipa" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500"></div>
+                    <div id="ring-vipa" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500 pointer-events-none"></div>
                     <div id="badge-vipa" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
                         <i data-lucide="car" class="w-3.5 h-3.5"></i>
                         <span>วิภาวดี</span>
@@ -252,8 +252,8 @@
                 </div>
             </div>
 
-            <!-- [4] จุดจัดงานลอยกระทง (สระพระพิรุณ หน้ามอ มุมงามวงศ์วาน-พหลโยธิน) -->
-            <div id="hotspot-pond" onclick="openEventModal()" class="absolute left-[81.2%] top-[76.0%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group touch-target-44">
+            <!-- [4] จุดจัดงานลอยกระทง (สระพระพิรุณ หน้ามอ มุมงามวงศ์วาน-พหลโยธิน, Center: 1330, 770) -->
+            <div id="hotspot-pond" onclick="openEventModal()" class="absolute left-[83.1%] top-[77.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center animate-float">
                     <div class="px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-bold text-[11px] sm:text-xs shadow-2xl border-2 border-amber-200 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
                         <span class="text-sm">🪔</span>
@@ -403,19 +403,60 @@
         const mapViewport = document.getElementById('mapViewport');
         const mapBoard = document.getElementById('mapBoard');
         const label3D = document.getElementById('label3D');
+        const btnToggle3D = document.getElementById('btnToggle3D');
         const parkingModal = document.getElementById('parkingModal');
         const modalBox = document.getElementById('modalBox');
+
+        // Dynamic viewport fitting: guarantees 16:10 aspect ratio and 0px letterbox offset
+        function fitMapToViewport() {
+            if (!mapViewport || !mapBoard) return;
+            const vpRect = mapViewport.getBoundingClientRect();
+            if (!vpRect.width || !vpRect.height) return;
+
+            const padX = window.innerWidth >= 640 ? 24 : 12;
+            const padY = window.innerWidth >= 640 ? 16 : 8;
+            const maxW = Math.max(280, vpRect.width - padX);
+            const maxH = Math.max(200, vpRect.height - padY);
+            const aspect = 1600 / 1000;
+
+            let w, h;
+            if (maxW / maxH > aspect) {
+                h = maxH;
+                w = h * aspect;
+            } else {
+                w = maxW;
+                h = w / aspect;
+            }
+
+            mapBoard.style.width = `${Math.round(w)}px`;
+            mapBoard.style.height = `${Math.round(h)}px`;
+        }
+
+        window.addEventListener('resize', fitMapToViewport);
+        window.addEventListener('orientationchange', () => setTimeout(fitMapToViewport, 150));
+        if (typeof ResizeObserver !== 'undefined') {
+            const ro = new ResizeObserver(() => fitMapToViewport());
+            ro.observe(mapViewport);
+        }
 
         // Toggle 3D Perspective Mode
         function toggle3DMode() {
             is3DMode = !is3DMode;
             if (is3DMode) {
                 mapViewport.classList.add('mode-3d');
+                mapBoard.style.transform = 'rotateX(24deg) rotateZ(-3deg) scale(0.92) translateY(12px)';
                 label3D.innerText = 'มุมมอง 2D';
+                btnToggle3D.classList.add('ring-2', 'ring-amber-400', 'bg-amber-950/80');
+
+                // Request iOS permission on user gesture if available
+                if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    DeviceOrientationEvent.requestPermission().catch(() => {});
+                }
             } else {
                 mapViewport.classList.remove('mode-3d');
                 mapBoard.style.transform = '';
                 label3D.innerText = 'มุมมอง 3D';
+                btnToggle3D.classList.remove('ring-2', 'ring-amber-400', 'bg-amber-950/80');
             }
         }
 
@@ -424,6 +465,7 @@
             mapViewport.classList.remove('mode-3d');
             mapBoard.style.transform = '';
             label3D.innerText = 'มุมมอง 3D';
+            btnToggle3D.classList.remove('ring-2', 'ring-amber-400', 'bg-amber-950/80');
         }
 
         // Dynamic 3D Parallax Tilt based on mouse movement (Desktop)
@@ -432,15 +474,37 @@
             const rect = mapViewport.getBoundingClientRect();
             const x = (e.clientX - rect.left) / rect.width - 0.5;
             const y = (e.clientY - rect.top) / rect.height - 0.5;
-            const rotX = 26 - (y * 10);
-            const rotZ = -3.5 + (x * 7);
-            mapBoard.style.transform = `rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(0.92) translateY(18px)`;
+            const rotX = 24 - (y * 12);
+            const rotZ = -3 + (x * 8);
+            mapBoard.style.transform = `rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(0.92) translateY(12px)`;
         });
 
         mapViewport.addEventListener('mouseleave', () => {
             if (!is3DMode) return;
-            mapBoard.style.transform = 'rotateX(26deg) rotateZ(-3.5deg) scale(0.92) translateY(18px)';
+            mapBoard.style.transform = 'rotateX(24deg) rotateZ(-3deg) scale(0.92) translateY(12px)';
         });
+
+        // Touch parallax for mobile drag
+        let touchStartX = 0, touchStartY = 0;
+        mapViewport.addEventListener('touchstart', (e) => {
+            if (!is3DMode || e.touches.length !== 1) return;
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        mapViewport.addEventListener('touchmove', (e) => {
+            if (!is3DMode || e.touches.length !== 1) return;
+            const dx = (e.touches[0].clientX - touchStartX) / window.innerWidth;
+            const dy = (e.touches[0].clientY - touchStartY) / window.innerHeight;
+            const rotX = 24 - (dy * 16);
+            const rotZ = -3 + (dx * 10);
+            mapBoard.style.transform = `rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(0.92) translateY(12px)`;
+        }, { passive: true });
+
+        mapViewport.addEventListener('touchend', () => {
+            if (!is3DMode) return;
+            mapBoard.style.transform = 'rotateX(24deg) rotateZ(-3deg) scale(0.92) translateY(12px)';
+        }, { passive: true });
 
         // Gyro Parallax for Mobile Devices
         if (window.DeviceOrientationEvent) {
@@ -448,9 +512,9 @@
                 if (!is3DMode) return;
                 const gamma = Math.max(-20, Math.min(20, e.gamma || 0)); // tilt left/right
                 const beta = Math.max(-10, Math.min(30, (e.beta || 45) - 45)); // tilt front/back
-                const rotX = 26 + (beta * 0.3);
-                const rotZ = -3.5 + (gamma * 0.25);
-                mapBoard.style.transform = `rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(0.92) translateY(18px)`;
+                const rotX = 24 + (beta * 0.25);
+                const rotZ = -3 + (gamma * 0.2);
+                mapBoard.style.transform = `rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(0.92) translateY(12px)`;
             }, true);
         }
 
@@ -664,6 +728,9 @@
         });
 
         renderUI();
+        fitMapToViewport();
+        // Recalculate once DOM and images are completely rendered
+        window.addEventListener('load', fitMapToViewport);
     </script>
 </body>
 </html>
