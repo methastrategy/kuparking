@@ -1,52 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" class="w-full h-auto select-none">
   <defs>
-    <!-- Background Gradient (Sleek Apple Maps / Dark Mode Aesthetic) -->
+    <!-- Dark Mode Theme Background -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#080D1A" />
-      <stop offset="50%" stop-color="#0F172A" />
-      <stop offset="100%" stop-color="#070C18" />
+      <stop offset="0%" stop-color="#080E1E" />
+      <stop offset="50%" stop-color="#0E172A" />
+      <stop offset="100%" stop-color="#060B18" />
     </linearGradient>
 
-    <!-- 3D Extruded Building Gradients - Ngamwongwan 1 & 2 (KU Emerald Modern Architecture) -->
+    <!-- 3D Extruded Building Gradients - Ngamwongwan 1 & 2 (KU Emerald) -->
     <linearGradient id="ngamRoof" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#059669" />
+      <stop offset="0%" stop-color="#10B981" />
       <stop offset="100%" stop-color="#047857" />
     </linearGradient>
-    <linearGradient id="ngamWallLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="ngamWallFront" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#1E293B" />
       <stop offset="100%" stop-color="#0F172A" />
     </linearGradient>
-    <linearGradient id="ngamWallRight" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="ngamWallSide" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#334155" />
       <stop offset="100%" stop-color="#1E293B" />
     </linearGradient>
 
-    <!-- 3D Extruded Building Gradients - Vibhavadi (Modern Warm Gold Architecture) -->
+    <!-- 3D Extruded Building Gradients - Vibhavadi (Warm Gold/Amber) -->
     <linearGradient id="vipaRoof" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#D97706" />
-      <stop offset="100%" stop-color="#B45309" />
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
     </linearGradient>
-    <linearGradient id="vipaWallLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="vipaWallFront" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#1E293B" />
       <stop offset="100%" stop-color="#0F172A" />
     </linearGradient>
-    <linearGradient id="vipaWallRight" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="vipaWallSide" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#334155" />
       <stop offset="100%" stop-color="#1E293B" />
     </linearGradient>
 
-    <!-- High-End 3D Drop Shadows & Ambient Occlusion -->
-    <filter id="softBuildingShadow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="14" result="blur" />
-      <feOffset dx="0" dy="20" />
-      <feComponentTransfer><feFuncA type="linear" slope="0.75" /></feComponentTransfer>
+    <!-- Ambient Shadow Filter for 3D Depth -->
+    <filter id="building3DShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feOffset dx="0" dy="16" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.7" /></feComponentTransfer>
       <feMerge>
         <feMergeNode />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
 
-    <filter id="roofGlowEmerald" x="-20%" y="-20%" width="140%" height="140%">
+    <filter id="glowEmerald" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="4" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
@@ -54,7 +54,7 @@
       </feMerge>
     </filter>
 
-    <filter id="roofGlowAmber" x="-20%" y="-20%" width="140%" height="140%">
+    <filter id="glowAmber" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="4" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
@@ -68,211 +68,205 @@
 
   <!-- Subtle Architectural Grid Pattern -->
   <g opacity="0.08" stroke="#64748B" stroke-width="1">
-    <line x1="0" y1="150" x2="1600" y2="150" stroke-dasharray="10,10" />
-    <line x1="0" y1="350" x2="1600" y2="350" stroke-dasharray="10,10" />
-    <line x1="0" y1="550" x2="1600" y2="550" stroke-dasharray="10,10" />
-    <line x1="0" y1="750" x2="1600" y2="750" stroke-dasharray="10,10" />
-    <line x1="0" y1="950" x2="1600" y2="950" stroke-dasharray="10,10" />
-    <line x1="250" y1="0" x2="250" y2="1000" stroke-dasharray="10,10" />
+    <line x1="0" y1="120" x2="1600" y2="120" stroke-dasharray="10,10" />
+    <line x1="0" y1="340" x2="1600" y2="340" stroke-dasharray="10,10" />
+    <line x1="0" y1="560" x2="1600" y2="560" stroke-dasharray="10,10" />
+    <line x1="0" y1="780" x2="1600" y2="780" stroke-dasharray="10,10" />
+    <line x1="220" y1="0" x2="220" y2="1000" stroke-dasharray="10,10" />
     <line x1="550" y1="0" x2="550" y2="1000" stroke-dasharray="10,10" />
-    <line x1="850" y1="0" x2="850" y2="1000" stroke-dasharray="10,10" />
-    <line x1="1150" y1="0" x2="1150" y2="1000" stroke-dasharray="10,10" />
-    <line x1="1450" y1="0" x2="1450" y2="1000" stroke-dasharray="10,10" />
+    <line x1="950" y1="0" x2="950" y2="1000" stroke-dasharray="10,10" />
+    <line x1="1300" y1="0" x2="1300" y2="1000" stroke-dasharray="10,10" />
   </g>
 
-  <!-- Campus Green Parks & Lawns (Clean Rounded Polygons) -->
-  <path d="M 360,220 L 760,220 Q 780,220 780,240 L 780,500 Q 780,520 760,520 L 360,520 Q 340,520 340,500 L 340,240 Q 340,220 360,220 Z" fill="#064E3B" opacity="0.25" />
-  <path d="M 860,360 L 1380,360 Q 1400,360 1400,380 L 1400,680 Q 1400,700 1380,700 L 860,700 Q 840,700 840,680 L 840,380 Q 840,360 860,360 Z" fill="#064E3B" opacity="0.22" />
-  <path d="M 340,660 L 760,660 Q 780,660 780,680 L 780,920 Q 780,940 760,940 L 340,940 Q 320,940 320,920 L 320,680 Q 320,660 340,660 Z" fill="#064E3B" opacity="0.28" />
+  <!-- Campus Green Lawns / Quad Blocks -->
+  <path d="M 360,180 L 520,180 L 520,400 L 360,400 Z" fill="#064E3B" opacity="0.22" rx="10" />
+  <path d="M 360,480 L 880,480 L 880,800 L 360,800 Z" fill="#064E3B" opacity="0.25" rx="12" />
+  <path d="M 1020,180 L 1480,180 L 1480,500 L 1020,500 Z" fill="#064E3B" opacity="0.22" rx="12" />
+  <path d="M 1020,580 L 1480,580 L 1480,900 L 1020,900 Z" fill="#064E3B" opacity="0.22" rx="12" />
 
-  <!-- 2. CAMPUS ROADS & HIGHWAYS -->
-  <!-- Outer Vibhavadi Highway (Top/North) -->
-  <g id="vibhavadi-road">
-    <path d="M 0,110 L 1600,110" stroke="#1E293B" stroke-width="48" stroke-linecap="round" fill="none" />
-    <path d="M 0,110 L 1600,110" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="16,16" opacity="0.4" fill="none" />
-    <text x="800" y="74" fill="#94A3B8" font-family="'Prompt', sans-serif" font-size="13" font-weight="600" letter-spacing="4" text-anchor="middle">
+  <!-- 2. MAIN ROADS & HIGHWAYS -->
+
+  <!-- Top Highway: ถนนวิภาวดีรังสิต (Horizontal) -->
+  <g id="vibhavadi-highway">
+    <path d="M 0,90 L 1600,90" stroke="#1E293B" stroke-width="54" stroke-linecap="round" fill="none" />
+    <path d="M 0,90 L 1600,90" stroke="#F59E0B" stroke-width="2" stroke-dasharray="16,16" opacity="0.4" fill="none" />
+    <text x="600" y="55" fill="#94A3B8" font-family="'Prompt', sans-serif" font-size="13" font-weight="700" letter-spacing="4">
       ◄ ถนนวิภาวดีรังสิต (VIBHAVADI RANGSIT RD.) ►
     </text>
   </g>
 
-  <!-- Outer Ngamwongwan Highway (Left/West) -->
-  <g id="ngamwongwan-road">
-    <path d="M 120,0 L 120,1000" stroke="#1E293B" stroke-width="52" stroke-linecap="round" fill="none" />
-    <path d="M 120,0 L 120,1000" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="16,16" opacity="0.4" fill="none" />
-    <text x="50" y="500" fill="#94A3B8" font-family="'Prompt', sans-serif" font-size="13" font-weight="600" letter-spacing="4" transform="rotate(-90 50,500)" text-anchor="middle">
+  <!-- Left Highway: ถนนงามวงศ์วาน (Vertical) -->
+  <g id="ngamwongwan-highway">
+    <path d="M 90,0 L 90,1000" stroke="#1E293B" stroke-width="54" stroke-linecap="round" fill="none" />
+    <path d="M 90,0 L 90,1000" stroke="#F59E0B" stroke-width="2" stroke-dasharray="16,16" opacity="0.4" fill="none" />
+    <text x="42" y="520" fill="#94A3B8" font-family="'Prompt', sans-serif" font-size="13" font-weight="700" letter-spacing="4" transform="rotate(-90 42,520)" text-anchor="middle">
       ◄ ถนนงามวงศ์วาน (NGAMWONGWAN RD.) ►
     </text>
   </g>
 
-  <!-- Internal Campus Avenues (Main Ring Roads - Explicitly fill="none") -->
-  <g id="internal-roads" stroke="#334155" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <!-- North-South Avenue from Vibhavadi Gate -->
-    <path d="M 880,110 L 880,940" stroke-width="36" />
-    <!-- East-West Connector (Connecting Ngamwongwan to Vibhavadi) -->
-    <path d="M 120,360 L 1460,360" stroke-width="32" />
-    <!-- Center Avenue -->
-    <path d="M 120,660 L 880,660" stroke-width="30" />
-    <path d="M 420,660 L 420,940" stroke-width="26" />
-    <!-- Driveway to Ngamwongwan 1 & 2 -->
-    <path d="M 120,530 L 260,530 L 260,660" stroke-width="24" />
-    <!-- Driveway to Vibhavadi Parking -->
-    <path d="M 880,240 L 1050,240" stroke-width="26" />
+  <!-- 3. INTERNAL CAMPUS ROADS & GATES (EXACT REALITY ALIGNED) -->
+
+  <!-- [VIBHAVADI ENTRY AVENUE] Runs downwards from ประตูวิภาวดี (x = 950) -->
+  <g stroke="#334155" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- North-South main avenue from Vibhavadi Gate -->
+    <path d="M 950,90 L 950,940" stroke-width="36" />
+    <!-- Center connecting cross avenues -->
+    <path d="M 90,450 L 1520,450" stroke-width="32" />
+    <path d="M 90,840 L 950,840" stroke-width="30" />
+    <path d="M 90,240 L 580,240 Q 600,240 600,260 L 600,450" stroke-width="26" />
+    <!-- Driveway to Vibhavadi Parking (Located to the LEFT of Vibhavadi Ave) -->
+    <path d="M 950,260 L 800,260" stroke-width="26" />
+    <!-- Driveways to Ngam 1 and Ngam 2 -->
+    <path d="M 90,640 L 320,640" stroke-width="24" />
   </g>
 
   <!-- Road Centerlines -->
   <g stroke="#64748B" stroke-width="1.5" stroke-dasharray="10,12" opacity="0.5" fill="none">
-    <path d="M 880,130 L 880,940" />
-    <path d="M 140,360 L 1460,360" />
-    <path d="M 140,660 L 880,660" />
+    <path d="M 950,110 L 950,940" />
+    <path d="M 110,450 L 1520,450" />
+    <path d="M 110,840 L 950,840" />
   </g>
 
 
-  <!-- 3. THREE 3D EMBOSSED BUILDINGS (CLEAN, SLEEK & ARCHITECTURAL) -->
+  <!-- 4. THREE 3D EMBOSSED BUILDINGS (GEOGRAPHICALLY ACCURATE) -->
 
-  <!-- [BUILDING 1] อาคารจอดรถงามวงศ์วาน 1 (Lower-Left, 3D Extruded) -->
-  <g id="building-ngam1-3d" transform="translate(230, 620)" filter="url(#softBuildingShadow)">
-    <!-- Base Shadow Footprint -->
-    <polygon points="-80,75 40,75 80,115 -40,115" fill="#000000" opacity="0.6" />
-
-    <!-- Left Facade (Front Wall - 5 Storeys) -->
-    <polygon points="-75,-20 35,-20 35,70 -75,70" fill="url(#ngamWallLeft)" stroke="#334155" stroke-width="1.5" />
-    <!-- Floor Levels on Front Wall -->
-    <line x1="-70" y1="0" x2="30" y2="0" stroke="#475569" stroke-width="2" />
-    <line x1="-70" y1="18" x2="30" y2="18" stroke="#475569" stroke-width="2" />
-    <line x1="-70" y1="36" x2="30" y2="36" stroke="#475569" stroke-width="2" />
-    <line x1="-70" y1="54" x2="30" y2="54" stroke="#475569" stroke-width="2" />
-
-    <!-- Right Facade (Side Wall) -->
-    <polygon points="35,-20 85,-48 85,42 35,70" fill="url(#ngamWallRight)" stroke="#334155" stroke-width="1.5" />
-    <!-- Floor Levels on Side Wall -->
-    <line x1="35,0" x2="85,-28" stroke="#475569" stroke-width="1.5" />
-    <line x1="35,18" x2="85,-10" stroke="#475569" stroke-width="1.5" />
-    <line x1="35,36" x2="85,8" stroke="#475569" stroke-width="1.5" />
-    <line x1="35,54" x2="85,26" stroke="#475569" stroke-width="1.5" />
-
-    <!-- 3D Rooftop Parking Deck (Embossed & Glowing) -->
-    <polygon points="-75,-20 35,-20 85,-48 -25,-48" fill="url(#ngamRoof)" stroke="#34D399" stroke-width="2.5" filter="url(#roofGlowEmerald)" />
-
-    <!-- Clean Rooftop Parking Lines -->
-    <line x1="-45" y1="-27" x2="45" y2="-40" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6,4" opacity="0.8" />
-    <line x1="-30" y1="-23" x2="60" y2="-36" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6,4" opacity="0.8" />
-
-    <!-- Modern Parking 'P' Icon Monogram on Roof -->
-    <circle cx="5" cy="-34" r="11" fill="#064E3B" stroke="#34D399" stroke-width="1.5" />
-    <text x="5" y="-30" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="11" font-weight="900" text-anchor="middle">P</text>
+  <!-- ============================================================ -->
+  <!-- [BUILDING 1] อาคารจอดรถงามวงศ์วาน 1                            -->
+  <!-- อยู่ระหว่าง ประตูงาม 1 และ 2 (ส่วนล่าง)                             -->
+  <!-- ============================================================ -->
+  <g id="building-ngam1" transform="translate(240, 720)" filter="url(#building3DShadow)">
+    <!-- Base Shadow -->
+    <polygon points="-75,45 45,45 85,85 -35,85" fill="#000000" opacity="0.6" />
+    <!-- Front Face -->
+    <polygon points="-70,-20 40,-20 40,55 -70,55" fill="url(#ngamWallFront)" stroke="#334155" stroke-width="1.5" />
+    <!-- Floor Louvers -->
+    <line x1="-65" y1="-2" x2="35" y2="-2" stroke="#475569" stroke-width="2" />
+    <line x1="-65" y1="16" x2="35" y2="16" stroke="#475569" stroke-width="2" />
+    <line x1="-65" y1="34" x2="35" y2="34" stroke="#475569" stroke-width="2" />
+    <!-- Side Face -->
+    <polygon points="40,-20 85,-48 85,27 40,55" fill="url(#ngamWallSide)" stroke="#334155" stroke-width="1.5" />
+    <line x1="40,-2" x2="85,-30" stroke="#475569" stroke-width="1.5" />
+    <line x1="40,16" x2="85,-12" stroke="#475569" stroke-width="1.5" />
+    <line x1="40,34" x2="85,6" stroke="#475569" stroke-width="1.5" />
+    <!-- 3D Rooftop Parking Deck (Green Glow) -->
+    <polygon points="-70,-20 40,-20 85,-48 -25,-48" fill="url(#ngamRoof)" stroke="#34D399" stroke-width="2.5" filter="url(#glowEmerald)" />
+    <!-- Rooftop Parking Grid Lines -->
+    <line x1="-40" y1="-27" x2="45" y2="-40" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6,4" opacity="0.8" />
+    <line x1="-25" y1="-23" x2="60" y2="-36" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6,4" opacity="0.8" />
+    <!-- P Badge on Roof -->
+    <circle cx="8" cy="-34" r="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5" />
+    <text x="8" y="-30" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="10" font-weight="900" text-anchor="middle">P</text>
   </g>
 
 
-  <!-- [BUILDING 2] อาคารจอดรถงามวงศ์วาน 2 (Upper-Left, 3D Extruded) -->
-  <g id="building-ngam2-3d" transform="translate(250, 410)" filter="url(#softBuildingShadow)">
-    <!-- Base Shadow Footprint -->
-    <polygon points="-80,70 40,70 80,110 -40,110" fill="#000000" opacity="0.6" />
-
-    <!-- Left Facade (Front Wall - 5 Storeys) -->
-    <polygon points="-75,-25 35,-25 35,65 -75,65" fill="url(#ngamWallLeft)" stroke="#334155" stroke-width="1.5" />
-    <!-- Floor Levels on Front Wall -->
-    <line x1="-70" y1="-5" x2="30" y2="-5" stroke="#475569" stroke-width="2" />
-    <line x1="-70" y1="13" x2="30" y2="13" stroke="#475569" stroke-width="2" />
-    <line x1="-70" y1="31" x2="30" y2="31" stroke="#475569" stroke-width="2" />
-    <line x1="-70" y1="49" x2="30" y2="49" stroke="#475569" stroke-width="2" />
-
-    <!-- Right Facade (Side Wall) -->
-    <polygon points="35,-25 85,-53 85,37 35,65" fill="url(#ngamWallRight)" stroke="#334155" stroke-width="1.5" />
-    <!-- Floor Levels on Side Wall -->
-    <line x1="35,-5" x2="85,-33" stroke="#475569" stroke-width="1.5" />
-    <line x1="35,13" x2="85,-15" stroke="#475569" stroke-width="1.5" />
-    <line x1="35,31" x2="85,3" stroke="#475569" stroke-width="1.5" />
-    <line x1="35,49" x2="85,21" stroke="#475569" stroke-width="1.5" />
-
-    <!-- 3D Rooftop Parking Deck (Embossed & Glowing) -->
-    <polygon points="-75,-25 35,-25 85,-53 -25,-53" fill="url(#ngamRoof)" stroke="#34D399" stroke-width="2.5" filter="url(#roofGlowEmerald)" />
-
-    <!-- Clean Rooftop Parking Lines -->
-    <line x1="-45" y1="-32" x2="45" y2="-45" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6,4" opacity="0.8" />
-    <line x1="-30" y1="-28" x2="60" y2="-41" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6,4" opacity="0.8" />
-
-    <!-- Modern Parking 'P' Icon Monogram on Roof -->
-    <circle cx="5" cy="-39" r="11" fill="#064E3B" stroke="#34D399" stroke-width="1.5" />
-    <text x="5" y="-35" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="11" font-weight="900" text-anchor="middle">P</text>
+  <!-- ============================================================ -->
+  <!-- [BUILDING 2] อาคารจอดรถงามวงศ์วาน 2                            -->
+  <!-- อยู่ระหว่าง ประตูงาม 1 และ 2 (ติดกับ งามวงศ์วาน 1 ทางทิศเหนือ)       -->
+  <!-- ============================================================ -->
+  <g id="building-ngam2" transform="translate(240, 560)" filter="url(#building3DShadow)">
+    <!-- Base Shadow -->
+    <polygon points="-75,45 45,45 85,85 -35,85" fill="#000000" opacity="0.6" />
+    <!-- Front Face -->
+    <polygon points="-70,-20 40,-20 40,55 -70,55" fill="url(#ngamWallFront)" stroke="#334155" stroke-width="1.5" />
+    <!-- Floor Louvers -->
+    <line x1="-65" y1="-2" x2="35" y2="-2" stroke="#475569" stroke-width="2" />
+    <line x1="-65" y1="16" x2="35" y2="16" stroke="#475569" stroke-width="2" />
+    <line x1="-65" y1="34" x2="35" y2="34" stroke="#475569" stroke-width="2" />
+    <!-- Side Face -->
+    <polygon points="40,-20 85,-48 85,27 40,55" fill="url(#ngamWallSide)" stroke="#334155" stroke-width="1.5" />
+    <line x1="40,-2" x2="85,-30" stroke="#475569" stroke-width="1.5" />
+    <line x1="40,16" x2="85,-12" stroke="#475569" stroke-width="1.5" />
+    <line x1="40,34" x2="85,6" stroke="#475569" stroke-width="1.5" />
+    <!-- 3D Rooftop Parking Deck (Green Glow) -->
+    <polygon points="-70,-20 40,-20 85,-48 -25,-48" fill="url(#ngamRoof)" stroke="#34D399" stroke-width="2.5" filter="url(#glowEmerald)" />
+    <!-- Rooftop Parking Grid Lines -->
+    <line x1="-40" y1="-27" x2="45" y2="-40" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6,4" opacity="0.8" />
+    <line x1="-25" y1="-23" x2="60" y2="-36" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="6,4" opacity="0.8" />
+    <!-- P Badge on Roof -->
+    <circle cx="8" cy="-34" r="10" fill="#064E3B" stroke="#34D399" stroke-width="1.5" />
+    <text x="8" y="-30" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="10" font-weight="900" text-anchor="middle">P</text>
   </g>
 
 
-  <!-- [BUILDING 3] อาคารจอดรถวิภาวดี (Top-Right / North-East, Large 3D Structure) -->
-  <g id="building-vipa-3d" transform="translate(1050, 240)" filter="url(#softBuildingShadow)">
+  <!-- ============================================================ -->
+  <!-- [BUILDING 3] อาคารจอดรถวิภาวดี                                 -->
+  <!-- อยู่ฝั่ง "ซ้าย" ของถนนเส้นทางเข้า ประตูวิภาวดี (ตรงตามความเป็นจริง!)-->
+  <!-- ถนนเข้าอยู่ที่ x=950, ตัวอาคารจึงอยู่ที่ x=680 (ฝั่งซ้ายของถนน)       -->
+  <!-- ============================================================ -->
+  <g id="building-vipa" transform="translate(680, 260)" filter="url(#building3DShadow)">
     <!-- Base Shadow Footprint -->
-    <polygon points="-110,80 60,80 120,130 -50,130" fill="#000000" opacity="0.65" />
-
-    <!-- Left Facade (Front Wall - 6 Storeys) -->
-    <polygon points="-100,-30 50,-30 50,75 -100,75" fill="url(#vipaWallLeft)" stroke="#334155" stroke-width="2" />
-    <!-- Floor Levels on Front Wall -->
+    <polygon points="-110,75 55,75 115,125 -50,125" fill="#000000" opacity="0.65" />
+    <!-- Front Face (6 Storeys) -->
+    <polygon points="-100,-30 50,-30 50,70 -100,70" fill="url(#vipaWallFront)" stroke="#334155" stroke-width="2" />
+    <!-- Floor Louvers -->
     <line x1="-95" y1="-10" x2="45" y2="-10" stroke="#475569" stroke-width="2" />
     <line x1="-95" y1="10" x2="45" y2="10" stroke="#475569" stroke-width="2" />
     <line x1="-95" y1="30" x2="45" y2="30" stroke="#475569" stroke-width="2" />
     <line x1="-95" y1="50" x2="45" y2="50" stroke="#475569" stroke-width="2" />
-
-    <!-- Right Facade (Side Wall) -->
-    <polygon points="50,-30 115,-65 115,40 50,75" fill="url(#vipaWallRight)" stroke="#334155" stroke-width="2" />
-    <!-- Floor Levels on Side Wall -->
+    <!-- Side Face -->
+    <polygon points="50,-30 115,-65 115,35 50,70" fill="url(#vipaWallSide)" stroke="#334155" stroke-width="2" />
     <line x1="50,-10" x2="115,-45" stroke="#475569" stroke-width="2" />
     <line x1="50,10" x2="115,-25" stroke="#475569" stroke-width="2" />
     <line x1="50,30" x2="115,-5" stroke="#475569" stroke-width="2" />
     <line x1="50,50" x2="115,15" stroke="#475569" stroke-width="2" />
-
-    <!-- 3D Rooftop Parking Deck (Embossed & Amber Glow) -->
-    <polygon points="-100,-30 50,-30 115,-65 -35,-65" fill="url(#vipaRoof)" stroke="#FBBF24" stroke-width="3" filter="url(#roofGlowAmber)" />
-
-    <!-- Clean Rooftop Parking Lines -->
+    <!-- 3D Rooftop Parking Deck (Amber Glow) -->
+    <polygon points="-100,-30 50,-30 115,-65 -35,-65" fill="url(#vipaRoof)" stroke="#FBBF24" stroke-width="3" filter="url(#glowAmber)" />
+    <!-- Rooftop Parking Grid Lines -->
     <line x1="-65" y1="-38" x2="65" y2="-55" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.85" />
     <line x1="-45" y1="-34" x2="85" y2="-51" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.85" />
-
-    <!-- Modern Parking 'P' Icon Monogram on Roof -->
+    <!-- P Badge on Roof -->
     <circle cx="8" cy="-48" r="13" fill="#78350F" stroke="#FBBF24" stroke-width="2" />
     <text x="8" y="-43" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="13" font-weight="900" text-anchor="middle">P</text>
   </g>
 
 
-  <!-- 4. CAMPUS TREES & GREENERY (Clean Minimalist Dots) -->
-  <g id="trees" opacity="0.7">
-    <g transform="translate(460, 480)"><circle cx="0" cy="0" r="12" fill="#047857" /><circle cx="-2" cy="-2" r="8" fill="#10B981" /></g>
-    <g transform="translate(520, 520)"><circle cx="0" cy="0" r="10" fill="#065F46" /><circle cx="-2" cy="-2" r="6" fill="#059669" /></g>
-    <g transform="translate(680, 460)"><circle cx="0" cy="0" r="14" fill="#047857" /><circle cx="-2" cy="-2" r="9" fill="#10B981" /></g>
-    <g transform="translate(740, 500)"><circle cx="0" cy="0" r="11" fill="#065F46" /><circle cx="-2" cy="-2" r="7" fill="#059669" /></g>
-    <g transform="translate(180, 320)"><circle cx="0" cy="0" r="12" fill="#047857" /></g>
-    <g transform="translate(180, 720)"><circle cx="0" cy="0" r="12" fill="#047857" /></g>
-    <g transform="translate(760, 160)"><circle cx="0" cy="0" r="12" fill="#047857" /></g>
-    <g transform="translate(1220, 160)"><circle cx="0" cy="0" r="12" fill="#047857" /></g>
+  <!-- 5. GATES WITH DIRECT ACCURATE ROADS & DIRECTIONAL ARROWS -->
+
+  <!-- ประตูงามวงศ์วาน 1 (y = 840) - ตรงกับเส้นถนนเข้าล่าง -->
+  <g transform="translate(90, 840)">
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#A7F3D0" font-family="'Prompt', sans-serif" font-size="12" font-weight="800" text-anchor="middle">1</text>
+    <polygon points="18,0 30,-6 30,6" fill="#EF4444" />
+    <text x="36" y="5" fill="#F1F5F9" font-family="'Prompt', sans-serif" font-size="12" font-weight="700">ประตูงามวงศ์วาน 1</text>
   </g>
 
-  <!-- 5. CAMPUS GATES (ENTRANCES) -->
-  <!-- Pratu Ngamwongwan 1 -->
-  <g transform="translate(120, 780)">
-    <circle cx="0" cy="0" r="14" fill="#0F172A" stroke="#10B981" stroke-width="2" />
-    <text x="0" y="5" fill="#A7F3D0" font-family="'Prompt', sans-serif" font-size="11" font-weight="700" text-anchor="middle">1</text>
-    <text x="25" y="4" fill="#CBD5E1" font-family="'Prompt', sans-serif" font-size="11" font-weight="600">ประตูงามวงศ์วาน 1</text>
+  <!-- ประตูงามวงศ์วาน 2 (y = 450) - ตรงกับเส้นถนนเข้ากลาง (อยู่เหนืออาคารงามวงศ์วาน 2) -->
+  <g transform="translate(90, 450)">
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#A7F3D0" font-family="'Prompt', sans-serif" font-size="12" font-weight="800" text-anchor="middle">2</text>
+    <polygon points="18,0 30,-6 30,6" fill="#EF4444" />
+    <text x="36" y="5" fill="#F1F5F9" font-family="'Prompt', sans-serif" font-size="12" font-weight="700">ประตูงามวงศ์วาน 2</text>
   </g>
 
-  <!-- Pratu Ngamwongwan 2 -->
-  <g transform="translate(120, 480)">
-    <circle cx="0" cy="0" r="14" fill="#0F172A" stroke="#10B981" stroke-width="2" />
-    <text x="0" y="5" fill="#A7F3D0" font-family="'Prompt', sans-serif" font-size="11" font-weight="700" text-anchor="middle">2</text>
-    <text x="25" y="4" fill="#CBD5E1" font-family="'Prompt', sans-serif" font-size="11" font-weight="600">ประตูงามวงศ์วาน 2</text>
+  <!-- ประตูงามวงศ์วาน 3 (y = 240) - ตรงกับเส้นถนนเข้าบน -->
+  <g transform="translate(90, 240)">
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#A7F3D0" font-family="'Prompt', sans-serif" font-size="12" font-weight="800" text-anchor="middle">3</text>
+    <polygon points="18,0 30,-6 30,6" fill="#EF4444" />
+    <text x="36" y="5" fill="#F1F5F9" font-family="'Prompt', sans-serif" font-size="12" font-weight="700">ประตูงามวงศ์วาน 3</text>
   </g>
 
-  <!-- Pratu Ngamwongwan 3 -->
-  <g transform="translate(120, 260)">
-    <circle cx="0" cy="0" r="14" fill="#0F172A" stroke="#10B981" stroke-width="2" />
-    <text x="0" y="5" fill="#A7F3D0" font-family="'Prompt', sans-serif" font-size="11" font-weight="700" text-anchor="middle">3</text>
-    <text x="25" y="4" fill="#CBD5E1" font-family="'Prompt', sans-serif" font-size="11" font-weight="600">ประตูงามวงศ์วาน 3</text>
+  <!-- ประตูวิภาวดีรังสิต (x = 950, y = 90) - ตรงกับเส้นถนนลงมา -->
+  <g transform="translate(950, 90)">
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#F59E0B" stroke-width="2.5" />
+    <text x="0" y="5" fill="#FDE047" font-family="'Prompt', sans-serif" font-size="12" font-weight="800" text-anchor="middle">V</text>
+    <polygon points="0,18 -6,30 6,30" fill="#EF4444" />
+    <text x="24" y="5" fill="#F1F5F9" font-family="'Prompt', sans-serif" font-size="12" font-weight="700">ประตูวิภาวดีรังสิต</text>
   </g>
 
-  <!-- Pratu Vibhavadi Rangsit -->
-  <g transform="translate(880, 110)">
-    <circle cx="0" cy="0" r="14" fill="#0F172A" stroke="#F59E0B" stroke-width="2" />
-    <text x="0" y="5" fill="#FDE047" font-family="'Prompt', sans-serif" font-size="11" font-weight="700" text-anchor="middle">V</text>
-    <text x="22" y="5" fill="#CBD5E1" font-family="'Prompt', sans-serif" font-size="11" font-weight="600">ประตูวิภาวดีรังสิต</text>
+  <!-- Campus Trees & Foliage -->
+  <g id="trees" opacity="0.75">
+    <g transform="translate(560, 480)"><circle cx="0" cy="0" r="13" fill="#047857" /><circle cx="-2" cy="-2" r="9" fill="#10B981" /></g>
+    <g transform="translate(620, 520)"><circle cx="0" cy="0" r="11" fill="#065F46" /><circle cx="-2" cy="-2" r="7" fill="#059669" /></g>
+    <g transform="translate(740, 480)"><circle cx="0" cy="0" r="14" fill="#047857" /><circle cx="-2" cy="-2" r="10" fill="#10B981" /></g>
+    <g transform="translate(800, 520)"><circle cx="0" cy="0" r="12" fill="#065F46" /><circle cx="-2" cy="-2" r="8" fill="#059669" /></g>
+    <g transform="translate(180, 360)"><circle cx="0" cy="0" r="12" fill="#047857" /></g>
+    <g transform="translate(180, 780)"><circle cx="0" cy="0" r="12" fill="#047857" /></g>
+    <g transform="translate(1120, 140)"><circle cx="0" cy="0" r="12" fill="#047857" /></g>
+    <g transform="translate(1260, 140)"><circle cx="0" cy="0" r="12" fill="#047857" /></g>
   </g>
 
-  <!-- Compass Rose (North Arrow) -->
+  <!-- Compass Rose -->
   <g transform="translate(1500, 80)" opacity="0.8">
     <circle cx="0" cy="0" r="26" fill="#0F172A" stroke="#334155" stroke-width="2" />
     <polygon points="0,-20 6,0 0,-4 -6,0" fill="#EF4444" />
