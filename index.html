@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>KU Loy Krathong Live Parking & Event Map</title>
+    <title>KU Parking - ตรวจสอบอาคารจอดรถ มหาวิทยาลัยเกษตรศาสตร์</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,9 +13,8 @@
                     colors: {
                         kugreen: '#006633',
                         kugreenLight: '#008744',
-                        festiveGold: '#F59E0B',
-                        festiveNight: '#0B132B',
-                        festiveSurface: '#1C2541'
+                        darkNavy: '#0B132B',
+                        surfaceNavy: '#1C2541'
                     }
                 }
             }
@@ -39,13 +38,6 @@
         .animate-pulse-ring {
             animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
-        @keyframes float-lantern {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-        .animate-float {
-            animation: float-lantern 3s ease-in-out infinite;
-        }
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0B132B; }
@@ -57,26 +49,26 @@
     <!-- TOP HEADER -->
     <header class="bg-[#111827]/95 backdrop-blur-md border-b border-slate-800 sticky top-0 z-40 px-4 py-3 flex items-center justify-between shadow-lg">
         <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center shadow-lg shadow-amber-500/20 text-xl animate-float">
-                🪔
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-500/20 text-white font-black text-lg">
+                P
             </div>
             <div>
                 <div class="flex items-center space-x-2">
                     <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                    <h1 class="font-bold text-sm sm:text-base text-amber-300 leading-tight">ลอยกระทง มก. บางเขน</h1>
+                    <h1 class="font-bold text-sm sm:text-base text-white leading-tight">KU PARKING</h1>
                     <span class="text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded border border-emerald-500/30">LIVE</span>
                 </div>
-                <p class="text-xs text-slate-400">สถานะที่จอดรถ 3 อาคารหลัก & แผนที่งาน</p>
+                <p class="text-xs text-slate-400">สถานะที่จอดรถ 3 อาคารหลัก มหาวิทยาลัยเกษตรศาสตร์</p>
             </div>
         </div>
 
         <div class="flex items-center space-x-2">
-            <!-- Reset View Zoom Button -->
+            <!-- Reset Zoom Button -->
             <button id="btnResetZoom" title="รีเซ็ตมุมมองแผนที่" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 border border-slate-700 transition">
                 <i data-lucide="maximize" class="w-4 h-4"></i>
             </button>
             <!-- Share Button -->
-            <button id="btnShare" title="แชร์แผนที่นี้" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-amber-300 border border-slate-700 transition">
+            <button id="btnShare" title="แชร์แผนที่นี้" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 border border-slate-700 transition">
                 <i data-lucide="share-2" class="w-4 h-4"></i>
             </button>
             <!-- Admin Link Button -->
@@ -88,32 +80,23 @@
     </header>
 
     <!-- ANNOUNCEMENT BANNER -->
-    <div id="alertBanner" class="bg-gradient-to-r from-amber-900/60 via-slate-900/90 to-amber-900/60 border-b border-amber-500/30 px-4 py-2 text-xs flex items-center justify-between text-amber-200">
+    <div id="alertBanner" class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/60 px-4 py-2 text-xs flex items-center justify-between text-slate-200">
         <div class="flex items-center space-x-2 truncate">
-            <span class="text-amber-400 text-sm">📢</span>
-            <span id="broadcastText" class="truncate font-medium">งานลอยกระทงเปิดให้จอดเฉพาะ 3 อาคาร: งามวงศ์วาน 1, งามวงศ์วาน 2 และ วิภาวดี</span>
+            <span class="text-emerald-400 text-sm">ℹ️</span>
+            <span id="broadcastText" class="truncate font-medium">เปิดให้บริการ 3 อาคาร: งามวงศ์วาน 1, งามวงศ์วาน 2 และ อาคารวิภาวดี</span>
         </div>
-        <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded text-amber-300 whitespace-nowrap ml-2">อัปเดตสด</span>
+        <span class="text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded text-emerald-300 whitespace-nowrap ml-2">อัปเดตสด</span>
     </div>
 
     <!-- MAIN INTERACTIVE MAP VIEWPORT -->
-    <main class="relative flex-1 w-full bg-[#050811] overflow-hidden flex items-center justify-center min-h-[360px] sm:min-h-[480px]">
+    <main class="relative flex-1 w-full bg-[#050811] overflow-hidden flex items-center justify-center min-h-[360px] sm:min-h-[500px]">
         
         <!-- Interactive Panzoom Map Wrapper -->
         <div id="mapViewport" class="w-full h-full cursor-grab active:cursor-grabbing touch-pan-zoom flex items-center justify-center">
             <div id="mapContainer" class="relative inline-block transition-transform duration-75 origin-center">
                 
-                <!-- Base Campus Map: Custom 2.5D Loy Krathong Night Festival Map -->
-                <img id="baseMap" src="assets/map-loykrathong.svg" alt="KU Loy Krathong Campus Map" class="max-w-none w-[1300px] sm:w-[1500px] h-auto block select-none pointer-events-none drop-shadow-2xl">
-
-                <!-- OVERLAY: Dimming Mask on Unused Areas (Bangkhen is closed) -->
-                <div class="absolute inset-0 pointer-events-none">
-                    <!-- Bangkhen Lot Restricted Badge -->
-                    <div class="absolute left-[85%] top-[52%] -translate-x-1/2 -translate-y-1/2 bg-slate-900/90 border border-red-500/60 text-red-400 px-3 py-1.5 rounded-lg text-xs font-semibold shadow-2xl backdrop-blur-sm flex items-center space-x-1.5">
-                        <i data-lucide="ban" class="w-4 h-4 text-red-400"></i>
-                        <span>อาคารบางเขน (งดให้บริการสำหรับงานนี้)</span>
-                    </div>
-                </div>
+                <!-- Base Campus Map: Custom 2.5D Vector Map -->
+                <img id="baseMap" src="assets/map-loykrathong.svg" alt="KU Campus Map" class="max-w-none w-[1300px] sm:w-[1500px] h-auto block select-none pointer-events-none drop-shadow-2xl">
 
                 <!-- OVERLAY: Interactive Parking Hotspots -->
                 
@@ -159,46 +142,6 @@
                     </div>
                 </div>
 
-                <!-- OVERLAY: Event Landmarks & Activity Zones -->
-                
-                <!-- Main Floating Pond (สระพระพิรุณ / จุดลอยกระทง) -->
-                <div class="absolute left-[40%] top-[53%] -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-auto cursor-pointer" onclick="showEventInfo('pond')">
-                    <div class="flex flex-col items-center animate-bounce">
-                        <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[11px] font-bold px-3 py-1.5 rounded-full shadow-lg border border-amber-300 flex items-center space-x-1.5 hover:scale-105 transition-transform">
-                            <span class="text-sm">🪔</span>
-                            <span>จุดลอยกระทงหลัก (สระพระพิรุณ)</span>
-                        </div>
-                        <div class="w-2.5 h-2.5 bg-orange-500 rotate-45 -mt-1 shadow"></div>
-                    </div>
-                </div>
-
-                <!-- Stage / Market Zone -->
-                <div class="absolute left-[40.6%] top-[68%] -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-auto cursor-pointer" onclick="showEventInfo('market')">
-                    <div class="bg-indigo-600/90 hover:bg-indigo-500 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full shadow border border-indigo-400/50 flex items-center space-x-1 hover:scale-105 transition-transform">
-                        <span>🎪</span>
-                        <span>เวทีกลาง & โซนร้านค้าของกิน</span>
-                    </div>
-                </div>
-
-                <!-- Restroom Pin -->
-                <div class="absolute left-[33%] top-[45%] -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-auto cursor-pointer" onclick="showEventInfo('wc')">
-                    <div class="bg-cyan-700/90 hover:bg-cyan-600 text-white text-[10px] font-medium px-2 py-0.5 rounded-full shadow border border-cyan-400/50 flex items-center space-x-1">
-                        <span>🚻</span>
-                        <span>สุขา</span>
-                    </div>
-                </div>
-
-                <!-- Entrance Gates -->
-                <div class="absolute left-[7%] top-[68%] z-10 text-[10px] font-semibold text-slate-300 bg-slate-900/80 px-2 py-0.5 rounded border border-slate-700">
-                    🚪 ประตูงามวงศ์วาน 1
-                </div>
-                <div class="absolute left-[7%] top-[45%] z-10 text-[10px] font-semibold text-slate-300 bg-slate-900/80 px-2 py-0.5 rounded border border-slate-700">
-                    🚪 ประตูงามวงศ์วาน 2-3
-                </div>
-                <div class="absolute left-[54%] top-[10%] z-10 text-[10px] font-semibold text-slate-300 bg-slate-900/80 px-2 py-0.5 rounded border border-slate-700">
-                    🚪 ประตูวิภาวดีรังสิต
-                </div>
-
             </div>
         </div>
 
@@ -215,7 +158,7 @@
         <!-- HINT CHIP -->
         <div class="absolute top-3 left-4 z-30 pointer-events-none">
             <div class="bg-slate-900/80 backdrop-blur-sm border border-slate-700/60 rounded-full px-3 py-1 text-[11px] text-slate-300 flex items-center space-x-1.5 shadow">
-                <i data-lucide="move" class="w-3.5 h-3.5 text-amber-400"></i>
+                <i data-lucide="move" class="w-3.5 h-3.5 text-emerald-400"></i>
                 <span>แตะลาก / ซูมดูแผนที่ / คลิกอาคารเพื่อนำทาง</span>
             </div>
         </div>
@@ -227,11 +170,11 @@
             
             <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center space-x-2">
-                    <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">อาคารจอดรถที่อนุญาตสำหรับงาน</span>
+                    <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">อาคารจอดรถที่เปิดให้บริการ</span>
                     <span class="text-[11px] bg-slate-800 px-2 py-0.5 rounded-full text-slate-300 border border-slate-700">3 แห่ง</span>
                 </div>
                 <div class="text-[11px] text-slate-400">
-                    ความจุรวมว่าง: <span id="totalAvailable" class="text-emerald-400 font-bold text-sm">540</span> คัน
+                    ช่องจอดว่างรวม: <span id="totalAvailable" class="text-emerald-400 font-bold text-sm">540</span> คัน
                 </div>
             </div>
 
@@ -250,8 +193,8 @@
                         </div>
                         <h3 class="font-bold text-base text-slate-100 mt-0.5">งามวงศ์วาน 1</h3>
                         <p class="text-xs text-slate-400 mt-1 flex items-center space-x-1">
-                            <i data-lucide="footprints" class="w-3.5 h-3.5 text-amber-400"></i>
-                            <span>เดินถึงสระลอยกระทง ~5 นาที</span>
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
+                            <span>เข้าทางประตูงามวงศ์วาน 1</span>
                         </p>
                         
                         <div class="mt-2 flex items-baseline space-x-1.5">
@@ -280,8 +223,8 @@
                         </div>
                         <h3 class="font-bold text-base text-slate-100 mt-0.5">งามวงศ์วาน 2</h3>
                         <p class="text-xs text-slate-400 mt-1 flex items-center space-x-1">
-                            <i data-lucide="footprints" class="w-3.5 h-3.5 text-amber-400"></i>
-                            <span>เดินถึงสระลอยกระทง ~6 นาที</span>
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
+                            <span>เข้าทางประตูงามวงศ์วาน 2-3</span>
                         </p>
                         
                         <div class="mt-2 flex items-baseline space-x-1.5">
@@ -310,8 +253,8 @@
                         </div>
                         <h3 class="font-bold text-base text-slate-100 mt-0.5">วิภาวดี</h3>
                         <p class="text-xs text-slate-400 mt-1 flex items-center space-x-1">
-                            <i data-lucide="footprints" class="w-3.5 h-3.5 text-amber-400"></i>
-                            <span>เดินถึงสระลอยกระทง ~8 นาที</span>
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-amber-400"></i>
+                            <span>เข้าทางประตูวิภาวดีรังสิต</span>
                         </p>
                         
                         <div class="mt-2 flex items-baseline space-x-1.5">
@@ -332,27 +275,10 @@
 
             <!-- FOOTER INFO -->
             <div class="mt-3 text-center text-[11px] text-slate-500 flex items-center justify-center space-x-2">
-                <span>© มหาวิทยาลัยเกษตรศาสตร์ (บางเขน) • ระบบอำนวยความสะดวกการจราจรวันงานลอยกระทง</span>
+                <span>© มหาวิทยาลัยเกษตรศาสตร์ (บางเขน) • ระบบตรวจสอบอาคารจอดรถ</span>
             </div>
         </div>
     </section>
-
-    <!-- EVENT MODAL FOR POI DETAILS -->
-    <div id="poiModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-sm w-full p-5 shadow-2xl relative">
-            <button onclick="closeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-white p-1">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-            <div id="modalIcon" class="text-3xl mb-2">🪔</div>
-            <h3 id="modalTitle" class="text-lg font-bold text-amber-300">จุดลอยกระทงหลัก</h3>
-            <p id="modalDesc" class="text-xs text-slate-300 mt-2 leading-relaxed">
-                สระพระพิรุณ หน้าหอประชุมใหญ่ มีจุดจำหน่ายกระทงธรรมชาติ และเจ้าหน้าที่ดูแลความปลอดภัยริมน้ำ
-            </p>
-            <div class="mt-4 flex justify-end">
-                <button onclick="closeModal()" class="bg-slate-800 hover:bg-slate-700 text-white text-xs px-4 py-2 rounded-xl">เข้าใจแล้ว</button>
-            </div>
-        </div>
-    </div>
 
     <!-- SCRIPT LOGIC -->
     <script>
@@ -361,7 +287,7 @@
 
         // State Store (Syncs with LocalStorage & Admin Panel)
         const DEFAULT_DATA = {
-            broadcast: "งานลอยกระทงเปิดให้จอดเฉพาะ 3 อาคาร: งามวงศ์วาน 1, งามวงศ์วาน 2 และ วิภาวดี",
+            broadcast: "เปิดให้บริการ 3 อาคาร: งามวงศ์วาน 1, งามวงศ์วาน 2 และ อาคารวิภาวดี",
             lots: {
                 ngam1: { name: "งามวงศ์วาน 1", max: 350, remain: 160, status: "available", mapUrl: "https://goo.gl/maps/NW36hyxkDMBuzc1V8" },
                 ngam2: { name: "งามวงศ์วาน 2", max: 400, remain: 180, status: "available", mapUrl: "https://goo.gl/maps/LbTes9jEivaYcsHSA" },
@@ -474,38 +400,6 @@
             }
         }
 
-        // POI Info Modal
-        const POI_DETAILS = {
-            pond: {
-                icon: "🪔",
-                title: "จุดลอยกระทงหลัก (สระพระพิรุณ)",
-                desc: "บริเวณสระน้ำด้านหน้าหอประชุมใหญ่ มีท่าน้ำกว้าง เจ้าหน้าที่กู้ภัยดูแลตลอดแนว รณรงค์ใช้กระทงจากวัสดุธรรมชาติ 100%"
-            },
-            market: {
-                icon: "🎪",
-                title: "เวทีกลาง และ โซนตลาดย้อนยุค",
-                desc: "การแสดงดนตรีศิลปวัฒนธรรม การประกวดนางนพมาศ และร้านอาหารสตรีทฟู้ดกว่า 120 ร้านค้า"
-            },
-            wc: {
-                icon: "🚻",
-                title: "จุดบริการสุขาและปฐมพยาบาล",
-                desc: "ห้องน้ำในอาคารหอประชุมใหญ่ และจุดหน่วยปฐมพยาบาลเคลื่อนที่พร้อมรถพยาบาลฉุกเฉิน"
-            }
-        };
-
-        function showEventInfo(type) {
-            const info = POI_DETAILS[type];
-            if (!info) return;
-            document.getElementById('modalIcon').innerText = info.icon;
-            document.getElementById('modalTitle').innerText = info.title;
-            document.getElementById('modalDesc').innerText = info.desc;
-            document.getElementById('poiModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('poiModal').classList.add('hidden');
-        }
-
         // Listen for Realtime Sync from Admin Tab / BroadcastChannel
         const channel = new BroadcastChannel('ku_parking_sync');
         channel.onmessage = (event) => {
@@ -524,14 +418,14 @@
             if (navigator.share) {
                 try {
                     await navigator.share({
-                        title: 'ลอยกระทง มก. บางเขน - เช็คที่จอดรถสด',
-                        text: 'เช็คสถานะที่จอดรถว่าง 3 อาคารหลัก และแผนที่งานลอยกระทง ม.เกษตรศาสตร์',
+                        title: 'KU Parking - เช็คที่จอดรถ มก. บางเขน',
+                        text: 'เช็คสถานะที่จอดรถว่าง 3 อาคารหลัก มหาวิทยาลัยเกษตรศาสตร์ (บางเขน)',
                         url: window.location.href
                     });
                 } catch (err) {}
             } else {
                 navigator.clipboard.writeText(window.location.href);
-                alert('คัดลอกลิงก์แผนที่เรียบร้อยแล้ว ส่งต่อให้เพื่อนใน LINE ได้เลย!');
+                alert('คัดลอกลิงก์เรียบร้อยแล้ว');
             }
         });
 

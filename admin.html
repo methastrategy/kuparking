@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KU Loy Krathong - Staff Controller</title>
+    <title>KU Parking - Staff Controller</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -21,7 +21,7 @@
                 🔐
             </div>
             <h2 class="text-lg font-bold text-slate-100">ระบบเจ้าหน้าที่ประจำจุด</h2>
-            <p class="text-xs text-slate-400 mt-1 mb-6">สำหรับอัปเดตจำนวนที่จอดรถวันงานลอยกระทง</p>
+            <p class="text-xs text-slate-400 mt-1 mb-6">สำหรับอัปเดตจำนวนที่จอดรถ มหาวิทยาลัยเกษตรศาสตร์</p>
 
             <div class="space-y-4">
                 <div>
@@ -41,7 +41,7 @@
         <!-- Header -->
         <div class="flex items-center justify-between py-3 border-b border-slate-800 mb-4">
             <div class="flex items-center space-x-2">
-                <span class="text-xl">🪔</span>
+                <span class="text-xl">🚗</span>
                 <div>
                     <h1 class="font-bold text-sm text-slate-100 leading-tight">ระบบคุมที่จอดรถ (Staff)</h1>
                     <span class="text-[10px] text-emerald-400">● เชื่อมต่อสด</span>
@@ -215,7 +215,7 @@
         const channel = new BroadcastChannel('ku_parking_sync');
 
         const DEFAULT_DATA = {
-            broadcast: "งานลอยกระทงเปิดให้จอดเฉพาะ 3 อาคาร: งามวงศ์วาน 1, งามวงศ์วาน 2 และ วิภาวดี",
+            broadcast: "เปิดให้บริการ 3 อาคาร: งามวงศ์วาน 1, งามวงศ์วาน 2 และ อาคารวิภาวดี",
             lots: {
                 ngam1: { name: "งามวงศ์วาน 1", max: 350, remain: 160, status: "available" },
                 ngam2: { name: "งามวงศ์วาน 2", max: 400, remain: 180, status: "available" },
