@@ -2,8 +2,9 @@
 <html lang="th" class="h-full w-full overflow-hidden">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KU Parking - แผนที่อาคารจอดรถและจุดจัดงาน ม.เกษตรศาสตร์</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>KU Parking & Event - แผนที่อาคารจอดรถและจุดจัดงาน ม.เกษตรศาสตร์</title>
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,22 +14,40 @@
                     colors: {
                         kugreen: '#006633',
                         kugreenLight: '#008744',
-                        darkNavy: '#0B132B'
+                        kugreenAccent: '#10B981',
+                        navyDeep: '#050814',
+                        navySurface: '#0B132B'
                     }
                 }
             }
         }
     </script>
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Latin-First ("Inter" before "Prompt") -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        * { 
-            font-family: 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif; 
-            -webkit-tap-highlight-color: transparent;
+        :root {
+            --font-sans: 'Inter', 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --accent-emerald: #10B981;
+            --accent-amber: #F59E0B;
         }
+
+        * { 
+            font-family: var(--font-sans);
+            -webkit-tap-highlight-color: transparent;
+            letter-spacing: 0;
+        }
+
+        .tabular-nums {
+            font-variant-numeric: tabular-nums;
+        }
+
         html, body {
             height: 100%;
             height: 100dvh;
@@ -36,67 +55,149 @@
             overflow: hidden !important;
             position: fixed;
             touch-action: manipulation;
+            background-color: #050814;
+            color: #F8FAFC;
         }
 
-        /* 3D Maps Perspective Viewport */
+        /* 3D Maps Perspective Viewport & Stage */
         .map-stage {
-            perspective: 1200px;
-            perspective-origin: 50% 55%;
+            perspective: 1400px;
+            perspective-origin: 50% 52%;
         }
+
         .map-board {
             transform-style: preserve-3d;
             will-change: transform;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .mode-3d .map-board {
-            transform: rotateX(24deg) rotateZ(-3deg) scale(0.92) translateY(20px);
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
         }
 
+        .mode-3d .map-board {
+            transform: rotateX(26deg) rotateZ(-3.5deg) scale(0.92) translateY(18px);
+            box-shadow: 0 45px 90px -25px rgba(0, 0, 0, 0.85);
+        }
+
+        /* Concentric Glassmorphic Highlights */
+        .glass-panel {
+            background: rgba(11, 19, 43, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .glass-card:active {
+            transform: scale(0.975);
+        }
+
+        /* Pulse Ring for Hotspots */
         @keyframes pulse-ring {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            50% { transform: scale(1.35); opacity: 0; }
-            100% { transform: scale(0.95); opacity: 0; }
+            0% { transform: scale(0.92); opacity: 0.85; }
+            50% { transform: scale(1.4); opacity: 0; }
+            100% { transform: scale(0.92); opacity: 0.85; }
         }
         .animate-pulse-ring {
-            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse-ring 2.2s cubic-bezier(0.2, 0, 0.3, 1) infinite;
         }
-        @keyframes float-lantern {
+
+        /* Floating Festivity Animation */
+        @keyframes float-krathong {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+            50% { transform: translateY(-5px); }
         }
         .animate-float {
-            animation: float-lantern 2.5s ease-in-out infinite;
+            animation: float-krathong 3s ease-in-out infinite;
+        }
+
+        /* Modal Animation Transitions */
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.94) translateY(12px);
+        }
+        .modal-active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1), transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal-exit {
+            opacity: 0;
+            transform: scale(0.96) translateY(8px);
+            transition: opacity 0.16s ease-in, transform 0.16s ease-in;
+        }
+
+        /* Touch Target Invisible Halo (HIG 44px min-touch) */
+        .touch-target-44 {
+            position: relative;
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(100, 116, 139, 0.4);
+            border-radius: 999px;
         }
     </style>
 </head>
-<body class="bg-[#080E1E] text-slate-100 h-full w-full flex flex-col justify-between overflow-hidden select-none">
+<body class="bg-[#050814] text-slate-100 h-full w-full flex flex-col justify-between overflow-hidden select-none">
 
-    <!-- 1. TOP HEADER (COMPACT & FIXED) -->
-    <header class="h-14 bg-[#111827]/95 backdrop-blur-md border-b border-slate-800/80 px-4 flex items-center justify-between shrink-0 z-30">
-        <div class="flex items-center space-x-2.5">
-            <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center font-black text-white text-base shadow-md shadow-emerald-900/40">
-                P
-            </div>
-            <div>
-                <div class="flex items-center space-x-1.5">
-                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <h1 class="font-bold text-sm text-white leading-tight">KU PARKING & EVENT</h1>
-                    <span class="text-[9px] font-semibold bg-emerald-500/20 text-emerald-300 px-1 py-0.2 rounded border border-emerald-500/30">LIVE</span>
+    <!-- 1. TOP HEADER (COMPACT & GLASSMORPHIC) -->
+    <header class="h-14 glass-panel px-3 sm:px-4 flex items-center justify-between shrink-0 z-30">
+        <div class="flex items-center space-x-2.5 sm:space-x-3">
+            <!-- Brand Mark -->
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 p-0.5 shadow-lg shadow-emerald-950/60 flex items-center justify-center">
+                <div class="w-full h-full bg-[#052E16] rounded-[10px] flex items-center justify-center font-extrabold text-white text-base">
+                    <i data-lucide="parking-circle" class="w-5 h-5 text-emerald-400"></i>
                 </div>
-                <p class="text-[11px] text-slate-400">จิ้มที่อาคารจอดรถหรือจุดลอยกระทงเพื่อเปิด Google Maps นำทาง</p>
+            </div>
+            
+            <div>
+                <div class="flex items-center space-x-2">
+                    <h1 class="font-bold text-xs sm:text-sm text-white tracking-tight flex items-center gap-1.5">
+                        <span>KU PARKING & EVENT</span>
+                    </h1>
+                    <span class="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.5 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        LIVE
+                    </span>
+                </div>
+                <p class="text-[11px] text-slate-400 truncate max-w-[210px] sm:max-w-md">แตะอาคารหรือจุดลอยกระทงเพื่อดูเส้นทาง</p>
             </div>
         </div>
 
-        <div class="flex items-center space-x-2">
-            <!-- Share Button -->
-            <button id="btnShare" title="แชร์แผนที่" class="p-2 min-w-[38px] min-h-[38px] rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 border border-slate-700 transition flex items-center justify-center">
+        <div class="flex items-center space-x-1.5 sm:space-x-2">
+            <!-- Share Button (44px HIG Touch Target) -->
+            <button id="btnShare" title="แชร์แผนที่" class="touch-target-44 p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 active:scale-95 text-slate-300 border border-slate-700/80 transition shadow-sm">
                 <i data-lucide="share-2" class="w-4 h-4"></i>
             </button>
-            <!-- Admin Controller Link -->
-            <a href="admin.html" target="_blank" title="สำหรับสต๊าฟอัปเดตสถานะ" class="px-2.5 py-1.5 min-h-[38px] rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/50 text-emerald-300 text-xs flex items-center space-x-1 transition">
-                <i data-lucide="shield" class="w-3.5 h-3.5"></i>
-                <span class="text-[11px]">สต๊าฟ</span>
+
+            <!-- Admin Staff Controller Link (44px HIG Touch Target) -->
+            <a href="admin.html" target="_blank" title="สำหรับสต๊าฟอัปเดตสถานะ" class="touch-target-44 px-3 py-2 rounded-xl bg-emerald-950/80 hover:bg-emerald-900/80 active:scale-95 border border-emerald-600/40 text-emerald-300 text-xs font-semibold flex items-center space-x-1.5 transition shadow-sm">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                <span class="text-xs">สต๊าฟ</span>
             </a>
         </div>
     </header>
@@ -113,65 +214,66 @@
             <!-- ================= INTERACTIVE HOTSPOTS ================= -->
 
             <!-- [1] งามวงศ์วาน 1 (อยู่แนวงามวงศ์วาน ระหว่าง ประตู 1 และ 2) -->
-            <div id="hotspot-ngam1" onclick="openParkingModal('ngam1')" class="absolute left-[54.8%] top-[73.4%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group">
+            <div id="hotspot-ngam1" onclick="openParkingModal('ngam1')" class="absolute left-[54.8%] top-[73.4%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="ring-ngam1" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500"></div>
                     <div id="badge-ngam1" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
-                        <i data-lucide="car" class="w-3 h-3"></i>
+                        <i data-lucide="car" class="w-3.5 h-3.5"></i>
                         <span>งามวงศ์วาน 1</span>
-                        <span id="text-status-ngam1" class="text-amber-200 font-extrabold text-[10px]">เปิดบริการ</span>
+                        <span id="text-status-ngam1" class="text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded">เปิดบริการ</span>
                     </div>
-                    <div class="w-0.5 h-2.5 bg-emerald-500 shadow"></div>
+                    <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
                 </div>
             </div>
 
             <!-- [2] งามวงศ์วาน 2 (อยู่ติดกับ อาคาร 1) -->
-            <div id="hotspot-ngam2" onclick="openParkingModal('ngam2')" class="absolute left-[46.1%] top-[73.4%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group">
+            <div id="hotspot-ngam2" onclick="openParkingModal('ngam2')" class="absolute left-[46.1%] top-[73.4%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="ring-ngam2" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500"></div>
                     <div id="badge-ngam2" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
-                        <i data-lucide="car" class="w-3 h-3"></i>
+                        <i data-lucide="car" class="w-3.5 h-3.5"></i>
                         <span>งามวงศ์วาน 2</span>
-                        <span id="text-status-ngam2" class="text-amber-200 font-extrabold text-[10px]">เปิดบริการ</span>
+                        <span id="text-status-ngam2" class="text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded">เปิดบริการ</span>
                     </div>
-                    <div class="w-0.5 h-2.5 bg-emerald-500 shadow"></div>
+                    <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
                 </div>
             </div>
 
-            <!-- [3] อาคารวิภาวดี (อยู่ฝั่ง "ซ้าย" ของถนนเส้นทางเข้า ประตูวิภาวดี) -->
-            <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[20.6%] top-[11.5%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group">
+            <!-- [3] อาคารวิภาวดี (อยู่ฝั่งซ้ายของถนนเส้นทางเข้า ประตูวิภาวดี) -->
+            <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[20.6%] top-[11.5%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="ring-vipa" class="status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500"></div>
                     <div id="badge-vipa" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
-                        <i data-lucide="car" class="w-3 h-3"></i>
+                        <i data-lucide="car" class="w-3.5 h-3.5"></i>
                         <span>วิภาวดี</span>
-                        <span id="text-status-vipa" class="text-amber-200 font-extrabold text-[10px]">เปิดบริการ</span>
+                        <span id="text-status-vipa" class="text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded">เปิดบริการ</span>
                     </div>
-                    <div class="w-0.5 h-2.5 bg-emerald-500 shadow"></div>
+                    <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
                 </div>
             </div>
 
             <!-- [4] จุดจัดงานลอยกระทง (สระพระพิรุณ หน้ามอ มุมงามวงศ์วาน-พหลโยธิน) -->
-            <div id="hotspot-pond" onclick="openEventModal()" class="absolute left-[81.2%] top-[76.0%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group">
+            <div id="hotspot-pond" onclick="openEventModal()" class="absolute left-[81.2%] top-[76.0%] -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center animate-float">
-                    <div class="px-2.5 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-[10px] sm:text-xs shadow-xl border-2 border-amber-200 flex items-center space-x-1 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
+                    <div class="px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-bold text-[11px] sm:text-xs shadow-2xl border-2 border-amber-200 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
                         <span class="text-sm">🪔</span>
-                        <span>จุดลอยกระทง (สระพระพิรุณ)</span>
+                        <span>สระพระพิรุณ (งานลอยกระทง)</span>
                     </div>
-                    <div class="w-2 h-2 bg-orange-500 rotate-45 -mt-1 shadow"></div>
+                    <div class="w-2.5 h-2.5 bg-amber-500 rotate-45 -mt-1 shadow"></div>
                 </div>
             </div>
 
         </div>
 
-        <!-- FLOATING 3D PERSPECTIVE CONTROLS (เหมือน GOOGLE / APPLE MAPS 3D) -->
-        <div class="absolute top-4 right-4 z-30 flex flex-col space-y-2">
-            <!-- 3D / 2D Tilt Toggle Button -->
-            <button id="btnToggle3D" onclick="toggle3DMode()" class="px-2.5 py-1.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-90 border border-slate-700/80 text-amber-300 text-xs font-bold shadow-xl backdrop-blur-md flex items-center space-x-1.5 transition">
-                <span id="label3D">📐 มุมมอง 3D</span>
+        <!-- FLOATING 3D PERSPECTIVE CONTROLS -->
+        <div class="absolute top-3.5 right-3.5 z-30 flex flex-col space-y-2">
+            <!-- 3D / 2D Tilt Toggle Button (44px HIG Target) -->
+            <button id="btnToggle3D" onclick="toggle3DMode()" class="touch-target-44 px-3 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-90 border border-slate-700/80 text-amber-300 text-xs font-bold shadow-xl backdrop-blur-md flex items-center space-x-1.5 transition">
+                <i data-lucide="layers" class="w-4 h-4 text-amber-400"></i>
+                <span id="label3D">มุมมอง 3D</span>
             </button>
-            <!-- Compass Reset Orientation -->
-            <button onclick="resetOrientation()" title="รีเซ็ตทิศเหนือ / มุมมอง 2D" class="w-9 h-9 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-90 border border-slate-700/80 text-slate-300 flex items-center justify-center shadow-xl backdrop-blur-md transition">
+            <!-- Compass Reset Orientation (44px HIG Target) -->
+            <button onclick="resetOrientation()" title="รีเซ็ตมุมมองระนาบ 2D" class="touch-target-44 w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-90 border border-slate-700/80 text-slate-300 flex items-center justify-center shadow-xl backdrop-blur-md transition">
                 <i data-lucide="compass" class="w-5 h-5 text-red-400"></i>
             </button>
         </div>
@@ -179,106 +281,115 @@
     </main>
 
     <!-- 3. BOTTOM QUICK ACTION BAR (ONE-TOUCH GOOGLE MAPS) -->
-    <footer class="bg-[#0D1527] border-t border-slate-800/90 px-3 py-2 sm:py-2.5 shrink-0 z-30 shadow-[0_-8px_20px_rgba(0,0,0,0.5)]">
-        <div class="max-w-4xl mx-auto flex flex-col space-y-1">
+    <footer class="glass-panel border-t border-slate-800 px-2.5 sm:px-4 py-2 shrink-0 z-30 shadow-[0_-8px_25px_rgba(0,0,0,0.6)]">
+        <div class="max-w-4xl mx-auto flex flex-col space-y-1.5">
             
             <div class="flex items-center justify-between text-[11px] text-slate-400 px-1">
-                <span>แตะเพื่อเปิด Google Maps นำทาง:</span>
-                <span class="text-emerald-400 font-semibold flex items-center space-x-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                    <span>สถานะเรียลไทม์</span>
+                <span class="flex items-center gap-1">
+                    <i data-lucide="navigation-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>แตะอาคารเพื่อเปิด Google Maps นำทาง:</span>
+                </span>
+                <span class="text-emerald-400 font-semibold flex items-center space-x-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span class="text-[10px] tracking-wide uppercase">สถานะเรียลไทม์</span>
                 </span>
             </div>
 
-            <div class="grid grid-cols-4 gap-1.5 sm:gap-2">
+            <!-- 4 Quick Navigation Cards -->
+            <div class="grid grid-cols-4 gap-1.5 sm:gap-2.5">
+                
                 <!-- Button Ngam 1 -->
-                <button onclick="openParkingModal('ngam1')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition min-h-[46px]">
+                <button onclick="openParkingModal('ngam1')" class="glass-card rounded-xl p-2 text-left flex flex-col justify-between min-h-[50px] sm:min-h-[54px] group">
                     <div class="flex items-center justify-between w-full">
-                        <span class="text-[10px] sm:text-[11px] font-bold text-slate-200 truncate">งามวงศ์วาน 1</span>
-                        <span id="card-badge-ngam1" class="text-[8px] font-bold px-1 rounded bg-emerald-500/20 text-emerald-400">เปิด</span>
+                        <span class="text-[10.5px] sm:text-xs font-bold text-slate-200 truncate group-hover:text-white">งามวงศ์วาน 1</span>
+                        <span id="card-badge-ngam1" class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">เปิด</span>
                     </div>
-                    <div class="mt-0.5 flex items-center justify-between text-[11px]">
-                        <span class="text-[10px] text-slate-400 truncate">ความจุ ~289 คัน</span>
-                        <i data-lucide="navigation" class="w-3 h-3 text-emerald-400 shrink-0"></i>
+                    <div class="mt-1 flex items-center justify-between text-[11px]">
+                        <span class="text-[10px] text-slate-400 tabular-nums truncate">~289 คัน</span>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-emerald-400 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                     </div>
                 </button>
 
                 <!-- Button Ngam 2 -->
-                <button onclick="openParkingModal('ngam2')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition min-h-[46px]">
+                <button onclick="openParkingModal('ngam2')" class="glass-card rounded-xl p-2 text-left flex flex-col justify-between min-h-[50px] sm:min-h-[54px] group">
                     <div class="flex items-center justify-between w-full">
-                        <span class="text-[10px] sm:text-[11px] font-bold text-slate-200 truncate">งามวงศ์วาน 2</span>
-                        <span id="card-badge-ngam2" class="text-[8px] font-bold px-1 rounded bg-emerald-500/20 text-emerald-400">เปิด</span>
+                        <span class="text-[10.5px] sm:text-xs font-bold text-slate-200 truncate group-hover:text-white">งามวงศ์วาน 2</span>
+                        <span id="card-badge-ngam2" class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">เปิด</span>
                     </div>
-                    <div class="mt-0.5 flex items-center justify-between text-[11px]">
-                        <span class="text-[10px] text-slate-400 truncate">ความจุ ~192 คัน</span>
-                        <i data-lucide="navigation" class="w-3 h-3 text-emerald-400 shrink-0"></i>
+                    <div class="mt-1 flex items-center justify-between text-[11px]">
+                        <span class="text-[10px] text-slate-400 tabular-nums truncate">~192 คัน</span>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-emerald-400 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                     </div>
                 </button>
 
                 <!-- Button Vibhavadi -->
-                <button onclick="openParkingModal('vipa')" class="bg-slate-900 hover:bg-slate-800 active:scale-95 border border-slate-700/80 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition min-h-[46px]">
+                <button onclick="openParkingModal('vipa')" class="glass-card rounded-xl p-2 text-left flex flex-col justify-between min-h-[50px] sm:min-h-[54px] group">
                     <div class="flex items-center justify-between w-full">
-                        <span class="text-[10px] sm:text-[11px] font-bold text-slate-200 truncate">วิภาวดี</span>
-                        <span id="card-badge-vipa" class="text-[8px] font-bold px-1 rounded bg-emerald-500/20 text-emerald-400">เปิด</span>
+                        <span class="text-[10.5px] sm:text-xs font-bold text-slate-200 truncate group-hover:text-white">วิภาวดี</span>
+                        <span id="card-badge-vipa" class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">เปิด</span>
                     </div>
-                    <div class="mt-0.5 flex items-center justify-between text-[11px]">
-                        <span class="text-[10px] text-slate-400 truncate">ความจุ ~150 คัน</span>
-                        <i data-lucide="navigation" class="w-3 h-3 text-amber-400 shrink-0"></i>
+                    <div class="mt-1 flex items-center justify-between text-[11px]">
+                        <span class="text-[10px] text-slate-400 tabular-nums truncate">~150 คัน</span>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-amber-400 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                     </div>
                 </button>
 
                 <!-- Button Loy Krathong Event -->
-                <button onclick="openEventModal()" class="bg-amber-950/40 hover:bg-amber-900/50 active:scale-95 border border-amber-600/60 rounded-xl p-1.5 sm:p-2 text-left flex flex-col justify-between transition min-h-[46px]">
+                <button onclick="openEventModal()" class="bg-amber-950/40 hover:bg-amber-900/50 active:scale-95 border border-amber-500/50 rounded-xl p-2 text-left flex flex-col justify-between min-h-[50px] sm:min-h-[54px] transition group">
                     <div class="flex items-center justify-between w-full">
-                        <span class="text-[10px] sm:text-[11px] font-bold text-amber-200 truncate">จุดลอยกระทง</span>
-                        <span class="text-[8px] font-bold px-1 rounded bg-amber-500/20 text-amber-300">งานหลัก</span>
+                        <span class="text-[10.5px] sm:text-xs font-bold text-amber-200 truncate group-hover:text-amber-100">จุดลอยกระทง</span>
+                        <span class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">งานหลัก</span>
                     </div>
-                    <div class="mt-0.5 flex items-center justify-between text-[11px]">
-                        <span class="font-bold text-amber-300 truncate">สระพระพิรุณ</span>
-                        <i data-lucide="navigation" class="w-3 h-3 text-amber-400 shrink-0"></i>
+                    <div class="mt-1 flex items-center justify-between text-[11px]">
+                        <span class="text-[10px] font-bold text-amber-300 truncate">สระพระพิรุณ</span>
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400 shrink-0 group-hover:scale-110 transition-transform"></i>
                     </div>
                 </button>
+
             </div>
 
         </div>
     </footer>
 
     <!-- 4. MODAL POPUP FOR PARKING / EVENT NAVIGATION -->
-    <div id="parkingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-sm w-full p-5 shadow-2xl relative text-center">
+    <div id="parkingModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div id="modalBox" class="bg-[#0D1527] border border-slate-700/80 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative text-center modal-enter">
             
-            <button onclick="closeParkingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-full bg-slate-800">
+            <!-- Close Button (44px HIG Touch Target) -->
+            <button onclick="closeParkingModal()" class="touch-target-44 absolute top-3.5 right-3.5 text-slate-400 hover:text-white p-2 rounded-full bg-slate-800/80 active:scale-90 transition">
                 <i data-lucide="x" class="w-4 h-4"></i>
             </button>
 
-            <div id="modalIconBox" class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl">
+            <div id="modalIconBox" class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-3.5 text-3xl shadow-inner">
                 🚗
             </div>
 
-            <h3 id="modalLotTitle" class="text-lg font-bold text-white">อาคารจอดรถงามวงศ์วาน 1</h3>
-            <p id="modalLotGate" class="text-xs text-slate-400 mt-1">เข้าทางประตูงามวงศ์วาน 1</p>
+            <h3 id="modalLotTitle" class="text-lg font-bold text-white tracking-tight">อาคารจอดรถงามวงศ์วาน 1</h3>
+            <p id="modalLotGate" class="text-xs text-slate-400 mt-1 leading-relaxed">เข้าทางประตูงามวงศ์วาน 1</p>
 
-            <div id="modalStatsBox" class="bg-slate-950 border border-slate-800 rounded-2xl p-3 my-4 flex items-center justify-around">
+            <div id="modalStatsBox" class="bg-slate-950/80 border border-slate-800/90 rounded-2xl p-3.5 my-4 flex items-center justify-around">
                 <div>
                     <span class="text-[10px] text-slate-500 block">สถานะปัจจุบัน</span>
                     <span id="modalLotStatusBadge" class="text-xs font-bold text-emerald-400">เปิดให้บริการ</span>
                 </div>
                 <div class="w-px h-8 bg-slate-800"></div>
                 <div>
-                    <span class="text-[10px] text-slate-500 block">ความจุทางการ</span>
-                    <span id="modalLotCapacity" class="text-sm font-bold text-slate-300">~289 คัน</span>
+                    <span class="text-[10px] text-slate-500 block">ความจุตามผัง</span>
+                    <span id="modalLotCapacity" class="text-sm font-bold text-slate-300 tabular-nums">~289 คัน</span>
                 </div>
             </div>
 
-            <!-- Big Direct Google Maps Button -->
-            <a id="modalMapBtn" href="#" target="_blank" rel="noopener" class="w-full bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold py-3.5 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-950 transition text-sm">
+            <!-- Big Direct Google Maps Navigation Button -->
+            <a id="modalMapBtn" href="#" target="_blank" rel="noopener" class="w-full min-h-[48px] bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 active:scale-95 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-950/80 transition text-sm">
                 <i data-lucide="navigation" class="w-4 h-4"></i>
-                <span id="modalBtnText">เปิดแผนที่นำทาง (Google Maps)</span>
+                <span id="modalBtnText">เปิด Google Maps นำทาง</span>
             </a>
 
-            <div class="mt-3">
-                <button onclick="copyMapLink()" class="text-xs text-slate-400 hover:text-slate-200 underline">
-                    คัดลอกลิงก์ Google Maps
+            <!-- Copy Link Button & In-Modal Toast Feedback -->
+            <div class="mt-3 flex items-center justify-center">
+                <button onclick="copyMapLink()" class="touch-target-44 text-xs text-slate-400 hover:text-slate-200 underline decoration-slate-600 transition flex items-center gap-1">
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                    <span id="copyLinkText">คัดลอกลิงก์ Google Maps</span>
                 </button>
             </div>
         </div>
@@ -292,17 +403,19 @@
         const mapViewport = document.getElementById('mapViewport');
         const mapBoard = document.getElementById('mapBoard');
         const label3D = document.getElementById('label3D');
+        const parkingModal = document.getElementById('parkingModal');
+        const modalBox = document.getElementById('modalBox');
 
         // Toggle 3D Perspective Mode
         function toggle3DMode() {
             is3DMode = !is3DMode;
             if (is3DMode) {
                 mapViewport.classList.add('mode-3d');
-                label3D.innerText = '🗺️ มุมมอง 2D';
+                label3D.innerText = 'มุมมอง 2D';
             } else {
                 mapViewport.classList.remove('mode-3d');
                 mapBoard.style.transform = '';
-                label3D.innerText = '📐 มุมมอง 3D';
+                label3D.innerText = 'มุมมอง 3D';
             }
         }
 
@@ -310,24 +423,36 @@
             is3DMode = false;
             mapViewport.classList.remove('mode-3d');
             mapBoard.style.transform = '';
-            label3D.innerText = '📐 มุมมอง 3D';
+            label3D.innerText = 'มุมมอง 3D';
         }
 
-        // Dynamic 3D Parallax Tilt based on mouse move
+        // Dynamic 3D Parallax Tilt based on mouse movement (Desktop)
         mapViewport.addEventListener('mousemove', (e) => {
             if (!is3DMode) return;
             const rect = mapViewport.getBoundingClientRect();
             const x = (e.clientX - rect.left) / rect.width - 0.5;
             const y = (e.clientY - rect.top) / rect.height - 0.5;
-            const rotX = 24 - (y * 10);
-            const rotZ = -3 + (x * 8);
-            mapBoard.style.transform = `rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(0.92) translateY(20px)`;
+            const rotX = 26 - (y * 10);
+            const rotZ = -3.5 + (x * 7);
+            mapBoard.style.transform = `rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(0.92) translateY(18px)`;
         });
 
         mapViewport.addEventListener('mouseleave', () => {
             if (!is3DMode) return;
-            mapBoard.style.transform = 'rotateX(24deg) rotateZ(-3deg) scale(0.92) translateY(20px)';
+            mapBoard.style.transform = 'rotateX(26deg) rotateZ(-3.5deg) scale(0.92) translateY(18px)';
         });
+
+        // Gyro Parallax for Mobile Devices
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', (e) => {
+                if (!is3DMode) return;
+                const gamma = Math.max(-20, Math.min(20, e.gamma || 0)); // tilt left/right
+                const beta = Math.max(-10, Math.min(30, (e.beta || 45) - 45)); // tilt front/back
+                const rotX = 26 + (beta * 0.3);
+                const rotZ = -3.5 + (gamma * 0.25);
+                mapBoard.style.transform = `rotateX(${rotX}deg) rotateZ(${rotZ}deg) scale(0.92) translateY(18px)`;
+            }, true);
+        }
 
         // Official verified capacities from Kasetsart University records:
         const PARKING_CONFIG = {
@@ -385,35 +510,35 @@
                 const cardBadge = document.getElementById(`card-badge-${id}`);
 
                 if (status === 'full') {
-                    if (textStatus) textStatus.innerText = 'ที่จอดเต็ม';
+                    if (textStatus) { textStatus.innerText = 'ที่จอดเต็ม'; textStatus.className = 'text-red-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
                     if (ring) ring.className = 'status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-red-500';
                     if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-red-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
-                        cardBadge.className = 'text-[8px] font-bold px-1 rounded bg-red-500/20 text-red-400';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-red-500/20 text-red-400 border border-red-500/30';
                         cardBadge.innerText = 'เต็ม';
                     }
                 } else if (status === 'warning') {
-                    if (textStatus) textStatus.innerText = 'ใกล้เต็ม';
+                    if (textStatus) { textStatus.innerText = 'ใกล้เต็ม'; textStatus.className = 'text-amber-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
                     if (ring) ring.className = 'status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-amber-500';
                     if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-amber-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
-                        cardBadge.className = 'text-[8px] font-bold px-1 rounded bg-amber-500/20 text-amber-400';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30';
                         cardBadge.innerText = 'ใกล้เต็ม';
                     }
                 } else if (status === 'closed') {
-                    if (textStatus) textStatus.innerText = 'งดให้บริการ';
+                    if (textStatus) { textStatus.innerText = 'งดบริการ'; textStatus.className = 'text-slate-200 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
                     if (ring) ring.className = 'status-ring absolute -inset-2.5 rounded-full opacity-0';
                     if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-slate-700 text-slate-300 font-bold text-[10px] sm:text-[11px] shadow-2xl border border-slate-600 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
-                        cardBadge.className = 'text-[8px] font-bold px-1 rounded bg-slate-700 text-slate-400';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-slate-700 text-slate-400 border border-slate-600';
                         cardBadge.innerText = 'ปิด';
                     }
                 } else {
-                    if (textStatus) textStatus.innerText = 'เปิดบริการ';
+                    if (textStatus) { textStatus.innerText = 'เปิดบริการ'; textStatus.className = 'text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
                     if (ring) ring.className = 'status-ring absolute -inset-2.5 rounded-full opacity-75 animate-pulse-ring bg-emerald-500';
                     if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600 text-white font-bold text-[10px] sm:text-[11px] shadow-2xl border border-white/90 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
-                        cardBadge.className = 'text-[8px] font-bold px-1 rounded bg-emerald-500/20 text-emerald-400';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
                         cardBadge.innerText = 'เปิด';
                     }
                 }
@@ -426,14 +551,15 @@
             currentActiveItem = lot;
 
             document.getElementById('modalIconBox').innerHTML = '🚗';
-            document.getElementById('modalIconBox').className = 'w-14 h-14 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl';
+            document.getElementById('modalIconBox').className = 'w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-3.5 text-3xl shadow-inner';
             document.getElementById('modalLotTitle').innerText = lot.name;
             document.getElementById('modalLotGate').innerText = lot.gate;
             document.getElementById('modalStatsBox').classList.remove('hidden');
             document.getElementById('modalLotCapacity').innerText = lot.capacity || PARKING_CONFIG[id].capacity;
             document.getElementById('modalMapBtn').href = lot.mapUrl;
-            document.getElementById('modalMapBtn').className = 'w-full bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold py-3.5 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-950 transition text-sm';
-            document.getElementById('modalBtnText').innerText = 'เปิดแผนที่นำทาง (Google Maps)';
+            document.getElementById('modalMapBtn').className = 'w-full min-h-[48px] bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 active:scale-95 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-950/80 transition text-sm';
+            document.getElementById('modalBtnText').innerText = 'เปิด Google Maps นำทาง';
+            document.getElementById('copyLinkText').innerText = 'คัดลอกลิงก์ Google Maps';
 
             const badge = document.getElementById('modalLotStatusBadge');
             const status = lot.status || 'open';
@@ -451,30 +577,65 @@
                 badge.className = "text-xs font-bold text-emerald-400";
             }
 
-            document.getElementById('parkingModal').classList.remove('hidden');
+            parkingModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modalBox.classList.remove('modal-enter');
+                modalBox.classList.add('modal-active');
+            });
         }
 
         function openEventModal() {
             currentActiveItem = EVENT_CONFIG;
             document.getElementById('modalIconBox').innerHTML = '🪔';
-            document.getElementById('modalIconBox').className = 'w-14 h-14 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl';
+            document.getElementById('modalIconBox').className = 'w-16 h-16 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-3.5 text-3xl shadow-inner';
             document.getElementById('modalLotTitle').innerText = EVENT_CONFIG.name;
             document.getElementById('modalLotGate').innerText = EVENT_CONFIG.gate;
             document.getElementById('modalStatsBox').classList.add('hidden');
             document.getElementById('modalMapBtn').href = EVENT_CONFIG.mapUrl;
-            document.getElementById('modalMapBtn').className = 'w-full bg-gradient-to-r from-amber-600 to-orange-500 hover:from-amber-500 hover:to-orange-400 active:scale-95 text-white font-bold py-3.5 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-amber-950 transition text-sm';
+            document.getElementById('modalMapBtn').className = 'w-full min-h-[48px] bg-gradient-to-r from-amber-600 via-orange-500 to-amber-500 hover:from-amber-500 hover:to-orange-400 active:scale-95 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-amber-950/80 transition text-sm';
             document.getElementById('modalBtnText').innerText = 'นำทางไปยังสระพระพิรุณ (Google Maps)';
-            document.getElementById('parkingModal').classList.remove('hidden');
+            document.getElementById('copyLinkText').innerText = 'คัดลอกลิงก์จุดลอยกระทง';
+
+            parkingModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modalBox.classList.remove('modal-enter');
+                modalBox.classList.add('modal-active');
+            });
         }
 
         function closeParkingModal() {
-            document.getElementById('parkingModal').classList.add('hidden');
+            modalBox.classList.remove('modal-active');
+            modalBox.classList.add('modal-exit');
+            setTimeout(() => {
+                parkingModal.classList.add('hidden');
+                modalBox.classList.remove('modal-exit');
+                modalBox.classList.add('modal-enter');
+            }, 160);
         }
+
+        // Close on backdrop click
+        parkingModal.addEventListener('click', (e) => {
+            if (e.target === parkingModal) closeParkingModal();
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !parkingModal.classList.contains('hidden')) {
+                closeParkingModal();
+            }
+        });
 
         function copyMapLink() {
             if (currentActiveItem && currentActiveItem.mapUrl) {
-                navigator.clipboard.writeText(currentActiveItem.mapUrl);
-                alert('คัดลอกลิงก์ Google Maps แล้ว: ' + currentActiveItem.mapUrl);
+                navigator.clipboard.writeText(currentActiveItem.mapUrl).then(() => {
+                    const copyText = document.getElementById('copyLinkText');
+                    copyText.innerText = '✓ คัดลอกสำเร็จแล้ว!';
+                    setTimeout(() => {
+                        copyText.innerText = 'คัดลอกลิงก์ Google Maps';
+                    }, 2000);
+                }).catch(() => {
+                    prompt('คัดลอกลิงก์:', currentActiveItem.mapUrl);
+                });
             }
         }
 
@@ -491,13 +652,14 @@
             if (navigator.share) {
                 try {
                     await navigator.share({
-                        title: 'KU Parking & Event - มก. บางเขน',
+                        title: 'KU Parking & Event - มหาวิทยาลัยเกษตรศาสตร์',
+                        text: 'เช็คสถานะที่จอดรถว่างและจุดลอยกระทง ม.เกษตรศาสตร์ บางเขน สดแบบเรียลไทม์',
                         url: window.location.href
                     });
                 } catch(e) {}
             } else {
                 navigator.clipboard.writeText(window.location.href);
-                alert('คัดลอกลิงก์เรียบร้อยแล้ว');
+                alert('คัดลอกลิงก์แผนที่เรียบร้อยแล้ว');
             }
         });
 
