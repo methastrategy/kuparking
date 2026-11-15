@@ -719,36 +719,36 @@
             }, true);
         }
 
-        // Official verified capacities from Kasetsart University records:
+        // Official verified capacities and exact Google Maps coordinates from Kasetsart University:
         const PARKING_CONFIG = {
             ngam1: {
                 name: "อาคารจอดรถงามวงศ์วาน 1",
                 gate: "ทางเข้า: ประตูงามวงศ์วาน 1 (ติดถนนสายในหน้าอาคาร)",
                 capacity: "ความจุตามผัง ~289 คัน",
                 status: "open",
-                mapUrl: "https://goo.gl/maps/NW36hyxkDMBuzc1V8"
+                mapUrl: "https://maps.app.goo.gl/gaWdqZun1TiXLhqp7"
             },
             ngam2: {
                 name: "อาคารจอดรถงามวงศ์วาน 2",
                 gate: "ทางเข้า: ประตูงามวงศ์วาน 2 (ติดกับอาคาร 1)",
                 capacity: "ความจุตามผัง ~192 คัน",
                 status: "open",
-                mapUrl: "https://goo.gl/maps/LbTes9jEivaYcsHSA"
+                mapUrl: "https://maps.app.goo.gl/3soPQzwfQH4wAqRC9"
             },
             vipa: {
                 name: "อาคารจอดรถวิภาวดี",
                 gate: "ทางเข้า: ประตูวิภาวดีรังสิต (อยู่ฝั่งซ้ายของถนนทางเข้า)",
                 capacity: "ความจุตามผัง ~150 คัน",
                 status: "open",
-                mapUrl: "https://goo.gl/maps/Vx99HQNPCcgQcWU26"
+                mapUrl: "https://maps.app.goo.gl/a6MZMWnCy87XcZ8p6"
             }
         };
 
         const EVENT_CONFIG = {
             name: "จุดลอยกระทง (สระพระพิรุณ หน้ามอ)",
-            gate: "พิกัด: หน้าหอประชุมใหญ่ มก. (มุมถนนงามวงศ์วานตัดพหลโยธิน / แยกเกษตร)",
+            gate: "พิกัด: หน้าหอประชุมใหญ่ มก. (มุมถนนงามวงศ์วานตัดพหลโยธิน / ประตู 1 พหลโยธิน)",
             desc: "พื้นที่จัดงานลอยกระทงหลัก มีจุดปล่อยกระทงริมสระน้ำ การแสดงวัฒนธรรม และร้านค้า",
-            mapUrl: "https://maps.google.com/?q=13.8475,100.5725"
+            mapUrl: "https://maps.app.goo.gl/u8Tw7VFg5Tz6KRJXA"
         };
 
         const BTS_STATION_CONFIG = {
@@ -821,7 +821,7 @@
 
         function openParkingModal(id) {
             const data = getParkingData();
-            const lot = (data.lots && data.lots[id]) || PARKING_CONFIG[id];
+            const lot = { ...PARKING_CONFIG[id], ...(data.lots && data.lots[id] ? data.lots[id] : {}) };
             currentActiveItem = lot;
 
             document.getElementById('modalIconBox').innerHTML = '🚗';
