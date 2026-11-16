@@ -320,6 +320,9 @@
     <rect x="1461" y="851" width="8" height="8" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2" />
     <rect x="131" y="101" width="8" height="8" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2" />
     <rect x="1461" y="101" width="8" height="8" rx="2" fill="#0F766E" stroke="#134E4A" stroke-width="1.2" />
+    <!-- เสาประตูหลัง ม. -->
+    <rect x="1011" y="101" width="8" height="8" rx="2" fill="#10B981" stroke="#047857" stroke-width="1.2" />
+    <rect x="1061" y="101" width="8" height="8" rx="2" fill="#10B981" stroke="#047857" stroke-width="1.2" />
 
     <!-- Gate Gateposts (เสาประตูรั้ว) -->
     <rect x="131" y="191" width="8" height="8" rx="2" fill="#F59E0B" stroke="#B45309" stroke-width="1.2" />
@@ -339,72 +342,86 @@
   <!-- ================= RECTILINEAR ROAD NETWORK (MODERN CRISP URBAN ASPHALT) ================= -->
   <!-- Outer Curb Border (#1E293B, Width 34) -->
   <g fill="none" stroke="#1E293B" stroke-width="34" stroke-linecap="round" stroke-linejoin="round">
-    <!-- 1. Upper Avenue (H1 - ถนนไพฑูรย์อิงคสุวรรณ) -->
-    <line x1="205" y1="220" x2="1180" y2="220" />
+    <!-- Top Horizontal & Corner Path (ถนนไพฑูรย์อิงคสุวรรณ เลี้ยวลง เส้นที่ 5 สายตะวันออก) -->
+    <!-- M 220 220 L 1180 220 L 1180 632: Forms seamless 90-degree corner at (1180, 220) with NO bumps! -->
+    <path d="M 220 220 L 1180 220 L 1180 632" />
     
-    <!-- 2. Central Spine (H2 - ถนนระพีสาคริก (สายกลาง): สิ้นสุดที่หน้าหอสมุด x=1260 ไม่เชื่อมกับวงเวียน BTS!) -->
-    <line x1="205" y1="520" x2="1180" y2="520" />
-    
-    <!-- 3. ถนนจันทร์สถิตย์ (H3: จากทางโค้งสนามอินทรีฯ ข้าม Gate 3, Gate 2 มาสิ้นสุดที่ 4 แยกประตู 1 ที่ x=1040) -->
-    <path d="M 220 205 L 220 620 Q 220 700 300 700 L 1040 700" />
-    <!-- ถนนเฉียงจาก 4 แยกประตู 1 (x=1040, y=700) ขึ้นไปยังทางเชื่อมวงเวียน BTS (x=1350, y=560) -->
-    <line x1="1040" y1="700" x2="1350" y2="550" />
-    <!-- Connector from Gate Vipa -->
-    <line x1="125" y1="220" x2="220" y2="220" />
-    
-    <!-- Vertical Roads: -->
-    <!-- Vertical Road North: ระหว่าง สาธิต มก. และ ศร.3 (x=460, y: 205 to 520) -->
-    <line x1="460" y1="205" x2="460" y2="520" />
-    <!-- Shifted Vertical Road: ระหว่าง สนามอินทรีฯ และ คณะวิศวกรรมศาสตร์ (เลื่อนมาขวาที่ x=510, ไม่ตรงกับประตู 3) -->
-    <line x1="510" y1="520" x2="510" y2="700" />
+    <!-- Connector from Gate Vipa (125 to 220 at y=220) -->
+    <line x1="125" y1="220" x2="220" y2="220" stroke-linecap="butt" />
+
+    <!-- West Avenue & Chansathit (โค้งสนามอินทรีฯ ข้าม Gate 3, Gate 2 มาสิ้นสุดที่ 4 แยกประตู 1 ที่ x=1040) -->
+    <path d="M 220 220 L 220 620 Q 220 700 300 700 L 1040 700" />
+
+    <!-- Central Spine (ถนนระพีสาคริก): starts flush at x=220 and ends flush at x=1180 (Zero protrusion!) -->
+    <line x1="220" y1="520" x2="1180" y2="520" stroke-linecap="butt" />
+
+    <!-- ถนนสุวรรณวาจกกสิกิจ: ทะลุตรงยาวจาก ประตู 1 (y=880) ผ่าน ม.เกษตร ไปจนถึง ประตูหลัง ม. (y=105) -->
+    <line x1="1040" y1="880" x2="1040" y2="105" stroke-linecap="butt" />
+
+    <!-- ถนนเฉียงจาก 4 แยกประตู 1 (x=1040, y=700) ไปยังทางเชื่อมวงเวียน BTS (x=1350, y=550) -->
+    <line x1="1040" y1="700" x2="1350" y2="550" stroke-linecap="butt" />
+
+    <!-- Vertical Inter-faculty Roads (Terminate flush at y=220 and y=520, Zero protrusion!) -->
+    <!-- ระหว่าง สาธิต มก. และ ศร.3 (x=460) -->
+    <line x1="460" y1="220" x2="460" y2="520" stroke-linecap="butt" />
+    <!-- ระหว่าง ศร.3 และ สำนักหอสมุด (x=760) -->
+    <line x1="760" y1="220" x2="760" y2="520" stroke-linecap="butt" />
+    <!-- ระหว่าง สนามอินทรีฯ และ คณะวิศวกรรมศาสตร์ (x=510, y: 520 to 700) -->
+    <line x1="510" y1="520" x2="510" y2="700" stroke-linecap="butt" />
+
     <!-- Gate 3 Ingress Connector: จากงามวงศ์วานขึ้นสู่ถนนจันทร์สถิตย์ (x=460, y: 700 to 880) -->
-    <line x1="460" y1="700" x2="460" y2="880" />
-    
-    <!-- Vertical Road North: ระหว่าง ศร.3 และ สำนักหอสมุด T3 (x=760, y: 205 to 520) -->
-    <line x1="760" y1="205" x2="760" y2="520" />
+    <line x1="460" y1="700" x2="460" y2="880" stroke-linecap="butt" />
     <!-- Gate 2 Ingress Connector: จากงามวงศ์วานขึ้นสู่ถนนจันทร์สถิตย์ (x=760, y: 700 to 880) -->
-    <line x1="760" y1="700" x2="760" y2="880" />
-    <!-- Gate 1 Axis (V4 - ซอยสุวรรณวาจกฯ / ทางเข้า ป.1) -->
-    <line x1="1040" y1="880" x2="1040" y2="205" />
-    
-    <!-- เส้นที่ 5: ถนนสายตะวันออก (x=1180) วิ่งตรงลงมาชนกับถนนเส้นเฉียงที่ y=637 (ไม่ตรงกับถนนรอบสระพระพิรุณ!) -->
-    <line x1="1180" y1="205" x2="1180" y2="637" />
-    
-    <!-- ทางเชื่อมวงเวียน BTS (เลข 14) จากถนนเส้นเฉียงขึ้นสู่วงเวียน และลงสู่ถนนรอบสระ -->
-    <!-- ทางเชื่อมจากถนนเส้นเฉียงลงสู่หัวมุมตะวันตกของถนนรอบสระ (x=1260) -->
-    <line x1="1260" y1="600" x2="1260" y2="670" />
+    <line x1="760" y1="700" x2="760" y2="880" stroke-linecap="butt" />
+
+    <!-- ทางเชื่อมจากถนนเส้นเฉียงลงสู่หัวมุมตะวันตกของถนนรอบสระ (x=1260, y: 594 to 670) -->
+    <line x1="1260" y1="594" x2="1260" y2="670" stroke-linecap="butt" />
     <!-- ถนนรอบสระพระพิรุณ (เลข 13) -->
-    <line x1="1260" y1="670" x2="1430" y2="670" />
     <path d="M 1260 670 L 1430 670 L 1430 850 L 1260 850 Z" />
-    
+
     <!-- Connectors to Phahonyothin Rd -->
-    <line x1="1415" y1="520" x2="1475" y2="520" />
-    <line x1="1430" y1="760" x2="1475" y2="760" />
+    <line x1="1415" y1="520" x2="1475" y2="520" stroke-linecap="butt" />
+    <line x1="1430" y1="760" x2="1475" y2="760" stroke-linecap="butt" />
+
   </g>
 
   <!-- Asphalt Road Bed (Modern Slate #334155, Width 28) -->
-  <g fill="none" stroke="#334155" stroke-width="28" stroke-linecap="square" stroke-linejoin="miter">
-    <line x1="205" y1="220" x2="1180" y2="220" />
-    <!-- Central Spine stops at x=1260: -->
-    <line x1="205" y1="520" x2="1180" y2="520" />
-    <!-- Thanon Chansathit with curve at corner of Sanam In: -->
-    <path d="M 220 205 L 220 620 Q 220 700 300 700 L 1040 700" stroke-linecap="round" />
-    <!-- ถนนเฉียงจาก 4 แยกประตู 1 (x=1040, y=700) ไปยังทางเชื่อมวงเวียน BTS (x=1350, y=560) -->
-    <line x1="1040" y1="700" x2="1350" y2="550" />
-    <line x1="125" y1="220" x2="220" y2="220" />
-    <line x1="460" y1="205" x2="460" y2="520" />
-    <line x1="510" y1="520" x2="510" y2="700" />
-    <line x1="460" y1="700" x2="460" y2="880" />
-    <line x1="760" y1="205" x2="760" y2="520" />
-    <line x1="760" y1="700" x2="760" y2="880" />
-    <line x1="1040" y1="880" x2="1040" y2="205" />
-    <!-- เส้นที่ 5 ชนกับถนนเส้นเฉียงที่ y=637 -->
-    <line x1="1180" y1="205" x2="1180" y2="637" />
-    <line x1="1260" y1="600" x2="1260" y2="670" />
-    <line x1="1260" y1="670" x2="1430" y2="670" />
+  <g fill="none" stroke="#334155" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Top Horizontal & Corner Path (ถนนไพฑูรย์อิงคสุวรรณ เลี้ยวลง เส้นที่ 5 สายตะวันออก) -->
+    <path d="M 220 220 L 1180 220 L 1180 632" />
+    
+    <!-- Connector from Gate Vipa (125 to 220 at y=220) -->
+    <line x1="125" y1="220" x2="220" y2="220" stroke-linecap="butt" />
+
+    <!-- West Avenue & Chansathit -->
+    <path d="M 220 220 L 220 620 Q 220 700 300 700 L 1040 700" />
+
+    <!-- Central Spine (ถนนระพีสาคริก): starts flush at x=220 and ends flush at x=1180 -->
+    <line x1="220" y1="520" x2="1180" y2="520" stroke-linecap="butt" />
+
+    <!-- ถนนสุวรรณวาจกกสิกิจ: ทะลุตรงยาวจาก ประตู 1 (y=880) ผ่าน ม.เกษตร ไปจนถึง ประตูหลัง ม. (y=105) -->
+    <line x1="1040" y1="880" x2="1040" y2="105" stroke-linecap="butt" />
+
+    <!-- ถนนเฉียงจาก 4 แยกประตู 1 (x=1040, y=700) ไปยังทางเชื่อมวงเวียน BTS (x=1350, y=550) -->
+    <line x1="1040" y1="700" x2="1350" y2="550" stroke-linecap="butt" />
+
+    <!-- Vertical Inter-faculty Roads -->
+    <line x1="460" y1="220" x2="460" y2="520" stroke-linecap="butt" />
+    <line x1="760" y1="220" x2="760" y2="520" stroke-linecap="butt" />
+    <line x1="510" y1="520" x2="510" y2="700" stroke-linecap="butt" />
+
+    <!-- Gate Connectors -->
+    <line x1="460" y1="700" x2="460" y2="880" stroke-linecap="butt" />
+    <line x1="760" y1="700" x2="760" y2="880" stroke-linecap="butt" />
+
+    <!-- ทางเชื่อมจากถนนเส้นเฉียงลงสู่หัวมุมตะวันตกของถนนรอบสระ -->
+    <line x1="1260" y1="594" x2="1260" y2="670" stroke-linecap="butt" />
+    <!-- ถนนรอบสระพระพิรุณ -->
     <path d="M 1260 670 L 1430 670 L 1430 850 L 1260 850 Z" />
-    <line x1="1415" y1="520" x2="1475" y2="520" />
-    <line x1="1430" y1="760" x2="1475" y2="760" />
+
+    <line x1="1415" y1="520" x2="1475" y2="520" stroke-linecap="butt" />
+    <line x1="1430" y1="760" x2="1475" y2="760" stroke-linecap="butt" />
+
   </g>
 
   <!-- Roundabout Asphalt Ring (At East connected to Thanon Chansathit via x=1350) -->
@@ -413,34 +430,35 @@
 
   <!-- Road Centerlines (Dashed White #FFFFFF, Opacity 0.6) -->
   <g fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="10,12" opacity="0.6">
-    <line x1="205" y1="220" x2="1180" y2="220" />
-    <line x1="205" y1="520" x2="1180" y2="520" />
-    <path d="M 220 205 L 220 620 Q 220 700 300 700 L 1040 700" />
-    <!-- Centerline for diagonal road -->
-    <line x1="1040" y1="700" x2="1350" y2="550" />
+    <path d="M 220 220 L 1180 220 L 1180 632" />
     <line x1="125" y1="220" x2="220" y2="220" />
-    <line x1="460" y1="205" x2="460" y2="520" />
+    <path d="M 220 220 L 220 620 Q 220 700 300 700 L 1040 700" />
+    <line x1="220" y1="520" x2="1180" y2="520" />
+    <line x1="1040" y1="880" x2="1040" y2="105" />
+    <line x1="1040" y1="700" x2="1350" y2="550" />
+    <line x1="460" y1="220" x2="460" y2="520" />
+    <line x1="760" y1="220" x2="760" y2="520" />
     <line x1="510" y1="520" x2="510" y2="700" />
     <line x1="460" y1="700" x2="460" y2="880" />
-    <line x1="760" y1="205" x2="760" y2="520" />
     <line x1="760" y1="700" x2="760" y2="880" />
-    <line x1="1040" y1="880" x2="1040" y2="205" />
-    <line x1="1180" y1="205" x2="1180" y2="637" />
-    <line x1="1260" y1="600" x2="1260" y2="670" />
-    <line x1="1260" y1="670" x2="1430" y2="670" />
+    <line x1="1260" y1="594" x2="1260" y2="670" />
     <path d="M 1260 670 L 1430 670 L 1430 850 L 1260 850 Z" />
     <ellipse cx="1350" cy="520" rx="55" ry="28" />
     <line x1="1415" y1="520" x2="1475" y2="520" />
     <line x1="1430" y1="760" x2="1475" y2="760" />
+
   </g>
 
   <!-- Zebra Crosswalks (ทางม้าลายที่ทางเข้าประตู) -->
   <g stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="4,3" opacity="0.85">
+    <!-- ประตูหลัง ม. (North Gate Crosswalk) -->
+    <line x1="1030" y1="105" x2="1050" y2="105" stroke-width="16" />
     <line x1="145" y1="210" x2="145" y2="230" stroke-width="16" />
     <line x1="450" y1="862" x2="470" y2="862" stroke-width="16" />
     <line x1="750" y1="862" x2="770" y2="862" stroke-width="16" />
     <line x1="1030" y1="862" x2="1050" y2="862" stroke-width="16" />
     <line x1="1450" y1="510" x2="1450" y2="530" stroke-width="16" />
+
   </g>
 
   <!-- Roundabout Island -->
@@ -510,7 +528,7 @@
   <!-- 4. West Avenue: ถนนสุธรรมอารีกุล (In-lane Vertical) -->
   <text x="220" y="370" fill="#E2E8F0" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="10.5" font-weight="800" letter-spacing="1" text-anchor="middle" transform="rotate(-90 220 370)">ถนนสุธรรมอารีกุล</text>
   <!-- 5. Gate 1 Avenue: ซอยสุวรรณวาจกกสิกิจ (In-lane Vertical) -->
-  <text x="1040" y="370" fill="#E2E8F0" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="10.5" font-weight="800" letter-spacing="1" text-anchor="middle" transform="rotate(-90 1040 370)">ซอยสุวรรณวาจกกสิกิจ</text>
+  <text x="1040" y="370" fill="#E2E8F0" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="10.5" font-weight="800" letter-spacing="1" text-anchor="middle" transform="rotate(-90 1040 370)">ถนนสุวรรณวาจกกสิกิจ</text>
 
   <!-- 6. Highway In-Lane Names -->
   <text x="100" y="500" fill="#CBD5E1" stroke="#242F3E" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="12" font-weight="800" letter-spacing="3" transform="rotate(-90 100 500)" text-anchor="middle">ถนนวิภาวดีรังสิต (VIBHAVADI RANGSIT RD.) ◀</text>
@@ -579,6 +597,14 @@
   </g>
 
   <!-- ================= CAMPUS GATES ================= -->
+  <!-- ประตูหลัง ม. (ทิศเหนือ เชื่อมต่อตรงจากถนนสุวรรณวาจกกสิกิจ) -->
+  <g id="gate-north" transform="translate(1040, 75)">
+    <circle cx="0" cy="0" r="14" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="4.5" fill="#10B981" font-size="9" font-weight="900" text-anchor="middle">หลัง</text>
+    <rect x="18" y="-10" width="85" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
+    <text x="60" y="4" fill="#0F172A" font-size="9.5" font-weight="800" text-anchor="middle">ประตูหลัง ม.</text>
+  </g>
+
   <!-- ประตู 3 (เลี้ยวซ้ายเท่านั้น เข้าสู่ถนนจันทร์สถิตย์) -->
   <g transform="translate(460, 890)">
     <circle cx="0" cy="0" r="14" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
@@ -611,16 +637,16 @@
 
   <g id="numbered-review-layer">
     <!-- Top Master Legend Banner -->
-    <g transform="translate(800, 32)" filter="url(#badgeGlow)">
-      <rect x="-350" y="-18" width="700" height="36" rx="18" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8" />
-      <circle cx="-230" cy="0" r="10" fill="#7C3AED" stroke="#FFFFFF" stroke-width="1.5" />
-      <text x="-212" y="4" fill="#FFFFFF" font-size="11.5" font-weight="900" text-anchor="start">เลข 1-14 = เส้นทางถนน</text>
+    <g transform="translate(560, 32)" filter="url(#badgeGlow)">
+      <rect x="-280" y="-18" width="560" height="36" rx="18" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8" />
+      <circle cx="-190" cy="0" r="10" fill="#7C3AED" stroke="#FFFFFF" stroke-width="1.5" />
+      <text x="-172" y="4" fill="#FFFFFF" font-size="11.5" font-weight="900" text-anchor="start">เลข 1-14 = ถนน</text>
 
-      <circle cx="-60" cy="0" r="10" fill="#F59E0B" stroke="#000000" stroke-width="1.5" />
-      <text x="-42" y="4" fill="#FDE68A" font-size="11.5" font-weight="900" text-anchor="start">เลข 15-29 = พื้นที่/อาคาร</text>
+      <circle cx="-50" cy="0" r="10" fill="#F59E0B" stroke="#000000" stroke-width="1.5" />
+      <text x="-32" y="4" fill="#FDE68A" font-size="11.5" font-weight="900" text-anchor="start">เลข 15-29 = พื้นที่/อาคาร</text>
 
-      <circle cx="120" cy="0" r="10" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
-      <text x="138" y="4" fill="#A7F3D0" font-size="11.5" font-weight="900" text-anchor="start">เลข 30-34 = ประตูทางเข้า</text>
+      <circle cx="110" cy="0" r="10" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
+      <text x="128" y="4" fill="#A7F3D0" font-size="11.5" font-weight="900" text-anchor="start">เลข 30-35 = ประตูทางเข้า</text>
     </g>
 
     
@@ -708,7 +734,7 @@
     </g>
   
 
-    <g transform="translate(740, 145)" filter="url(#badgeGlow)">
+    <g transform="translate(600, 145)" filter="url(#badgeGlow)">
       <circle cx="0" cy="0" r="16" fill="#F59E0B" stroke="#0F172A" stroke-width="2.5" />
       <text x="0" y="5.5" fill="#000000" font-size="13.5" font-weight="900" text-anchor="middle">15</text>
     </g>
@@ -825,6 +851,12 @@
     <g transform="translate(1475, 450)" filter="url(#badgeGlow)">
       <circle cx="0" cy="0" r="16" fill="#10B981" stroke="#FFFFFF" stroke-width="2.5" />
       <text x="0" y="5.5" fill="#FFFFFF" font-size="13.5" font-weight="900" text-anchor="middle">34</text>
+    </g>
+  
+
+    <g transform="translate(1040, 40)" filter="url(#badgeGlow)">
+      <circle cx="0" cy="0" r="16" fill="#10B981" stroke="#FFFFFF" stroke-width="2.5" />
+      <text x="0" y="5.5" fill="#FFFFFF" font-size="13.5" font-weight="900" text-anchor="middle">35</text>
     </g>
   
   </g>
