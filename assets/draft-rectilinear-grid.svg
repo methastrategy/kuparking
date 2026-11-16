@@ -81,27 +81,53 @@
     <text x="135" y="155" fill="#16A34A" font-size="13" font-weight="700" opacity="0.4" text-anchor="middle">คณะเกษตรศาสตร์</text>
   </g>
 
-  <!-- Block T3: Central-East Quad (ลานวิชาการกลาง, x: 775 to 1025, Width 250) -->
+  <!-- Block T3: Central-East Quad: สำนักหอสมุด / อาคารสารนิเทศ 50 ปี (ย้ายมาจาก T4 ตามตำแหน่งจริงติด ศร.3) -->
   <g transform="translate(775, 235)">
     <rect x="0" y="0" width="250" height="270" rx="14" fill="url(#lawnCenter)" stroke="#BBF7D0" stroke-width="1.2" />
-    <text x="125" y="140" fill="#16A34A" font-size="14" font-weight="800" opacity="0.45" text-anchor="middle">ลานวิชาการกลาง</text>
+    
+    <!-- Building Card: สำนักหอสมุด (Main Library) Centered at x=125, y=135 -->
+    <g transform="translate(125, 135)" filter="url(#cardGlow)">
+      <rect x="-105" y="-55" width="210" height="110" rx="14" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+      <path d="M -105 -41 Q -105 -55 -91 -55 L 91 -55 Q 105 -55 105 -41 L 105 -28 L -105 -28 Z" fill="#E0F2FE" />
+      
+      <!-- Academic Icon Badge -->
+      <circle cx="-80" cy="-42" r="8" fill="#0284C7" />
+      <text x="-80" y="-38" fill="#FFFFFF" font-size="9" text-anchor="middle">📖</text>
+      <text x="12" y="-38" fill="#0369A1" font-size="8.5" font-weight="800" letter-spacing="1" text-anchor="middle">MAIN LIBRARY • สารนิเทศ 50 ปี</text>
+      
+      <!-- Library Book Stack Icon -->
+      <circle cx="-65" cy="14" r="18" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.2" />
+      <g transform="translate(-65, 14)">
+        <path d="M -10 6 L 0 10 L 10 6 L 10 -4 L 0 0 L -10 -4 Z" fill="#38BDF8" opacity="0.9" />
+        <path d="M -10 1 L 0 5 L 10 1 L 10 -1 L 0 3 L -10 -1 Z" fill="#0284C7" />
+        <path d="M -10 -4 L 0 0 L 10 -4 L 0 -8 Z" fill="#0369A1" />
+      </g>
+      
+      <!-- Typography -->
+      <text x="-34" y="8" fill="#0F172A" font-size="13.5" font-weight="800" text-anchor="start">สำนักหอสมุด</text>
+      <text x="-34" y="24" fill="#0284C7" font-size="10" font-weight="700" text-anchor="start">อาคารสารนิเทศ 50 ปี</text>
+      <text x="-34" y="38" fill="#64748B" font-size="8" font-weight="600" text-anchor="start">KU Main Library (50-Yr Bldg)</text>
+    </g>
   </g>
 
-  <!-- Block T4: East Quad (สำนักหอสมุด / สารนิเทศ 50 ปี, x: 1055 to 1245, Width 190) -->
+  <!-- Block T4: East Quad: พื้นที่สีเขียวและลานวิชาการตอนเหนือ (เปิดโล่งหลังย้ายหอสมุดไป T3) -->
   <g transform="translate(1055, 235)">
-    <rect x="0" y="0" width="190" height="270" rx="14" fill="#E0F2FE" stroke="#7DD3FC" stroke-width="1.5" />
-    <text x="95" y="125" fill="#0369A1" font-size="13" font-weight="800" text-anchor="middle">สำนักหอสมุด</text>
-    <text x="95" y="150" fill="#0284C7" font-size="11" font-weight="700" opacity="0.8" text-anchor="middle">อาคารสารนิเทศ 50 ปี</text>
+    <rect x="0" y="0" width="190" height="270" rx="14" fill="url(#lawnCenter)" stroke="#BBF7D0" stroke-width="1.2" />
+    <!-- Campus Park / Green Quad Feature -->
+    <circle cx="95" cy="115" r="26" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.2" opacity="0.7" />
+    <text x="95" y="122" font-size="20" text-anchor="middle" opacity="0.8">🌳</text>
+    <text x="95" y="158" fill="#15803D" font-size="12.5" font-weight="800" opacity="0.6" text-anchor="middle">โซนวิชาการตอนเหนือ</text>
+    <text x="95" y="176" fill="#16A34A" font-size="10" font-weight="700" opacity="0.5" text-anchor="middle">พื้นที่สีเขียว มก.</text>
   </g>
 
   <!-- [ROW 2 - BOTTOM ROW BLOCKS: y=535 to y=845] -->
-  <!-- Block B1: Southwest Quad (สนามอินทรีจันทรสถิตย์ - Number 3: วางอยู่ในกรอบบล็อก เหนือทางโค้งถนนจันทร์สถิตย์) -->
-  <!-- Upper Stadium Block (x: 235 to 445, y: 535 to 685, Height 150) -->
+  <!-- Block B1: Southwest Quad (สนามอินทรีจันทรสถิตย์ - Number 3: ขยายพื้นที่สบาย x: 235 to 490) -->
+  <!-- Upper Stadium Block (x: 235 to 490, y: 535 to 685, Height 150) -->
   <g transform="translate(235, 535)">
-    <rect x="0" y="0" width="210" height="150" rx="14" fill="url(#lawnCenter)" stroke="#BBF7D0" stroke-width="1.2" />
+    <rect x="0" y="0" width="255" height="150" rx="14" fill="url(#lawnCenter)" stroke="#BBF7D0" stroke-width="1.2" />
     
-    <!-- Stadium Enclosure Container (Centered at x=105, y=65) -->
-    <g transform="translate(105, 58)">
+    <!-- Stadium Enclosure Container (Centered at x=127.5, y=58) -->
+    <g transform="translate(127.5, 58)">
       <!-- Outer Running Track / Stadium Oval -->
       <rect x="-80" y="-44" width="160" height="88" rx="22" fill="#DCFCE7" stroke="#10B981" stroke-width="1.5" filter="url(#dropSoft)" />
       <!-- Inner Green Pitch -->
@@ -120,7 +146,7 @@
       <path d="M 68 26 A 8 8 0 0 1 60 34" fill="none" stroke="#FFFFFF" stroke-width="1" />
     </g>
     <!-- Stadium Title Badge Inside Quad -->
-    <g transform="translate(105, 126)">
+    <g transform="translate(127.5, 126)">
       <rect x="-82" y="-10" width="164" height="20" rx="10" fill="#FFFFFF" stroke="#10B981" stroke-width="1.2" filter="url(#dropSoft)" />
       <circle cx="-66" cy="0" r="6" fill="#10B981" />
       <text x="-66" y="3" fill="#FFFFFF" font-size="8" font-weight="900" text-anchor="middle">3</text>
@@ -128,26 +154,28 @@
     </g>
   </g>
 
-  <!-- Lower Sports Lawn (Below the curved road: x: 235 to 445, y: 715 to 845) -->
+  <!-- Lower Sports Lawn (Below the curved road: x: 235 to 490, y: 715 to 845) -->
   <g transform="translate(235, 715)">
-    <rect x="0" y="0" width="210" height="130" rx="14" fill="url(#lawnNorth)" stroke="#A7F3D0" stroke-width="1.2" />
-    <text x="105" y="70" fill="#059669" font-size="11" font-weight="700" opacity="0.45" text-anchor="middle">ศูนย์กีฬาและสนามฟุตบอล มก.</text>
+    <rect x="0" y="0" width="255" height="130" rx="14" fill="url(#lawnNorth)" stroke="#A7F3D0" stroke-width="1.2" />
+    <text x="127.5" y="70" fill="#059669" font-size="11" font-weight="700" opacity="0.45" text-anchor="middle">ศูนย์กีฬาและสนามฟุตบอล มก.</text>
   </g>
 
-  <!-- Block B2: South-Central Quad A (คณะวิศวกรรมศาสตร์ - Number 1: ระหว่าง ประตู 3 และ ประตู 2) -->
-  <g transform="translate(475, 535)">
-    <rect x="0" y="0" width="270" height="310" rx="14" fill="url(#lawnNorth)" stroke="#A7F3D0" stroke-width="1.2" />
+  <!-- ================= UNIFIED SOUTH-CENTRAL ACADEMIC ZONE ================= -->
+  <!-- Upper Academic Quad: คณะวิศวกรรมศาสตร์ (1) และ คณะเศรษฐศาสตร์ (2) เชื่อมต่อกัน (ลบถนนคั่นกลางออก 100%) -->
+  <!-- x: 530 to 1025, y: 535 to 685, Height: 150 -->
+  <g transform="translate(530, 535)">
+    <rect x="0" y="0" width="495" height="150" rx="14" fill="url(#lawnNorth)" stroke="#A7F3D0" stroke-width="1.2" />
     
-    <!-- Building Card: คณะวิศวกรรมศาสตร์ (1) -->
-    <g transform="translate(135, 75)" filter="url(#cardGlow)">
-      <rect x="-105" y="-48" width="210" height="96" rx="14" fill="#FFFFFF" stroke="#0D9488" stroke-width="1.5" />
-      <path d="M -105 -34 Q -105 -48 -91 -48 L 91 -48 Q 105 -48 105 -34 L 105 -22 L -105 -22 Z" fill="#CCFBF1" />
+    <!-- Building Card: คณะวิศวกรรมศาสตร์ (1) - Centered at x=120, y=75 -->
+    <g transform="translate(120, 75)" filter="url(#cardGlow)">
+      <rect x="-102" y="-48" width="204" height="96" rx="14" fill="#FFFFFF" stroke="#0D9488" stroke-width="1.5" />
+      <path d="M -102 -34 Q -102 -48 -88 -48 L 88 -48 Q 102 -48 102 -34 L 102 -22 L -102 -22 Z" fill="#CCFBF1" />
       <!-- Badge Number 1 -->
-      <circle cx="-80" cy="-35" r="9" fill="#0D9488" />
-      <text x="-80" y="-31" fill="#FFFFFF" font-size="9" font-weight="900" text-anchor="middle">1</text>
-      <text x="5" y="-31" fill="#0F766E" font-size="9" font-weight="800" letter-spacing="1" text-anchor="middle">FACULTY OF ENGINEERING</text>
+      <circle cx="-78" cy="-35" r="9" fill="#0D9488" />
+      <text x="-78" y="-31" fill="#FFFFFF" font-size="9" font-weight="900" text-anchor="middle">1</text>
+      <text x="5" y="-31" fill="#0F766E" font-size="8.5" font-weight="800" letter-spacing="0.5" text-anchor="middle">FACULTY OF ENGINEERING</text>
       
-      <!-- Engineering Icon -->
+      <!-- Engineering Cog Icon -->
       <circle cx="-65" cy="12" r="18" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.2" />
       <g transform="translate(-65, 12) scale(0.7)">
         <circle cx="0" cy="0" r="11" fill="none" stroke="#0D9488" stroke-width="3" />
@@ -162,22 +190,18 @@
       <text x="-35" y="8" fill="#0F172A" font-size="13" font-weight="800" text-anchor="start">คณะวิศวกรรมศาสตร์</text>
       <text x="-35" y="24" fill="#0D9488" font-size="10" font-weight="700" text-anchor="start">อาคารวิศวกรรม 1-4 มก.</text>
     </g>
-    <!-- Lower Lawn Feature -->
-    <text x="135" y="245" fill="#059669" font-size="12" font-weight="700" opacity="0.45" text-anchor="middle">ลานกิจกรรมวิศวกรรมศาสตร์</text>
-  </g>
 
-  <!-- Block B3: South-Central Quad B (คณะเศรษฐศาสตร์ - Number 2 & อาคารจอดรถงาม 1, 2 ติดกัน) -->
-  <g transform="translate(775, 535)">
-    <rect x="0" y="0" width="250" height="310" rx="14" fill="url(#lawnNorth)" stroke="#A7F3D0" stroke-width="1.2" />
+    <!-- Center Academic Courtyard (จุดเชื่อมต่อพื้นที่ทางเดินระหว่าง 2 คณะ ไม่มีถนนตัดผ่าน) -->
+    <line x1="245" y1="20" x2="245" y2="130" stroke="#86EFAC" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.6" />
 
-    <!-- Building Card: คณะเศรษฐศาสตร์ (2) - Above ถนนจันทร์สถิตย์ -->
-    <g transform="translate(125, 75)" filter="url(#cardGlow)">
+    <!-- Building Card: คณะเศรษฐศาสตร์ (2) - Centered at x=370, y=75 -->
+    <g transform="translate(370, 75)" filter="url(#cardGlow)">
       <rect x="-100" y="-48" width="200" height="96" rx="14" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5" />
       <path d="M -100 -34 Q -100 -48 -86 -48 L 86 -48 Q 100 -48 100 -34 L 100 -22 L -100 -22 Z" fill="#DBEAFE" />
       <!-- Badge Number 2 -->
-      <circle cx="-78" cy="-35" r="9" fill="#2563EB" />
-      <text x="-78" y="-31" fill="#FFFFFF" font-size="9" font-weight="900" text-anchor="middle">2</text>
-      <text x="5" y="-31" fill="#1D4ED8" font-size="9" font-weight="800" letter-spacing="1" text-anchor="middle">FACULTY OF ECONOMICS</text>
+      <circle cx="-76" cy="-35" r="9" fill="#2563EB" />
+      <text x="-76" y="-31" fill="#FFFFFF" font-size="9" font-weight="900" text-anchor="middle">2</text>
+      <text x="6" y="-31" fill="#1D4ED8" font-size="8.5" font-weight="800" letter-spacing="0.5" text-anchor="middle">FACULTY OF ECONOMICS</text>
 
       <!-- Economics Chart Icon -->
       <circle cx="-65" cy="12" r="18" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2" />
@@ -192,6 +216,42 @@
       <text x="-36" y="8" fill="#0F172A" font-size="13" font-weight="800" text-anchor="start">คณะเศรษฐศาสตร์</text>
       <text x="-36" y="24" fill="#2563EB" font-size="10" font-weight="700" text-anchor="start">Faculty of Economics KU</text>
     </g>
+  </g>
+
+  <!-- Lower Block Under Engineering: สำนักบริการคอมพิวเตอร์ (OCS) (แทนที่ลานกิจกรรมวิศวกรรมเดิม) -->
+  <!-- ระหว่าง Gate 3 Connector (x=460) และ Gate 2 Connector (x=760), ใต้ถนนจันทร์สถิตย์ y: 715 to 845 -->
+  <g transform="translate(485, 715)">
+    <rect x="0" y="0" width="255" height="130" rx="14" fill="#F0FDFA" stroke="#99F6E4" stroke-width="1.2" />
+    
+    <!-- Building Card: สำนักบริการคอมพิวเตอร์ (OCS) Centered at x=127.5, y=65 -->
+    <g transform="translate(127.5, 65)" filter="url(#cardGlow)">
+      <rect x="-88" y="-46" width="176" height="92" rx="14" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+      <path d="M -88 -32 Q -88 -46 -74 -46 L 74 -46 Q 88 -46 88 -32 L 88 -20 L -88 -20 Z" fill="#E0F2FE" />
+      
+      <!-- Computer Icon Badge -->
+      <circle cx="-66" cy="-33" r="8" fill="#0284C7" />
+      <text x="-66" y="-29" fill="#FFFFFF" font-size="8" font-weight="900" text-anchor="middle">💻</text>
+      <text x="12" y="-31" fill="#0369A1" font-size="8.5" font-weight="800" letter-spacing="0.5" text-anchor="middle">COMPUTER SERVICES (OCS)</text>
+      
+      <!-- Desktop PC Screen Graphics -->
+      <g transform="translate(-56, 14)">
+        <rect x="-13" y="-10" width="26" height="18" rx="3" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2" />
+        <rect x="-10" y="-7" width="20" height="12" rx="1.5" fill="#38BDF8" opacity="0.9" />
+        <circle cx="0" cy="-1" r="3" fill="#FFFFFF" />
+        <line x1="0" y1="8" x2="0" y2="13" stroke="#0F172A" stroke-width="2" />
+        <line x1="-7" y1="13" x2="7" y2="13" stroke="#0F172A" stroke-width="2" stroke-linecap="round" />
+      </g>
+      
+      <!-- Typography -->
+      <text x="-26" y="9" fill="#0F172A" font-size="12" font-weight="800" text-anchor="start">สำนักบริการคอมพิวเตอร์</text>
+      <text x="-26" y="24" fill="#0284C7" font-size="9.5" font-weight="700" text-anchor="start">Office of Computer Services</text>
+      <text x="-26" y="37" fill="#64748B" font-size="8" font-weight="600" text-anchor="start">KU Data Center &amp; Network</text>
+    </g>
+  </g>
+
+  <!-- Lower Block Under Economics: อาคารจอดรถงาม 1, 2 ติดกัน (ใต้ถนนจันทร์สถิตย์ y: 715 to 845) -->
+  <g transform="translate(775, 715)">
+    <rect x="0" y="0" width="250" height="130" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.2" />
   </g>
 
   <!-- Block B4: Southeast Quad (ลานรอบสระพระพิรุณ, x: 1055 to 1445, Width 390) -->
@@ -285,10 +345,10 @@
   <!-- ================= RECTILINEAR ROAD NETWORK (MODERN CRISP URBAN ASPHALT) ================= -->
   <!-- Outer Curb Border (#1E293B, Width 34) -->
   <g fill="none" stroke="#1E293B" stroke-width="34" stroke-linecap="round" stroke-linejoin="round">
-    <!-- 1. Upper Avenue (H1 - ถนนระพีสาคริก) -->
+    <!-- 1. Upper Avenue (H1 - ถนนไพฑูรย์อิงคสุวรรณ) -->
     <line x1="205" y1="220" x2="1275" y2="220" />
     
-    <!-- 2. Central Spine (H2 - ถนนชูชาติกำภู: สิ้นสุดที่หน้าหอสมุด x=1260 ไม่เชื่อมกับวงเวียน BTS!) -->
+    <!-- 2. Central Spine (H2 - ถนนระพีสาคริก (สายกลาง): สิ้นสุดที่หน้าหอสมุด x=1260 ไม่เชื่อมกับวงเวียน BTS!) -->
     <line x1="205" y1="520" x2="1260" y2="520" />
     
     <!-- 3. ถนนจันทร์สถิตย์ (H3: เชื่อมจากทางโค้งมุมสนามอินทรีฯ ข้าม Gate 3, 2, 1 เข้าสู่วงเวียน BTS และสระพระพิรุณ!) -->
@@ -298,10 +358,18 @@
     <line x1="125" y1="220" x2="220" y2="220" />
     
     <!-- Vertical Roads: -->
-    <!-- Gate 3 Axis (V2) -->
-    <line x1="460" y1="880" x2="460" y2="205" />
-    <!-- Central Vertical Spine (V3 - ถนนหน้า ศร.3 & ประตู 2) -->
-    <line x1="760" y1="880" x2="760" y2="205" />
+    <!-- Vertical Road North: ระหว่าง สาธิต มก. และ ศร.3 (x=460, y: 205 to 520) -->
+    <line x1="460" y1="205" x2="460" y2="520" />
+    <!-- Shifted Vertical Road: ระหว่าง สนามอินทรีฯ และ คณะวิศวกรรมศาสตร์ (เลื่อนมาขวาที่ x=510, ไม่ตรงกับประตู 3) -->
+    <line x1="510" y1="520" x2="510" y2="700" />
+    <!-- Gate 3 Ingress Connector: จากงามวงศ์วานขึ้นสู่ถนนจันทร์สถิตย์ (x=460, y: 700 to 880) -->
+    <line x1="460" y1="700" x2="460" y2="880" />
+    
+    <!-- Vertical Road North: ระหว่าง ศร.3 และ สำนักหอสมุด T3 (x=760, y: 205 to 520) -->
+    <line x1="760" y1="205" x2="760" y2="520" />
+    <!-- หมายเหตุ: ลบถนนระหว่าง คณะวิศวกรรมศาสตร์ และ คณะเศรษฐศาสตร์ (x=760, y: 520 to 700) ออก 100%! -->
+    <!-- Gate 2 Ingress Connector: จากงามวงศ์วานขึ้นสู่ถนนจันทร์สถิตย์ (x=760, y: 700 to 880) -->
+    <line x1="760" y1="700" x2="760" y2="880" />
     <!-- Gate 1 Axis (V4 - ซอยสุวรรณวาจกฯ) -->
     <line x1="1040" y1="880" x2="1040" y2="205" />
     <!-- East Vertical Spine (V5 - หน้าหอสมุดลงสู่สระพระพิรุณ) -->
@@ -326,8 +394,11 @@
     <!-- Thanon Chansathit with curve at corner of Sanam In: -->
     <path d="M 220 205 L 220 620 Q 220 700 300 700 L 1260 700" stroke-linecap="round" />
     <line x1="125" y1="220" x2="220" y2="220" />
-    <line x1="460" y1="880" x2="460" y2="205" />
-    <line x1="760" y1="880" x2="760" y2="205" />
+    <line x1="460" y1="205" x2="460" y2="520" />
+    <line x1="510" y1="520" x2="510" y2="700" />
+    <line x1="460" y1="700" x2="460" y2="880" />
+    <line x1="760" y1="205" x2="760" y2="520" />
+    <line x1="760" y1="700" x2="760" y2="880" />
     <line x1="1040" y1="880" x2="1040" y2="205" />
     <line x1="1260" y1="205" x2="1260" y2="850" />
     <!-- East connection into BTS Roundabout and Pond: -->
@@ -348,8 +419,11 @@
     <line x1="205" y1="520" x2="1260" y2="520" />
     <path d="M 220 205 L 220 620 Q 220 700 300 700 L 1260 700" />
     <line x1="125" y1="220" x2="220" y2="220" />
-    <line x1="460" y1="880" x2="460" y2="205" />
-    <line x1="760" y1="880" x2="760" y2="205" />
+    <line x1="460" y1="205" x2="460" y2="520" />
+    <line x1="510" y1="520" x2="510" y2="700" />
+    <line x1="460" y1="700" x2="460" y2="880" />
+    <line x1="760" y1="205" x2="760" y2="520" />
+    <line x1="760" y1="700" x2="760" y2="880" />
     <line x1="1040" y1="880" x2="1040" y2="205" />
     <line x1="1260" y1="205" x2="1260" y2="850" />
     <line x1="1350" y1="540" x2="1350" y2="670" />
@@ -372,38 +446,69 @@
   <ellipse cx="1350" cy="520" rx="34" ry="14" fill="#10B981" stroke="#059669" stroke-width="2" />
   <text x="1350" y="524" fill="#FFFFFF" font-size="9" font-weight="800" text-anchor="middle">วงเวียน BTS</text>
 
-  <!-- One-Way Directional Traffic Arrows (KU Green #10B981) -->
+  <!-- One-Way Directional Traffic Arrows & Mandatory Turn Markings (KU Green #10B981) -->
   <g fill="#10B981" stroke="#065F46" stroke-width="0.8">
+    <!-- Horizontal Upper Avenue (Westbound) -->
     <polygon points="320,220 310,215 310,225" />
     <polygon points="900,220 890,215 890,225" />
     <polygon points="1150,220 1140,215 1140,225" />
+    
+    <!-- Central Spine (Westbound) -->
     <polygon points="320,520 310,515 310,525" />
     <polygon points="900,520 890,515 890,525" />
     <polygon points="1150,520 1140,515 1140,525" />
+    
+    <!-- Shifted Road between Sanam In and Engineering (x=510: Southbound into Chansathit) -->
+    <polygon points="510,615 505,605 515,605" />
+    
+    <!-- North vertical avenues (Heading North) -->
     <polygon points="460,370 455,380 465,380" />
-    <polygon points="460,790 455,800 465,800" />
     <polygon points="760,370 755,380 765,380" />
-    <polygon points="760,790 755,800 765,800" />
     <polygon points="1040,790 1035,800 1045,800" />
+    
+    <!-- East spine & roundabout arrows -->
     <polygon points="1260,370 1265,360 1255,360" />
     <polygon points="1260,600 1265,590 1255,590" />
     <polygon points="1350,610 1345,600 1355,600" />
     <polygon points="1460,760 1450,755 1450,765" />
+    
+    <!-- Thanon Chansathit Westbound Traffic Flow (เข้าจากประตู 2, 3 เลี้ยวซ้ายมุ่งสู่วิภาวดี) -->
+    <polygon points="630,700 620,695 620,705" />
+    <polygon points="380,700 370,695 370,705" />
+  </g>
+
+  <!-- ================= MANDATORY LEFT-TURN LANE MARKINGS (ทางเข้าประตู 2 และ ประตู 3 เลี้ยวซ้ายได้อย่างเดียว) ================= -->
+  <!-- Gate 3 Mandatory Left-Turn System (Lane Marking on Asphalt) -->
+  <g id="gate3-mandatory-left">
+    <!-- Northbound approach arrow on connector -->
+    <polygon points="460,780 455,790 465,790" fill="#10B981" stroke="#065F46" stroke-width="0.8" />
+    <!-- Curved Left Turn Lane Arc onto Thanon Chansathit -->
+    <path d="M 460 740 L 460 710 Q 460 700 440 700 L 415 700" fill="none" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" />
+    <polygon points="407,700 417,694 417,706" fill="#10B981" stroke="#065F46" stroke-width="0.8" />
+  </g>
+
+  <!-- Gate 2 Mandatory Left-Turn System (Lane Marking on Asphalt) -->
+  <g id="gate2-mandatory-left">
+    <!-- Northbound approach arrow on connector -->
+    <polygon points="760,780 755,790 765,790" fill="#10B981" stroke="#065F46" stroke-width="0.8" />
+    <!-- Curved Left Turn Lane Arc onto Thanon Chansathit -->
+    <path d="M 760 740 L 760 710 Q 760 700 740 700 L 715 700" fill="none" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" />
+    <polygon points="707,700 717,694 717,706" fill="#10B981" stroke="#065F46" stroke-width="0.8" />
   </g>
 
   <!-- ================= IN-LANE ROAD NAMES (แสดงตรงกลางเลนถนน พร้อม Halo กันเส้นประกวน) ================= -->
   <!-- 1. Upper Avenue: ถนนระพีสาคริก (สายเหนือ) -->
-  <text x="610" y="224" fill="#FFFFFF" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="11" font-weight="800" letter-spacing="1.5" text-anchor="middle">ถนนระพีสาคริก (ถนนสายเหนือ)</text>
-
+  <!-- 1. Upper Avenue: ถนนไพฑูรย์อิงคสุวรรณ -->
+  <text x="610" y="224" fill="#FFFFFF" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="11" font-weight="800" letter-spacing="1.5" text-anchor="middle">ถนนไพฑูรย์อิงคสุวรรณ</text>
   <!-- 2. Central Spine: ถนนชูชาติกำภู (สายกลาง) -->
-  <text x="610" y="524" fill="#FFFFFF" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="11" font-weight="800" letter-spacing="1.5" text-anchor="middle">ถนนชูชาติกำภู (ถนนสายกลาง - Central Spine)</text>
-
+  <!-- 2. Central Spine: ถนนระพีสาคริก -->
+  <text x="610" y="524" fill="#FFFFFF" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="11" font-weight="800" letter-spacing="1.5" text-anchor="middle">ถนนระพีสาคริก</text>
   <!-- 3. ถนนจันทร์สถิตย์: แสดงตรงกลางเลนหน้าลานจอดงาม 1, 2 -->
   <text x="900" y="704" fill="#34D399" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="10" font-weight="800" letter-spacing="1" text-anchor="middle">ถนนจันทร์สถิตย์ (หน้าลานจอดงาม 1, 2)</text>
 
   <!-- 4. West Avenue: ซอยวิภาวดีรังสิต (In-lane Vertical) -->
-  <text x="220" y="370" fill="#E2E8F0" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="10.5" font-weight="800" letter-spacing="1" text-anchor="middle" transform="rotate(-90 220 370)">ซอยวิภาวดีรังสิต</text>
-
+  <!-- 4. West Avenue: ถนนสุธรรมอารีกุล (In-lane Vertical) -->
+  <text x="220" y="370" fill="#E2E8F0" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="10.5" font-weight="800" letter-spacing="1" text-anchor="middle" transform="rotate(-90 220 370)">ถนนสุธรรมอารีกุล</text>
   <!-- 5. Gate 1 Avenue: ซอยสุวรรณวาจกกสิกิจ (In-lane Vertical) -->
   <text x="1040" y="370" fill="#E2E8F0" stroke="#334155" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="10.5" font-weight="800" letter-spacing="1" text-anchor="middle" transform="rotate(-90 1040 370)">ซอยสุวรรณวาจกกสิกิจ</text>
 
@@ -474,20 +579,20 @@
   </g>
 
   <!-- ================= CAMPUS GATES ================= -->
-  <!-- ประตู 3 -->
+  <!-- ประตู 3 (เลี้ยวซ้ายเท่านั้น เข้าสู่ถนนจันทร์สถิตย์) -->
   <g transform="translate(460, 890)">
     <circle cx="0" cy="0" r="14" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
     <text x="0" y="5" fill="#10B981" font-size="11" font-weight="900" text-anchor="middle">3</text>
-    <rect x="18" y="-10" width="55" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
-    <text x="45" y="4" fill="#0F172A" font-size="10" font-weight="700" text-anchor="middle">ประตู 3</text>
+    <rect x="18" y="-10" width="104" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
+    <text x="70" y="4" fill="#0F172A" font-size="9.5" font-weight="800" text-anchor="middle">ประตู 3 • <tspan fill="#059669">↰ เลี้ยวซ้าย</tspan></text>
   </g>
 
-  <!-- ประตู 2 -->
+  <!-- ประตู 2 (เลี้ยวซ้ายเท่านั้น เข้าสู่ถนนจันทร์สถิตย์) -->
   <g transform="translate(760, 890)">
     <circle cx="0" cy="0" r="14" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
     <text x="0" y="5" fill="#10B981" font-size="11" font-weight="900" text-anchor="middle">2</text>
-    <rect x="18" y="-10" width="55" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
-    <text x="45" y="4" fill="#0F172A" font-size="10" font-weight="700" text-anchor="middle">ประตู 2</text>
+    <rect x="18" y="-10" width="104" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
+    <text x="70" y="4" fill="#0F172A" font-size="9.5" font-weight="800" text-anchor="middle">ประตู 2 • <tspan fill="#059669">↰ เลี้ยวซ้าย</tspan></text>
   </g>
 
   <!-- ประตู 1 -->
