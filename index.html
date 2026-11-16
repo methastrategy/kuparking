@@ -947,9 +947,6 @@
         // BTS SKYTRAIN ANIMATION & INTERACTION CONTROLLER
         // ========================================================
         const btsTrainGroup = document.getElementById('btsTrainGroup');
-        const btsInfoCard = document.getElementById('btsInfoCard');
-        const btsLiveStatusText = document.getElementById('btsLiveStatusText');
-        const btsIndicatorDot = document.getElementById('btsIndicatorDot');
         const phahonHoverHitbox = document.getElementById('phahonHoverHitbox');
         const btsStationHotspot = document.getElementById('btsStationHotspot');
         const hotspotBts = document.getElementById('hotspot-bts');
@@ -972,16 +969,7 @@
         let unhoverTimer = null;
         let lastBtsTimestamp = performance.now();
 
-        function updateBtsStatusUI(isStopped, text) {
-            if (btsLiveStatusText) btsLiveStatusText.innerText = text;
-            if (btsIndicatorDot) {
-                if (isStopped) {
-                    btsIndicatorDot.className = 'w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400';
-                } else {
-                    btsIndicatorDot.className = 'w-2 h-2 rounded-full bg-amber-400 shadow-sm shadow-amber-400';
-                }
-            }
-        }
+        function updateBtsStatusUI() {}
 
         
 
