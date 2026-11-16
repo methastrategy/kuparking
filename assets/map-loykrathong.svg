@@ -320,19 +320,16 @@
     <!-- Gate Vibhavadi Entrance Artery (Wide open geometry, clear of Building Vipa) -->
     <path d="M 120,300 L 300,300 L 300,470" stroke-width="38" />
 
-    <!-- Upper Horizontal Road: (300,470) across campus to (1280,470) -->
-    <path d="M 300,470 L 1280,470" stroke-width="38" />
+    <!-- Upper Horizontal Road: (300,470) across campus to (1210,470) -->
+    <path d="M 300,470 L 1210,470" stroke-width="38" />
 
-    <!-- East North-South Connector: from Upper Avenue down to Pond Loop -->
-    <path d="M 1280,470 L 1280,560" stroke-width="36" />
-
-    <!-- East Turnaround Loop Artery connecting Upper Avenue to Gate P1 Corridor -->
-    <path d="M 1280,470 C 1370,470 1415,510 1390,560" stroke-width="36" />
+    <!-- North-South Connector from Upper Avenue to Sra Phra Phirun & Roundabout -->
+    <path d="M 1210,470 L 1210,550" stroke-width="36" />
 
     <!-- Curved West Ramp: (300,470) gracefully down to (440,670) with clear visibility -->
     <path d="M 300,470 C 300,575 350,670 440,670" stroke-width="36" />
 
-    <!-- MAIN EAST-WEST ARTERY: From (440,670) through Ngam 2 & 1 into East Rectangular Loop at (1210,670) -->
+    <!-- MAIN EAST-WEST ARTERY: From (440,670) through Ngam 2 & 1 into Sra Phra Phirun Gateway -->
     <path d="M 440,670 L 1210,670" stroke-width="36" />
 
     <!-- Gate 3 Vertical Road: (460,880) to (460,470) -->
@@ -345,50 +342,62 @@
     <path d="M 1080,880 L 1080,470" stroke-width="34" />
 
     <!-- ======================================================= -->
-    <!-- PHAHONYOTHIN 1 RECTANGULAR TRAFFIC LOOP & ENTRANCE      -->
-    <!-- Loop bounds: x: 1210 to 1390, y: 560 to 760            -->
+    <!-- BTS ROUNDABOUT & PHRA PHIRUN ONE-WAY PERIMETER ROAD     -->
     <!-- ======================================================= -->
-    <!-- Gate Phahonyothin 1 Ingress Artery from Highway (1480,670) to Loop East Leg (1390,670) -->
+    <!-- Oval Roundabout adjacent to BTS Exit / Station (วงเวียนติดทางลง BTS) -->
+    <path d="M 1340,550 C 1340,518 1460,518 1460,550 C 1460,582 1340,582 1340,550 Z" stroke-width="34" />
+    
+    <!-- Connector between Campus Main Avenue and BTS Roundabout -->
+    <path d="M 1210,550 L 1340,550" stroke-width="34" />
+
+    <!-- Gate Phahonyothin 1 Ingress from Highway to Roundabout & Loop -->
+    <path d="M 1480,550 L 1460,550" stroke-width="36" />
     <path d="M 1480,670 L 1390,670" stroke-width="36" />
 
-    <!-- Continuous Rectangular One-Way Loop (ทางวนรถสี่เหลี่ยม) with smooth rounded corner fillets -->
-    <path d="M 1210,670 L 1210,576 Q 1210,560 1226,560 L 1374,560 Q 1390,560 1390,576 L 1390,744 Q 1390,760 1374,760 L 1226,760 Q 1210,760 1210,744 Z" stroke-width="34" />
+    <!-- Continuous Rectangular One-Way Loop (ทางวนรถสี่เหลี่ยมรอบสระพระพิรุณ) -->
+    <path d="M 1210,550 L 1210,576 Q 1210,560 1226,560 L 1374,560 Q 1390,560 1390,576 L 1390,744 Q 1390,760 1374,760 L 1226,760 Q 1210,760 1210,744 Z" stroke-width="34" />
   </g>
 
   <!-- Asphalt Inner Pavement Surface -->
   <g stroke="#24334C" stroke-linecap="round" stroke-linejoin="round" fill="none">
     <path d="M 120,300 L 300,300 L 300,470" stroke-width="30" />
-    <path d="M 300,470 L 1280,470" stroke-width="30" />
-    <path d="M 1280,470 L 1280,560" stroke-width="28" />
-    <path d="M 1280,470 C 1370,470 1415,510 1390,560" stroke-width="28" />
+    <path d="M 300,470 L 1210,470" stroke-width="30" />
+    <path d="M 1210,470 L 1210,550" stroke-width="28" />
     <path d="M 300,470 C 300,575 350,670 440,670" stroke-width="28" />
     <path d="M 440,670 L 1210,670" stroke-width="28" />
     <path d="M 460,880 L 460,470" stroke-width="26" />
     <path d="M 740,880 L 740,470" stroke-width="26" />
     <path d="M 1080,880 L 1080,470" stroke-width="26" />
     
-    <!-- Phahonyothin 1 Ingress & Rectangular Loop Asphalt -->
+    <!-- BTS Roundabout & Connector Asphalt -->
+    <path d="M 1340,550 C 1340,518 1460,518 1460,550 C 1460,582 1340,582 1340,550 Z" stroke-width="26" />
+    <path d="M 1210,550 L 1340,550" stroke-width="26" />
+    <path d="M 1480,550 L 1460,550" stroke-width="28" />
     <path d="M 1480,670 L 1390,670" stroke-width="28" />
-    <path d="M 1210,670 L 1210,576 Q 1210,560 1226,560 L 1374,560 Q 1390,560 1390,576 L 1390,744 Q 1390,760 1374,760 L 1226,760 Q 1210,760 1210,744 Z" stroke-width="26" />
+
+    <!-- Sra Phra Phirun One-Way Loop Asphalt -->
+    <path d="M 1210,550 L 1210,576 Q 1210,560 1226,560 L 1374,560 Q 1390,560 1390,576 L 1390,744 Q 1390,760 1374,760 L 1226,760 Q 1210,760 1210,744 Z" stroke-width="26" />
   </g>
 
   <!-- High-Precision Road Lane Dividers (Refined Static White/Slate Lines) -->
   <g stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="10,12" opacity="0.9" fill="none">
     <path d="M 130,300 L 300,300 L 300,470" />
-    <path d="M 300,470 L 1280,470" />
-    <path d="M 1280,470 L 1280,560" />
-    <path d="M 1280,470 C 1370,470 1415,510 1390,560" />
+    <path d="M 300,470 L 1210,470" />
+    <path d="M 1210,470 L 1210,550" />
     <path d="M 300,470 C 300,575 350,670 440,670" />
     <path d="M 440,670 L 1210,670" />
     <path d="M 460,865 L 460,485" />
     <path d="M 740,865 L 740,485" />
     <path d="M 1080,865 L 1080,485" />
+    <path d="M 1340,550 C 1340,518 1460,518 1460,550 C 1460,582 1340,582 1340,550 Z" stroke-dasharray="6,8" />
+    <path d="M 1210,550 L 1340,550" />
+    <path d="M 1475,550 L 1460,550" />
     <path d="M 1470,670 L 1390,670" />
-    <path d="M 1210,670 L 1210,576 Q 1210,560 1226,560 L 1374,560 Q 1390,560 1390,576 L 1390,744 Q 1390,760 1374,760 L 1226,760 Q 1210,760 1210,744 Z" stroke-dasharray="8,10" />
+    <path d="M 1210,550 L 1210,576 Q 1210,560 1226,560 L 1374,560 Q 1390,560 1390,576 L 1390,744 Q 1390,760 1374,760 L 1226,760 Q 1210,760 1210,744 Z" stroke-dasharray="8,10" />
   </g>
 
   <!-- Directional Driving Traffic Flow Arrows (Subtle Green Guidance) -->
-  <g fill="#10B981" opacity="0.75">
+  <g fill="#10B981" opacity="0.8">
     <!-- Ingress Gate Vibhavadi -->
     <polygon points="200,296 208,300 200,304" />
     <polygon points="296,380 300,388 304,380" />
@@ -402,23 +411,44 @@
     <polygon points="736,770 740,762 744,770" />
     <polygon points="1076,770 1080,762 1084,770" />
     
-    <!-- East on Lower Avenue Connecting Ngam 2 & Ngam 1 towards East Rectangular Loop -->
+    <!-- East on Lower Avenue Connecting Ngam 2 & Ngam 1 towards Phra Phirun & Roundabout -->
     <polygon points="580,666 588,670 580,674" />
     <polygon points="900,666 908,670 900,674" />
     <polygon points="1140,666 1148,670 1140,674" />
 
-    <!-- Ingress Gate Phahonyothin 1 heading West into the Loop -->
+    <!-- Ingress Gate Phahonyothin 1 heading West into the Roundabout -->
+    <polygon points="1455,546 1445,550 1455,554" />
     <polygon points="1440,666 1432,670 1440,674" />
 
-    <!-- One-Way Counter-Clockwise Loop Arrows Around Phra Phirun Pond -->
-    <!-- North leg (heading East): -->
-    <polygon points="1296,556 1304,560 1296,564" />
-    <!-- East leg (heading South): -->
-    <polygon points="1386,630 1390,638 1394,630" />
-    <!-- South leg (heading West back towards Ngamwongwan 1 & 2): -->
-    <polygon points="1304,756 1296,760 1304,764" />
-    <!-- West leg (heading North): -->
-    <polygon points="1206,638 1210,630 1214,638" />
+    <!-- Roundabout Circulating Arrows (Counter-Clockwise) -->
+    <polygon points="1405,531 1395,534 1405,537" />
+    <polygon points="1395,563 1405,566 1395,569" />
+
+    <!-- One-Way Loop Arrows Around Phra Phirun Pond (เดินรถทางเดียว) -->
+    <!-- Entrance heading South: -->
+    <polygon points="1206,625 1210,635 1214,625" />
+    <!-- South leg heading East: -->
+    <polygon points="1295,756 1305,760 1295,764" />
+    <!-- East leg heading North: -->
+    <polygon points="1386,635 1390,625 1394,635" />
+    <!-- North leg heading West to exit: -->
+    <polygon points="1305,556 1295,560 1305,564" />
+  </g>
+
+  <!-- BTS Roundabout Landscaped Center Island (วงเวียนติดทางลง BTS) -->
+  <g transform="translate(1400, 550)">
+    <ellipse cx="0" cy="0" rx="42" ry="14" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.6" filter="url(#dropSoftDaylight)" />
+    <!-- Small Ornamental Central Shrubbery -->
+    <circle cx="-12" cy="-2" r="5" fill="#10B981" />
+    <circle cx="12" cy="1" r="5" fill="#059669" />
+    <circle cx="0" cy="0" r="7" fill="#047857" />
+    <text x="0" y="3.5" fill="#065F46" font-size="8" font-weight="800" text-anchor="middle">วงเวียน BTS</text>
+  </g>
+
+  <!-- One-Way Entrance Gate Signage into Sra Phra Phirun Perimeter -->
+  <g transform="translate(1210, 526)">
+    <rect x="-46" y="-10" width="92" height="20" rx="10" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" filter="url(#dropSoftDaylight)" />
+    <text x="0" y="3.5" fill="#065F46" font-size="7.5" font-weight="800" text-anchor="middle">ทางเข้าสระ (วันเวย์) ▼</text>
   </g>
 
   <!-- Pedestrian Crosswalks (Crisp Zebra Markings) -->
