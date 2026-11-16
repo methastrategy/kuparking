@@ -145,8 +145,11 @@
 
   <!-- Campus Lawns & Quad Zones (Surrounded seamlessly by roads) -->
   <g id="campus-zones">
-    <!-- North Main Quad (Above Upper Road, x: 230 to 1190, y: 75 to 450) -->
-    <rect x="230" y="75" width="960" height="375" rx="16" fill="url(#lawnGradNorth)" stroke="#059669" stroke-width="1.2" stroke-opacity="0.25" />
+    <!-- North Main Quad (Above Upper Road, x: 300 to 1190, y: 75 to 450) -->
+    <rect x="310" y="75" width="880" height="375" rx="16" fill="url(#lawnGradNorth)" stroke="#059669" stroke-width="1.2" stroke-opacity="0.25" />
+
+    <!-- Vibhavadi Quad Lawn Area (Surrounding Building Vipa, x: 135 to 285, y: 310 to 460) -->
+    <rect x="135" y="315" width="145" height="145" rx="14" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
     
     <!-- Central Quad 1: Between Upper Road & Lower Avenue, Gate 3 & Gate 2 (x: 480 to 720, y: 490 to 650) -->
     <rect x="480" y="490" width="240" height="160" rx="12" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
@@ -161,7 +164,7 @@
     <rect x="480" y="690" width="240" height="170" rx="12" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
 
     <!-- South-West Curved Park Area (Behind Curved Ramp, x: 230 to 440, y: 510 to 860) -->
-    <polygon points="230,510 310,510 440,690 440,860 230,860" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
+    <polygon points="230,510 330,510 440,690 440,860 230,860" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
 
     <!-- East Park Quad (North of Phahonyothin Gate 1 Artery, x: 1210 to 1420, y: 75 to 540) -->
     <rect x="1210" y="75" width="210" height="465" rx="14" fill="url(#lawnGradNorth)" stroke="#059669" stroke-width="1.2" stroke-opacity="0.25" />
@@ -343,11 +346,11 @@
 
   <!-- Outer Dark Kerb & Road Foundation -->
   <g stroke="#1E293B" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <!-- Gate Vibhavadi Entrance Artery -->
-    <path d="M 120,300 L 230,300 L 230,470" stroke-width="38" />
+    <!-- Gate Vibhavadi Entrance Artery (Wide open geometry, clear of Building Vipa) -->
+    <path d="M 120,300 L 300,300 L 300,470" stroke-width="38" />
 
-    <!-- Upper Horizontal Road: (230,470) across campus to (1280,470) -->
-    <path d="M 230,470 L 1280,470" stroke-width="38" />
+    <!-- Upper Horizontal Road: (300,470) across campus to (1280,470) -->
+    <path d="M 300,470 L 1280,470" stroke-width="38" />
 
     <!-- East North-South Connector: from Upper Avenue down to Pond Loop -->
     <path d="M 1280,470 L 1280,560" stroke-width="36" />
@@ -355,8 +358,8 @@
     <!-- East Turnaround Loop Artery connecting Upper Avenue to Gate P1 Corridor -->
     <path d="M 1280,470 C 1370,470 1415,510 1390,560" stroke-width="36" />
 
-    <!-- Curved West Ramp: (270,470) down to (440,670) -->
-    <path d="M 270,470 C 270,570 330,670 440,670" stroke-width="36" />
+    <!-- Curved West Ramp: (300,470) gracefully down to (440,670) with clear visibility -->
+    <path d="M 300,470 C 300,575 350,670 440,670" stroke-width="36" />
 
     <!-- MAIN EAST-WEST ARTERY: From (440,670) through Ngam 2 & 1 into East Rectangular Loop at (1210,670) -->
     <path d="M 440,670 L 1210,670" stroke-width="36" />
@@ -383,11 +386,11 @@
 
   <!-- Asphalt Inner Pavement Surface -->
   <g stroke="#24334C" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M 120,300 L 230,300 L 230,470" stroke-width="30" />
-    <path d="M 230,470 L 1280,470" stroke-width="30" />
+    <path d="M 120,300 L 300,300 L 300,470" stroke-width="30" />
+    <path d="M 300,470 L 1280,470" stroke-width="30" />
     <path d="M 1280,470 L 1280,560" stroke-width="28" />
     <path d="M 1280,470 C 1370,470 1415,510 1390,560" stroke-width="28" />
-    <path d="M 270,470 C 270,570 330,670 440,670" stroke-width="28" />
+    <path d="M 300,470 C 300,575 350,670 440,670" stroke-width="28" />
     <path d="M 440,670 L 1210,670" stroke-width="28" />
     <path d="M 460,880 L 460,470" stroke-width="26" />
     <path d="M 740,880 L 740,470" stroke-width="26" />
@@ -400,11 +403,11 @@
 
   <!-- High-Precision Road Lane Dividers (Refined Static White/Slate Lines) -->
   <g stroke="#64748B" stroke-width="1.8" stroke-dasharray="10,12" opacity="0.65" fill="none">
-    <path d="M 130,300 L 230,300 L 230,470" />
-    <path d="M 230,470 L 1280,470" />
+    <path d="M 130,300 L 300,300 L 300,470" />
+    <path d="M 300,470 L 1280,470" />
     <path d="M 1280,470 L 1280,560" />
     <path d="M 1280,470 C 1370,470 1415,510 1390,560" />
-    <path d="M 270,470 C 270,570 330,670 440,670" />
+    <path d="M 300,470 C 300,575 350,670 440,670" />
     <path d="M 440,670 L 1210,670" />
     <path d="M 460,865 L 460,485" />
     <path d="M 740,865 L 740,485" />
@@ -416,10 +419,10 @@
   <!-- Directional Driving Traffic Flow Arrows (Subtle Green Guidance) -->
   <g fill="#10B981" opacity="0.75">
     <!-- Ingress Gate Vibhavadi -->
-    <polygon points="170,296 178,300 170,304" />
-    <polygon points="226,380 230,388 234,380" />
+    <polygon points="200,296 208,300 200,304" />
+    <polygon points="296,380 300,388 304,380" />
     <!-- East on Upper Road -->
-    <polygon points="340,466 348,470 340,474" />
+    <polygon points="360,466 368,470 360,474" />
     <polygon points="620,466 628,470 620,474" />
     <polygon points="900,466 908,470 900,474" />
     
@@ -552,9 +555,9 @@
   <!-- Professional, High-Fidelity Depth & Clean Materiality     -->
   <!-- ======================================================== -->
 
-  <!-- [BUILDING 1] อาคารจอดรถวิภาวดี (Left Side - Adjacent to Gate V) -->
-  <!-- Center: (175, 370) -> Rooftop deck centered at: (175, 340) -->
-  <g id="building-vipa" transform="translate(175, 370)" filter="url(#building3DShadow)">
+  <!-- [BUILDING 1] อาคารจอดรถวิภาวดี (Spacious Left Side with generous road clearance) -->
+  <!-- Center: (185, 380) -> Rooftop deck centered at: (185, 350) -->
+  <g id="building-vipa" transform="translate(185, 380)" filter="url(#building3DShadow)">
     <!-- Base Plaza & Ambient Ground Shadow -->
     <polygon points="-44,48 38,48 54,68 -28,68" fill="#000000" opacity="0.65" />
     <polygon points="-40,46 34,46 48,64 -26,64" fill="#0B132B" stroke="#334155" stroke-width="1" />
@@ -599,10 +602,10 @@
       <text x="0" y="3" fill="#FFFFFF" font-size="7.5" font-weight="900" text-anchor="middle">P</text>
     </g>
 
-    <!-- Professional Architectural Signage -->
-    <g transform="translate(0, 60)">
-      <rect x="-42" y="-9" width="84" height="18" rx="9" fill="#0B132B" stroke="#F59E0B" stroke-width="1.2" />
-      <text x="0" y="3.5" fill="#FDE047" font-size="9" font-weight="700" text-anchor="middle">อาคารวิภาวดี</text>
+    <!-- Professional Architectural Signage (High-Contrast Crisp Badge) -->
+    <g transform="translate(0, 62)">
+      <rect x="-48" y="-10" width="96" height="20" rx="10" fill="#0B132B" stroke="#F59E0B" stroke-width="1.5" />
+      <text x="0" y="4" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle">อาคารวิภาวดี</text>
     </g>
   </g>
 
@@ -648,10 +651,10 @@
       <line x1="-2" y1="0" x2="-2" y2="14" stroke="#E2E8F0" stroke-width="0.8" opacity="0.6" />
     </g>
 
-    <!-- Elegant Building Signage (Tasteful Architectural Name Plate) -->
-    <g transform="translate(0, 48)">
-      <rect x="-48" y="-9" width="96" height="18" rx="9" fill="#0B132B" stroke="#10B981" stroke-width="1.2" />
-      <text x="0" y="3.5" fill="#A7F3D0" font-size="9" font-weight="700" text-anchor="middle">อาคารงามวงศ์วาน 2</text>
+    <!-- Elegant Building Signage (Crisp High-Contrast Badge) -->
+    <g transform="translate(0, 50)">
+      <rect x="-56" y="-10" width="112" height="20" rx="10" fill="#0B132B" stroke="#10B981" stroke-width="1.5" />
+      <text x="0" y="4" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle">อาคารงามวงศ์วาน 2</text>
     </g>
   </g>
 
@@ -697,10 +700,10 @@
       <line x1="-2" y1="0" x2="-2" y2="14" stroke="#E2E8F0" stroke-width="0.8" opacity="0.6" />
     </g>
 
-    <!-- Elegant Building Signage (Tasteful Architectural Name Plate) -->
-    <g transform="translate(0, 48)">
-      <rect x="-48" y="-9" width="96" height="18" rx="9" fill="#0B132B" stroke="#10B981" stroke-width="1.2" />
-      <text x="0" y="3.5" fill="#A7F3D0" font-size="9" font-weight="700" text-anchor="middle">อาคารงามวงศ์วาน 1</text>
+    <!-- Elegant Building Signage (Crisp High-Contrast Badge) -->
+    <g transform="translate(0, 50)">
+      <rect x="-56" y="-10" width="112" height="20" rx="10" fill="#0B132B" stroke="#10B981" stroke-width="1.5" />
+      <text x="0" y="4" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle">อาคารงามวงศ์วาน 1</text>
     </g>
   </g>
 
@@ -710,47 +713,47 @@
 
   <!-- ประตูงามวงศ์วาน 3 (x=460, y=880) -->
   <g transform="translate(460, 880)">
-    <circle cx="0" cy="0" r="16" fill="#0B132B" stroke="#10B981" stroke-width="2.2" />
-    <text x="0" y="4.5" fill="#A7F3D0" font-size="11" font-weight="900" text-anchor="middle">3</text>
-    <polygon points="0,-18 -5,-26 5,-26" fill="#10B981" />
-    <rect x="20" y="-10" width="66" height="20" rx="10" fill="#0B132B" stroke="#10B981" stroke-width="1.2" />
-    <text x="53" y="3.5" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">ประตู 3</text>
+    <circle cx="0" cy="0" r="17" fill="#0B132B" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#A7F3D0" font-size="11.5" font-weight="900" text-anchor="middle">3</text>
+    <polygon points="0,-19 -5,-27 5,-27" fill="#10B981" />
+    <rect x="22" y="-11" width="70" height="22" rx="11" fill="#0B132B" stroke="#10B981" stroke-width="1.5" />
+    <text x="57" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">ประตู 3</text>
   </g>
 
   <!-- ประตูงามวงศ์วาน 2 (x=740, y=880) -->
   <g transform="translate(740, 880)">
-    <circle cx="0" cy="0" r="16" fill="#0B132B" stroke="#10B981" stroke-width="2.2" />
-    <text x="0" y="4.5" fill="#A7F3D0" font-size="11" font-weight="900" text-anchor="middle">2</text>
-    <polygon points="0,-18 -5,-26 5,-26" fill="#10B981" />
-    <rect x="20" y="-10" width="66" height="20" rx="10" fill="#0B132B" stroke="#10B981" stroke-width="1.2" />
-    <text x="53" y="3.5" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">ประตู 2</text>
+    <circle cx="0" cy="0" r="17" fill="#0B132B" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#A7F3D0" font-size="11.5" font-weight="900" text-anchor="middle">2</text>
+    <polygon points="0,-19 -5,-27 5,-27" fill="#10B981" />
+    <rect x="22" y="-11" width="70" height="22" rx="11" fill="#0B132B" stroke="#10B981" stroke-width="1.5" />
+    <text x="57" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">ประตู 2</text>
   </g>
 
   <!-- ประตูงามวงศ์วาน 1 (x=1080, y=880) -->
   <g transform="translate(1080, 880)">
-    <circle cx="0" cy="0" r="16" fill="#0B132B" stroke="#10B981" stroke-width="2.2" />
-    <text x="0" y="4.5" fill="#A7F3D0" font-size="11" font-weight="900" text-anchor="middle">1</text>
-    <polygon points="0,-18 -5,-26 5,-26" fill="#10B981" />
-    <rect x="20" y="-10" width="66" height="20" rx="10" fill="#0B132B" stroke="#10B981" stroke-width="1.2" />
-    <text x="53" y="3.5" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">ประตู 1</text>
+    <circle cx="0" cy="0" r="17" fill="#0B132B" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#A7F3D0" font-size="11.5" font-weight="900" text-anchor="middle">1</text>
+    <polygon points="0,-19 -5,-27 5,-27" fill="#10B981" />
+    <rect x="22" y="-11" width="70" height="22" rx="11" fill="#0B132B" stroke="#10B981" stroke-width="1.5" />
+    <text x="57" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">ประตู 1</text>
   </g>
 
   <!-- ประตูวิภาวดีรังสิต (x=120, y=300) -->
   <g transform="translate(120, 300)">
-    <circle cx="0" cy="0" r="16" fill="#0B132B" stroke="#F59E0B" stroke-width="2.2" />
-    <text x="0" y="4.5" fill="#FDE047" font-size="11" font-weight="900" text-anchor="middle">V</text>
-    <polygon points="18,0 26,-5 26,5" fill="#F59E0B" />
-    <rect x="32" y="-10" width="118" height="20" rx="10" fill="#0B132B" stroke="#F59E0B" stroke-width="1.2" />
-    <text x="91" y="3.5" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">ประตูวิภาวดีรังสิต</text>
+    <circle cx="0" cy="0" r="17" fill="#0B132B" stroke="#F59E0B" stroke-width="2.5" />
+    <text x="0" y="5" fill="#FDE047" font-size="11.5" font-weight="900" text-anchor="middle">V</text>
+    <polygon points="19,0 27,-5 27,5" fill="#F59E0B" />
+    <rect x="34" y="-11" width="124" height="22" rx="11" fill="#0B132B" stroke="#F59E0B" stroke-width="1.5" />
+    <text x="96" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">ประตูวิภาวดีรังสิต</text>
   </g>
 
   <!-- ประตูพหลโยธิน 1 (x=1480, y=670) - Main Avenue into the Rectangular Loop -->
   <g transform="translate(1480, 670)">
-    <circle cx="0" cy="0" r="16" fill="#0B132B" stroke="#10B981" stroke-width="2.2" />
-    <text x="0" y="4.5" fill="#A7F3D0" font-size="10" font-weight="900" text-anchor="middle">P1</text>
-    <polygon points="-18,0 -26,-5 -26,5" fill="#10B981" />
-    <rect x="-138" y="-10" width="115" height="20" rx="10" fill="#0B132B" stroke="#10B981" stroke-width="1.2" />
-    <text x="-80" y="3.5" fill="#FFFFFF" font-size="9.5" font-weight="700" text-anchor="middle">ประตูพหลโยธิน 1</text>
+    <circle cx="0" cy="0" r="17" fill="#0B132B" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#A7F3D0" font-size="11" font-weight="900" text-anchor="middle">P1</text>
+    <polygon points="-19,0 -27,-5 -27,5" fill="#10B981" />
+    <rect x="-144" y="-11" width="122" height="22" rx="11" fill="#0B132B" stroke="#10B981" stroke-width="1.5" />
+    <text x="-83" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">ประตูพหลโยธิน 1</text>
   </g>
 
   <!-- ======================================================== -->

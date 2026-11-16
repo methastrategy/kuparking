@@ -241,8 +241,8 @@
                     </linearGradient>
                 </defs>
 
-                <!-- Interactive Corridor Hitbox for Phahonyothin Road (Hover / Touch Trigger) -->
-                <rect id="phahonHoverHitbox" x="1440" y="0" width="120" height="1000" fill="transparent" class="pointer-events-auto cursor-pointer" />
+                <!-- Interactive Corridor Hitbox for Phahonyothin Station Area (Hover / Touch Trigger) -->
+                <rect id="phahonHoverHitbox" x="1440" y="520" width="100" height="380" rx="20" fill="transparent" class="pointer-events-auto cursor-pointer" />
 
                 <!-- 4-CAR BTS SKYTRAIN GROUP (Symmetrically centered at y=0, length 176px from y=-88 to y=+88) -->
                 <g id="btsTrainGroup" class="pointer-events-auto cursor-pointer group" transform="translate(1480, -200)" filter="url(#btsTrainShadow)" onclick="openBtsModal()">
@@ -371,36 +371,45 @@
                 </g>
 
                 <!-- Direct Building Hitboxes (Clicking 3D Building Directly Opens Modal) -->
-                <rect id="hitbox-vipa" x="130" y="325" width="100" height="95" rx="10" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('vipa')" />
+                <rect id="hitbox-vipa" x="140" y="335" width="95" height="95" rx="10" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('vipa')" />
                 <rect id="hitbox-ngam2" x="775" y="705" width="120" height="95" rx="10" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('ngam2')" />
                 <rect id="hitbox-ngam1" x="945" y="705" width="120" height="95" rx="10" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('ngam1')" />
                 <rect id="hitbox-pond" x="1245" y="530" width="110" height="215" rx="14" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openEventModal()" />
             </svg>
 
             <!-- ================= BTS STATION & ARRIVAL FLOATING HUD CARD ================= -->
-            <div id="btsInfoCard" class="absolute right-[13.5%] top-[72%] -translate-y-1/2 z-30 pointer-events-none opacity-0 translate-x-3 transition-all duration-300">
-                <div class="glass-panel p-3 rounded-2xl border border-emerald-500/40 shadow-2xl backdrop-blur-xl flex flex-col space-y-2 w-64 pointer-events-auto">
-                    <div class="flex items-center justify-between">
+            <!-- Positioned clearly adjacent to BTS Viaduct without obscuring Phra Phirun Pond -->
+            <div id="btsInfoCard" class="absolute right-[6%] top-[56%] -translate-y-1/2 z-30 pointer-events-none opacity-0 translate-x-3 transition-all duration-200">
+                <div class="p-3.5 rounded-2xl border border-emerald-500/50 shadow-2xl shadow-emerald-950/90 backdrop-blur-xl flex flex-col space-y-2.5 w-64 pointer-events-auto bg-slate-950/95">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between pb-1.5 border-b border-slate-800">
                         <div class="flex items-center space-x-1.5">
-                            <span class="w-6 h-6 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xs font-black text-emerald-400">BTS</span>
-                            <span class="text-xs font-bold text-white">สถานี ม.เกษตรศาสตร์</span>
+                            <span class="px-2 py-0.5 rounded-md bg-emerald-500 text-slate-950 font-black text-[10px] tracking-wide shadow-sm">BTS N13</span>
+                            <span class="text-xs font-extrabold text-white">สถานี ม.เกษตรศาสตร์</span>
                         </div>
-                        <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">N13</span>
+                        <button id="btnDismissBtsCard" onclick="hideBtsCard(true)" aria-label="Close" class="touch-target-44 min-w-[44px] min-h-[44px] flex items-center justify-center text-slate-400 hover:text-white transition group -mr-2">
+                            <span class="w-5 h-5 rounded-full bg-slate-800 group-hover:bg-slate-700 flex items-center justify-center text-xs">✕</span>
+                        </button>
                     </div>
                     
-                    <div class="bg-black/40 rounded-xl p-2 border border-slate-800 text-[10px] space-y-1">
+                    <!-- Status & Wayfinding Info -->
+                    <div class="bg-black/50 rounded-xl p-2.5 border border-slate-800/80 text-[10.5px] space-y-1.5">
                         <div class="flex items-center space-x-1.5">
                             <span id="btsIndicatorDot" class="w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400"></span>
-                            <span id="btsLiveStatusText" class="font-bold text-emerald-300">กำลังจอดเทียบชานชาลา</span>
+                            <span id="btsLiveStatusText" class="font-extrabold text-emerald-300">รถไฟฟ้าจอดเทียบชานชาลา</span>
                         </div>
-                        <p class="text-slate-400 text-[9.5px] leading-tight">
-                            🚶 เดินสกายวอล์กเข้า <span class="text-emerald-300 font-bold">ประตูพหลโยธิน 1</span> (~150 ม.) ตรงเข้าสู่สระพระพิรุณ (งานลอยกระทง)
-                        </p>
+                        <div class="flex items-start space-x-1.5 text-slate-300 text-[10px] leading-relaxed">
+                            <span class="text-xs">🚶</span>
+                            <p>
+                                สกายวอล์กทางออก 1 ข้าม ถ.พหลโยธิน เข้า <span class="text-emerald-300 font-bold">ประตู 1</span> ตรงสู่ <span class="text-amber-300 font-bold">สระพระพิรุณ</span> (~150 ม.)
+                            </p>
+                        </div>
                     </div>
 
-                    <button onclick="openBtsModal()" class="touch-target-44 w-full min-h-[44px] py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs flex items-center justify-center space-x-1.5 shadow-md transition">
+                    <!-- Clean Action Button -->
+                    <button onclick="openBtsModal()" class="touch-target-44 w-full py-2 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 active:scale-95 text-white font-bold text-xs flex items-center justify-center space-x-1.5 shadow-md shadow-emerald-950/80 transition">
                         <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
-                        <span>ดูแผนผัง & ทางเข้างาน</span>
+                        <span>เปิด Google Maps นำทางสู่สถานี</span>
                     </button>
                 </div>
             </div>
@@ -411,10 +420,10 @@
             <div id="hotspot-ngam1" onclick="openParkingModal('ngam1')" class="absolute left-[62.5%] top-[73.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="ring-ngam1" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-500 blur-xs pointer-events-none status-halo"></div>
-                    <div id="badge-ngam1" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-emerald-400/40 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
-                        <i data-lucide="car" class="w-3.5 h-3.5"></i>
+                    <div id="badge-ngam1" class="px-2.5 sm:px-3 py-1 rounded-full bg-slate-950/92 text-white font-bold text-[10.5px] sm:text-xs shadow-xl border-2 border-emerald-400/80 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
+                        <i data-lucide="car" class="w-3.5 h-3.5 text-emerald-400"></i>
                         <span>งามวงศ์วาน 1</span>
-                        <span id="text-status-ngam1" class="text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded">เปิดบริการ</span>
+                        <span id="text-status-ngam1" class="text-emerald-300 font-extrabold text-[10px] bg-emerald-950/60 border border-emerald-500/30 px-1.5 py-0.2 rounded">เปิดบริการ</span>
                     </div>
                     <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
                 </div>
@@ -424,32 +433,32 @@
             <div id="hotspot-ngam2" onclick="openParkingModal('ngam2')" class="absolute left-[51.9%] top-[73.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="ring-ngam2" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-500 blur-xs pointer-events-none status-halo"></div>
-                    <div id="badge-ngam2" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-emerald-400/40 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
-                        <i data-lucide="car" class="w-3.5 h-3.5"></i>
+                    <div id="badge-ngam2" class="px-2.5 sm:px-3 py-1 rounded-full bg-slate-950/92 text-white font-bold text-[10.5px] sm:text-xs shadow-xl border-2 border-emerald-400/80 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
+                        <i data-lucide="car" class="w-3.5 h-3.5 text-emerald-400"></i>
                         <span>งามวงศ์วาน 2</span>
-                        <span id="text-status-ngam2" class="text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded">เปิดบริการ</span>
+                        <span id="text-status-ngam2" class="text-emerald-300 font-extrabold text-[10px] bg-emerald-950/60 border border-emerald-500/30 px-1.5 py-0.2 rounded">เปิดบริการ</span>
                     </div>
                     <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
                 </div>
             </div>
 
-            <!-- [3] อาคารวิภาวดี (อยู่ฝั่งซ้ายของถนนเส้นทางเข้า ประตูวิภาวดี, Rooftop: 175, 350) -->
-            <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[11.0%] top-[35.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
+            <!-- [3] อาคารวิภาวดี (อยู่ฝั่งซ้ายของถนนเส้นทางเข้า ประตูวิภาวดี, Rooftop: 185, 350) -->
+            <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[11.56%] top-[35.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-vipa" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-500 blur-xs pointer-events-none status-halo"></div>
-                    <div id="badge-vipa" class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-emerald-400/40 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
-                        <i data-lucide="car" class="w-3.5 h-3.5"></i>
+                    <div id="ring-vipa" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-amber-500 blur-xs pointer-events-none status-halo"></div>
+                    <div id="badge-vipa" class="px-2.5 sm:px-3 py-1 rounded-full bg-slate-950/92 text-white font-bold text-[10.5px] sm:text-xs shadow-xl border-2 border-amber-400/80 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
+                        <i data-lucide="car" class="w-3.5 h-3.5 text-amber-400"></i>
                         <span>วิภาวดี</span>
-                        <span id="text-status-vipa" class="text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded">เปิดบริการ</span>
+                        <span id="text-status-vipa" class="text-amber-300 font-extrabold text-[10px] bg-amber-950/60 border border-amber-500/30 px-1.5 py-0.2 rounded">เปิดบริการ</span>
                     </div>
-                    <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
+                    <div class="w-0.5 h-2.5 bg-amber-400 shadow"></div>
                 </div>
             </div>
 
             <!-- [4] จุดจัดงานลอยกระทง (สระพระพิรุณ หน้ามอ มุมงามวงศ์วาน-พหลโยธิน, Center: 1300, 660) -->
             <div id="hotspot-pond" onclick="openEventModal()" class="absolute left-[81.25%] top-[66.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center animate-float">
-                    <div class="px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white font-bold text-[11px] sm:text-xs shadow-2xl border-2 border-amber-200 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
+                    <div class="px-3 py-1.5 rounded-full bg-slate-950/95 text-amber-300 font-bold text-[11px] sm:text-xs shadow-2xl border-2 border-amber-400 flex items-center space-x-1.5 group-hover:scale-110 active:scale-95 transition-transform whitespace-nowrap">
                         <span class="text-sm">🪔</span>
                         <span>สระพระพิรุณ (งานลอยกระทง)</span>
                     </div>
@@ -461,10 +470,10 @@
             <div id="hotspot-bts" onclick="openBtsModal()" class="absolute left-[92.5%] top-[72.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="ring-bts" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-400 blur-xs pointer-events-none status-halo"></div>
-                    <div id="badge-bts" class="px-2.5 sm:px-3 py-1 rounded-full bg-slate-900/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-emerald-400/60 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
+                    <div id="badge-bts" class="px-2.5 sm:px-3 py-1 rounded-full bg-slate-950/92 text-white font-bold text-[10.5px] sm:text-xs shadow-xl border-2 border-emerald-400/80 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
                         <span class="w-4 h-4 rounded-md bg-emerald-500 flex items-center justify-center text-[9px] font-black text-slate-950">BTS</span>
                         <span>สถานี BTS ม.เกษตรฯ</span>
-                        <span class="text-emerald-300 font-extrabold text-[9.5px] bg-emerald-950/60 border border-emerald-500/30 px-1 py-0.2 rounded">N13</span>
+                        <span class="text-emerald-300 font-extrabold text-[9.5px] bg-emerald-950/60 border border-emerald-500/30 px-1.5 py-0.2 rounded">N13</span>
                     </div>
                     <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
                 </div>
@@ -1005,6 +1014,8 @@
             }
         }
 
+        let autoDismissTimer = null;
+
         function showBtsCard() {
             if (btsInfoCard) {
                 btsInfoCard.classList.remove('opacity-0', 'translate-x-3', 'pointer-events-none');
@@ -1012,8 +1023,9 @@
             }
         }
 
-        function hideBtsCard() {
-            if (btsInfoCard && !isHovered) {
+        function hideBtsCard(force = false) {
+            if (force) isHovered = false;
+            if (btsInfoCard && (!isHovered || force)) {
                 btsInfoCard.classList.remove('opacity-100', 'translate-x-0', 'pointer-events-auto');
                 btsInfoCard.classList.add('opacity-0', 'translate-x-3', 'pointer-events-none');
             }
@@ -1028,10 +1040,16 @@
                 isHovered = true;
                 showBtsCard();
 
+                // Auto-dismiss after 3.5s so card never stays permanently on screen
+                if (autoDismissTimer) clearTimeout(autoDismissTimer);
+                autoDismissTimer = setTimeout(() => {
+                    hideBtsCard(true);
+                }, 3500);
+
                 // If train is already parked at station, keep it dwelling
                 if (btsState === 'DWELLING') {
                     btsDwellStart = performance.now();
-                    updateBtsStatusUI(true, 'จอดเทียบชานชาลา (เปิดประตูชานชาลา)');
+                    updateBtsStatusUI(true, 'รถไฟฟ้าจอดเทียบชานชาลา');
                     return;
                 }
 
@@ -1045,12 +1063,13 @@
             } else {
                 isHovered = false;
                 if (unhoverTimer) clearTimeout(unhoverTimer);
+                // Prompt 150ms dismiss when mouse leaves
                 unhoverTimer = setTimeout(() => {
-                    hideBtsCard();
+                    hideBtsCard(false);
                     if (btsState === 'DWELLING') {
-                        btsDwellStart = performance.now() - BTS_PARAMS.dwellDuration + 800; // depart smoothly
+                        btsDwellStart = performance.now() - BTS_PARAMS.dwellDuration + 500; // depart smoothly
                     }
-                }, 2000);
+                }, 150);
             }
         }
 
