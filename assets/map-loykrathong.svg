@@ -294,11 +294,11 @@
       <line x1="135" y1="855" x2="435" y2="855" />
       <line x1="485" y1="855" x2="735" y2="855" />
       <line x1="785" y1="855" x2="1015" y2="855" />
-      <line x1="1065" y1="855" x2="1440" y2="855" />
+      <line x1="1065" y1="855" x2="1465" y2="855" />
 
       <!-- 3. East Fence (Along x=1465) -->
-      <line x1="1465" y1="855" x2="1465" y2="785" />
-      <line x1="1465" y1="735" x2="1465" y2="545" />
+      <line x1="1465" y1="855" x2="1465" y2="745" />
+      <line x1="1465" y1="705" x2="1465" y2="545" />
       <line x1="1465" y1="495" x2="1465" y2="105" />
     </g>
 
@@ -309,9 +309,9 @@
       <line x1="135" y1="855" x2="435" y2="855" />
       <line x1="485" y1="855" x2="735" y2="855" />
       <line x1="785" y1="855" x2="1015" y2="855" />
-      <line x1="1065" y1="855" x2="1440" y2="855" />
-      <line x1="1465" y1="855" x2="1465" y2="785" />
-      <line x1="1465" y1="735" x2="1465" y2="545" />
+      <line x1="1065" y1="855" x2="1465" y2="855" />
+      <line x1="1465" y1="855" x2="1465" y2="745" />
+      <line x1="1465" y1="705" x2="1465" y2="545" />
       <line x1="1465" y1="495" x2="1465" y2="105" />
     </g>
 
@@ -375,13 +375,12 @@
     <line x1="760" y1="700" x2="760" y2="880" stroke-linecap="butt" />
 
     <!-- ทางเชื่อมจากถนนเส้นเฉียงลงสู่หัวมุมตะวันตกของถนนรอบสระ (x=1260, y: 594 to 670) -->
-    <line x1="1260" y1="594" x2="1260" y2="670" stroke-linecap="butt" />
-    <!-- ถนนรอบสระพระพิรุณ (เลข 13) -->
-    <path d="M 1260 670 L 1430 670 L 1430 850 L 1260 850 Z" />
-
+    <line x1="1260" y1="594" x2="1260" y2="660" stroke-linecap="butt" />
+    <!-- ถนนรอบสระพระพิรุณ (เลข 13) - ปรับย่อขนาดและยกขึ้น ให้เห็นแนวรั้วด้านล่างและขวาชัดเจน -->
+    <path d="M 1260 660 L 1400 660 L 1400 790 L 1260 790 Z" />
     <!-- Connectors to Phahonyothin Rd -->
     <line x1="1415" y1="520" x2="1475" y2="520" stroke-linecap="butt" />
-    <line x1="1430" y1="760" x2="1475" y2="760" stroke-linecap="butt" />
+    <line x1="1405" y1="725" x2="1475" y2="725" stroke-linecap="butt" />
 
   </g>
 
@@ -415,12 +414,10 @@
     <line x1="760" y1="700" x2="760" y2="880" stroke-linecap="butt" />
 
     <!-- ทางเชื่อมจากถนนเส้นเฉียงลงสู่หัวมุมตะวันตกของถนนรอบสระ -->
-    <line x1="1260" y1="594" x2="1260" y2="670" stroke-linecap="butt" />
-    <!-- ถนนรอบสระพระพิรุณ -->
-    <path d="M 1260 670 L 1430 670 L 1430 850 L 1260 850 Z" />
-
+    <line x1="1260" y1="594" x2="1260" y2="660" stroke-linecap="butt" />
+    <path d="M 1260 660 L 1400 660 L 1400 790 L 1260 790 Z" />
     <line x1="1415" y1="520" x2="1475" y2="520" stroke-linecap="butt" />
-    <line x1="1430" y1="760" x2="1475" y2="760" stroke-linecap="butt" />
+    <line x1="1405" y1="725" x2="1475" y2="725" stroke-linecap="butt" />
 
   </g>
 
@@ -441,11 +438,11 @@
     <line x1="510" y1="520" x2="510" y2="700" />
     <line x1="460" y1="700" x2="460" y2="880" />
     <line x1="760" y1="700" x2="760" y2="880" />
-    <line x1="1260" y1="594" x2="1260" y2="670" />
-    <path d="M 1260 670 L 1430 670 L 1430 850 L 1260 850 Z" />
+    <line x1="1260" y1="594" x2="1260" y2="660" />
+    <path d="M 1260 660 L 1400 660 L 1400 790 L 1260 790 Z" />
     <ellipse cx="1350" cy="520" rx="55" ry="28" />
     <line x1="1415" y1="520" x2="1475" y2="520" />
-    <line x1="1430" y1="760" x2="1475" y2="760" />
+    <line x1="1405" y1="725" x2="1475" y2="725" />
 
   </g>
 
@@ -464,55 +461,6 @@
   <!-- Roundabout Island -->
   <ellipse cx="1350" cy="520" rx="34" ry="14" fill="#10B981" stroke="#059669" stroke-width="2" />
   <text x="1350" y="524" fill="#FFFFFF" font-size="9" font-weight="800" text-anchor="middle">วงเวียน BTS</text>
-
-  <!-- One-Way Directional Traffic Arrows & Mandatory Turn Markings (KU Green #10B981) -->
-  <g fill="#10B981" stroke="#065F46" stroke-width="0.8">
-    <!-- Horizontal Upper Avenue (Westbound) -->
-    <polygon points="320,220 310,215 310,225" />
-    <polygon points="900,220 890,215 890,225" />
-    <polygon points="1150,220 1140,215 1140,225" />
-    
-    <!-- Central Spine (Westbound) -->
-    <polygon points="320,520 310,515 310,525" />
-    <polygon points="900,520 890,515 890,525" />
-    <polygon points="1150,520 1140,515 1140,525" />
-    
-    <!-- Shifted Road between Sanam In and Engineering (x=510: Southbound into Chansathit) -->
-    <polygon points="510,615 505,605 515,605" />
-    
-    <!-- North vertical avenues (Heading North) -->
-    <polygon points="460,370 455,380 465,380" />
-    <polygon points="760,370 755,380 765,380" />
-    <polygon points="1040,790 1035,800 1045,800" />
-    
-    <!-- East spine & roundabout arrows -->
-    <polygon points="1180,370 1185,360 1175,360" />
-    <polygon points="1180,600 1185,590 1175,590" />
-    <polygon points="1460,760 1450,755 1450,765" />
-    
-    <!-- Thanon Chansathit Westbound Traffic Flow (เข้าจากประตู 2, 3 เลี้ยวซ้ายมุ่งสู่วิภาวดี) -->
-    <polygon points="630,700 620,695 620,705" />
-    <polygon points="380,700 370,695 370,705" />
-  </g>
-
-  <!-- ================= MANDATORY LEFT-TURN LANE MARKINGS (ทางเข้าประตู 2 และ ประตู 3 เลี้ยวซ้ายได้อย่างเดียว) ================= -->
-  <!-- Gate 3 Mandatory Left-Turn System (Lane Marking on Asphalt) -->
-  <g id="gate3-mandatory-left">
-    <!-- Northbound approach arrow on connector -->
-    <polygon points="460,780 455,790 465,790" fill="#10B981" stroke="#065F46" stroke-width="0.8" />
-    <!-- Curved Left Turn Lane Arc onto Thanon Chansathit -->
-    <path d="M 460 740 L 460 710 Q 460 700 440 700 L 415 700" fill="none" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" />
-    <polygon points="407,700 417,694 417,706" fill="#10B981" stroke="#065F46" stroke-width="0.8" />
-  </g>
-
-  <!-- Gate 2 Mandatory Left-Turn System (Lane Marking on Asphalt) -->
-  <g id="gate2-mandatory-left">
-    <!-- Northbound approach arrow on connector -->
-    <polygon points="760,780 755,790 765,790" fill="#10B981" stroke="#065F46" stroke-width="0.8" />
-    <!-- Curved Left Turn Lane Arc onto Thanon Chansathit -->
-    <path d="M 760 740 L 760 710 Q 760 700 740 700 L 715 700" fill="none" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" />
-    <polygon points="707,700 717,694 717,706" fill="#10B981" stroke="#065F46" stroke-width="0.8" />
-  </g>
 
   <!-- ================= IN-LANE ROAD NAMES (แสดงตรงกลางเลนถนน พร้อม Halo กันเส้นประกวน) ================= -->
   <!-- 1. Upper Avenue: ถนนระพีสาคริก (สายเหนือ) -->
@@ -537,23 +485,23 @@
   <text x="1500" y="260" fill="#CBD5E1" stroke="#242F3E" stroke-width="5" stroke-linejoin="round" style="paint-order: stroke fill;" font-size="12" font-weight="800" letter-spacing="3" transform="rotate(90 1500 260)" text-anchor="middle">▶ ถนนพหลโยธิน (PHAHONYOTHIN RD.)</text>
 
   <!-- ================= WATER BODY: SRA PHRA PHIRUN (POND) ================= -->
-  <!-- Centered at x=1345, y=760 inside the rectilinear perimeter -->
-  <g id="event-zone-loykrathong" transform="translate(1345, 760)" filter="url(#dropSoft)">
-    <rect x="-65" y="-55" width="130" height="110" rx="12" fill="#1E293B" stroke="#334155" stroke-width="2" />
-    <rect x="-61" y="-51" width="122" height="102" rx="10" fill="#0F172A" stroke="#0369A1" stroke-width="1.2" />
-    <rect x="-55" y="-45" width="110" height="90" rx="6" fill="url(#pondWaterGrad)" />
+  <!-- Centered at x=1330, y=725 (Compact & shifted away from south & east perimeter fences) -->
+  <g id="event-zone-loykrathong" transform="translate(1330, 725)" filter="url(#dropSoft)">
+    <rect x="-45" y="-36" width="90" height="72" rx="10" fill="#1E293B" stroke="#334155" stroke-width="2" />
+    <rect x="-41" y="-32" width="82" height="64" rx="8" fill="#0F172A" stroke="#0369A1" stroke-width="1.2" />
+    <rect x="-35" y="-26" width="70" height="52" rx="5" fill="url(#pondWaterGrad)" />
     <!-- Water Ripples -->
-    <path d="M -35 -20 Q -10 -25 15 -20 T 35 -20" fill="none" stroke="#BAE6FD" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
-    <path d="M -25 5 Q 0 0 25 5 T 35 5" fill="none" stroke="#BAE6FD" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
-    <path d="M -30 25 Q -5 20 20 25 T 30 25" fill="none" stroke="#BAE6FD" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+    <path d="M -20 -10 Q -5 -14 10 -10 T 20 -10" fill="none" stroke="#BAE6FD" stroke-width="1.2" stroke-linecap="round" opacity="0.6" />
+    <path d="M -15 4 Q 0 0 15 4 T 20 4" fill="none" stroke="#BAE6FD" stroke-width="1.2" stroke-linecap="round" opacity="0.5" />
+    <path d="M -18 16 Q -5 12 10 16 T 16 16" fill="none" stroke="#BAE6FD" stroke-width="1.2" stroke-linecap="round" opacity="0.4" />
     <!-- Center Krathong Emblem -->
-    <circle cx="0" cy="0" r="13" fill="#FFFFFF" filter="url(#dropSoft)" />
-    <circle cx="0" cy="0" r="6" fill="#E11D48" />
+    <circle cx="0" cy="0" r="10" fill="#FFFFFF" filter="url(#dropSoft)" />
+    <circle cx="0" cy="0" r="4.5" fill="#E11D48" />
   </g>
   <!-- Pond Title Badge (Positioned at bottom of pond so top road is unblocked) -->
-  <g transform="translate(1345, 835)">
-    <rect x="-80" y="-11" width="160" height="22" rx="11" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" filter="url(#dropSoft)" />
-    <text x="0" y="4" fill="#0369A1" font-size="10" font-weight="800" text-anchor="middle">สระพระพิรุณ (จุดลอยกระทง)</text>
+  <g transform="translate(1330, 772)">
+    <rect x="-68" y="-9" width="136" height="18" rx="9" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.2" filter="url(#dropSoft)" />
+    <text x="0" y="3.5" fill="#0369A1" font-size="8.5" font-weight="800" text-anchor="middle">สระพระพิรุณ (จุดลอยกระทง)</text>
   </g>
 
   <!-- ================= ARCHITECTURAL BUILDINGS ================= -->
@@ -609,16 +557,16 @@
   <g transform="translate(460, 890)">
     <circle cx="0" cy="0" r="14" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
     <text x="0" y="5" fill="#10B981" font-size="11" font-weight="900" text-anchor="middle">3</text>
-    <rect x="18" y="-10" width="104" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
-    <text x="70" y="4" fill="#0F172A" font-size="9.5" font-weight="800" text-anchor="middle">ประตู 3 • <tspan fill="#059669">↰ เลี้ยวซ้าย</tspan></text>
+    <rect x="18" y="-10" width="55" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
+    <text x="45" y="4" fill="#0F172A" font-size="10" font-weight="700" text-anchor="middle">ประตู 3</text>
   </g>
 
   <!-- ประตู 2 (เลี้ยวซ้ายเท่านั้น เข้าสู่ถนนจันทร์สถิตย์) -->
   <g transform="translate(760, 890)">
     <circle cx="0" cy="0" r="14" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
     <text x="0" y="5" fill="#10B981" font-size="11" font-weight="900" text-anchor="middle">2</text>
-    <rect x="18" y="-10" width="104" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
-    <text x="70" y="4" fill="#0F172A" font-size="9.5" font-weight="800" text-anchor="middle">ประตู 2 • <tspan fill="#059669">↰ เลี้ยวซ้าย</tspan></text>
+    <rect x="18" y="-10" width="55" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
+    <text x="45" y="4" fill="#0F172A" font-size="10" font-weight="700" text-anchor="middle">ประตู 2</text>
   </g>
 
   <!-- ประตู 1 -->
