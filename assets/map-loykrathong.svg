@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" class="w-full h-auto select-none" style="font-family: 'Inter', 'Prompt', -apple-system, sans-serif;">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" class="w-full h-full block" style="font-family: 'Inter', 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
   <defs>
     <!-- Background Space & Atmosphere -->
     <radialGradient id="vignetteGlow" cx="50%" cy="50%" r="70%">
@@ -15,19 +16,19 @@
 
     <!-- Campus Quad Lawns & Landscaping Gradients -->
     <linearGradient id="lawnGradNorth" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#DCFCE7" />
+      <stop offset="0%" stop-color="#ECFDF5" />
       <stop offset="100%" stop-color="#D1FAE5" />
     </linearGradient>
 
     <linearGradient id="lawnGradCentral" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E2FBE8" />
+      <stop offset="0%" stop-color="#F0FDF4" />
       <stop offset="100%" stop-color="#DCFCE7" />
     </linearGradient>
 
     <!-- Road Surface Texture & Paving -->
     <pattern id="roadPaving" width="8" height="8" patternUnits="userSpaceOnUse">
-      <rect width="8" height="8" fill="#334155" />
-      <rect x="0" y="0" width="8" height="1" fill="#475569" />
+      <rect width="8" height="8" fill="#1E293B" />
+      <rect x="0" y="0" width="8" height="1" fill="#334155" />
     </pattern>
 
     <!-- Phra Phirun Rectangular Pond Water Gradient -->
@@ -37,80 +38,64 @@
       <stop offset="100%" stop-color="#0369A1" />
     </linearGradient>
 
-    <linearGradient id="promenadeStone" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B" />
-      <stop offset="50%" stop-color="#172236" />
-      <stop offset="100%" stop-color="#0F172A" />
+    <!-- Subtle Water Ripple Specular Reflection -->
+    <linearGradient id="waterSheen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.4" />
+      <stop offset="35%" stop-color="#FFFFFF" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.2" />
     </linearGradient>
 
-    <!-- 3D Isometric Architectural Gradients - Ngamwongwan 1 & 2 -->
-    <linearGradient id="ngamRoof" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B" />
-      <stop offset="50%" stop-color="#172336" />
-      <stop offset="100%" stop-color="#0F172A" />
-    </linearGradient>
-    <linearGradient id="ngamWallFront" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#334155" />
-      <stop offset="40%" stop-color="#1E293B" />
-      <stop offset="100%" stop-color="#0F172A" />
-    </linearGradient>
-    <linearGradient id="ngamWallSide" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1E293B" />
-      <stop offset="100%" stop-color="#0B132B" />
-    </linearGradient>
-    <linearGradient id="glassElevator" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8" />
-      <stop offset="50%" stop-color="#0284C7" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#0369A1" stop-opacity="0.9" />
-    </linearGradient>
-
-    <!-- 3D Isometric Architectural Gradients - Vibhavadi -->
-    <linearGradient id="vipaRoof" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B" />
-      <stop offset="60%" stop-color="#162033" />
-      <stop offset="100%" stop-color="#0F172A" />
-    </linearGradient>
+    <!-- Building Architectural Materials -->
     <linearGradient id="vipaWallFront" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#334155" />
-      <stop offset="40%" stop-color="#1E293B" />
+      <stop offset="0%" stop-color="#1E293B" />
       <stop offset="100%" stop-color="#0F172A" />
     </linearGradient>
     <linearGradient id="vipaWallSide" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1E293B" />
-      <stop offset="100%" stop-color="#0B132B" />
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#020617" />
     </linearGradient>
-
-    <!-- BTS Elevated Viaduct & Station Gradients -->
-    <linearGradient id="btsViaductGirder" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="vipaRoof" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#334155" />
-      <stop offset="25%" stop-color="#1E293B" />
-      <stop offset="75%" stop-color="#0F172A" />
       <stop offset="100%" stop-color="#1E293B" />
     </linearGradient>
 
-    <linearGradient id="btsPlatformRoof" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#065F46" stop-opacity="0.95" />
-      <stop offset="50%" stop-color="#047857" stop-opacity="0.85" />
-      <stop offset="100%" stop-color="#064E3B" stop-opacity="0.95" />
+    <linearGradient id="ngamWallFront" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
     </linearGradient>
-
-    <linearGradient id="btsPierGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#475569" />
-      <stop offset="50%" stop-color="#334155" />
+    <linearGradient id="ngamWallSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="ngamRoof" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
       <stop offset="100%" stop-color="#1E293B" />
     </linearGradient>
 
-    <!-- Soft Drop Shadows and Ambient Occlusion -->
-    <filter id="building3DShadow" x="-30%" y="-30%" width="165%" height="165%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
-      <feOffset dx="0" dy="12" />
-      <feComponentTransfer><feFuncA type="linear" slope="0.22" /></feComponentTransfer>
-      <feMerge>
-        <feMergeNode />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
+    <linearGradient id="glassElevator" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.3" />
+    </linearGradient>
+
+    <!-- Architectural Drop Shadows -->
+    <filter id="building3DShadow" x="-40%" y="-40%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feOffset dx="6" dy="12" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.3" /></feComponentTransfer>
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
     </filter>
 
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+
+    <filter id="hudCardShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feOffset dx="0" dy="4" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.12" /></feComponentTransfer>
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
   </defs>
 
   <!-- ======================================================== -->
@@ -119,458 +104,220 @@
   <rect width="1600" height="1000" fill="url(#vignetteGlow)" />
   <rect width="1600" height="1000" fill="url(#gridBlueprint)" />
 
-  <!-- Campus Lawns & Quad Zones (Surrounded seamlessly by roads) -->
-  <g id="campus-zones">
-    <!-- North Main Quad (Above Upper Road, x: 300 to 1190, y: 75 to 450) -->
-    <rect x="310" y="75" width="880" height="375" rx="16" fill="url(#lawnGradNorth)" stroke="#86EFAC" stroke-width="1.2" />
+  <!-- Campus Boundary Quad Landscaping (Organized by Road Topography) -->
+  <g opacity="0.95">
+    <!-- North Quad A (West of Soi Suwan, North of Upper Road) -->
+    <rect x="250" y="115" width="760" height="135" rx="14" fill="url(#lawnGradNorth)" stroke="#A7F3D0" stroke-width="1.2" />
+    <text x="630" y="185" fill="#059669" font-size="13" font-weight="700" opacity="0.45" letter-spacing="2" text-anchor="middle">โซนวิชาการตอนเหนือ (NORTH QUAD A)</text>
 
-    <!-- Vibhavadi Quad Lawn Area (Surrounding Building Vipa, x: 135 to 285, y: 310 to 460) -->
-    <rect x="135" y="315" width="145" height="145" rx="14" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
-    
-    <!-- Central Quad 1: Between Upper Road & Lower Avenue, Gate 3 & Gate 2 (x: 480 to 720, y: 490 to 650) -->
-    <rect x="480" y="490" width="240" height="160" rx="12" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
+    <!-- North Quad B (East of Academic Loop, North of Phahonyothin Gate) -->
+    <rect x="1210" y="115" width="230" height="395" rx="14" fill="url(#lawnGradNorth)" stroke="#A7F3D0" stroke-width="1.2" />
+    <text x="1325" y="310" fill="#059669" font-size="12" font-weight="700" opacity="0.45" letter-spacing="1" text-anchor="middle">โซนพหลโยธินเหนือ</text>
 
-    <!-- Central Quad 2: Between Upper Road & Lower Avenue, Gate 2 & Gate 1 (x: 760 to 1060, y: 490 to 650) -->
-    <rect x="760" y="490" width="300" height="160" rx="12" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
+    <!-- Academic Block Quad (Inside Loop: Between Soi Suwan and East Connector) -->
+    <rect x="1065" y="305" width="90" height="235" rx="10" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="1.2" />
+    <text x="1110" y="425" fill="#047857" font-size="11" font-weight="700" opacity="0.6" text-anchor="middle" transform="rotate(-90 1110 425)">สำนักหอสมุด / สารนิเทศ 50 ปี</text>
 
-    <!-- Central Quad 3: Between Upper Road & Lower Avenue, Gate 1 & East Loop (x: 1100 to 1190, y: 490 to 650) -->
-    <rect x="1100" y="490" width="90" height="160" rx="12" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
+    <!-- Central Lawns (Between Upper Road & Middle Central Spine) -->
+    <rect x="360" y="320" width="650" height="220" rx="14" fill="url(#lawnGradCentral)" stroke="#BBF7D0" stroke-width="1.2" />
+    <text x="685" y="435" fill="#16A34A" font-size="14" font-weight="700" opacity="0.4" letter-spacing="2" text-anchor="middle">สนามหญ้าและอาคารเรียนกลาง (CENTRAL GREEN)</text>
 
-    <!-- South Quad West: Below Lower Avenue, Between Gate 3 & Gate 2 (x: 480 to 720, y: 690 to 860) -->
-    <rect x="480" y="690" width="240" height="170" rx="12" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
+    <!-- Lower Lawns (Between Middle Road & Ngamwongwan Rd) -->
+    <rect x="360" y="590" width="60" height="260" rx="8" fill="url(#lawnGradNorth)" stroke="#A7F3D0" stroke-width="1" />
+    <rect x="475" y="590" width="220" height="260" rx="8" fill="url(#lawnGradNorth)" stroke="#A7F3D0" stroke-width="1" />
+    <rect x="745" y="590" width="270" height="260" rx="8" fill="url(#lawnGradNorth)" stroke="#A7F3D0" stroke-width="1" />
+    <rect x="1065" y="590" width="115" height="260" rx="8" fill="url(#lawnGradNorth)" stroke="#A7F3D0" stroke-width="1" />
 
-    <!-- South-West Curved Park Area (Behind Curved Ramp, x: 230 to 440, y: 510 to 860) -->
-    <polygon points="230,510 330,510 440,690 440,860 230,860" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
-
-    <!-- East Park Quad (North of Phahonyothin Gate 1 Artery, x: 1210 to 1420, y: 75 to 540) -->
-    <rect x="1210" y="75" width="210" height="465" rx="14" fill="url(#lawnGradNorth)" stroke="#86EFAC" stroke-width="1.2" />
-
-    <!-- South-East Corner Quad (South of Loop to Ngamwongwan Rd, x: 1210 to 1420, y: 780 to 860) -->
-    <rect x="1210" y="780" width="210" height="80" rx="12" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
-  </g>
-
-  <!-- Campus Walking Walkways & Promenades -->
-  <g stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-dasharray="2,5" opacity="0.6" fill="none">
-    <path d="M 400,240 L 1150,240" />
-    <path d="M 850,90 L 850,440" />
-    <path d="M 600,500 L 600,640" />
-    <path d="M 910,500 L 910,640" />
-    <path d="M 600,700 L 600,850" />
+    <!-- West Courtyard (Between Vibhavadi & Curve) -->
+    <rect x="135" y="430" width="80" height="120" rx="8" fill="url(#lawnGradNorth)" stroke="#A7F3D0" stroke-width="1" />
   </g>
 
   <!-- ======================================================== -->
   <!-- 2. HIGHWAYS & PERIMETER ARTERIAL ROADS                   -->
   <!-- ======================================================== -->
-
-  <!-- [SOUTH] ถนนงามวงศ์วาน (Ngamwongwan Rd.) -->
-  <g id="highway-ngamwongwan">
-    <line x1="50" y1="880" x2="1550" y2="880" stroke="#1E293B" stroke-width="64" stroke-linecap="round" />
-    <line x1="50" y1="880" x2="1550" y2="880" stroke="url(#roadPaving)" stroke-width="56" stroke-linecap="round" />
-    <line x1="50" y1="852" x2="1550" y2="852" stroke="#475569" stroke-width="1.8" />
-    <line x1="50" y1="908" x2="1550" y2="908" stroke="#475569" stroke-width="1.8" />
-    <!-- Center Lane Marking (Crisp, High-Precision Static Line) -->
-    <line x1="60" y1="880" x2="1540" y2="880" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="16,14" opacity="0.8" />
-    
-    <!-- Road Label Pill -->
-    <g transform="translate(800, 938)">
-      <rect x="-195" y="-12" width="390" height="25" rx="12.5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="url(#building3DShadow)" />
-      <text x="0" y="4.5" fill="#0F172A" font-size="11.5" font-weight="700" letter-spacing="2" text-anchor="middle">
-        ◄ ถนนงามวงศ์วาน (NGAMWONGWAN RD.) ►
-      </text>
-    </g>
-  </g>
-
-  <!-- [WEST] ถนนวิภาวดีรังสิต (Vibhavadi Rangsit Rd.) -->
+  <!-- [WEST] ถนนวิภาวดีรังสิต (Vibhavadi Rangsit Highway) -->
   <g id="highway-vibhavadi">
-    <line x1="120" y1="0" x2="120" y2="920" stroke="#1E293B" stroke-width="64" stroke-linecap="round" />
-    <line x1="120" y1="0" x2="120" y2="920" stroke="url(#roadPaving)" stroke-width="56" stroke-linecap="round" />
-    <line x1="92" y1="0" x2="92" y2="920" stroke="#475569" stroke-width="1.8" />
-    <line x1="148" y1="0" x2="148" y2="920" stroke="#475569" stroke-width="1.8" />
-    <line x1="120" y1="0" x2="120" y2="920" stroke="#EF4444" stroke-width="2.5" stroke-dasharray="16,14" opacity="0.8" />
-    
-    <!-- SRT Red Line Commuter Train Viaduct Pill -->
-    <g transform="translate(68, 120)">
-      <rect x="-14" y="-45" width="28" height="90" rx="14" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.8" />
-      <circle cx="0" cy="-24" r="8" fill="#EF4444" />
-      <text x="0" y="-21" fill="#FFFFFF" font-size="8" font-weight="900" text-anchor="middle">SRT</text>
-      <text x="0" y="6" fill="#B91C1C" font-size="9" font-weight="800" text-anchor="middle" transform="rotate(-90 0,6)">สถานีบางเขน</text>
-    </g>
-
-    <!-- Vibhavadi Road Label -->
-    <text x="46" y="520" fill="#0F172A" font-size="11.5" font-weight="700" letter-spacing="2.5" transform="rotate(-90 46,520)" text-anchor="middle">
-      ◄ ถนนวิภาวดีรังสิต (VIBHAVADI RANGSIT RD.) ►
-    </text>
+    <rect x="75" y="0" width="50" height="1000" fill="#1E293B" />
+    <line x1="100" y1="0" x2="100" y2="1000" stroke="#F8FAFC" stroke-width="2" stroke-dasharray="16,16" opacity="0.6" />
+    <line x1="124" y1="0" x2="124" y2="1000" stroke="#475569" stroke-width="1.5" />
+    <text x="50" y="500" fill="#64748B" font-size="13" font-weight="700" letter-spacing="3" transform="rotate(-90 50 500)" text-anchor="middle">ถนนวิภาวดีรังสิต (VIBHAVADI RANGSIT RD.) ◀</text>
   </g>
 
-  <!-- [EAST] ถนนพหลโยธิน (Phahonyothin Rd.) & BTS Sukhumvit Line Elevated Viaduct -->
+  <!-- [SOUTH] ถนนงามวงศ์วาน (Ngamwongwan Rd) -->
+  <g id="highway-ngamwongwan">
+    <rect x="50" y="865" width="1500" height="50" fill="#1E293B" rx="25" />
+    <line x1="75" y1="890" x2="1525" y2="890" stroke="#F8FAFC" stroke-width="2" stroke-dasharray="16,16" opacity="0.6" />
+    <line x1="75" y1="866" x2="1525" y2="866" stroke="#475569" stroke-width="1.5" />
+    <text x="800" y="935" fill="#64748B" font-size="13" font-weight="700" letter-spacing="3" text-anchor="middle">◀ ถนนงามวงศ์วาน (NGAMWONGWAN RD.) ▶</text>
+  </g>
+
+  <!-- [EAST] ถนนพหลโยธิน (Phahonyothin Rd) -->
   <g id="highway-phahonyothin">
-    <!-- Ground-Level Phahonyothin Arterial Avenue -->
-    <line x1="1480" y1="0" x2="1480" y2="1000" stroke="#1E293B" stroke-width="64" stroke-linecap="butt" />
-    <line x1="1480" y1="0" x2="1480" y2="1000" stroke="url(#roadPaving)" stroke-width="56" stroke-linecap="butt" />
-    <line x1="1452" y1="0" x2="1452" y2="1000" stroke="#475569" stroke-width="1.8" />
-    <line x1="1508" y1="0" x2="1508" y2="1000" stroke="#475569" stroke-width="1.8" />
-    <line x1="1480" y1="0" x2="1480" y2="1000" stroke="#10B981" stroke-width="2.2" stroke-dasharray="16,14" opacity="0.75" />
-
-    <!-- BTS Elevated Viaduct Ambient Shadow on Ground Road -->
-    <line x1="1480" y1="0" x2="1480" y2="1000" stroke="#030712" stroke-width="32" opacity="0.65" stroke-linecap="butt" />
-
-    <!-- Massive Concrete Support Piers / Pillars (เสาตอม่อ BTS) -->
-    <g fill="url(#btsPierGrad)" stroke="#1E293B" stroke-width="1.2">
-      <!-- Pillar at y=80 -->
-      <g transform="translate(1480, 80)"><rect x="-7" y="-12" width="14" height="24" rx="4" /><rect x="-11" y="-4" width="22" height="8" rx="2" fill="#475569" /></g>
-      <!-- Pillar at y=200 -->
-      <g transform="translate(1480, 200)"><rect x="-7" y="-12" width="14" height="24" rx="4" /><rect x="-11" y="-4" width="22" height="8" rx="2" fill="#475569" /></g>
-      <!-- Pillar at y=320 -->
-      <g transform="translate(1480, 320)"><rect x="-7" y="-12" width="14" height="24" rx="4" /><rect x="-11" y="-4" width="22" height="8" rx="2" fill="#475569" /></g>
-      <!-- Pillar at y=440 -->
-      <g transform="translate(1480, 440)"><rect x="-7" y="-12" width="14" height="24" rx="4" /><rect x="-11" y="-4" width="22" height="8" rx="2" fill="#475569" /></g>
-      <!-- Pillar at y=560 -->
-      <g transform="translate(1480, 560)"><rect x="-7" y="-12" width="14" height="24" rx="4" /><rect x="-11" y="-4" width="22" height="8" rx="2" fill="#475569" /></g>
-      <!-- Pillar at y=820 -->
-      <g transform="translate(1480, 820)"><rect x="-7" y="-12" width="14" height="24" rx="4" /><rect x="-11" y="-4" width="22" height="8" rx="2" fill="#475569" /></g>
-      <!-- Pillar at y=940 -->
-      <g transform="translate(1480, 940)"><rect x="-7" y="-12" width="14" height="24" rx="4" /><rect x="-11" y="-4" width="22" height="8" rx="2" fill="#475569" /></g>
-    </g>
-
-    <!-- BTS Elevated Box Girder Viaduct Deck (ทางวิ่งคอนกรีตลอยฟ้า) -->
-    <line x1="1480" y1="0" x2="1480" y2="1000" stroke="url(#btsViaductGirder)" stroke-width="26" stroke-linecap="butt" />
-    <line x1="1480" y1="0" x2="1480" y2="1000" stroke="#0B132B" stroke-width="22" stroke-linecap="butt" />
-    <!-- Outer Concrete Parapets / Acoustical Noise Barriers -->
-    <line x1="1468" y1="0" x2="1468" y2="1000" stroke="#475569" stroke-width="2" />
-    <line x1="1492" y1="0" x2="1492" y2="1000" stroke="#475569" stroke-width="2" />
-    <!-- Dual Steel Tracks & Power Rail Indicators -->
-    <line x1="1475" y1="0" x2="1475" y2="1000" stroke="#64748B" stroke-width="1.6" stroke-dasharray="12,10" opacity="0.8" />
-    <line x1="1485" y1="0" x2="1485" y2="1000" stroke="#64748B" stroke-width="1.6" stroke-dasharray="12,10" opacity="0.8" />
-
-    <!-- ======================================================== -->
-    <!-- BTS SKYTRAIN STATION: มหาวิทยาลัยเกษตรศาสตร์ (N13)       -->
-    <!-- Architectural Elevated Station with Central Guideway       -->
-    <!-- Platform spans y=610 to y=830 (Length=220, Center at y=720)-->
-    <!-- ======================================================== -->
-    <g id="station-bts-kaset" filter="url(#building3DShadow)">
-      <!-- Concrete Station Platform Base & Concourse (Lower Floor) -->
-      <rect x="1456" y="610" width="48" height="220" rx="10" fill="#0F172A" stroke="#334155" stroke-width="1.8" />
-      
-      <!-- Direct Pedestrian Skybridge Connecting Station Exit 1 Directly to KU Gate 1 (Westbound at y=670) -->
-      <path d="M 1456,670 L 1410,670" stroke="#1E293B" stroke-width="12" stroke-linecap="round" fill="none" />
-      <path d="M 1456,670 L 1410,670" stroke="#059669" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.9" />
-      <!-- Skybridge Glass Canopy Roof -->
-      <path d="M 1456,668 L 1410,668" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.8" />
-
-      <!-- West Platform Floor Deck (KU Side) -->
-      <rect x="1458" y="614" width="13" height="212" rx="4" fill="#1E293B" stroke="#059669" stroke-width="1" />
-      <!-- East Platform Floor Deck (Highway Side) -->
-      <rect x="1489" y="614" width="13" height="212" rx="4" fill="#1E293B" stroke="#059669" stroke-width="1" />
-      
-      <!-- Platform Tactile Yellow Safety Lines & Platform Screen Door Edges -->
-      <line x1="1470" y1="616" x2="1470" y2="824" stroke="#FBBF24" stroke-width="1.2" opacity="0.95" stroke-dasharray="4,2" />
-      <line x1="1490" y1="616" x2="1490" y2="824" stroke="#FBBF24" stroke-width="1.2" opacity="0.95" stroke-dasharray="4,2" />
-
-      <!-- Architectural Curved Glass Canopies over Side Platforms -->
-      <rect x="1456" y="616" width="15" height="208" rx="6" fill="url(#btsPlatformRoof)" stroke="#10B981" stroke-width="1.2" opacity="0.85" />
-      <rect x="1489" y="616" width="15" height="208" rx="6" fill="url(#btsPlatformRoof)" stroke="#10B981" stroke-width="1.2" opacity="0.85" />
-
-      <!-- Steel Arch Trusses Spanning Across the Station -->
-      <line x1="1456" y1="635" x2="1504" y2="635" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
-      <line x1="1456" y1="670" x2="1504" y2="670" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
-      <line x1="1456" y1="705" x2="1504" y2="705" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
-      <line x1="1456" y1="740" x2="1504" y2="740" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
-      <line x1="1456" y1="775" x2="1504" y2="775" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
-      <line x1="1456" y1="810" x2="1504" y2="810" stroke="#064E3B" stroke-width="1.5" opacity="0.8" />
-    </g>
-
-    <!-- BTS Station Official Signage Badge (East Side of Highway at y=720) -->
-    <g transform="translate(1536, 720)">
-      <rect x="-16" y="-60" width="32" height="120" rx="16" fill="#0B132B" stroke="#10B981" stroke-width="2" filter="url(#building3DShadow)" />
-      <circle cx="0" cy="-40" r="10" fill="#10B981" />
-      <text x="0" y="-36.5" fill="#FFFFFF" font-size="9" font-weight="900" text-anchor="middle">BTS</text>
-      <text x="0" y="-18" fill="#38BDF8" font-size="8.5" font-weight="900" text-anchor="middle">N13</text>
-      <text x="0" y="24" fill="#A7F3D0" font-size="9" font-weight="800" text-anchor="middle" transform="rotate(90 0,24)">ม.เกษตรศาสตร์</text>
-    </g>
-
-    <!-- Phahonyothin Road Label -->
-    <text x="1562" y="380" fill="#E2E8F0" font-size="11.5" font-weight="700" letter-spacing="2.5" transform="rotate(90 1562,380)" text-anchor="middle">
-      ◄ ถนนพหลโยธิน (PHAHONYOTHIN RD.) ►
-    </text>
+    <rect x="1475" y="0" width="50" height="1000" fill="#1E293B" />
+    <line x1="1500" y1="0" x2="1500" y2="1000" stroke="#F8FAFC" stroke-width="2" stroke-dasharray="16,16" opacity="0.6" />
+    <line x1="1476" y1="0" x2="1476" y2="1000" stroke="#475569" stroke-width="1.5" />
+    <text x="1550" y="450" fill="#64748B" font-size="13" font-weight="700" letter-spacing="3" transform="rotate(90 1550 450)" text-anchor="middle">▶ ถนนพหลโยธิน (PHAHONYOTHIN RD.)</text>
   </g>
 
-  <!-- Major Highway Intersections -->
-  <!-- แยกบางเขน (Bottom-Left) -->
-  <g transform="translate(120, 880)">
-    <circle cx="0" cy="0" r="18" fill="#0B132B" stroke="#EF4444" stroke-width="2.5" />
-    <text x="0" y="4" fill="#FCA5A5" font-size="10" font-weight="900" text-anchor="middle">W</text>
-    <rect x="-48" y="-36" width="96" height="18" rx="9" fill="#0B132B" stroke="#EF4444" stroke-width="1.2" />
-    <text x="0" y="-23" fill="#FCA5A5" font-size="9" font-weight="700" text-anchor="middle">แยกบางเขน</text>
-  </g>
-
-  <!-- แยกเกษตร (Bottom-Right) -->
-  <g transform="translate(1480, 880)">
-    <circle cx="0" cy="0" r="20" fill="#0B132B" stroke="#F59E0B" stroke-width="2.8" />
-    <text x="0" y="5" fill="#FDE047" font-size="12" font-weight="900" text-anchor="middle">X</text>
-    <rect x="-65" y="-38" width="130" height="20" rx="10" fill="#0B132B" stroke="#F59E0B" stroke-width="1.2" />
-    <text x="0" y="-24" fill="#FDE047" font-size="10" font-weight="800" text-anchor="middle">แยกเกษตร (หน้ามอ)</text>
+  <!-- [CORNER] แยกเกษตร (Intersection Junction Badge) -->
+  <g transform="translate(1475, 865)">
+    <circle cx="25" cy="25" r="17" fill="#0F172A" stroke="#F59E0B" stroke-width="2.5" />
+    <text x="25" y="31" fill="#F59E0B" font-size="13" font-weight="900" text-anchor="middle">✕</text>
+    <text x="25" y="-8" fill="#D97706" font-size="11" font-weight="700" text-anchor="middle">แยกเกษตร (หน้ามอ)</text>
   </g>
 
   <!-- ======================================================== -->
-  <!-- 3. INTERNAL CAMPUS ROAD NETWORK (ACCURATE ARTERY)        -->
+  <!-- 3. INTERNAL CAMPUS ROAD NETWORK (ACCURATE REALITY)       -->
   <!-- ======================================================== -->
+  <!-- Outer Kerb / Foundation (Dark Slate #1E293B, Width 32) -->
+  <g fill="none" stroke="#1E293B" stroke-width="32" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 1. Upper Loop Road (ถนนระพีสาคริก - Loop นอก): จากทางเข้าวิภาวดี เลี้ยวผ่านเหนือ North Quad แล้วหักลงใต้เชื่อมสายกลาง -->
+    <path d="M 125 240 L 220 240 Q 250 240 250 270 L 250 280 L 1180 280 Q 1200 280 1200 300 L 1200 545 Q 1200 565 1180 565" />
 
-  <!-- Outer Dark Kerb & Road Foundation -->
-  <g stroke="#1E293B" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <!-- Gate Vibhavadi Entrance Artery (Wide open geometry, clear of Building Vipa) -->
-    <path d="M 120,300 L 300,300 L 300,470" stroke-width="38" />
+    <!-- 2. Vibhavadi Branch into Middle Road (โค้งวิภาวดีสู่ถนนชูชาติกำภู) -->
+    <path d="M 220 240 Q 250 240 250 270 L 250 480 Q 250 565 330 565 L 1260 565" />
 
-    <!-- Upper Horizontal Road: (300,470) across campus to (1210,470) -->
-    <path d="M 300,470 L 1210,470" stroke-width="38" />
+    <!-- 3. ประตู 3 Connector (ชนสายกลาง) -->
+    <path d="M 450 865 L 450 565" />
 
-    <!-- North-South Connector from Upper Avenue to Sra Phra Phirun & Roundabout -->
-    <path d="M 1210,470 L 1210,550" stroke-width="36" />
+    <!-- 4. ประตู 2 Connector (ชนสายกลาง) -->
+    <path d="M 720 865 L 720 565" />
 
-    <!-- Curved West Ramp: (300,470) gracefully down to (440,670) with clear visibility -->
-    <path d="M 300,470 C 300,575 350,670 440,670" stroke-width="36" />
+    <!-- 5. ประตู 1 Connector (ซอยสุวรรณวาจกกสิกิจ - ทะลุชนสายบน!) -->
+    <path d="M 1040 865 L 1040 280" />
 
-    <!-- MAIN EAST-WEST ARTERY: From (440,670) through Ngam 2 & 1 into Sra Phra Phirun Gateway -->
-    <path d="M 440,670 L 1210,670" stroke-width="36" />
+    <!-- 6. East Connector: สายกลางมุ่งหน้าวงเวียน BTS และทางลงสระพระพิรุณ -->
+    <path d="M 1180 565 L 1260 565" />
 
-    <!-- Gate 3 Vertical Road: (460,880) to (460,470) -->
-    <path d="M 460,880 L 460,470" stroke-width="34" />
+    <!-- 7. Road loop around Sra Phra Phirun (ถนนรอบสระพระพิรุณ) -->
+    <path d="M 1260 565 Q 1280 565 1280 600 L 1280 660 L 1210 660 L 1210 850 L 1430 850 L 1430 660 L 1280 660" />
 
-    <!-- Gate 2 Vertical Road: (740,880) to (740,470) -->
-    <path d="M 740,880 L 740,470" stroke-width="34" />
-
-    <!-- Gate 1 Vertical Road: (1080,880) to (1080,470) -->
-    <path d="M 1080,880 L 1080,470" stroke-width="34" />
-
-    <!-- ======================================================= -->
-    <!-- BTS ROUNDABOUT & PHRA PHIRUN ONE-WAY PERIMETER ROAD     -->
-    <!-- ======================================================= -->
-    <!-- Oval Roundabout adjacent to BTS Exit / Station (วงเวียนติดทางลง BTS) -->
-    <path d="M 1340,550 C 1340,518 1460,518 1460,550 C 1460,582 1340,582 1340,550 Z" stroke-width="34" />
-    
-    <!-- Connector between Campus Main Avenue and BTS Roundabout -->
-    <path d="M 1210,550 L 1340,550" stroke-width="34" />
-
-    <!-- Gate Phahonyothin 1 Ingress from Highway to Roundabout & Loop -->
-    <path d="M 1480,550 L 1460,550" stroke-width="36" />
-    <path d="M 1480,670 L 1390,670" stroke-width="36" />
-
-    <!-- Continuous Rectangular One-Way Loop (ทางวนรถสี่เหลี่ยมรอบสระพระพิรุณ) -->
-    <path d="M 1210,550 L 1210,576 Q 1210,560 1226,560 L 1374,560 Q 1390,560 1390,576 L 1390,744 Q 1390,760 1374,760 L 1226,760 Q 1210,760 1210,744 Z" stroke-width="34" />
+    <!-- 8. Phahonyothin Connectors (จากวงเวียนและรอบสระออกสู่พหลโยธิน) -->
+    <path d="M 1420 565 L 1475 565" />
+    <path d="M 1430 750 L 1475 750" />
   </g>
 
-  <!-- Asphalt Inner Pavement Surface -->
-  <g stroke="#24334C" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M 120,300 L 300,300 L 300,470" stroke-width="30" />
-    <path d="M 300,470 L 1210,470" stroke-width="30" />
-    <path d="M 1210,470 L 1210,550" stroke-width="28" />
-    <path d="M 300,470 C 300,575 350,670 440,670" stroke-width="28" />
-    <path d="M 440,670 L 1210,670" stroke-width="28" />
-    <path d="M 460,880 L 460,470" stroke-width="26" />
-    <path d="M 740,880 L 740,470" stroke-width="26" />
-    <path d="M 1080,880 L 1080,470" stroke-width="26" />
-    
-    <!-- BTS Roundabout & Connector Asphalt -->
-    <path d="M 1340,550 C 1340,518 1460,518 1460,550 C 1460,582 1340,582 1340,550 Z" stroke-width="26" />
-    <path d="M 1210,550 L 1340,550" stroke-width="26" />
-    <path d="M 1480,550 L 1460,550" stroke-width="28" />
-    <path d="M 1480,670 L 1390,670" stroke-width="28" />
+  <!-- Roundabout Asphalt Ring -->
+  <ellipse cx="1345" cy="565" rx="65" ry="32" fill="none" stroke="#1E293B" stroke-width="32" />
 
-    <!-- Sra Phra Phirun One-Way Loop Asphalt -->
-    <path d="M 1210,550 L 1210,576 Q 1210,560 1226,560 L 1374,560 Q 1390,560 1390,576 L 1390,744 Q 1390,760 1374,760 L 1226,760 Q 1210,760 1210,744 Z" stroke-width="26" />
+  <!-- Road Surface Centerlines (Dashed Yellow/White) -->
+  <g fill="none" stroke="#F8FAFC" stroke-width="2" stroke-dasharray="10,12" opacity="0.6">
+    <path d="M 125 240 L 220 240 Q 250 240 250 270 L 250 280 L 1180 280 Q 1200 280 1200 300 L 1200 545 Q 1200 565 1180 565" />
+    <path d="M 220 240 Q 250 240 250 270 L 250 480 Q 250 565 330 565 L 1260 565" />
+    <path d="M 450 865 L 450 565" />
+    <path d="M 720 865 L 720 565" />
+    <path d="M 1040 865 L 1040 280" />
+    <path d="M 1260 565 Q 1280 565 1280 600 L 1280 660 L 1210 660 L 1210 850 L 1430 850 L 1430 660 Z" />
+    <ellipse cx="1345" cy="565" rx="65" ry="32" />
+    <path d="M 1420 565 L 1475 565" />
+    <path d="M 1430 750 L 1475 750" />
   </g>
 
-  <!-- High-Precision Road Lane Dividers (Refined Static White/Slate Lines) -->
-  <g stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="10,12" opacity="0.9" fill="none">
-    <path d="M 130,300 L 300,300 L 300,470" />
-    <path d="M 300,470 L 1210,470" />
-    <path d="M 1210,470 L 1210,550" />
-    <path d="M 300,470 C 300,575 350,670 440,670" />
-    <path d="M 440,670 L 1210,670" />
-    <path d="M 460,865 L 460,485" />
-    <path d="M 740,865 L 740,485" />
-    <path d="M 1080,865 L 1080,485" />
-    <path d="M 1340,550 C 1340,518 1460,518 1460,550 C 1460,582 1340,582 1340,550 Z" stroke-dasharray="6,8" />
-    <path d="M 1210,550 L 1340,550" />
-    <path d="M 1475,550 L 1460,550" />
-    <path d="M 1470,670 L 1390,670" />
-    <path d="M 1210,550 L 1210,576 Q 1210,560 1226,560 L 1374,560 Q 1390,560 1390,576 L 1390,744 Q 1390,760 1374,760 L 1226,760 Q 1210,760 1210,744 Z" stroke-dasharray="8,10" />
+  <!-- One-Way Directional Traffic Arrows (KU Green #10B981) -->
+  <g fill="#10B981" stroke="#065F46" stroke-width="0.8">
+    <!-- Along Upper Road (Eastbound) -->
+    <polygon points="500,280 490,275 490,285" />
+    <polygon points="850,280 840,275 840,285" />
+    <!-- Down Upper Road East Leg (Southbound) -->
+    <polygon points="1200,420 1195,410 1205,410" />
+    <!-- Along Middle Road (Eastbound) -->
+    <polygon points="550,565 540,560 540,570" />
+    <polygon points="900,565 890,560 890,570" />
+    <!-- Ingress from Gate 3 (Northbound) -->
+    <polygon points="450,720 445,730 455,730" />
+    <!-- Ingress from Gate 2 (Northbound) -->
+    <polygon points="720,720 715,730 725,730" />
+    <!-- Ingress from Gate 1 / Soi Suwan (Northbound) -->
+    <polygon points="1040,720 1035,730 1045,730" />
+    <polygon points="1040,420 1035,430 1045,430" />
+    <!-- Roundabout Counter-Clockwise Flow -->
+    <polygon points="1345,533 1335,530 1338,538" />
+    <polygon points="1345,597 1355,600 1352,592" />
+    <!-- Sra Phra Phirun One-Way Perimeter Loop -->
+    <polygon points="1210,750 1205,740 1215,740" />
+    <polygon points="1320,850 1330,845 1330,855" />
+    <polygon points="1430,750 1435,760 1425,760" />
   </g>
 
-  <!-- Directional Driving Traffic Flow Arrows (Subtle Green Guidance) -->
-  <g fill="#10B981" opacity="0.8">
-    <!-- Ingress Gate Vibhavadi -->
-    <polygon points="200,296 208,300 200,304" />
-    <polygon points="296,380 300,388 304,380" />
-    <!-- East on Upper Road -->
-    <polygon points="360,466 368,470 360,474" />
-    <polygon points="620,466 628,470 620,474" />
-    <polygon points="900,466 908,470 900,474" />
-    
-    <!-- Ingress Gate 3, Gate 2, Gate 1 from Ngamwongwan Rd -->
-    <polygon points="456,770 460,762 464,770" />
-    <polygon points="736,770 740,762 744,770" />
-    <polygon points="1076,770 1080,762 1084,770" />
-    
-    <!-- East on Lower Avenue Connecting Ngam 2 & Ngam 1 towards Phra Phirun & Roundabout -->
-    <polygon points="580,666 588,670 580,674" />
-    <polygon points="900,666 908,670 900,674" />
-    <polygon points="1140,666 1148,670 1140,674" />
-
-    <!-- Ingress Gate Phahonyothin 1 heading West into the Roundabout -->
-    <polygon points="1455,546 1445,550 1455,554" />
-    <polygon points="1440,666 1432,670 1440,674" />
-
-    <!-- Roundabout Circulating Arrows (Counter-Clockwise) -->
-    <polygon points="1405,531 1395,534 1405,537" />
-    <polygon points="1395,563 1405,566 1395,569" />
-
-    <!-- One-Way Loop Arrows Around Phra Phirun Pond (เดินรถทางเดียว) -->
-    <!-- Entrance heading South: -->
-    <polygon points="1206,625 1210,635 1214,625" />
-    <!-- South leg heading East: -->
-    <polygon points="1295,756 1305,760 1295,764" />
-    <!-- East leg heading North: -->
-    <polygon points="1386,635 1390,625 1394,635" />
-    <!-- North leg heading West to exit: -->
-    <polygon points="1305,556 1295,560 1305,564" />
-  </g>
-
-  <!-- BTS Roundabout Landscaped Center Island (วงเวียนติดทางลง BTS) -->
-  <g transform="translate(1400, 550)">
-    <ellipse cx="0" cy="0" rx="42" ry="14" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.6" filter="url(#dropSoftDaylight)" />
-    <!-- Small Ornamental Central Shrubbery -->
-    <circle cx="-12" cy="-2" r="5" fill="#10B981" />
-    <circle cx="12" cy="1" r="5" fill="#059669" />
-    <circle cx="0" cy="0" r="7" fill="#047857" />
-    <text x="0" y="3.5" fill="#065F46" font-size="8" font-weight="800" text-anchor="middle">วงเวียน BTS</text>
-  </g>
-
-  <!-- One-Way Entrance Gate Signage into Sra Phra Phirun Perimeter -->
-  <g transform="translate(1210, 526)">
-    <rect x="-46" y="-10" width="92" height="20" rx="10" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" filter="url(#dropSoftDaylight)" />
-    <text x="0" y="3.5" fill="#065F46" font-size="7.5" font-weight="800" text-anchor="middle">ทางเข้าสระ (วันเวย์) ▼</text>
-  </g>
-
-  <!-- Pedestrian Crosswalks (Crisp Zebra Markings) -->
-  <g stroke="#E2E8F0" stroke-width="2.8" stroke-dasharray="4,5" opacity="0.65">
-    <line x1="445" y1="845" x2="475" y2="845" />
-    <line x1="725" y1="845" x2="755" y2="845" />
-    <line x1="1065" y1="845" x2="1095" y2="845" />
-    <line x1="155" y1="285" x2="155" y2="315" />
-    <!-- Crosswalk into Rectangular Phra Phirun Promenade from Gate P1 -->
-    <line x1="1410" y1="655" x2="1410" y2="685" />
-  </g>
-
-  <!-- Campus Botanical Trees & Landscaping Groves -->
-  <g id="trees" opacity="0.88">
-    <!-- North Quad Trees -->
-    <g transform="translate(380, 190)"><ellipse cx="0" cy="4" rx="14" ry="7" fill="#000000" opacity="0.4" /><circle cx="0" cy="0" r="14" fill="#047857" /><circle cx="-3" cy="-3" r="10" fill="#10B981" /><circle cx="-5" cy="-5" r="5" fill="#34D399" opacity="0.8" /></g>
-    <g transform="translate(680, 210)"><ellipse cx="0" cy="4" rx="15" ry="7" fill="#000000" opacity="0.4" /><circle cx="0" cy="0" r="15" fill="#065F46" /><circle cx="-3" cy="-3" r="11" fill="#059669" /></g>
-    <g transform="translate(980, 180)"><ellipse cx="0" cy="4" rx="16" ry="8" fill="#000000" opacity="0.4" /><circle cx="0" cy="0" r="16" fill="#047857" /><circle cx="-3" cy="-3" r="12" fill="#10B981" /></g>
-    <!-- Central Quad Trees -->
-    <g transform="translate(560, 560)"><ellipse cx="0" cy="4" rx="13" ry="6" fill="#000000" opacity="0.4" /><circle cx="0" cy="0" r="13" fill="#047857" /><circle cx="-2" cy="-2" r="9" fill="#10B981" /></g>
-    <g transform="translate(900, 560)"><ellipse cx="0" cy="4" rx="14" ry="7" fill="#000000" opacity="0.4" /><circle cx="0" cy="0" r="14" fill="#065F46" /><circle cx="-3" cy="-3" r="10" fill="#059669" /></g>
-    <!-- South Quad Trees -->
-    <g transform="translate(580, 770)"><ellipse cx="0" cy="4" rx="13" ry="6" fill="#000000" opacity="0.4" /><circle cx="0" cy="0" r="13" fill="#065F46" /><circle cx="-2" cy="-2" r="9" fill="#10B981" /></g>
-    <g transform="translate(640, 800)"><ellipse cx="0" cy="4" rx="11" ry="5" fill="#000000" opacity="0.4" /><circle cx="0" cy="0" r="11" fill="#047857" /><circle cx="-2" cy="-2" r="7" fill="#059669" /></g>
-  </g>
+  <!-- Roundabout Central Island -->
+  <ellipse cx="1345" cy="565" rx="42" ry="16" fill="#10B981" stroke="#059669" stroke-width="2" />
+  <text x="1345" y="569" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle">วงเวียน BTS</text>
 
   <!-- ======================================================== -->
-  <!-- 4. SCENIC RECTANGULAR PHRA PHIRUN POND & LOY KRATHONG    -->
-  <!-- Centered inside the Rectangular Traffic Loop             -->
-  <!-- Center: x = 1300, y = 660                                -->
+  <!-- 4. SCENIC RECTANGULAR PHRA PHIRUN POND (EVENT ZONE)      -->
   <!-- ======================================================== -->
-  <g id="event-zone-loykrathong" transform="translate(1300, 660)" filter="url(#building3DShadow)">
+  <!-- Located at Southeast Corner (Near Yaek Kaset & BTS N13) -->
+  <g id="event-zone-loykrathong" transform="translate(1320, 760)" filter="url(#building3DShadow)">
     <!-- Surrounding Clean Stone Promenade / Curb Coping -->
-    <rect x="-42" y="-60" width="84" height="120" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1.8" />
-    <rect x="-38" y="-56" width="76" height="112" rx="6" fill="#0F172A" stroke="#0369A1" stroke-width="1" />
+    <rect x="-85" y="-68" width="170" height="136" rx="14" fill="#1E293B" stroke="#334155" stroke-width="2" />
+    <rect x="-81" y="-64" width="162" height="128" rx="12" fill="#0F172A" stroke="#0369A1" stroke-width="1.2" />
 
     <!-- CLEAN RECTANGULAR WATER SURFACE OF PHRA PHIRUN POND -->
-    <!-- (บ่อน้ำทรงสี่เหลี่ยมผืนผ้าธรรมดาสะอาดตา ไม่มีหลังคาหรือลูกเล่นเกะกะ) -->
-    <rect x="-32" y="-50" width="64" height="100" rx="4" fill="url(#pondWaterGrad)" stroke="#38BDF8" stroke-width="1.2" stroke-opacity="0.8" />
+    <rect x="-75" y="-58" width="150" height="116" rx="8" fill="url(#pondWaterGrad)" />
+    <rect x="-75" y="-58" width="150" height="116" rx="8" fill="url(#waterSheen)" opacity="0.6" />
 
-    <!-- Subtle Clean Water Ripple Lines (Calm, Serene) -->
-    <line x1="-22" y1="-25" x2="22" y2="-25" stroke="#7DD3FC" stroke-width="1" opacity="0.3" stroke-dasharray="8,6" />
-    <line x1="-18" y1="0" x2="18" y2="0" stroke="#7DD3FC" stroke-width="1" opacity="0.25" stroke-dasharray="6,8" />
-    <line x1="-20" y1="25" x2="20" y2="25" stroke="#7DD3FC" stroke-width="1" opacity="0.3" stroke-dasharray="8,6" />
-  </g><!-- ======================================================== -->
-  <!-- 5. ARCHITECTURAL 2.5D ISOMETRIC PARKING BUILDINGS        -->
-  <!-- Professional, High-Fidelity Depth & Clean Materiality     -->
+    <!-- Subtle Architectural Water Ripples -->
+    <path d="M -55 -25 Q -25 -30 5 -25 T 55 -25" fill="none" stroke="#BAE6FD" stroke-width="1.5" stroke-linecap="round" opacity="0.65" />
+    <path d="M -45 5 Q -15 0 15 5 T 50 5" fill="none" stroke="#BAE6FD" stroke-width="1.5" stroke-linecap="round" opacity="0.55" />
+    <path d="M -50 35 Q -20 30 10 35 T 50 35" fill="none" stroke="#BAE6FD" stroke-width="1.5" stroke-linecap="round" opacity="0.45" />
+
+    <!-- Center Floating Krathong Motif -->
+    <circle cx="0" cy="0" r="14" fill="#FFFFFF" filter="url(#hudCardShadow)" />
+    <circle cx="0" cy="0" r="6" fill="#E11D48" />
+  </g>
+
+  <!-- Pond Title Badge (Pill) -->
+  <g transform="translate(1320, 672)">
+    <rect x="-90" y="-12" width="180" height="24" rx="12" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" filter="url(#hudCardShadow)" />
+    <text x="0" y="4" fill="#0369A1" font-size="11" font-weight="800" text-anchor="middle">สระพระพิรุณ (งานลอยกระทง)</text>
+  </g>
+
   <!-- ======================================================== -->
-
-  <!-- [BUILDING 1] อาคารจอดรถวิภาวดี (Spacious Left Side with generous road clearance) -->
-  <!-- Center: (185, 380) -> Rooftop deck centered at: (185, 350) -->
-  <g id="building-vipa" transform="translate(185, 380)" filter="url(#building3DShadow)">
-    <!-- Base Plaza & Ambient Ground Shadow -->
-    <polygon points="-44,48 38,48 54,68 -28,68" fill="#000000" opacity="0.65" />
-    <polygon points="-40,46 34,46 48,64 -26,64" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1" />
-
-    <!-- South Facing Front Wall (Multi-level Facade) -->
-    <polygon points="-36,-20 26,-20 26,46 -36,46" fill="url(#vipaWallFront)" stroke="#334155" stroke-width="1.5" />
-    <!-- Horizontal Architectural Louvers & Concrete Slabs -->
-    <line x1="-32" y1="-5" x2="22" y2="-5" stroke="#475569" stroke-width="2" />
-    <line x1="-32" y1="10" x2="22" y2="10" stroke="#475569" stroke-width="2" />
-    <line x1="-32" y1="25" x2="22" y2="25" stroke="#475569" stroke-width="2" />
-    <!-- Ground Vehicle Entrance Gate -->
-    <rect x="-14" y="32" width="18" height="14" fill="#040711" stroke="#F59E0B" stroke-width="1.2" />
-
-    <!-- East Facing Isometric Side Wall -->
-    <polygon points="26,-20 48,-36 48,30 26,46" fill="url(#vipaWallSide)" stroke="#334155" stroke-width="1.5" />
-    <line x1="26" y1="-5" x2="48" y2="-21" stroke="#1E293B" stroke-width="1.5" />
-    <line x1="26" y1="10" x2="48" y2="-6" stroke="#1E293B" stroke-width="1.5" />
-    <line x1="26" y1="25" x2="48" y2="9" stroke="#1E293B" stroke-width="1.5" />
-
-    <!-- Rooftop Parking Deck (Epoxy Deck Surface) -->
-    <polygon points="-36,-20 26,-20 48,-36 -14,-36" fill="url(#vipaRoof)" stroke="#F59E0B" stroke-width="1.8" />
-
-    <!-- Rooftop Parking Bays Marking -->
+  <!-- 5. ARCHITECTURAL 2.5D ISOMETRIC PARKING BUILDINGS        -->
+  <!-- ======================================================== -->
+  <!-- [BUILDING 1] อาคารจอดรถวิภาวดี (Left Side with generous road clearance) -->
+  <g id="building-vipa" transform="translate(185, 350)" filter="url(#building3DShadow)">
+    <polygon points="-52,36 42,36 68,60 -26,60" fill="#000000" opacity="0.68" />
+    <polygon points="-48,34 38,34 62,56 -24,56" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1" />
+    <polygon points="-44,-16 30,-16 30,34 -44,34" fill="url(#vipaWallFront)" stroke="#334155" stroke-width="1.6" />
+    <line x1="-40" y1="-2" x2="26" y2="-2" stroke="#475569" stroke-width="1.8" />
+    <line x1="-40" y1="12" x2="26" y2="12" stroke="#475569" stroke-width="1.8" />
+    <rect x="-14" y="22" width="14" height="12" fill="#030712" stroke="#38BDF8" stroke-width="1.2" />
+    <polygon points="30,-16 58,-32 58,18 30,34" fill="url(#vipaWallSide)" stroke="#334155" stroke-width="1.6" />
+    <line x1="30" y1="-2" x2="58" y2="-18" stroke="#1E293B" stroke-width="1.5" />
+    <line x1="30" y1="12" x2="58" y2="-4" stroke="#1E293B" stroke-width="1.5" />
+    <polygon points="-44,-16 30,-16 58,-32 -16,-32" fill="url(#vipaRoof)" stroke="#38BDF8" stroke-width="1.8" />
     <g stroke="#FFFFFF" stroke-width="1.2" opacity="0.8" stroke-linecap="round">
-      <line x1="-24" y1="-24" x2="-16" y2="-29" />
-      <line x1="-14" y1="-24" x2="-6" y2="-29" />
-      <line x1="-4" y1="-24" x2="4" y2="-29" />
-      <line x1="6" y1="-24" x2="14" y2="-29" />
-      <line x1="16" y1="-24" x2="24" y2="-29" />
+      <line x1="-30" y1="-20" x2="-22" y2="-25" />
+      <line x1="-18" y1="-20" x2="-10" y2="-25" />
+      <line x1="-6" y1="-20" x2="2" y2="-25" />
+      <line x1="6" y1="-20" x2="14" y2="-25" />
+      <line x1="-28" y1="-18" x2="18" y2="-28" stroke-dasharray="4,3" stroke-width="1.2" />
     </g>
-
-    <!-- Glass Stairwell / Elevator Core -->
-    <g transform="translate(30, -32)">
-      <polygon points="-6,0 6,0 10,-4 -2,-4" fill="#0284C7" stroke="#38BDF8" stroke-width="0.8" />
-      <polygon points="-6,0 6,0 6,14 -6,14" fill="url(#glassElevator)" stroke="#0369A1" stroke-width="0.8" />
-      <line x1="0" y1="0" x2="0" y2="14" stroke="#E2E8F0" stroke-width="0.8" opacity="0.6" />
+    <g transform="translate(38, -30)">
+      <polygon points="-6,0 4,0 8,-4 -2,-4" fill="#0284C7" stroke="#38BDF8" stroke-width="0.8" />
+      <polygon points="-6,0 4,0 4,14 -6,14" fill="url(#glassElevator)" stroke="#0369A1" stroke-width="0.8" />
     </g>
-
-    <!-- Parking Symbol Pill -->
-    <g transform="translate(-14, -28)">
-      <circle cx="0" cy="0" r="7.5" fill="#78350F" stroke="#F59E0B" stroke-width="1.4" />
-      <text x="0" y="3" fill="#FFFFFF" font-size="7.5" font-weight="900" text-anchor="middle">P</text>
+    <g transform="translate(0, 48)">
+      <rect x="-60" y="-10" width="120" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#hudCardShadow)" />
+      <text x="0" y="4" fill="#0F172A" font-size="10" font-weight="700" text-anchor="middle">อาคารจอดรถวิภาวดี</text>
     </g>
+  </g>
 
-    <!-- Professional Architectural Signage (High-Contrast Crisp Badge) -->
-    </g><!-- [BUILDING 2] อาคารจอดรถงามวงศ์วาน 2 (Facing Lower Avenue, Left of Gate 2) -->
-  <!-- Center: (830, 740) -> Rooftop deck centered at: (830, 710) -->
+  <!-- [BUILDING 2] อาคารจอดรถงามวงศ์วาน 2 (Facing Central Spine, Left of Gate 1) -->
   <g id="building-ngam2" transform="translate(830, 740)" filter="url(#building3DShadow)">
-    <!-- Base Plaza & Ambient Ground Shadow -->
     <polygon points="-58,38 46,38 74,64 -30,64" fill="#000000" opacity="0.68" />
     <polygon points="-54,36 42,36 68,60 -28,60" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1" />
-
-    <!-- South Facing Front Wall (Multi-level Architectural Garage) -->
     <polygon points="-48,-18 34,-18 34,36 -48,36" fill="url(#ngamWallFront)" stroke="#334155" stroke-width="1.6" />
     <line x1="-44" y1="-4" x2="30" y2="-4" stroke="#475569" stroke-width="1.8" />
     <line x1="-44" y1="10" x2="30" y2="10" stroke="#475569" stroke-width="1.8" />
     <line x1="-44" y1="24" x2="30" y2="24" stroke="#475569" stroke-width="1.8" />
-    <!-- Ground Entry Arch Portal -->
     <rect x="-16" y="24" width="16" height="12" fill="#030712" stroke="#10B981" stroke-width="1.2" />
-
-    <!-- East Facing Isometric Side Wall -->
     <polygon points="34,-18 64,-36 64,18 34,36" fill="url(#ngamWallSide)" stroke="#334155" stroke-width="1.6" />
     <line x1="34" y1="-4" x2="64" y2="-22" stroke="#1E293B" stroke-width="1.5" />
     <line x1="34" y1="10" x2="64" y2="-8" stroke="#1E293B" stroke-width="1.5" />
     <line x1="34" y1="24" x2="64" y2="6" stroke="#1E293B" stroke-width="1.5" />
-
-    <!-- Rooftop Parking Deck (Cast Concrete Deck Surface with KU Green Border) -->
     <polygon points="-48,-18 34,-18 64,-36 -18,-36" fill="url(#ngamRoof)" stroke="#10B981" stroke-width="1.8" />
-
-    <!-- Rooftop Parking Bays Marking -->
     <g stroke="#FFFFFF" stroke-width="1.2" opacity="0.8" stroke-linecap="round">
       <line x1="-34" y1="-23" x2="-26" y2="-28" />
       <line x1="-22" y1="-23" x2="-14" y2="-28" />
@@ -579,40 +326,31 @@
       <line x1="14" y1="-23" x2="22" y2="-28" />
       <line x1="-30" y1="-21" x2="20" y2="-32" stroke-dasharray="4,3" stroke-width="1.2" />
     </g>
-
-    <!-- Glass Elevator / Stairwell Core -->
     <g transform="translate(42, -34)">
       <polygon points="-8,0 4,0 8,-4 -4,-4" fill="#0284C7" stroke="#38BDF8" stroke-width="0.8" />
       <polygon points="-8,0 4,0 4,14 -8,14" fill="url(#glassElevator)" stroke="#0369A1" stroke-width="0.8" />
       <line x1="-2" y1="0" x2="-2" y2="14" stroke="#E2E8F0" stroke-width="0.8" opacity="0.6" />
     </g>
+    <g transform="translate(0, 52)">
+      <rect x="-65" y="-10" width="130" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#hudCardShadow)" />
+      <text x="0" y="4" fill="#0F172A" font-size="10" font-weight="700" text-anchor="middle">อาคารจอดรถงามวงศ์วาน 2</text>
+    </g>
+  </g>
 
-    <!-- Elegant Building Signage (Crisp High-Contrast Badge) -->
-    </g><!-- [BUILDING 3] อาคารจอดรถงามวงศ์วาน 1 (Facing Lower Avenue, Right of Gate 1) -->
-  <!-- Center: (1000, 740) -> Rooftop deck centered at: (1000, 710) -->
+  <!-- [BUILDING 3] อาคารจอดรถงามวงศ์วาน 1 (Facing Central Spine, Beside Gate 1) -->
   <g id="building-ngam1" transform="translate(1000, 740)" filter="url(#building3DShadow)">
-    <!-- Base Plaza & Ambient Ground Shadow -->
     <polygon points="-58,38 46,38 74,64 -30,64" fill="#000000" opacity="0.68" />
     <polygon points="-54,36 42,36 68,60 -28,60" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1" />
-
-    <!-- South Facing Front Wall (Multi-level Architectural Garage) -->
     <polygon points="-48,-18 34,-18 34,36 -48,36" fill="url(#ngamWallFront)" stroke="#334155" stroke-width="1.6" />
     <line x1="-44" y1="-4" x2="30" y2="-4" stroke="#475569" stroke-width="1.8" />
     <line x1="-44" y1="10" x2="30" y2="10" stroke="#475569" stroke-width="1.8" />
     <line x1="-44" y1="24" x2="30" y2="24" stroke="#475569" stroke-width="1.8" />
-    <!-- Ground Entry Arch Portal -->
     <rect x="-16" y="24" width="16" height="12" fill="#030712" stroke="#10B981" stroke-width="1.2" />
-
-    <!-- East Facing Isometric Side Wall -->
     <polygon points="34,-18 64,-36 64,18 34,36" fill="url(#ngamWallSide)" stroke="#334155" stroke-width="1.6" />
     <line x1="34" y1="-4" x2="64" y2="-22" stroke="#1E293B" stroke-width="1.5" />
     <line x1="34" y1="10" x2="64" y2="-8" stroke="#1E293B" stroke-width="1.5" />
     <line x1="34" y1="24" x2="64" y2="6" stroke="#1E293B" stroke-width="1.5" />
-
-    <!-- Rooftop Parking Deck (Cast Concrete Deck Surface with KU Green Border) -->
     <polygon points="-48,-18 34,-18 64,-36 -18,-36" fill="url(#ngamRoof)" stroke="#10B981" stroke-width="1.8" />
-
-    <!-- Rooftop Parking Bays Marking -->
     <g stroke="#FFFFFF" stroke-width="1.2" opacity="0.8" stroke-linecap="round">
       <line x1="-34" y1="-23" x2="-26" y2="-28" />
       <line x1="-22" y1="-23" x2="-14" y2="-28" />
@@ -621,83 +359,93 @@
       <line x1="14" y1="-23" x2="22" y2="-28" />
       <line x1="-30" y1="-21" x2="20" y2="-32" stroke-dasharray="4,3" stroke-width="1.2" />
     </g>
-
-    <!-- Glass Elevator / Stairwell Core -->
     <g transform="translate(42, -34)">
       <polygon points="-8,0 4,0 8,-4 -4,-4" fill="#0284C7" stroke="#38BDF8" stroke-width="0.8" />
       <polygon points="-8,0 4,0 4,14 -8,14" fill="url(#glassElevator)" stroke="#0369A1" stroke-width="0.8" />
       <line x1="-2" y1="0" x2="-2" y2="14" stroke="#E2E8F0" stroke-width="0.8" opacity="0.6" />
     </g>
+    <g transform="translate(0, 52)">
+      <rect x="-65" y="-10" width="130" height="20" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#hudCardShadow)" />
+      <text x="0" y="4" fill="#0F172A" font-size="10" font-weight="700" text-anchor="middle">อาคารจอดรถงามวงศ์วาน 1</text>
+    </g>
+  </g>
 
-    <!-- Elegant Building Signage (Crisp High-Contrast Badge) -->
-    </g><!-- ======================================================== -->
+  <!-- [STATION] BTS SKYTRAIN STATION: มหาวิทยาลัยเกษตรศาสตร์ (N13) -->
+  <g id="station-bts-kaset" transform="translate(1485, 570)" filter="url(#building3DShadow)">
+    <rect x="-28" y="0" width="56" height="150" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="2" />
+    <rect x="-22" y="8" width="44" height="18" rx="5" fill="#10B981" />
+    <text x="0" y="21" fill="#FFFFFF" font-size="11" font-weight="900" text-anchor="middle">BTS N13</text>
+    <rect x="-20" y="34" width="40" height="104" rx="6" fill="#1E293B" stroke="#64748B" stroke-width="1.2" />
+    <circle cx="0" cy="52" r="7" fill="#10B981" opacity="0.9" />
+    <circle cx="0" cy="80" r="7" fill="#38BDF8" opacity="0.9" />
+    <circle cx="0" cy="108" r="7" fill="#10B981" opacity="0.9" />
+    <g transform="translate(-55, -14)">
+      <rect x="-45" y="-10" width="90" height="22" rx="11" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5" filter="url(#hudCardShadow)" />
+      <text x="0" y="4" fill="#065F46" font-size="10" font-weight="800" text-anchor="middle">สถานี ม.เกษตรฯ</text>
+    </g>
+  </g>
+
+  <!-- ======================================================== -->
   <!-- 6. CAMPUS GATES WITH CLEAN SIGNAGE BADGES                -->
   <!-- ======================================================== -->
-
-  <!-- ประตูงามวงศ์วาน 3 (x=460, y=880) -->
-  <g transform="translate(460, 880)">
-    <circle cx="0" cy="0" r="17" fill="#0B132B" stroke="#10B981" stroke-width="2.5" />
-    <text x="0" y="5" fill="#A7F3D0" font-size="11.5" font-weight="900" text-anchor="middle">3</text>
-    <polygon points="0,-19 -5,-27 5,-27" fill="#10B981" />
-    <rect x="22" y="-11" width="70" height="22" rx="11" fill="#0B132B" stroke="#10B981" stroke-width="1.5" />
-    <text x="57" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">ประตู 3</text>
+  <!-- ประตูวิภาวดี (West Ingress) -->
+  <g transform="translate(75, 220)">
+    <circle cx="25" cy="20" r="14" fill="#0F172A" stroke="#F59E0B" stroke-width="2.5" />
+    <text x="25" y="24" fill="#F59E0B" font-size="11" font-weight="900" text-anchor="middle">V</text>
+    <rect x="48" y="8" width="80" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" />
+    <text x="88" y="24" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">ประตูวิภาวดี</text>
   </g>
 
-  <!-- ประตูงามวงศ์วาน 2 (x=740, y=880) -->
-  <g transform="translate(740, 880)">
-    <circle cx="0" cy="0" r="17" fill="#0B132B" stroke="#10B981" stroke-width="2.5" />
-    <text x="0" y="5" fill="#A7F3D0" font-size="11.5" font-weight="900" text-anchor="middle">2</text>
-    <polygon points="0,-19 -5,-27 5,-27" fill="#10B981" />
-    <rect x="22" y="-11" width="70" height="22" rx="11" fill="#0B132B" stroke="#10B981" stroke-width="1.5" />
-    <text x="57" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">ประตู 2</text>
+  <!-- ประตูงามวงศ์วาน 3 (x=450, y=890) -->
+  <g id="gate-ngam-3" transform="translate(450, 890)">
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#10B981" font-size="12" font-weight="900" text-anchor="middle">3</text>
+    <rect x="22" y="-12" width="60" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" />
+    <text x="52" y="4" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">ประตู 3</text>
   </g>
 
-  <!-- ประตูงามวงศ์วาน 1 (x=1080, y=880) -->
-  <g transform="translate(1080, 880)">
-    <circle cx="0" cy="0" r="17" fill="#0B132B" stroke="#10B981" stroke-width="2.5" />
-    <text x="0" y="5" fill="#A7F3D0" font-size="11.5" font-weight="900" text-anchor="middle">1</text>
-    <polygon points="0,-19 -5,-27 5,-27" fill="#10B981" />
-    <rect x="22" y="-11" width="70" height="22" rx="11" fill="#0B132B" stroke="#10B981" stroke-width="1.5" />
-    <text x="57" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">ประตู 1</text>
+  <!-- ประตูงามวงศ์วาน 2 (x=720, y=890) -->
+  <g id="gate-ngam-2" transform="translate(720, 890)">
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#10B981" font-size="12" font-weight="900" text-anchor="middle">2</text>
+    <rect x="22" y="-12" width="60" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" />
+    <text x="52" y="4" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">ประตู 2</text>
   </g>
 
-  <!-- ประตูวิภาวดีรังสิต (x=120, y=300) -->
-  <g transform="translate(120, 300)">
-    <circle cx="0" cy="0" r="17" fill="#0B132B" stroke="#F59E0B" stroke-width="2.5" />
-    <text x="0" y="5" fill="#FDE047" font-size="11.5" font-weight="900" text-anchor="middle">V</text>
-    <polygon points="19,0 27,-5 27,5" fill="#F59E0B" />
-    <rect x="34" y="-11" width="124" height="22" rx="11" fill="#0B132B" stroke="#F59E0B" stroke-width="1.5" />
-    <text x="96" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">ประตูวิภาวดีรังสิต</text>
+  <!-- ประตูงามวงศ์วาน 1 (x=1040, y=890) -->
+  <g id="gate-ngam-1" transform="translate(1040, 890)">
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#10B981" font-size="12" font-weight="900" text-anchor="middle">1</text>
+    <rect x="22" y="-12" width="60" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" />
+    <text x="52" y="4" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">ประตู 1</text>
   </g>
 
-  <!-- ประตูพหลโยธิน 1 (x=1480, y=670) - Main Avenue into the Rectangular Loop -->
-  <g transform="translate(1480, 670)">
-    <circle cx="0" cy="0" r="16" fill="#FFFFFF" stroke="#059669" stroke-width="2.2" />
-    <text x="0" y="4.5" fill="#059669" font-size="10.5" font-weight="900" text-anchor="middle">P1</text>
-    <polygon points="-18,0 -25,-4.5 -25,4.5" fill="#059669" />
-    <!-- Label positioned cleanly to the East of Highway verge -->
-    <rect x="22" y="-11" width="102" height="22" rx="11" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
-    <text x="73" y="4" fill="#0F172A" font-size="10" font-weight="800" text-anchor="middle">ประตูพหลโยธิน 1</text>
+  <!-- Road Name Badges (Pills) -->
+  <!-- 1. ถนนระพีสาคริก (สายบน) -->
+  <g transform="translate(560, 252)">
+    <rect x="0" y="0" width="230" height="22" rx="11" fill="#FFFFFF" stroke="#64748B" stroke-width="1" opacity="0.9" />
+    <text x="115" y="15" fill="#334155" font-size="10" font-weight="700" text-anchor="middle">ถนนสายบน (ถ.ระพีสาคริก - Loop นอก)</text>
+  </g>
+
+  <!-- 2. ถนนชูชาติกำภู (สายกลาง) -->
+  <g transform="translate(560, 538)">
+    <rect x="0" y="0" width="230" height="22" rx="11" fill="#FFFFFF" stroke="#64748B" stroke-width="1" opacity="0.9" />
+    <text x="115" y="15" fill="#334155" font-size="10" font-weight="700" text-anchor="middle">ถนนสายกลาง (ถ.ชูชาติกำภู - Central Spine)</text>
+  </g>
+
+  <!-- 3. ซอยสุวรรณวาจกกสิกิจ (ทะลุสายบน) -->
+  <g transform="translate(1015, 380)">
+    <rect x="-8" y="-10" width="20" height="130" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="1" opacity="0.9" />
+    <text x="2" y="55" fill="#334155" font-size="9" font-weight="700" text-anchor="middle" transform="rotate(-90 2 55)">ซ.สุวรรณวาจกฯ (ขึ้นสายบน)</text>
   </g>
 
   <!-- ======================================================== -->
   <!-- 7. ARCHITECTURAL COMPASS ROSE & SCALE BAR                -->
   <!-- ======================================================== -->
-  <g transform="translate(1360, 68)" opacity="0.9">
-    <circle cx="0" cy="0" r="26" fill="#0B132B" stroke="#334155" stroke-width="1.8" />
-    <circle cx="0" cy="0" r="22" fill="none" stroke="#475569" stroke-width="1" stroke-dasharray="2,3" />
-    <polygon points="0,-18 5,0 0,-3 -5,0" fill="#EF4444" />
-    <polygon points="0,18 5,0 0,3 -5,0" fill="#94A3B8" />
-    <text x="0" y="-6" fill="#F8FAFC" font-size="9.5" font-weight="900" text-anchor="middle">N</text>
+  <g transform="translate(1360, 68)" opacity="0.8">
+    <circle cx="20" cy="20" r="18" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
+    <polygon points="20,6 25,20 20,16 15,20" fill="#E11D48" />
+    <polygon points="20,34 25,20 20,24 15,20" fill="#64748B" />
+    <text x="20" y="5" fill="#E11D48" font-size="10" font-weight="900" text-anchor="middle">N</text>
   </g>
-
-  <!-- Scale Indicator -->
-  <g transform="translate(210, 68)" opacity="0.85">
-    <rect x="-10" y="-12" width="160" height="24" rx="6" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1" />
-    <line x1="10" y1="0" x2="90" y2="0" stroke="#94A3B8" stroke-width="2" />
-    <line x1="10" y1="-4" x2="10" y2="4" stroke="#94A3B8" stroke-width="2" />
-    <line x1="90" y1="-4" x2="90" y2="4" stroke="#94A3B8" stroke-width="2" />
-    <text x="122" y="3.5" fill="#94A3B8" font-size="8.5" font-weight="700" letter-spacing="1">~250 M</text>
-  </g>
-
 </svg>

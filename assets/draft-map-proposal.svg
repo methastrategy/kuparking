@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" style="font-family: 'Inter', 'Prompt', -apple-system, sans-serif;">
+  <defs>
+    <!-- Background & Grid -->
+    <radialGradient id="vignetteGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#F1F5F9" />
+    </radialGradient>
+    <pattern id="gridBlueprint" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#E2E8F0" stroke-width="0.8" stroke-opacity="0.6" />
+      <circle cx="0" cy="0" r="1.5" fill="#CBD5E1" fill-opacity="0.5" />
+    </pattern>
+    <linearGradient id="pondWaterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+    <filter id="dropSoft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feOffset dx="0" dy="3" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.12" /></feComponentTransfer>
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <filter id="cardGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feOffset dx="0" dy="4" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.15" /></feComponentTransfer>
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1600" height="1000" fill="url(#vignetteGlow)" />
+  <rect width="1600" height="1000" fill="url(#gridBlueprint)" />
+
+  <!-- Title Header Badge (Properly Centered at Top Left inside campus) -->
+  <g transform="translate(180, 45)">
+    <rect x="0" y="0" width="550" height="44" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" filter="url(#dropSoft)" />
+    <circle cx="24" cy="22" r="8" fill="#10B981" />
+    <text x="44" y="27" fill="#0F172A" font-size="14" font-weight="800">ผังร่างโครงสร้างถนน V2 (วิเคราะห์สังเคราะห์จากภาพจริงทั้ง 4 ภาพ 100%)</text>
+  </g>
+
+  <!-- ================= CAMPUS LAWNS (GREEN QUADS) ================= -->
+  <!-- 1. North Quad A (West of Soi Suwan) -->
+  <rect x="250" y="115" width="760" height="135" rx="12" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.2" />
+  <text x="630" y="185" fill="#059669" font-size="14" font-weight="700" opacity="0.4" letter-spacing="2" text-anchor="middle">โซนวิชาการตอนเหนือ (NORTH QUAD A)</text>
+
+  <!-- 2. North Quad B (East of Loop block) -->
+  <rect x="1210" y="115" width="230" height="395" rx="12" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1.2" />
+  <text x="1325" y="310" fill="#059669" font-size="13" font-weight="700" opacity="0.4" letter-spacing="1" text-anchor="middle">โซนพหลโยธินเหนือ</text>
+
+  <!-- 3. Academic Block (Inside Loop: Between Soi Suwan and East Connector) -->
+  <rect x="1065" y="305" width="90" height="235" rx="8" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="1.2" />
+  <text x="1110" y="425" fill="#047857" font-size="11" font-weight="700" opacity="0.6" text-anchor="middle" transform="rotate(-90 1110 425)">สำนักหอสมุด / สารนิเทศ 50 ปี</text>
+
+  <!-- 4. Central Lawns (Between Upper/Middle Arteries) -->
+  <rect x="360" y="320" width="650" height="220" rx="12" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.2" />
+  <text x="685" y="435" fill="#16A34A" font-size="15" font-weight="700" opacity="0.35" letter-spacing="2" text-anchor="middle">สนามหญ้าและอาคารเรียนกลาง (CENTRAL GREEN)</text>
+
+  <!-- 5. Lower Lawns (Between Middle Artery and Ngamwongwan Rd) -->
+  <rect x="360" y="590" width="60" height="260" rx="8" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1" />
+  <rect x="475" y="590" width="220" height="260" rx="8" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1" />
+  <rect x="745" y="590" width="270" height="260" rx="8" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1" />
+  <rect x="1065" y="590" width="115" height="260" rx="8" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1" />
+
+  <!-- ================= PERIMETER EXTERIOR HIGHWAYS ================= -->
+  <!-- 1. ถนนวิภาวดีรังสิต (West Boundary) -->
+  <rect x="75" y="0" width="50" height="1000" fill="#1E293B" />
+  <line x1="100" y1="0" x2="100" y2="1000" stroke="#F8FAFC" stroke-width="2" stroke-dasharray="16,16" opacity="0.5" />
+  <text x="50" y="500" fill="#64748B" font-size="13" font-weight="700" letter-spacing="3" transform="rotate(-90 50 500)" text-anchor="middle">ถนนวิภาวดีรังสิต (VIBHAVADI RANGSIT RD.) ◀</text>
+
+  <!-- 2. ถนนงามวงศ์วาน (South Boundary) -->
+  <rect x="50" y="865" width="1500" height="50" fill="#1E293B" rx="25" />
+  <line x1="75" y1="890" x2="1525" y2="890" stroke="#F8FAFC" stroke-width="2" stroke-dasharray="16,16" opacity="0.5" />
+  <text x="800" y="935" fill="#64748B" font-size="13" font-weight="700" letter-spacing="3" text-anchor="middle">◀ ถนนงามวงศ์วาน (NGAMWONGWAN RD.) ▶</text>
+
+  <!-- 3. ถนนพหลโยธิน (East Boundary) -->
+  <rect x="1475" y="0" width="50" height="1000" fill="#1E293B" />
+  <line x1="1500" y1="0" x2="1500" y2="1000" stroke="#F8FAFC" stroke-width="2" stroke-dasharray="16,16" opacity="0.5" />
+  <text x="1550" y="450" fill="#64748B" font-size="13" font-weight="700" letter-spacing="3" transform="rotate(90 1550 450)" text-anchor="middle">▶ ถนนพหลโยธิน (PHAHONYOTHIN RD.)</text>
+
+  <!-- แยกเกษตร (Intersection Junction Badge) -->
+  <g transform="translate(1475, 865)">
+    <circle cx="25" cy="25" r="16" fill="#0F172A" stroke="#F59E0B" stroke-width="2.5" />
+    <text x="25" y="30" fill="#F59E0B" font-size="13" font-weight="900" text-anchor="middle">✕</text>
+    <text x="25" y="-8" fill="#D97706" font-size="11" font-weight="700" text-anchor="middle">แยกเกษตร (หน้ามอ)</text>
+  </g>
+
+  <!-- ประตูวิภาวดี (West Gate Junction Badge) -->
+  <g transform="translate(75, 220)">
+    <circle cx="25" cy="20" r="14" fill="#0F172A" stroke="#F59E0B" stroke-width="2.5" />
+    <text x="25" y="24" fill="#F59E0B" font-size="11" font-weight="900" text-anchor="middle">V</text>
+    <rect x="48" y="8" width="80" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" />
+    <text x="88" y="24" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">ประตูวิภาวดี</text>
+  </g>
+
+  <!-- ================= INTERNAL ROAD NETWORK (ASPHALT) ================= -->
+  <!-- Road Underlays (Dark Slate Grey #1E293B, Width 32) -->
+  <g fill="none" stroke="#1E293B" stroke-width="32" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 1. Upper Loop Road (ถนนระพีสาคริก - สายบน): จากทางเข้าวิภาวดี เลี้ยวผ่านเหนือ North Quad แล้วหักลงใต้เชื่อมสายกลาง -->
+    <path d="M 125 240 L 220 240 Q 250 240 250 270 L 250 280 L 1180 280 Q 1200 280 1200 300 L 1200 545 Q 1200 565 1180 565" />
+
+    <!-- 2. Vibhavadi Branch into Middle Road (โค้งวิภาวดีสู่ถนนชูชาติกำภู) -->
+    <path d="M 220 240 Q 250 240 250 270 L 250 480 Q 250 565 330 565 L 1260 565" />
+
+    <!-- 3. ประตู 3 Connector (ชนสายกลาง) -->
+    <path d="M 450 865 L 450 565" />
+
+    <!-- 4. ประตู 2 Connector (ชนสายกลาง) -->
+    <path d="M 720 865 L 720 565" />
+
+    <!-- 5. ประตู 1 Connector (ซอยสุวรรณวาจกกสิกิจ - ทะลุชนสายบน!) -->
+    <path d="M 1040 865 L 1040 280" />
+
+    <!-- 6. East Connector: สายกลางมุ่งหน้าวงเวียน BTS และทางลงสระพระพิรุณ -->
+    <path d="M 1180 565 L 1260 565" />
+
+    <!-- 7. Road loop around Sra Phra Phirun (ถนนรอบสระพระพิรุณ) -->
+    <path d="M 1260 565 Q 1280 565 1280 600 L 1280 660 L 1210 660 L 1210 850 L 1430 850 L 1430 660 L 1280 660" />
+
+    <!-- 8. Phahonyothin Connectors (จากวงเวียนและรอบสระออกสู่พหลโยธิน) -->
+    <path d="M 1420 565 L 1475 565" />
+    <path d="M 1430 750 L 1475 750" />
+  </g>
+
+  <!-- Roundabout Asphalt Ring -->
+  <ellipse cx="1345" cy="565" rx="65" ry="32" fill="none" stroke="#1E293B" stroke-width="32" />
+
+  <!-- Road Surface Centerlines (Dashed Yellow/White) -->
+  <g fill="none" stroke="#F8FAFC" stroke-width="2" stroke-dasharray="10,12" opacity="0.6">
+    <path d="M 125 240 L 220 240 Q 250 240 250 270 L 250 280 L 1180 280 Q 1200 280 1200 300 L 1200 545 Q 1200 565 1180 565" />
+    <path d="M 220 240 Q 250 240 250 270 L 250 480 Q 250 565 330 565 L 1260 565" />
+    <path d="M 450 865 L 450 565" />
+    <path d="M 720 865 L 720 565" />
+    <path d="M 1040 865 L 1040 280" />
+    <path d="M 1260 565 Q 1280 565 1280 600 L 1280 660 L 1210 660 L 1210 850 L 1430 850 L 1430 660 Z" />
+    <ellipse cx="1345" cy="565" rx="65" ry="32" />
+    <path d="M 1420 565 L 1475 565" />
+    <path d="M 1430 750 L 1475 750" />
+  </g>
+
+  <!-- Roundabout Central Island -->
+  <ellipse cx="1345" cy="565" rx="42" ry="16" fill="#10B981" stroke="#059669" stroke-width="2" />
+  <text x="1345" y="569" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle">วงเวียน BTS</text>
+
+  <!-- ================= WATER BODY: SRA PHRA PHIRUN (POND) ================= -->
+  <!-- Bottom-Right Corner Location: x:1235 - 1405, y:690 - 825 -->
+  <g transform="translate(1235, 690)" filter="url(#dropSoft)">
+    <!-- Pond Basin Outer Rim -->
+    <rect x="0" y="0" width="170" height="135" rx="14" fill="#0284C7" stroke="#38BDF8" stroke-width="3" />
+    <!-- Pond Water Surface -->
+    <rect x="6" y="6" width="158" height="123" rx="10" fill="url(#pondWaterGrad)" />
+    <!-- Water Ripple Accents -->
+    <path d="M 20 28 Q 50 23 80 28 T 140 28" fill="none" stroke="#BAE6FD" stroke-width="1.8" stroke-linecap="round" opacity="0.7" />
+    <path d="M 30 62 Q 70 57 110 62 T 150 62" fill="none" stroke="#BAE6FD" stroke-width="1.8" stroke-linecap="round" opacity="0.6" />
+    <path d="M 20 95 Q 60 90 100 95 T 140 95" fill="none" stroke="#BAE6FD" stroke-width="1.8" stroke-linecap="round" opacity="0.5" />
+    <!-- Center Lotus / Floating Badge -->
+    <circle cx="85" cy="65" r="15" fill="#FFFFFF" filter="url(#dropSoft)" />
+    <circle cx="85" cy="65" r="7" fill="#E11D48" />
+  </g>
+  <!-- Pond Title Badge (Cleanly placed inside pond boundary) -->
+  <g transform="translate(1320, 675)">
+    <rect x="-85" y="-12" width="170" height="24" rx="12" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" filter="url(#dropSoft)" />
+    <text x="0" y="4" fill="#0369A1" font-size="10" font-weight="800" text-anchor="middle">สระพระพิรุณ (จุดลอยกระทง)</text>
+  </g>
+
+  <!-- ================= BUILDINGS & PARKING STRUCTURES ================= -->
+  <!-- 1. อาคารจอดรถวิภาวดี (West) -->
+  <g transform="translate(145, 340)" filter="url(#cardGlow)">
+    <rect x="0" y="0" width="85" height="75" rx="10" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5" />
+    <rect x="8" y="8" width="69" height="12" rx="4" fill="#38BDF8" opacity="0.3" />
+    <circle cx="42" cy="45" r="14" fill="#1E293B" />
+    <text x="42" y="50" fill="#38BDF8" font-size="14" font-weight="900" text-anchor="middle">P</text>
+    <rect x="-15" y="82" width="115" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
+    <text x="42" y="98" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">อาคารจอดรถวิภาวดี</text>
+  </g>
+
+  <!-- 2. อาคารจอดรถงามวงศ์วาน 2 (South-West) -->
+  <g transform="translate(565, 715)" filter="url(#cardGlow)">
+    <rect x="0" y="0" width="85" height="75" rx="10" fill="#0F172A" stroke="#10B981" stroke-width="1.5" />
+    <rect x="8" y="8" width="69" height="12" rx="4" fill="#10B981" opacity="0.3" />
+    <circle cx="42" cy="45" r="14" fill="#1E293B" />
+    <text x="42" y="50" fill="#10B981" font-size="14" font-weight="900" text-anchor="middle">P</text>
+    <rect x="-20" y="82" width="125" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
+    <text x="42" y="98" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">อาคารจอดรถงามวงศ์วาน 2</text>
+  </g>
+
+  <!-- 3. อาคารจอดรถงามวงศ์วาน 1 (South-East) -->
+  <g transform="translate(845, 715)" filter="url(#cardGlow)">
+    <rect x="0" y="0" width="85" height="75" rx="10" fill="#0F172A" stroke="#10B981" stroke-width="1.5" />
+    <rect x="8" y="8" width="69" height="12" rx="4" fill="#10B981" opacity="0.3" />
+    <circle cx="42" cy="45" r="14" fill="#1E293B" />
+    <text x="42" y="50" fill="#10B981" font-size="14" font-weight="900" text-anchor="middle">P</text>
+    <rect x="-20" y="82" width="125" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" filter="url(#dropSoft)" />
+    <text x="42" y="98" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">อาคารจอดรถงามวงศ์วาน 1</text>
+  </g>
+
+  <!-- 4. สถานีรถไฟฟ้า BTS ม.เกษตรศาสตร์ (N13) -->
+  <g transform="translate(1485, 570)" filter="url(#cardGlow)">
+    <rect x="-30" y="0" width="60" height="150" rx="12" fill="#0F172A" stroke="#10B981" stroke-width="2" />
+    <rect x="-24" y="8" width="48" height="18" rx="5" fill="#10B981" />
+    <text x="0" y="21" fill="#FFFFFF" font-size="11" font-weight="900" text-anchor="middle">BTS N13</text>
+    <!-- Train Carriage Representation -->
+    <rect x="-22" y="34" width="44" height="104" rx="6" fill="#1E293B" stroke="#64748B" stroke-width="1.2" />
+    <circle cx="0" cy="52" r="7" fill="#10B981" opacity="0.9" />
+    <circle cx="0" cy="80" r="7" fill="#38BDF8" opacity="0.9" />
+    <circle cx="0" cy="108" r="7" fill="#10B981" opacity="0.9" />
+    <!-- Label Badge Placed to the Left of BTS Station Above Roundabout -->
+    <rect x="-105" y="-22" width="90" height="24" rx="12" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5" filter="url(#dropSoft)" />
+    <text x="-60" y="-6" fill="#065F46" font-size="10" font-weight="800" text-anchor="middle">สถานี ม.เกษตรฯ</text>
+  </g>
+
+  <!-- ================= GATES & ANNOTATIONS ================= -->
+  <!-- ประตู 3 -->
+  <g transform="translate(450, 890)">
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#10B981" font-size="12" font-weight="900" text-anchor="middle">3</text>
+    <rect x="22" y="-12" width="60" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" />
+    <text x="52" y="4" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">ประตู 3</text>
+  </g>
+
+  <!-- ประตู 2 -->
+  <g transform="translate(720, 890)">
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#10B981" font-size="12" font-weight="900" text-anchor="middle">2</text>
+    <rect x="22" y="-12" width="60" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" />
+    <text x="52" y="4" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">ประตู 2</text>
+  </g>
+
+  <!-- ประตู 1 -->
+  <g transform="translate(1040, 890)">
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#10B981" stroke-width="2.5" />
+    <text x="0" y="5" fill="#10B981" font-size="12" font-weight="900" text-anchor="middle">1</text>
+    <rect x="22" y="-12" width="60" height="24" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1" />
+    <text x="52" y="4" fill="#0F172A" font-size="11" font-weight="700" text-anchor="middle">ประตู 1</text>
+  </g>
+
+  <!-- Road Name Badges (Pills) -->
+  <!-- 1. ถนนระพีสาคริก (สายบน) -->
+  <g transform="translate(560, 252)">
+    <rect x="0" y="0" width="230" height="22" rx="11" fill="#FFFFFF" stroke="#64748B" stroke-width="1" opacity="0.9" />
+    <text x="115" y="15" fill="#334155" font-size="10" font-weight="700" text-anchor="middle">ถนนสายบน (ถ.ระพีสาคริก - Loop นอก)</text>
+  </g>
+
+  <!-- 2. ถนนชูชาติกำภู (สายกลาง) -->
+  <g transform="translate(560, 538)">
+    <rect x="0" y="0" width="230" height="22" rx="11" fill="#FFFFFF" stroke="#64748B" stroke-width="1" opacity="0.9" />
+    <text x="115" y="15" fill="#334155" font-size="10" font-weight="700" text-anchor="middle">ถนนสายกลาง (ถ.ชูชาติกำภู - Central Spine)</text>
+  </g>
+
+  <!-- 3. ซอยสุวรรณวาจกกสิกิจ (ทะลุสายบน) -->
+  <g transform="translate(1015, 380)">
+    <rect x="-8" y="-10" width="20" height="130" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="1" opacity="0.9" />
+    <text x="2" y="55" fill="#334155" font-size="9" font-weight="700" text-anchor="middle" transform="rotate(-90 2 55)">ซ.สุวรรณวาจกฯ (ขึ้นสายบน)</text>
+  </g>
+
+</svg>
