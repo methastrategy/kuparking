@@ -360,7 +360,7 @@
                 </g>
 
                 <!-- Interactive BTS Station Clickable Area & Touch Target (Centered at x=1480, y=720) -->
-                <g id="btsStationHotspot" transform="translate(1480, 720)" class="pointer-events-auto cursor-pointer group" onclick="openBtsModal()">
+                <g id="btsStationHotspot" transform="translate(1480, 520)" class="pointer-events-auto cursor-pointer group" onclick="openBtsModal()">
                     <rect x="-35" y="-115" width="70" height="230" rx="20" fill="transparent" />
                 </g>
 
@@ -759,11 +759,11 @@
         const hotspotBts = document.getElementById('hotspot-bts');
 
         const BTS_PARAMS = {
-            stationY: 720,
+            stationY: 520,      // Parked directly at BTS Station N13 (y=520)
             startY: -200,
             endY: 1200,
-            decelStartY: 460,
-            accelEndY: 940,
+            decelStartY: 320,   // Smooth deceleration starts at y=320 towards 520
+            accelEndY: 680,     // Accelerates out from 520 to 680
             vCruise: 70,        // px/s
             vFast: 180,         // px/s when summoned to station
             dwellDuration: 4000 // ms dwell at station
