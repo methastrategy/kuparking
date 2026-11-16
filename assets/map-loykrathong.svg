@@ -1,42 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" class="w-full h-auto select-none" style="font-family: 'Inter', 'Prompt', -apple-system, sans-serif;">
   <defs>
     <!-- Background Space & Atmosphere -->
-    <radialGradient id="vignetteGlow" cx="50%" cy="52%" r="68%">
-      <stop offset="0%" stop-color="#0B132B" stop-opacity="0.95" />
-      <stop offset="55%" stop-color="#070D1F" stop-opacity="0.98" />
-      <stop offset="100%" stop-color="#04060E" stop-opacity="1" />
+    <radialGradient id="vignetteGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="55%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#F1F5F9" />
     </radialGradient>
 
     <!-- Blueprint Technical Grid -->
     <pattern id="gridBlueprint" width="80" height="80" patternUnits="userSpaceOnUse">
-      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#1E293B" stroke-width="0.75" stroke-opacity="0.28" />
-      <circle cx="0" cy="0" r="1.5" fill="#334155" fill-opacity="0.3" />
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#E2E8F0" stroke-width="0.8" stroke-opacity="0.7" />
+      <circle cx="0" cy="0" r="1.5" fill="#CBD5E1" fill-opacity="0.6" />
     </pattern>
 
     <!-- Campus Quad Lawns & Landscaping Gradients -->
     <linearGradient id="lawnGradNorth" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#064E3B" stop-opacity="0.36" />
-      <stop offset="60%" stop-color="#063E30" stop-opacity="0.42" />
-      <stop offset="100%" stop-color="#022C22" stop-opacity="0.5" />
+      <stop offset="0%" stop-color="#DCFCE7" />
+      <stop offset="100%" stop-color="#D1FAE5" />
     </linearGradient>
 
     <linearGradient id="lawnGradCentral" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#064E3B" stop-opacity="0.3" />
-      <stop offset="100%" stop-color="#022C22" stop-opacity="0.45" />
+      <stop offset="0%" stop-color="#E2FBE8" />
+      <stop offset="100%" stop-color="#DCFCE7" />
     </linearGradient>
 
     <!-- Road Surface Texture & Paving -->
     <pattern id="roadPaving" width="8" height="8" patternUnits="userSpaceOnUse">
-      <rect width="8" height="8" fill="#141C2E" />
-      <rect x="0" y="0" width="8" height="1" fill="#18233A" />
+      <rect width="8" height="8" fill="#334155" />
+      <rect x="0" y="0" width="8" height="1" fill="#475569" />
     </pattern>
 
     <!-- Phra Phirun Rectangular Pond Water Gradient -->
-    <linearGradient id="pondWaterGrad" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#0284C7" />
-      <stop offset="35%" stop-color="#0369A1" />
-      <stop offset="75%" stop-color="#075985" />
-      <stop offset="100%" stop-color="#082F49" />
+    <linearGradient id="pondWaterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
     </linearGradient>
 
     <linearGradient id="promenadeStone" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -106,7 +104,7 @@
     <filter id="building3DShadow" x="-30%" y="-30%" width="165%" height="165%">
       <feGaussianBlur stdDeviation="8" result="blur" />
       <feOffset dx="0" dy="12" />
-      <feComponentTransfer><feFuncA type="linear" slope="0.75" /></feComponentTransfer>
+      <feComponentTransfer><feFuncA type="linear" slope="0.22" /></feComponentTransfer>
       <feMerge>
         <feMergeNode />
         <feMergeNode in="SourceGraphic" />
@@ -124,35 +122,35 @@
   <!-- Campus Lawns & Quad Zones (Surrounded seamlessly by roads) -->
   <g id="campus-zones">
     <!-- North Main Quad (Above Upper Road, x: 300 to 1190, y: 75 to 450) -->
-    <rect x="310" y="75" width="880" height="375" rx="16" fill="url(#lawnGradNorth)" stroke="#059669" stroke-width="1.2" stroke-opacity="0.25" />
+    <rect x="310" y="75" width="880" height="375" rx="16" fill="url(#lawnGradNorth)" stroke="#86EFAC" stroke-width="1.2" />
 
     <!-- Vibhavadi Quad Lawn Area (Surrounding Building Vipa, x: 135 to 285, y: 310 to 460) -->
-    <rect x="135" y="315" width="145" height="145" rx="14" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
+    <rect x="135" y="315" width="145" height="145" rx="14" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
     
     <!-- Central Quad 1: Between Upper Road & Lower Avenue, Gate 3 & Gate 2 (x: 480 to 720, y: 490 to 650) -->
-    <rect x="480" y="490" width="240" height="160" rx="12" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
+    <rect x="480" y="490" width="240" height="160" rx="12" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
 
     <!-- Central Quad 2: Between Upper Road & Lower Avenue, Gate 2 & Gate 1 (x: 760 to 1060, y: 490 to 650) -->
-    <rect x="760" y="490" width="300" height="160" rx="12" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
+    <rect x="760" y="490" width="300" height="160" rx="12" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
 
     <!-- Central Quad 3: Between Upper Road & Lower Avenue, Gate 1 & East Loop (x: 1100 to 1190, y: 490 to 650) -->
-    <rect x="1100" y="490" width="90" height="160" rx="12" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
+    <rect x="1100" y="490" width="90" height="160" rx="12" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
 
     <!-- South Quad West: Below Lower Avenue, Between Gate 3 & Gate 2 (x: 480 to 720, y: 690 to 860) -->
-    <rect x="480" y="690" width="240" height="170" rx="12" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
+    <rect x="480" y="690" width="240" height="170" rx="12" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
 
     <!-- South-West Curved Park Area (Behind Curved Ramp, x: 230 to 440, y: 510 to 860) -->
-    <polygon points="230,510 330,510 440,690 440,860 230,860" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
+    <polygon points="230,510 330,510 440,690 440,860 230,860" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
 
     <!-- East Park Quad (North of Phahonyothin Gate 1 Artery, x: 1210 to 1420, y: 75 to 540) -->
-    <rect x="1210" y="75" width="210" height="465" rx="14" fill="url(#lawnGradNorth)" stroke="#059669" stroke-width="1.2" stroke-opacity="0.25" />
+    <rect x="1210" y="75" width="210" height="465" rx="14" fill="url(#lawnGradNorth)" stroke="#86EFAC" stroke-width="1.2" />
 
     <!-- South-East Corner Quad (South of Loop to Ngamwongwan Rd, x: 1210 to 1420, y: 780 to 860) -->
-    <rect x="1210" y="780" width="210" height="80" rx="12" fill="url(#lawnGradCentral)" stroke="#059669" stroke-width="1" stroke-opacity="0.2" />
+    <rect x="1210" y="780" width="210" height="80" rx="12" fill="url(#lawnGradCentral)" stroke="#86EFAC" stroke-width="1.2" />
   </g>
 
   <!-- Campus Walking Walkways & Promenades -->
-  <g stroke="#334155" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2,6" opacity="0.38" fill="none">
+  <g stroke="#94A3B8" stroke-width="2" stroke-linecap="round" stroke-dasharray="2,5" opacity="0.6" fill="none">
     <path d="M 400,240 L 1150,240" />
     <path d="M 850,90 L 850,440" />
     <path d="M 600,500 L 600,640" />
@@ -166,17 +164,17 @@
 
   <!-- [SOUTH] ถนนงามวงศ์วาน (Ngamwongwan Rd.) -->
   <g id="highway-ngamwongwan">
-    <line x1="50" y1="880" x2="1550" y2="880" stroke="#0F172A" stroke-width="64" stroke-linecap="round" />
+    <line x1="50" y1="880" x2="1550" y2="880" stroke="#1E293B" stroke-width="64" stroke-linecap="round" />
     <line x1="50" y1="880" x2="1550" y2="880" stroke="url(#roadPaving)" stroke-width="56" stroke-linecap="round" />
-    <line x1="50" y1="852" x2="1550" y2="852" stroke="#334155" stroke-width="2" />
-    <line x1="50" y1="908" x2="1550" y2="908" stroke="#334155" stroke-width="2" />
+    <line x1="50" y1="852" x2="1550" y2="852" stroke="#475569" stroke-width="1.8" />
+    <line x1="50" y1="908" x2="1550" y2="908" stroke="#475569" stroke-width="1.8" />
     <!-- Center Lane Marking (Crisp, High-Precision Static Line) -->
     <line x1="60" y1="880" x2="1540" y2="880" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="16,14" opacity="0.8" />
     
     <!-- Road Label Pill -->
     <g transform="translate(800, 938)">
-      <rect x="-195" y="-12" width="390" height="25" rx="12.5" fill="#0B132B" stroke="#334155" stroke-width="1.2" />
-      <text x="0" y="4.5" fill="#E2E8F0" font-size="11.5" font-weight="700" letter-spacing="2" text-anchor="middle">
+      <rect x="-195" y="-12" width="390" height="25" rx="12.5" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="url(#building3DShadow)" />
+      <text x="0" y="4.5" fill="#0F172A" font-size="11.5" font-weight="700" letter-spacing="2" text-anchor="middle">
         ◄ ถนนงามวงศ์วาน (NGAMWONGWAN RD.) ►
       </text>
     </g>
@@ -184,22 +182,22 @@
 
   <!-- [WEST] ถนนวิภาวดีรังสิต (Vibhavadi Rangsit Rd.) -->
   <g id="highway-vibhavadi">
-    <line x1="120" y1="0" x2="120" y2="920" stroke="#0F172A" stroke-width="64" stroke-linecap="round" />
+    <line x1="120" y1="0" x2="120" y2="920" stroke="#1E293B" stroke-width="64" stroke-linecap="round" />
     <line x1="120" y1="0" x2="120" y2="920" stroke="url(#roadPaving)" stroke-width="56" stroke-linecap="round" />
-    <line x1="92" y1="0" x2="92" y2="920" stroke="#334155" stroke-width="2" />
-    <line x1="148" y1="0" x2="148" y2="920" stroke="#334155" stroke-width="2" />
+    <line x1="92" y1="0" x2="92" y2="920" stroke="#475569" stroke-width="1.8" />
+    <line x1="148" y1="0" x2="148" y2="920" stroke="#475569" stroke-width="1.8" />
     <line x1="120" y1="0" x2="120" y2="920" stroke="#EF4444" stroke-width="2.5" stroke-dasharray="16,14" opacity="0.8" />
     
     <!-- SRT Red Line Commuter Train Viaduct Pill -->
     <g transform="translate(68, 120)">
-      <rect x="-14" y="-45" width="28" height="90" rx="14" fill="#450A0A" stroke="#EF4444" stroke-width="1.5" />
+      <rect x="-14" y="-45" width="28" height="90" rx="14" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.8" />
       <circle cx="0" cy="-24" r="8" fill="#EF4444" />
       <text x="0" y="-21" fill="#FFFFFF" font-size="8" font-weight="900" text-anchor="middle">SRT</text>
-      <text x="0" y="6" fill="#FCA5A5" font-size="9" font-weight="800" text-anchor="middle" transform="rotate(-90 0,6)">สถานีบางเขน</text>
+      <text x="0" y="6" fill="#B91C1C" font-size="9" font-weight="800" text-anchor="middle" transform="rotate(-90 0,6)">สถานีบางเขน</text>
     </g>
 
     <!-- Vibhavadi Road Label -->
-    <text x="46" y="520" fill="#E2E8F0" font-size="11.5" font-weight="700" letter-spacing="2.5" transform="rotate(-90 46,520)" text-anchor="middle">
+    <text x="46" y="520" fill="#0F172A" font-size="11.5" font-weight="700" letter-spacing="2.5" transform="rotate(-90 46,520)" text-anchor="middle">
       ◄ ถนนวิภาวดีรังสิต (VIBHAVADI RANGSIT RD.) ►
     </text>
   </g>
@@ -207,10 +205,10 @@
   <!-- [EAST] ถนนพหลโยธิน (Phahonyothin Rd.) & BTS Sukhumvit Line Elevated Viaduct -->
   <g id="highway-phahonyothin">
     <!-- Ground-Level Phahonyothin Arterial Avenue -->
-    <line x1="1480" y1="0" x2="1480" y2="1000" stroke="#0F172A" stroke-width="64" stroke-linecap="butt" />
+    <line x1="1480" y1="0" x2="1480" y2="1000" stroke="#1E293B" stroke-width="64" stroke-linecap="butt" />
     <line x1="1480" y1="0" x2="1480" y2="1000" stroke="url(#roadPaving)" stroke-width="56" stroke-linecap="butt" />
-    <line x1="1452" y1="0" x2="1452" y2="1000" stroke="#334155" stroke-width="2" />
-    <line x1="1508" y1="0" x2="1508" y2="1000" stroke="#334155" stroke-width="2" />
+    <line x1="1452" y1="0" x2="1452" y2="1000" stroke="#475569" stroke-width="1.8" />
+    <line x1="1508" y1="0" x2="1508" y2="1000" stroke="#475569" stroke-width="1.8" />
     <line x1="1480" y1="0" x2="1480" y2="1000" stroke="#10B981" stroke-width="2.2" stroke-dasharray="16,14" opacity="0.75" />
 
     <!-- BTS Elevated Viaduct Ambient Shadow on Ground Road -->
@@ -375,7 +373,7 @@
   </g>
 
   <!-- High-Precision Road Lane Dividers (Refined Static White/Slate Lines) -->
-  <g stroke="#64748B" stroke-width="1.8" stroke-dasharray="10,12" opacity="0.65" fill="none">
+  <g stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="10,12" opacity="0.9" fill="none">
     <path d="M 130,300 L 300,300 L 300,470" />
     <path d="M 300,470 L 1280,470" />
     <path d="M 1280,470 L 1280,560" />
@@ -475,7 +473,7 @@
   <g id="building-vipa" transform="translate(185, 380)" filter="url(#building3DShadow)">
     <!-- Base Plaza & Ambient Ground Shadow -->
     <polygon points="-44,48 38,48 54,68 -28,68" fill="#000000" opacity="0.65" />
-    <polygon points="-40,46 34,46 48,64 -26,64" fill="#0B132B" stroke="#334155" stroke-width="1" />
+    <polygon points="-40,46 34,46 48,64 -26,64" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1" />
 
     <!-- South Facing Front Wall (Multi-level Facade) -->
     <polygon points="-36,-20 26,-20 26,46 -36,46" fill="url(#vipaWallFront)" stroke="#334155" stroke-width="1.5" />
@@ -523,7 +521,7 @@
   <g id="building-ngam2" transform="translate(830, 740)" filter="url(#building3DShadow)">
     <!-- Base Plaza & Ambient Ground Shadow -->
     <polygon points="-58,38 46,38 74,64 -30,64" fill="#000000" opacity="0.68" />
-    <polygon points="-54,36 42,36 68,60 -28,60" fill="#0B132B" stroke="#334155" stroke-width="1" />
+    <polygon points="-54,36 42,36 68,60 -28,60" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1" />
 
     <!-- South Facing Front Wall (Multi-level Architectural Garage) -->
     <polygon points="-48,-18 34,-18 34,36 -48,36" fill="url(#ngamWallFront)" stroke="#334155" stroke-width="1.6" />
@@ -565,7 +563,7 @@
   <g id="building-ngam1" transform="translate(1000, 740)" filter="url(#building3DShadow)">
     <!-- Base Plaza & Ambient Ground Shadow -->
     <polygon points="-58,38 46,38 74,64 -30,64" fill="#000000" opacity="0.68" />
-    <polygon points="-54,36 42,36 68,60 -28,60" fill="#0B132B" stroke="#334155" stroke-width="1" />
+    <polygon points="-54,36 42,36 68,60 -28,60" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1" />
 
     <!-- South Facing Front Wall (Multi-level Architectural Garage) -->
     <polygon points="-48,-18 34,-18 34,36 -48,36" fill="url(#ngamWallFront)" stroke="#334155" stroke-width="1.6" />
@@ -644,12 +642,12 @@
 
   <!-- ประตูพหลโยธิน 1 (x=1480, y=670) - Main Avenue into the Rectangular Loop -->
   <g transform="translate(1480, 670)">
-    <circle cx="0" cy="0" r="16" fill="#0B132B" stroke="#10B981" stroke-width="2.2" />
-    <text x="0" y="4.5" fill="#A7F3D0" font-size="10.5" font-weight="900" text-anchor="middle">P1</text>
-    <polygon points="-18,0 -25,-4.5 -25,4.5" fill="#10B981" />
-    <!-- Label positioned cleanly to the East of Highway verge (No overlap with campus) -->
-    <rect x="22" y="-11" width="102" height="22" rx="11" fill="#0B132B" stroke="#10B981" stroke-width="1.5" />
-    <text x="73" y="4" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle">ประตูพหลโยธิน 1</text>
+    <circle cx="0" cy="0" r="16" fill="#FFFFFF" stroke="#059669" stroke-width="2.2" />
+    <text x="0" y="4.5" fill="#059669" font-size="10.5" font-weight="900" text-anchor="middle">P1</text>
+    <polygon points="-18,0 -25,-4.5 -25,4.5" fill="#059669" />
+    <!-- Label positioned cleanly to the East of Highway verge -->
+    <rect x="22" y="-11" width="102" height="22" rx="11" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
+    <text x="73" y="4" fill="#0F172A" font-size="10" font-weight="800" text-anchor="middle">ประตูพหลโยธิน 1</text>
   </g>
 
   <!-- ======================================================== -->
@@ -665,7 +663,7 @@
 
   <!-- Scale Indicator -->
   <g transform="translate(210, 68)" opacity="0.85">
-    <rect x="-10" y="-12" width="160" height="24" rx="6" fill="#0B132B" stroke="#334155" stroke-width="1" />
+    <rect x="-10" y="-12" width="160" height="24" rx="6" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1" />
     <line x1="10" y1="0" x2="90" y2="0" stroke="#94A3B8" stroke-width="2" />
     <line x1="10" y1="-4" x2="10" y2="4" stroke="#94A3B8" stroke-width="2" />
     <line x1="90" y1="-4" x2="90" y2="4" stroke="#94A3B8" stroke-width="2" />

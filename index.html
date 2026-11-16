@@ -55,8 +55,8 @@
             overflow: hidden !important;
             position: fixed;
             touch-action: manipulation;
-            background-color: #050814;
-            color: #F8FAFC;
+            background-color: #F8FAFC;
+            color: #0F172A;
         }
 
         /* 3D Maps Perspective Viewport & Stage */
@@ -73,32 +73,28 @@
 
         .mode-3d .map-board {
             transform: rotateX(24deg) rotateZ(-3deg) scale(0.92) translateY(12px);
-            box-shadow: 0 45px 90px -25px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.25);
         }
 
         /* Concentric Glassmorphic Highlights */
         .glass-panel {
-            background: rgba(11, 19, 43, 0.82);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
         }
 
         .glass-card {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.18);
-            background: rgba(30, 41, 59, 0.9);
+            border-color: #10B981;
+            background: #F0FDF4;
         }
-
         .glass-card:active {
             transform: scale(0.975);
         }
@@ -106,6 +102,12 @@
         /* Architectural Status Halo (Calm, Non-Straining Ambient Glow) */
         .status-halo {
             transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+
+        .poi-badge {
+            background-color: #FFFFFF !important;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.08);
         }
 
         /* Floating Festivity Animation */
@@ -157,41 +159,41 @@
         }
     </style>
 </head>
-<body class="bg-[#050814] text-slate-100 h-full w-full flex flex-col justify-between overflow-hidden select-none">
+<body class="bg-[#F8FAFC] text-slate-900 h-full w-full flex flex-col justify-between overflow-hidden select-none">
 
-    <!-- 1. TOP HEADER (COMPACT & GLASSMORPHIC) -->
+    <!-- 1. TOP HEADER (CLEAN LIGHT & GLASSMORPHIC) -->
     <header class="h-14 glass-panel px-3 sm:px-4 flex items-center justify-between shrink-0 z-30">
         <div class="flex items-center space-x-2.5 sm:space-x-3">
             <!-- Brand Mark -->
-            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 p-0.5 shadow-lg shadow-emerald-950/60 flex items-center justify-center">
-                <div class="w-full h-full bg-[#052E16] rounded-[10px] flex items-center justify-center font-extrabold text-white text-base">
-                    <i data-lucide="parking-circle" class="w-5 h-5 text-emerald-400"></i>
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-700 p-0.5 shadow-sm flex items-center justify-center">
+                <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center font-extrabold text-emerald-600 text-base">
+                    <i data-lucide="parking-circle" class="w-5 h-5 text-emerald-600"></i>
                 </div>
             </div>
             
             <div>
                 <div class="flex items-center space-x-2">
-                    <h1 class="font-bold text-xs sm:text-sm text-white tracking-tight flex items-center gap-1.5">
+                    <h1 class="font-extrabold text-xs sm:text-sm text-slate-900 tracking-tight flex items-center gap-1.5">
                         <span>KU PARKING & EVENT</span>
                     </h1>
-                    <span class="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.5 rounded-full">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
+                    <span class="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300 px-1.5 py-0.5 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                         LIVE
                     </span>
                 </div>
-                <p class="text-[11px] text-slate-400 truncate max-w-[210px] sm:max-w-md">แตะอาคารหรือจุดลอยกระทงเพื่อดูเส้นทาง</p>
+                <p class="text-[11px] text-slate-500 truncate max-w-[210px] sm:max-w-md">แตะอาคารหรือจุดจัดงานเพื่อดูข้อมูลและเปิด Google Maps นำทาง</p>
             </div>
         </div>
 
         <div class="flex items-center space-x-1.5 sm:space-x-2">
-            <!-- Share Button (44px HIG Touch Target) -->
-            <button id="btnShare" title="แชร์แผนที่" class="touch-target-44 p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 active:scale-95 text-slate-300 border border-slate-700/80 transition shadow-sm">
+            <!-- Share Button -->
+            <button id="btnShare" title="แชร์แผนที่" class="touch-target-44 p-2 rounded-xl bg-white hover:bg-slate-100 active:scale-95 text-slate-700 border border-slate-200 transition shadow-xs">
                 <i data-lucide="share-2" class="w-4 h-4"></i>
             </button>
 
-            <!-- Admin Staff Controller Link (44px HIG Touch Target) -->
-            <a href="admin.html" target="_blank" title="สำหรับสต๊าฟอัปเดตสถานะ" class="touch-target-44 px-3 py-2 rounded-xl bg-emerald-950/80 hover:bg-emerald-900/80 active:scale-95 border border-emerald-600/40 text-emerald-300 text-xs font-semibold flex items-center space-x-1.5 transition shadow-sm">
-                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+            <!-- Admin Staff Controller Link -->
+            <a href="admin.html" target="_blank" title="สำหรับสต๊าฟอัปเดตสถานะ" class="touch-target-44 px-3 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 active:scale-95 border border-emerald-300 text-emerald-700 text-xs font-bold flex items-center space-x-1.5 transition shadow-xs">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
                 <span class="text-xs">สต๊าฟ</span>
             </a>
         </div>
@@ -377,106 +379,72 @@
                 <rect id="hitbox-pond" x="1255" y="600" width="90" height="120" rx="8" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openEventModal()" />
             </svg>
 
-            <!-- ================= BTS STATION & ARRIVAL FLOATING HUD CARD ================= -->
-            <!-- Positioned clearly adjacent to BTS Viaduct without obscuring Phra Phirun Pond -->
-            <div id="btsInfoCard" class="absolute right-[6%] top-[56%] -translate-y-1/2 z-30 pointer-events-none opacity-0 translate-x-3 transition-all duration-200">
-                <div class="p-3.5 rounded-2xl border border-emerald-500/50 shadow-2xl shadow-emerald-950/90 backdrop-blur-xl flex flex-col space-y-2.5 w-64 pointer-events-auto bg-slate-950/95">
-                    <!-- Header -->
-                    <div class="flex items-center justify-between pb-1.5 border-b border-slate-800">
-                        <div class="flex items-center space-x-1.5">
-                            <span class="px-2 py-0.5 rounded-md bg-emerald-500 text-slate-950 font-black text-[10px] tracking-wide shadow-sm">BTS N13</span>
-                            <span class="text-xs font-extrabold text-white">สถานี ม.เกษตรศาสตร์</span>
-                        </div>
-                        <button id="btnDismissBtsCard" onclick="hideBtsCard(true)" aria-label="Close" class="touch-target-44 min-w-[44px] min-h-[44px] flex items-center justify-center text-slate-400 hover:text-white transition group -mr-2">
-                            <span class="w-5 h-5 rounded-full bg-slate-800 group-hover:bg-slate-700 flex items-center justify-center text-xs">✕</span>
-                        </button>
-                    </div>
-                    
-                    <!-- Status & Wayfinding Info -->
-                    <div class="bg-black/50 rounded-xl p-2.5 border border-slate-800/80 text-[10.5px] space-y-1.5">
-                        <div class="flex items-center space-x-1.5">
-                            <span id="btsIndicatorDot" class="w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400"></span>
-                            <span id="btsLiveStatusText" class="font-extrabold text-emerald-300">รถไฟฟ้าจอดเทียบชานชาลา</span>
-                        </div>
-                        <div class="flex items-start space-x-1.5 text-slate-300 text-[10px] leading-relaxed">
-                            <span class="text-xs">🚶</span>
-                            <p>
-                                สกายวอล์กทางออก 1 ข้าม ถ.พหลโยธิน เข้า <span class="text-emerald-300 font-bold">ประตู 1</span> ตรงสู่ <span class="text-amber-300 font-bold">สระพระพิรุณ</span> (~150 ม.)
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Clean Action Button -->
-                    <button onclick="openBtsModal()" class="touch-target-44 w-full py-2 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 active:scale-95 text-white font-bold text-xs flex items-center justify-center space-x-1.5 shadow-md shadow-emerald-950/80 transition">
-                        <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
-                        <span>เปิด Google Maps นำทางสู่สถานี</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- ================= INTERACTIVE HOTSPOTS ================= -->
+            <!-- ================= INTERACTIVE HOTSPOTS (LIGHT THEME POI BADGES) ================= -->
 
             <!-- [1] งามวงศ์วาน 1 (แนวงามวงศ์วาน ด้านขวา ติดกับอาคาร 2, Rooftop: 1000, 735) -->
             <div id="hotspot-ngam1" onclick="openParkingModal('ngam1')" class="absolute left-[62.5%] top-[73.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-ngam1" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-500 blur-xs pointer-events-none status-halo"></div>
-                    <div id="badge-ngam1" class="px-2.5 py-1 rounded-full bg-slate-950/92 text-white font-bold text-[10.5px] sm:text-xs shadow-lg border border-emerald-400/80 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
-                        <i data-lucide="car" class="w-3.5 h-3.5 text-emerald-400"></i>
-                        <span>งามวงศ์วาน 1</span>
-                        <span id="text-status-ngam1" class="text-emerald-300 font-bold text-[9px] bg-emerald-950/70 border border-emerald-500/30 px-1.5 py-0.2 rounded">เปิด</span>
+                    <div id="ring-ngam1" class="status-ring opacity-0 pointer-events-none status-halo"></div>
+                    <div id="badge-ngam1" class="poi-badge px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs flex items-center space-x-1 sm:space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
+                        <i data-lucide="car" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600"></i>
+                        <span><span class="hidden sm:inline">งามวงศ์วาน </span>1</span>
+                        <span id="text-status-ngam1" class="hidden sm:inline text-emerald-700 font-bold text-[8.5px] sm:text-[9px] bg-emerald-50 border border-emerald-300 px-1.5 py-0.2 rounded">เปิด</span>
+                        <span id="dot-status-ngam1" class="sm:hidden w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     </div>
-                    <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
+                    <div class="w-0.5 h-2.5 bg-emerald-600 shadow-xs"></div>
                 </div>
             </div>
 
             <!-- [2] งามวงศ์วาน 2 (แนวงามวงศ์วาน ด้านซ้าย ติดกับอาคาร 1, Rooftop: 830, 735) -->
             <div id="hotspot-ngam2" onclick="openParkingModal('ngam2')" class="absolute left-[51.9%] top-[73.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-ngam2" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-500 blur-xs pointer-events-none status-halo"></div>
-                    <div id="badge-ngam2" class="px-2.5 py-1 rounded-full bg-slate-950/92 text-white font-bold text-[10.5px] sm:text-xs shadow-lg border border-emerald-400/80 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
-                        <i data-lucide="car" class="w-3.5 h-3.5 text-emerald-400"></i>
-                        <span>งามวงศ์วาน 2</span>
-                        <span id="text-status-ngam2" class="text-emerald-300 font-bold text-[9px] bg-emerald-950/70 border border-emerald-500/30 px-1.5 py-0.2 rounded">เปิด</span>
+                    <div id="ring-ngam2" class="status-ring opacity-0 pointer-events-none status-halo"></div>
+                    <div id="badge-ngam2" class="poi-badge px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs flex items-center space-x-1 sm:space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
+                        <i data-lucide="car" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600"></i>
+                        <span><span class="hidden sm:inline">งามวงศ์วาน </span>2</span>
+                        <span id="text-status-ngam2" class="hidden sm:inline text-emerald-700 font-bold text-[8.5px] sm:text-[9px] bg-emerald-50 border border-emerald-300 px-1.5 py-0.2 rounded">เปิด</span>
+                        <span id="dot-status-ngam2" class="sm:hidden w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     </div>
-                    <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
+                    <div class="w-0.5 h-2.5 bg-emerald-600 shadow-xs"></div>
                 </div>
             </div>
 
             <!-- [3] อาคารวิภาวดี (Spacious Quad, Rooftop: 185, 350) -->
             <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[11.56%] top-[35.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-vipa" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-amber-500 blur-xs pointer-events-none status-halo"></div>
-                    <div id="badge-vipa" class="px-2.5 py-1 rounded-full bg-slate-950/92 text-white font-bold text-[10.5px] sm:text-xs shadow-lg border border-amber-400/80 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
-                        <i data-lucide="car" class="w-3.5 h-3.5 text-amber-400"></i>
+                    <div id="ring-vipa" class="status-ring opacity-0 pointer-events-none status-halo"></div>
+                    <div id="badge-vipa" class="poi-badge px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs flex items-center space-x-1 sm:space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
+                        <i data-lucide="car" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-600"></i>
                         <span>วิภาวดี</span>
-                        <span id="text-status-vipa" class="text-amber-300 font-bold text-[9px] bg-amber-950/70 border border-amber-500/30 px-1.5 py-0.2 rounded">เปิด</span>
+                        <span id="text-status-vipa" class="hidden sm:inline text-amber-700 font-bold text-[8.5px] sm:text-[9px] bg-amber-50 border border-amber-300 px-1.5 py-0.2 rounded">เปิด</span>
+                        <span id="dot-status-vipa" class="sm:hidden w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     </div>
-                    <div class="w-0.5 h-2.5 bg-amber-400 shadow"></div>
+                    <div class="w-0.5 h-2.5 bg-amber-600 shadow-xs"></div>
                 </div>
             </div>
 
-            <!-- [4] สระพระพิรุณ จุดจัดงานลอยกระทง (บ่อน้ำสี่เหลี่ยม สะอาดตา อยู่เหนือผิวน้ำ ไม่บดบังบ่อน้ำ, Center: 1300, 605) -->
+            <!-- [4] สระพระพิรุณ จุดจัดงานลอยกระทง (บ่อน้ำสี่เหลี่ยม สะอาดตา ไม่บดบังผิวน้ำ, Center: 1300, 605) -->
             <div id="hotspot-pond" onclick="openEventModal()" class="absolute left-[81.25%] top-[60.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="badge-pond" class="px-2.5 py-1 rounded-full bg-slate-950/95 text-white font-bold text-[10.5px] sm:text-xs shadow-lg border border-amber-400/80 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
+                    <div id="badge-pond" class="poi-badge px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs border border-amber-300 flex items-center space-x-1 sm:space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
                         <span class="text-xs">🪔</span>
-                        <span class="text-amber-300">สระพระพิรุณ</span>
-                        <span class="text-amber-200/90 text-[9px] font-semibold bg-amber-950/70 border border-amber-500/30 px-1.5 py-0.2 rounded">งานลอยกระทง</span>
+                        <span class="text-amber-800 font-bold">สระพระพิรุณ</span>
+                        <span class="hidden sm:inline text-amber-700 text-[9px] font-semibold bg-amber-50 border border-amber-300 px-1.5 py-0.2 rounded">งานลอยกระทง</span>
                     </div>
-                    <div class="w-0.5 h-2.5 bg-amber-400 shadow"></div>
+                    <div class="w-0.5 h-2.5 bg-amber-600 shadow-xs"></div>
                 </div>
             </div>
 
             <!-- [5] สถานี BTS มหาวิทยาลัยเกษตรศาสตร์ (N13) หน้ามอ ประตูพหลโยธิน 1 (Center: 1480, 760) -->
             <div id="hotspot-bts" onclick="openBtsModal()" class="absolute left-[92.5%] top-[76.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
-                    <div id="ring-bts" class="status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-400 blur-xs pointer-events-none status-halo"></div>
-                    <div id="badge-bts" class="px-2.5 py-1 rounded-full bg-slate-950/92 text-white font-bold text-[10.5px] sm:text-xs shadow-lg border border-emerald-400/80 flex items-center space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
-                        <span class="w-4 h-4 rounded bg-emerald-500 flex items-center justify-center text-[9px] font-black text-slate-950">BTS</span>
-                        <span>ม.เกษตรฯ</span>
-                        <span class="text-emerald-300 font-extrabold text-[9px] bg-emerald-950/60 border border-emerald-500/30 px-1 py-0.2 rounded">N13</span>
+                    <div id="ring-bts" class="status-ring opacity-0 pointer-events-none status-halo"></div>
+                    <div id="badge-bts" class="poi-badge px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs flex items-center space-x-1 sm:space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
+                        <span class="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded bg-emerald-600 flex items-center justify-center text-[8.5px] sm:text-[9px] font-black text-white">BTS</span>
+                        <span><span class="hidden sm:inline">ม.เกษตรฯ</span></span>
+                        <span class="text-emerald-700 font-extrabold text-[8.5px] sm:text-[9px] bg-emerald-50 border border-emerald-300 px-1 py-0.2 rounded">N13</span>
                     </div>
-                    <div class="w-0.5 h-2.5 bg-emerald-400 shadow"></div>
+                    <div class="w-0.5 h-2 bg-emerald-600 shadow-xs"></div>
                 </div>
             </div>
 
@@ -485,81 +453,81 @@
         <!-- FLOATING 3D PERSPECTIVE CONTROLS -->
         <div class="absolute top-3.5 right-3.5 z-30 flex flex-col space-y-2">
             <!-- 3D / 2D Tilt Toggle Button (44px HIG Target) -->
-            <button id="btnToggle3D" onclick="toggle3DMode()" class="touch-target-44 min-h-[44px] min-w-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-90 border border-slate-700/80 text-amber-300 text-xs font-bold shadow-xl backdrop-blur-md flex items-center space-x-1.5 transition">
-                <i data-lucide="layers" class="w-4 h-4 text-amber-400"></i>
+            <button id="btnToggle3D" onclick="toggle3DMode()" class="touch-target-44 min-h-[44px] min-w-[44px] px-3.5 py-2.5 rounded-xl bg-white/95 hover:bg-slate-50 active:scale-90 border border-slate-200 text-slate-800 text-xs font-bold shadow-md flex items-center space-x-1.5 transition">
+                <i data-lucide="layers" class="w-4 h-4 text-emerald-600"></i>
                 <span id="label3D">มุมมอง 3D</span>
             </button>
             <!-- Compass Reset Orientation (44px HIG Target) -->
-            <button onclick="resetOrientation()" title="รีเซ็ตมุมมองระนาบ 2D" class="touch-target-44 w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-slate-800 active:scale-90 border border-slate-700/80 text-slate-300 flex items-center justify-center shadow-xl backdrop-blur-md transition">
-                <i data-lucide="compass" class="w-5 h-5 text-red-400"></i>
+            <button onclick="resetOrientation()" title="รีเซ็ตมุมมองระนาบ 2D" class="touch-target-44 w-11 h-11 rounded-xl bg-white/95 hover:bg-slate-50 active:scale-90 border border-slate-200 text-slate-600 flex items-center justify-center shadow-md transition">
+                <i data-lucide="compass" class="w-5 h-5 text-red-500"></i>
             </button>
         </div>
 
     </main>
 
-    <!-- 3. BOTTOM QUICK ACTION BAR (ONE-TOUCH GOOGLE MAPS) -->
-    <footer class="glass-panel border-t border-slate-800 px-2.5 sm:px-4 py-2 shrink-0 z-30 shadow-[0_-8px_25px_rgba(0,0,0,0.6)]">
+    <!-- 3. BOTTOM QUICK ACTION BAR (RESPONSIVE & CLEAN LIGHT THEME) -->
+    <footer class="glass-panel border-t border-slate-200 px-2.5 sm:px-4 py-2 shrink-0 z-30 shadow-lg">
         <div class="max-w-4xl mx-auto flex flex-col space-y-1.5">
             
-            <div class="flex items-center justify-between text-[11px] text-slate-400 px-1">
-                <span class="flex items-center gap-1">
-                    <i data-lucide="navigation-2" class="w-3.5 h-3.5 text-emerald-400"></i>
-                    <span>แตะอาคารเพื่อเปิด Google Maps นำทาง:</span>
+            <div class="flex items-center justify-between text-[11px] text-slate-500 px-1">
+                <span class="flex items-center gap-1 font-medium">
+                    <i data-lucide="navigation-2" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>แตะเพื่อเปิด Google Maps นำทาง:</span>
                 </span>
-                <span class="text-emerald-400 font-semibold flex items-center space-x-1.5">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
+                <span class="text-emerald-700 font-semibold flex items-center space-x-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                     <span class="text-[10px] tracking-wide uppercase">สถานะเรียลไทม์</span>
                 </span>
             </div>
 
-            <!-- 4 Quick Navigation Cards -->
-            <div class="grid grid-cols-4 gap-1.5 sm:gap-2.5">
+            <!-- 4 Quick Navigation Cards: Responsive 2x2 on Mobile, 4 Cols on Desktop (Zero Capacity Confusion) -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2.5">
                 
                 <!-- Button Ngam 1 -->
-                <button onclick="openParkingModal('ngam1')" class="glass-card rounded-xl p-2 text-left flex flex-col justify-between min-h-[50px] sm:min-h-[54px] group">
+                <button onclick="openParkingModal('ngam1')" class="glass-card rounded-xl p-2.5 text-left flex flex-col justify-between min-h-[52px] sm:min-h-[56px] group">
                     <div class="flex items-center justify-between w-full">
-                        <span class="text-[10.5px] sm:text-xs font-bold text-slate-200 truncate group-hover:text-white">งามวงศ์วาน 1</span>
-                        <span id="card-badge-ngam1" class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">เปิด</span>
+                        <span class="text-xs font-bold text-slate-800 truncate group-hover:text-emerald-700">งามวงศ์วาน 1</span>
+                        <span id="card-badge-ngam1" class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300">เปิด</span>
                     </div>
                     <div class="mt-1 flex items-center justify-between text-[11px]">
-                        <span class="text-[10px] text-slate-400 tabular-nums truncate">~289 คัน</span>
-                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-emerald-400 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                        <span class="text-[10px] text-slate-400">Google Maps</span>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-emerald-600 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                     </div>
                 </button>
 
                 <!-- Button Ngam 2 -->
-                <button onclick="openParkingModal('ngam2')" class="glass-card rounded-xl p-2 text-left flex flex-col justify-between min-h-[50px] sm:min-h-[54px] group">
+                <button onclick="openParkingModal('ngam2')" class="glass-card rounded-xl p-2.5 text-left flex flex-col justify-between min-h-[52px] sm:min-h-[56px] group">
                     <div class="flex items-center justify-between w-full">
-                        <span class="text-[10.5px] sm:text-xs font-bold text-slate-200 truncate group-hover:text-white">งามวงศ์วาน 2</span>
-                        <span id="card-badge-ngam2" class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">เปิด</span>
+                        <span class="text-xs font-bold text-slate-800 truncate group-hover:text-emerald-700">งามวงศ์วาน 2</span>
+                        <span id="card-badge-ngam2" class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300">เปิด</span>
                     </div>
                     <div class="mt-1 flex items-center justify-between text-[11px]">
-                        <span class="text-[10px] text-slate-400 tabular-nums truncate">~192 คัน</span>
-                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-emerald-400 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                        <span class="text-[10px] text-slate-400">Google Maps</span>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-emerald-600 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                     </div>
                 </button>
 
                 <!-- Button Vibhavadi -->
-                <button onclick="openParkingModal('vipa')" class="glass-card rounded-xl p-2 text-left flex flex-col justify-between min-h-[50px] sm:min-h-[54px] group">
+                <button onclick="openParkingModal('vipa')" class="glass-card rounded-xl p-2.5 text-left flex flex-col justify-between min-h-[52px] sm:min-h-[56px] group">
                     <div class="flex items-center justify-between w-full">
-                        <span class="text-[10.5px] sm:text-xs font-bold text-slate-200 truncate group-hover:text-white">วิภาวดี</span>
-                        <span id="card-badge-vipa" class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">เปิด</span>
+                        <span class="text-xs font-bold text-slate-800 truncate group-hover:text-emerald-700">วิภาวดี</span>
+                        <span id="card-badge-vipa" class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300">เปิด</span>
                     </div>
                     <div class="mt-1 flex items-center justify-between text-[11px]">
-                        <span class="text-[10px] text-slate-400 tabular-nums truncate">~150 คัน</span>
-                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-amber-400 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                        <span class="text-[10px] text-slate-400">Google Maps</span>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-amber-600 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                     </div>
                 </button>
 
                 <!-- Button Loy Krathong Event -->
-                <button onclick="openEventModal()" class="bg-amber-950/40 hover:bg-amber-900/50 active:scale-95 border border-amber-500/50 rounded-xl p-2 text-left flex flex-col justify-between min-h-[50px] sm:min-h-[54px] transition group">
+                <button onclick="openEventModal()" class="bg-amber-50/80 hover:bg-amber-100/90 active:scale-95 border border-amber-300 rounded-xl p-2.5 text-left flex flex-col justify-between min-h-[52px] sm:min-h-[56px] transition group shadow-xs">
                     <div class="flex items-center justify-between w-full">
-                        <span class="text-[10.5px] sm:text-xs font-bold text-amber-200 truncate group-hover:text-amber-100">จุดลอยกระทง</span>
-                        <span class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">งานหลัก</span>
+                        <span class="text-xs font-bold text-amber-900 truncate">จุดลอยกระทง</span>
+                        <span class="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-amber-100 text-amber-800 border border-amber-300">งานหลัก</span>
                     </div>
                     <div class="mt-1 flex items-center justify-between text-[11px]">
-                        <span class="text-[10px] font-bold text-amber-300 truncate">สระพระพิรุณ</span>
-                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400 shrink-0 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-[10px] font-semibold text-amber-700 truncate">สระพระพิรุณ</span>
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-600 shrink-0 group-hover:scale-110 transition-transform"></i>
                     </div>
                 </button>
 
@@ -568,43 +536,38 @@
         </div>
     </footer>
 
-    <!-- 4. MODAL POPUP FOR PARKING / EVENT NAVIGATION -->
-    <div id="parkingModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div id="modalBox" class="bg-[#0D1527] border border-slate-700/80 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative text-center modal-enter">
+    <!-- 4. MODAL POPUP FOR PARKING / EVENT NAVIGATION (LIGHT THEME) -->
+    <div id="parkingModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div id="modalBox" class="bg-white border border-slate-200 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative text-center modal-enter text-slate-900">
             
             <!-- Close Button (44px HIG Touch Target) -->
-            <button onclick="closeParkingModal()" class="touch-target-44 w-11 h-11 absolute top-3.5 right-3.5 text-slate-400 hover:text-white rounded-full bg-slate-800/80 active:scale-90 transition flex items-center justify-center">
+            <button onclick="closeParkingModal()" class="touch-target-44 w-11 h-11 absolute top-3.5 right-3.5 text-slate-400 hover:text-slate-700 rounded-full bg-slate-100 active:scale-90 transition flex items-center justify-center">
                 <i data-lucide="x" class="w-4 h-4"></i>
             </button>
 
-            <div id="modalIconBox" class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-3.5 text-3xl shadow-inner">
+            <div id="modalIconBox" class="w-16 h-16 bg-emerald-50 border border-emerald-200 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-3.5 text-3xl shadow-xs">
                 🚗
             </div>
 
-            <h3 id="modalLotTitle" class="text-lg font-bold text-white tracking-tight">อาคารจอดรถงามวงศ์วาน 1</h3>
-            <p id="modalLotGate" class="text-xs text-slate-400 mt-1 leading-relaxed">เข้าทางประตูงามวงศ์วาน 1</p>
+            <h3 id="modalLotTitle" class="text-lg font-extrabold text-slate-900 tracking-tight">อาคารจอดรถงามวงศ์วาน 1</h3>
+            <p id="modalLotGate" class="text-xs text-slate-600 mt-1 leading-relaxed">เข้าทางประตูงามวงศ์วาน 1</p>
 
-            <div id="modalStatsBox" class="bg-slate-950/80 border border-slate-800/90 rounded-2xl p-3.5 my-4 flex items-center justify-around">
-                <div>
-                    <span class="text-[10px] text-slate-500 block">สถานะปัจจุบัน</span>
-                    <span id="modalLotStatusBadge" class="text-xs font-bold text-emerald-400">เปิดให้บริการ</span>
-                </div>
-                <div class="w-px h-8 bg-slate-800"></div>
-                <div>
-                    <span class="text-[10px] text-slate-500 block">ความจุตามผัง</span>
-                    <span id="modalLotCapacity" class="text-sm font-bold text-slate-300 tabular-nums">~289 คัน</span>
+            <div id="modalStatsBox" class="bg-slate-50 border border-slate-200 rounded-2xl p-3 my-4 flex items-center justify-center">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs text-slate-500 font-medium">สถานะ:</span>
+                    <span id="modalLotStatusBadge" class="text-xs font-bold text-emerald-700 bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-full">เปิดให้บริการ</span>
                 </div>
             </div>
 
             <!-- Big Direct Google Maps Navigation Button -->
-            <a id="modalMapBtn" href="#" target="_blank" rel="noopener" class="w-full min-h-[48px] bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 active:scale-95 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-950/80 transition text-sm">
+            <a id="modalMapBtn" href="#" target="_blank" rel="noopener" class="w-full min-h-[48px] bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 active:scale-95 text-white font-bold py-3.5 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-md shadow-emerald-950/20 transition text-sm">
                 <i data-lucide="navigation" class="w-4 h-4"></i>
                 <span id="modalBtnText">เปิด Google Maps นำทาง</span>
             </a>
 
             <!-- Copy Link Button & In-Modal Toast Feedback -->
             <div class="mt-3 flex items-center justify-center">
-                <button onclick="copyMapLink()" class="touch-target-44 text-xs text-slate-400 hover:text-slate-200 underline decoration-slate-600 transition flex items-center gap-1">
+                <button onclick="copyMapLink()" class="touch-target-44 text-xs text-slate-500 hover:text-slate-800 underline decoration-slate-300 transition flex items-center gap-1">
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                     <span id="copyLinkText">คัดลอกลิงก์ Google Maps</span>
                 </button>
@@ -795,40 +758,45 @@
                 const status = lot.status || 'open';
 
                 const textStatus = document.getElementById(`text-status-${id}`);
+                const dotStatus = document.getElementById(`dot-status-${id}`);
                 const ring = document.getElementById(`ring-${id}`);
                 const badge = document.getElementById(`badge-${id}`);
                 const cardBadge = document.getElementById(`card-badge-${id}`);
 
                 if (status === 'full') {
-                    if (textStatus) { textStatus.innerText = 'เต็ม'; textStatus.className = 'text-red-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
-                    if (ring) ring.className = 'status-ring absolute -inset-1 rounded-full opacity-30 bg-red-500 blur-xs pointer-events-none status-halo';
-                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-red-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-red-400/40 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
+                    if (textStatus) { textStatus.innerText = 'เต็ม'; textStatus.className = 'hidden sm:inline text-rose-700 font-bold text-[8.5px] sm:text-[9px] bg-rose-50 border border-rose-300 px-1 sm:px-1.5 py-0.2 rounded'; }
+                    if (dotStatus) dotStatus.className = 'sm:hidden w-1.5 h-1.5 rounded-full bg-rose-500';
+                    if (ring) ring.className = 'status-ring opacity-0 pointer-events-none status-halo';
+                    if (badge) badge.className = 'poi-badge px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs border border-rose-300 flex items-center space-x-1 sm:space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
-                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-red-500/20 text-red-400 border border-red-500/30';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-rose-50 text-rose-700 border border-rose-300';
                         cardBadge.innerText = 'เต็ม';
                     }
                 } else if (status === 'warning') {
-                    if (textStatus) { textStatus.innerText = 'ใกล้เต็ม'; textStatus.className = 'text-amber-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
-                    if (ring) ring.className = 'status-ring absolute -inset-1 rounded-full opacity-30 bg-amber-500 blur-xs pointer-events-none status-halo';
-                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-amber-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-amber-400/40 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
+                    if (textStatus) { textStatus.innerText = 'ใกล้เต็ม'; textStatus.className = 'hidden sm:inline text-amber-700 font-bold text-[8.5px] sm:text-[9px] bg-amber-50 border border-amber-300 px-1 sm:px-1.5 py-0.2 rounded'; }
+                    if (dotStatus) dotStatus.className = 'sm:hidden w-1.5 h-1.5 rounded-full bg-amber-500';
+                    if (ring) ring.className = 'status-ring opacity-0 pointer-events-none status-halo';
+                    if (badge) badge.className = 'poi-badge px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs border border-amber-300 flex items-center space-x-1 sm:space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
-                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-amber-50 text-amber-700 border border-amber-300';
                         cardBadge.innerText = 'ใกล้เต็ม';
                     }
                 } else if (status === 'closed') {
-                    if (textStatus) { textStatus.innerText = 'ปิด'; textStatus.className = 'text-slate-200 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
-                    if (ring) ring.className = 'status-ring absolute -inset-1 rounded-full opacity-0 pointer-events-none status-halo';
-                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-slate-700/95 text-slate-300 font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-slate-600/40 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
+                    if (textStatus) { textStatus.innerText = 'ปิด'; textStatus.className = 'hidden sm:inline text-slate-600 font-bold text-[8.5px] sm:text-[9px] bg-slate-100 border border-slate-300 px-1 sm:px-1.5 py-0.2 rounded'; }
+                    if (dotStatus) dotStatus.className = 'sm:hidden w-1.5 h-1.5 rounded-full bg-slate-400';
+                    if (ring) ring.className = 'status-ring opacity-0 pointer-events-none status-halo';
+                    if (badge) badge.className = 'poi-badge px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs border border-slate-300 flex items-center space-x-1 sm:space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
-                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-slate-700 text-slate-400 border border-slate-600';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 border border-slate-300';
                         cardBadge.innerText = 'ปิด';
                     }
                 } else {
-                    if (textStatus) { textStatus.innerText = 'เปิด'; textStatus.className = 'text-emerald-100 font-extrabold text-[10px] bg-black/20 px-1 py-0.2 rounded'; }
-                    if (ring) ring.className = 'status-ring absolute -inset-1 rounded-full opacity-25 bg-emerald-500 blur-xs pointer-events-none status-halo';
-                    if (badge) badge.className = 'px-2.5 sm:px-3 py-1 rounded-full bg-emerald-600/95 text-white font-bold text-[10px] sm:text-[11px] shadow-xl shadow-black/50 border border-emerald-400/40 flex items-center space-x-1.5 transition-transform whitespace-nowrap';
+                    if (textStatus) { textStatus.innerText = 'เปิด'; textStatus.className = 'hidden sm:inline text-emerald-700 font-bold text-[8.5px] sm:text-[9px] bg-emerald-50 border border-emerald-300 px-1 sm:px-1.5 py-0.2 rounded'; }
+                    if (dotStatus) dotStatus.className = 'sm:hidden w-1.5 h-1.5 rounded-full bg-emerald-500';
+                    if (ring) ring.className = 'status-ring opacity-0 pointer-events-none status-halo';
+                    if (badge) badge.className = 'poi-badge px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs border border-slate-200/90 flex items-center space-x-1 sm:space-x-1.5 transition-transform whitespace-nowrap';
                     if (cardBadge) {
-                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+                        cardBadge.className = 'text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300';
                         cardBadge.innerText = 'เปิด';
                     }
                 }
@@ -845,7 +813,7 @@
             document.getElementById('modalLotTitle').innerText = lot.name;
             document.getElementById('modalLotGate').innerText = lot.gate;
             document.getElementById('modalStatsBox').classList.remove('hidden');
-            document.getElementById('modalLotCapacity').innerText = lot.capacity || PARKING_CONFIG[id].capacity;
+            const capEl = document.getElementById('modalLotCapacity'); if (capEl) capEl.innerText = lot.capacity || PARKING_CONFIG[id].capacity;
             document.getElementById('modalMapBtn').href = lot.mapUrl;
             document.getElementById('modalMapBtn').className = 'w-full min-h-[48px] bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 active:scale-95 text-white font-bold py-3 px-4 rounded-2xl flex items-center justify-center space-x-2 shadow-lg shadow-emerald-950/80 transition text-sm';
             document.getElementById('modalBtnText').innerText = 'เปิด Google Maps นำทาง';
@@ -960,7 +928,7 @@
             document.getElementById('modalLotTitle').innerText = BTS_STATION_CONFIG.name;
             document.getElementById('modalLotGate').innerText = BTS_STATION_CONFIG.gate;
             document.getElementById('modalStatsBox').classList.remove('hidden');
-            document.getElementById('modalLotCapacity').innerText = BTS_STATION_CONFIG.capacity;
+            const capElBts = document.getElementById('modalLotCapacity'); if (capElBts) capElBts.innerText = BTS_STATION_CONFIG.capacity;
             document.getElementById('modalLotStatusBadge').innerText = 'เปิดให้บริการ';
             document.getElementById('modalLotStatusBadge').className = 'text-xs font-bold text-emerald-400';
             document.getElementById('modalMapBtn').href = BTS_STATION_CONFIG.mapUrl;
@@ -1015,22 +983,7 @@
             }
         }
 
-        let autoDismissTimer = null;
-
-        function showBtsCard() {
-            if (btsInfoCard) {
-                btsInfoCard.classList.remove('opacity-0', 'translate-x-3', 'pointer-events-none');
-                btsInfoCard.classList.add('opacity-100', 'translate-x-0', 'pointer-events-auto');
-            }
-        }
-
-        function hideBtsCard(force = false) {
-            if (force) isHovered = false;
-            if (btsInfoCard && (!isHovered || force)) {
-                btsInfoCard.classList.remove('opacity-100', 'translate-x-0', 'pointer-events-auto');
-                btsInfoCard.classList.add('opacity-0', 'translate-x-3', 'pointer-events-none');
-            }
-        }
+        
 
         function triggerBtsHover(active) {
             if (active) {
@@ -1039,38 +992,24 @@
                     unhoverTimer = null;
                 }
                 isHovered = true;
-                showBtsCard();
-
-                // Auto-dismiss after 3.5s so card never stays permanently on screen
-                if (autoDismissTimer) clearTimeout(autoDismissTimer);
-                autoDismissTimer = setTimeout(() => {
-                    hideBtsCard(true);
-                }, 3500);
 
                 // If train is already parked at station, keep it dwelling
                 if (btsState === 'DWELLING') {
                     btsDwellStart = performance.now();
-                    updateBtsStatusUI(true, 'รถไฟฟ้าจอดเทียบชานชาลา');
                     return;
                 }
 
-                // If not at station, summon it!
+                // If not at station, summon it to station
                 btsState = 'SUMMONED';
-                if (btsY < BTS_PARAMS.stationY) {
-                    updateBtsStatusUI(false, 'กำลังเข้าสู่สถานี ม.เกษตรศาสตร์...');
-                } else {
-                    updateBtsStatusUI(false, 'กำลังวนกลับมาจอดที่สถานี ม.เกษตรศาสตร์...');
-                }
             } else {
                 isHovered = false;
                 if (unhoverTimer) clearTimeout(unhoverTimer);
-                // Prompt 150ms dismiss when mouse leaves
+                // Prompt dismiss when mouse leaves: release dwell if dwelling
                 unhoverTimer = setTimeout(() => {
-                    hideBtsCard(false);
                     if (btsState === 'DWELLING') {
                         btsDwellStart = performance.now() - BTS_PARAMS.dwellDuration + 500; // depart smoothly
                     }
-                }, 150);
+                }, 200);
             }
         }
 
@@ -1081,11 +1020,6 @@
             el.addEventListener('mouseleave', () => triggerBtsHover(false));
             el.addEventListener('touchstart', () => triggerBtsHover(true), { passive: true });
         });
-
-        if (btsInfoCard) {
-            btsInfoCard.addEventListener('mouseenter', () => triggerBtsHover(true));
-            btsInfoCard.addEventListener('mouseleave', () => triggerBtsHover(false));
-        }
 
         // High-Precision 60/120fps Animation Loop
         function animateBts(now) {
