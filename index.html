@@ -369,21 +369,21 @@
                 </g>
 
                 <!-- Direct Building Hitboxes (Clicking 3D Building Directly Opens Modal) -->
-                <rect id="hitbox-vipa" x="140" y="335" width="95" height="95" rx="10" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('vipa')" />
-                <rect id="hitbox-ngam2" x="775" y="705" width="120" height="95" rx="10" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('ngam2')" />
-                <rect id="hitbox-ngam1" x="945" y="705" width="120" height="95" rx="10" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('ngam1')" />
-                <rect id="hitbox-pond" x="1235" y="690" width="170" height="140" rx="14" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openEventModal()" />
+                <rect id="hitbox-vipa" x="120" y="325" width="80" height="70" rx="8" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('vipa')" />
+                <rect id="hitbox-ngam2" x="800" y="745" width="80" height="70" rx="8" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('ngam2')" />
+                <rect id="hitbox-ngam1" x="920" y="745" width="80" height="70" rx="8" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openParkingModal('ngam1')" />
+                <rect id="hitbox-pond" x="1280" y="700" width="130" height="120" rx="12" fill="transparent" class="pointer-events-auto cursor-pointer" onclick="openEventModal()" />
             </svg>
 
             <!-- ================= INTERACTIVE HOTSPOTS (LIGHT THEME POI BADGES) ================= -->
 
             <!-- [1] งามวงศ์วาน 1 (แนวงามวงศ์วาน ด้านขวา ติดกับอาคาร 2, Rooftop: 1000, 735) -->
-            <div id="hotspot-ngam1" onclick="openParkingModal('ngam1')" class="absolute left-[62.5%] top-[73.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
+            <div id="hotspot-ngam1" onclick="openParkingModal('ngam1')" class="absolute left-[60.0%] top-[78.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="ring-ngam1" class="status-ring opacity-0 pointer-events-none status-halo"></div>
                     <div id="badge-ngam1" class="poi-badge px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs flex items-center space-x-1 sm:space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
                         <i data-lucide="car" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600"></i>
-                        <span><span class="hidden sm:inline">งามวงศ์วาน </span>1</span>
+                        <span>งาม 1</span>
                         <span id="text-status-ngam1" class="hidden sm:inline text-emerald-700 font-bold text-[8.5px] sm:text-[9px] bg-emerald-50 border border-emerald-300 px-1.5 py-0.2 rounded">เปิด</span>
                         <span id="dot-status-ngam1" class="sm:hidden w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     </div>
@@ -392,12 +392,12 @@
             </div>
 
             <!-- [2] งามวงศ์วาน 2 (แนวงามวงศ์วาน ด้านซ้าย ติดกับอาคาร 1, Rooftop: 830, 735) -->
-            <div id="hotspot-ngam2" onclick="openParkingModal('ngam2')" class="absolute left-[51.9%] top-[73.5%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
+            <div id="hotspot-ngam2" onclick="openParkingModal('ngam2')" class="absolute left-[52.5%] top-[78.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="ring-ngam2" class="status-ring opacity-0 pointer-events-none status-halo"></div>
                     <div id="badge-ngam2" class="poi-badge px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs flex items-center space-x-1 sm:space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
                         <i data-lucide="car" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600"></i>
-                        <span><span class="hidden sm:inline">งามวงศ์วาน </span>2</span>
+                        <span>งาม 2</span>
                         <span id="text-status-ngam2" class="hidden sm:inline text-emerald-700 font-bold text-[8.5px] sm:text-[9px] bg-emerald-50 border border-emerald-300 px-1.5 py-0.2 rounded">เปิด</span>
                         <span id="dot-status-ngam2" class="sm:hidden w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                     </div>
@@ -406,7 +406,7 @@
             </div>
 
             <!-- [3] อาคารวิภาวดี (Spacious Quad, Rooftop: 185, 350) -->
-            <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[11.56%] top-[35.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
+            <div id="hotspot-vipa" onclick="openParkingModal('vipa')" class="absolute left-[10.0%] top-[36.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="ring-vipa" class="status-ring opacity-0 pointer-events-none status-halo"></div>
                     <div id="badge-vipa" class="poi-badge px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs flex items-center space-x-1 sm:space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
@@ -420,7 +420,7 @@
             </div>
 
             <!-- [4] สระพระพิรุณ จุดจัดงานลอยกระทง (มุมล่างขวาใกล้แยกเกษตร, Center: 1320, 760) -->
-            <div id="hotspot-pond" onclick="openEventModal()" class="absolute left-[82.5%] top-[76.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
+            <div id="hotspot-pond" onclick="openEventModal()" class="absolute left-[84.06%] top-[76.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="badge-pond" class="poi-badge px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs border border-amber-300 flex items-center space-x-1 sm:space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
                         <span class="text-xs">🪔</span>
@@ -432,7 +432,7 @@
             </div>
 
             <!-- [5] สถานี BTS มหาวิทยาลัยเกษตรศาสตร์ (N13) หน้ามอ ประตูพหลโยธิน 1 (Center: 1485, 580) -->
-            <div id="hotspot-bts" onclick="openBtsModal()" class="absolute left-[92.8%] top-[58.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
+            <div id="hotspot-bts" onclick="openBtsModal()" class="absolute left-[92.8%] top-[52.0%] -translate-x-1/2 -translate-y-full cursor-pointer z-20 group touch-target-44">
                 <div class="relative flex flex-col items-center">
                     <div id="ring-bts" class="status-ring opacity-0 pointer-events-none status-halo"></div>
                     <div id="badge-bts" class="poi-badge px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-slate-800 font-bold text-[9.5px] sm:text-xs flex items-center space-x-1 sm:space-x-1.5 group-hover:scale-105 active:scale-95 transition-transform whitespace-nowrap">
