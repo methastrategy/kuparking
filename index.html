@@ -187,36 +187,38 @@
   
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800;900&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800;900&amp;family=Silkscreen:wght@400;700&amp;display=swap');
       text {
         font-family: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         text-rendering: geometricPrecision;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
+      
       .building-card {
         cursor: pointer;
         transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
       }
       .building-card:hover {
-        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.45));
       }
     </style>
 
     <!-- Professional Soft Dropshadows & Glows -->
     <filter id="dropCard" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.18" />
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#020617" flood-opacity="0.18" />
     </filter>
     <filter id="dropBuilding" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="3" dy="8" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.25" />
+      <feDropShadow dx="3" dy="8" stdDeviation="6" flood-color="#020617" flood-opacity="0.25" />
     </filter>
     <filter id="badgeGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#0F172A" flood-opacity="0.3" />
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#020617" flood-opacity="0.3" />
     </filter>
     <filter id="goldGlow" x="-30%" y="-30%" width="160%" height="160%">
       <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#F59E0B" flood-opacity="0.6" />
     </filter>
 
+    
     <!-- Outside Blueprint Grid -->
     <radialGradient id="vignetteBg" cx="50%" cy="50%" r="70%">
       <stop offset="0%" stop-color="#FFFFFF" />
@@ -240,8 +242,9 @@
       <circle cx="18" cy="22" r="1" fill="#FEF08A" opacity="0.6" />
       <circle cx="36" cy="14" r="1" fill="#FEF08A" opacity="0.6" />
     </pattern>
+    
 
-    <!-- Sra Phra Phirun Water Gradient -->
+    <!-- Water & Light Gradients -->
     <linearGradient id="pondWaterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38BDF8" />
       <stop offset="45%" stop-color="#0284C7" />
@@ -260,7 +263,7 @@
       <circle cx="0" cy="0" r="1.5" fill="#FEF08A" />
     </g>
 
-    <!-- Landscape Tree Symbol -->
+    <!-- Trees & Bushes -->
     <g id="officialTree">
       <ellipse cx="0" cy="8" rx="9" ry="3.5" fill="#0F172A" opacity="0.2" />
       <rect x="-2.5" y="0" width="5" height="9" rx="1" fill="#78350F" />
@@ -269,7 +272,6 @@
       <circle cx="-2.5" cy="-8" r="5" fill="#22C55E" opacity="0.75" />
       <circle cx="-3" cy="-9" r="2.5" fill="#86EFAC" opacity="0.6" />
     </g>
-    <!-- Landscape Bush -->
     <g id="officialBush">
       <ellipse cx="0" cy="3" rx="6" ry="2.2" fill="#0F172A" opacity="0.18" />
       <circle cx="-3.5" cy="0" r="4.5" fill="#14532D" />
@@ -279,9 +281,11 @@
     </g>
   </defs>
 
-  <!-- ================= BASE CANVAS & BLUEPRINT ================= -->
+  <!-- ================= BASE CANVAS ================= -->
+  
   <rect width="1600" height="1000" fill="url(#vignetteBg)" />
   <rect width="1600" height="1000" fill="url(#gridBlueprint)" />
+  
 
   <!-- ================= EXTERNAL MAJOR HIGHWAYS ================= -->
   <!-- 1. Vibhavadi Rangsit (West) -->
@@ -345,15 +349,13 @@
   <g id="campus-landscape-trees">
     <use href="#officialTree" x="270" y="115" /><use href="#officialTree" x="480" y="115" /><use href="#officialTree" x="680" y="115" /><use href="#officialTree" x="1180" y="115" /><use href="#officialTree" x="1360" y="115" />
     <use href="#officialTree" x="170" y="210" /><use href="#officialTree" x="170" y="470" /><use href="#officialTree" x="170" y="730" />
-    <use href="#officialTree" x="280" y="850" /><use href="#officialTree" x="630" y="850" /><use href="#officialTree" x="1020" y="850" />
+    <use href="#officialTree" x="280" y="850" /><use href="#officialTree" x="430" y="850" /><use href="#officialTree" x="1000" y="850" />
     <use href="#officialTree" x="1440" y="210" /><use href="#officialTree" x="1440" y="650" /><use href="#officialTree" x="1440" y="850" />
     <use href="#officialBush" x="735" y="340" /><use href="#officialBush" x="755" y="340" />
-    <use href="#officialBush" x="1215" y="640" /><use href="#officialBush" x="1430" y="640" />
   </g>
 
   <!-- ================= GOLDEN PERIMETER FENCE ================= -->
   <g id="campus-perimeter-fence" filter="url(#goldGlow)">
-    <!-- Base Golden Line (stroke-width 5) with Gate Gaps -->
     <g fill="none" stroke="#D97706" stroke-width="5" stroke-linecap="round">
       <!-- West Wall: gap for Gate Vibhavadi (300 to 340) -->
       <line x1="135" y1="80" x2="135" y2="300" />
@@ -371,7 +373,6 @@
       <line x1="135" y1="80" x2="790" y2="80" />
       <line x1="830" y1="80" x2="1470" y2="80" />
     </g>
-    <!-- Bright Gold Dashed Railing -->
     <g fill="none" stroke="#FBBF24" stroke-width="1.8" stroke-dasharray="8 5" stroke-linecap="butt">
       <line x1="135" y1="80" x2="135" y2="300" /><line x1="135" y1="340" x2="135" y2="880" />
       <line x1="135" y1="880" x2="430" y2="880" /><line x1="470" y1="880" x2="710" y2="880" /><line x1="750" y1="880" x2="900" y2="880" /><line x1="940" y1="880" x2="1470" y2="880" />
@@ -389,57 +390,65 @@
     <use href="#goldPillar" x="1470" y="740" /><use href="#goldPillar" x="1470" y="780" />
   </g>
 
-  <!-- ================= ROAD NETWORK (100% FAITHFUL TO USER BLUEPRINT) ================= -->
+  <!-- ================= ROAD NETWORK (UPDATED TO USER SPEC) ================= -->
   <!-- 1. Asphalt Road Bed (Dark Slate #334155, Width 28) -->
   <g fill="none" stroke="#334155" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
     <!-- West Entrance (Gate Vibhavadi) -->
     <path d="M 90 320 L 200 320" stroke-linecap="butt" />
 
-    <!-- North Arc around Satit [1] to Barmai and Suwan Road -->
+    <!-- North Arc around Satit to Barmai and Suwan Road (J1 -> J3) -->
     <path d="M 200 320 Q 200 160 300 150 L 700 150 Q 800 150 830 220" />
 
-    <!-- Slanted Road between Satit [1] and Sorn 3 [2] towards Barmai/Suwan Road -->
+    <!-- Slanted Road between Satit and Sorn 3 towards Barmai/Suwan Road (J2 -> J3) -->
     <path d="M 200 380 L 830 220" />
 
-    <!-- West Spine (Sutham Areekul) curving around Stadium to Chansathit -->
+    <!-- West Spine (Sutham Areekul) curving around Stadium to Chansathit (J1 -> J14 -> J17) -->
     <path d="M 200 320 L 200 600 Q 200 670 270 670 L 920 670" />
 
-    <!-- Middle Road (Rapee Sakrik) under Sorn 3/Library and curving towards East Fence -->
-    <path d="M 200 510 L 450 500 L 840 440" />
-    <path d="M 840 440 Q 980 395 1150 375 Q 1280 375 1360 430 Q 1420 470 1470 470" />
+    <!-- Middle Road (Rapee Sakrik) under Sorn 3/Library: J8(200,510) -> J9(450,500) -> J11(840,440) -> J7(1040,390) -->
+    <path d="M 200 510 L 450 500 L 840 440 L 1040 390" />
 
-    <!-- Central Spine (Suwanwakhokkasikit) from North Gate down to Gate 1 (Ngamwongwan) -->
+    <!-- Continuation of Rapee Sakrik east of J7 curving to East Fence (G-PHAHON2) -->
+    <path d="M 1040 390 Q 1180 375 1300 385 Q 1400 405 1470 470 L 1510 470" stroke-linecap="butt" />
+
+    <!-- Central Spine (Suwanwakhokkasikit): G-NORTH(810,50) -> J3(830,220) -> J11(840,440) -> J12(870,540) -> J17(920,670) -> G-GATE1(920,910) -->
     <path d="M 810 50 L 830 220 L 840 440 L 870 540 L 920 670 L 920 910" stroke-linecap="butt" />
 
-    <!-- Gate 3 Vertical Road (between Stadium and Engineering) -->
+    <!-- Gate 3 Vertical Road (between Stadium and Engineering): J9(450,500) -> J15(450,670) -> G-GATE3(450,910) -->
     <path d="M 450 500 L 450 910" stroke-linecap="butt" />
 
-    <!-- Engineering/Econ Curved Border and Connector to Suwan Road -->
+    <!-- Engineering/Econ Curved Border & Connector: J10(660,460) -> J16(730,670) and J13(700,570) -> J12(870,540) -->
     <path d="M 660 460 Q 700 560 730 670" />
     <path d="M 700 570 L 870 540" />
 
-    <!-- Gate 2 Vertical Road -->
+    <!-- Gate 2 Vertical Road: J16(730,670) -> G-GATE2(730,910) -->
     <path d="M 730 670 L 730 910" stroke-linecap="butt" />
 
-    <!-- Northeast Veterinary Complex Road Loop -->
-    <path d="M 830 240 L 1000 200 Q 1120 180 1150 220 L 1200 375" />
+    <!-- User Spec 7: Remove J5 curve! Road from J3(830,220) -> J4(1000,200) -> J6(1150,380) -->
+    <path d="M 830 220 L 1000 200 L 1150 380" />
+    <!-- Road between J4(1000,200) down to J7(1040,390) -->
     <path d="M 1000 200 L 1040 390" />
 
-    <!-- Southeast Diagonal Road from Gate 1 to BTS Roundabout -->
+    <!-- Southeast Diagonal Road from Gate 1 to BTS Roundabout: J17(920,670) -> J21(1180,600) -> J18(1260,575) -> J19(1370,540) -->
     <path d="M 920 670 L 1370 540" />
+
+    <!-- User Spec 5: J6 connects to J21 instead! (From J6 1150,380 down to J21 1180,600) -->
+    <path d="M 1150 380 L 1180 600" />
+
+    <!-- User Spec 6: J18 connects to J7! (From J7 1040,390 down-right to J18 1260,575) -->
+    <path d="M 1040 390 L 1260 575" />
+
+    <!-- User Spec 4: J22 connects directly to J18! (From J18 1260,575 down to J22 1250,660) -->
+    <path d="M 1260 575 L 1250 660" />
+
+    <!-- Rectangular Loop around Sra Phra Phirun: J22(1250,660) -> J23(1410,660) -> J24(1410,860) -> J25(1250,860) -> J22(1250,660) -->
+    <path d="M 1250 660 L 1410 660 L 1410 860 L 1250 860 Z" />
+
+    <!-- Car Exit Connector from Sra Phra Phirun Loop to Phahonyothin: J26(1410,760) -> G-PHAHON1(1510,760) -->
+    <path d="M 1410 760 L 1510 760" stroke-linecap="butt" />
 
     <!-- BTS Roundabout Teardrop Loop Touching East Fence (Zero Car Exit to Phahonyothin) -->
     <path d="M 1370 540 C 1400 495 1455 505 1455 540 C 1455 575 1400 585 1370 540 Z" />
-
-    <!-- Connector between Rapee Road and Diagonal Road -->
-    <path d="M 1200 375 L 1260 575" />
-
-    <!-- Branch to Sra Phra Phirun & Rectangular Loop -->
-    <path d="M 1180 600 L 1220 660" />
-    <path d="M 1220 660 L 1410 660 L 1410 860 L 1220 860 Z" />
-
-    <!-- Car Exit Connector from Sra Phra Phirun Loop to Phahonyothin -->
-    <path d="M 1410 760 L 1510 760" stroke-linecap="butt" />
   </g>
 
   <!-- 2. Dashed White Road Centerlines -->
@@ -448,21 +457,22 @@
     <path d="M 200 320 Q 200 160 300 150 L 700 150 Q 800 150 830 220" />
     <path d="M 200 380 L 830 220" />
     <path d="M 200 320 L 200 600 Q 200 670 270 670 L 920 670" />
-    <path d="M 200 510 L 450 500 L 840 440" />
-    <path d="M 840 440 Q 980 395 1150 375 Q 1280 375 1360 430 Q 1420 470 1470 470" />
+    <path d="M 200 510 L 450 500 L 840 440 L 1040 390" />
+    <path d="M 1040 390 Q 1180 375 1300 385 Q 1400 405 1470 470 L 1510 470" />
     <path d="M 810 50 L 830 220 L 840 440 L 870 540 L 920 670 L 920 910" />
     <path d="M 450 500 L 450 910" />
     <path d="M 660 460 Q 700 560 730 670" />
     <path d="M 700 570 L 870 540" />
     <path d="M 730 670 L 730 910" />
-    <path d="M 830 240 L 1000 200 Q 1120 180 1150 220 L 1200 375" />
+    <path d="M 830 220 L 1000 200 L 1150 380" />
     <path d="M 1000 200 L 1040 390" />
     <path d="M 920 670 L 1370 540" />
-    <path d="M 1370 540 C 1400 495 1455 505 1455 540 C 1455 575 1400 585 1370 540 Z" />
-    <path d="M 1200 375 L 1260 575" />
-    <path d="M 1180 600 L 1220 660" />
-    <path d="M 1220 660 L 1410 660 L 1410 860 L 1220 860 Z" />
+    <path d="M 1150 380 L 1180 600" />
+    <path d="M 1040 390 L 1260 575" />
+    <path d="M 1260 575 L 1250 660" />
+    <path d="M 1250 660 L 1410 660 L 1410 860 L 1250 860 Z" />
     <path d="M 1410 760 L 1510 760" />
+    <path d="M 1370 540 C 1400 495 1455 505 1455 540 C 1455 575 1400 585 1370 540 Z" />
   </g>
 
   <!-- Zebra Crossings at Major Hubs -->
@@ -479,17 +489,14 @@
     <ellipse cx="0" cy="42" rx="72" ry="12" fill="#0F172A" opacity="0.25" />
     <rect x="-68" y="-38" width="136" height="76" rx="6" fill="#FFFBEB" stroke="#B45309" stroke-width="1.8" />
     <rect x="-68" y="24" width="136" height="14" rx="3" fill="#DC2626" opacity="0.85" />
-    <!-- Terracotta 2.5D Roof -->
     <polygon points="-74,-38 0,-64 74,-38 66,-30 -66,-30" fill="#991B1B" />
     <polygon points="-72,-38 0,-62 72,-38" fill="#DC2626" />
-    <!-- Clock Tower -->
     <rect x="-16" y="-68" width="32" height="34" rx="3" fill="#B91C1C" stroke="#7F1D1D" stroke-width="1.5" />
     <polygon points="-18,-68 0,-84 18,-68" fill="#7F1D1D" />
     <polygon points="-16,-68 0,-82 16,-68" fill="#D97706" />
     <circle cx="0" cy="-51" r="9" fill="#FFFFFF" stroke="#451A03" stroke-width="1.3" />
     <line x1="0" y1="-51" x2="0" y2="-56" stroke="#0F172A" stroke-width="1.4" stroke-linecap="round" />
     <line x1="0" y1="-51" x2="-3.5" y2="-48" stroke="#0F172A" stroke-width="1.4" stroke-linecap="round" />
-    <!-- Windows -->
     <g fill="#0284C7" opacity="0.85">
       <rect x="-56" y="-24" width="16" height="16" rx="2" stroke="#FFFFFF" stroke-width="1" />
       <rect x="-34" y="-24" width="16" height="16" rx="2" stroke="#FFFFFF" stroke-width="1" />
@@ -500,7 +507,6 @@
       <rect x="18" y="-2" width="16" height="16" rx="2" stroke="#FFFFFF" stroke-width="1" />
       <rect x="40" y="-2" width="16" height="16" rx="2" stroke="#FFFFFF" stroke-width="1" />
     </g>
-    <!-- Flagpole 🇹🇭 -->
     <g transform="translate(-60, 10)">
       <line x1="0" y1="-26" x2="0" y2="28" stroke="#94A3B8" stroke-width="1.5" />
       <circle cx="0" cy="-26" r="2" fill="#F59E0B" />
@@ -510,32 +516,51 @@
       <rect x="0" y="-16" width="14" height="2" fill="#FFFFFF" />
       <rect x="0" y="-14" width="14" height="2" fill="#EF4444" />
     </g>
-    <!-- Badge -->
     <g transform="translate(0, 46)" filter="url(#badgeGlow)">
       <rect x="-72" y="-12" width="144" height="24" rx="6" fill="#0F172A" stroke="#DC2626" stroke-width="1.8" />
       <text x="0" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">🏫 โรงเรียนสาธิต ม.เกษตรฯ</text>
     </g>
   </g>
 
-  <!-- บาร์ใหม่ (Barmai Canteen) -->
-  <g id="building-barmai" class="building-card" onclick="selectLocation('barmai')" transform="translate(580, 185)" filter="url(#badgeGlow)">
-    <rect x="-75" y="-15" width="150" height="30" rx="8" fill="#065F46" stroke="#34D399" stroke-width="2" />
-    <text x="0" y="5" fill="#A7F3D0" font-size="11.5" font-weight="900" text-anchor="middle">🍽️ โรงอาหารกลาง 2 (บาร์ใหม่)</text>
+  <!-- User Spec 3: บาร์ใหม่ (โรงอาหารกลาง 2 - บาร์ใหม่) -> FULL 2.5D Architectural Canteen Building -->
+  <g id="building-barmai" class="building-card" onclick="selectLocation('barmai')" transform="translate(580, 185)" filter="url(#dropBuilding)">
+    <ellipse cx="0" cy="38" rx="72" ry="12" fill="#0F172A" opacity="0.25" />
+    <!-- Canteen Main Hall Body -->
+    <rect x="-65" y="-32" width="130" height="64" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.8" />
+    <!-- Terracotta & Emerald Food Hall Hipped Roof -->
+    <polygon points="-70,-32 0,-52 70,-32 62,-24 -62,-24" fill="#047857" />
+    <polygon points="-68,-32 0,-50 68,-32" fill="#10B981" />
+    <polygon points="0,-50 68,-32 60,-32 0,-47" fill="#34D399" opacity="0.6" />
+    <!-- Canteen Sunscreen Louvers & Food Windows -->
+    <g fill="#A7F3D0" stroke="#059669" stroke-width="0.8">
+      <rect x="-52" y="-18" width="22" height="14" rx="2" />
+      <rect x="-24" y="-18" width="22" height="14" rx="2" />
+      <rect x="2" y="-18" width="22" height="14" rx="2" />
+      <rect x="30" y="-18" width="22" height="14" rx="2" />
+    </g>
+    <!-- Entrance Awning / Food Stall Counter -->
+    <rect x="-30" y="2" width="60" height="24" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="1.2" />
+    <rect x="-30" y="2" width="60" height="6" fill="#F59E0B" />
+    <!-- Food Stall Emojis -->
+    <text x="-16" y="20" font-size="12">🍜</text>
+    <text x="5" y="20" font-size="12">🍱</text>
+    <!-- Badge -->
+    <g transform="translate(0, 42)" filter="url(#badgeGlow)">
+      <rect x="-75" y="-11" width="150" height="22" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1.8" />
+      <text x="0" y="3.5" fill="#A7F3D0" font-size="9.5" font-weight="900" text-anchor="middle">🍽️ โรงอาหารกลาง 2 (บาร์ใหม่)</text>
+    </g>
   </g>
 
   <!-- [2] ศูนย์เรียนรวม 3 (ศร.3) with Green Dome -->
   <g id="building-sorn3" class="building-card" onclick="selectLocation('sorn3')" transform="translate(420, 390)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="42" rx="76" ry="12" fill="#0F172A" opacity="0.25" />
     <rect x="-70" y="-36" width="140" height="72" rx="8" fill="#F0FDF4" stroke="#047857" stroke-width="1.8" />
-    <!-- Iconic Sweeping Green Roof -->
     <path d="M -76 -34 Q 0 -64 76 -34 L 70 -42 Q 0 -72 -70 -42 Z" fill="#047857" />
     <path d="M -72 -32 Q 0 -60 72 -32 L 66 -38 Q 0 -66 -66 -38 Z" fill="#059669" />
     <path d="M -68 -30 Q 0 -56 68 -30 L 62 -34 Q 0 -60 -62 -34 Z" fill="#10B981" />
-    <!-- Tiered Lecture Shell -->
     <path d="M -40 10 A 44 26 0 0 1 40 10 Z" fill="#047857" opacity="0.9" />
     <path d="M -30 10 A 32 18 0 0 1 30 10 Z" fill="#059669" />
     <circle cx="0" cy="4" r="4" fill="#FEF08A" />
-    <!-- Badge -->
     <g transform="translate(0, 46)" filter="url(#badgeGlow)">
       <rect x="-70" y="-12" width="140" height="24" rx="6" fill="#0F172A" stroke="#059669" stroke-width="1.8" />
       <text x="0" y="4" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle">🏛️ ศูนย์เรียนรวม 3 (ศร.3)</text>
@@ -552,11 +577,9 @@
     <line x1="-66" y1="-4" x2="66" y2="-4" stroke="#E0F2FE" stroke-width="2" />
     <line x1="-66" y1="6" x2="66" y2="6" stroke="#E0F2FE" stroke-width="2" />
     <line x1="-66" y1="16" x2="66" y2="16" stroke="#E0F2FE" stroke-width="2" />
-    <!-- Golden Reading Atrium -->
     <rect x="-22" y="-50" width="44" height="22" rx="4" fill="#0369A1" stroke="#38BDF8" stroke-width="1.5" />
     <rect x="-18" y="-46" width="36" height="14" rx="2" fill="#FEF08A" opacity="0.9" />
     <circle cx="0" cy="-39" r="4.5" fill="#F59E0B" />
-    <!-- Badge -->
     <g transform="translate(0, 46)" filter="url(#badgeGlow)">
       <rect x="-70" y="-12" width="140" height="24" rx="6" fill="#0F172A" stroke="#0284C7" stroke-width="1.8" />
       <text x="0" y="4" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle">📚 สำนักหอสมุด (50 ปี)</text>
@@ -564,7 +587,7 @@
   </g>
 
   <!-- [4] คณะเทคนิคการสัตวแพทย์ -->
-  <g id="building-vet-tech" class="building-card" onclick="selectLocation('vetTech')" transform="translate(1090, 260)" filter="url(#dropBuilding)">
+  <g id="building-vet-tech" class="building-card" onclick="selectLocation('vetTech')" transform="translate(1080, 260)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="34" rx="65" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-64" y="-30" width="128" height="60" rx="6" fill="#FAF5FF" stroke="#7C3AED" stroke-width="1.8" />
     <polygon points="-68,-30 -35,-44 35,-44 68,-30" fill="#5B21B6" />
@@ -589,7 +612,7 @@
   </g>
 
   <!-- [5] โรงพยาบาลสัตว์ ม.เกษตร (KU Animal Hospital) -->
-  <g id="building-vet-hospital" class="building-card" onclick="selectLocation('vetHospital')" transform="translate(1250, 280)" filter="url(#dropBuilding)">
+  <g id="building-vet-hospital" class="building-card" onclick="selectLocation('vetHospital')" transform="translate(1240, 270)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="34" rx="68" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-64" y="-28" width="128" height="56" rx="6" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.8" />
     <polygon points="-68,-28 -30,-42 30,-42 68,-28" fill="#9F1239" />
@@ -605,7 +628,6 @@
       <circle cx="14" cy="-8" r="5" fill="#FFE4E6" stroke="#E11D48" stroke-width="0.8" />
       <text x="14" y="-6" font-size="6" text-anchor="middle">🐾</text>
     </g>
-    <!-- Badge -->
     <g transform="translate(0, 36)" filter="url(#badgeGlow)">
       <rect x="-72" y="-10" width="144" height="20" rx="5" fill="#0F172A" stroke="#E11D48" stroke-width="1.5" />
       <text x="0" y="3.5" fill="#FFFFFF" font-size="8.5" font-weight="800" text-anchor="middle">🐶 โรงพยาบาลสัตว์ มก. 🐾</text>
@@ -617,7 +639,6 @@
     <rect x="-95" y="-52" width="190" height="104" rx="16" fill="#FFFFFF" stroke="#059669" stroke-width="2.5" />
     <rect x="-88" y="-45" width="176" height="90" rx="18" fill="#BE123C" stroke="#9F1239" stroke-width="1.5" />
     <rect x="-84" y="-41" width="168" height="82" rx="16" fill="none" stroke="#FFFFFF" stroke-width="0.8" opacity="0.65" />
-    <!-- Pitch -->
     <rect x="-68" y="-28" width="136" height="56" rx="4" fill="#15803D" stroke="#047857" stroke-width="1.5" />
     <rect x="-68" y="-28" width="17" height="56" fill="#16A34A" />
     <rect x="-34" y="-28" width="17" height="56" fill="#16A34A" />
@@ -639,7 +660,6 @@
     <rect x="-56" y="14" width="112" height="18" rx="3" fill="#991B1B" />
     <polygon points="-52,-34 -38,-48 -38,-34" fill="#B91C1C" />
     <polygon points="-34,-34 -20,-48 -20,-34" fill="#B91C1C" />
-    <!-- Giant Dong Tan Gear -->
     <g transform="translate(24, -12)">
       <circle cx="0" cy="0" r="18" fill="#F59E0B" stroke="#B45309" stroke-width="1.5" />
       <circle cx="0" cy="0" r="11" fill="#FEF3C7" stroke="#B45309" stroke-width="1" />
@@ -669,8 +689,8 @@
     </g>
   </g>
 
-  <!-- [9] สำนักบริการคอมพิวเตอร์ (OCS) -->
-  <g id="building-ocs" class="building-card" onclick="selectLocation('ocs')" transform="translate(340, 770)" filter="url(#dropBuilding)">
+  <!-- User Spec 2: สำนักคอมฯ OCS ย้ายมาอยู่ตำแหน่งที่จอดรถงาม 2 เดิม (x=590, y=770) -->
+  <g id="building-ocs" class="building-card" onclick="selectLocation('ocs')" transform="translate(590, 770)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="32" rx="65" ry="9" fill="#0F172A" opacity="0.25" />
     <rect x="-62" y="-28" width="124" height="56" rx="6" fill="#0F172A" stroke="#0284C7" stroke-width="1.8" />
     <polygon points="-66,-28 -25,-40 25,-40 66,-28" fill="#1E293B" />
@@ -689,29 +709,28 @@
     </g>
   </g>
 
-  <!-- [10] อาคารจอดรถงามวงศ์วาน 2 (NO CAPACITY/STATUS TEXT) -->
-  <g id="building-ngam2" class="building-card" onclick="selectLocation('ngam2')" transform="translate(590, 770)" filter="url(#dropBuilding)">
+  <!-- User Spec 1: ที่จอดรถงาม 1 และ 2 อยู่ติดกัน ไม่มีประตูงาม 2 คั่นกลาง (ข้างประตู 1) -->
+  <!-- อาคารจอดรถงามวงศ์วาน 2 (x=785, y=770) -->
+  <g id="building-ngam2" class="building-card" onclick="selectLocation('ngam2')" transform="translate(785, 770)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="30" rx="36" ry="8" fill="#0F172A" opacity="0.25" />
     <rect x="-32" y="-26" width="64" height="52" rx="5" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
     <polygon points="-35,-26 -16,-34 16,-34 35,-26" fill="#334155" />
-    <!-- Parking Floors -->
     <g fill="#1E293B">
       <rect x="-26" y="-18" width="38" height="6" rx="1.5" />
       <rect x="-26" y="-8" width="38" height="6" rx="1.5" />
       <rect x="-26" y="2" width="38" height="6" rx="1.5" />
       <rect x="-26" y="12" width="38" height="6" rx="1.5" />
     </g>
-    <!-- Blue P Beacon -->
     <circle cx="0" cy="-28" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.2" />
     <text x="0" y="-24.5" fill="#FFFFFF" font-size="9" font-weight="900" text-anchor="middle">P</text>
     <g transform="translate(0, 34)" filter="url(#badgeGlow)">
-      <rect x="-48" y="-9" width="96" height="18" rx="4" fill="#0F172A" stroke="#0284C7" stroke-width="1.3" />
-      <text x="0" y="3" fill="#FFFFFF" font-size="8" font-weight="800" text-anchor="middle">🅿️ อาคารจอดรถงามวงศ์วาน 2</text>
+      <rect x="-42" y="-9" width="84" height="18" rx="4" fill="#0F172A" stroke="#0284C7" stroke-width="1.3" />
+      <text x="0" y="3" fill="#FFFFFF" font-size="8" font-weight="800" text-anchor="middle">🅿️ จอดรถงาม 2</text>
     </g>
   </g>
 
-  <!-- [11] อาคารจอดรถงามวงศ์วาน 1 (NO CAPACITY/STATUS TEXT) -->
-  <g id="building-ngam1" class="building-card" onclick="selectLocation('ngam1')" transform="translate(825, 770)" filter="url(#dropBuilding)">
+  <!-- อาคารจอดรถงามวงศ์วาน 1 (x=865, y=770 - อยู่ติดกับงาม 2 ทันที) -->
+  <g id="building-ngam1" class="building-card" onclick="selectLocation('ngam1')" transform="translate(865, 770)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="30" rx="36" ry="8" fill="#0F172A" opacity="0.25" />
     <rect x="-32" y="-26" width="64" height="52" rx="5" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
     <polygon points="-35,-26 -16,-34 16,-34 35,-26" fill="#334155" />
@@ -724,8 +743,8 @@
     <circle cx="0" cy="-28" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.2" />
     <text x="0" y="-24.5" fill="#FFFFFF" font-size="9" font-weight="900" text-anchor="middle">P</text>
     <g transform="translate(0, 34)" filter="url(#badgeGlow)">
-      <rect x="-48" y="-9" width="96" height="18" rx="4" fill="#0F172A" stroke="#0284C7" stroke-width="1.3" />
-      <text x="0" y="3" fill="#FFFFFF" font-size="8" font-weight="800" text-anchor="middle">🅿️ อาคารจอดรถงามวงศ์วาน 1</text>
+      <rect x="-42" y="-9" width="84" height="18" rx="4" fill="#0F172A" stroke="#0284C7" stroke-width="1.3" />
+      <text x="0" y="3" fill="#FFFFFF" font-size="8" font-weight="800" text-anchor="middle">🅿️ จอดรถงาม 1</text>
     </g>
   </g>
 
@@ -742,8 +761,8 @@
     </g>
   </g>
 
-  <!-- [12] หอประชุมใหญ่ มก. (KU Main Auditorium) -->
-  <g id="building-auditorium" class="building-card" onclick="selectLocation('auditorium')" transform="translate(1070, 750)" filter="url(#dropBuilding)">
+  <!-- User Spec 8: หอประชุมใหญ่ อยู่ติดถนนเส้น J25 ถึง J22 (ติดฝั่งซ้ายของถนนรอบสระ x=1160, y=760) -->
+  <g id="building-auditorium" class="building-card" onclick="selectLocation('auditorium')" transform="translate(1160, 760)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="38" rx="52" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-46" y="-34" width="92" height="68" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="2" />
     <polygon points="0,-60 44,-34 -44,-34" fill="#78350F" stroke="#B45309" stroke-width="1.5" />
@@ -764,8 +783,8 @@
     </g>
   </g>
 
-  <!-- [13] สระพระพิรุณ (Loy Krathong Sacred Basin: Elongated Rectangle 70 x 170) -->
-  <g id="water-pond" class="building-card" onclick="selectLocation('pond')" transform="translate(1315, 760)" filter="url(#dropBuilding)">
+  <!-- [13] สระพระพิรุณ (Loy Krathong Sacred Basin: Elongated Rectangle 70 x 170 Inside Loop) -->
+  <g id="water-pond" class="building-card" onclick="selectLocation('pond')" transform="translate(1330, 760)" filter="url(#dropBuilding)">
     <!-- Outer Basin Border -->
     <rect x="-42" y="-90" width="84" height="180" rx="10" fill="#FFFFFF" stroke="#0284C7" stroke-width="2.5" />
     <!-- Water Surface (70 x 160) -->
@@ -807,37 +826,32 @@
     <text x="35" y="-15" fill="#86EFAC" font-size="7.5" font-weight="800" text-anchor="end">🚶 ประตูคนเดิน</text>
   </g>
 
-  <!-- ศาลา 6 เหลี่ยม สีแดง (User Request: Red Hexagon Pavilion, no text, no heavy effects) -->
+  <!-- ศาลา 6 เหลี่ยม สีแดง (User Red Dot) -->
   <polygon id="landmark-sala-hokliam" points="1320,555 1329,560 1329,570 1320,575 1311,570 1311,560" fill="#EF4444" stroke="#991B1B" stroke-width="1.5" />
 
   <!-- Gates Badges -->
-  <!-- 1. ประตู 1 -->
   <g id="gate-1" transform="translate(920, 930)" filter="url(#dropCard)">
     <rect x="-34" y="-12" width="68" height="24" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
     <circle cx="-20" cy="0" r="6" fill="#059669" />
     <text x="-20" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">1</text>
     <text x="-8" y="3" fill="#0F172A" font-size="9" font-weight="800" text-anchor="start">ประตู 1</text>
   </g>
-  <!-- 2. ประตู 2 -->
   <g id="gate-2" transform="translate(730, 930)" filter="url(#dropCard)">
     <rect x="-34" y="-12" width="68" height="24" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
     <circle cx="-20" cy="0" r="6" fill="#059669" />
     <text x="-20" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">2</text>
     <text x="-8" y="3" fill="#0F172A" font-size="9" font-weight="800" text-anchor="start">ประตู 2</text>
   </g>
-  <!-- 3. ประตู 3 -->
   <g id="gate-3" transform="translate(450, 930)" filter="url(#dropCard)">
     <rect x="-34" y="-12" width="68" height="24" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
     <circle cx="-20" cy="0" r="6" fill="#059669" />
     <text x="-20" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">3</text>
     <text x="-8" y="3" fill="#0F172A" font-size="9" font-weight="800" text-anchor="start">ประตู 3</text>
   </g>
-  <!-- 4. ประตูวิภาวดี -->
   <g id="gate-vipa" transform="translate(90, 320)" filter="url(#dropCard)">
     <rect x="-24" y="-12" width="48" height="24" rx="6" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="0" y="4" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">วิภาวดี</text>
   </g>
-  <!-- 5. ประตูหลัง ม. -->
   <g id="gate-north" transform="translate(810, 50)" filter="url(#dropCard)">
     <rect x="-30" y="-12" width="60" height="24" rx="6" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="0" y="4" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">ประตูหลัง ม.</text>
@@ -857,6 +871,7 @@
   </g>
 
   <!-- Title Pill Top Left -->
+  
   <g transform="translate(240, 45)" filter="url(#dropCard)">
     <rect x="0" y="0" width="480" height="38" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" />
     <g transform="translate(20, 19)">
@@ -867,9 +882,10 @@
     <rect x="400" y="8" width="68" height="22" rx="4" fill="#ECFDF5" stroke="#10B981" stroke-width="1" />
     <text x="434" y="23" fill="#059669" font-size="10" font-weight="700" text-anchor="middle">ฉบับทางการ</text>
   </g>
+  
 
   <!-- Reticle -->
-  <g id="classicReticle" transform="translate(1315, 760)" style="transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;">
+  <g id="classicReticle" transform="translate(1330, 760)" style="transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;">
     <circle cx="0" cy="0" r="28" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="6 4" opacity="0.85" />
     <circle cx="0" cy="0" r="16" fill="none" stroke="#059669" stroke-width="1.8" />
     <circle cx="0" cy="0" r="4.5" fill="#10B981" />
@@ -883,21 +899,24 @@
   
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@600;700;800;900&amp;family=Silkscreen:wght@400;700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800;900&amp;family=Silkscreen:wght@400;700&amp;display=swap');
       text {
-        font-family: 'Prompt', -apple-system, sans-serif;
+        font-family: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         text-rendering: geometricPrecision;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
       .font-game { font-family: 'Silkscreen', monospace; }
       .building-card {
         cursor: pointer;
-        transition: transform 0.15s ease, filter 0.15s ease;
+        transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
       }
       .building-card:hover {
-        filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.6));
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.45));
       }
     </style>
-    <!-- Pixel Dropshadow & Glows -->
+
+    <!-- Professional Soft Dropshadows & Glows -->
     <filter id="poke-dropCard" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="3" stdDeviation="0" flood-color="#020617" flood-opacity="0.85" />
     </filter>
@@ -910,6 +929,13 @@
     <filter id="poke-goldGlow" x="-30%" y="-30%" width="160%" height="160%">
       <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#F59E0B" flood-opacity="0.6" />
     </filter>
+
+    
+    <!-- Night Sky Canvas Background -->
+    <linearGradient id="poke-nightBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#0B132B" />
+    </linearGradient>
 
     <!-- Pokémon Pixel Grass Tile -->
     <pattern id="poke-officialLawn" width="32" height="32" patternUnits="userSpaceOnUse">
@@ -924,15 +950,17 @@
       <rect x="14" y="12" width="2" height="2" fill="#FEF08A" />
       <rect x="14" y="14" width="2" height="2" fill="#EF4444" />
     </pattern>
+    
 
-    <!-- Pokémon Water Tile Pattern -->
+    <!-- Water & Light Gradients -->
     <linearGradient id="poke-pondWaterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="45%" stop-color="#0284C7" />
       <stop offset="100%" stop-color="#0369A1" />
     </linearGradient>
     <radialGradient id="poke-candleLight" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#FEF08A" stop-opacity="1" />
-      <stop offset="50%" stop-color="#F59E0B" stop-opacity="0.8" />
+      <stop offset="0%" stop-color="#FEF08A" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#F59E0B" stop-opacity="0.6" />
       <stop offset="100%" stop-color="#D97706" stop-opacity="0" />
     </radialGradient>
 
@@ -943,31 +971,28 @@
       <circle cx="0" cy="0" r="1.5" fill="#FEF08A" />
     </g>
 
-    <!-- Pokémon Pixel Tree -->
+    <!-- Trees & Bushes -->
     <g id="poke-officialTree">
-      <ellipse cx="0" cy="8" rx="8" ry="3" fill="#020617" opacity="0.4" />
-      <rect x="-2" y="0" width="4" height="8" fill="#78350F" />
-      <rect x="-10" y="-12" width="20" height="14" rx="2" fill="#14532D" stroke="#052E16" stroke-width="1" />
-      <rect x="-8" y="-10" width="16" height="10" fill="#15803D" />
-      <rect x="-6" y="-8" width="6" height="4" fill="#4ADE80" opacity="0.8" />
+      <ellipse cx="0" cy="8" rx="9" ry="3.5" fill="#0F172A" opacity="0.2" />
+      <rect x="-2.5" y="0" width="5" height="9" rx="1" fill="#78350F" />
+      <circle cx="0" cy="-4" r="12" fill="#14532D" stroke="#052E16" stroke-width="0.8" />
+      <circle cx="0" cy="-6" r="10" fill="#15803D" />
+      <circle cx="-2.5" cy="-8" r="5" fill="#22C55E" opacity="0.75" />
+      <circle cx="-3" cy="-9" r="2.5" fill="#86EFAC" opacity="0.6" />
     </g>
-    <!-- Pokémon Pixel Bush -->
     <g id="poke-officialBush">
-      <ellipse cx="0" cy="3" rx="5" ry="2" fill="#020617" opacity="0.3" />
-      <circle cx="-3" cy="0" r="3.5" fill="#14532D" />
-      <circle cx="3" cy="0" r="3.5" fill="#14532D" />
-      <circle cx="0" cy="-2" r="4.5" fill="#16A34A" />
+      <ellipse cx="0" cy="3" rx="6" ry="2.2" fill="#0F172A" opacity="0.18" />
+      <circle cx="-3.5" cy="0" r="4.5" fill="#14532D" />
+      <circle cx="3.5" cy="0" r="4.5" fill="#14532D" />
+      <circle cx="0" cy="-2" r="5.5" fill="#16A34A" />
+      <circle cx="-1" cy="-3" r="2.5" fill="#4ADE80" opacity="0.7" />
     </g>
-
-    <!-- Night Sky Canvas Background -->
-    <linearGradient id="poke-nightBg" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#020617" />
-      <stop offset="100%" stop-color="#0B132B" />
-    </linearGradient>
   </defs>
 
-  <!-- ================= BASE CANVAS & BLUEPRINT ================= -->
+  <!-- ================= BASE CANVAS ================= -->
+  
   <rect width="1600" height="1000" fill="url(#poke-nightBg)" />
+  
 
   <!-- ================= EXTERNAL MAJOR HIGHWAYS ================= -->
   <!-- 1. Vibhavadi Rangsit (West) -->
@@ -1031,15 +1056,13 @@
   <g id="campus-landscape-trees">
     <use href="#poke-officialTree" x="270" y="115" /><use href="#poke-officialTree" x="480" y="115" /><use href="#poke-officialTree" x="680" y="115" /><use href="#poke-officialTree" x="1180" y="115" /><use href="#poke-officialTree" x="1360" y="115" />
     <use href="#poke-officialTree" x="170" y="210" /><use href="#poke-officialTree" x="170" y="470" /><use href="#poke-officialTree" x="170" y="730" />
-    <use href="#poke-officialTree" x="280" y="850" /><use href="#poke-officialTree" x="630" y="850" /><use href="#poke-officialTree" x="1020" y="850" />
+    <use href="#poke-officialTree" x="280" y="850" /><use href="#poke-officialTree" x="430" y="850" /><use href="#poke-officialTree" x="1000" y="850" />
     <use href="#poke-officialTree" x="1440" y="210" /><use href="#poke-officialTree" x="1440" y="650" /><use href="#poke-officialTree" x="1440" y="850" />
     <use href="#poke-officialBush" x="735" y="340" /><use href="#poke-officialBush" x="755" y="340" />
-    <use href="#poke-officialBush" x="1215" y="640" /><use href="#poke-officialBush" x="1430" y="640" />
   </g>
 
   <!-- ================= GOLDEN PERIMETER FENCE ================= -->
   <g id="campus-perimeter-fence" filter="url(#poke-goldGlow)">
-    <!-- Base Golden Line (stroke-width 5) with Gate Gaps -->
     <g fill="none" stroke="#D97706" stroke-width="5" stroke-linecap="round">
       <!-- West Wall: gap for Gate Vibhavadi (300 to 340) -->
       <line x1="135" y1="80" x2="135" y2="300" />
@@ -1057,7 +1080,6 @@
       <line x1="135" y1="80" x2="790" y2="80" />
       <line x1="830" y1="80" x2="1470" y2="80" />
     </g>
-    <!-- Bright Gold Dashed Railing -->
     <g fill="none" stroke="#FBBF24" stroke-width="1.8" stroke-dasharray="8 5" stroke-linecap="butt">
       <line x1="135" y1="80" x2="135" y2="300" /><line x1="135" y1="340" x2="135" y2="880" />
       <line x1="135" y1="880" x2="430" y2="880" /><line x1="470" y1="880" x2="710" y2="880" /><line x1="750" y1="880" x2="900" y2="880" /><line x1="940" y1="880" x2="1470" y2="880" />
@@ -1075,57 +1097,65 @@
     <use href="#poke-goldPillar" x="1470" y="740" /><use href="#poke-goldPillar" x="1470" y="780" />
   </g>
 
-  <!-- ================= ROAD NETWORK (100% FAITHFUL TO USER BLUEPRINT) ================= -->
+  <!-- ================= ROAD NETWORK (UPDATED TO USER SPEC) ================= -->
   <!-- 1. Asphalt Road Bed (Dark Slate #334155, Width 28) -->
   <g fill="none" stroke="#334155" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
     <!-- West Entrance (Gate Vibhavadi) -->
     <path d="M 90 320 L 200 320" stroke-linecap="butt" />
 
-    <!-- North Arc around Satit [1] to Barmai and Suwan Road -->
+    <!-- North Arc around Satit to Barmai and Suwan Road (J1 -> J3) -->
     <path d="M 200 320 Q 200 160 300 150 L 700 150 Q 800 150 830 220" />
 
-    <!-- Slanted Road between Satit [1] and Sorn 3 [2] towards Barmai/Suwan Road -->
+    <!-- Slanted Road between Satit and Sorn 3 towards Barmai/Suwan Road (J2 -> J3) -->
     <path d="M 200 380 L 830 220" />
 
-    <!-- West Spine (Sutham Areekul) curving around Stadium to Chansathit -->
+    <!-- West Spine (Sutham Areekul) curving around Stadium to Chansathit (J1 -> J14 -> J17) -->
     <path d="M 200 320 L 200 600 Q 200 670 270 670 L 920 670" />
 
-    <!-- Middle Road (Rapee Sakrik) under Sorn 3/Library and curving towards East Fence -->
-    <path d="M 200 510 L 450 500 L 840 440" />
-    <path d="M 840 440 Q 980 395 1150 375 Q 1280 375 1360 430 Q 1420 470 1470 470" />
+    <!-- Middle Road (Rapee Sakrik) under Sorn 3/Library: J8(200,510) -> J9(450,500) -> J11(840,440) -> J7(1040,390) -->
+    <path d="M 200 510 L 450 500 L 840 440 L 1040 390" />
 
-    <!-- Central Spine (Suwanwakhokkasikit) from North Gate down to Gate 1 (Ngamwongwan) -->
+    <!-- Continuation of Rapee Sakrik east of J7 curving to East Fence (G-PHAHON2) -->
+    <path d="M 1040 390 Q 1180 375 1300 385 Q 1400 405 1470 470 L 1510 470" stroke-linecap="butt" />
+
+    <!-- Central Spine (Suwanwakhokkasikit): G-NORTH(810,50) -> J3(830,220) -> J11(840,440) -> J12(870,540) -> J17(920,670) -> G-GATE1(920,910) -->
     <path d="M 810 50 L 830 220 L 840 440 L 870 540 L 920 670 L 920 910" stroke-linecap="butt" />
 
-    <!-- Gate 3 Vertical Road (between Stadium and Engineering) -->
+    <!-- Gate 3 Vertical Road (between Stadium and Engineering): J9(450,500) -> J15(450,670) -> G-GATE3(450,910) -->
     <path d="M 450 500 L 450 910" stroke-linecap="butt" />
 
-    <!-- Engineering/Econ Curved Border and Connector to Suwan Road -->
+    <!-- Engineering/Econ Curved Border & Connector: J10(660,460) -> J16(730,670) and J13(700,570) -> J12(870,540) -->
     <path d="M 660 460 Q 700 560 730 670" />
     <path d="M 700 570 L 870 540" />
 
-    <!-- Gate 2 Vertical Road -->
+    <!-- Gate 2 Vertical Road: J16(730,670) -> G-GATE2(730,910) -->
     <path d="M 730 670 L 730 910" stroke-linecap="butt" />
 
-    <!-- Northeast Veterinary Complex Road Loop -->
-    <path d="M 830 240 L 1000 200 Q 1120 180 1150 220 L 1200 375" />
+    <!-- User Spec 7: Remove J5 curve! Road from J3(830,220) -> J4(1000,200) -> J6(1150,380) -->
+    <path d="M 830 220 L 1000 200 L 1150 380" />
+    <!-- Road between J4(1000,200) down to J7(1040,390) -->
     <path d="M 1000 200 L 1040 390" />
 
-    <!-- Southeast Diagonal Road from Gate 1 to BTS Roundabout -->
+    <!-- Southeast Diagonal Road from Gate 1 to BTS Roundabout: J17(920,670) -> J21(1180,600) -> J18(1260,575) -> J19(1370,540) -->
     <path d="M 920 670 L 1370 540" />
+
+    <!-- User Spec 5: J6 connects to J21 instead! (From J6 1150,380 down to J21 1180,600) -->
+    <path d="M 1150 380 L 1180 600" />
+
+    <!-- User Spec 6: J18 connects to J7! (From J7 1040,390 down-right to J18 1260,575) -->
+    <path d="M 1040 390 L 1260 575" />
+
+    <!-- User Spec 4: J22 connects directly to J18! (From J18 1260,575 down to J22 1250,660) -->
+    <path d="M 1260 575 L 1250 660" />
+
+    <!-- Rectangular Loop around Sra Phra Phirun: J22(1250,660) -> J23(1410,660) -> J24(1410,860) -> J25(1250,860) -> J22(1250,660) -->
+    <path d="M 1250 660 L 1410 660 L 1410 860 L 1250 860 Z" />
+
+    <!-- Car Exit Connector from Sra Phra Phirun Loop to Phahonyothin: J26(1410,760) -> G-PHAHON1(1510,760) -->
+    <path d="M 1410 760 L 1510 760" stroke-linecap="butt" />
 
     <!-- BTS Roundabout Teardrop Loop Touching East Fence (Zero Car Exit to Phahonyothin) -->
     <path d="M 1370 540 C 1400 495 1455 505 1455 540 C 1455 575 1400 585 1370 540 Z" />
-
-    <!-- Connector between Rapee Road and Diagonal Road -->
-    <path d="M 1200 375 L 1260 575" />
-
-    <!-- Branch to Sra Phra Phirun & Rectangular Loop -->
-    <path d="M 1180 600 L 1220 660" />
-    <path d="M 1220 660 L 1410 660 L 1410 860 L 1220 860 Z" />
-
-    <!-- Car Exit Connector from Sra Phra Phirun Loop to Phahonyothin -->
-    <path d="M 1410 760 L 1510 760" stroke-linecap="butt" />
   </g>
 
   <!-- 2. Dashed White Road Centerlines -->
@@ -1134,21 +1164,22 @@
     <path d="M 200 320 Q 200 160 300 150 L 700 150 Q 800 150 830 220" />
     <path d="M 200 380 L 830 220" />
     <path d="M 200 320 L 200 600 Q 200 670 270 670 L 920 670" />
-    <path d="M 200 510 L 450 500 L 840 440" />
-    <path d="M 840 440 Q 980 395 1150 375 Q 1280 375 1360 430 Q 1420 470 1470 470" />
+    <path d="M 200 510 L 450 500 L 840 440 L 1040 390" />
+    <path d="M 1040 390 Q 1180 375 1300 385 Q 1400 405 1470 470 L 1510 470" />
     <path d="M 810 50 L 830 220 L 840 440 L 870 540 L 920 670 L 920 910" />
     <path d="M 450 500 L 450 910" />
     <path d="M 660 460 Q 700 560 730 670" />
     <path d="M 700 570 L 870 540" />
     <path d="M 730 670 L 730 910" />
-    <path d="M 830 240 L 1000 200 Q 1120 180 1150 220 L 1200 375" />
+    <path d="M 830 220 L 1000 200 L 1150 380" />
     <path d="M 1000 200 L 1040 390" />
     <path d="M 920 670 L 1370 540" />
-    <path d="M 1370 540 C 1400 495 1455 505 1455 540 C 1455 575 1400 585 1370 540 Z" />
-    <path d="M 1200 375 L 1260 575" />
-    <path d="M 1180 600 L 1220 660" />
-    <path d="M 1220 660 L 1410 660 L 1410 860 L 1220 860 Z" />
+    <path d="M 1150 380 L 1180 600" />
+    <path d="M 1040 390 L 1260 575" />
+    <path d="M 1260 575 L 1250 660" />
+    <path d="M 1250 660 L 1410 660 L 1410 860 L 1250 860 Z" />
     <path d="M 1410 760 L 1510 760" />
+    <path d="M 1370 540 C 1400 495 1455 505 1455 540 C 1455 575 1400 585 1370 540 Z" />
   </g>
 
   <!-- Zebra Crossings at Major Hubs -->
@@ -1165,17 +1196,14 @@
     <ellipse cx="0" cy="42" rx="72" ry="12" fill="#0F172A" opacity="0.25" />
     <rect x="-68" y="-38" width="136" height="76" rx="6" fill="#FFFBEB" stroke="#B45309" stroke-width="1.8" />
     <rect x="-68" y="24" width="136" height="14" rx="3" fill="#DC2626" opacity="0.85" />
-    <!-- Terracotta 2.5D Roof -->
     <polygon points="-74,-38 0,-64 74,-38 66,-30 -66,-30" fill="#991B1B" />
     <polygon points="-72,-38 0,-62 72,-38" fill="#DC2626" />
-    <!-- Clock Tower -->
     <rect x="-16" y="-68" width="32" height="34" rx="3" fill="#B91C1C" stroke="#7F1D1D" stroke-width="1.5" />
     <polygon points="-18,-68 0,-84 18,-68" fill="#7F1D1D" />
     <polygon points="-16,-68 0,-82 16,-68" fill="#D97706" />
     <circle cx="0" cy="-51" r="9" fill="#FFFFFF" stroke="#451A03" stroke-width="1.3" />
     <line x1="0" y1="-51" x2="0" y2="-56" stroke="#0F172A" stroke-width="1.4" stroke-linecap="round" />
     <line x1="0" y1="-51" x2="-3.5" y2="-48" stroke="#0F172A" stroke-width="1.4" stroke-linecap="round" />
-    <!-- Windows -->
     <g fill="#0284C7" opacity="0.85">
       <rect x="-56" y="-24" width="16" height="16" rx="2" stroke="#FFFFFF" stroke-width="1" />
       <rect x="-34" y="-24" width="16" height="16" rx="2" stroke="#FFFFFF" stroke-width="1" />
@@ -1186,7 +1214,6 @@
       <rect x="18" y="-2" width="16" height="16" rx="2" stroke="#FFFFFF" stroke-width="1" />
       <rect x="40" y="-2" width="16" height="16" rx="2" stroke="#FFFFFF" stroke-width="1" />
     </g>
-    <!-- Flagpole 🇹🇭 -->
     <g transform="translate(-60, 10)">
       <line x1="0" y1="-26" x2="0" y2="28" stroke="#94A3B8" stroke-width="1.5" />
       <circle cx="0" cy="-26" r="2" fill="#F59E0B" />
@@ -1196,32 +1223,51 @@
       <rect x="0" y="-16" width="14" height="2" fill="#FFFFFF" />
       <rect x="0" y="-14" width="14" height="2" fill="#EF4444" />
     </g>
-    <!-- Badge -->
     <g transform="translate(0, 46)" filter="url(#poke-badgeGlow)">
       <rect x="-72" y="-12" width="144" height="24" rx="6" fill="#0F172A" stroke="#DC2626" stroke-width="1.8" />
       <text x="0" y="4" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">🏫 โรงเรียนสาธิต ม.เกษตรฯ</text>
     </g>
   </g>
 
-  <!-- บาร์ใหม่ (Barmai Canteen) -->
-  <g id="building-barmai" class="building-card" onclick="selectLocation('barmai')" transform="translate(580, 185)" filter="url(#poke-badgeGlow)">
-    <rect x="-75" y="-15" width="150" height="30" rx="8" fill="#065F46" stroke="#34D399" stroke-width="2" />
-    <text x="0" y="5" fill="#A7F3D0" font-size="11.5" font-weight="900" text-anchor="middle">🍽️ โรงอาหารกลาง 2 (บาร์ใหม่)</text>
+  <!-- User Spec 3: บาร์ใหม่ (โรงอาหารกลาง 2 - บาร์ใหม่) -> FULL 2.5D Architectural Canteen Building -->
+  <g id="building-barmai" class="building-card" onclick="selectLocation('barmai')" transform="translate(580, 185)" filter="url(#poke-dropBuilding)">
+    <ellipse cx="0" cy="38" rx="72" ry="12" fill="#0F172A" opacity="0.25" />
+    <!-- Canteen Main Hall Body -->
+    <rect x="-65" y="-32" width="130" height="64" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.8" />
+    <!-- Terracotta & Emerald Food Hall Hipped Roof -->
+    <polygon points="-70,-32 0,-52 70,-32 62,-24 -62,-24" fill="#047857" />
+    <polygon points="-68,-32 0,-50 68,-32" fill="#10B981" />
+    <polygon points="0,-50 68,-32 60,-32 0,-47" fill="#34D399" opacity="0.6" />
+    <!-- Canteen Sunscreen Louvers & Food Windows -->
+    <g fill="#A7F3D0" stroke="#059669" stroke-width="0.8">
+      <rect x="-52" y="-18" width="22" height="14" rx="2" />
+      <rect x="-24" y="-18" width="22" height="14" rx="2" />
+      <rect x="2" y="-18" width="22" height="14" rx="2" />
+      <rect x="30" y="-18" width="22" height="14" rx="2" />
+    </g>
+    <!-- Entrance Awning / Food Stall Counter -->
+    <rect x="-30" y="2" width="60" height="24" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="1.2" />
+    <rect x="-30" y="2" width="60" height="6" fill="#F59E0B" />
+    <!-- Food Stall Emojis -->
+    <text x="-16" y="20" font-size="12">🍜</text>
+    <text x="5" y="20" font-size="12">🍱</text>
+    <!-- Badge -->
+    <g transform="translate(0, 42)" filter="url(#poke-badgeGlow)">
+      <rect x="-75" y="-11" width="150" height="22" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1.8" />
+      <text x="0" y="3.5" fill="#A7F3D0" font-size="9.5" font-weight="900" text-anchor="middle">🍽️ โรงอาหารกลาง 2 (บาร์ใหม่)</text>
+    </g>
   </g>
 
   <!-- [2] ศูนย์เรียนรวม 3 (ศร.3) with Green Dome -->
   <g id="building-sorn3" class="building-card" onclick="selectLocation('sorn3')" transform="translate(420, 390)" filter="url(#poke-dropBuilding)">
     <ellipse cx="0" cy="42" rx="76" ry="12" fill="#0F172A" opacity="0.25" />
     <rect x="-70" y="-36" width="140" height="72" rx="8" fill="#F0FDF4" stroke="#047857" stroke-width="1.8" />
-    <!-- Iconic Sweeping Green Roof -->
     <path d="M -76 -34 Q 0 -64 76 -34 L 70 -42 Q 0 -72 -70 -42 Z" fill="#047857" />
     <path d="M -72 -32 Q 0 -60 72 -32 L 66 -38 Q 0 -66 -66 -38 Z" fill="#059669" />
     <path d="M -68 -30 Q 0 -56 68 -30 L 62 -34 Q 0 -60 -62 -34 Z" fill="#10B981" />
-    <!-- Tiered Lecture Shell -->
     <path d="M -40 10 A 44 26 0 0 1 40 10 Z" fill="#047857" opacity="0.9" />
     <path d="M -30 10 A 32 18 0 0 1 30 10 Z" fill="#059669" />
     <circle cx="0" cy="4" r="4" fill="#FEF08A" />
-    <!-- Badge -->
     <g transform="translate(0, 46)" filter="url(#poke-badgeGlow)">
       <rect x="-70" y="-12" width="140" height="24" rx="6" fill="#0F172A" stroke="#059669" stroke-width="1.8" />
       <text x="0" y="4" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle">🏛️ ศูนย์เรียนรวม 3 (ศร.3)</text>
@@ -1238,11 +1284,9 @@
     <line x1="-66" y1="-4" x2="66" y2="-4" stroke="#E0F2FE" stroke-width="2" />
     <line x1="-66" y1="6" x2="66" y2="6" stroke="#E0F2FE" stroke-width="2" />
     <line x1="-66" y1="16" x2="66" y2="16" stroke="#E0F2FE" stroke-width="2" />
-    <!-- Golden Reading Atrium -->
     <rect x="-22" y="-50" width="44" height="22" rx="4" fill="#0369A1" stroke="#38BDF8" stroke-width="1.5" />
     <rect x="-18" y="-46" width="36" height="14" rx="2" fill="#FEF08A" opacity="0.9" />
     <circle cx="0" cy="-39" r="4.5" fill="#F59E0B" />
-    <!-- Badge -->
     <g transform="translate(0, 46)" filter="url(#poke-badgeGlow)">
       <rect x="-70" y="-12" width="140" height="24" rx="6" fill="#0F172A" stroke="#0284C7" stroke-width="1.8" />
       <text x="0" y="4" fill="#FFFFFF" font-size="10" font-weight="800" text-anchor="middle">📚 สำนักหอสมุด (50 ปี)</text>
@@ -1250,7 +1294,7 @@
   </g>
 
   <!-- [4] คณะเทคนิคการสัตวแพทย์ -->
-  <g id="building-vet-tech" class="building-card" onclick="selectLocation('vetTech')" transform="translate(1090, 260)" filter="url(#poke-dropBuilding)">
+  <g id="building-vet-tech" class="building-card" onclick="selectLocation('vetTech')" transform="translate(1080, 260)" filter="url(#poke-dropBuilding)">
     <ellipse cx="0" cy="34" rx="65" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-64" y="-30" width="128" height="60" rx="6" fill="#FAF5FF" stroke="#7C3AED" stroke-width="1.8" />
     <polygon points="-68,-30 -35,-44 35,-44 68,-30" fill="#5B21B6" />
@@ -1275,7 +1319,7 @@
   </g>
 
   <!-- [5] โรงพยาบาลสัตว์ ม.เกษตร (KU Animal Hospital) -->
-  <g id="building-vet-hospital" class="building-card" onclick="selectLocation('vetHospital')" transform="translate(1250, 280)" filter="url(#poke-dropBuilding)">
+  <g id="building-vet-hospital" class="building-card" onclick="selectLocation('vetHospital')" transform="translate(1240, 270)" filter="url(#poke-dropBuilding)">
     <ellipse cx="0" cy="34" rx="68" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-64" y="-28" width="128" height="56" rx="6" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.8" />
     <polygon points="-68,-28 -30,-42 30,-42 68,-28" fill="#9F1239" />
@@ -1291,7 +1335,6 @@
       <circle cx="14" cy="-8" r="5" fill="#FFE4E6" stroke="#E11D48" stroke-width="0.8" />
       <text x="14" y="-6" font-size="6" text-anchor="middle">🐾</text>
     </g>
-    <!-- Badge -->
     <g transform="translate(0, 36)" filter="url(#poke-badgeGlow)">
       <rect x="-72" y="-10" width="144" height="20" rx="5" fill="#0F172A" stroke="#E11D48" stroke-width="1.5" />
       <text x="0" y="3.5" fill="#FFFFFF" font-size="8.5" font-weight="800" text-anchor="middle">🐶 โรงพยาบาลสัตว์ มก. 🐾</text>
@@ -1303,7 +1346,6 @@
     <rect x="-95" y="-52" width="190" height="104" rx="16" fill="#FFFFFF" stroke="#059669" stroke-width="2.5" />
     <rect x="-88" y="-45" width="176" height="90" rx="18" fill="#BE123C" stroke="#9F1239" stroke-width="1.5" />
     <rect x="-84" y="-41" width="168" height="82" rx="16" fill="none" stroke="#FFFFFF" stroke-width="0.8" opacity="0.65" />
-    <!-- Pitch -->
     <rect x="-68" y="-28" width="136" height="56" rx="4" fill="#15803D" stroke="#047857" stroke-width="1.5" />
     <rect x="-68" y="-28" width="17" height="56" fill="#16A34A" />
     <rect x="-34" y="-28" width="17" height="56" fill="#16A34A" />
@@ -1325,7 +1367,6 @@
     <rect x="-56" y="14" width="112" height="18" rx="3" fill="#991B1B" />
     <polygon points="-52,-34 -38,-48 -38,-34" fill="#B91C1C" />
     <polygon points="-34,-34 -20,-48 -20,-34" fill="#B91C1C" />
-    <!-- Giant Dong Tan Gear -->
     <g transform="translate(24, -12)">
       <circle cx="0" cy="0" r="18" fill="#F59E0B" stroke="#B45309" stroke-width="1.5" />
       <circle cx="0" cy="0" r="11" fill="#FEF3C7" stroke="#B45309" stroke-width="1" />
@@ -1355,8 +1396,8 @@
     </g>
   </g>
 
-  <!-- [9] สำนักบริการคอมพิวเตอร์ (OCS) -->
-  <g id="building-ocs" class="building-card" onclick="selectLocation('ocs')" transform="translate(340, 770)" filter="url(#poke-dropBuilding)">
+  <!-- User Spec 2: สำนักคอมฯ OCS ย้ายมาอยู่ตำแหน่งที่จอดรถงาม 2 เดิม (x=590, y=770) -->
+  <g id="building-ocs" class="building-card" onclick="selectLocation('ocs')" transform="translate(590, 770)" filter="url(#poke-dropBuilding)">
     <ellipse cx="0" cy="32" rx="65" ry="9" fill="#0F172A" opacity="0.25" />
     <rect x="-62" y="-28" width="124" height="56" rx="6" fill="#0F172A" stroke="#0284C7" stroke-width="1.8" />
     <polygon points="-66,-28 -25,-40 25,-40 66,-28" fill="#1E293B" />
@@ -1375,29 +1416,28 @@
     </g>
   </g>
 
-  <!-- [10] อาคารจอดรถงามวงศ์วาน 2 (NO CAPACITY/STATUS TEXT) -->
-  <g id="building-ngam2" class="building-card" onclick="selectLocation('ngam2')" transform="translate(590, 770)" filter="url(#poke-dropBuilding)">
+  <!-- User Spec 1: ที่จอดรถงาม 1 และ 2 อยู่ติดกัน ไม่มีประตูงาม 2 คั่นกลาง (ข้างประตู 1) -->
+  <!-- อาคารจอดรถงามวงศ์วาน 2 (x=785, y=770) -->
+  <g id="building-ngam2" class="building-card" onclick="selectLocation('ngam2')" transform="translate(785, 770)" filter="url(#poke-dropBuilding)">
     <ellipse cx="0" cy="30" rx="36" ry="8" fill="#0F172A" opacity="0.25" />
     <rect x="-32" y="-26" width="64" height="52" rx="5" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
     <polygon points="-35,-26 -16,-34 16,-34 35,-26" fill="#334155" />
-    <!-- Parking Floors -->
     <g fill="#1E293B">
       <rect x="-26" y="-18" width="38" height="6" rx="1.5" />
       <rect x="-26" y="-8" width="38" height="6" rx="1.5" />
       <rect x="-26" y="2" width="38" height="6" rx="1.5" />
       <rect x="-26" y="12" width="38" height="6" rx="1.5" />
     </g>
-    <!-- Blue P Beacon -->
     <circle cx="0" cy="-28" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.2" />
     <text x="0" y="-24.5" fill="#FFFFFF" font-size="9" font-weight="900" text-anchor="middle">P</text>
     <g transform="translate(0, 34)" filter="url(#poke-badgeGlow)">
-      <rect x="-48" y="-9" width="96" height="18" rx="4" fill="#0F172A" stroke="#0284C7" stroke-width="1.3" />
-      <text x="0" y="3" fill="#FFFFFF" font-size="8" font-weight="800" text-anchor="middle">🅿️ อาคารจอดรถงามวงศ์วาน 2</text>
+      <rect x="-42" y="-9" width="84" height="18" rx="4" fill="#0F172A" stroke="#0284C7" stroke-width="1.3" />
+      <text x="0" y="3" fill="#FFFFFF" font-size="8" font-weight="800" text-anchor="middle">🅿️ จอดรถงาม 2</text>
     </g>
   </g>
 
-  <!-- [11] อาคารจอดรถงามวงศ์วาน 1 (NO CAPACITY/STATUS TEXT) -->
-  <g id="building-ngam1" class="building-card" onclick="selectLocation('ngam1')" transform="translate(825, 770)" filter="url(#poke-dropBuilding)">
+  <!-- อาคารจอดรถงามวงศ์วาน 1 (x=865, y=770 - อยู่ติดกับงาม 2 ทันที) -->
+  <g id="building-ngam1" class="building-card" onclick="selectLocation('ngam1')" transform="translate(865, 770)" filter="url(#poke-dropBuilding)">
     <ellipse cx="0" cy="30" rx="36" ry="8" fill="#0F172A" opacity="0.25" />
     <rect x="-32" y="-26" width="64" height="52" rx="5" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
     <polygon points="-35,-26 -16,-34 16,-34 35,-26" fill="#334155" />
@@ -1410,8 +1450,8 @@
     <circle cx="0" cy="-28" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.2" />
     <text x="0" y="-24.5" fill="#FFFFFF" font-size="9" font-weight="900" text-anchor="middle">P</text>
     <g transform="translate(0, 34)" filter="url(#poke-badgeGlow)">
-      <rect x="-48" y="-9" width="96" height="18" rx="4" fill="#0F172A" stroke="#0284C7" stroke-width="1.3" />
-      <text x="0" y="3" fill="#FFFFFF" font-size="8" font-weight="800" text-anchor="middle">🅿️ อาคารจอดรถงามวงศ์วาน 1</text>
+      <rect x="-42" y="-9" width="84" height="18" rx="4" fill="#0F172A" stroke="#0284C7" stroke-width="1.3" />
+      <text x="0" y="3" fill="#FFFFFF" font-size="8" font-weight="800" text-anchor="middle">🅿️ จอดรถงาม 1</text>
     </g>
   </g>
 
@@ -1428,8 +1468,8 @@
     </g>
   </g>
 
-  <!-- [12] หอประชุมใหญ่ มก. (KU Main Auditorium) -->
-  <g id="building-auditorium" class="building-card" onclick="selectLocation('auditorium')" transform="translate(1070, 750)" filter="url(#poke-dropBuilding)">
+  <!-- User Spec 8: หอประชุมใหญ่ อยู่ติดถนนเส้น J25 ถึง J22 (ติดฝั่งซ้ายของถนนรอบสระ x=1160, y=760) -->
+  <g id="building-auditorium" class="building-card" onclick="selectLocation('auditorium')" transform="translate(1160, 760)" filter="url(#poke-dropBuilding)">
     <ellipse cx="0" cy="38" rx="52" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-46" y="-34" width="92" height="68" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="2" />
     <polygon points="0,-60 44,-34 -44,-34" fill="#78350F" stroke="#B45309" stroke-width="1.5" />
@@ -1450,8 +1490,8 @@
     </g>
   </g>
 
-  <!-- [13] สระพระพิรุณ (Loy Krathong Sacred Basin: Elongated Rectangle 70 x 170) -->
-  <g id="water-pond" class="building-card" onclick="selectLocation('pond')" transform="translate(1315, 760)" filter="url(#poke-dropBuilding)">
+  <!-- [13] สระพระพิรุณ (Loy Krathong Sacred Basin: Elongated Rectangle 70 x 170 Inside Loop) -->
+  <g id="water-pond" class="building-card" onclick="selectLocation('pond')" transform="translate(1330, 760)" filter="url(#poke-dropBuilding)">
     <!-- Outer Basin Border -->
     <rect x="-42" y="-90" width="84" height="180" rx="10" fill="#FFFFFF" stroke="#0284C7" stroke-width="2.5" />
     <!-- Water Surface (70 x 160) -->
@@ -1493,37 +1533,32 @@
     <text x="35" y="-15" fill="#86EFAC" font-size="7.5" font-weight="800" text-anchor="end">🚶 ประตูคนเดิน</text>
   </g>
 
-  <!-- ศาลา 6 เหลี่ยม สีแดง (User Request: Red Hexagon Pavilion, no text, no heavy effects) -->
+  <!-- ศาลา 6 เหลี่ยม สีแดง (User Red Dot) -->
   <polygon id="landmark-sala-hokliam" points="1320,555 1329,560 1329,570 1320,575 1311,570 1311,560" fill="#EF4444" stroke="#991B1B" stroke-width="1.5" />
 
   <!-- Gates Badges -->
-  <!-- 1. ประตู 1 -->
   <g id="gate-1" transform="translate(920, 930)" filter="url(#poke-dropCard)">
     <rect x="-34" y="-12" width="68" height="24" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
     <circle cx="-20" cy="0" r="6" fill="#059669" />
     <text x="-20" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">1</text>
     <text x="-8" y="3" fill="#0F172A" font-size="9" font-weight="800" text-anchor="start">ประตู 1</text>
   </g>
-  <!-- 2. ประตู 2 -->
   <g id="gate-2" transform="translate(730, 930)" filter="url(#poke-dropCard)">
     <rect x="-34" y="-12" width="68" height="24" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
     <circle cx="-20" cy="0" r="6" fill="#059669" />
     <text x="-20" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">2</text>
     <text x="-8" y="3" fill="#0F172A" font-size="9" font-weight="800" text-anchor="start">ประตู 2</text>
   </g>
-  <!-- 3. ประตู 3 -->
   <g id="gate-3" transform="translate(450, 930)" filter="url(#poke-dropCard)">
     <rect x="-34" y="-12" width="68" height="24" rx="6" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
     <circle cx="-20" cy="0" r="6" fill="#059669" />
     <text x="-20" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">3</text>
     <text x="-8" y="3" fill="#0F172A" font-size="9" font-weight="800" text-anchor="start">ประตู 3</text>
   </g>
-  <!-- 4. ประตูวิภาวดี -->
   <g id="gate-vipa" transform="translate(90, 320)" filter="url(#poke-dropCard)">
     <rect x="-24" y="-12" width="48" height="24" rx="6" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="0" y="4" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">วิภาวดี</text>
   </g>
-  <!-- 5. ประตูหลัง ม. -->
   <g id="gate-north" transform="translate(810, 50)" filter="url(#poke-dropCard)">
     <rect x="-30" y="-12" width="60" height="24" rx="6" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="0" y="4" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">ประตูหลัง ม.</text>
@@ -1542,7 +1577,8 @@
     <text x="14" y="11" fill="#475569" font-size="9" font-weight="700" text-anchor="middle">ทิศเหนือ</text>
   </g>
 
-  <!-- Title Header Badge (Pokémon Game HUD) -->
+  <!-- Title Pill Top Left -->
+  
   <g transform="translate(240, 45)" filter="url(#poke-dropCard)">
     <rect x="0" y="0" width="510" height="38" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.8" />
     <g transform="translate(20, 19)">
@@ -1556,9 +1592,10 @@
     <rect x="408" y="8" width="90" height="22" rx="4" fill="#F59E0B" opacity="0.2" stroke="#F59E0B" stroke-width="1" />
     <text x="453" y="23" fill="#FBBF24" font-size="9.5" font-weight="900" text-anchor="middle" class="font-game">POKÉMON</text>
   </g>
+  
 
   <!-- Reticle -->
-  <g id="mapReticle" transform="translate(1315, 760)" style="transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;">
+  <g id="mapReticle" transform="translate(1330, 760)" style="transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;">
     <circle cx="0" cy="0" r="28" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="6 4" opacity="0.85" />
     <circle cx="0" cy="0" r="16" fill="none" stroke="#059669" stroke-width="1.8" />
     <circle cx="0" cy="0" r="4.5" fill="#10B981" />
@@ -1728,27 +1765,27 @@
                 desc: "จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรมและร้านค้านิสิต",
                 status: "● เปิดจัดงาน",
                 mapUrl: "https://maps.app.goo.gl/u8Tw7VFg5Tz6KRJXA",
-                x: 1315,
+                x: 1330,
                 y: 760
             },
             ngam1: {
                 title: "อาคารจอดรถงามวงศ์วาน 1",
                 category: "อาคารจอดรถ",
                 icon: "🅿️",
-                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน เข้าผ่านประตู 1 ข้ามถนนจันทร์สถิตย์ ใกล้หอประชุมใหญ่และสระพระพิรุณ",
+                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน ตั้งอยู่ติดกับอาคารจอดรถงามวงศ์วาน 2 ใกล้หอประชุมใหญ่และสระพระพิรุณ",
                 status: "● อาคารจอดรถ",
                 mapUrl: "https://maps.app.goo.gl/gaWdqZun1TiXLhqp7",
-                x: 825,
+                x: 865,
                 y: 770
             },
             ngam2: {
                 title: "อาคารจอดรถงามวงศ์วาน 2",
                 category: "อาคารจอดรถ",
                 icon: "🅿️",
-                desc: "อาคารจอดรถฝั่งงามวงศ์วาน เข้าผ่านประตู 2 เลี้ยวซ้ายเข้าถนนจันทร์สถิตย์ สะดวกต่อการเดินไปสนามกีฬาและคณะวิศวะ",
+                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน ตั้งอยู่ติดกับอาคารจอดรถงามวงศ์วาน 1 (ไม่มีประตูงาม 2 คั่นกลาง) ใกล้หอประชุมใหญ่",
                 status: "● อาคารจอดรถ",
                 mapUrl: "https://maps.app.goo.gl/3soPQzwfQH4wAqRC9",
-                x: 590,
+                x: 785,
                 y: 770
             },
             vipa: {
@@ -1835,10 +1872,10 @@
                 title: "สำนักบริการคอมพิวเตอร์ (OCS)",
                 category: "ศูนย์บริการไอที",
                 icon: "💻",
-                desc: "ศูนย์บริการคอมพิวเตอร์และระบบเครือข่าย Data Center หลักของมหาวิทยาลัยเกษตรศาสตร์",
+                desc: "ศูนย์บริการคอมพิวเตอร์และระบบเครือข่าย Data Center หลัก มก. ตั้งอยู่ระหว่างประตู 3 และประตู 2 ริมถนนงามวงศ์วาน",
                 status: "● ศูนย์บริการไอที",
                 mapUrl: "https://maps.google.com/?q=Office+of+Computer+Services+Kasetsart+University",
-                x: 340,
+                x: 590,
                 y: 770
             },
             stadium: {
@@ -1858,8 +1895,8 @@
                 desc: "โรงพยาบาลสัตว์ มก. (ฝั่งถนนพหลโยธิน) ศูนย์บริการรักษาและบริบาลสัตว์เลี้ยง 🐶🐱🐾 ครบวงจร",
                 status: "● เปิดบริการสัตว์แพทย์",
                 mapUrl: "https://maps.google.com/?q=Kasetsart+University+Veterinary+Teaching+Hospital+Bangkhen",
-                x: 1250,
-                y: 280
+                x: 1240,
+                y: 270
             },
             vetTech: {
                 title: "คณะเทคนิคการสัตวแพทย์ ม.เกษตรศาสตร์",
@@ -1868,18 +1905,18 @@
                 desc: "คณะเทคนิคการสัตวแพทย์ มก. ศูนย์การเรียนการสอนและวิจัยทางเทคโนโลยีสัตว์เลี้ยงและการพยาบาลสัตว์",
                 status: "● คณะวิชาการ",
                 mapUrl: "https://maps.google.com/?q=Faculty+of+Veterinary+Technology+Kasetsart+University",
-                x: 1090,
+                x: 1080,
                 y: 260
             },
             auditorium: {
                 title: "หอประชุมใหญ่ มหาวิทยาลัยเกษตรศาสตร์",
                 category: "อาคารพิธีการและหอประชุม",
                 icon: "🏛️",
-                desc: "หอประชุมใหญ่ มก. (ริมสระพระพิรุณ) สถานที่ประกอบพิธีพระราชทานปริญญาบัตรและงานพิธีการสำคัญ",
+                desc: "หอประชุมใหญ่ มก. ตั้งอยู่ติดถนนรอบสระพระพิรุณฝั่งตะวันตก (ช่วง J25 ถึง J22) ศูนย์กลางพิธีพระราชทานปริญญาบัตรและกิจกรรมสำคัญ",
                 status: "● ศูนย์กลางพิธีการ",
                 mapUrl: "https://maps.google.com/?q=KU+Auditorium+Kasetsart+University",
-                x: 1070,
-                y: 750
+                x: 1160,
+                y: 760
             }
         };
 
