@@ -245,14 +245,11 @@
     <path d="M 830 220 L 980 140 L 980 110 L 1080 110" />
     <path d="M 980 140 L 1000 380" />
 
-    <!-- Southeast Diagonal Road from Gate 1 to BTS Roundabout: J17(920,670) -> J18(1260,575) -> J19(1370,540) -->
+    <!-- Southeast Diagonal Road from Gate 1 to BTS Roundabout: J17(920,670) -> J21(1150,605) -> J18(1260,575) -> J19(1370,540) -->
     <path d="M 920 670 L 1370 540" />
 
-    <!-- Clean Diagonal Connector from Vet Tech junction J7(1000,380) down-right to J18(1260,575) - NO criss-cross! -->
-    <path d="M 1000 380 L 1260 575" />
-
-    <!-- Vertical spur on diagonal avenue -->
-    <path d="M 1150 605 L 1150 535" />
+    <!-- User Spec: ลบเส้น J7-J18 ออก และสร้างเส้น J21-J7 ขึ้นมาแทน: J7(1000,380) เชื่อมตรงลงสู่ J21(1150,605) -->
+    <path d="M 1000 380 L 1150 605" />
 
     <!-- Connector from J18(1260,575) down to Sra Phra Phirun loop J22(1250,660) -->
     <path d="M 1260 575 L 1250 660" />
@@ -282,8 +279,7 @@
     <path d="M 830 220 L 980 140 L 980 110 L 1080 110" />
     <path d="M 980 140 L 1000 380" />
     <path d="M 920 670 L 1370 540" />
-    <path d="M 1000 380 L 1260 575" />
-    <path d="M 1150 605 L 1150 535" />
+    <path d="M 1000 380 L 1150 605" />
     <path d="M 1260 575 L 1250 660" />
     <path d="M 1250 660 L 1410 660 L 1410 860 L 1250 860 Z" />
     <path d="M 1410 760 L 1510 760" />
