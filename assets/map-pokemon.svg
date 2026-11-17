@@ -382,7 +382,7 @@
 
   <!-- [NORTHEAST VETERINARY ZONE - Centered at x=1260] -->
   <!-- Block NE2 (User Box 2): คณะเทคนิคการสัตวแพทย์ (Faculty of Veterinary Technology) -->
-  <g id="building-vet-tech" onclick="selectLocation('vetTech')" style="cursor: pointer;" transform="translate(1260, 205)" filter="url(#pixelShadow)">
+  <g id="building-vet-tech" onclick="selectLocation('vetTech')" style="cursor: pointer;" transform="translate(1325, 275)" filter="url(#pixelShadow)">
     <rect x="-85" y="-55" width="170" height="110" rx="8" fill="#1E293B" stroke="#8B5CF6" stroke-width="2.5" />
     <polygon points="-90,-55 0,-85 90,-55" fill="#6D28D9" stroke="#0F172A" stroke-width="2.5" />
     <polygon points="-75,-55 0,-78 75,-55" fill="#A78BFA" opacity="0.6" />
@@ -408,7 +408,7 @@
     </g>
   </g>
   <!-- Block NE1 (User Box 1): โรงพยาบาลสัตว์ ม.เกษตร (Kasetsart University Animal Hospital) -->
-  <g id="building-vet-hospital" onclick="selectLocation('vetHospital')" style="cursor: pointer;" transform="translate(1260, 350)" filter="url(#pixelShadow)">
+  <g id="building-vet-hospital" onclick="selectLocation('vetHospital')" style="cursor: pointer;" transform="translate(1325, 395)" filter="url(#pixelShadow)">
     <rect x="-85" y="-55" width="170" height="110" rx="8" fill="#1E293B" stroke="#E11D48" stroke-width="2.5" />
     <polygon points="-90,-55 0,-85 90,-55" fill="#BE123C" stroke="#0F172A" stroke-width="2.5" />
     <polygon points="-75,-55 0,-78 75,-55" fill="#FB7185" opacity="0.6" />
@@ -711,7 +711,14 @@
     <!-- West Avenue & Chansathit (โค้งสนามอินทรีฯ ข้าม Gate 3, Gate 2 มาสิ้นสุดที่ 4 แยกประตู 1 ที่ x=1040) -->
     <path d="M 220 220 L 220 620 Q 220 700 300 700 L 1040 700" />
 
+    <!-- ถนนหน้าโรงพยาบาลสัตว์ (เชื่อมถนนไพฑูรย์อิงคสุวรรณ สู่ ถนนระพีสาคริก และถนนเฉียง/จันทร์สถิตย์) -->
+    <path d="M 1040 220 L 1110 220 Q 1150 220 1150 260 L 1150 640" stroke-linecap="butt" />
+
     <!-- Central Spine (ถนนระพีสาคริก - Shifted to y=455 & Extended Straight Across to Phahonyothin Rd x=1475) -->
+    <!-- Centerline for Animal Hospital Ave -->
+    <path d="M 1040 220 L 1110 220 Q 1150 220 1150 260 L 1150 640" stroke-linecap="butt" />
+    <path d="M 1150 590 Q 1150 640 1090 672" stroke-linecap="butt" />
+
     <line x1="220" y1="455" x2="1475" y2="455" stroke-linecap="butt" />
 
     <!-- ถนนสุวรรณวาจกกสิกิจ: ทะลุตรงยาวจาก ประตู 1 (y=880) ผ่าน ม.เกษตร ไปจนถึง ประตูหลัง ม. (y=80) -->
@@ -861,6 +868,12 @@
   </g>
 
   <!-- ================= STANDARDIZED ROAD SIGNAGE SYSTEM ================= -->
+  <!-- ถนนหน้าโรงพยาบาลสัตว์ -->
+  <g transform="translate(1150, 340) rotate(90)">
+    <rect x="-55" y="-8" width="110" height="16" rx="4" fill="#0F172A" stroke="#38BDF8" stroke-width="1.2" opacity="0.9" />
+    <text x="0" y="3.5" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="8.5" font-weight="800" text-anchor="middle" letter-spacing="0.5">ถนนหน้า รพ.สัตว์</text>
+  </g>
+
   <!-- 1. ถนนไพฑูรย์อิงคสุวรรณ -->
   <g transform="translate(610, 220)">
     <rect x="-85" y="-13" width="170" height="26" rx="6" fill="#0F172A" opacity="0.95" stroke="#334155" stroke-width="1.8" filter="url(#badgeGlow)" />
