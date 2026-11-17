@@ -137,9 +137,10 @@
     <rect x="1540" y="0" width="30" height="1000" fill="#334155" opacity="0.8" />
     <line x1="1547" y1="0" x2="1547" y2="1000" stroke="#64748B" stroke-width="1.5" />
     <line x1="1563" y1="0" x2="1563" y2="1000" stroke="#64748B" stroke-width="1.5" />
-    <g transform="translate(1555, 330) rotate(90)" filter="url(#poke-badgeGlow)">
-      <rect x="-135" y="-14" width="270" height="28" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5" />
-      <text x="0" y="5" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">🛣️ ถนนพหลโยธิน (PHAHONYOTHIN RD.)</text>
+    <!-- Phahonyothin Road Label (Shifted slightly north to clear gate badges) -->
+    <g transform="translate(1555, 260) rotate(90)" filter="url(#poke-badgeGlow)">
+      <rect x="-120" y="-14" width="240" height="28" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5" />
+      <text x="0" y="5" fill="#FFFFFF" font-size="10.5" font-weight="800" text-anchor="middle">🛣️ ถนนพหลโยธิน (PHAHONYOTHIN RD.)</text>
     </g>
   </g>
 
@@ -664,6 +665,14 @@
   <g id="gate-north" transform="translate(810, 50)" filter="url(#poke-dropCard)">
     <rect x="-30" y="-12" width="60" height="24" rx="6" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="0" y="4" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">ประตูหลัง ม.</text>
+  </g>
+  <g id="gate-phahon2" transform="translate(1465, 460)" filter="url(#poke-dropCard)">
+    <rect x="-42" y="-11" width="84" height="22" rx="5" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
+    <text x="0" y="3.5" fill="#FFFFFF" font-size="7.5" font-weight="900" text-anchor="middle">ประตู 2 (รพ.สัตว์)</text>
+  </g>
+  <g id="gate-phahon1" transform="translate(1465, 760)" filter="url(#poke-dropCard)">
+    <rect x="-40" y="-11" width="80" height="22" rx="5" fill="#10B981" stroke="#FFFFFF" stroke-width="1.5" />
+    <text x="0" y="3.5" fill="#FFFFFF" font-size="7.5" font-weight="900" text-anchor="middle">ประตู 1 (ข้างสระ)</text>
   </g>
 
   <!-- Compass Rose -->
