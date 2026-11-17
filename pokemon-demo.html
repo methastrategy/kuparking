@@ -96,13 +96,20 @@
                 <p class="hidden sm:block text-[9.5px] text-slate-400 font-medium">แผนผังพิกัดจริง 100% • สไตล์ HD-2D แผนที่นำทาง</p>
             </div>
         </div>
-        <div class="flex items-center space-x-2 shrink-0">
-            <span class="hidden md:inline-flex items-center gap-1 text-[9px] text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-2.5 py-1 rounded-full font-semibold">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                จุดจอดรถเปิดให้บริการ
-            </span>
+        <div class="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
+            <!-- Segmented Switcher Pill in Demo -->
+            <div class="inline-flex p-1 rounded-xl bg-slate-950/80 border border-slate-700/80 shadow-inner">
+                <button class="mode-toggle-btn active-poke flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold transition-all min-h-[36px]" style="background: #F59E0B; color: #0F172A; box-shadow: 0 0 12px rgba(245, 158, 11, 0.45);">
+                    <span class="text-xs">🎮</span>
+                    <span class="text-[11px] sm:text-xs">แบบใหม่</span>
+                </button>
+                <a href="index.html?mode=classic" title="สลับเป็นแผนที่แบบเดิม สไตล์ทางการ" class="mode-toggle-btn flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-slate-200 transition-all min-h-[36px]">
+                    <span class="text-xs">🗺️</span>
+                    <span class="text-[11px] sm:text-xs">แบบเดิม</span>
+                </a>
+            </div>
             <a href="index.html" class="hud-btn px-2.5 sm:px-3 py-1.5 text-slate-200 text-xs font-semibold hover:text-white flex items-center gap-1 min-h-[36px]">
-                <span>◀ กลับหน้าหลัก</span>
+                <span>◀ หน้าแรก</span>
             </a>
         </div>
     </header>
