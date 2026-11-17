@@ -190,15 +190,15 @@
     <!-- Upper Avenue Northeast serving Horticulture, Vet Tech, and Vet Hospital: J3B(830,240) -> (1020,170) -> (1450,170) -->
     <path d="M 830 240 L 1020 170 L 1450 170" />
 
-    <!-- Vet Complex North-South Connector: (1140,170) -> (1140,370) -->
-    <path d="M 1140 170 L 1140 370" />
+    <!-- Vet Complex North-South Connector directly meeting Rapee Sakrik at J33: (1140,170) -> (1140,375) -->
+    <path d="M 1140 170 L 1140 375" />
 
     <!-- West Spine (Sutham Areekul) curving around Stadium to Chansathit: M 200 320 L 200 600 Q 200 670 270 670 L 900 670 -->
     <path d="M 200 320 L 200 600 Q 200 670 270 670 L 900 670" />
 
     <!-- Middle Road (Rapee Sakrik) under Sorn 3/Library and Vet Complex to Gate Phahon 2:
-         (200,510) -> (450,500) -> (840,440) -> J7(1000,380) -> (1260,370) -> (1470,440) -> (1510,440) -->
-    <path d="M 200 510 L 450 500 L 840 440 L 1000 380 L 1260 370 L 1470 440 L 1510 440" stroke-linecap="butt" />
+         (200,510) -> (450,500) -> J11(840,440) -> J33(1140,375) -> J6(1260,370) -> (1470,440) -> (1510,440) -->
+    <path d="M 200 510 L 450 500 L 840 440 L 1140 375 L 1260 370 L 1470 440 L 1510 440" stroke-linecap="butt" />
 
     <!-- Central Spine (Suwanwajokkasikit Avenue): G-NORTH(820,50) -> J3A(820,150) -> J3B(830,240) -> J11(840,440) -> J12(860,540) -> J17(900,670) -> G-GATE1(900,910) -->
     <path d="M 820 50 L 820 150 L 830 240 L 840 440 L 860 540 L 900 670 L 900 910" stroke-linecap="butt" />
@@ -218,8 +218,8 @@
     <!-- Southeast Diagonal Road from Gate 1 to BTS Roundabout: J17(900,670) -> J21(1150,601) -> J18(1260,571) -> J19(1370,540) -->
     <path d="M 900 670 L 1370 540" />
 
-    <!-- Connector J7 to J21: J7(1000,380) straight down-right to J21(1150,601) -->
-    <path d="M 1000 380 L 1150 601" />
+    <!-- Connector J33 to J21 (replaces old J7-J21 corner): J33(1140,375) straight down to J21(1150,601) -->
+    <path d="M 1140 375 L 1150 601" />
 
     <!-- Perpendicular Connector from J18 down to Sra Phra Phirun loop: J18(1260,571) -> J22(1260,660) -->
     <path d="M 1260 571 L 1260 660" />
@@ -240,16 +240,16 @@
     <path d="M 200 320 Q 200 150 300 150 L 820 150" />
     <path d="M 200 380 L 830 240" />
     <path d="M 830 240 L 1020 170 L 1450 170" />
-    <path d="M 1140 170 L 1140 370" />
+    <path d="M 1140 170 L 1140 375" />
     <path d="M 200 320 L 200 600 Q 200 670 270 670 L 900 670" />
-    <path d="M 200 510 L 450 500 L 840 440 L 1000 380 L 1260 370 L 1470 440 L 1510 440" />
+    <path d="M 200 510 L 450 500 L 840 440 L 1140 375 L 1260 370 L 1470 440 L 1510 440" />
     <path d="M 820 50 L 820 150 L 830 240 L 840 440 L 860 540 L 900 670 L 900 910" />
     <path d="M 450 500 L 450 910" />
     <path d="M 680 460 L 680 670" />
     <path d="M 680 540 L 860 540" />
     <path d="M 730 670 L 730 910" />
     <path d="M 900 670 L 1370 540" />
-    <path d="M 1000 380 L 1150 601" />
+    <path d="M 1140 375 L 1150 601" />
     <path d="M 1260 571 L 1260 660" />
     <path d="M 1260 660 L 1420 660 L 1420 860 L 1260 860 Z" />
     <path d="M 1420 760 L 1510 760" />
@@ -394,7 +394,7 @@
     </g>
   </g>
 
-  <!-- [6] คณะเทคนิคการสัตวแพทย์ (Faculty of Veterinary Technology - B4) - MOVED TO PHAHONYOTHIN FENCE -->
+  <!-- [6] คณะเทคนิคการสัตวแพทย์ (Faculty of Veterinary Technology - B4) - ริมรั้วพหลโยธิน -->
   <g id="building-vet-tech" class="building-card" onclick="selectLocation('vetTech')" transform="translate(1220, 250)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="36" rx="55" ry="9" fill="#0F172A" opacity="0.25" />
     <rect x="-52" y="-28" width="104" height="56" rx="5" fill="#FAF5FF" stroke="#7C3AED" stroke-width="1.8" />
@@ -414,7 +414,7 @@
     </g>
   </g>
 
-  <!-- [7] โรงพยาบาลสัตว์ มก. (KU Veterinary Teaching Hospital - B5) - HUGGING PHAHONYOTHIN FENCE -->
+  <!-- [7] โรงพยาบาลสัตว์ มก. (KU Veterinary Teaching Hospital - B5) - ริมรั้วพหลโยธิน -->
   <g id="building-vet-hospital" class="building-card" onclick="selectLocation('vetHospital')" transform="translate(1375, 250)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="38" rx="56" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-54" y="-30" width="108" height="60" rx="5" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.8" />
@@ -438,7 +438,7 @@
     </g>
   </g>
 
-  <!-- [8] สนามอินทรีจันทรสถิตย์ (Insee Stadium) -->
+  <!-- [8] สนามอินทรีจันทรสถิตย์ (Insee Stadium - B6) -->
   <g id="building-stadium" class="building-card" onclick="selectLocation('stadium')" transform="translate(320, 580)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="54" rx="88" ry="14" fill="#0F172A" opacity="0.25" />
     <rect x="-85" y="-45" width="170" height="90" rx="24" fill="#DC2626" stroke="#991B1B" stroke-width="2" />
@@ -458,7 +458,53 @@
     </g>
   </g>
 
-  <!-- [9] คณะวิศวกรรมศาสตร์ (Faculty of Engineering) -->
+  <!-- [9] สนามแบดมินตัน (KU Badminton Courts / Gymnasium - B20, เลข 1 ในรูป) -->
+  <g id="building-badminton" class="building-card" onclick="selectLocation('badminton')" transform="translate(290, 445)" filter="url(#dropBuilding)">
+    <ellipse cx="0" cy="30" rx="55" ry="9" fill="#0F172A" opacity="0.25" />
+    <rect x="-48" y="-25" width="96" height="50" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="1.8" />
+    <!-- Vaulted Arena Roof -->
+    <path d="M -50 -25 Q 0 -45 50 -25 Z" fill="#047857" />
+    <path d="M -46 -25 Q 0 -41 46 -25 Z" fill="#10B981" />
+    <!-- Badminton Court Green Mat & Net -->
+    <rect x="-36" y="-12" width="72" height="24" rx="2" fill="#065F46" stroke="#FFFFFF" stroke-width="0.8" />
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#FFFFFF" stroke-width="1.2" stroke-dasharray="2 2" />
+    <line x1="-24" y1="-12" x2="-24" y2="12" stroke="#FFFFFF" stroke-width="0.6" opacity="0.8" />
+    <line x1="24" y1="-12" x2="24" y2="12" stroke="#FFFFFF" stroke-width="0.6" opacity="0.8" />
+    <!-- Shuttlecock Icon -->
+    <g transform="translate(0, -2)">
+      <circle cx="0" cy="2" r="3" fill="#FFFFFF" />
+      <polygon points="-3,2 0,-7 3,2" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="0.6" />
+    </g>
+    <!-- Name Badge Pill -->
+    <g transform="translate(0, 34)" filter="url(#badgeGlow)">
+      <rect x="-56" y="-9" width="112" height="18" rx="4.5" fill="#0F172A" stroke="#10B981" stroke-width="1.4" />
+      <circle cx="-43" cy="0" r="4.5" fill="#059669" />
+      <text x="-43" y="2.5" fill="#FFFFFF" font-size="6.5" font-weight="900" text-anchor="middle">🏸</text>
+      <text x="6" y="3" fill="#A7F3D0" font-size="7.8" font-weight="800" text-anchor="middle">สนามแบดมินตัน</text>
+    </g>
+  </g>
+
+  <!-- [10] อาคารกองกีฬา (KU Sports Division - B21, เลข 2 ในรูป) -->
+  <g id="building-sports" class="building-card" onclick="selectLocation('sports')" transform="translate(170, 520)" filter="url(#dropBuilding)">
+    <ellipse cx="0" cy="24" rx="28" ry="6" fill="#0F172A" opacity="0.25" />
+    <rect x="-26" y="-20" width="52" height="40" rx="5" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6" />
+    <polygon points="-28,-20 0,-32 28,-20" fill="#C2410C" />
+    <polygon points="-25,-20 0,-29 25,-20" fill="#F97316" />
+    <!-- Trophy / Sports Emblem -->
+    <g transform="translate(0, -6)">
+      <rect x="-14" y="-3" width="28" height="15" rx="1.5" fill="#FED7AA" stroke="#EA580C" stroke-width="0.6" />
+      <text x="0" y="7" font-size="8" text-anchor="middle">🏆</text>
+    </g>
+    <!-- Name Badge Pill -->
+    <g transform="translate(0, 28)" filter="url(#badgeGlow)">
+      <rect x="-44" y="-8" width="88" height="16" rx="4" fill="#0F172A" stroke="#EA580C" stroke-width="1.2" />
+      <circle cx="-33" cy="0" r="4" fill="#EA580C" />
+      <text x="-33" y="2.5" fill="#FFFFFF" font-size="5.5" font-weight="900" text-anchor="middle">🏢</text>
+      <text x="5" y="3" fill="#FDBA74" font-size="7.2" font-weight="800" text-anchor="middle">อาคารกองกีฬา</text>
+    </g>
+  </g>
+
+  <!-- [11] คณะวิศวกรรมศาสตร์ (Faculty of Engineering) -->
   <g id="building-eng" class="building-card" onclick="selectLocation('eng')" transform="translate(520, 580)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="38" rx="60" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-56" y="-34" width="112" height="68" rx="6" fill="#FEF2F2" stroke="#B91C1C" stroke-width="1.8" />
@@ -480,7 +526,7 @@
     </g>
   </g>
 
-  <!-- [10] คณะเศรษฐศาสตร์ (Faculty of Economics) -->
+  <!-- [12] คณะเศรษฐศาสตร์ (Faculty of Economics) -->
   <g id="building-econ" class="building-card" onclick="selectLocation('econ')" transform="translate(615, 580)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="38" rx="52" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-46" y="-34" width="92" height="68" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8" />
@@ -499,7 +545,7 @@
     </g>
   </g>
 
-  <!-- [11] อาคารปฏิบัติการวิทยาศาสตร์ (Science Laboratory - B19) -->
+  <!-- [13] อาคารปฏิบัติการวิทยาศาสตร์ (Science Laboratory - B19) -->
   <g id="building-sc-lab" class="building-card" onclick="selectLocation('sc_lab')" transform="translate(760, 490)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="22" rx="46" ry="8" fill="#0F172A" opacity="0.25" />
     <rect x="-40" y="8" width="80" height="12" rx="2" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="0.8" />
@@ -518,7 +564,7 @@
     </g>
   </g>
 
-  <!-- [12] ธนาคารกรุงศรีอยุธยา (สาขา ม.เกษตรศาสตร์ - B15) ตรงข้ามอาคารจอดรถงาม 1, 2 -->
+  <!-- [14] ธนาคารกรุงศรีอยุธยา (สาขา ม.เกษตรศาสตร์ - B15) ตรงข้ามอาคารจอดรถงาม 1, 2 -->
   <g id="building-krungsri" class="building-card" onclick="selectLocation('krungsri')" transform="translate(800, 605)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="22" rx="46" ry="8" fill="#0F172A" opacity="0.25" />
     <rect x="-40" y="8" width="80" height="12" rx="2" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="0.8" />
@@ -551,7 +597,7 @@
     </g>
   </g>
 
-  <!-- [13] ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร (B16) -->
+  <!-- [15] ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร (B16) -->
   <g id="building-doa-oae" class="building-card" onclick="selectLocation('doa_oae')" transform="translate(990, 530)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="26" rx="58" ry="9" fill="#0F172A" opacity="0.25" />
     <rect x="-50" y="10" width="100" height="14" rx="3" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="0.8" />
@@ -580,7 +626,7 @@
     </g>
   </g>
 
-  <!-- [14] กองบริหารจัดการเรือประมงและการทำการประมง กรมประมง (B17) -->
+  <!-- [16] กองบริหารจัดการเรือประมงและการทำการประมง กรมประมง (B17) -->
   <g id="building-fisheries" class="building-card" onclick="selectLocation('fisheries')" transform="translate(1260, 465)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="26" rx="58" ry="9" fill="#0F172A" opacity="0.25" />
     <rect x="-50" y="10" width="100" height="14" rx="3" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="0.8" />
@@ -602,7 +648,7 @@
     </g>
   </g>
 
-  <!-- [15] สำนักบริการคอมพิวเตอร์ (OCS) - B8 -->
+  <!-- [17] สำนักบริการคอมพิวเตอร์ (OCS) - B8 -->
   <g id="building-ocs" class="building-card" onclick="selectLocation('ocs')" transform="translate(590, 770)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="32" rx="65" ry="9" fill="#0F172A" opacity="0.25" />
     <rect x="-62" y="-28" width="124" height="56" rx="6" fill="#0F172A" stroke="#0284C7" stroke-width="1.8" />
@@ -622,7 +668,7 @@
     </g>
   </g>
 
-  <!-- [16] อาคารจอดรถงามวงศ์วาน 2 (Ngamwongwan 2 Parking - B9) -->
+  <!-- [18] อาคารจอดรถงามวงศ์วาน 2 (Ngamwongwan 2 Parking - B9) -->
   <g id="building-ngam2" class="building-card" onclick="selectLocation('ngam2')" transform="translate(785, 770)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="30" rx="36" ry="8" fill="#0F172A" opacity="0.25" />
     <rect x="-32" y="-26" width="64" height="52" rx="5" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
@@ -641,7 +687,7 @@
     </g>
   </g>
 
-  <!-- [17] อาคารจอดรถงามวงศ์วาน 1 (Ngamwongwan 1 Parking - B10) -->
+  <!-- [19] อาคารจอดรถงามวงศ์วาน 1 (Ngamwongwan 1 Parking - B10) -->
   <g id="building-ngam1" class="building-card" onclick="selectLocation('ngam1')" transform="translate(865, 770)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="30" rx="36" ry="8" fill="#0F172A" opacity="0.25" />
     <rect x="-32" y="-26" width="64" height="52" rx="5" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
@@ -659,7 +705,7 @@
     </g>
   </g>
 
-  <!-- [18] อาคารจอดรถวิภาวดีรังสิต (Vibhavadi Parking - B14) -->
+  <!-- [20] อาคารจอดรถวิภาวดีรังสิต (Vibhavadi Parking - B14) -->
   <g id="building-vipa" class="building-card" onclick="selectLocation('vipa')" transform="translate(170, 390)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="28" rx="32" ry="7" fill="#0F172A" opacity="0.25" />
     <rect x="-28" y="-24" width="56" height="48" rx="5" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
@@ -672,7 +718,7 @@
     </g>
   </g>
 
-  <!-- [19] หอประชุมใหญ่ ม.เกษตรศาสตร์ (Main Auditorium - B11) -->
+  <!-- [21] หอประชุมใหญ่ ม.เกษตรศาสตร์ (Main Auditorium - B11) -->
   <g id="building-auditorium" class="building-card" onclick="selectLocation('auditorium')" transform="translate(1160, 760)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="46" rx="54" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-48" y="-36" width="96" height="72" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.8" />
@@ -692,7 +738,7 @@
     </g>
   </g>
 
-  <!-- [20] สระพระพิรุณ (Sra Phra Phirun Loy Krathong Pond - B12) -->
+  <!-- [22] สระพระพิรุณ (Sra Phra Phirun Loy Krathong Pond - B12) -->
   <g id="building-pond" class="building-card" onclick="selectLocation('pond')" transform="translate(1340, 760)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="98" rx="52" ry="8" fill="#0F172A" opacity="0.25" />
     <!-- Outer Pond Embankment Edge -->
@@ -721,7 +767,7 @@
     </g>
   </g>
 
-  <!-- [21] วงเวียน BTS ม.เกษตรศาสตร์ (BTS Station Roundabout - B13) -->
+  <!-- [23] วงเวียน BTS ม.เกษตรศาสตร์ (BTS Station Roundabout - B13) -->
   <g id="roundabout-bts" class="building-card" onclick="selectLocation('bts')" transform="translate(1415, 540)" filter="url(#dropBuilding)">
     <circle cx="0" cy="0" r="32" fill="#0F172A" stroke="#334155" stroke-width="2" />
     <circle cx="0" cy="0" r="24" fill="#047857" stroke="#10B981" stroke-width="1.8" />
