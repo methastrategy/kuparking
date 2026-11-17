@@ -1,6 +1,11 @@
 .vercel
 .env*
 node_modules
-edge_test_user_data*
+edge_test_*
+edge_screenshot_*
+visual_verifications/
+assets/*draft*.svg
+assets/old-*.svg
+assets/test-*.svg
 tools/
 

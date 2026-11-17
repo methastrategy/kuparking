@@ -46,5 +46,5 @@ ku-loykrathong-parking/
 ### วิธีที่ง่ายที่สุด: Vercel หรือ Netlify (ฟรี 100%)
 1. สมัครบัญชีฟรีที่ [vercel.com](https://vercel.com) หรือ [netlify.com](https://netlify.com)
 2. ลากโฟลเดอร์ `ku-loykrathong-parking` ไปวาง (Drop to deploy)
-3. จะได้ URL ทันที เช่น `https://ku-loykrathong.vercel.app`
+3. จะได้ URL ทันที: `https://kuloykrathong.vercel.app`
 4. นำลิงก์นี้ไปแปลงเป็น QR Code แปะตามป้ายไวนิลหน้าทางเข้าประตู หรือแชร์ลงเพจงานและไลน์กลุ่มได้ทันที!
