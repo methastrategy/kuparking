@@ -190,14 +190,14 @@
     <!-- Upper Avenue Northeast serving Horticulture, Vet Tech, and Vet Hospital: J3B(830,240) -> (1020,170) -> (1450,170) -->
     <path d="M 830 240 L 1020 170 L 1450 170" />
 
-    <!-- Vet Complex North-South Connector directly meeting Rapee Sakrik at J33: (1140,170) -> (1140,375) -->
+    <!-- Vet Complex North-South Connector directly meeting Rapee Sakrik at J7: (1140,170) -> (1140,375) -->
     <path d="M 1140 170 L 1140 375" />
 
     <!-- West Spine (Sutham Areekul) curving around Stadium to Chansathit: M 200 320 L 200 600 Q 200 670 270 670 L 900 670 -->
     <path d="M 200 320 L 200 600 Q 200 670 270 670 L 900 670" />
 
     <!-- Middle Road (Rapee Sakrik) under Sorn 3/Library and Vet Complex to Gate Phahon 2:
-         (200,510) -> (450,500) -> J11(840,440) -> J33(1140,375) -> J6(1260,370) -> (1470,440) -> (1510,440) -->
+         (200,510) -> (450,500) -> J11(840,440) -> J7(1140,375) -> J6(1260,370) -> (1470,440) -> (1510,440) -->
     <path d="M 200 510 L 450 500 L 840 440 L 1140 375 L 1260 370 L 1470 440 L 1510 440" stroke-linecap="butt" />
 
     <!-- Central Spine (Suwanwajokkasikit Avenue): G-NORTH(820,50) -> J3A(820,150) -> J3B(830,240) -> J11(840,440) -> J12(860,540) -> J17(900,670) -> G-GATE1(900,910) -->
@@ -212,13 +212,16 @@
     <!-- Orthogonal Street between Science Lab and Krungsri Bank: (680,540) -> (860,540) -->
     <path d="M 680 540 L 860 540" />
 
+    <!-- NEW STREET: จาก J12(860,540) ลากไปจนถึงตรงกลางระหว่างเส้นถนน J7-J21 (พิกัด J27: 1145,488) -->
+    <path d="M 860 540 L 1145 488" />
+
     <!-- Gate 2 Vertical Road: (730,670) -> G-GATE2(730,910) -->
     <path d="M 730 670 L 730 910" stroke-linecap="butt" />
 
     <!-- Southeast Diagonal Road from Gate 1 to BTS Roundabout: J17(900,670) -> J21(1150,601) -> J18(1260,571) -> J19(1370,540) -->
     <path d="M 900 670 L 1370 540" />
 
-    <!-- Connector J33 to J21 (replaces old J7-J21 corner): J33(1140,375) straight down to J21(1150,601) -->
+    <!-- Connector J7 to J21 (ผ่านจุดตัด J27 กลางเส้น): J7(1140,375) -> J27(1145,488) -> J21(1150,601) -->
     <path d="M 1140 375 L 1150 601" />
 
     <!-- Perpendicular Connector from J18 down to Sra Phra Phirun loop: J18(1260,571) -> J22(1260,660) -->
@@ -247,6 +250,7 @@
     <path d="M 450 500 L 450 910" />
     <path d="M 680 460 L 680 670" />
     <path d="M 680 540 L 860 540" />
+    <path d="M 860 540 L 1145 488" />
     <path d="M 730 670 L 730 910" />
     <path d="M 900 670 L 1370 540" />
     <path d="M 1140 375 L 1150 601" />
@@ -394,8 +398,8 @@
     </g>
   </g>
 
-  <!-- [6] คณะเทคนิคการสัตวแพทย์ (Faculty of Veterinary Technology - B4) - ริมรั้วพหลโยธิน -->
-  <g id="building-vet-tech" class="building-card" onclick="selectLocation('vetTech')" transform="translate(1220, 250)" filter="url(#dropBuilding)">
+  <!-- [6] คณะเทคนิคการสัตวแพทย์ (Faculty of Veterinary Technology - B4) - ขยับลงมาที่มุมถนน J7 -->
+  <g id="building-vet-tech" class="building-card" onclick="selectLocation('vetTech')" transform="translate(1215, 320)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="36" rx="55" ry="9" fill="#0F172A" opacity="0.25" />
     <rect x="-52" y="-28" width="104" height="56" rx="5" fill="#FAF5FF" stroke="#7C3AED" stroke-width="1.8" />
     <polygon points="-56,-28 -20,-40 20,-40 56,-28" fill="#6D28D9" />
@@ -414,8 +418,8 @@
     </g>
   </g>
 
-  <!-- [7] โรงพยาบาลสัตว์ มก. (KU Veterinary Teaching Hospital - B5) - ริมรั้วพหลโยธิน -->
-  <g id="building-vet-hospital" class="building-card" onclick="selectLocation('vetHospital')" transform="translate(1375, 250)" filter="url(#dropBuilding)">
+  <!-- [7] โรงพยาบาลสัตว์ มก. (KU Veterinary Teaching Hospital - B5) - ขยับลงมาแกน y ขวาแกน x มุมทางเข้าติดรั้วมหาลัย -->
+  <g id="building-vet-hospital" class="building-card" onclick="selectLocation('vetHospital')" transform="translate(1395, 330)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="38" rx="56" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-54" y="-30" width="108" height="60" rx="5" fill="#FFF1F2" stroke="#E11D48" stroke-width="1.8" />
     <polygon points="-58,-30 0,-48 58,-30" fill="#BE123C" />
@@ -597,8 +601,38 @@
     </g>
   </g>
 
-  <!-- [15] ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร (B16) -->
-  <g id="building-doa-oae" class="building-card" onclick="selectLocation('doa_oae')" transform="translate(990, 530)" filter="url(#dropBuilding)">
+  <!-- [15] คณะวนศาสตร์ (Faculty of Forestry - B22, เพิ่มในพื้นที่ใหม่เหนือห้องสมุดวิชาการเกษตร) -->
+  <g id="building-forestry" class="building-card" onclick="selectLocation('forestry')" transform="translate(990, 445)" filter="url(#dropBuilding)">
+    <ellipse cx="0" cy="30" rx="58" ry="9" fill="#0F172A" opacity="0.25" />
+    <rect x="-52" y="-26" width="104" height="52" rx="6" fill="#FEFCE8" stroke="#15803D" stroke-width="1.8" />
+    <!-- Teak Wood Forestry Gable Roof -->
+    <polygon points="-56,-26 0,-48 56,-26" fill="#166534" />
+    <polygon points="-52,-26 0,-44 52,-26" fill="#15803D" />
+    <line x1="0" y1="-44" x2="0" y2="-26" stroke="#FEF08A" stroke-width="1.2" />
+    <!-- Timber Truss & Columns -->
+    <g stroke="#78350F" stroke-width="1.2" fill="#B45309">
+      <rect x="-42" y="-12" width="6" height="34" rx="1" />
+      <rect x="-22" y="-12" width="6" height="34" rx="1" />
+      <rect x="16" y="-12" width="6" height="34" rx="1" />
+      <rect x="36" y="-12" width="6" height="34" rx="1" />
+    </g>
+    <!-- Forestry Tree Emblem -->
+    <g transform="translate(0, -6)">
+      <circle cx="0" cy="0" r="10" fill="#DCFCE7" stroke="#15803D" stroke-width="1" />
+      <text x="0" y="4" font-size="9" text-anchor="middle">🌲</text>
+    </g>
+    <rect x="-10" y="8" width="20" height="14" rx="1.5" fill="#78350F" />
+    <!-- Name Badge Pill -->
+    <g transform="translate(0, 36)" filter="url(#badgeGlow)">
+      <rect x="-56" y="-9" width="112" height="18" rx="4.5" fill="#0F172A" stroke="#16A34A" stroke-width="1.4" />
+      <circle cx="-43" cy="0" r="4.5" fill="#15803D" />
+      <text x="-43" y="2.5" fill="#FFFFFF" font-size="6.5" font-weight="900" text-anchor="middle">🌲</text>
+      <text x="6" y="3" fill="#BBF7D0" font-size="7.8" font-weight="800" text-anchor="middle">คณะวนศาสตร์</text>
+    </g>
+  </g>
+
+  <!-- [16] ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร (B16) - อยู่ใต้ถนนเส้นใหม่ J12 -->
+  <g id="building-doa-oae" class="building-card" onclick="selectLocation('doa_oae')" transform="translate(990, 595)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="26" rx="58" ry="9" fill="#0F172A" opacity="0.25" />
     <rect x="-50" y="10" width="100" height="14" rx="3" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="0.8" />
     <!-- Left Wing (DOA) & Right Wing (OAE) -->
@@ -626,7 +660,7 @@
     </g>
   </g>
 
-  <!-- [16] กองบริหารจัดการเรือประมงและการทำการประมง กรมประมง (B17) -->
+  <!-- [17] กรมประมง (Department of Fisheries - B17, แก้ไขชื่อตามสั่ง) -->
   <g id="building-fisheries" class="building-card" onclick="selectLocation('fisheries')" transform="translate(1260, 465)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="26" rx="58" ry="9" fill="#0F172A" opacity="0.25" />
     <rect x="-50" y="10" width="100" height="14" rx="3" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="0.8" />
@@ -634,7 +668,7 @@
     <rect x="-16" y="-38" width="32" height="14" rx="3" fill="#0369A1" stroke="#0284C7" stroke-width="1" />
     <circle cx="0" cy="-42" r="3.5" fill="#38BDF8" /><line x1="0" y1="-42" x2="0" y2="-47" stroke="#38BDF8" stroke-width="1.2" />
     <rect x="-46" y="-26" width="92" height="9" rx="2" fill="#0284C7" />
-    <text x="0" y="-19" fill="#FFFFFF" font-size="6" font-weight="900" font-family="'Prompt', sans-serif" text-anchor="middle">FISHERIES DEPT</text>
+    <text x="0" y="-19" fill="#FFFFFF" font-size="6.5" font-weight="900" font-family="'Prompt', sans-serif" text-anchor="middle" letter-spacing="0.5">FISHERIES DEPT</text>
     <g fill="#BAE6FD" opacity="0.85">
       <rect x="-38" y="-12" width="22" height="8" rx="1.5" />
       <rect x="16" y="-12" width="22" height="8" rx="1.5" />
@@ -643,12 +677,14 @@
     <rect x="-10" y="4" width="20" height="14" rx="1" fill="#0284C7" />
     <!-- Name Badge Pill -->
     <g transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect x="-76" y="-10" width="152" height="20" rx="5" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5" />
-      <text x="0" y="3.5" fill="#7DD3FC" font-size="7.5" font-weight="800" text-anchor="middle">🐟 กองบริหารจัดการเรือประมง กรมประมง</text>
+      <rect x="-46" y="-9" width="92" height="18" rx="4.5" fill="#0F172A" stroke="#38BDF8" stroke-width="1.4" />
+      <circle cx="-33" cy="0" r="4.5" fill="#0284C7" />
+      <text x="-33" y="2.5" fill="#FFFFFF" font-size="6.5" font-weight="900" text-anchor="middle">🐟</text>
+      <text x="6" y="3" fill="#7DD3FC" font-size="7.8" font-weight="800" text-anchor="middle">กรมประมง</text>
     </g>
   </g>
 
-  <!-- [17] สำนักบริการคอมพิวเตอร์ (OCS) - B8 -->
+  <!-- [18] สำนักบริการคอมพิวเตอร์ (OCS) - B8 -->
   <g id="building-ocs" class="building-card" onclick="selectLocation('ocs')" transform="translate(590, 770)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="32" rx="65" ry="9" fill="#0F172A" opacity="0.25" />
     <rect x="-62" y="-28" width="124" height="56" rx="6" fill="#0F172A" stroke="#0284C7" stroke-width="1.8" />
@@ -668,7 +704,7 @@
     </g>
   </g>
 
-  <!-- [18] อาคารจอดรถงามวงศ์วาน 2 (Ngamwongwan 2 Parking - B9) -->
+  <!-- [19] อาคารจอดรถงามวงศ์วาน 2 (Ngamwongwan 2 Parking - B9) -->
   <g id="building-ngam2" class="building-card" onclick="selectLocation('ngam2')" transform="translate(785, 770)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="30" rx="36" ry="8" fill="#0F172A" opacity="0.25" />
     <rect x="-32" y="-26" width="64" height="52" rx="5" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
@@ -687,7 +723,7 @@
     </g>
   </g>
 
-  <!-- [19] อาคารจอดรถงามวงศ์วาน 1 (Ngamwongwan 1 Parking - B10) -->
+  <!-- [20] อาคารจอดรถงามวงศ์วาน 1 (Ngamwongwan 1 Parking - B10) -->
   <g id="building-ngam1" class="building-card" onclick="selectLocation('ngam1')" transform="translate(865, 770)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="30" rx="36" ry="8" fill="#0F172A" opacity="0.25" />
     <rect x="-32" y="-26" width="64" height="52" rx="5" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
@@ -705,7 +741,7 @@
     </g>
   </g>
 
-  <!-- [20] อาคารจอดรถวิภาวดีรังสิต (Vibhavadi Parking - B14) -->
+  <!-- [21] อาคารจอดรถวิภาวดีรังสิต (Vibhavadi Parking - B14) -->
   <g id="building-vipa" class="building-card" onclick="selectLocation('vipa')" transform="translate(170, 390)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="28" rx="32" ry="7" fill="#0F172A" opacity="0.25" />
     <rect x="-28" y="-24" width="56" height="48" rx="5" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.8" />
@@ -718,7 +754,7 @@
     </g>
   </g>
 
-  <!-- [21] หอประชุมใหญ่ ม.เกษตรศาสตร์ (Main Auditorium - B11) -->
+  <!-- [22] หอประชุมใหญ่ ม.เกษตรศาสตร์ (Main Auditorium - B11) -->
   <g id="building-auditorium" class="building-card" onclick="selectLocation('auditorium')" transform="translate(1160, 760)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="46" rx="54" ry="10" fill="#0F172A" opacity="0.25" />
     <rect x="-48" y="-36" width="96" height="72" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.8" />
@@ -738,7 +774,7 @@
     </g>
   </g>
 
-  <!-- [22] สระพระพิรุณ (Sra Phra Phirun Loy Krathong Pond - B12) -->
+  <!-- [23] สระพระพิรุณ (Sra Phra Phirun Loy Krathong Pond - B12) -->
   <g id="building-pond" class="building-card" onclick="selectLocation('pond')" transform="translate(1340, 760)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="98" rx="52" ry="8" fill="#0F172A" opacity="0.25" />
     <!-- Outer Pond Embankment Edge -->
@@ -767,7 +803,7 @@
     </g>
   </g>
 
-  <!-- [23] วงเวียน BTS ม.เกษตรศาสตร์ (BTS Station Roundabout - B13) -->
+  <!-- [24] วงเวียน BTS ม.เกษตรศาสตร์ (BTS Station Roundabout - B13) -->
   <g id="roundabout-bts" class="building-card" onclick="selectLocation('bts')" transform="translate(1415, 540)" filter="url(#dropBuilding)">
     <circle cx="0" cy="0" r="32" fill="#0F172A" stroke="#334155" stroke-width="2" />
     <circle cx="0" cy="0" r="24" fill="#047857" stroke="#10B981" stroke-width="1.8" />
