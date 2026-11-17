@@ -221,11 +221,9 @@
     <!-- West Spine (Sutham Areekul) curving around Stadium to Chansathit (J1 -> J14 -> J17) -->
     <path d="M 200 320 L 200 600 Q 200 670 270 670 L 920 670" />
 
-    <!-- Middle Road (Rapee Sakrik) under Sorn 3/Library: J8(200,510) -> J9(450,500) -> J11(840,440) -> J7(1040,390) -->
-    <path d="M 200 510 L 450 500 L 840 440 L 1040 390" />
-
-    <!-- Continuation of Rapee Sakrik east of J7 curving to East Fence (G-PHAHON2) -->
-    <path d="M 1040 390 Q 1180 375 1300 385 Q 1400 405 1470 470 L 1510 470" stroke-linecap="butt" />
+    <!-- Middle Road (Rapee Sakrik) under Sorn 3/Library and Vet Complex towards East Fence:
+         J8(200,510) -> J9(450,500) -> J11(840,440) -> J7(1000,380) -> under Vet Tech & Hospital (1260,370) -> curving to East Fence (1510,460) -->
+    <path d="M 200 510 L 450 500 L 840 440 L 1000 380 L 1260 370 Q 1360 380 1410 420 Q 1450 445 1510 460" stroke-linecap="butt" />
 
     <!-- Central Spine (Suwanwakhokkasikit): G-NORTH(810,50) -> J3(830,220) -> J11(840,440) -> J12(870,540) -> J17(920,670) -> G-GATE1(920,910) -->
     <path d="M 810 50 L 830 220 L 840 440 L 870 540 L 920 670 L 920 910" stroke-linecap="butt" />
@@ -240,21 +238,22 @@
     <!-- Gate 2 Vertical Road: J16(730,670) -> G-GATE2(730,910) -->
     <path d="M 730 670 L 730 910" stroke-linecap="butt" />
 
-    <!-- User Spec 7: Remove J5 curve! Road from J3(830,220) -> J4(1000,200) -> J6(1150,380) -->
-    <path d="M 830 220 L 1000 200 L 1150 380" />
-    <!-- Road between J4(1000,200) down to J7(1040,390) -->
-    <path d="M 1000 200 L 1040 390" />
+    <!-- Road network around Veterinary Complex (Fixed per user drawing):
+         1. Upper Road from J3(830,220) along north of Vet Tech: J3 -> (980,140) -> (980,110) -> (1080,110)
+         2. Vertical connector in front/left of Vet Tech: (980,140) down to J7(1000,380) -->
+    <path d="M 830 220 L 980 140 L 980 110 L 1080 110" />
+    <path d="M 980 140 L 1000 380" />
 
-    <!-- Southeast Diagonal Road from Gate 1 to BTS Roundabout: J17(920,670) -> J21(1180,600) -> J18(1260,575) -> J19(1370,540) -->
+    <!-- Southeast Diagonal Road from Gate 1 to BTS Roundabout: J17(920,670) -> J18(1260,575) -> J19(1370,540) -->
     <path d="M 920 670 L 1370 540" />
 
-    <!-- User Spec 5: J6 connects to J21 instead! (From J6 1150,380 down to J21 1180,600) -->
-    <path d="M 1150 380 L 1180 600" />
+    <!-- Clean Diagonal Connector from Vet Tech junction J7(1000,380) down-right to J18(1260,575) - NO criss-cross! -->
+    <path d="M 1000 380 L 1260 575" />
 
-    <!-- User Spec 6: J18 connects to J7! (From J7 1040,390 down-right to J18 1260,575) -->
-    <path d="M 1040 390 L 1260 575" />
+    <!-- Vertical spur on diagonal avenue -->
+    <path d="M 1150 605 L 1150 535" />
 
-    <!-- User Spec 4: J22 connects directly to J18! (From J18 1260,575 down to J22 1250,660) -->
+    <!-- Connector from J18(1260,575) down to Sra Phra Phirun loop J22(1250,660) -->
     <path d="M 1260 575 L 1250 660" />
 
     <!-- Rectangular Loop around Sra Phra Phirun: J22(1250,660) -> J23(1410,660) -> J24(1410,860) -> J25(1250,860) -> J22(1250,660) -->
@@ -273,18 +272,17 @@
     <path d="M 200 320 Q 200 160 300 150 L 700 150 Q 800 150 830 220" />
     <path d="M 200 380 L 830 220" />
     <path d="M 200 320 L 200 600 Q 200 670 270 670 L 920 670" />
-    <path d="M 200 510 L 450 500 L 840 440 L 1040 390" />
-    <path d="M 1040 390 Q 1180 375 1300 385 Q 1400 405 1470 470 L 1510 470" />
+    <path d="M 200 510 L 450 500 L 840 440 L 1000 380 L 1260 370 Q 1360 380 1410 420 Q 1450 445 1510 460" />
     <path d="M 810 50 L 830 220 L 840 440 L 870 540 L 920 670 L 920 910" />
     <path d="M 450 500 L 450 910" />
     <path d="M 660 460 Q 700 560 730 670" />
     <path d="M 700 570 L 870 540" />
     <path d="M 730 670 L 730 910" />
-    <path d="M 830 220 L 1000 200 L 1150 380" />
-    <path d="M 1000 200 L 1040 390" />
+    <path d="M 830 220 L 980 140 L 980 110 L 1080 110" />
+    <path d="M 980 140 L 1000 380" />
     <path d="M 920 670 L 1370 540" />
-    <path d="M 1150 380 L 1180 600" />
-    <path d="M 1040 390 L 1260 575" />
+    <path d="M 1000 380 L 1260 575" />
+    <path d="M 1150 605 L 1150 535" />
     <path d="M 1260 575 L 1250 660" />
     <path d="M 1250 660 L 1410 660 L 1410 860 L 1250 860 Z" />
     <path d="M 1410 760 L 1510 760" />
