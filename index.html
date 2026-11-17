@@ -649,6 +649,52 @@
     </g>
   </g>
 
+  
+  <!-- ธนาคารกรุงศรีอยุธยา (สาขา ม.เกษตรศาสตร์) ตรงข้ามอาคารจอดรถงามวงศ์วาน 1 และ 2 -->
+  <g id="building-krungsri" class="building-card" onclick="selectLocation('krungsri')" transform="translate(815, 595)" filter="url(#dropBuilding)">
+    <ellipse cx="0" cy="22" rx="46" ry="8" fill="#0F172A" opacity="0.25" />
+    <!-- Ground / Pavement base -->
+    <rect x="-40" y="8" width="80" height="12" rx="2" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="0.8" />
+    <rect x="-18" y="12" width="16" height="4" rx="1" fill="#94A3B8" />
+
+    <!-- Bank Main Structure (Warm Off-White Stone with Krungsri Gold Trim) -->
+    <rect x="-38" y="-24" width="76" height="40" rx="4" fill="#FFFFFF" stroke="#D97706" stroke-width="1.6" />
+
+    <!-- Krungsri Golden Parapet / Fascia -->
+    <rect x="-38" y="-24" width="76" height="15" rx="3" fill="#F59E0B" stroke="#B45309" stroke-width="1" />
+    <!-- Golden highlight top line -->
+    <line x1="-36" y1="-22.5" x2="36" y2="-22.5" stroke="#FEF08A" stroke-width="1.2" stroke-linecap="round" />
+
+    <!-- Krungsri Emblem / Logo Crest (3-tier pagoda curve) -->
+    <g transform="translate(-23, -16.5)">
+      <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" />
+      <path d="M -3 1.5 Q 0 -3.5 3 1.5 Z" fill="#D97706" />
+      <circle cx="0" cy="-1.8" r="1.2" fill="#F59E0B" />
+    </g>
+    <!-- Krungsri Branding Text -->
+    <text x="8" y="-14" fill="#78350F" font-size="6.8" font-weight="900" font-family="'Prompt', sans-serif" text-anchor="middle" letter-spacing="0.2">krungsri กรุงศรี</text>
+
+    <!-- Glass Storefront & Modern Automatic Doors -->
+    <rect x="-32" y="-4" width="28" height="17" rx="1.5" fill="#E0F2FE" stroke="#0284C7" stroke-width="0.8" />
+    <line x1="-18" y1="-4" x2="-18" y2="13" stroke="#0284C7" stroke-width="0.8" />
+    <polygon points="-30,-2 -22,-2 -27,11 -30,11" fill="#FFFFFF" opacity="0.45" />
+
+    <!-- 24-hr ATM Corner / Kiosk in Krungsri Signature Gold -->
+    <rect x="4" y="-4" width="28" height="17" rx="1.5" fill="#FEF3C7" stroke="#D97706" stroke-width="0.8" />
+    <rect x="8" y="-1.5" width="20" height="11" rx="1.5" fill="#F59E0B" stroke="#B45309" stroke-width="0.6" />
+    <rect x="12" y="1" width="8" height="5" rx="0.8" fill="#0F172A" />
+    <circle cx="23" cy="3.5" r="1.2" fill="#22C55E" />
+    <text x="16" y="-0.2" fill="#78350F" font-size="3.5" font-weight="900" text-anchor="middle">ATM</text>
+
+    <!-- Building Name Badge Pill -->
+    <g transform="translate(0, 34)" filter="url(#badgeGlow)">
+      <rect x="-56" y="-9" width="112" height="18" rx="4.5" fill="#0F172A" stroke="#F59E0B" stroke-width="1.4" />
+      <circle cx="-43" cy="0" r="4.5" fill="#F59E0B" />
+      <text x="-43" y="2.5" fill="#78350F" font-size="6.5" font-weight="900" text-anchor="middle">🪙</text>
+      <text x="6" y="3" fill="#FEF08A" font-size="7.8" font-weight="800" text-anchor="middle">ธนาคารกรุงศรีอยุธยา</text>
+    </g>
+  </g>
+
   <!-- User Spec 2: สำนักคอมฯ OCS ย้ายมาอยู่ตำแหน่งที่จอดรถงาม 2 เดิม (x=590, y=770) -->
   <g id="building-ocs" class="building-card" onclick="selectLocation('ocs')" transform="translate(590, 770)" filter="url(#dropBuilding)">
     <ellipse cx="0" cy="32" rx="65" ry="9" fill="#0F172A" opacity="0.25" />
@@ -1010,6 +1056,16 @@
                 x: 785,
                 y: 770
             },
+            krungsri: {
+                title: "ธนาคารกรุงศรีอยุธยา สาขา ม.เกษตรศาสตร์",
+                category: "ธนาคารและธุรกรรมการเงิน",
+                icon: "🏦",
+                desc: "ธนาคารกรุงศรีอยุธยา สาขา มหาวิทยาลัยเกษตรศาสตร์ ตั้งอยู่ตรงข้ามอาคารจอดรถงามวงศ์วาน 1 และ 2 ให้บริการธุรกรรมทางการเงินและตู้ ATM ตลอด 24 ชม.",
+                status: "● สาขาและจุดบริการ ATM",
+                mapUrl: "https://maps.google.com/?q=Krungsri+Bank+Kasetsart+University",
+                x: 815,
+                y: 595
+            },
             vipa: {
                 title: "อาคารจอดรถวิภาวดีรังสิต",
                 category: "อาคารจอดรถ",
@@ -1286,6 +1342,7 @@
                 'building-pond': 'pond',
                 'building-ngam1': 'ngam1',
                 'building-ngam2': 'ngam2',
+                'building-krungsri': 'krungsri',
                 'building-vipa': 'vipa',
                 'roundabout-bts': 'bts',
                 'building-auditorium': 'auditorium',
@@ -1298,7 +1355,9 @@
                 'building-ocs': 'ocs',
                 'building-stadium': 'stadium',
                 'building-vetHospital': 'vetHospital',
-                'building-vetTech': 'vetTech'
+                'building-vet-hospital': 'vetHospital',
+                'building-vetTech': 'vetTech',
+                'building-vet-tech': 'vetTech'
             };
 
             for (const [id, key] of Object.entries(clickMap)) {
