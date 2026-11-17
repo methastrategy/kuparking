@@ -382,7 +382,7 @@
 
   <!-- [NORTHEAST VETERINARY ZONE - Centered at x=1260] -->
   <!-- Block NE2 (User Box 2): คณะเทคนิคการสัตวแพทย์ (Faculty of Veterinary Technology) -->
-  <g id="building-vet-tech" onclick="selectLocation('vetTech')" style="cursor: pointer;" transform="translate(1325, 275)" filter="url(#pixelShadow)">
+  <g id="building-vet-tech" onclick="selectLocation('vetTech')" style="cursor: pointer;" transform="translate(1310, 265)" filter="url(#pixelShadow)">
     <rect x="-85" y="-55" width="170" height="110" rx="8" fill="#1E293B" stroke="#8B5CF6" stroke-width="2.5" />
     <polygon points="-90,-55 0,-85 90,-55" fill="#6D28D9" stroke="#0F172A" stroke-width="2.5" />
     <polygon points="-75,-55 0,-78 75,-55" fill="#A78BFA" opacity="0.6" />
@@ -407,32 +407,32 @@
       <text x="-65" y="4.5" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="11.5" font-weight="800" text-anchor="start">คณะเทคนิคการสัตวแพทย์</text>
     </g>
   </g>
-  <!-- Block NE1 (User Box 1): โรงพยาบาลสัตว์ ม.เกษตร (Kasetsart University Animal Hospital) -->
-  <g id="building-vet-hospital" onclick="selectLocation('vetHospital')" style="cursor: pointer;" transform="translate(1325, 395)" filter="url(#pixelShadow)">
-    <rect x="-85" y="-55" width="170" height="110" rx="8" fill="#1E293B" stroke="#E11D48" stroke-width="2.5" />
-    <polygon points="-90,-55 0,-85 90,-55" fill="#BE123C" stroke="#0F172A" stroke-width="2.5" />
-    <polygon points="-75,-55 0,-78 75,-55" fill="#FB7185" opacity="0.6" />
-    <circle cx="0" cy="-64" r="11" fill="#FFFFFF" stroke="#0F172A" stroke-width="2" />
-    <rect x="-3" y="-71" width="6" height="14" fill="#E11D48" />
-    <rect x="-7" y="-67" width="14" height="6" fill="#E11D48" />
+  <!-- Block NE1 (User Box 1): โรงพยาบาลสัตว์ ม.เกษตร (Kasetsart University Animal Hospital - 100% Collision-Free) -->
+  <g id="building-vet-hospital" onclick="selectLocation('vetHospital')" style="cursor: pointer;" transform="translate(1310, 375)" filter="url(#pixelShadow)">
+    <rect x="-75" y="-45" width="150" height="90" rx="8" fill="#1E293B" stroke="#E11D48" stroke-width="2.5" />
+    <polygon points="-80,-45 0,-72 80,-45" fill="#BE123C" stroke="#0F172A" stroke-width="2.5" />
+    <polygon points="-65,-45 0,-66 65,-45" fill="#FB7185" opacity="0.6" />
+    <circle cx="0" cy="-56" r="10" fill="#FFFFFF" stroke="#0F172A" stroke-width="2" />
+    <rect x="-2.5" y="-62" width="5" height="12" fill="#E11D48" />
+    <rect x="-6" y="-58.5" width="12" height="5" fill="#E11D48" />
     <g fill="#FEF08A" stroke="#0F172A" stroke-width="1.2">
-      <rect x="-70" y="-35" width="22" height="16" rx="2" />
-      <rect x="-40" y="-35" width="22" height="16" rx="2" />
-      <rect x="18" y="-35" width="22" height="16" rx="2" />
-      <rect x="48" y="-35" width="22" height="16" rx="2" />
-      <rect x="-70" y="-8" width="22" height="16" rx="2" />
-      <rect x="48" y="-8" width="22" height="16" rx="2" />
+      <rect x="-60" y="-28" width="18" height="14" rx="2" />
+      <rect x="-35" y="-28" width="18" height="14" rx="2" />
+      <rect x="17" y="-28" width="18" height="14" rx="2" />
+      <rect x="42" y="-28" width="18" height="14" rx="2" />
+      <rect x="-60" y="-6" width="18" height="14" rx="2" />
+      <rect x="42" y="-6" width="18" height="14" rx="2" />
     </g>
-    <rect x="-22" y="4" width="44" height="51" rx="3" fill="#0F172A" stroke="#334155" stroke-width="1.8" />
-    <rect x="-16" y="10" width="32" height="45" rx="2" fill="#E0F2FE" />
-    <line x1="0" y1="10" x2="0" y2="55" stroke="#0284C7" stroke-width="2" />
+    <rect x="-20" y="4" width="40" height="41" rx="3" fill="#0F172A" stroke="#334155" stroke-width="1.8" />
+    <rect x="-14" y="10" width="28" height="35" rx="2" fill="#E0F2FE" />
+    <line x1="0" y1="10" x2="0" y2="45" stroke="#0284C7" stroke-width="2" />
     <circle cx="0" cy="0" r="3.5" fill="#38BDF8" filter="url(#goldGlow)" />
-    <!-- Unified Standard Badge: KU Animal Hospital (High Legibility Vector) -->
-    <g transform="translate(0, 40)">
-      <rect x="-90" y="-14" width="180" height="28" rx="7" fill="#0F172A" stroke="#E11D48" stroke-width="2" filter="url(#badgeGlow)" />
-      <circle cx="-74" cy="0" r="8.5" fill="#E11D48" />
-      <text x="-74" y="3.5" font-size="10.5" text-anchor="middle">🐶</text>
-      <text x="-59" y="4.5" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="11.5" font-weight="800" text-anchor="start">โรงพยาบาลสัตว์ ม.เกษตร 🐾</text>
+    <!-- Unified Standard Badge: KU Animal Hospital (18px clearance to Rapee Sakrik) -->
+    <g transform="translate(0, 36)">
+      <rect x="-86" y="-13" width="172" height="26" rx="7" fill="#0F172A" stroke="#E11D48" stroke-width="2" filter="url(#badgeGlow)" />
+      <circle cx="-70" cy="0" r="8.5" fill="#E11D48" />
+      <text x="-70" y="3.5" font-size="10.5" text-anchor="middle">🐶</text>
+      <text x="-56" y="4.5" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="11" font-weight="800" text-anchor="start">โรงพยาบาลสัตว์ ม.เกษตร 🐾</text>
     </g>
   </g>
 
@@ -614,6 +614,12 @@
   <line x1="50" y1="0" x2="50" y2="1000" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="14 10" opacity="0.6" />
   <line x1="100" y1="0" x2="100" y2="1000" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="14 10" opacity="0.6" />
 
+  <!-- Vibhavadi Highway Sign Badge -->
+  <g transform="translate(75, 510) rotate(-90)" filter="url(#badgeGlow)">
+    <rect x="-135" y="-14" width="270" height="28" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8" />
+    <text x="0" y="4.5" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="11" font-weight="800" text-anchor="middle">🛣️ ถนนวิภาวดีรังสิต (VIBHAVADI RANGSIT RD.)</text>
+  </g>
+
   <!-- 2. ถนนงามวงศ์วาน (Ngamwongwan Major Boulevard - Multi-lane) -->
   <rect x="0" y="865" width="1600" height="85" fill="#1E293B" />
   <line x1="0" y1="868" x2="1600" y2="868" stroke="#FFFFFF" stroke-width="2" opacity="0.8" />
@@ -623,12 +629,28 @@
   <line x1="0" y1="887" x2="1600" y2="887" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="14 10" opacity="0.6" />
   <line x1="0" y1="928" x2="1600" y2="928" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="14 10" opacity="0.6" />
 
+  <!-- Ngamwongwan Highway Sign Badges -->
+  <g transform="translate(300, 910)" filter="url(#badgeGlow)">
+    <rect x="-135" y="-14" width="270" height="28" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8" />
+    <text x="0" y="4.5" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="11" font-weight="800" text-anchor="middle">🛣️ ถนนงามวงศ์วาน (NGAMWONGWAN RD.)</text>
+  </g>
+  <g transform="translate(1250, 910)" filter="url(#badgeGlow)">
+    <rect x="-135" y="-14" width="270" height="28" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8" />
+    <text x="0" y="4.5" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="11" font-weight="800" text-anchor="middle">🛣️ ถนนงามวงศ์วาน (มุ่งหน้าแยกเกษตร)</text>
+  </g>
+
   <!-- 3. ถนนพหลโยธิน (Phahonyothin Highway & BTS Corridor) -->
   <rect x="1475" y="0" width="115" height="1000" fill="#1E293B" />
   <line x1="1478" y1="0" x2="1478" y2="1000" stroke="#FFFFFF" stroke-width="2" opacity="0.8" />
   <line x1="1586" y1="0" x2="1586" y2="1000" stroke="#FFFFFF" stroke-width="2" opacity="0.8" />
   <line x1="1505" y1="0" x2="1505" y2="1000" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="14 10" opacity="0.6" />
   <line x1="1565" y1="0" x2="1565" y2="1000" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="14 10" opacity="0.6" />
+
+  <!-- Phahonyothin Highway Sign Badge -->
+  <g transform="translate(1545, 310) rotate(90)" filter="url(#badgeGlow)">
+    <rect x="-130" y="-14" width="260" height="28" rx="6" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8" />
+    <text x="0" y="4.5" fill="#FFFFFF" font-family="'Prompt', sans-serif" font-size="11" font-weight="800" text-anchor="middle">🛣️ ถนนพหลโยธิน (PHAHONYOTHIN RD.)</text>
+  </g>
 
   <!-- แยกเกษตร (Intersection Badge) -->
   <g transform="translate(1475, 865)">
