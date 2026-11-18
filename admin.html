@@ -305,6 +305,10 @@
                     ทดสอบ
                 </button>
             </div>
+            <button onclick="copyAttendeeSyncLink()" class="touch-target-44 w-full bg-slate-800/90 hover:bg-slate-700 text-emerald-400 font-semibold py-2.5 rounded-xl text-xs border border-emerald-500/30 flex items-center justify-center space-x-1.5 transition">
+                <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+                <span>คัดลอกลิงก์แชร์ผู้เข้าร่วมงาน (พร้อม Cloud Sync)</span>
+            </button>
             <div class="text-[10px] text-slate-400 pt-1 border-t border-slate-800">
                 * หากเว้นว่างไว้ ระบบจะทำงานผ่าน Local Sync (BroadcastChannel & Storage) ให้โดยอัตโนมัติ
             </div>
@@ -330,6 +334,34 @@
             }
         };
 
+        function getCloudEndpoint() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const fromParam = params.get('sync') || params.get('cloud');
+                if (fromParam) {
+                    try { localStorage.setItem(CLOUD_KEY, fromParam); } catch (e) {}
+                    return fromParam;
+                }
+            } catch (e) {}
+            return localStorage.getItem(CLOUD_KEY) || '';
+        }
+
+        async function fetchCloudDataForAdmin() {
+            const cloudUrl = getCloudEndpoint();
+            if (!cloudUrl || !cloudUrl.startsWith('http')) return;
+            try {
+                const res = await fetch(cloudUrl, { cache: 'no-store' });
+                if (res.ok) {
+                    const cloudData = await res.json();
+                    if (cloudData && cloudData.lots) {
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudData));
+                        renderAdmin();
+                        showToast('ดึงสถานะล่าสุดจาก Cloud สำเร็จ');
+                    }
+                }
+            } catch (e) {}
+        }
+
         function getData() {
             try {
                 const s = localStorage.getItem(STORAGE_KEY);
@@ -353,14 +385,20 @@
             window.dispatchEvent(new Event('storage'));
 
             // Asynchronously sync to Cloud if configured
-            const cloudUrl = localStorage.getItem(CLOUD_KEY);
+            const cloudUrl = getCloudEndpoint();
             if (cloudUrl && cloudUrl.startsWith('http')) {
                 try {
                     fetch(cloudUrl, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
-                    }).catch(() => {});
+                    }).catch(() => {
+                        fetch(cloudUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(data)
+                        }).catch(() => {});
+                    });
                 } catch (e) {}
             }
 
@@ -389,6 +427,7 @@
                 document.getElementById('adminPanel').classList.remove('hidden');
                 initSyncListener();
                 renderAdmin();
+                fetchCloudDataForAdmin();
             } else if (input.length >= 4) {
                 alert('รหัส PIN ไม่ถูกต้อง (ใส่ 1234)');
             }
@@ -404,6 +443,7 @@
             document.getElementById('adminPanel').classList.remove('hidden');
             initSyncListener();
             renderAdmin();
+            fetchCloudDataForAdmin();
         }
 
         function initSyncListener() {
@@ -419,7 +459,7 @@
             });
 
             // Update Sync Status Text
-            const cloudUrl = localStorage.getItem(CLOUD_KEY);
+            const cloudUrl = getCloudEndpoint();
             const syncStatusText = document.getElementById('syncStatusText');
             if (syncStatusText) {
                 if (cloudUrl && cloudUrl.startsWith('http')) {
@@ -526,6 +566,21 @@
             closeCloudModal();
             initSyncListener();
             showToast('บันทึกการตั้งค่า Cloud เรียบร้อยแล้ว');
+        }
+
+        function copyAttendeeSyncLink() {
+            const cloudUrl = getCloudEndpoint();
+            const baseUrl = window.location.origin + window.location.pathname.replace(/admin\.html$/, 'index.html');
+            const targetUrl = cloudUrl ? `${baseUrl}?sync=${encodeURIComponent(cloudUrl)}` : baseUrl;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(targetUrl).then(() => {
+                    showToast('คัดลอกลิงก์แชร์ผู้เข้าร่วมงานแล้ว');
+                }).catch(() => {
+                    prompt('คัดลอกลิงก์สำหรับผู้เข้าร่วมงาน:', targetUrl);
+                });
+            } else {
+                prompt('คัดลอกลิงก์สำหรับผู้เข้าร่วมงาน:', targetUrl);
+            }
         }
 
         async function testCloudConnection() {

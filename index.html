@@ -163,7 +163,7 @@
             <!-- Scalable Inner Map Wrapper for Smooth Pan & Zoom -->
             <div id="mapContainer" class="w-full h-full flex items-center justify-center transition-transform duration-75 origin-center will-change-transform">
                 <div id="viewClassic" class="w-full h-full flex items-center justify-center pointer-events-auto">
-                    <svg id="cartoonPokemonCampusSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" style="font-family: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                    <svg id="cartoonPokemonCampusSvg" class="w-full h-full max-w-full max-h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" style="font-family: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
   
   <defs>
     <style>
@@ -1171,7 +1171,7 @@
     <circle cx="0" cy="-23" r="2.5" fill="#FEF08A" stroke="#78350F" stroke-width="0.8" />
   </g>
 
-    <!-- ================= FESTIVAL ESSENTIALS: NIGHT MARKET & RESTROOMS ================= -->
+  <!-- ================= 7. FESTIVAL ESSENTIALS: NIGHT MARKET & RESTROOMS ================= -->
   <!-- Food Street / Night Market Promenade Zone -->
   <g id="zone-food-street" class="building-card" onclick="selectLocation('food_street')" transform="translate(1235, 760)" filter="url(#badgeGlow)">
     <rect x="-56" y="-12" width="112" height="24" rx="7" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8" />
@@ -1210,44 +1210,9 @@
     <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
-    <!-- ================= FESTIVAL ESSENTIALS: NIGHT MARKET & RESTROOMS ================= -->
-  <!-- Food Street / Night Market Promenade Zone -->
-  <g id="zone-food-street" class="building-card" onclick="selectLocation('food_street')" transform="translate(1235, 760)" filter="url(#badgeGlow)">
-    <rect x="-56" y="-12" width="112" height="24" rx="7" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8" />
-    <circle cx="-42" cy="0" r="6" fill="#D97706" />
-    <text x="-42" y="3" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">🍢</text>
-    <text x="8" y="4" fill="#FEF08A" font-size="7.5" font-weight="800" text-anchor="middle">ถนนคนเดิน/ของกิน</text>
-  </g>
 
-  <!-- Restroom: Main Auditorium -->
-  <g id="pin-restroom-auditorium" class="building-card" onclick="selectLocation('restroom_auditorium')" transform="translate(1185, 730)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
-  </g>
 
-  <!-- Restroom: Sorn 3 -->
-  <g id="pin-restroom-sorn3" class="building-card" onclick="selectLocation('restroom_sorn3')" transform="translate(480, 395)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
-  </g>
 
-  <!-- Restroom: Bar Mai -->
-  <g id="pin-restroom-barmai" class="building-card" onclick="selectLocation('restroom_barmai')" transform="translate(635, 175)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
-  </g>
-
-  <!-- Restroom: Ngamwongwan Parking -->
-  <g id="pin-restroom-ngam" class="building-card" onclick="selectLocation('restroom_ngam')" transform="translate(865, 730)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
-  </g>
-
-  <!-- Restroom: Vibhavadi Parking -->
-  <g id="pin-restroom-vipa" class="building-card" onclick="selectLocation('restroom_vipa')" transform="translate(170, 345)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
-  </g>
 
   <!-- ================= 8. GATES BADGES ON FENCE ================= -->
   <!-- 8.1 Gate Vibhavadi -->
@@ -1861,6 +1826,35 @@
             }
         }
 
+        function getCloudEndpoint() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const fromParam = params.get('sync') || params.get('cloud');
+                if (fromParam) {
+                    try { localStorage.setItem(CLOUD_KEY, fromParam); } catch (e) {}
+                    return fromParam;
+                }
+            } catch (e) {}
+            return localStorage.getItem(CLOUD_KEY) || '';
+        }
+
+        async function fetchCloudParkingData() {
+            const cloudUrl = getCloudEndpoint();
+            if (!cloudUrl || !cloudUrl.startsWith('http')) return;
+            try {
+                const res = await fetch(cloudUrl, { cache: 'no-store' });
+                if (res.ok) {
+                    const cloudData = await res.json();
+                    if (cloudData && cloudData.lots) {
+                        try {
+                            localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudData));
+                        } catch (e) {}
+                        updateParkingUI(cloudData);
+                    }
+                }
+            } catch (e) {}
+        }
+
         function initRealtimeSync() {
             currentParkingData = loadLocalParkingData();
             updateParkingUI(currentParkingData);
@@ -1878,28 +1872,21 @@
                 updateParkingUI(fresh);
             });
 
-            // Cloud sync polling if configured
-            const cloudUrl = localStorage.getItem(CLOUD_KEY);
+            // Cloud sync: immediate initial fetch on load, then poll every 5s
+            const cloudUrl = getCloudEndpoint();
             if (cloudUrl && cloudUrl.startsWith('http')) {
-                setInterval(async () => {
-                    try {
-                        const res = await fetch(cloudUrl, { cache: 'no-store' });
-                        if (res.ok) {
-                            const cloudData = await res.json();
-                            if (cloudData && cloudData.lots) {
-                                updateParkingUI(cloudData);
-                            }
-                        }
-                    } catch (e) {}
-                }, 6000);
+                fetchCloudParkingData();
+                setInterval(fetchCloudParkingData, 5000);
             }
         }
 
         // ================= COLLAPSIBLE BOTTOM SHEET LOGIC =================
         let isSheetExpanded = false;
+        let sheetHasSwiped = false;
 
         function toggleSheet() {
             if (window.innerWidth >= 640) return; // Always visible on desktop
+            if (sheetHasSwiped) return;
             if (isSheetExpanded) {
                 collapseSheet();
             } else {
@@ -1945,23 +1932,34 @@
             }
         }
 
-        // Touch swipe drag gesture on bottom sheet handle
+        // Touch swipe drag gestures on bottom sheet (handle and compact header)
         let sheetTouchStartY = 0;
-        const dragHandle = document.getElementById('sheetDragHandle');
-        if (dragHandle) {
-            dragHandle.addEventListener('touchstart', (e) => {
+        let sheetTouchStartX = 0;
+        function bindSheetSwipe(el) {
+            if (!el) return;
+            el.addEventListener('touchstart', (e) => {
                 sheetTouchStartY = e.touches[0].clientY;
+                sheetTouchStartX = e.touches[0].clientX;
             }, { passive: true });
 
-            dragHandle.addEventListener('touchend', (e) => {
+            el.addEventListener('touchend', (e) => {
                 const deltaY = e.changedTouches[0].clientY - sheetTouchStartY;
-                if (deltaY < -25) {
-                    expandSheet();
-                } else if (deltaY > 25) {
-                    collapseSheet();
+                const deltaX = e.changedTouches[0].clientX - sheetTouchStartX;
+                if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 20) {
+                    sheetHasSwiped = true;
+                    setTimeout(() => { sheetHasSwiped = false; }, 350);
+                    if (deltaY < -20) {
+                        expandSheet();
+                    } else if (deltaY > 20) {
+                        collapseSheet();
+                    }
                 }
             }, { passive: true });
         }
+
+        bindSheetSwipe(document.getElementById('sheetDragHandle'));
+        bindSheetSwipe(document.getElementById('compactHeader'));
+        bindSheetSwipe(document.getElementById('sheetPanel'));
 
         // ================= SELECTION & NAVIGATION =================
         function selectLocation(key) {
@@ -2099,11 +2097,11 @@
             const centerX = bounds.viewW / 2;
             const centerY = bounds.viewH / 2;
             
-            // Compensate for compact bottom sheet on mobile screens
+            // Compensate for compact bottom sheet on mobile screens (target shifted 32px up on screen)
             const sheetOffset = window.innerWidth < 640 ? 32 : 0;
             
             panX = (centerX - baseX) * scale;
-            panY = (centerY - sheetOffset - baseY) * scale;
+            panY = (centerY - baseY) * scale - sheetOffset;
             
             clampPan();
             container.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
@@ -2143,6 +2141,7 @@
         let initialPinchDist = 0;
         let initialScale = 1;
         let initialPanX = 0, initialPanY = 0;
+        let initialFocalX = 0, initialFocalY = 0;
         let isPinching = false;
 
         viewport.addEventListener('touchstart', (e) => {
@@ -2160,6 +2159,8 @@
                     e.touches[0].clientX - e.touches[1].clientX,
                     e.touches[0].clientY - e.touches[1].clientY
                 );
+                initialFocalX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                initialFocalY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
                 initialScale = scale;
                 initialPanX = panX;
                 initialPanY = panY;
@@ -2178,22 +2179,22 @@
                 panY = newPanY;
                 clampPan();
                 updateTransform();
-            } else if (e.touches.length === 2) {
+            } else if (e.touches.length === 2 && isPinching) {
                 hasMoved = true;
                 const currentDist = Math.hypot(
                     e.touches[0].clientX - e.touches[1].clientX,
                     e.touches[0].clientY - e.touches[1].clientY
                 );
                 if (initialPinchDist > 0) {
-                    const focalX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-                    const focalY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+                    const currentFocalX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                    const currentFocalY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
                     const newScale = Math.min(Math.max(0.65, initialScale * (currentDist / initialPinchDist)), 4.5);
                     
                     const centerX = viewport.clientWidth / 2;
                     const centerY = viewport.clientHeight / 2;
                     
-                    panX = focalX - centerX - (focalX - centerX - initialPanX) * (newScale / initialScale);
-                    panY = focalY - centerY - (focalY - centerY - initialPanY) * (newScale / initialScale);
+                    panX = currentFocalX - centerX - (newScale / initialScale) * (initialFocalX - centerX - initialPanX);
+                    panY = currentFocalY - centerY - (newScale / initialScale) * (initialFocalY - centerY - initialPanY);
                     scale = newScale;
                     clampPan();
                     updateTransform();
@@ -2201,16 +2202,39 @@
             }
         }, { passive: true });
 
-        viewport.addEventListener('touchend', () => { 
-            isDragging = false; 
-            isPinching = false;
+        viewport.addEventListener('touchend', (e) => { 
+            if (e.touches.length === 1) {
+                // If 1 finger remains on screen after 2-finger gesture, smoothly continue dragging
+                isDragging = true; 
+                isPinching = false;
+                dragStartX = e.touches[0].clientX - panX;
+                dragStartY = e.touches[0].clientY - panY;
+            } else if (e.touches.length === 0) {
+                isDragging = false; 
+                isPinching = false;
+            }
         });
 
-        // Wheel Zoom
+        // Wheel Zoom with Focal Point
+        function zoomMap(factor, clientX, clientY) {
+            const newScale = Math.min(Math.max(0.65, scale * factor), 4.5);
+            if (clientX !== undefined && clientY !== undefined) {
+                const centerX = viewport.clientWidth / 2;
+                const centerY = viewport.clientHeight / 2;
+                panX = clientX - centerX - (newScale / scale) * (clientX - centerX - panX);
+                panY = clientY - centerY - (newScale / scale) * (clientY - centerY - panY);
+            }
+            scale = newScale;
+            clampPan();
+            container.style.transition = 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)';
+            updateTransform();
+            setTimeout(() => { container.style.transition = ''; }, 150);
+        }
+
         viewport.addEventListener('wheel', (e) => {
             e.preventDefault();
             const delta = e.deltaY < 0 ? 1.15 : 0.87;
-            zoomMap(delta);
+            zoomMap(delta, e.clientX, e.clientY);
         }, { passive: false });
 
         window.addEventListener('resize', () => {
