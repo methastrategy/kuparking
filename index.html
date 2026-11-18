@@ -60,8 +60,8 @@
 
         body {
             font-family: var(--font-sans);
-            background-color: #020617;
-            color: #F8FAFC;
+            background-color: #F8FAFC;
+            color: #0F172A;
         }
 
         .touch-target-44 {
@@ -81,29 +81,33 @@
 
         /* Cockpit & HUD styling */
         .hud-panel {
-            background: rgba(15, 23, 42, 0.92);
+            background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(51, 65, 85, 0.8);
+            border: 1px solid rgba(226, 232, 240, 0.95);
             border-radius: 12px;
-            box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
         }
 
         .hud-btn {
-            background: rgba(30, 41, 59, 0.85);
-            border: 1px solid rgba(71, 85, 105, 0.7);
+            background: rgba(248, 250, 252, 0.95);
+            border: 1px solid rgba(203, 213, 225, 0.85);
             border-radius: 10px;
+            color: #334155;
             transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .hud-btn:hover {
-            background: rgba(51, 65, 85, 0.95);
-            border-color: #38BDF8;
+            background: #FFFFFF;
+            border-color: #10B981;
+            color: #065F46;
             transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
         }
         .hud-btn.active {
-            background: rgba(14, 165, 233, 0.25);
-            border-color: #38BDF8;
-            box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
+            background: rgba(16, 185, 129, 0.12);
+            border-color: #10B981;
+            color: #065F46;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
         }
 
         /* Clean Map Pin Marker without Moving/Pulsing Reticle */
@@ -117,10 +121,10 @@
     </style>
 </head>
 
-<body id="appBody" class="bg-slate-950 text-slate-100 min-h-[100dvh] h-[100dvh] w-screen flex flex-col justify-between font-thai overflow-hidden select-none">
+<body id="appBody" class="bg-slate-100 text-slate-800 min-h-[100dvh] h-[100dvh] w-screen flex flex-col justify-between font-thai overflow-hidden select-none">
 
     <!-- ================= TOP CLEAN HEADER (SINGLE OFFICIAL MODE) ================= -->
-    <header class="w-full bg-slate-900/90 border-b border-slate-800 px-3 py-2 sm:px-6 sm:py-2.5 flex items-center justify-between shrink-0 z-30 backdrop-blur-md">
+    <header class="w-full bg-white/95 border-b border-slate-200 px-3 py-2 sm:px-6 sm:py-2.5 flex items-center justify-between shrink-0 z-30 backdrop-blur-md shadow-xs">
         <!-- Brand & Title -->
         <div class="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
             <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 p-0.5 shadow-md shadow-emerald-500/20 shrink-0 flex items-center justify-center">
@@ -128,14 +132,14 @@
             </div>
             <div class="min-w-0">
                 <div class="flex items-center space-x-1.5 sm:space-x-2">
-                    <h1 id="headerTitle" class="text-xs sm:text-sm font-extrabold text-slate-100 tracking-tight truncate">
+                    <h1 id="headerTitle" class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight truncate">
                         ผังอาคารจอดรถ ม.เกษตรศาสตร์
                     </h1>
-                    <span id="headerBadge" class="text-[9px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-1.5 py-0.2 rounded font-semibold whitespace-nowrap">
+                    <span id="headerBadge" class="text-[9px] bg-emerald-50 text-emerald-800 border border-emerald-300 px-1.5 py-0.2 rounded font-bold whitespace-nowrap">
                         ฉบับทางการ 2.5D
                     </span>
                 </div>
-                <p id="headerSubtitle" class="text-[10px] text-slate-400 truncate">
+                <p id="headerSubtitle" class="text-[10px] text-slate-500 truncate">
                     แผนผังพิกัดจริง 100% • รองรับการซูม ขยาย และแตะดูพิกัดนำทาง
                 </p>
             </div>
@@ -143,7 +147,7 @@
 
         <!-- Action Control: Share Button -->
         <div class="flex items-center space-x-2 shrink-0">
-            <button onclick="shareMap()" aria-label="แชร์แผนผัง" class="hud-btn px-3 py-1.5 text-slate-300 hover:text-amber-400 rounded-lg shrink-0 flex items-center gap-1.5 text-xs font-semibold min-h-[36px]">
+            <button onclick="shareMap()" aria-label="แชร์แผนผัง" class="hud-btn px-3 py-1.5 text-slate-700 hover:text-emerald-700 rounded-lg shrink-0 flex items-center gap-1.5 text-xs font-bold min-h-[36px] bg-white border-slate-200 shadow-xs">
                 <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
                 <span class="hidden sm:inline">แชร์</span>
             </button>
@@ -187,10 +191,10 @@
 
     <!-- Cute Anime Filters & Glows -->
     <filter id="celDrop" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="3" dy="8" stdDeviation="5" flood-color="#020617" flood-opacity="0.45" />
+      <feDropShadow dx="2" dy="5" stdDeviation="4" flood-color="#64748B" flood-opacity="0.25" />
     </filter>
     <filter id="badgeGlow" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#020617" flood-opacity="0.4" />
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0F172A" flood-opacity="0.16" />
     </filter>
     <filter id="goldGlow" x="-40%" y="-40%" width="180%" height="180%">
       <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#F59E0B" flood-opacity="0.8" />
@@ -206,27 +210,27 @@
     <!-- Gradients -->
     <!-- Lush Anime Matcha Lawn -->
     <linearGradient id="animeLawn" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#48BB78" />
-      <stop offset="100%" stop-color="#2F855A" />
+      <stop offset="0%" stop-color="#86EFAC" />
+      <stop offset="100%" stop-color="#4ADE80" />
     </linearGradient>
 
     <!-- Twilight Outer Canvas Gradient -->
-    <linearGradient id="twilightSky" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0D1527" />
-      <stop offset="100%" stop-color="#070C18" />
+    <linearGradient id="morningSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#BAE6FD" />
+      <stop offset="100%" stop-color="#E0F2FE" />
     </linearGradient>
 
     <!-- Sra Phra Phirun Anime Pool Water -->
     <linearGradient id="poolWaterAnime" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0284C7" />
-      <stop offset="50%" stop-color="#0369A1" />
-      <stop offset="100%" stop-color="#075985" />
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
     </linearGradient>
 
     <!-- Road Surface Gradient (Warm Cobblestone Pavement - userSpaceOnUse avoids 0-bbox collapse on horizontal/vertical lines) -->
     <linearGradient id="warmRoadSurface" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1600" y2="1000">
-      <stop offset="0%" stop-color="#475569" />
-      <stop offset="100%" stop-color="#334155" />
+      <stop offset="0%" stop-color="#64748B" />
+      <stop offset="100%" stop-color="#475569" />
     </linearGradient>
 
     <!-- Golden Anime Fence -->
@@ -307,39 +311,42 @@
   </defs>
 
   <!-- ================= 1. CANVAS BACKGROUND (TWILIGHT SKY) ================= -->
-  <rect width="1600" height="1000" fill="url(#twilightSky)" />
+  <rect width="1600" height="1000" fill="url(#morningSky)" />
 
-  <!-- Subtle Anime Twilight Stars Scattered in Sky -->
-  <g fill="#FEF08A" opacity="0.45">
-    <circle cx="80" cy="35" r="1.5" /><circle cx="220" cy="25" r="1" /><circle cx="500" cy="20" r="1.8" />
-    <circle cx="750" cy="30" r="1.2" /><circle cx="1100" cy="20" r="1.5" /><circle cx="1320" cy="35" r="1" />
-    <circle cx="1520" cy="25" r="1.8" /><circle cx="60" cy="980" r="1.5" /><circle cx="620" cy="985" r="1" />
-    <circle cx="1380" cy="980" r="1.5" />
-    <path d="M 380 25 L 382 30 L 387 32 L 382 34 L 380 39 L 378 34 L 373 32 L 378 30 Z" fill="#93C5FD" opacity="0.6" />
-    <path d="M 1250 22 L 1252 26 L 1256 28 L 1252 30 L 1250 34 L 1248 30 L 1244 28 L 1248 26 Z" fill="#FDE047" opacity="0.6" />
+  <!-- Soft Morning Cumulus Clouds in Sky -->
+  <g fill="#FFFFFF" opacity="0.65">
+    <ellipse cx="380" cy="28" rx="42" ry="14" />
+    <ellipse cx="405" cy="22" rx="28" ry="12" />
+    <ellipse cx="360" cy="24" rx="22" ry="10" />
+    
+    <ellipse cx="1250" cy="25" rx="48" ry="15" />
+    <ellipse cx="1275" cy="18" rx="30" ry="12" />
+    <ellipse cx="1225" cy="22" rx="25" ry="10" />
+
+    <ellipse cx="800" cy="20" rx="36" ry="12" />
   </g>
 
   <!-- ================= 2. SURROUNDING HIGHWAYS OUTSIDE CAMPUS ================= -->
   <!-- 2.1 Vibhavadi Rangsit Highway (West) -->
-  <g fill="none" stroke="#1E293B" stroke-width="84">
+  <g fill="none" stroke="#CBD5E1" stroke-width="84">
     <line x1="45" y1="0" x2="45" y2="1000" />
   </g>
-  <g fill="none" stroke="#0F172A" stroke-width="72">
+  <g fill="none" stroke="#475569" stroke-width="72">
     <line x1="45" y1="0" x2="45" y2="1000" />
   </g>
   <line x1="45" y1="0" x2="45" y2="1000" stroke="#F59E0B" stroke-width="3" stroke-dasharray="14 10" />
   <line x1="20" y1="0" x2="20" y2="1000" stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="8 8" opacity="0.45" />
   <line x1="70" y1="0" x2="70" y2="1000" stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="8 8" opacity="0.45" />
   
-  <text transform="translate(28, 500) rotate(-90)" fill="#CBD5E1" font-size="11" font-weight="800" letter-spacing="2" text-anchor="middle">
+  <text transform="translate(28, 500) rotate(-90)" fill="#1E293B" font-size="11" font-weight="900" letter-spacing="2" text-anchor="middle">
     ▲ ถนนวิภาวดีรังสิต (VIBHAVADI RANGSIT RD.)
   </text>
 
   <!-- 2.2 Ngamwongwan Highway (South) -->
-  <g fill="none" stroke="#1E293B" stroke-width="84">
+  <g fill="none" stroke="#CBD5E1" stroke-width="84">
     <line x1="0" y1="955" x2="1600" y2="955" />
   </g>
-  <g fill="none" stroke="#0F172A" stroke-width="72">
+  <g fill="none" stroke="#475569" stroke-width="72">
     <line x1="0" y1="955" x2="1600" y2="955" />
   </g>
   <line x1="0" y1="955" x2="1600" y2="955" stroke="#F59E0B" stroke-width="3" stroke-dasharray="14 10" />
@@ -348,47 +355,47 @@
 
   <!-- Road Signpost: Ngamwongwan Rd. -->
   <g transform="translate(420, 955)" filter="url(#badgeGlow)">
-    <rect x="-170" y="-13" width="340" height="26" rx="7" fill="#0F172A" stroke="#F59E0B" stroke-width="2" />
-    <text x="0" y="4.5" fill="#F8FAFC" font-size="10.5" font-weight="800" text-anchor="middle">
+    <rect x="-170" y="-13" width="340" height="26" rx="7" fill="#FFFFFF" stroke="#047857" stroke-width="2" />
+    <text x="0" y="4.5" fill="#065F46" font-size="10.5" font-weight="900" text-anchor="middle">
       ▲ ถนนงามวงศ์วาน (NGAMWONGWAN RD.)
     </text>
   </g>
 
   <!-- Road Signpost: Heading Kaset Junction -->
   <g transform="translate(1080, 955)" filter="url(#badgeGlow)">
-    <rect x="-140" y="-13" width="280" height="26" rx="7" fill="#0F172A" stroke="#10B981" stroke-width="2" />
-    <text x="0" y="4.5" fill="#F8FAFC" font-size="10.5" font-weight="800" text-anchor="middle">
+    <rect x="-140" y="-13" width="280" height="26" rx="7" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" />
+    <text x="0" y="4.5" fill="#0369A1" font-size="10.5" font-weight="900" text-anchor="middle">
       ถนนงามวงศ์วาน (มุ่งหน้าแยกเกษตร)
     </text>
   </g>
 
   <!-- 2.3 Phahonyothin Highway (East) -->
-  <g fill="none" stroke="#1E293B" stroke-width="84">
+  <g fill="none" stroke="#CBD5E1" stroke-width="84">
     <line x1="1555" y1="0" x2="1555" y2="1000" />
   </g>
-  <g fill="none" stroke="#0F172A" stroke-width="72">
+  <g fill="none" stroke="#475569" stroke-width="72">
     <line x1="1555" y1="0" x2="1555" y2="1000" />
   </g>
   <line x1="1555" y1="0" x2="1555" y2="1000" stroke="#F59E0B" stroke-width="3" stroke-dasharray="14 10" />
   <line x1="1530" y1="0" x2="1530" y2="1000" stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="8 8" opacity="0.45" />
   <line x1="1580" y1="0" x2="1580" y2="1000" stroke="#FFFFFF" stroke-width="1.8" stroke-dasharray="8 8" opacity="0.45" />
 
-  <text transform="translate(1570, 260) rotate(90)" fill="#CBD5E1" font-size="11" font-weight="800" letter-spacing="2" text-anchor="middle">
+  <text transform="translate(1570, 260) rotate(90)" fill="#1E293B" font-size="11" font-weight="900" letter-spacing="2" text-anchor="middle">
     ▲ ถนนพหลโยธิน (PHAHONYOTHIN RD.)
   </text>
 
   <!-- Kaset Junction Cross Symbol (SE corner) -->
   <g transform="translate(1495, 935)" filter="url(#badgeGlow)">
-    <circle cx="0" cy="0" r="19" fill="#0F172A" stroke="#F59E0B" stroke-width="2.5" />
-    <line x1="-10" y1="-10" x2="10" y2="10" stroke="#F59E0B" stroke-width="2.8" stroke-linecap="round" />
-    <line x1="10" y1="-10" x2="-10" y2="10" stroke="#F59E0B" stroke-width="2.8" stroke-linecap="round" />
-    <rect x="-58" y="-30" width="116" height="18" rx="5" fill="#0F172A" stroke="#F59E0B" stroke-width="1.2" />
-    <text x="0" y="-18" fill="#FEF08A" font-size="8.5" font-weight="800" text-anchor="middle">สี่แยกเกษตร (หน้ามอ)</text>
+    <circle cx="0" cy="0" r="19" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2.5" />
+    <line x1="-10" y1="-10" x2="10" y2="10" stroke="#D97706" stroke-width="2.8" stroke-linecap="round" />
+    <line x1="10" y1="-10" x2="-10" y2="10" stroke="#D97706" stroke-width="2.8" stroke-linecap="round" />
+    <rect x="-58" y="-30" width="116" height="18" rx="5" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5" />
+    <text x="0" y="-18" fill="#92400E" font-size="8.5" font-weight="900" text-anchor="middle">สี่แยกเกษตร (หน้ามอ)</text>
   </g>
 
   <!-- ================= 3. MAIN UNIVERSITY CAMPUS LAWN ================= -->
   <!-- Outer Soft Contact Drop Shadow under Campus Block -->
-  <rect x="133" y="78" width="1339" height="804" rx="16" fill="#020617" opacity="0.6" filter="url(#celDrop)" />
+  <rect x="133" y="78" width="1339" height="804" rx="16" fill="#64748B" opacity="0.25" filter="url(#celDrop)" />
 
   <!-- Lush Anime Matcha Green Base -->
   <rect x="135" y="80" width="1335" height="800" rx="14" fill="url(#animeLawn)" stroke="#166534" stroke-width="3.5" />
@@ -1036,8 +1043,8 @@
     <circle cx="16" cy="-14" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="16" y="-10.5" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">P</text>
     <g id="svg-badge-ngam2" transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect id="svg-badge-rect-ngam2" x="-38" y="-9" width="76" height="18" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="1.5" />
-      <text id="svg-badge-text-ngam2" x="0" y="3.5" fill="#34D399" font-size="7.5" font-weight="800" text-anchor="middle">🅿️ งาม 2 • ว่าง</text>
+      <rect id="svg-badge-rect-ngam2" x="-38" y="-9" width="76" height="18" rx="5" fill="#FFFFFF" stroke="#10B981" stroke-width="1.8" />
+      <text id="svg-badge-text-ngam2" x="0" y="3.5" fill="#065F46" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ งาม 2 • ว่าง</text>
     </g>
   </g>
 
@@ -1057,8 +1064,8 @@
     <circle cx="16" cy="-14" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="16" y="-10.5" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">P</text>
     <g id="svg-badge-ngam1" transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect id="svg-badge-rect-ngam1" x="-38" y="-9" width="76" height="18" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="1.5" />
-      <text id="svg-badge-text-ngam1" x="0" y="3.5" fill="#34D399" font-size="7.5" font-weight="800" text-anchor="middle">🅿️ งาม 1 • ว่าง</text>
+      <rect id="svg-badge-rect-ngam1" x="-38" y="-9" width="76" height="18" rx="5" fill="#FFFFFF" stroke="#10B981" stroke-width="1.8" />
+      <text id="svg-badge-text-ngam1" x="0" y="3.5" fill="#065F46" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ งาม 1 • ว่าง</text>
     </g>
   </g>
 
@@ -1070,8 +1077,8 @@
     <circle cx="0" cy="-4" r="9" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="0" y="-0.5" fill="#FFFFFF" font-size="9.5" font-weight="900" text-anchor="middle">P</text>
     <g id="svg-badge-vipa" transform="translate(0, 32)" filter="url(#badgeGlow)">
-      <rect id="svg-badge-rect-vipa" x="-38" y="-9" width="76" height="18" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="1.5" />
-      <text id="svg-badge-text-vipa" x="0" y="3.5" fill="#34D399" font-size="7.5" font-weight="800" text-anchor="middle">🅿️ วิภาวดี • ว่าง</text>
+      <rect id="svg-badge-rect-vipa" x="-38" y="-9" width="76" height="18" rx="5" fill="#FFFFFF" stroke="#10B981" stroke-width="1.8" />
+      <text id="svg-badge-text-vipa" x="0" y="3.5" fill="#065F46" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ วิภาวดี • ว่าง</text>
     </g>
   </g>
 
@@ -1118,15 +1125,15 @@
     <use href="#floatingKrathong" x="-12" y="65" />
 
     <g transform="translate(0, -78)" filter="url(#goldGlow)">
-      <rect x="-35" y="-8.5" width="70" height="17" rx="5" fill="#0F172A" stroke="#F59E0B" stroke-width="1.5" />
-      <text x="0" y="3.5" fill="#FEF08A" font-size="7.5" font-weight="900" text-anchor="middle">จุดจัดงานหลัก 🪔</text>
+      <rect x="-35" y="-8.5" width="70" height="17" rx="5" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5" />
+      <text x="0" y="3.5" fill="#B45309" font-size="7.5" font-weight="900" text-anchor="middle">จุดจัดงานหลัก 🪔</text>
     </g>
 
     <g transform="translate(0, 104)" filter="url(#badgeGlow)">
-      <rect x="-58" y="-11" width="116" height="22" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8" />
-      <circle cx="-44" cy="0" r="5.5" fill="#F59E0B" />
-      <text x="-44" y="2.5" fill="#0F172A" font-size="7.5" font-weight="900" text-anchor="middle">🪔</text>
-      <text x="8" y="4" fill="#FEF08A" font-size="8.5" font-weight="800" text-anchor="middle">สระพระพิรุณ (จุดลอยกระทง)</text>
+      <rect x="-58" y="-11" width="116" height="22" rx="6" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8" />
+      <circle cx="-44" cy="0" r="5.5" fill="#0284C7" />
+      <text x="-44" y="2.5" fill="#FFFFFF" font-size="7.5" font-weight="900" text-anchor="middle">🪔</text>
+      <text x="8" y="4" fill="#0369A1" font-size="8.5" font-weight="900" text-anchor="middle">สระพระพิรุณ (จุดลอยกระทง)</text>
     </g>
   </g>
 
@@ -1169,40 +1176,40 @@
   <!-- ================= 7. FESTIVAL ESSENTIALS: NIGHT MARKET & RESTROOMS ================= -->
   <!-- Food Street / Night Market Promenade Zone -->
   <g id="zone-food-street" class="building-card" onclick="selectLocation('food_street')" transform="translate(1235, 760)" filter="url(#badgeGlow)">
-    <rect x="-56" y="-12" width="112" height="24" rx="7" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8" />
+    <rect x="-56" y="-12" width="112" height="24" rx="7" fill="#FFFFFF" stroke="#D97706" stroke-width="1.8" />
     <circle cx="-42" cy="0" r="6" fill="#D97706" />
     <text x="-42" y="3" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">🍢</text>
-    <text x="8" y="4" fill="#FEF08A" font-size="7.5" font-weight="800" text-anchor="middle">ถนนคนเดิน/ของกิน</text>
+    <text x="8" y="4" fill="#92400E" font-size="7.5" font-weight="900" text-anchor="middle">ถนนคนเดิน/ของกิน</text>
   </g>
 
   <!-- Restroom: Main Auditorium -->
   <g id="pin-restroom-auditorium" class="building-card" onclick="selectLocation('restroom_auditorium')" transform="translate(1185, 730)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+    <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
   <!-- Restroom: Sorn 3 -->
   <g id="pin-restroom-sorn3" class="building-card" onclick="selectLocation('restroom_sorn3')" transform="translate(480, 395)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+    <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
   <!-- Restroom: Bar Mai -->
   <g id="pin-restroom-barmai" class="building-card" onclick="selectLocation('restroom_barmai')" transform="translate(635, 175)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+    <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
   <!-- Restroom: Ngamwongwan Parking -->
   <g id="pin-restroom-ngam" class="building-card" onclick="selectLocation('restroom_ngam')" transform="translate(865, 730)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+    <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
   <!-- Restroom: Vibhavadi Parking -->
   <g id="pin-restroom-vipa" class="building-card" onclick="selectLocation('restroom_vipa')" transform="translate(170, 345)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
+    <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
 
@@ -1212,53 +1219,53 @@
   <!-- ================= 8. GATES BADGES ON FENCE ================= -->
   <!-- 8.1 Gate Vibhavadi -->
   <g id="gate-vipa" class="gate-badge" transform="translate(135, 320)" filter="url(#badgeGlow)">
-    <rect x="-26" y="-11" width="52" height="22" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1.8" />
-    <text x="0" y="4" fill="#34D399" font-size="8.5" font-weight="800" text-anchor="middle">วิภาวดี</text>
+    <rect x="-38" y="-11" width="76" height="22" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="1.8" />
+    <text x="0" y="4" fill="#065F46" font-size="8" font-weight="900" text-anchor="middle">ประตูวิภาวดี</text>
   </g>
 
   <!-- 8.2 Gate 3 Ngamwongwan -->
   <g id="gate-ngam3" class="gate-badge" transform="translate(450, 880)" filter="url(#badgeGlow)">
-    <rect x="-30" y="-11" width="60" height="22" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1.8" />
-    <circle cx="-17" cy="0" r="5" fill="#10B981" />
+    <rect x="-30" y="-11" width="60" height="22" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="1.8" />
+    <circle cx="-17" cy="0" r="5" fill="#047857" />
     <text x="-17" y="2.8" fill="#FFFFFF" font-size="6.5" font-weight="900" text-anchor="middle">3</text>
-    <text x="6" y="4" fill="#34D399" font-size="8.5" font-weight="800" text-anchor="middle">ประตู 3</text>
+    <text x="6" y="4" fill="#065F46" font-size="8.5" font-weight="900" text-anchor="middle">ประตู 3</text>
   </g>
 
   <!-- 8.4 Gate 2 Ngamwongwan -->
   <g id="gate-ngam2" class="gate-badge" transform="translate(730, 880)" filter="url(#badgeGlow)">
-    <rect x="-30" y="-11" width="60" height="22" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1.8" />
-    <circle cx="-17" cy="0" r="5" fill="#10B981" />
+    <rect x="-30" y="-11" width="60" height="22" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="1.8" />
+    <circle cx="-17" cy="0" r="5" fill="#047857" />
     <text x="-17" y="2.8" fill="#FFFFFF" font-size="6.5" font-weight="900" text-anchor="middle">2</text>
-    <text x="6" y="4" fill="#34D399" font-size="8.5" font-weight="800" text-anchor="middle">ประตู 2</text>
+    <text x="6" y="4" fill="#065F46" font-size="8.5" font-weight="900" text-anchor="middle">ประตู 2</text>
   </g>
 
   <!-- 8.5 Gate 1 Ngamwongwan -->
   <g id="gate-ngam1" class="gate-badge" transform="translate(1000, 880)" filter="url(#badgeGlow)">
-    <rect x="-30" y="-11" width="60" height="22" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1.8" />
-    <circle cx="-17" cy="0" r="5" fill="#10B981" />
+    <rect x="-30" y="-11" width="60" height="22" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="1.8" />
+    <circle cx="-17" cy="0" r="5" fill="#047857" />
     <text x="-17" y="2.8" fill="#FFFFFF" font-size="6.5" font-weight="900" text-anchor="middle">1</text>
-    <text x="6" y="4" fill="#34D399" font-size="8.5" font-weight="800" text-anchor="middle">ประตู 1</text>
+    <text x="6" y="4" fill="#065F46" font-size="8.5" font-weight="900" text-anchor="middle">ประตู 1</text>
   </g>
 
   <!-- 8.6 Gate Phahon 2 -->
   <g id="gate-phahon2" class="gate-badge" transform="translate(1470, 440)" filter="url(#badgeGlow)">
-    <rect x="-38" y="-11" width="76" height="22" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1.8" />
-    <text x="0" y="4" fill="#34D399" font-size="8" font-weight="800" text-anchor="middle">ประตู 2 (รพ.สัตว์)</text>
+    <rect x="-38" y="-11" width="76" height="22" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="1.8" />
+    <text x="0" y="4" fill="#065F46" font-size="8" font-weight="900" text-anchor="middle">ประตู 2 (รพ.สัตว์)</text>
   </g>
 
   <!-- 8.7 Gate Phahon 1 -->
   <g id="gate-phahon1" class="gate-badge" transform="translate(1470, 760)" filter="url(#badgeGlow)">
-    <rect x="-38" y="-11" width="76" height="22" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1.8" />
-    <text x="0" y="4" fill="#34D399" font-size="8" font-weight="800" text-anchor="middle">ประตู 1 (ข้างสระ)</text>
+    <rect x="-38" y="-11" width="76" height="22" rx="6" fill="#FFFFFF" stroke="#047857" stroke-width="1.8" />
+    <text x="0" y="4" fill="#065F46" font-size="8" font-weight="900" text-anchor="middle">ประตู 1 (ข้างสระ)</text>
   </g>
 
   <!-- ================= 9. ELEGANT UNIVERSITY COMPASS ROSE & RETICLE ================= -->
   <!-- University Compass Rose (KU Emerald #047857 & Gold #F59E0B) -->
   <g id="universityCompass" transform="translate(1420, 110)" filter="url(#badgeGlow)">
-    <circle cx="0" cy="0" r="23" fill="#0B132B" stroke="#047857" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="23" fill="#FFFFFF" stroke="#047857" stroke-width="2.5" />
     <circle cx="0" cy="0" r="20" fill="none" stroke="#F59E0B" stroke-width="0.8" opacity="0.6" stroke-dasharray="2 2" />
     
-    <line x1="0" y1="-22" x2="0" y2="-19" stroke="#FEF08A" stroke-width="1.5" />
+    <line x1="0" y1="-22" x2="0" y2="-19" stroke="#047857" stroke-width="1.5" />
     <line x1="0" y1="22" x2="0" y2="19" stroke="#94A3B8" stroke-width="1" />
     <line x1="-22" y1="0" x2="-19" y2="0" stroke="#94A3B8" stroke-width="1" />
     <line x1="22" y1="0" x2="19" y2="0" stroke="#94A3B8" stroke-width="1" />
@@ -1282,8 +1289,8 @@
     <circle cx="0" cy="0" r="2.2" fill="#10B981" />
     
     <!-- North Typography -->
-    <text x="0" y="-25" fill="#FEF08A" font-size="8.5" font-weight="900" text-anchor="middle" font-family="'Inter', sans-serif">N</text>
-    <text x="0" y="32" fill="#94A3B8" font-size="7" font-weight="700" text-anchor="middle">ทิศเหนือ</text>
+    <text x="0" y="-25" fill="#B45309" font-size="9" font-weight="900" text-anchor="middle" font-family="'Inter', sans-serif">N</text>
+    <text x="0" y="32" fill="#065F46" font-size="7.5" font-weight="800" text-anchor="middle">ทิศเหนือ</text>
   </g>
 
   <!-- Sleek Map Pin Marker (Google Maps Dropped Pin Style) -->
@@ -1323,14 +1330,14 @@
     <div id="bottomSheet" class="fixed bottom-0 left-0 right-0 z-40 select-none flex flex-col justify-end pointer-events-none transition-all duration-300">
         
         <!-- Backdrop on Mobile (Tap outside to collapse) -->
-        <div id="sheetBackdrop" onclick="collapseSheet()" class="fixed inset-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 sm:hidden"></div>
+        <div id="sheetBackdrop" onclick="collapseSheet()" class="fixed inset-0 bg-slate-900/25 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300 sm:hidden"></div>
 
         <!-- Main Sheet Surface -->
-        <div id="sheetPanel" class="pointer-events-auto w-full sm:max-w-4xl mx-auto bg-slate-900/95 sm:bg-slate-900/90 border-t sm:border border-slate-700/80 sm:rounded-2xl shadow-2xl backdrop-blur-xl sm:mb-3 transition-all duration-300 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+        <div id="sheetPanel" class="pointer-events-auto w-full sm:max-w-4xl mx-auto bg-white/95 sm:bg-white/95 border-t sm:border border-slate-200 sm:rounded-2xl shadow-xl backdrop-blur-xl sm:mb-3 transition-all duration-300 pb-[max(0.5rem,env(safe-area-inset-bottom))] text-slate-800">
             
             <!-- Mobile Drag Handle Bar -->
             <div id="sheetDragHandle" onclick="toggleSheet()" class="w-full pt-2 pb-1 flex justify-center cursor-pointer sm:hidden active:opacity-70">
-                <div class="w-12 h-1.5 rounded-full bg-slate-600"></div>
+                <div class="w-12 h-1.5 rounded-full bg-slate-300"></div>
             </div>
 
             <!-- 1. COMPACT HEADER BAR (Always Visible ~54px on mobile) -->
@@ -1338,17 +1345,17 @@
                 
                 <!-- Left: Icon + Title + Live Status Pill -->
                 <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-                    <span id="dialogIcon" class="text-xl sm:text-2xl shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-slate-800/90 border border-slate-700/70 flex items-center justify-center shadow-inner">
+                    <span id="dialogIcon" class="text-xl sm:text-2xl shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-center shadow-xs">
                         🪔
                     </span>
                     <div class="min-w-0 flex-1">
                         <div class="flex items-center gap-1.5 sm:gap-2">
-                            <h2 id="dialogTitle" class="text-xs sm:text-sm font-bold text-white truncate leading-tight">
+                            <h2 id="dialogTitle" class="text-xs sm:text-sm font-bold text-slate-900 truncate leading-tight">
                                 สระพระพิรุณ (จุดจัดงานลอยกระทง)
                             </h2>
                             <span id="dialogStatus" class="hidden text-[9px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap"></span>
                         </div>
-                        <p id="dialogDescCompact" class="text-[10px] text-slate-400 truncate hidden sm:block mt-0.5">
+                        <p id="dialogDescCompact" class="text-[10px] text-slate-500 truncate hidden sm:block mt-0.5">
                             จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรม
                         </p>
                     </div>
@@ -1363,7 +1370,7 @@
                     </a>
 
                     <!-- Mobile Expand/Collapse Toggle Chevron -->
-                    <button id="chevronBtn" onclick="toggleSheet()" aria-label="ย่อ/ขยายรายละเอียด" class="touch-target-44 p-2 rounded-xl text-slate-400 hover:text-white bg-slate-800/70 sm:hidden">
+                    <button id="chevronBtn" onclick="toggleSheet()" aria-label="ย่อ/ขยายรายละเอียด" class="touch-target-44 p-2 rounded-xl text-slate-500 hover:text-slate-800 bg-slate-100 border border-slate-200 sm:hidden">
                         <i id="chevronIcon" data-lucide="chevron-up" class="w-4 h-4 transition-transform duration-300"></i>
                     </button>
                 </div>
@@ -1373,16 +1380,16 @@
             <div id="sheetExpandedContent" class="overflow-hidden transition-all duration-300 max-h-0 sm:max-h-none opacity-0 sm:opacity-100 px-3 sm:px-4 space-y-2 sm:space-y-2.5">
                 
                 <!-- Category and Detailed Description -->
-                <div class="p-2 sm:p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 text-xs text-slate-300 space-y-1">
+                <div class="p-2 sm:p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-1">
                     <div class="flex items-center gap-2">
-                        <span id="dialogCategory" class="text-[9px] font-semibold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                        <span id="dialogCategory" class="text-[9px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-300">
                             งานลอยกระทงหลัก
                         </span>
-                        <span id="dialogTelemetry" class="text-[10px] text-slate-400">
+                        <span id="dialogTelemetry" class="text-[10px] text-slate-500">
                             ผังและพิกัดทางการ 100%
                         </span>
                     </div>
-                    <p id="dialogDesc" class="text-xs text-slate-200 leading-relaxed font-normal">
+                    <p id="dialogDesc" class="text-xs text-slate-600 leading-relaxed font-normal">
                         จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรมและร้านค้านิสิต
                     </p>
                 </div>
@@ -1394,28 +1401,28 @@
                             <span class="text-xs">🅿️</span>
                             <span id="chip-status-vipa" class="text-[8px] px-1 py-0.2 rounded font-bold bg-emerald-500/20 text-emerald-400">ว่าง</span>
                         </div>
-                        <div class="text-[11px] font-bold text-slate-200 truncate mt-0.5">วิภาวดี</div>
+                        <div class="text-[11px] font-bold text-slate-700 truncate mt-0.5">วิภาวดี</div>
                     </button>
                     <button onclick="selectLocation('ngam1')" id="btn-ngam1" class="hud-btn p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
                         <div class="flex items-center justify-between w-full">
                             <span class="text-xs">🅿️</span>
                             <span id="chip-status-ngam1" class="text-[8px] px-1 py-0.2 rounded font-bold bg-emerald-500/20 text-emerald-400">ว่าง</span>
                         </div>
-                        <div class="text-[11px] font-bold text-slate-200 truncate mt-0.5">งาม 1</div>
+                        <div class="text-[11px] font-bold text-slate-700 truncate mt-0.5">งาม 1</div>
                     </button>
                     <button onclick="selectLocation('ngam2')" id="btn-ngam2" class="hud-btn p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
                         <div class="flex items-center justify-between w-full">
                             <span class="text-xs">🅿️</span>
                             <span id="chip-status-ngam2" class="text-[8px] px-1 py-0.2 rounded font-bold bg-emerald-500/20 text-emerald-400">ว่าง</span>
                         </div>
-                        <div class="text-[11px] font-bold text-slate-200 truncate mt-0.5">งาม 2</div>
+                        <div class="text-[11px] font-bold text-slate-700 truncate mt-0.5">งาม 2</div>
                     </button>
                     <button onclick="selectLocation('pond')" id="btn-pond" class="hud-btn active p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
                         <div class="flex items-center justify-between w-full">
                             <span class="text-xs">🪔</span>
                             <span class="text-[8px] px-1 py-0.2 rounded font-bold bg-amber-500/20 text-amber-300">จัดงาน</span>
                         </div>
-                        <div class="text-[11px] font-bold text-amber-300 truncate mt-0.5">สระพระพิรุณ</div>
+                        <div class="text-[11px] font-bold text-amber-800 truncate mt-0.5">สระพระพิรุณ</div>
                     </button>
                 </div>
 
@@ -1777,10 +1784,10 @@
             currentParkingData = data;
 
             const statusMap = {
-                open:    { text: 'ว่าง',     badgeClass: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40', stroke: '#10B981', color: '#34D399', fullText: '' },
-                warning: { text: 'ใกล้เต็ม', badgeClass: 'bg-amber-500/20 text-amber-400 border-amber-500/40', stroke: '#F59E0B', color: '#FCD34D', fullText: '● ชะลอรับรถ (ใกล้เต็ม)' },
-                full:    { text: 'เต็ม',     badgeClass: 'bg-red-500/20 text-red-400 border-red-500/40', stroke: '#EF4444', color: '#FCA5A5', fullText: '● งดรับรถ (ที่จอดเต็ม)' },
-                closed:  { text: 'ปิด',      badgeClass: 'bg-slate-700/60 text-slate-300 border-slate-600', stroke: '#64748B', color: '#CBD5E1', fullText: '● งดให้บริการ (ปิดอาคาร)' }
+                open:    { text: 'ว่าง',     badgeClass: 'bg-emerald-50 text-emerald-800 border-emerald-300', stroke: '#10B981', color: '#065F46', fullText: '' },
+                warning: { text: 'ใกล้เต็ม', badgeClass: 'bg-amber-50 text-amber-800 border-amber-300', stroke: '#F59E0B', color: '#B45309', fullText: '● ชะลอรับรถ (ใกล้เต็ม)' },
+                full:    { text: 'เต็ม',     badgeClass: 'bg-red-50 text-red-800 border-red-300', stroke: '#EF4444', color: '#B91C1C', fullText: '● งดรับรถ (ที่จอดเต็ม)' },
+                closed:  { text: 'ปิด',      badgeClass: 'bg-slate-100 text-slate-700 border-slate-300', stroke: '#64748B', color: '#334155', fullText: '● งดให้บริการ (ปิดอาคาร)' }
             };
 
             ['ngam1', 'ngam2', 'vipa'].forEach(id => {

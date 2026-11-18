@@ -48,19 +48,19 @@
 
         /* Concentric Glassmorphism */
         .glass-panel {
-            background: rgba(11, 19, 43, 0.88);
+            background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
         }
 
         .glass-card {
-            background: rgba(15, 23, 42, 0.88);
+            background: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
         }
 
         /* Touch Target Invisible Halo (HIG 44px min-touch) */
@@ -83,7 +83,7 @@
         }
     </style>
 </head>
-<body class="bg-[#050814] text-slate-100 min-h-screen flex flex-col p-3 sm:p-5 select-none antialiased">
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col p-3 sm:p-5 select-none antialiased">
 
     <!-- FLOATING TOAST NOTIFICATION -->
     <div id="toastNotification" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden">
@@ -94,26 +94,26 @@
     </div>
 
     <!-- 1. LOGIN SCREEN -->
-    <div id="loginScreen" class="fixed inset-0 bg-[#050814] z-50 flex items-center justify-center p-4">
-        <div class="glass-panel rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl text-center border border-slate-800">
+    <div id="loginScreen" class="fixed inset-0 bg-slate-100/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-xl text-center border border-slate-200">
             
             <div class="w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-emerald-700/20 border border-emerald-500/30 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
                 🔐
             </div>
             
-            <h2 class="text-lg font-bold text-white tracking-tight">ระบบเจ้าหน้าที่ประจำจุด</h2>
-            <p class="text-xs text-slate-400 mt-1 mb-6 leading-relaxed">สำหรับอัปเดตสถานะเปิด/เต็มของอาคารจอดรถ ม.เกษตรศาสตร์</p>
+            <h2 class="text-lg font-bold text-slate-900 tracking-tight">ระบบเจ้าหน้าที่ประจำจุด</h2>
+            <p class="text-xs text-slate-500 mt-1 mb-6 leading-relaxed">สำหรับอัปเดตสถานะเปิด/เต็มของอาคารจอดรถ ม.เกษตรศาสตร์</p>
 
             <form onsubmit="handleLoginSubmit(event)" class="space-y-4">
                 <div>
-                    <input id="pinInput" type="password" maxlength="6" inputmode="numeric" placeholder="ใส่รหัส PIN (1234)" autofocus class="w-full text-center text-xl tracking-widest bg-slate-950/90 border border-slate-700/90 rounded-2xl py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
+                    <input id="pinInput" type="password" maxlength="6" inputmode="numeric" placeholder="ใส่รหัส PIN (1234)" autofocus class="w-full text-center text-xl tracking-widest bg-white border border-slate-300 rounded-2xl py-3.5 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
                 </div>
                 <button type="submit" class="touch-target-44 w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 active:scale-95 text-white font-bold py-3.5 rounded-2xl shadow-lg shadow-emerald-950/80 transition text-sm">
                     เข้าสู่ระบบสต๊าฟ
                 </button>
             </form>
             
-            <div class="mt-5 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px] text-slate-400">
+            <div class="mt-5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-600">
                 <span>* รหัส PIN ค่าเริ่มต้นสำหรับการทดสอบ: </span>
                 <span class="font-mono text-emerald-400 font-bold">1234</span>
             </div>
@@ -124,13 +124,13 @@
     <div id="adminPanel" class="max-w-lg mx-auto w-full flex-1 flex flex-col hidden">
         
         <!-- Header -->
-        <header class="glass-panel rounded-2xl px-4 py-3 mb-4 flex items-center justify-between border border-slate-800 shadow-md">
+        <header class="glass-panel rounded-2xl px-4 py-3 mb-4 flex items-center justify-between border border-slate-200 shadow-sm">
             <div class="flex items-center space-x-2.5">
                 <div class="w-8 h-8 rounded-lg bg-emerald-600/30 border border-emerald-500/40 flex items-center justify-center">
                     <i data-lucide="shield" class="w-4 h-4 text-emerald-400"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-xs sm:text-sm text-white leading-tight">ระบบคุมสถานะอาคารจอดรถ</h1>
+                    <h1 class="font-bold text-xs sm:text-sm text-slate-900 leading-tight">ระบบคุมสถานะอาคารจอดรถ</h1>
                     <div class="flex items-center gap-1.5 mt-0.5">
                         <span id="syncIndicator" class="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-semibold">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -141,11 +141,11 @@
             </div>
 
             <div class="flex items-center space-x-1.5">
-                <button onclick="openCloudModal()" title="ตั้งค่า Cloud Sync" class="touch-target-44 text-xs bg-slate-800/80 hover:bg-slate-700/80 px-2.5 py-2 rounded-xl text-slate-300 border border-slate-700/80 flex items-center space-x-1 transition">
+                <button onclick="openCloudModal()" title="ตั้งค่า Cloud Sync" class="touch-target-44 text-xs bg-slate-100 hover:bg-slate-200 px-2.5 py-2 rounded-xl text-slate-700 border border-slate-300 flex items-center space-x-1 transition">
                     <i data-lucide="cloud" class="w-3.5 h-3.5 text-sky-400"></i>
                     <span class="text-[11px]">Cloud</span>
                 </button>
-                <a href="index.html" target="_blank" class="touch-target-44 text-xs bg-slate-800/80 hover:bg-slate-700/80 px-3 py-2 rounded-xl text-slate-300 border border-slate-700/80 flex items-center space-x-1.5 transition">
+                <a href="index.html" target="_blank" class="touch-target-44 text-xs bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-xl text-slate-700 border border-slate-300 flex items-center space-x-1.5 transition">
                     <i data-lucide="map" class="w-3.5 h-3.5 text-emerald-400"></i>
                     <span>แผนที่</span>
                 </a>
@@ -159,15 +159,15 @@
         <main class="space-y-3.5 flex-1 pb-10">
 
             <!-- 1. งามวงศ์วาน 1 -->
-            <div class="glass-card rounded-2xl p-4 sm:p-4.5 border border-slate-800">
+            <div class="glass-card rounded-2xl p-4 sm:p-4.5 border border-slate-200">
                 <div class="flex items-center justify-between mb-3.5">
                     <div>
                         <div class="flex items-center space-x-1.5">
                             <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">ZONE 1</span>
                             <span class="text-[10px] text-slate-500">|</span>
-                            <span class="text-[10px] text-slate-400 tabular-nums">ความจุตามผัง ~289 คัน</span>
+                            <span class="text-[10px] text-slate-500 tabular-nums">ความจุตามผัง ~289 คัน</span>
                         </div>
-                        <h2 class="text-base font-bold text-white mt-0.5">อาคารจอดรถงามวงศ์วาน 1</h2>
+                        <h2 class="text-base font-bold text-slate-900 mt-0.5">อาคารจอดรถงามวงศ์วาน 1</h2>
                     </div>
                     <div id="statusBadge-ngam1" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                         🟢 ว่าง
@@ -196,15 +196,15 @@
             </div>
 
             <!-- 2. งามวงศ์วาน 2 -->
-            <div class="glass-card rounded-2xl p-4 sm:p-4.5 border border-slate-800">
+            <div class="glass-card rounded-2xl p-4 sm:p-4.5 border border-slate-200">
                 <div class="flex items-center justify-between mb-3.5">
                     <div>
                         <div class="flex items-center space-x-1.5">
                             <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">ZONE 2</span>
                             <span class="text-[10px] text-slate-500">|</span>
-                            <span class="text-[10px] text-slate-400 tabular-nums">ความจุตามผัง ~192 คัน</span>
+                            <span class="text-[10px] text-slate-500 tabular-nums">ความจุตามผัง ~192 คัน</span>
                         </div>
-                        <h2 class="text-base font-bold text-white mt-0.5">อาคารจอดรถงามวงศ์วาน 2</h2>
+                        <h2 class="text-base font-bold text-slate-900 mt-0.5">อาคารจอดรถงามวงศ์วาน 2</h2>
                     </div>
                     <div id="statusBadge-ngam2" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                         🟢 ว่าง
@@ -233,15 +233,15 @@
             </div>
 
             <!-- 3. วิภาวดี -->
-            <div class="glass-card rounded-2xl p-4 sm:p-4.5 border border-slate-800">
+            <div class="glass-card rounded-2xl p-4 sm:p-4.5 border border-slate-200">
                 <div class="flex items-center justify-between mb-3.5">
                     <div>
                         <div class="flex items-center space-x-1.5">
                             <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">ZONE VIPA</span>
                             <span class="text-[10px] text-slate-500">|</span>
-                            <span class="text-[10px] text-slate-400 tabular-nums">ความจุตามผัง ~150 คัน</span>
+                            <span class="text-[10px] text-slate-500 tabular-nums">ความจุตามผัง ~150 คัน</span>
                         </div>
-                        <h2 class="text-base font-bold text-white mt-0.5">อาคารจอดรถวิภาวดี</h2>
+                        <h2 class="text-base font-bold text-slate-900 mt-0.5">อาคารจอดรถวิภาวดี</h2>
                     </div>
                     <div id="statusBadge-vipa" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                         🟢 ว่าง
@@ -517,16 +517,16 @@
 
                     if (st === status) {
                         if (st === 'open') {
-                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-emerald-500/25 text-emerald-300 border-2 border-emerald-400 shadow-md shadow-emerald-950 scale-[1.02] flex flex-col items-center justify-center gap-0.5';
+                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-emerald-50 text-emerald-800 border-2 border-emerald-500 shadow-xs scale-[1.02] flex flex-col items-center justify-center gap-0.5';
                         } else if (st === 'warning') {
-                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-amber-500/25 text-amber-300 border-2 border-amber-400 shadow-md shadow-amber-950 scale-[1.02] flex flex-col items-center justify-center gap-0.5';
+                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-amber-50 text-amber-800 border-2 border-amber-500 shadow-xs scale-[1.02] flex flex-col items-center justify-center gap-0.5';
                         } else if (st === 'full') {
-                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-red-500/25 text-red-300 border-2 border-red-400 shadow-md shadow-red-950 scale-[1.02] flex flex-col items-center justify-center gap-0.5';
+                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-red-50 text-red-800 border-2 border-red-500 shadow-xs scale-[1.02] flex flex-col items-center justify-center gap-0.5';
                         } else if (st === 'closed') {
-                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-slate-700/70 text-slate-200 border-2 border-slate-400 shadow-md scale-[1.02] flex flex-col items-center justify-center gap-0.5';
+                            btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-bold bg-slate-200 text-slate-800 border-2 border-slate-400 shadow-xs scale-[1.02] flex flex-col items-center justify-center gap-0.5';
                         }
                     } else {
-                        btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-medium bg-slate-900/60 hover:bg-slate-800 text-slate-400 border border-slate-800 active:scale-95 flex flex-col items-center justify-center gap-0.5 transition';
+                        btn.className = 'touch-target-44 rounded-xl text-xs py-2 px-1 font-medium bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200 active:scale-95 flex flex-col items-center justify-center gap-0.5 transition';
                     }
                 });
             });
