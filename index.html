@@ -156,7 +156,120 @@
 
 
     <!-- ================= MAIN MAP VIEWPORT (SINGLE CLEAN SVG) ================= -->
-    <div class="relative flex-1 w-full overflow-hidden bg-slate-950 flex flex-col items-center justify-center">
+    <div class="relative flex-1 w-full overflow-hidden bg-sky-50 flex flex-col md:flex-row items-stretch justify-start">
+        
+        <!-- ================= DESKTOP LEFT SIDEBAR CONTROL PANEL ================= -->
+        <aside id="desktopSidebar" class="hidden md:flex flex-col w-80 lg:w-88 shrink-0 bg-white/95 backdrop-blur-xl border-r border-slate-200 z-30 p-4 justify-between shadow-sm select-none">
+            <div class="space-y-3.5">
+                <!-- Header / Mode Info -->
+                <div class="pb-3 border-b border-slate-100">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                            งานลอยกระทง มก. 2569
+                        </span>
+                        <span class="text-[11px] text-slate-400">พิกัดทางการ</span>
+                    </div>
+                    <h2 class="text-sm font-extrabold text-slate-900 mt-1.5 leading-snug">
+                        ผังอาคารจอดรถ & จุดจัดงาน
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-0.5">
+                        แตะ 4 จุดหลักบนแผนที่ หรือกดปุ่มด้านล่างเพื่อดูเส้นทาง
+                    </p>
+                </div>
+
+                <!-- 4 Primary Buttons -->
+                <div class="space-y-2">
+                    <!-- 1. Vipa -->
+                    <button onclick="selectLocation('vipa')" id="dt-btn-vipa" class="hud-btn w-full p-2.5 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="text-xl w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🅿️</span>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900">อาคารจอดรถวิภาวดีรังสิต</div>
+                                <div class="text-[10px] text-slate-500">ฝั่งประตูวิภาวดี • ความจุ ~150 คัน</div>
+                            </div>
+                        </div>
+                        <span id="dt-chip-vipa" class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-emerald-50 text-emerald-700 border border-emerald-300">ว่าง</span>
+                    </button>
+
+                    <!-- 2. Ngam 1 -->
+                    <button onclick="selectLocation('ngam1')" id="dt-btn-ngam1" class="hud-btn w-full p-2.5 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="text-xl w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🅿️</span>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900">อาคารจอดรถงามวงศ์วาน 1</div>
+                                <div class="text-[10px] text-slate-500">ประตู 1 งามวงศ์วาน • ความจุ ~289 คัน</div>
+                            </div>
+                        </div>
+                        <span id="dt-chip-ngam1" class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-emerald-50 text-emerald-700 border border-emerald-300">ว่าง</span>
+                    </button>
+
+                    <!-- 3. Ngam 2 -->
+                    <button onclick="selectLocation('ngam2')" id="dt-btn-ngam2" class="hud-btn w-full p-2.5 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="text-xl w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🅿️</span>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900">อาคารจอดรถงามวงศ์วาน 2</div>
+                                <div class="text-[10px] text-slate-500">ประตู 2 งามวงศ์วาน • ความจุ ~192 คัน</div>
+                            </div>
+                        </div>
+                        <span id="dt-chip-ngam2" class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-emerald-50 text-emerald-700 border border-emerald-300">ว่าง</span>
+                    </button>
+
+                    <!-- 4. Pond -->
+                    <button onclick="selectLocation('pond')" id="dt-btn-pond" class="hud-btn w-full p-2.5 rounded-xl border flex items-center justify-between text-left transition hover:border-amber-500 group">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="text-xl w-9 h-9 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🪔</span>
+                            <div>
+                                <div class="text-xs font-bold text-amber-900">สระพระพิรุณ (จุดจัดงาน)</div>
+                                <div class="text-[10px] text-slate-500">จุดลอยกระทงหลักใจกลาง มก.</div>
+                            </div>
+                        </div>
+                        <span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-amber-50 text-amber-700 border border-amber-300">จัดงาน</span>
+                    </button>
+                </div>
+
+                <!-- Selected Location Detail Card (Hidden on initial load) -->
+                <div id="dt-detailCard" class="hidden p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <span id="dt-detailCategory" class="text-[9px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-300">
+                                อาคารจอดรถ
+                            </span>
+                            <h3 id="dt-detailTitle" class="text-sm font-bold text-slate-900 mt-1">
+                                ชื่อสถานที่
+                            </h3>
+                        </div>
+                        <button onclick="clearSelection()" title="ปิดการเลือก" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-200 transition">
+                            <i data-lucide="x" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <p id="dt-detailDesc" class="text-xs text-slate-600 leading-relaxed">
+                        คำอธิบายสถานที่
+                    </p>
+                    <a id="dt-detailMapBtn" href="#" target="_blank" rel="noopener noreferrer" class="touch-target-44 w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold text-xs shadow-md shadow-emerald-950/20 active:scale-95 transition flex items-center justify-center gap-1.5 border border-emerald-400/40">
+                        <i data-lucide="navigation" class="w-3.5 h-3.5 fill-white text-white"></i>
+                        <span>เปิด Google Maps นำทางตรง</span>
+                    </a>
+                </div>
+
+                <!-- Default Guidance Card (Shown when nothing is selected) -->
+                <div id="dt-guidePlaceholder" class="p-4 rounded-2xl bg-slate-50 border border-dashed border-slate-200 text-center">
+                    <div class="text-2xl mb-1">🗺️</div>
+                    <div class="text-xs font-bold text-slate-800">มุมมองภาพรวมแผนที่ มก.</div>
+                    <div class="text-[11px] text-slate-500 mt-1 leading-relaxed">แตะที่อาคารจอดรถ 3 จุด หรือสระพระพิรุณบนแผนที่ เพื่อดูพิกัดและเส้นทางนำทาง</div>
+                </div>
+            </div>
+
+            <!-- Sidebar Footer -->
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                <span>ผังพิกัด มก. 2569</span>
+                <button onclick="resetMapView()" class="hover:text-emerald-700 font-bold flex items-center gap-1 text-slate-600">
+                    <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                    <span>รีเซ็ตมุมมอง</span>
+                </button>
+            </div>
+        </aside>
+
         <main id="mapViewport" class="relative w-full h-full flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing touch-none select-none">
             
             <!-- Scalable Inner Map Wrapper for Smooth Pan & Zoom -->
@@ -611,7 +724,7 @@
   <!-- ================= 7. 2.5D CEL-SHADED BUILDINGS & LANDMARKS ================= -->
 
   <!-- [1] โรงเรียนสาธิต มก. (Satit Kasetsart) -->
-  <g id="building-satit" class="building-card" onclick="selectLocation('satit')" transform="translate(320, 246)" filter="url(#celDrop)">
+  <g id="building-satit" class="building-card"  transform="translate(320, 246)" filter="url(#celDrop)">
     <ellipse cx="0" cy="44" rx="74" ry="14" fill="#020617" opacity="0.35" />
     <rect x="-68" y="-38" width="136" height="76" rx="8" fill="#FFFBEB" stroke="#0F172A" stroke-width="2.5" />
     <rect x="-65" y="4" width="130" height="31" rx="5" fill="#FEF3C7" opacity="0.6" />
@@ -652,7 +765,7 @@
   </g>
 
   <!-- [2] โรงอาหารกลาง 2 (บาร์ใหม่) -->
-  <g id="building-barmai" class="building-card" onclick="selectLocation('barmai')" transform="translate(580, 197)" filter="url(#celDrop)">
+  <g id="building-barmai" class="building-card"  transform="translate(580, 197)" filter="url(#celDrop)">
     <ellipse cx="0" cy="40" rx="74" ry="14" fill="#020617" opacity="0.35" />
     <rect x="-65" y="-32" width="130" height="64" rx="8" fill="#ECFDF5" stroke="#0F172A" stroke-width="2.5" />
     <polygon points="-72,-32 0,-54 72,-32" fill="#047857" stroke="#0F172A" stroke-width="2.5" />
@@ -682,7 +795,7 @@
   </g>
 
   <!-- [3] ศูนย์เรียนรวม 3 (ศร.3) -->
-  <g id="building-sorn3" class="building-card" onclick="selectLocation('sorn3')" transform="translate(430, 415)" filter="url(#celDrop)">
+  <g id="building-sorn3" class="building-card"  transform="translate(430, 415)" filter="url(#celDrop)">
     <ellipse cx="0" cy="40" rx="66" ry="12" fill="#020617" opacity="0.35" />
     <rect x="-58" y="-30" width="116" height="60" rx="7" fill="#F0FDF4" stroke="#0F172A" stroke-width="2.5" />
     <path d="M -62 -30 Q 0 -56 62 -30 Z" fill="#047857" stroke="#0F172A" stroke-width="2.5" />
@@ -697,7 +810,7 @@
   </g>
 
   <!-- [4] สำนักหอสมุด มก. (อาคารสารนิเทศ 50 ปี) -->
-  <g id="building-library" class="building-card" onclick="selectLocation('library')" transform="translate(680, 340)" filter="url(#celDrop)">
+  <g id="building-library" class="building-card"  transform="translate(680, 340)" filter="url(#celDrop)">
     <ellipse cx="0" cy="40" rx="66" ry="12" fill="#020617" opacity="0.35" />
     <rect x="-56" y="-32" width="112" height="64" rx="8" fill="#F0F9FF" stroke="#0F172A" stroke-width="2.5" />
     <rect x="-60" y="-38" width="120" height="11" rx="4" fill="#0284C7" stroke="#0F172A" stroke-width="2" />
@@ -719,7 +832,7 @@
   </g>
 
   <!-- [5] สถาบันวิจัยพืชสวน (Horticulture Research Institute - B18) -->
-  <g id="building-horticulture" class="building-card" onclick="selectLocation('horticulture')" transform="translate(960, 285)" filter="url(#celDrop)">
+  <g id="building-horticulture" class="building-card"  transform="translate(960, 285)" filter="url(#celDrop)">
     <ellipse cx="0" cy="26" rx="52" ry="10" fill="#020617" opacity="0.35" />
     <rect x="-44" y="8" width="88" height="13" rx="3" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5" />
     <rect x="-40" y="-24" width="80" height="36" rx="5" fill="#F0FDF4" stroke="#0F172A" stroke-width="2" />
@@ -742,7 +855,7 @@
   </g>
 
   <!-- [6] คณะเทคนิคการสัตวแพทย์ (Faculty of Veterinary Technology - B4) -->
-  <g id="building-vet-tech" class="building-card" onclick="selectLocation('vetTech')" transform="translate(1215, 320)" filter="url(#celDrop)">
+  <g id="building-vet-tech" class="building-card"  transform="translate(1215, 320)" filter="url(#celDrop)">
     <ellipse cx="0" cy="38" rx="58" ry="11" fill="#020617" opacity="0.35" />
     <rect x="-52" y="-28" width="104" height="56" rx="7" fill="#FAF5FF" stroke="#0F172A" stroke-width="2.5" />
     <polygon points="-57,-28 -20,-42 20,-42 57,-28" fill="#6D28D9" stroke="#0F172A" stroke-width="2" />
@@ -764,7 +877,7 @@
   </g>
 
   <!-- [7] โรงพยาบาลสัตว์ มก. (KU Veterinary Teaching Hospital - B5) -->
-  <g id="building-vet-hospital" class="building-card" onclick="selectLocation('vetHospital')" transform="translate(1395, 330)" filter="url(#celDrop)">
+  <g id="building-vet-hospital" class="building-card"  transform="translate(1395, 330)" filter="url(#celDrop)">
     <ellipse cx="0" cy="40" rx="58" ry="12" fill="#020617" opacity="0.35" />
     <rect x="-54" y="-30" width="108" height="60" rx="7" fill="#FFF1F2" stroke="#0F172A" stroke-width="2.5" />
     <polygon points="-59,-30 0,-50 59,-30" fill="#BE123C" stroke="#0F172A" stroke-width="2" />
@@ -786,7 +899,7 @@
   </g>
 
   <!-- [8] สนามอินทรีจันทรสถิตย์ (Insee Stadium - B6) -->
-  <g id="building-stadium" class="building-card" onclick="selectLocation('stadium')" transform="translate(320, 580)" filter="url(#celDrop)">
+  <g id="building-stadium" class="building-card"  transform="translate(320, 580)" filter="url(#celDrop)">
     <ellipse cx="0" cy="56" rx="90" ry="16" fill="#020617" opacity="0.35" />
     <rect x="-85" y="-45" width="170" height="90" rx="26" fill="#DC2626" stroke="#0F172A" stroke-width="2.5" />
     <rect x="-76" y="-38" width="152" height="76" rx="22" fill="#EA580C" stroke="#FED7AA" stroke-width="1.8" />
@@ -805,7 +918,7 @@
   </g>
 
   <!-- [9] สนามแบดมินตัน (KU Badminton Courts / Gymnasium - B20) -->
-  <g id="building-badminton" class="building-card" onclick="selectLocation('badminton')" transform="translate(290, 445)" filter="url(#celDrop)">
+  <g id="building-badminton" class="building-card"  transform="translate(290, 445)" filter="url(#celDrop)">
     <ellipse cx="0" cy="32" rx="58" ry="11" fill="#020617" opacity="0.35" />
     <rect x="-48" y="-25" width="96" height="50" rx="9" fill="#ECFDF5" stroke="#0F172A" stroke-width="2.5" />
     <path d="M -52 -25 Q 0 -47 52 -25 Z" fill="#047857" stroke="#0F172A" stroke-width="2" />
@@ -828,7 +941,7 @@
   </g>
 
   <!-- [10] อาคารกองกีฬา (KU Sports Division - B21) -->
-  <g id="building-sports" class="building-card" onclick="selectLocation('sports')" transform="translate(170, 520)" filter="url(#celDrop)">
+  <g id="building-sports" class="building-card"  transform="translate(170, 520)" filter="url(#celDrop)">
     <ellipse cx="0" cy="26" rx="30" ry="8" fill="#020617" opacity="0.35" />
     <rect x="-26" y="-20" width="52" height="40" rx="6" fill="#FFF7ED" stroke="#0F172A" stroke-width="2" />
     <polygon points="-29,-20 0,-34 29,-20" fill="#C2410C" stroke="#0F172A" stroke-width="2" />
@@ -847,7 +960,7 @@
   </g>
 
   <!-- [11] คณะวิศวกรรมศาสตร์ (Faculty of Engineering) -->
-  <g id="building-eng" class="building-card" onclick="selectLocation('eng')" transform="translate(520, 580)" filter="url(#celDrop)">
+  <g id="building-eng" class="building-card"  transform="translate(520, 580)" filter="url(#celDrop)">
     <ellipse cx="0" cy="40" rx="64" ry="12" fill="#020617" opacity="0.35" />
     <rect x="-56" y="-34" width="112" height="68" rx="8" fill="#FEF2F2" stroke="#0F172A" stroke-width="2.5" />
     <rect x="-56" y="14" width="112" height="18" rx="4" fill="#991B1B" stroke="#0F172A" stroke-width="1.5" />
@@ -869,7 +982,7 @@
   </g>
 
   <!-- [12] คณะเศรษฐศาสตร์ (Faculty of Economics) -->
-  <g id="building-econ" class="building-card" onclick="selectLocation('econ')" transform="translate(615, 580)" filter="url(#celDrop)">
+  <g id="building-econ" class="building-card"  transform="translate(615, 580)" filter="url(#celDrop)">
     <ellipse cx="0" cy="40" rx="55" ry="12" fill="#020617" opacity="0.35" />
     <rect x="-46" y="-34" width="92" height="68" rx="8" fill="#EFF6FF" stroke="#0F172A" stroke-width="2.5" />
     <polygon points="-48,-34 -15,-34 -15,-48 20,-48 20,-58 48,-58 48,-34" fill="#1D4ED8" stroke="#0F172A" stroke-width="2" />
@@ -887,7 +1000,7 @@
   </g>
 
   <!-- [13] อาคารปฏิบัติการวิทยาศาสตร์ (Science Laboratory - B19) -->
-  <g id="building-sc-lab" class="building-card" onclick="selectLocation('sc_lab')" transform="translate(835, 484)" filter="url(#celDrop)">
+  <g id="building-sc-lab" class="building-card"  transform="translate(835, 484)" filter="url(#celDrop)">
     <ellipse cx="0" cy="24" rx="48" ry="10" fill="#020617" opacity="0.35" />
     <rect x="-40" y="8" width="80" height="13" rx="3" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5" />
     <rect x="-38" y="-24" width="76" height="38" rx="5" fill="#F5F3FF" stroke="#0F172A" stroke-width="2" />
@@ -905,7 +1018,7 @@
   </g>
 
   <!-- [14] ธนาคารกรุงศรีอยุธยา (สาขา ม.เกษตรศาสตร์ - B15) -->
-  <g id="building-krungsri" class="building-card" onclick="selectLocation('krungsri')" transform="translate(885, 605)" filter="url(#celDrop)">
+  <g id="building-krungsri" class="building-card"  transform="translate(885, 605)" filter="url(#celDrop)">
     <ellipse cx="0" cy="24" rx="48" ry="10" fill="#020617" opacity="0.35" />
     <rect x="-40" y="8" width="80" height="13" rx="3" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5" />
     <rect x="-38" y="-24" width="76" height="40" rx="5" fill="#FFFFFF" stroke="#0F172A" stroke-width="2" />
@@ -934,7 +1047,7 @@
   </g>
 
   <!-- [15] คณะวนศาสตร์ (Faculty of Forestry - B22) -->
-  <g id="building-forestry" class="building-card" onclick="selectLocation('forestry')" transform="translate(1030, 442)" filter="url(#celDrop)">
+  <g id="building-forestry" class="building-card"  transform="translate(1030, 442)" filter="url(#celDrop)">
     <ellipse cx="0" cy="30" rx="60" ry="11" fill="#020617" opacity="0.35" />
     <rect x="-52" y="-26" width="104" height="50" rx="7" fill="#FEFCE8" stroke="#0F172A" stroke-width="2.5" />
     <polygon points="-58,-26 0,-48 58,-26" fill="#14532D" stroke="#0F172A" stroke-width="2" />
@@ -959,7 +1072,7 @@
   </g>
 
   <!-- [16] ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร (B16) -->
-  <g id="building-doa-oae" class="building-card" onclick="selectLocation('doa_oae')" transform="translate(1060, 582)" filter="url(#celDrop)">
+  <g id="building-doa-oae" class="building-card"  transform="translate(1060, 582)" filter="url(#celDrop)">
     <ellipse cx="0" cy="26" rx="58" ry="10" fill="#020617" opacity="0.35" />
     <rect x="-50" y="10" width="100" height="14" rx="4" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5" />
     <g transform="translate(-23, 0)">
@@ -985,7 +1098,7 @@
   </g>
 
   <!-- [17] กรมประมง (Department of Fisheries - B17) -->
-  <g id="building-fisheries" class="building-card" onclick="selectLocation('fisheries')" transform="translate(1260, 465)" filter="url(#celDrop)">
+  <g id="building-fisheries" class="building-card"  transform="translate(1260, 465)" filter="url(#celDrop)">
     <ellipse cx="0" cy="28" rx="60" ry="11" fill="#020617" opacity="0.35" />
     <rect x="-50" y="10" width="100" height="15" rx="4" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5" />
     <rect x="-46" y="-26" width="92" height="40" rx="5" fill="#F0F9FF" stroke="#0F172A" stroke-width="2" />
@@ -1008,7 +1121,7 @@
   </g>
 
   <!-- [18] สำนักบริการคอมพิวเตอร์ (OCS) - B8 -->
-  <g id="building-ocs" class="building-card" onclick="selectLocation('ocs')" transform="translate(590, 770)" filter="url(#celDrop)">
+  <g id="building-ocs" class="building-card"  transform="translate(590, 770)" filter="url(#celDrop)">
     <ellipse cx="0" cy="34" rx="66" ry="11" fill="#020617" opacity="0.35" />
     <rect x="-62" y="-28" width="124" height="56" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="2.5" />
     <polygon points="-67,-28 -25,-42 25,-42 67,-28" fill="#1E293B" stroke="#0284C7" stroke-width="1.5" />
@@ -1027,7 +1140,7 @@
   </g>
 
   <!-- [19] อาคารจอดรถงามวงศ์วาน 2 (Ngamwongwan 2 Parking - B9) -->
-  <g id="building-ngam2" class="building-card" onclick="selectLocation('ngam2')" transform="translate(810, 770)" filter="url(#celDrop)">
+  <g id="building-ngam2" class="building-card cursor-pointer" onclick="selectLocation('ngam2')" transform="translate(810, 770)" filter="url(#celDrop)">
     <ellipse cx="0" cy="32" rx="38" ry="10" fill="#020617" opacity="0.35" />
     <rect x="-32" y="-26" width="64" height="52" rx="7" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.2" />
     <polygon points="-36,-26 -16,-35 16,-35 36,-26" fill="#334155" stroke="#0F172A" stroke-width="1.5" />
@@ -1049,7 +1162,7 @@
   </g>
 
   <!-- [20] อาคารจอดรถงามวงศ์วาน 1 (Ngamwongwan 1 Parking - B10) -->
-  <g id="building-ngam1" class="building-card" onclick="selectLocation('ngam1')" transform="translate(920, 770)" filter="url(#celDrop)">
+  <g id="building-ngam1" class="building-card cursor-pointer" onclick="selectLocation('ngam1')" transform="translate(920, 770)" filter="url(#celDrop)">
     <ellipse cx="0" cy="32" rx="38" ry="10" fill="#020617" opacity="0.35" />
     <rect x="-32" y="-26" width="64" height="52" rx="7" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.2" />
     <polygon points="-36,-26 -16,-35 16,-35 36,-26" fill="#334155" stroke="#0F172A" stroke-width="1.5" />
@@ -1070,7 +1183,7 @@
   </g>
 
   <!-- [21] อาคารจอดรถวิภาวดีรังสิต (Vibhavadi Parking - B14) -->
-  <g id="building-vipa" class="building-card" onclick="selectLocation('vipa')" transform="translate(170, 390)" filter="url(#celDrop)">
+  <g id="building-vipa" class="building-card cursor-pointer" onclick="selectLocation('vipa')" transform="translate(170, 390)" filter="url(#celDrop)">
     <ellipse cx="0" cy="30" rx="34" ry="9" fill="#020617" opacity="0.35" />
     <rect x="-28" y="-24" width="56" height="48" rx="6" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.2" />
     <polygon points="-31,-24 -14,-33 14,-33 31,-24" fill="#334155" stroke="#0F172A" stroke-width="1.5" />
@@ -1083,7 +1196,7 @@
   </g>
 
   <!-- [22] หอประชุมใหญ่ ม.เกษตรศาสตร์ (Main Auditorium - B11) -->
-  <g id="building-auditorium" class="building-card" onclick="selectLocation('auditorium')" transform="translate(1130, 760)" filter="url(#celDrop)">
+  <g id="building-auditorium" class="building-card"  transform="translate(1130, 760)" filter="url(#celDrop)">
     <ellipse cx="0" cy="48" rx="56" ry="12" fill="#020617" opacity="0.35" />
     <rect x="-48" y="-36" width="96" height="72" rx="8" fill="#FFFBEB" stroke="#0F172A" stroke-width="2.5" />
     <polygon points="-55,-36 0,-58 55,-36" fill="#B45309" stroke="#0F172A" stroke-width="2.5" />
@@ -1103,7 +1216,7 @@
   </g>
 
   <!-- [23] สระพระพิรุณ (Sra Phra Phirun Loy Krathong Pond - B12) -->
-  <g id="building-pond" class="building-card" onclick="selectLocation('pond')" transform="translate(1340, 760)" filter="url(#celDrop)">
+  <g id="building-pond" class="building-card cursor-pointer" onclick="selectLocation('pond')" transform="translate(1340, 760)" filter="url(#celDrop)">
     <ellipse cx="0" cy="100" rx="55" ry="10" fill="#020617" opacity="0.35" />
     <rect x="-48" y="-95" width="96" height="190" rx="14" fill="#0F766E" stroke="#0F172A" stroke-width="2.5" />
     <rect x="-42" y="-89" width="84" height="178" rx="10" fill="url(#poolWaterAnime)" stroke="#38BDF8" stroke-width="1.8" />
@@ -1138,7 +1251,7 @@
   </g>
 
   <!-- [24] วงเวียน BTS ม.เกษตรศาสตร์ (BTS Station Roundabout - B13) -->
-  <g id="roundabout-bts" class="building-card" onclick="selectLocation('bts')" transform="translate(1415, 540)" filter="url(#celDrop)">
+  <g id="roundabout-bts" class="building-card"  transform="translate(1415, 540)" filter="url(#celDrop)">
     <circle cx="0" cy="0" r="33" fill="#0F172A" stroke="#334155" stroke-width="2.5" />
     <circle cx="0" cy="0" r="25" fill="#059669" stroke="#34D399" stroke-width="2" />
     <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8" />
@@ -1175,7 +1288,7 @@
 
   <!-- ================= 7. FESTIVAL ESSENTIALS: NIGHT MARKET & RESTROOMS ================= -->
   <!-- Food Street / Night Market Promenade Zone -->
-  <g id="zone-food-street" class="building-card" onclick="selectLocation('food_street')" transform="translate(1235, 760)" filter="url(#badgeGlow)">
+  <g id="zone-food-street" class="building-card"  transform="translate(1235, 760)" filter="url(#badgeGlow)">
     <rect x="-56" y="-12" width="112" height="24" rx="7" fill="#FFFFFF" stroke="#D97706" stroke-width="1.8" />
     <circle cx="-42" cy="0" r="6" fill="#D97706" />
     <text x="-42" y="3" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">🍢</text>
@@ -1183,31 +1296,31 @@
   </g>
 
   <!-- Restroom: Main Auditorium -->
-  <g id="pin-restroom-auditorium" class="building-card" onclick="selectLocation('restroom_auditorium')" transform="translate(1185, 730)" filter="url(#badgeGlow)">
+  <g id="pin-restroom-auditorium" class="building-card"  transform="translate(1185, 730)" filter="url(#badgeGlow)">
     <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
     <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
   <!-- Restroom: Sorn 3 -->
-  <g id="pin-restroom-sorn3" class="building-card" onclick="selectLocation('restroom_sorn3')" transform="translate(480, 395)" filter="url(#badgeGlow)">
+  <g id="pin-restroom-sorn3" class="building-card"  transform="translate(480, 395)" filter="url(#badgeGlow)">
     <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
     <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
   <!-- Restroom: Bar Mai -->
-  <g id="pin-restroom-barmai" class="building-card" onclick="selectLocation('restroom_barmai')" transform="translate(635, 175)" filter="url(#badgeGlow)">
+  <g id="pin-restroom-barmai" class="building-card"  transform="translate(635, 175)" filter="url(#badgeGlow)">
     <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
     <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
   <!-- Restroom: Ngamwongwan Parking -->
-  <g id="pin-restroom-ngam" class="building-card" onclick="selectLocation('restroom_ngam')" transform="translate(865, 730)" filter="url(#badgeGlow)">
+  <g id="pin-restroom-ngam" class="building-card"  transform="translate(865, 730)" filter="url(#badgeGlow)">
     <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
     <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
   <!-- Restroom: Vibhavadi Parking -->
-  <g id="pin-restroom-vipa" class="building-card" onclick="selectLocation('restroom_vipa')" transform="translate(170, 345)" filter="url(#badgeGlow)">
+  <g id="pin-restroom-vipa" class="building-card"  transform="translate(170, 345)" filter="url(#badgeGlow)">
     <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
     <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
@@ -1294,7 +1407,7 @@
   </g>
 
   <!-- Sleek Map Pin Marker (Google Maps Dropped Pin Style) -->
-  <g id="mapPinMarker" transform="translate(1340, 760)" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;">
+  <g id="mapPinMarker" transform="translate(1340, 760)" style="display: none; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;">
     <!-- Ground Contact Shadow -->
     <ellipse cx="0" cy="1" rx="8" ry="3.2" fill="#020617" opacity="0.45" />
     <!-- Pin Body pointing directly to (0, 0) -->
@@ -1327,7 +1440,7 @@
 
 
     <!-- ================= COLLAPSIBLE BOTTOM SHEET (MOBILE ERGONOMICS >85% VIEWPORT) ================= -->
-    <div id="bottomSheet" class="fixed bottom-0 left-0 right-0 z-40 select-none flex flex-col justify-end pointer-events-none transition-all duration-300">
+    <div id="bottomSheet" class="fixed bottom-0 left-0 right-0 z-40 select-none flex flex-col justify-end pointer-events-none transition-all duration-300 md:hidden">
         
         <!-- Backdrop on Mobile (Tap outside to collapse) -->
         <div id="sheetBackdrop" onclick="collapseSheet()" class="fixed inset-0 bg-slate-900/25 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300 sm:hidden"></div>
@@ -1445,23 +1558,23 @@
         lucide.createIcons();
 
         // ================= LOCATION DATA MODEL (EXACT LAT, LNG UNIVERSAL INTENT MAP LINKS) =================
+                const ALLOWED_LOCATIONS = ['vipa', 'ngam1', 'ngam2', 'pond'];
+
         const LOCATIONS = {
             pond: {
                 title: "สระพระพิรุณ (จุดจัดงานลอยกระทง)",
-                category: "งานลอยกระทงหลัก",
+                category: "จุดจัดงานหลัก",
                 icon: "🪔",
                 desc: "จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรมและร้านค้านิสิต",
-                status: "● เปิดจัดงาน",
                 mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848135,100.572183",
                 x: 1340,
                 y: 760
             },
             ngam1: {
                 title: "อาคารจอดรถงามวงศ์วาน 1",
-                category: "อาคารจอดรถ",
+                category: "อาคารจอดรถยนต์",
                 icon: "🅿️",
                 desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน ตั้งอยู่ติดกับงามวงศ์วาน 2 ความจุตามผัง ~289 คัน ใกล้หอประชุมใหญ่และสระพระพิรุณ",
-                status: "● ตรวจสอบสถานะสด",
                 mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848834,100.569431",
                 x: 920,
                 y: 770,
@@ -1469,10 +1582,9 @@
             },
             ngam2: {
                 title: "อาคารจอดรถงามวงศ์วาน 2",
-                category: "อาคารจอดรถ",
+                category: "อาคารจอดรถยนต์",
                 icon: "🅿️",
                 desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน ตั้งอยู่ติดกับงามวงศ์วาน 1 ความจุตามผัง ~192 คัน ใกล้หอประชุมใหญ่และสระพระพิรุณ",
-                status: "● ตรวจสอบสถานะสด",
                 mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848981,100.568347",
                 x: 810,
                 y: 770,
@@ -1480,274 +1592,13 @@
             },
             vipa: {
                 title: "อาคารจอดรถวิภาวดีรังสิต",
-                category: "อาคารจอดรถ",
+                category: "อาคารจอดรถยนต์",
                 icon: "🅿️",
                 desc: "อาคารจอดรถฝั่งประตูวิภาวดีรังสิต เข้าได้จากถนนวิภาวดีรังสิต หรือมาจากฝั่งพหลโยธินเชื่อมลงถนนจันทรสถิตย์ ความจุตามผัง ~150 คัน",
-                status: "● ตรวจสอบสถานะสด",
                 mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854083,100.558356",
                 x: 170,
                 y: 390,
                 lotId: "vipa"
-            },
-            food_street: {
-                title: "ถนนคนเดิน • โซนของกินริมน้ำ (Night Market)",
-                category: "โซนอาหารและเครื่องดื่ม",
-                icon: "🍢",
-                desc: "โซนร้านค้านิสิตและอาหารสตรีทฟู้ดริมน้ำ รวบรวมของกินอร่อย เครื่องดื่ม และขนมโบราณตลอดแนวทางเดินสู่สระพระพิรุณ",
-                status: "● ซุ้มอาหารและของกิน",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.847900,100.571400",
-                x: 1235,
-                y: 760
-            },
-            restroom_auditorium: {
-                title: "ห้องน้ำ อาคารหอประชุมใหญ่",
-                category: "สุขาสาธารณะและสิ่งอำนวยความสะดวก",
-                icon: "🚻",
-                desc: "จุดสุขาสาธารณะหลักและห้องน้ำผู้พิการ ภายในอาคารหอประชุมใหญ่ ใกล้สระพระพิรุณและถนนคนเดิน",
-                status: "● สุขาหลัก",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.847596,100.570775",
-                x: 1185,
-                y: 730
-            },
-            restroom_sorn3: {
-                title: "ห้องน้ำ อาคารศูนย์เรียนรวม 3 (ศร.3)",
-                category: "สุขาสาธารณะและสิ่งอำนวยความสะดวก",
-                icon: "🚻",
-                desc: "สุขาสาธารณะ อาคารศูนย์เรียนรวม 3 คณะเกษตร มีห้องน้ำสะอาดให้บริการหลายชั้น",
-                status: "● สุขาหลัก",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851965,100.565811",
-                x: 480,
-                y: 395
-            },
-            restroom_barmai: {
-                title: "ห้องน้ำ โรงอาหารกลาง 2 (บาร์ใหม่)",
-                category: "สุขาสาธารณะและสิ่งอำนวยความสะดวก",
-                icon: "🚻",
-                desc: "สุขาสาธารณะ บริเวณโรงอาหารกลาง 2 (บาร์ใหม่) ใกล้สำนักหอสมุด ให้บริการตลอดช่วงการจัดงาน",
-                status: "● สุขาหลัก",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854580,100.568297",
-                x: 635,
-                y: 175
-            },
-            restroom_ngam: {
-                title: "ห้องน้ำ อาคารจอดรถงามวงศ์วาน 1-2",
-                category: "สุขาสาธารณะและสิ่งอำนวยความสะดวก",
-                icon: "🚻",
-                desc: "สุขาบริเวณชั้นล่างของอาคารจอดรถงามวงศ์วาน สะดวกสำหรับผู้ที่นำรถมาจอดก่อนเดินเข้าสู่งาน",
-                status: "● สุขาประจำอาคารจอดรถ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848834,100.569431",
-                x: 865,
-                y: 730
-            },
-            restroom_vipa: {
-                title: "ห้องน้ำ อาคารจอดรถวิภาวดีรังสิต",
-                category: "สุขาสาธารณะและสิ่งอำนวยความสะดวก",
-                icon: "🚻",
-                desc: "สุขาบริเวณชั้นล่างอาคารจอดรถวิภาวดีรังสิต สะดวกสำหรับผู้ที่นำรถมาจอดฝั่งประตูวิภาวดี",
-                status: "● สุขาประจำอาคารจอดรถ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854083,100.558356",
-                x: 170,
-                y: 345
-            },
-            krungsri: {
-                title: "ธนาคารกรุงศรีอยุธยา สาขา ม.เกษตรศาสตร์",
-                category: "ธนาคารและธุรกรรมการเงิน",
-                icon: "🏦",
-                desc: "ธนาคารกรุงศรีอยุธยา สาขา มหาวิทยาลัยเกษตรศาสตร์ ตั้งอยู่ตรงข้ามอาคารจอดรถงามวงศ์วาน 1 และ 2 ให้บริการธุรกรรมทางการเงินและตู้ ATM ตลอด 24 ชม.",
-                status: "● สาขาและจุดบริการ ATM",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.850428,100.569722",
-                x: 885,
-                y: 605
-            },
-            doa_oae: {
-                title: "ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร",
-                category: "หน่วยงานราชการและวิจัย",
-                icon: "📚",
-                desc: "ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร (สศก.) กระทรวงเกษตรและสหกรณ์ ศูนย์รวมข้อมูลวิชาการเกษตรและเศรษฐกิจการเกษตรระดับชาติ",
-                status: "● หน่วยงานราชการ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851700,100.571000",
-                x: 1060,
-                y: 582
-            },
-            forestry: {
-                title: "คณะวนศาสตร์ มหาวิทยาลัยเกษตรศาสตร์",
-                category: "คณะและภาควิชา",
-                icon: "🌲",
-                desc: "คณะวนศาสตร์ มก. สถาบันการศึกษาด้านป่าไม้ ทรัพยากรธรรมชาติ และสิ่งแวดล้อมแห่งแรกของประเทศไทย",
-                status: "● คณะวิชาการ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.852467,100.571478",
-                x: 1030,
-                y: 442
-            },
-            fisheries: {
-                title: "กรมประมง (Department of Fisheries)",
-                category: "หน่วยงานราชการและวิจัย",
-                icon: "🐟",
-                desc: "กรมประมง กระทรวงเกษตรและสหกรณ์ ศูนย์บัญชาการและบริหารจัดการทรัพยากรการประมง เพาะเลี้ยงสัตว์น้ำ",
-                status: "● กรมประมง",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851500,100.573900",
-                x: 1260,
-                y: 465
-            },
-            horticulture: {
-                title: "สถาบันวิจัยพืชสวน (Horticulture Research Institute)",
-                category: "สถาบันวิจัยการเกษตร",
-                icon: "🌱",
-                desc: "สถาบันวิจัยพืชสวน กรมวิชาการเกษตร ศูนย์กลางการวิจัย ปรับปรุงพันธุ์ และพัฒนาเทคโนโลยีการผลิตพืชสวนครบวงจร",
-                status: "● สถาบันวิจัย",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854600,100.571200",
-                x: 960,
-                y: 285
-            },
-            sc_lab: {
-                title: "อาคารปฏิบัติการวิทยาศาสตร์ (Science Laboratory)",
-                category: "อาคารปฏิบัติการและวิจัย",
-                icon: "🔬",
-                desc: "อาคารปฏิบัติการวิทยาศาสตร์ ศูนย์รวมห้องปฏิบัติการทดลองทางวิทยาศาสตร์และเทคโนโลยี เครื่องมือวิเคราะห์ขั้นสูง",
-                status: "● อาคารปฏิบัติการ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851200,100.568800",
-                x: 835,
-                y: 484
-            },
-            badminton: {
-                title: "สนามแบดมินตัน มหาวิทยาลัยเกษตรศาสตร์",
-                category: "ศูนย์กีฬาและนันทนาการ",
-                icon: "🏸",
-                desc: "อาคารสนามแบดมินตันและยิมเนเซียม มก. ศูนย์ฝึกซ้อมและแข่งขันกีฬาในร่มมาตรฐานสากล ตั้งอยู่ทางทิศเหนือของสนามอินทรีจันทรสถิตย์",
-                status: "● ศูนย์กีฬาในร่ม",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.852600,100.561500",
-                x: 290,
-                y: 445
-            },
-            sports: {
-                title: "อาคารกองกีฬา มหาวิทยาลัยเกษตรศาสตร์",
-                category: "หน่วยงานบริหารและบริการกีฬา",
-                icon: "🏆",
-                desc: "อาคารกองการกีฬา มก. ศูนย์ประสานงานและบริหารจัดการกิจกรรมกีฬา สันทนาการ และสุขภาพนิสิต",
-                status: "● ศูนย์บริหารงานกีฬา",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851500,100.560100",
-                x: 170,
-                y: 520
-            },
-            bts: {
-                title: "วงเวียน BTS ม.เกษตรศาสตร์ (N13)",
-                category: "ระบบขนส่งสาธารณะ",
-                icon: "🚇",
-                desc: "วงเวียนติดแนวรั้วประตูทางออกสู่สถานีรถไฟฟ้า BTS ม.เกษตรศาสตร์ มีประตูคนเดินเข้า-ออกงานได้สะดวก",
-                status: "● วงเวียนและประตูคนเดิน",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851080,100.576080",
-                x: 1415,
-                y: 540
-            },
-            library: {
-                title: "สำนักหอสมุด มก. (อาคารสารนิเทศ 50 ปี)",
-                category: "โซนวิชาการ",
-                icon: "📚",
-                desc: "หอสมุดกลาง มก. ศูนย์การเรียนรู้และค้นคว้า อาคารสารนิเทศ 50 ปี เชื่อมต่อถนนระพีสาคริก",
-                status: "● พื้นที่การศึกษา",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.853200,100.569200",
-                x: 680,
-                y: 340
-            },
-            satit: {
-                title: "โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์",
-                category: "สถาบันการศึกษา",
-                icon: "🏫",
-                desc: "โรงเรียนสาธิต มก. อาคารหอนาฬิกา ศูนย์วิจัยและพัฒนาการศึกษา คณะศึกษาศาสตร์",
-                status: "● สถาบันการศึกษา",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.855000,100.562700",
-                x: 340,
-                y: 240
-            },
-            barmai: {
-                title: "โรงอาหารกลาง 2 (บาร์ใหม่)",
-                category: "ศูนย์อาหารและร้านค้า",
-                icon: "🍽️",
-                desc: "โรงอาหารกลาง 2 (บาร์ใหม่) ศูนย์อาหารยอดนิยมใจกลางมหาวิทยาลัยเกษตรศาสตร์ บริการอาหารและเครื่องดื่มครบครัน",
-                status: "● ศูนย์อาหารกลาง",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854580,100.568297",
-                x: 580,
-                y: 185
-            },
-            sorn3: {
-                title: "ศูนย์เรียนรวม 3 (ศร.3) คณะเกษตร",
-                category: "อาคารเรียนรวม",
-                icon: "🏛️",
-                desc: "อาคารเรียนรวมหลักและห้องบรรยายขนาดใหญ่ ศูนย์กลางการเรียนการสอนนิสิต มก.",
-                status: "● โซนวิชาการ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851965,100.565811",
-                x: 430,
-                y: 415
-            },
-            eng: {
-                title: "คณะวิศวกรรมศาสตร์ ม.เกษตรศาสตร์",
-                category: "คณะและภาควิชา",
-                icon: "⚙️",
-                desc: "กลุ่มอาคารเรียนและห้องปฏิบัติการวิจัยคณะวิศวกรรมศาสตร์ ดงตาล มก.",
-                status: "● คณะวิชาการ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.850200,100.565500",
-                x: 520,
-                y: 580
-            },
-            econ: {
-                title: "คณะเศรษฐศาสตร์ ม.เกษตรศาสตร์",
-                category: "คณะและภาควิชา",
-                icon: "📊",
-                desc: "คณะเศรษฐศาสตร์ มก. อาคารเรียนและวิจัยเศรษฐศาสตร์และการเงินชั้นนำ",
-                status: "● คณะวิชาการ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.850000,100.567000",
-                x: 615,
-                y: 580
-            },
-            ocs: {
-                title: "สำนักบริการคอมพิวเตอร์ (OCS)",
-                category: "ศูนย์บริการไอที",
-                icon: "💻",
-                desc: "ศูนย์บริการคอมพิวเตอร์และระบบเครือข่าย Data Center หลัก มก. ตั้งอยู่ระหว่างประตู 3 และประตู 2 ริมถนนงามวงศ์วาน",
-                status: "● ศูนย์บริการไอที",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.849000,100.566300",
-                x: 590,
-                y: 770
-            },
-            stadium: {
-                title: "สนามอินทรีจันทรสถิตย์ (Insee Stadium)",
-                category: "สนามกีฬาหลัก",
-                icon: "⚽",
-                desc: "สนามกีฬาและลู่วิ่งมาตรฐานสากล มหาวิทยาลัยเกษตรศาสตร์ ลานกิจกรรมกีฬาและสุขภาพ",
-                status: "● สนามกีฬาหลัก",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.850800,100.562300",
-                x: 320,
-                y: 580
-            },
-            vetHospital: {
-                title: "โรงพยาบาลสัตว์ มหาวิทยาลัยเกษตรศาสตร์ (บางเขน)",
-                category: "โรงพยาบาลและบริการสัตว์เลี้ยง",
-                icon: "🐶",
-                desc: "โรงพยาบาลสัตว์ มก. (ฝั่งถนนพหลโยธิน) ตั้งอยู่ตรงมุมทางเข้าประตู 2 ชิดแนวรั้วมหาลัย ศูนย์บริการรักษาและบริบาลสัตว์เลี้ยง 🐶🐱🐾 ครบวงจร",
-                status: "● เปิดบริการสัตวแพทย์",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854200,100.575500",
-                x: 1395,
-                y: 330
-            },
-            vetTech: {
-                title: "คณะเทคนิคการสัตวแพทย์ ม.เกษตรศาสตร์",
-                category: "คณะและภาควิชา",
-                icon: "🔬",
-                desc: "คณะเทคนิคการสัตวแพทย์ มก. ตั้งอยู่ตรงมุมถนนแยก J7 ศูนย์การเรียนการสอนและวิจัยทางเทคโนโลยีสัตว์เลี้ยง",
-                status: "● คณะวิชาการ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.853500,100.573200",
-                x: 1215,
-                y: 320
-            },
-            auditorium: {
-                title: "หอประชุมใหญ่ มหาวิทยาลัยเกษตรศาสตร์",
-                category: "อาคารพิธีการและหอประชุม",
-                icon: "🏛️",
-                desc: "หอประชุมใหญ่ มก. ตั้งอยู่ติดถนนรอบสระพระพิรุณฝั่งตะวันตก ศูนย์กลางพิธีพระราชทานปริญญาบัตรและกิจกรรมสำคัญ",
-                status: "● ศูนย์กลางพิธีการ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.847596,100.570775",
-                x: 1130,
-                y: 760
             }
         };
 
@@ -1805,11 +1656,16 @@
                     textEl.textContent = '🅿️ ' + nameShort + ' • ' + cfg.text;
                 }
 
-                // 2. Update Quick Selector Chip status pill
+                // 2. Update Quick Selector Chip status pills (Mobile & Desktop)
                 const chipEl = document.getElementById('chip-status-' + id);
+                const dtChipEl = document.getElementById('dt-chip-' + id);
                 if (chipEl) {
                     chipEl.className = 'text-[8px] px-1 py-0.2 rounded font-bold border ' + cfg.badgeClass;
                     chipEl.textContent = cfg.text;
+                }
+                if (dtChipEl) {
+                    dtChipEl.className = 'text-[9px] px-1.5 py-0.5 rounded font-bold border ' + cfg.badgeClass;
+                    dtChipEl.textContent = cfg.text;
                 }
 
                 // 3. Update LOCATIONS object status string
@@ -1972,7 +1828,55 @@
         bindSheetSwipe(document.getElementById('sheetPanel'));
 
         // ================= SELECTION & NAVIGATION =================
+        
+        function clearSelection() {
+            selectedKey = null;
+
+            // 1. Hide Pin Marker
+            const pin = document.getElementById('mapPinMarker');
+            if (pin) {
+                pin.style.display = 'none';
+            }
+
+            // 2. Remove active state from all buttons
+            document.querySelectorAll('.hud-btn').forEach(btn => btn.classList.remove('active'));
+
+            // 3. Desktop Sidebar Reset
+            const dtGuide = document.getElementById('dt-guidePlaceholder');
+            const dtCard = document.getElementById('dt-detailCard');
+            if (dtGuide) dtGuide.classList.remove('hidden');
+            if (dtCard) dtCard.classList.add('hidden');
+
+            // 4. Mobile Bottom Sheet Reset
+            const dialogTitle = document.getElementById('dialogTitle');
+            const dialogDescCompact = document.getElementById('dialogDescCompact');
+            const dialogDesc = document.getElementById('dialogDesc');
+            const dialogCategory = document.getElementById('dialogCategory');
+            const dialogIcon = document.getElementById('dialogIcon');
+            const dialogStatus = document.getElementById('dialogStatus');
+            const navBtn = document.getElementById('dialogMapBtn');
+            const navBtnFull = document.getElementById('dialogMapBtnFull');
+
+            if (dialogTitle) dialogTitle.textContent = 'ผังจุดจอดรถ & จุดจัดงาน';
+            if (dialogCategory) dialogCategory.textContent = 'งานลอยกระทง 2569';
+            if (dialogIcon) dialogIcon.textContent = '🌿';
+            if (dialogDescCompact) dialogDescCompact.textContent = 'แตะ 4 จุดหลักบนแผนที่ หรือเลือกจากรายการ';
+            if (dialogDesc) dialogDesc.textContent = 'แตะที่อาคารจอดรถ 3 จุด (วิภาวดี, งาม 1, งาม 2) หรือสระพระพิรุณ เพื่อดูพิกัดและเส้นทางนำทาง';
+            if (dialogStatus) {
+                dialogStatus.className = 'hidden';
+                dialogStatus.textContent = '';
+            }
+            if (navBtn) {
+                navBtn.classList.add('opacity-40', 'pointer-events-none');
+            }
+            if (navBtnFull) {
+                navBtnFull.classList.add('opacity-40', 'pointer-events-none');
+            }
+        }
+
         function selectLocation(key) {
+            // Strictly enforce only 4 allowed locations (vipa, ngam1, ngam2, pond)
+            if (!ALLOWED_LOCATIONS.includes(key)) return;
             if (window.event && window.event.stopPropagation) {
                 window.event.stopPropagation();
             }
@@ -1980,6 +1884,14 @@
             const data = LOCATIONS[key];
             if (!data) return;
 
+            // 1. Show & Move Map Pin Marker (Without Auto-Zoom)
+            const pin = document.getElementById('mapPinMarker');
+            if (pin && data.x !== undefined && data.y !== undefined) {
+                pin.style.display = 'block';
+                pin.setAttribute('transform', 'translate(' + data.x + ', ' + data.y + ')');
+            }
+
+            // 2. Update Mobile Bottom Sheet
             document.getElementById('dialogTitle').textContent = data.title;
             document.getElementById('dialogCategory').textContent = data.category;
             document.getElementById('dialogIcon').textContent = data.icon;
@@ -1988,29 +1900,49 @@
             const compactDesc = document.getElementById('dialogDescCompact');
             if (compactDesc) compactDesc.textContent = data.desc;
 
-            // Update Map Links
             const navBtn = document.getElementById('dialogMapBtn');
             const navBtnFull = document.getElementById('dialogMapBtnFull');
-            if (navBtn) navBtn.href = data.mapUrl;
-            if (navBtnFull) navBtnFull.href = data.mapUrl;
+            if (navBtn) {
+                navBtn.href = data.mapUrl;
+                navBtn.classList.remove('opacity-40', 'pointer-events-none');
+            }
+            if (navBtnFull) {
+                navBtnFull.href = data.mapUrl;
+                navBtnFull.classList.remove('opacity-40', 'pointer-events-none');
+            }
 
-            // Status Badge Formatting (Hidden for normal/open to remove clutter and '● เปิดบริการ (ว่าง)')
+            // 3. Update Desktop Sidebar
+            const dtGuide = document.getElementById('dt-guidePlaceholder');
+            const dtCard = document.getElementById('dt-detailCard');
+            const dtTitle = document.getElementById('dt-detailTitle');
+            const dtCat = document.getElementById('dt-detailCategory');
+            const dtDesc = document.getElementById('dt-detailDesc');
+            const dtNavBtn = document.getElementById('dt-detailMapBtn');
+
+            if (dtGuide) dtGuide.classList.add('hidden');
+            if (dtCard) dtCard.classList.remove('hidden');
+            if (dtTitle) dtTitle.textContent = data.title;
+            if (dtCat) dtCat.textContent = data.category;
+            if (dtDesc) dtDesc.textContent = data.desc;
+            if (dtNavBtn) dtNavBtn.href = data.mapUrl;
+
+            // 4. Status Badge Formatting (Hidden for normal/open to remove clutter)
             const statusBadge = document.getElementById('dialogStatus');
             if (statusBadge) {
                 if (data.lotId) {
                     const lot = currentParkingData.lots?.[data.lotId] || { status: 'open' };
                     const st = lot.status || 'open';
                     if (st === 'full') {
-                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-red-500/20 text-red-400 border border-red-500/40 whitespace-nowrap';
+                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-red-50 text-red-800 border border-red-300 whitespace-nowrap';
                         statusBadge.textContent = '● งดรับรถ (เต็ม)';
                         statusBadge.classList.remove('hidden');
                     } else if (st === 'warning') {
-                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-400 border border-amber-500/40 whitespace-nowrap';
+                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-amber-50 text-amber-800 border border-amber-300 whitespace-nowrap';
                         statusBadge.textContent = '● ชะลอรับรถ (ใกล้เต็ม)';
                         statusBadge.classList.remove('hidden');
                     } else if (st === 'closed') {
-                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-slate-700/60 text-slate-300 border border-slate-600 whitespace-nowrap';
-                        statusBadge.textContent = '● งดให้บริการ (ปิด)';
+                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-slate-100 text-slate-700 border border-slate-300 whitespace-nowrap';
+                        statusBadge.textContent = '● ปิดให้บริการ';
                         statusBadge.classList.remove('hidden');
                     } else {
                         statusBadge.className = 'hidden';
@@ -2022,22 +1954,14 @@
                 }
             }
 
-            // Highlight Active Selector Chip
-            document.querySelectorAll('#bottomSheet .hud-btn').forEach(btn => btn.classList.remove('active'));
+            // 5. Highlight Active Buttons (Both Desktop and Mobile)
+            document.querySelectorAll('.hud-btn').forEach(btn => btn.classList.remove('active'));
             const activeBtn = document.getElementById('btn-' + key);
-            if (activeBtn) {
-                activeBtn.classList.add('active');
-            }
-
-            // Move Map Pin Marker and Smooth Center (Without Auto-Zooming)
-            if (data.x !== undefined && data.y !== undefined) {
-                const pin = document.getElementById('mapPinMarker') || document.getElementById('classicReticle');
-                if (pin) {
-                    pin.setAttribute('transform', 'translate(' + data.x + ', ' + data.y + ')');
-                }
-                panTowards(data.x, data.y);
-            }
+            const activeDtBtn = document.getElementById('dt-btn-' + key);
+            if (activeBtn) activeBtn.classList.add('active');
+            if (activeDtBtn) activeDtBtn.classList.add('active');
         }
+
 
         // ================= TOUCH & PAN-ZOOM ENGINE WITH EXACT SVG MEET MATH =================
         let scale = 1;
@@ -2273,39 +2197,12 @@
 
         // ================= APP INITIALIZATION =================
         window.addEventListener('DOMContentLoaded', () => {
-            // Bind click handlers to interactive SVG elements
+            // Only 4 interactive buildings on the entire map
             const clickMap = {
-                'building-pond': 'pond',
-                'zone-food-street': 'food_street',
                 'building-ngam1': 'ngam1',
                 'building-ngam2': 'ngam2',
                 'building-vipa': 'vipa',
-                'pin-restroom-auditorium': 'restroom_auditorium',
-                'pin-restroom-sorn3': 'restroom_sorn3',
-                'pin-restroom-barmai': 'restroom_barmai',
-                'pin-restroom-ngam': 'restroom_ngam',
-                'pin-restroom-vipa': 'restroom_vipa',
-                'building-krungsri': 'krungsri',
-                'building-doa-oae': 'doa_oae',
-                'building-fisheries': 'fisheries',
-                'building-horticulture': 'horticulture',
-                'building-sc-lab': 'sc_lab',
-                'roundabout-bts': 'bts',
-                'building-auditorium': 'auditorium',
-                'building-barmai': 'barmai',
-                'building-library': 'library',
-                'building-satit': 'satit',
-                'building-sorn3': 'sorn3',
-                'building-eng': 'eng',
-                'building-econ': 'econ',
-                'building-ocs': 'ocs',
-                'building-stadium': 'stadium',
-                'building-vetHospital': 'vetHospital',
-                'building-vet-hospital': 'vetHospital',
-                'building-vetTech': 'vetTech',
-                'building-vet-tech': 'vetTech',
-                'building-badminton': 'badminton',
-                'building-sports': 'sports'
+                'building-pond': 'pond'
             };
 
             for (const [id, key] of Object.entries(clickMap)) {
@@ -2320,54 +2217,12 @@
                 }
             }
 
-            // Tap anywhere on the SVG Map to drop pin marker (Google Maps style)
-            const svgEl = document.getElementById('cartoonPokemonCampusSvg');
-            if (svgEl) {
-                svgEl.addEventListener('click', (e) => {
-                    if (hasMoved) return; // Ignore drag/swipe
-                    const pt = svgEl.createSVGPoint();
-                    pt.x = e.clientX;
-                    pt.y = e.clientY;
-                    const ctm = svgEl.getScreenCTM();
-                    if (!ctm) return;
-                    const svgP = pt.matrixTransform(ctm.inverse());
-                    
-                    const clampedX = Math.round(Math.min(Math.max(20, svgP.x), 1580));
-                    const clampedY = Math.round(Math.min(Math.max(20, svgP.y), 980));
-                    
-                    const pin = document.getElementById('mapPinMarker') || document.getElementById('classicReticle');
-                    if (pin) {
-                        pin.setAttribute('transform', 'translate(' + clampedX + ', ' + clampedY + ')');
-                    }
-                    
-                    const lng = (100.5615 + ((clampedX - 170) / 1250) * 0.0130).toFixed(6);
-                    const lat = (13.8545 - ((clampedY - 260) / 510) * 0.0070).toFixed(6);
-                    const navUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + lat + ',' + lng;
-                    
-                    document.getElementById('dialogTitle').textContent = 'พิกัดที่เลือกบนแผนที่ มก.';
-                    document.getElementById('dialogCategory').textContent = 'พิกัดแผนที่';
-                    document.getElementById('dialogIcon').textContent = '📍';
-                    document.getElementById('dialogDesc').textContent = 'พิกัดบนแผนที่ ม.เกษตรศาสตร์ (บางเขน) แตะปุ่มนำทางเพื่อเปิด Google Maps นำทางมายังจุดนี้';
-                    const compactDesc = document.getElementById('dialogDescCompact');
-                    if (compactDesc) compactDesc.textContent = 'พิกัดบนแผนที่ มก.';
-                    
-                    const navBtn = document.getElementById('dialogMapBtn');
-                    const navBtnFull = document.getElementById('dialogMapBtnFull');
-                    if (navBtn) navBtn.href = navUrl;
-                    if (navBtnFull) navBtnFull.href = navUrl;
-                    
-                    const statusBadge = document.getElementById('dialogStatus');
-                    if (statusBadge) {
-                        statusBadge.className = 'hidden';
-                        statusBadge.textContent = '';
-                    }
-                    
-                    document.querySelectorAll('#bottomSheet .hud-btn').forEach(btn => btn.classList.remove('active'));
-                });
-            }
-
             initRealtimeSync();
-            selectLocation('pond');
+
+            // On initial load, show full map overview without selecting anything
+            clearSelection();
+            resetMapView();
+
         });
     </script>
 </body>
