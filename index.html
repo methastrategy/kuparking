@@ -1273,9 +1273,18 @@
             </div>
 
             <!-- Quick Selector Tray (Zero Capacity Numbers & Zero Status text for Parking) -->
-            <div class="flex overflow-x-auto no-scrollbar sm:grid sm:grid-cols-6 gap-1.5 sm:gap-2 pb-0.5 sm:pb-0 scroll-smooth snap-x touch-pan-x">
+            <div class="flex overflow-x-auto no-scrollbar sm:grid sm:grid-cols-4 gap-1.5 sm:gap-2 pb-0.5 sm:pb-0 scroll-smooth snap-x touch-pan-x">
                 
-                <!-- 1. อาคารจอดรถงามวงศ์วาน 1 -->
+                <!-- 1. อาคารจอดรถวิภาวดีรังสิต -->
+                <button onclick="selectLocation('vipa')" id="btn-vipa" class="hud-btn p-1.5 sm:p-2 text-left flex items-center space-x-2 shrink-0 snap-start min-w-[130px] sm:min-w-0 min-h-[44px] touch-manipulation cursor-pointer select-none">
+                    <span class="text-sm shrink-0">🅿️</span>
+                    <div class="truncate min-w-0">
+                        <div class="text-[11px] sm:text-xs font-bold text-slate-200 truncate">วิภาวดีรังสิต</div>
+                        <div class="text-[9px] text-sky-400 truncate">ประตูวิภาวดี • ฝั่งตะวันตก</div>
+                    </div>
+                </button>
+
+                <!-- 2. อาคารจอดรถงามวงศ์วาน 1 -->
                 <button onclick="selectLocation('ngam1')" id="btn-ngam1" class="hud-btn p-1.5 sm:p-2 text-left flex items-center space-x-2 shrink-0 snap-start min-w-[130px] sm:min-w-0 min-h-[44px] touch-manipulation cursor-pointer select-none">
                     <span class="text-sm shrink-0">🅿️</span>
                     <div class="truncate min-w-0">
@@ -1284,21 +1293,12 @@
                     </div>
                 </button>
 
-                <!-- 2. อาคารจอดรถงามวงศ์วาน 2 -->
+                <!-- 3. อาคารจอดรถงามวงศ์วาน 2 -->
                 <button onclick="selectLocation('ngam2')" id="btn-ngam2" class="hud-btn p-1.5 sm:p-2 text-left flex items-center space-x-2 shrink-0 snap-start min-w-[130px] sm:min-w-0 min-h-[44px] touch-manipulation cursor-pointer select-none">
                     <span class="text-sm shrink-0">🅿️</span>
                     <div class="truncate min-w-0">
                         <div class="text-[11px] sm:text-xs font-bold text-slate-200 truncate">งามวงศ์วาน 2</div>
                         <div class="text-[9px] text-sky-400 truncate">ประตู 2 • ฝั่งงามวงศ์วาน</div>
-                    </div>
-                </button>
-
-                <!-- 3. อาคารจอดรถวิภาวดีรังสิต -->
-                <button onclick="selectLocation('vipa')" id="btn-vipa" class="hud-btn p-1.5 sm:p-2 text-left flex items-center space-x-2 shrink-0 snap-start min-w-[130px] sm:min-w-0 min-h-[44px] touch-manipulation cursor-pointer select-none">
-                    <span class="text-sm shrink-0">🅿️</span>
-                    <div class="truncate min-w-0">
-                        <div class="text-[11px] sm:text-xs font-bold text-slate-200 truncate">วิภาวดีรังสิต</div>
-                        <div class="text-[9px] text-sky-400 truncate">ประตูวิภาวดี • ฝั่งตะวันตก</div>
                     </div>
                 </button>
 
@@ -1308,24 +1308,6 @@
                     <div class="truncate min-w-0">
                         <div class="text-[11px] sm:text-xs font-bold text-amber-300 truncate">สระพระพิรุณ</div>
                         <div class="text-[9px] text-amber-400/90 truncate">จุดจัดงานหลัก 🪔</div>
-                    </div>
-                </button>
-
-                <!-- 5. หอประชุมใหญ่ ม.เกษตรศาสตร์ -->
-                <button onclick="selectLocation('auditorium')" id="btn-auditorium" class="hud-btn p-1.5 sm:p-2 text-left flex items-center space-x-2 shrink-0 snap-start min-w-[130px] sm:min-w-0 min-h-[44px] touch-manipulation cursor-pointer select-none">
-                    <span class="text-sm shrink-0">🏛️</span>
-                    <div class="truncate min-w-0">
-                        <div class="text-[11px] sm:text-xs font-bold text-amber-300 truncate">หอประชุมใหญ่</div>
-                        <div class="text-[9px] text-amber-400/90 truncate">ศูนย์พิธีการ • ริมสระ</div>
-                    </div>
-                </button>
-
-                <!-- 6. BTS ม.เกษตรศาสตร์ (N13) -->
-                <button onclick="selectLocation('bts')" id="btn-bts" class="hud-btn p-1.5 sm:p-2 text-left flex items-center space-x-2 shrink-0 snap-start min-w-[130px] sm:min-w-0 min-h-[44px] touch-manipulation cursor-pointer select-none">
-                    <span class="text-sm shrink-0">🚇</span>
-                    <div class="truncate min-w-0">
-                        <div class="text-[11px] sm:text-xs font-bold text-emerald-300 truncate">BTS ม.เกษตรฯ</div>
-                        <div class="text-[9px] text-emerald-400 truncate">สถานี N13 วงเวียน BTS</div>
                     </div>
                 </button>
 
