@@ -106,15 +106,10 @@
             box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
         }
 
-        /* SVG Reticle Pulse */
-        @keyframes reticlePulse {
-            0% { transform: scale(0.9); opacity: 0.95; }
-            50% { transform: scale(1.15); opacity: 0.4; }
-            100% { transform: scale(0.9); opacity: 0.95; }
-        }
-        #classicReticle circle:first-child {
-            animation: reticlePulse 2s ease-in-out infinite;
-            transform-origin: center;
+        /* Clean Map Pin Marker without Moving/Pulsing Reticle */
+        #mapPinMarker {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
         }
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -1291,10 +1286,14 @@
     <text x="0" y="32" fill="#94A3B8" font-size="7" font-weight="700" text-anchor="middle">ทิศเหนือ</text>
   </g>
 
-  <!-- Interactive Reticle -->
-  <g id="classicReticle" transform="translate(1340, 760)" style="transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;">
-    <circle cx="0" cy="0" r="28" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.9" />
-    <circle cx="0" cy="0" r="3.5" fill="#F59E0B" />
+  <!-- Sleek Map Pin Marker (Google Maps Dropped Pin Style) -->
+  <g id="mapPinMarker" transform="translate(1340, 760)" style="transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;">
+    <!-- Ground Contact Shadow -->
+    <ellipse cx="0" cy="1" rx="8" ry="3.2" fill="#020617" opacity="0.45" />
+    <!-- Pin Body pointing directly to (0, 0) -->
+    <path d="M 0 0 C -3 -4, -13 -15, -13 -25 C -13 -32.5, -7.2 -38, 0 -38 C 7.2 -38, 13 -32.5, 13 -25 C 13 -15, 3 -4, 0 0 Z" fill="#EF4444" stroke="#B91C1C" stroke-width="1.5" />
+    <!-- Inner White Circle -->
+    <circle cx="0" cy="-25" r="4.8" fill="#FFFFFF" />
   </g>
 
 </svg>
@@ -1347,9 +1346,7 @@
                             <h2 id="dialogTitle" class="text-xs sm:text-sm font-bold text-white truncate leading-tight">
                                 สระพระพิรุณ (จุดจัดงานลอยกระทง)
                             </h2>
-                            <span id="dialogStatus" class="text-[9px] px-2 py-0.5 rounded-full font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 whitespace-nowrap">
-                                ● เปิดจัดงาน
-                            </span>
+                            <span id="dialogStatus" class="hidden text-[9px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap"></span>
                         </div>
                         <p id="dialogDescCompact" class="text-[10px] text-slate-400 truncate hidden sm:block mt-0.5">
                             จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรม
@@ -1780,7 +1777,7 @@
             currentParkingData = data;
 
             const statusMap = {
-                open:    { text: 'ว่าง',     badgeClass: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40', stroke: '#10B981', color: '#34D399', fullText: '● เปิดบริการ (ว่าง)' },
+                open:    { text: 'ว่าง',     badgeClass: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40', stroke: '#10B981', color: '#34D399', fullText: '' },
                 warning: { text: 'ใกล้เต็ม', badgeClass: 'bg-amber-500/20 text-amber-400 border-amber-500/40', stroke: '#F59E0B', color: '#FCD34D', fullText: '● ชะลอรับรถ (ใกล้เต็ม)' },
                 full:    { text: 'เต็ม',     badgeClass: 'bg-red-500/20 text-red-400 border-red-500/40', stroke: '#EF4444', color: '#FCA5A5', fullText: '● งดรับรถ (ที่จอดเต็ม)' },
                 closed:  { text: 'ปิด',      badgeClass: 'bg-slate-700/60 text-slate-300 border-slate-600', stroke: '#64748B', color: '#CBD5E1', fullText: '● งดให้บริการ (ปิดอาคาร)' }
@@ -1820,8 +1817,14 @@
                 const curCfg = statusMap[curLot.status || 'open'] || statusMap.open;
                 const dialogStatus = document.getElementById('dialogStatus');
                 if (dialogStatus) {
-                    dialogStatus.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold border whitespace-nowrap ' + curCfg.badgeClass;
-                    dialogStatus.textContent = curCfg.fullText;
+                    if (curCfg.fullText) {
+                        dialogStatus.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold border whitespace-nowrap ' + curCfg.badgeClass;
+                        dialogStatus.textContent = curCfg.fullText;
+                        dialogStatus.classList.remove('hidden');
+                    } else {
+                        dialogStatus.className = 'hidden';
+                        dialogStatus.textContent = '';
+                    }
                 }
             }
         }
@@ -1963,6 +1966,9 @@
 
         // ================= SELECTION & NAVIGATION =================
         function selectLocation(key) {
+            if (window.event && window.event.stopPropagation) {
+                window.event.stopPropagation();
+            }
             selectedKey = key;
             const data = LOCATIONS[key];
             if (!data) return;
@@ -1981,7 +1987,7 @@
             if (navBtn) navBtn.href = data.mapUrl;
             if (navBtnFull) navBtnFull.href = data.mapUrl;
 
-            // Status Badge Formatting
+            // Status Badge Formatting (Hidden for normal/open to remove clutter and '● เปิดบริการ (ว่าง)')
             const statusBadge = document.getElementById('dialogStatus');
             if (statusBadge) {
                 if (data.lotId) {
@@ -1990,19 +1996,22 @@
                     if (st === 'full') {
                         statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-red-500/20 text-red-400 border border-red-500/40 whitespace-nowrap';
                         statusBadge.textContent = '● งดรับรถ (เต็ม)';
+                        statusBadge.classList.remove('hidden');
                     } else if (st === 'warning') {
                         statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-400 border border-amber-500/40 whitespace-nowrap';
                         statusBadge.textContent = '● ชะลอรับรถ (ใกล้เต็ม)';
+                        statusBadge.classList.remove('hidden');
                     } else if (st === 'closed') {
                         statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-slate-700/60 text-slate-300 border border-slate-600 whitespace-nowrap';
                         statusBadge.textContent = '● งดให้บริการ (ปิด)';
+                        statusBadge.classList.remove('hidden');
                     } else {
-                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 whitespace-nowrap';
-                        statusBadge.textContent = '● เปิดบริการ (ว่าง)';
+                        statusBadge.className = 'hidden';
+                        statusBadge.textContent = '';
                     }
                 } else {
-                    statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 whitespace-nowrap';
-                    statusBadge.textContent = data.status || '● ข้อมูลพิกัด';
+                    statusBadge.className = 'hidden';
+                    statusBadge.textContent = '';
                 }
             }
 
@@ -2013,13 +2022,13 @@
                 activeBtn.classList.add('active');
             }
 
-            // Move Reticle and Smooth Center & Auto-Zoom
+            // Move Map Pin Marker and Smooth Center (Without Auto-Zooming)
             if (data.x !== undefined && data.y !== undefined) {
-                const classicReticle = document.getElementById('classicReticle');
-                if (classicReticle) {
-                    classicReticle.setAttribute('transform', 'translate(' + data.x + ', ' + data.y + ')');
+                const pin = document.getElementById('mapPinMarker') || document.getElementById('classicReticle');
+                if (pin) {
+                    pin.setAttribute('transform', 'translate(' + data.x + ', ' + data.y + ')');
                 }
-                panTowards(data.x, data.y, 1.8);
+                panTowards(data.x, data.y);
             }
         }
 
@@ -2087,10 +2096,9 @@
             setTimeout(() => { container.style.transition = ''; }, 350);
         }
 
-        function panTowards(targetX, targetY, targetScale = 1.8) {
+        function panTowards(targetX, targetY) {
             const bounds = getSvgScreenBounds();
-            scale = Math.max(scale, targetScale);
-            
+            // Retain current scale - NEVER force auto-zoom on click/tap
             const baseX = bounds.offsetX + (targetX / bounds.svgW) * bounds.actualW;
             const baseY = bounds.offsetY + (targetY / bounds.svgH) * bounds.actualH;
             
@@ -2104,9 +2112,9 @@
             panY = (centerY - baseY) * scale - sheetOffset;
             
             clampPan();
-            container.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+            container.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
             updateTransform();
-            setTimeout(() => { container.style.transition = ''; }, 400);
+            setTimeout(() => { container.style.transition = ''; }, 350);
         }
 
         // Mouse Drag Panning
@@ -2303,6 +2311,52 @@
                         selectLocation(key);
                     });
                 }
+            }
+
+            // Tap anywhere on the SVG Map to drop pin marker (Google Maps style)
+            const svgEl = document.getElementById('cartoonPokemonCampusSvg');
+            if (svgEl) {
+                svgEl.addEventListener('click', (e) => {
+                    if (hasMoved) return; // Ignore drag/swipe
+                    const pt = svgEl.createSVGPoint();
+                    pt.x = e.clientX;
+                    pt.y = e.clientY;
+                    const ctm = svgEl.getScreenCTM();
+                    if (!ctm) return;
+                    const svgP = pt.matrixTransform(ctm.inverse());
+                    
+                    const clampedX = Math.round(Math.min(Math.max(20, svgP.x), 1580));
+                    const clampedY = Math.round(Math.min(Math.max(20, svgP.y), 980));
+                    
+                    const pin = document.getElementById('mapPinMarker') || document.getElementById('classicReticle');
+                    if (pin) {
+                        pin.setAttribute('transform', 'translate(' + clampedX + ', ' + clampedY + ')');
+                    }
+                    
+                    const lng = (100.5615 + ((clampedX - 170) / 1250) * 0.0130).toFixed(6);
+                    const lat = (13.8545 - ((clampedY - 260) / 510) * 0.0070).toFixed(6);
+                    const navUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + lat + ',' + lng;
+                    
+                    document.getElementById('dialogTitle').textContent = 'พิกัดที่เลือกบนแผนที่ มก.';
+                    document.getElementById('dialogCategory').textContent = 'พิกัดแผนที่';
+                    document.getElementById('dialogIcon').textContent = '📍';
+                    document.getElementById('dialogDesc').textContent = 'พิกัดบนแผนที่ ม.เกษตรศาสตร์ (บางเขน) แตะปุ่มนำทางเพื่อเปิด Google Maps นำทางมายังจุดนี้';
+                    const compactDesc = document.getElementById('dialogDescCompact');
+                    if (compactDesc) compactDesc.textContent = 'พิกัดบนแผนที่ มก.';
+                    
+                    const navBtn = document.getElementById('dialogMapBtn');
+                    const navBtnFull = document.getElementById('dialogMapBtnFull');
+                    if (navBtn) navBtn.href = navUrl;
+                    if (navBtnFull) navBtnFull.href = navUrl;
+                    
+                    const statusBadge = document.getElementById('dialogStatus');
+                    if (statusBadge) {
+                        statusBadge.className = 'hidden';
+                        statusBadge.textContent = '';
+                    }
+                    
+                    document.querySelectorAll('#bottomSheet .hud-btn').forEach(btn => btn.classList.remove('active'));
+                });
             }
 
             initRealtimeSync();
