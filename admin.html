@@ -48,7 +48,7 @@
 
         /* Concentric Glassmorphism */
         .glass-panel {
-            background: rgba(11, 19, 43, 0.85);
+            background: rgba(11, 19, 43, 0.88);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -131,17 +131,23 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-xs sm:text-sm text-white leading-tight">ระบบคุมสถานะอาคารจอดรถ</h1>
-                    <span class="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-semibold">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        เชื่อมต่อสดแบบเรียลไทม์
-                    </span>
+                    <div class="flex items-center gap-1.5 mt-0.5">
+                        <span id="syncIndicator" class="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-semibold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span id="syncStatusText">เชื่อมต่อสด (Local Sync)</span>
+                        </span>
+                    </div>
                 </div>
             </div>
 
             <div class="flex items-center space-x-1.5">
+                <button onclick="openCloudModal()" title="ตั้งค่า Cloud Sync" class="touch-target-44 text-xs bg-slate-800/80 hover:bg-slate-700/80 px-2.5 py-2 rounded-xl text-slate-300 border border-slate-700/80 flex items-center space-x-1 transition">
+                    <i data-lucide="cloud" class="w-3.5 h-3.5 text-sky-400"></i>
+                    <span class="text-[11px]">Cloud</span>
+                </button>
                 <a href="index.html" target="_blank" class="touch-target-44 text-xs bg-slate-800/80 hover:bg-slate-700/80 px-3 py-2 rounded-xl text-slate-300 border border-slate-700/80 flex items-center space-x-1.5 transition">
                     <i data-lucide="map" class="w-3.5 h-3.5 text-emerald-400"></i>
-                    <span>ดูแผนที่สด</span>
+                    <span>แผนที่</span>
                 </a>
                 <button onclick="logout()" title="ออกจากระบบ" class="touch-target-44 text-xs text-red-400 hover:text-red-300 hover:bg-red-950/40 p-2 rounded-xl border border-transparent hover:border-red-900/40 transition">
                     <i data-lucide="log-out" class="w-4 h-4"></i>
@@ -164,19 +170,19 @@
                         <h2 class="text-base font-bold text-white mt-0.5">อาคารจอดรถงามวงศ์วาน 1</h2>
                     </div>
                     <div id="statusBadge-ngam1" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                        เปิดให้บริการ
+                        🟢 ว่าง
                     </div>
                 </div>
 
                 <!-- 1-Click Status Toggles (4 States: Open, Warning, Full, Closed) -->
                 <div class="grid grid-cols-4 gap-1.5 sm:gap-2">
                     <button id="btn-ngam1-open" onclick="setStatus('ngam1', 'open')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
-                        <span class="text-xs">🟢 เปิด</span>
-                        <span class="text-[9px] opacity-80">ว่าง</span>
+                        <span class="text-xs">🟢 ว่าง</span>
+                        <span class="text-[9px] opacity-80">เปิดบริการ</span>
                     </button>
                     <button id="btn-ngam1-warning" onclick="setStatus('ngam1', 'warning')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
-                        <span class="text-xs">🟡 เตือน</span>
-                        <span class="text-[9px] opacity-80">ใกล้เต็ม</span>
+                        <span class="text-xs">🟡 ใกล้เต็ม</span>
+                        <span class="text-[9px] opacity-80">ชะลอรับรถ</span>
                     </button>
                     <button id="btn-ngam1-full" onclick="setStatus('ngam1', 'full')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
                         <span class="text-xs">🔴 เต็ม</span>
@@ -184,7 +190,7 @@
                     </button>
                     <button id="btn-ngam1-closed" onclick="setStatus('ngam1', 'closed')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
                         <span class="text-xs">⚪ ปิด</span>
-                        <span class="text-[9px] opacity-80">ปิดอาคาร</span>
+                        <span class="text-[9px] opacity-80">งดบริการ</span>
                     </button>
                 </div>
             </div>
@@ -201,19 +207,19 @@
                         <h2 class="text-base font-bold text-white mt-0.5">อาคารจอดรถงามวงศ์วาน 2</h2>
                     </div>
                     <div id="statusBadge-ngam2" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                        เปิดให้บริการ
+                        🟢 ว่าง
                     </div>
                 </div>
 
                 <!-- 1-Click Status Toggles (4 States: Open, Warning, Full, Closed) -->
                 <div class="grid grid-cols-4 gap-1.5 sm:gap-2">
                     <button id="btn-ngam2-open" onclick="setStatus('ngam2', 'open')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
-                        <span class="text-xs">🟢 เปิด</span>
-                        <span class="text-[9px] opacity-80">ว่าง</span>
+                        <span class="text-xs">🟢 ว่าง</span>
+                        <span class="text-[9px] opacity-80">เปิดบริการ</span>
                     </button>
                     <button id="btn-ngam2-warning" onclick="setStatus('ngam2', 'warning')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
-                        <span class="text-xs">🟡 เตือน</span>
-                        <span class="text-[9px] opacity-80">ใกล้เต็ม</span>
+                        <span class="text-xs">🟡 ใกล้เต็ม</span>
+                        <span class="text-[9px] opacity-80">ชะลอรับรถ</span>
                     </button>
                     <button id="btn-ngam2-full" onclick="setStatus('ngam2', 'full')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
                         <span class="text-xs">🔴 เต็ม</span>
@@ -221,7 +227,7 @@
                     </button>
                     <button id="btn-ngam2-closed" onclick="setStatus('ngam2', 'closed')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
                         <span class="text-xs">⚪ ปิด</span>
-                        <span class="text-[9px] opacity-80">ปิดอาคาร</span>
+                        <span class="text-[9px] opacity-80">งดบริการ</span>
                     </button>
                 </div>
             </div>
@@ -238,19 +244,19 @@
                         <h2 class="text-base font-bold text-white mt-0.5">อาคารจอดรถวิภาวดี</h2>
                     </div>
                     <div id="statusBadge-vipa" class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                        เปิดให้บริการ
+                        🟢 ว่าง
                     </div>
                 </div>
 
                 <!-- 1-Click Status Toggles (4 States: Open, Warning, Full, Closed) -->
                 <div class="grid grid-cols-4 gap-1.5 sm:gap-2">
                     <button id="btn-vipa-open" onclick="setStatus('vipa', 'open')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
-                        <span class="text-xs">🟢 เปิด</span>
-                        <span class="text-[9px] opacity-80">ว่าง</span>
+                        <span class="text-xs">🟢 ว่าง</span>
+                        <span class="text-[9px] opacity-80">เปิดบริการ</span>
                     </button>
                     <button id="btn-vipa-warning" onclick="setStatus('vipa', 'warning')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
-                        <span class="text-xs">🟡 เตือน</span>
-                        <span class="text-[9px] opacity-80">ใกล้เต็ม</span>
+                        <span class="text-xs">🟡 ใกล้เต็ม</span>
+                        <span class="text-[9px] opacity-80">ชะลอรับรถ</span>
                     </button>
                     <button id="btn-vipa-full" onclick="setStatus('vipa', 'full')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
                         <span class="text-xs">🔴 เต็ม</span>
@@ -258,7 +264,7 @@
                     </button>
                     <button id="btn-vipa-closed" onclick="setStatus('vipa', 'closed')" class="touch-target-44 rounded-xl text-xs py-2 px-1 font-bold transition flex flex-col items-center justify-center gap-0.5">
                         <span class="text-xs">⚪ ปิด</span>
-                        <span class="text-[9px] opacity-80">ปิดอาคาร</span>
+                        <span class="text-[9px] opacity-80">งดบริการ</span>
                     </button>
                 </div>
             </div>
@@ -267,37 +273,97 @@
 
         <!-- Footer Help -->
         <footer class="text-center text-xs text-slate-500 py-3">
-            <span>การเปลี่ยนสถานะจะมีผลต่อหน้าแผนที่ผู้ใช้งานทันทีผ่าน Realtime Sync</span>
+            <span>การเปลี่ยนสถานะจะมีผลต่อหน้าแผนที่ผู้ใช้งานทันทีผ่าน Realtime Broadcast & Cloud Sync</span>
         </footer>
 
+    </div>
+
+    <!-- CLOUD CONFIG MODAL -->
+    <div id="cloudModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-panel rounded-3xl p-6 max-w-sm w-full border border-slate-700 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="cloud" class="w-5 h-5 text-sky-400"></i>
+                    <h3 class="text-sm font-bold text-white">ตั้งค่า Cloud Realtime Sync</h3>
+                </div>
+                <button onclick="closeCloudModal()" class="text-slate-400 hover:text-white p-1">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+                ระบบรองรับทั้ง Local Sync ในเบราว์เซอร์ทันที และ Cloud Sync (Firebase Realtime Database / Supabase REST API) เพื่อซิงค์ข้ามมือถือของทีมสต๊าฟทุกคน
+            </p>
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-300 mb-1">URL จุดเชื่อมต่อ Cloud (REST Endpoint)</label>
+                <input id="cloudEndpointInput" type="text" placeholder="https://<your-project>.firebasedatabase.app/parking.json" class="w-full text-xs bg-slate-950/90 border border-slate-700 rounded-xl px-3 py-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 font-mono">
+            </div>
+            <div class="flex space-x-2">
+                <button onclick="saveCloudConfig()" class="touch-target-44 flex-1 bg-sky-600 hover:bg-sky-500 text-white font-bold py-2.5 rounded-xl text-xs transition">
+                    บันทึกการตั้งค่า
+                </button>
+                <button onclick="testCloudConnection()" class="touch-target-44 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2.5 rounded-xl text-xs border border-slate-700 transition">
+                    ทดสอบ
+                </button>
+            </div>
+            <div class="text-[10px] text-slate-400 pt-1 border-t border-slate-800">
+                * หากเว้นว่างไว้ ระบบจะทำงานผ่าน Local Sync (BroadcastChannel & Storage) ให้โดยอัตโนมัติ
+            </div>
+        </div>
     </div>
 
     <script>
         lucide.createIcons();
 
         const DEFAULT_PIN = "1234";
-        const channel = new BroadcastChannel('ku_parking_sync');
+        const SYNC_CHANNEL_NAME = 'ku_parking_sync';
+        const STORAGE_KEY = 'ku_loykrathong_parking';
+        const CLOUD_KEY = 'ku_parking_cloud_endpoint';
+
+        const channel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel(SYNC_CHANNEL_NAME) : null;
 
         const DEFAULT_DATA = {
+            updatedAt: Date.now(),
             lots: {
-                ngam1: { name: "งามวงศ์วาน 1", status: "open" },
-                ngam2: { name: "งามวงศ์วาน 2", status: "open" },
-                vipa:  { name: "วิภาวดี",     status: "open" }
+                ngam1: { name: "งามวงศ์วาน 1", status: "open", capacity: 289 },
+                ngam2: { name: "งามวงศ์วาน 2", status: "open", capacity: 192 },
+                vipa:  { name: "วิภาวดี",     status: "open", capacity: 150 }
             }
         };
 
         function getData() {
             try {
-                const s = localStorage.getItem('ku_loykrathong_parking');
+                const s = localStorage.getItem(STORAGE_KEY);
                 return s ? JSON.parse(s) : DEFAULT_DATA;
             } catch (e) {
                 return DEFAULT_DATA;
             }
         }
 
-        function saveData(data) {
-            localStorage.setItem('ku_loykrathong_parking', JSON.stringify(data));
-            channel.postMessage('UPDATE');
+        async function saveData(data) {
+            data.updatedAt = Date.now();
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            } catch (e) {}
+
+            if (channel) {
+                try {
+                    channel.postMessage({ type: 'PARKING_UPDATE', data });
+                } catch (e) {}
+            }
+            window.dispatchEvent(new Event('storage'));
+
+            // Asynchronously sync to Cloud if configured
+            const cloudUrl = localStorage.getItem(CLOUD_KEY);
+            if (cloudUrl && cloudUrl.startsWith('http')) {
+                try {
+                    fetch(cloudUrl, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    }).catch(() => {});
+                } catch (e) {}
+            }
+
             renderAdmin();
         }
 
@@ -321,6 +387,7 @@
                 sessionStorage.setItem('staff_auth', 'true');
                 document.getElementById('loginScreen').classList.add('hidden');
                 document.getElementById('adminPanel').classList.remove('hidden');
+                initSyncListener();
                 renderAdmin();
             } else if (input.length >= 4) {
                 alert('รหัส PIN ไม่ถูกต้อง (ใส่ 1234)');
@@ -335,13 +402,39 @@
         if (sessionStorage.getItem('staff_auth') === 'true') {
             document.getElementById('loginScreen').classList.add('hidden');
             document.getElementById('adminPanel').classList.remove('hidden');
+            initSyncListener();
             renderAdmin();
+        }
+
+        function initSyncListener() {
+            if (channel) {
+                channel.onmessage = (event) => {
+                    if (event.data && event.data.type === 'PARKING_UPDATE') {
+                        renderAdmin();
+                    }
+                };
+            }
+            window.addEventListener('storage', () => {
+                renderAdmin();
+            });
+
+            // Update Sync Status Text
+            const cloudUrl = localStorage.getItem(CLOUD_KEY);
+            const syncStatusText = document.getElementById('syncStatusText');
+            if (syncStatusText) {
+                if (cloudUrl && cloudUrl.startsWith('http')) {
+                    syncStatusText.textContent = "เชื่อมต่อสด (Cloud & Local Sync)";
+                } else {
+                    syncStatusText.textContent = "เชื่อมต่อสด (Local Sync)";
+                }
+            }
         }
 
         let toastTimer = null;
         function showToast(msg) {
             const toast = document.getElementById('toastNotification');
             const toastMessage = document.getElementById('toastMessage');
+            if (!toast || !toastMessage) return;
             toastMessage.innerText = msg;
             toast.classList.remove('hidden');
             toast.classList.add('toast-animate');
@@ -363,16 +456,16 @@
                 if (badge) {
                     if (status === 'full') {
                         badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/30';
-                        badge.innerText = 'ที่จอดเต็ม';
+                        badge.innerText = '🔴 ที่จอดเต็ม';
                     } else if (status === 'warning') {
                         badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30';
-                        badge.innerText = 'ใกล้เต็ม';
+                        badge.innerText = '🟡 ใกล้เต็ม';
                     } else if (status === 'closed') {
                         badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-slate-700 text-slate-300 border border-slate-600';
-                        badge.innerText = 'ปิดอาคาร';
+                        badge.innerText = '⚪ ปิดอาคาร';
                     } else {
                         badge.className = 'text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
-                        badge.innerText = 'เปิดให้บริการ';
+                        badge.innerText = '🟢 ว่าง';
                     }
                 }
 
@@ -407,8 +500,52 @@
             saveData(data);
 
             const lotName = id === 'ngam1' ? 'งามวงศ์วาน 1' : (id === 'ngam2' ? 'งามวงศ์วาน 2' : 'วิภาวดี');
-            const statusLabel = newStatus === 'open' ? 'เปิดบริการ' : (newStatus === 'warning' ? 'ใกล้เต็ม' : (newStatus === 'full' ? 'ที่จอดเต็ม' : 'งดบริการ (ปิด)'));
+            const statusLabel = newStatus === 'open' ? 'ว่าง (เปิดบริการ)' : (newStatus === 'warning' ? 'ใกล้เต็ม' : (newStatus === 'full' ? 'ที่จอดเต็ม' : 'ปิดอาคาร'));
             showToast(`อัปเดต ${lotName} → [${statusLabel}] สำเร็จ`);
+        }
+
+        // Cloud Modal Handlers
+        function openCloudModal() {
+            const input = document.getElementById('cloudEndpointInput');
+            if (input) input.value = localStorage.getItem(CLOUD_KEY) || '';
+            document.getElementById('cloudModal').classList.remove('hidden');
+        }
+
+        function closeCloudModal() {
+            document.getElementById('cloudModal').classList.add('hidden');
+        }
+
+        function saveCloudConfig() {
+            const input = document.getElementById('cloudEndpointInput');
+            const val = input ? input.value.trim() : '';
+            if (val) {
+                localStorage.setItem(CLOUD_KEY, val);
+            } else {
+                localStorage.removeItem(CLOUD_KEY);
+            }
+            closeCloudModal();
+            initSyncListener();
+            showToast('บันทึกการตั้งค่า Cloud เรียบร้อยแล้ว');
+        }
+
+        async function testCloudConnection() {
+            const input = document.getElementById('cloudEndpointInput');
+            const url = input ? input.value.trim() : '';
+            if (!url || !url.startsWith('http')) {
+                alert('กรุณาระบุ URL ที่ถูกต้อง (ขึ้นต้นด้วย http:// หรือ https://)');
+                return;
+            }
+            try {
+                showToast('กำลังทดสอบการเชื่อมต่อ Cloud...');
+                const res = await fetch(url, { method: 'GET' });
+                if (res.ok) {
+                    alert('เชื่อมต่อ Cloud สำเร็จ! (HTTP ' + res.status + ')');
+                } else {
+                    alert('ตอบกลับจากเซิร์ฟเวอร์: HTTP ' + res.status);
+                }
+            } catch (err) {
+                alert('ไม่สามารถเชื่อมต่อได้: ' + err.message);
+            }
         }
     </script>
 </body>

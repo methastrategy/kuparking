@@ -16,7 +16,7 @@
     <!-- Preconnect Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Prompt:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,7 +28,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        thai: ["'Prompt'", "-apple-system", "BlinkMacSystemFont", "sans-serif"]
+                        sans: ["'Inter'", "'Prompt'", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+                        thai: ["'Inter'", "'Prompt'", "-apple-system", "BlinkMacSystemFont", "sans-serif"]
                     },
                     colors: {
                         brand: {
@@ -47,15 +48,29 @@
     </script>
 
     <style>
+        :root {
+            --font-sans: 'Inter', 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
         * {
+            font-family: var(--font-sans);
+            letter-spacing: 0;
             -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
         }
 
         body {
-            font-family: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: var(--font-sans);
             background-color: #020617;
             color: #F8FAFC;
+        }
+
+        .touch-target-44 {
+            position: relative;
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         text {
@@ -1025,9 +1040,9 @@
     <rect x="6" y="-7" width="8" height="4" rx="1.5" fill="#3B82F6" />
     <circle cx="16" cy="-14" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="16" y="-10.5" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">P</text>
-    <g transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect x="-32" y="-9" width="64" height="18" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-      <text x="0" y="3.5" fill="#38BDF8" font-size="8" font-weight="800" text-anchor="middle">🅿️ จอดงาม 2</text>
+    <g id="svg-badge-ngam2" transform="translate(0, 36)" filter="url(#badgeGlow)">
+      <rect id="svg-badge-rect-ngam2" x="-38" y="-9" width="76" height="18" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="1.5" />
+      <text id="svg-badge-text-ngam2" x="0" y="3.5" fill="#34D399" font-size="7.5" font-weight="800" text-anchor="middle">🅿️ งาม 2 • ว่าง</text>
     </g>
   </g>
 
@@ -1046,9 +1061,9 @@
     <rect x="-6" y="3" width="8" height="4" rx="1.5" fill="#8B5CF6" />
     <circle cx="16" cy="-14" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="16" y="-10.5" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">P</text>
-    <g transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect x="-32" y="-9" width="64" height="18" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-      <text x="0" y="3.5" fill="#38BDF8" font-size="8" font-weight="800" text-anchor="middle">🅿️ จอดงาม 1</text>
+    <g id="svg-badge-ngam1" transform="translate(0, 36)" filter="url(#badgeGlow)">
+      <rect id="svg-badge-rect-ngam1" x="-38" y="-9" width="76" height="18" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="1.5" />
+      <text id="svg-badge-text-ngam1" x="0" y="3.5" fill="#34D399" font-size="7.5" font-weight="800" text-anchor="middle">🅿️ งาม 1 • ว่าง</text>
     </g>
   </g>
 
@@ -1059,9 +1074,9 @@
     <polygon points="-31,-24 -14,-33 14,-33 31,-24" fill="#334155" stroke="#0F172A" stroke-width="1.5" />
     <circle cx="0" cy="-4" r="9" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="0" y="-0.5" fill="#FFFFFF" font-size="9.5" font-weight="900" text-anchor="middle">P</text>
-    <g transform="translate(0, 32)" filter="url(#badgeGlow)">
-      <rect x="-30" y="-9" width="60" height="18" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
-      <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🅿️ วิภาวดีรังสิต</text>
+    <g id="svg-badge-vipa" transform="translate(0, 32)" filter="url(#badgeGlow)">
+      <rect id="svg-badge-rect-vipa" x="-38" y="-9" width="76" height="18" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="1.5" />
+      <text id="svg-badge-text-vipa" x="0" y="3.5" fill="#34D399" font-size="7.5" font-weight="800" text-anchor="middle">🅿️ วิภาวดี • ว่าง</text>
     </g>
   </g>
 
@@ -1116,7 +1131,7 @@
       <rect x="-58" y="-11" width="116" height="22" rx="6" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8" />
       <circle cx="-44" cy="0" r="5.5" fill="#F59E0B" />
       <text x="-44" y="2.5" fill="#0F172A" font-size="7.5" font-weight="900" text-anchor="middle">🪔</text>
-      <text x="8" y="4" fill="#FEF08A" font-size="8.5" font-weight="800" text-anchor="middle">สระพระพิรุณ (70×170)</text>
+      <text x="8" y="4" fill="#FEF08A" font-size="8.5" font-weight="800" text-anchor="middle">สระพระพิรุณ (จุดลอยกระทง)</text>
     </g>
   </g>
 
@@ -1154,6 +1169,84 @@
     <polygon points="0,-18 0,-6 -10,-8" fill="#F87171" />
     <line x1="0" y1="-18" x2="0" y2="-23" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" />
     <circle cx="0" cy="-23" r="2.5" fill="#FEF08A" stroke="#78350F" stroke-width="0.8" />
+  </g>
+
+    <!-- ================= FESTIVAL ESSENTIALS: NIGHT MARKET & RESTROOMS ================= -->
+  <!-- Food Street / Night Market Promenade Zone -->
+  <g id="zone-food-street" class="building-card" onclick="selectLocation('food_street')" transform="translate(1235, 760)" filter="url(#badgeGlow)">
+    <rect x="-56" y="-12" width="112" height="24" rx="7" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8" />
+    <circle cx="-42" cy="0" r="6" fill="#D97706" />
+    <text x="-42" y="3" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">🍢</text>
+    <text x="8" y="4" fill="#FEF08A" font-size="7.5" font-weight="800" text-anchor="middle">ถนนคนเดิน/ของกิน</text>
+  </g>
+
+  <!-- Restroom: Main Auditorium -->
+  <g id="pin-restroom-auditorium" class="building-card" onclick="selectLocation('restroom_auditorium')" transform="translate(1185, 730)" filter="url(#badgeGlow)">
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
+    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+  </g>
+
+  <!-- Restroom: Sorn 3 -->
+  <g id="pin-restroom-sorn3" class="building-card" onclick="selectLocation('restroom_sorn3')" transform="translate(480, 395)" filter="url(#badgeGlow)">
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
+    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+  </g>
+
+  <!-- Restroom: Bar Mai -->
+  <g id="pin-restroom-barmai" class="building-card" onclick="selectLocation('restroom_barmai')" transform="translate(635, 175)" filter="url(#badgeGlow)">
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
+    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+  </g>
+
+  <!-- Restroom: Ngamwongwan Parking -->
+  <g id="pin-restroom-ngam" class="building-card" onclick="selectLocation('restroom_ngam')" transform="translate(865, 730)" filter="url(#badgeGlow)">
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
+    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+  </g>
+
+  <!-- Restroom: Vibhavadi Parking -->
+  <g id="pin-restroom-vipa" class="building-card" onclick="selectLocation('restroom_vipa')" transform="translate(170, 345)" filter="url(#badgeGlow)">
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
+    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+  </g>
+
+    <!-- ================= FESTIVAL ESSENTIALS: NIGHT MARKET & RESTROOMS ================= -->
+  <!-- Food Street / Night Market Promenade Zone -->
+  <g id="zone-food-street" class="building-card" onclick="selectLocation('food_street')" transform="translate(1235, 760)" filter="url(#badgeGlow)">
+    <rect x="-56" y="-12" width="112" height="24" rx="7" fill="#0F172A" stroke="#F59E0B" stroke-width="1.8" />
+    <circle cx="-42" cy="0" r="6" fill="#D97706" />
+    <text x="-42" y="3" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">🍢</text>
+    <text x="8" y="4" fill="#FEF08A" font-size="7.5" font-weight="800" text-anchor="middle">ถนนคนเดิน/ของกิน</text>
+  </g>
+
+  <!-- Restroom: Main Auditorium -->
+  <g id="pin-restroom-auditorium" class="building-card" onclick="selectLocation('restroom_auditorium')" transform="translate(1185, 730)" filter="url(#badgeGlow)">
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
+    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+  </g>
+
+  <!-- Restroom: Sorn 3 -->
+  <g id="pin-restroom-sorn3" class="building-card" onclick="selectLocation('restroom_sorn3')" transform="translate(480, 395)" filter="url(#badgeGlow)">
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
+    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+  </g>
+
+  <!-- Restroom: Bar Mai -->
+  <g id="pin-restroom-barmai" class="building-card" onclick="selectLocation('restroom_barmai')" transform="translate(635, 175)" filter="url(#badgeGlow)">
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
+    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+  </g>
+
+  <!-- Restroom: Ngamwongwan Parking -->
+  <g id="pin-restroom-ngam" class="building-card" onclick="selectLocation('restroom_ngam')" transform="translate(865, 730)" filter="url(#badgeGlow)">
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
+    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
+  </g>
+
+  <!-- Restroom: Vibhavadi Parking -->
+  <g id="pin-restroom-vipa" class="building-card" onclick="selectLocation('restroom_vipa')" transform="translate(170, 345)" filter="url(#badgeGlow)">
+    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#0F172A" stroke="#0284C7" stroke-width="1.4" />
+    <text x="0" y="3.5" fill="#38BDF8" font-size="7.5" font-weight="800" text-anchor="middle">🚻 ห้องน้ำ</text>
   </g>
 
   <!-- ================= 8. GATES BADGES ON FENCE ================= -->
@@ -1199,18 +1292,38 @@
     <text x="0" y="4" fill="#34D399" font-size="8" font-weight="800" text-anchor="middle">ประตู 1 (ข้างสระ)</text>
   </g>
 
-  <!-- ================= 9. COMPASS ROSE & INTERACTIVE RETICLE ================= -->
-  <!-- Cute Anime Compass Rose (NE Corner) -->
-  <g transform="translate(1420, 110)" filter="url(#badgeGlow)">
-    <circle cx="0" cy="0" r="20" fill="#0F172A" stroke="#F59E0B" stroke-width="2" />
-    <path d="M -16 0 A 16 16 0 0 1 16 0 Z" fill="#EF4444" />
-    <path d="M -16 0 A 16 16 0 0 0 16 0 Z" fill="#F8FAFC" />
-    <line x1="-16" y1="0" x2="16" y2="0" stroke="#0F172A" stroke-width="2" />
-    <circle cx="0" cy="0" r="5" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.8" />
-    <circle cx="0" cy="0" r="2" fill="#0F172A" />
-    <polygon points="0,-16 4,-6 -4,-6" fill="#FEF08A" stroke="#0F172A" stroke-width="0.8" />
-    <text x="0" y="-18" fill="#FEF08A" font-size="8" font-weight="900" text-anchor="middle">N</text>
-    <text x="0" y="26" fill="#CBD5E1" font-size="7" font-weight="800" text-anchor="middle">ทิศเหนือ</text>
+  <!-- ================= 9. ELEGANT UNIVERSITY COMPASS ROSE & RETICLE ================= -->
+  <!-- University Compass Rose (KU Emerald #047857 & Gold #F59E0B) -->
+  <g id="universityCompass" transform="translate(1420, 110)" filter="url(#badgeGlow)">
+    <circle cx="0" cy="0" r="23" fill="#0B132B" stroke="#047857" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#F59E0B" stroke-width="0.8" opacity="0.6" stroke-dasharray="2 2" />
+    
+    <line x1="0" y1="-22" x2="0" y2="-19" stroke="#FEF08A" stroke-width="1.5" />
+    <line x1="0" y1="22" x2="0" y2="19" stroke="#94A3B8" stroke-width="1" />
+    <line x1="-22" y1="0" x2="-19" y2="0" stroke="#94A3B8" stroke-width="1" />
+    <line x1="22" y1="0" x2="19" y2="0" stroke="#94A3B8" stroke-width="1" />
+    
+    <!-- North Arrow (Emerald & Gold) -->
+    <polygon points="0,-18 -4.5,-2 0,-5" fill="#10B981" />
+    <polygon points="0,-18 4.5,-2 0,-5" fill="#F59E0B" />
+    
+    <!-- South Arrow (Forest & Dark Navy) -->
+    <polygon points="0,15 -3.5,2 0,4" fill="#064E3B" />
+    <polygon points="0,15 3.5,2 0,4" fill="#1E293B" />
+    
+    <!-- West & East Arrows -->
+    <polygon points="-15,0 -2,-3.5 -4,0" fill="#047857" />
+    <polygon points="-15,0 -2,3.5 -4,0" fill="#064E3B" />
+    <polygon points="15,0 2,-3.5 4,0" fill="#D97706" />
+    <polygon points="15,0 2,3.5 4,0" fill="#78350F" />
+    
+    <!-- Center Hub -->
+    <circle cx="0" cy="0" r="4.5" fill="#0B132B" stroke="#F59E0B" stroke-width="1.4" />
+    <circle cx="0" cy="0" r="2.2" fill="#10B981" />
+    
+    <!-- North Typography -->
+    <text x="0" y="-25" fill="#FEF08A" font-size="8.5" font-weight="900" text-anchor="middle" font-family="'Inter', sans-serif">N</text>
+    <text x="0" y="32" fill="#94A3B8" font-size="7" font-weight="700" text-anchor="middle">ทิศเหนือ</text>
   </g>
 
   <!-- Interactive Reticle -->
@@ -1224,7 +1337,7 @@
             </div>
 
             <!-- Floating Pan & Zoom Controls -->
-            <div class="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-20 flex flex-col gap-1.5">
+            <div class="absolute bottom-20 right-3 sm:bottom-4 sm:right-4 z-20 flex flex-col gap-1.5">
                 <div class="hud-panel p-1 flex flex-col sm:flex-row items-center gap-1 shadow-lg">
                     <button onclick="zoomMap(1.2)" aria-label="ขยายแผนที่" class="hud-btn w-9 h-9 flex items-center justify-center text-slate-200 hover:text-white">
                         <i data-lucide="plus" class="w-4 h-4"></i>
@@ -1242,78 +1355,119 @@
     </div>
 
 
-    <!-- ================= UNIFIED COCKPIT FOOTER ================= -->
-    <footer id="unifiedFooter" class="w-full bg-slate-900/95 border-t border-slate-800 px-2 sm:px-4 pt-1.5 sm:pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] shrink-0 z-30 backdrop-blur-md">
-        <div class="max-w-6xl mx-auto flex flex-col gap-1.5 sm:gap-2">
+    <!-- ================= COLLAPSIBLE BOTTOM SHEET (MOBILE ERGONOMICS >85% VIEWPORT) ================= -->
+    <div id="bottomSheet" class="fixed bottom-0 left-0 right-0 z-40 select-none flex flex-col justify-end pointer-events-none transition-all duration-300">
+        
+        <!-- Backdrop on Mobile (Tap outside to collapse) -->
+        <div id="sheetBackdrop" onclick="collapseSheet()" class="fixed inset-0 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 sm:hidden"></div>
 
-            <!-- Dialogue & Info Cockpit Panel -->
-            <div id="dialogBox" class="hud-panel p-2 sm:px-4 sm:py-2.5 transition-all duration-200">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <div class="flex items-start sm:items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
-                        <span id="dialogIcon" class="text-2xl shrink-0 p-1 bg-slate-800/80 rounded-md border border-slate-700/60 shadow-inner">🪔</span>
-                        <div class="min-w-0 flex-1">
-                            <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                                <h2 id="dialogTitle" class="text-xs sm:text-sm font-bold text-slate-100 truncate sm:whitespace-normal">สระพระพิรุณ (จุดจัดงานลอยกระทง)</h2>
-                                <span id="dialogCategory" class="text-[9px] bg-amber-500/20 text-amber-300 border border-amber-500/40 px-1.5 py-0.5 rounded font-semibold whitespace-nowrap">งานลอยกระทงหลัก</span>
-                                <span id="dialogStatus" class="text-[9px] text-emerald-400 font-semibold whitespace-nowrap">● เปิดจัดงาน</span>
-                            </div>
-                            <p id="dialogDesc" class="text-[11px] sm:text-xs text-slate-300 font-normal leading-relaxed line-clamp-2 sm:line-clamp-none mt-0.5">
-                                จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรมและร้านค้านิสิต
-                            </p>
+        <!-- Main Sheet Surface -->
+        <div id="sheetPanel" class="pointer-events-auto w-full sm:max-w-4xl mx-auto bg-slate-900/95 sm:bg-slate-900/90 border-t sm:border border-slate-700/80 sm:rounded-2xl shadow-2xl backdrop-blur-xl sm:mb-3 transition-all duration-300 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+            
+            <!-- Mobile Drag Handle Bar -->
+            <div id="sheetDragHandle" onclick="toggleSheet()" class="w-full pt-2 pb-1 flex justify-center cursor-pointer sm:hidden active:opacity-70">
+                <div class="w-12 h-1.5 rounded-full bg-slate-600"></div>
+            </div>
+
+            <!-- 1. COMPACT HEADER BAR (Always Visible ~54px on mobile) -->
+            <div id="compactHeader" onclick="toggleSheet()" class="px-3 sm:px-4 py-1.5 sm:py-2.5 flex items-center justify-between gap-2 cursor-pointer sm:cursor-default">
+                
+                <!-- Left: Icon + Title + Live Status Pill -->
+                <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                    <span id="dialogIcon" class="text-xl sm:text-2xl shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-slate-800/90 border border-slate-700/70 flex items-center justify-center shadow-inner">
+                        🪔
+                    </span>
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center gap-1.5 sm:gap-2">
+                            <h2 id="dialogTitle" class="text-xs sm:text-sm font-bold text-white truncate leading-tight">
+                                สระพระพิรุณ (จุดจัดงานลอยกระทง)
+                            </h2>
+                            <span id="dialogStatus" class="text-[9px] px-2 py-0.5 rounded-full font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 whitespace-nowrap">
+                                ● เปิดจัดงาน
+                            </span>
                         </div>
+                        <p id="dialogDescCompact" class="text-[10px] text-slate-400 truncate hidden sm:block mt-0.5">
+                            จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรม
+                        </p>
                     </div>
-                    <!-- Navigation Action Button -->
-                    <div class="shrink-0 flex items-center justify-end">
-                        <a id="dialogMapBtn" href="https://maps.app.goo.gl/u8Tw7VFg5Tz6KRJXA" target="_blank" rel="noopener noreferrer" class="hud-btn w-full sm:w-auto px-4 py-2 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/50 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform touch-manipulation min-h-[44px]">
-                            <span>นำทาง Google Maps</span>
-                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                        </a>
-                    </div>
+                </div>
+
+                <!-- Right: Navigation CTA + Chevron Toggle -->
+                <div class="shrink-0 flex items-center gap-1.5" onclick="event.stopPropagation()">
+                    <!-- Compact Quick Navigate Button (High-Contrast Vivid Emerald) -->
+                    <a id="dialogMapBtn" href="https://www.google.com/maps/dir/?api=1&destination=13.848135,100.572183" target="_blank" rel="noopener noreferrer" class="touch-target-44 px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold text-xs shadow-md shadow-emerald-950/60 active:scale-95 transition-all flex items-center gap-1.5 border border-emerald-400/40">
+                        <i data-lucide="navigation" class="w-3.5 h-3.5 fill-white text-white"></i>
+                        <span>นำทาง</span>
+                    </a>
+
+                    <!-- Mobile Expand/Collapse Toggle Chevron -->
+                    <button id="chevronBtn" onclick="toggleSheet()" aria-label="ย่อ/ขยายรายละเอียด" class="touch-target-44 p-2 rounded-xl text-slate-400 hover:text-white bg-slate-800/70 sm:hidden">
+                        <i id="chevronIcon" data-lucide="chevron-up" class="w-4 h-4 transition-transform duration-300"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- Quick Selector Tray (Zero Capacity Numbers & Zero Status text for Parking) -->
-            <div class="flex overflow-x-auto no-scrollbar sm:grid sm:grid-cols-4 gap-1.5 sm:gap-2 pb-0.5 sm:pb-0 scroll-smooth snap-x touch-pan-x">
+            <!-- 2. EXPANDABLE BODY CONTENT -->
+            <div id="sheetExpandedContent" class="overflow-hidden transition-all duration-300 max-h-0 sm:max-h-none opacity-0 sm:opacity-100 px-3 sm:px-4 space-y-2 sm:space-y-2.5">
                 
-                <!-- 1. อาคารจอดรถวิภาวดีรังสิต -->
-                <button onclick="selectLocation('vipa')" id="btn-vipa" class="hud-btn p-1.5 sm:p-2 text-left flex items-center space-x-2 shrink-0 snap-start min-w-[130px] sm:min-w-0 min-h-[44px] touch-manipulation cursor-pointer select-none">
-                    <span class="text-sm shrink-0">🅿️</span>
-                    <div class="truncate min-w-0">
-                        <div class="text-[11px] sm:text-xs font-bold text-slate-200 truncate">วิภาวดีรังสิต</div>
-                        <div class="text-[9px] text-sky-400 truncate">ประตูวิภาวดี • ฝั่งตะวันตก</div>
+                <!-- Category and Detailed Description -->
+                <div class="p-2 sm:p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 text-xs text-slate-300 space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span id="dialogCategory" class="text-[9px] font-semibold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                            งานลอยกระทงหลัก
+                        </span>
+                        <span id="dialogTelemetry" class="text-[10px] text-slate-400">
+                            ผังและพิกัดทางการ 100%
+                        </span>
                     </div>
-                </button>
+                    <p id="dialogDesc" class="text-xs text-slate-200 leading-relaxed font-normal">
+                        จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรมและร้านค้านิสิต
+                    </p>
+                </div>
 
-                <!-- 2. อาคารจอดรถงามวงศ์วาน 1 -->
-                <button onclick="selectLocation('ngam1')" id="btn-ngam1" class="hud-btn p-1.5 sm:p-2 text-left flex items-center space-x-2 shrink-0 snap-start min-w-[130px] sm:min-w-0 min-h-[44px] touch-manipulation cursor-pointer select-none">
-                    <span class="text-sm shrink-0">🅿️</span>
-                    <div class="truncate min-w-0">
-                        <div class="text-[11px] sm:text-xs font-bold text-slate-200 truncate">งามวงศ์วาน 1</div>
-                        <div class="text-[9px] text-sky-400 truncate">ประตู 1 • ฝั่งงามวงศ์วาน</div>
-                    </div>
-                </button>
+                <!-- Quick Selector Tray (4 primary buttons) -->
+                <div class="grid grid-cols-4 gap-1.5 sm:gap-2 pt-0.5">
+                    <button onclick="selectLocation('vipa')" id="btn-vipa" class="hud-btn p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
+                        <div class="flex items-center justify-between w-full">
+                            <span class="text-xs">🅿️</span>
+                            <span id="chip-status-vipa" class="text-[8px] px-1 py-0.2 rounded font-bold bg-emerald-500/20 text-emerald-400">ว่าง</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-slate-200 truncate mt-0.5">วิภาวดี</div>
+                    </button>
+                    <button onclick="selectLocation('ngam1')" id="btn-ngam1" class="hud-btn p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
+                        <div class="flex items-center justify-between w-full">
+                            <span class="text-xs">🅿️</span>
+                            <span id="chip-status-ngam1" class="text-[8px] px-1 py-0.2 rounded font-bold bg-emerald-500/20 text-emerald-400">ว่าง</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-slate-200 truncate mt-0.5">งาม 1</div>
+                    </button>
+                    <button onclick="selectLocation('ngam2')" id="btn-ngam2" class="hud-btn p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
+                        <div class="flex items-center justify-between w-full">
+                            <span class="text-xs">🅿️</span>
+                            <span id="chip-status-ngam2" class="text-[8px] px-1 py-0.2 rounded font-bold bg-emerald-500/20 text-emerald-400">ว่าง</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-slate-200 truncate mt-0.5">งาม 2</div>
+                    </button>
+                    <button onclick="selectLocation('pond')" id="btn-pond" class="hud-btn active p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
+                        <div class="flex items-center justify-between w-full">
+                            <span class="text-xs">🪔</span>
+                            <span class="text-[8px] px-1 py-0.2 rounded font-bold bg-amber-500/20 text-amber-300">จัดงาน</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-amber-300 truncate mt-0.5">สระพระพิรุณ</div>
+                    </button>
+                </div>
 
-                <!-- 3. อาคารจอดรถงามวงศ์วาน 2 -->
-                <button onclick="selectLocation('ngam2')" id="btn-ngam2" class="hud-btn p-1.5 sm:p-2 text-left flex items-center space-x-2 shrink-0 snap-start min-w-[130px] sm:min-w-0 min-h-[44px] touch-manipulation cursor-pointer select-none">
-                    <span class="text-sm shrink-0">🅿️</span>
-                    <div class="truncate min-w-0">
-                        <div class="text-[11px] sm:text-xs font-bold text-slate-200 truncate">งามวงศ์วาน 2</div>
-                        <div class="text-[9px] text-sky-400 truncate">ประตู 2 • ฝั่งงามวงศ์วาน</div>
-                    </div>
-                </button>
-
-                <!-- 4. สระพระพิรุณ (จุดจัดงานลอยกระทง) -->
-                <button onclick="selectLocation('pond')" id="btn-pond" class="hud-btn active p-1.5 sm:p-2 text-left flex items-center space-x-2 shrink-0 snap-start min-w-[130px] sm:min-w-0 min-h-[44px] touch-manipulation cursor-pointer select-none">
-                    <span class="text-sm shrink-0">🪔</span>
-                    <div class="truncate min-w-0">
-                        <div class="text-[11px] sm:text-xs font-bold text-amber-300 truncate">สระพระพิรุณ</div>
-                        <div class="text-[9px] text-amber-400/90 truncate">จุดจัดงานหลัก 🪔</div>
-                    </div>
-                </button>
+                <!-- Full Width Google Maps Navigation Button (Mobile expanded) -->
+                <a id="dialogMapBtnFull" href="https://www.google.com/maps/dir/?api=1&destination=13.848135,100.572183" target="_blank" rel="noopener noreferrer" class="touch-target-44 w-full py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-emerald-950/80 active:scale-95 transition-all flex items-center justify-center gap-2 border border-emerald-400/40 sm:hidden">
+                    <i data-lucide="navigation" class="w-4 h-4 fill-white text-white"></i>
+                    <span>เปิด Google Maps (นำทางพิกัดตรง)</span>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-80"></i>
+                </a>
 
             </div>
+
         </div>
-    </footer>
+    </div>
 
 
     <!-- ================= JAVASCRIPT APP LOGIC ================= -->
@@ -1321,7 +1475,7 @@
         document.addEventListener('touchstart', function() {}, { passive: true });
         lucide.createIcons();
 
-        // ================= LOCATION DATA MODEL (100% SYNCHRONIZED WITH MASTER BLUEPRINT) =================
+        // ================= LOCATION DATA MODEL (EXACT LAT, LNG UNIVERSAL INTENT MAP LINKS) =================
         const LOCATIONS = {
             pond: {
                 title: "สระพระพิรุณ (จุดจัดงานลอยกระทง)",
@@ -1329,7 +1483,7 @@
                 icon: "🪔",
                 desc: "จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรมและร้านค้านิสิต",
                 status: "● เปิดจัดงาน",
-                mapUrl: "https://maps.app.goo.gl/u8Tw7VFg5Tz6KRJXA",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848135,100.572183",
                 x: 1340,
                 y: 760
             },
@@ -1337,21 +1491,94 @@
                 title: "อาคารจอดรถงามวงศ์วาน 1",
                 category: "อาคารจอดรถ",
                 icon: "🅿️",
-                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน ตั้งอยู่ติดกับอาคารจอดรถงามวงศ์วาน 2 ใกล้หอประชุมใหญ่และสระพระพิรุณ",
-                status: "● อาคารจอดรถ",
-                mapUrl: "https://maps.app.goo.gl/gaWdqZun1TiXLhqp7",
+                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน ตั้งอยู่ติดกับงามวงศ์วาน 2 ความจุตามผัง ~289 คัน ใกล้หอประชุมใหญ่และสระพระพิรุณ",
+                status: "● ตรวจสอบสถานะสด",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848834,100.569431",
                 x: 920,
-                y: 770
+                y: 770,
+                lotId: "ngam1"
             },
             ngam2: {
                 title: "อาคารจอดรถงามวงศ์วาน 2",
                 category: "อาคารจอดรถ",
                 icon: "🅿️",
-                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน ตั้งอยู่ติดกับอาคารจอดรถงามวงศ์วาน 1 (ไม่มีประตูงาม 2 คั่นกลาง) ใกล้หอประชุมใหญ่",
-                status: "● อาคารจอดรถ",
-                mapUrl: "https://maps.app.goo.gl/3soPQzwfQH4wAqRC9",
+                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน ตั้งอยู่ติดกับงามวงศ์วาน 1 ความจุตามผัง ~192 คัน ใกล้หอประชุมใหญ่และสระพระพิรุณ",
+                status: "● ตรวจสอบสถานะสด",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848981,100.568347",
                 x: 810,
-                y: 770
+                y: 770,
+                lotId: "ngam2"
+            },
+            vipa: {
+                title: "อาคารจอดรถวิภาวดีรังสิต",
+                category: "อาคารจอดรถ",
+                icon: "🅿️",
+                desc: "อาคารจอดรถฝั่งประตูวิภาวดีรังสิต เข้าได้จากถนนวิภาวดีรังสิต หรือมาจากฝั่งพหลโยธินเชื่อมลงถนนจันทรสถิตย์ ความจุตามผัง ~150 คัน",
+                status: "● ตรวจสอบสถานะสด",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854083,100.558356",
+                x: 170,
+                y: 390,
+                lotId: "vipa"
+            },
+            food_street: {
+                title: "ถนนคนเดิน • โซนของกินริมน้ำ (Night Market)",
+                category: "โซนอาหารและเครื่องดื่ม",
+                icon: "🍢",
+                desc: "โซนร้านค้านิสิตและอาหารสตรีทฟู้ดริมน้ำ รวบรวมของกินอร่อย เครื่องดื่ม และขนมโบราณตลอดแนวทางเดินสู่สระพระพิรุณ",
+                status: "● ซุ้มอาหารและของกิน",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.847900,100.571400",
+                x: 1235,
+                y: 760
+            },
+            restroom_auditorium: {
+                title: "ห้องน้ำ อาคารหอประชุมใหญ่",
+                category: "สุขาสาธารณะและสิ่งอำนวยความสะดวก",
+                icon: "🚻",
+                desc: "จุดสุขาสาธารณะหลักและห้องน้ำผู้พิการ ภายในอาคารหอประชุมใหญ่ ใกล้สระพระพิรุณและถนนคนเดิน",
+                status: "● สุขาหลัก",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.847596,100.570775",
+                x: 1185,
+                y: 730
+            },
+            restroom_sorn3: {
+                title: "ห้องน้ำ อาคารศูนย์เรียนรวม 3 (ศร.3)",
+                category: "สุขาสาธารณะและสิ่งอำนวยความสะดวก",
+                icon: "🚻",
+                desc: "สุขาสาธารณะ อาคารศูนย์เรียนรวม 3 คณะเกษตร มีห้องน้ำสะอาดให้บริการหลายชั้น",
+                status: "● สุขาหลัก",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851965,100.565811",
+                x: 480,
+                y: 395
+            },
+            restroom_barmai: {
+                title: "ห้องน้ำ โรงอาหารกลาง 2 (บาร์ใหม่)",
+                category: "สุขาสาธารณะและสิ่งอำนวยความสะดวก",
+                icon: "🚻",
+                desc: "สุขาสาธารณะ บริเวณโรงอาหารกลาง 2 (บาร์ใหม่) ใกล้สำนักหอสมุด ให้บริการตลอดช่วงการจัดงาน",
+                status: "● สุขาหลัก",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854580,100.568297",
+                x: 635,
+                y: 175
+            },
+            restroom_ngam: {
+                title: "ห้องน้ำ อาคารจอดรถงามวงศ์วาน 1-2",
+                category: "สุขาสาธารณะและสิ่งอำนวยความสะดวก",
+                icon: "🚻",
+                desc: "สุขาบริเวณชั้นล่างของอาคารจอดรถงามวงศ์วาน สะดวกสำหรับผู้ที่นำรถมาจอดก่อนเดินเข้าสู่งาน",
+                status: "● สุขาประจำอาคารจอดรถ",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848834,100.569431",
+                x: 865,
+                y: 730
+            },
+            restroom_vipa: {
+                title: "ห้องน้ำ อาคารจอดรถวิภาวดีรังสิต",
+                category: "สุขาสาธารณะและสิ่งอำนวยความสะดวก",
+                icon: "🚻",
+                desc: "สุขาบริเวณชั้นล่างอาคารจอดรถวิภาวดีรังสิต สะดวกสำหรับผู้ที่นำรถมาจอดฝั่งประตูวิภาวดี",
+                status: "● สุขาประจำอาคารจอดรถ",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854083,100.558356",
+                x: 170,
+                y: 345
             },
             krungsri: {
                 title: "ธนาคารกรุงศรีอยุธยา สาขา ม.เกษตรศาสตร์",
@@ -1359,7 +1586,7 @@
                 icon: "🏦",
                 desc: "ธนาคารกรุงศรีอยุธยา สาขา มหาวิทยาลัยเกษตรศาสตร์ ตั้งอยู่ตรงข้ามอาคารจอดรถงามวงศ์วาน 1 และ 2 ให้บริการธุรกรรมทางการเงินและตู้ ATM ตลอด 24 ชม.",
                 status: "● สาขาและจุดบริการ ATM",
-                mapUrl: "https://maps.google.com/?q=Krungsri+Bank+Kasetsart+University",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.850428,100.569722",
                 x: 885,
                 y: 605
             },
@@ -1367,9 +1594,9 @@
                 title: "ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร",
                 category: "หน่วยงานราชการและวิจัย",
                 icon: "📚",
-                desc: "ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร (สศก.) กระทรวงเกษตรและสหกรณ์ ศูนย์รวมข้อมูลวิชาการเกษตรและเศรษฐกิจการเกษตรระดับชาติ ตั้งอยู่ใต้ถนนสายใหม่ J12",
+                desc: "ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร (สศก.) กระทรวงเกษตรและสหกรณ์ ศูนย์รวมข้อมูลวิชาการเกษตรและเศรษฐกิจการเกษตรระดับชาติ",
                 status: "● หน่วยงานราชการ",
-                mapUrl: "https://maps.google.com/?q=Department+of+Agriculture+Thailand",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851700,100.571000",
                 x: 1060,
                 y: 582
             },
@@ -1377,9 +1604,9 @@
                 title: "คณะวนศาสตร์ มหาวิทยาลัยเกษตรศาสตร์",
                 category: "คณะและภาควิชา",
                 icon: "🌲",
-                desc: "คณะวนศาสตร์ มก. สถาบันการศึกษาด้านป่าไม้ ทรัพยากรธรรมชาติ และสิ่งแวดล้อมแห่งแรกของประเทศไทย ตั้งอยู่เหนือห้องสมุดวิชาการเกษตร",
+                desc: "คณะวนศาสตร์ มก. สถาบันการศึกษาด้านป่าไม้ ทรัพยากรธรรมชาติ และสิ่งแวดล้อมแห่งแรกของประเทศไทย",
                 status: "● คณะวิชาการ",
-                mapUrl: "https://maps.google.com/?q=Faculty+of+Forestry+Kasetsart+University",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.852467,100.571478",
                 x: 1030,
                 y: 442
             },
@@ -1387,9 +1614,9 @@
                 title: "กรมประมง (Department of Fisheries)",
                 category: "หน่วยงานราชการและวิจัย",
                 icon: "🐟",
-                desc: "กรมประมง กระทรวงเกษตรและสหกรณ์ ศูนย์บัญชาการและบริหารจัดการทรัพยากรการประมง เพาะเลี้ยงสัตว์น้ำ และพัฒนาอุตสาหกรรมประมงของประเทศ",
+                desc: "กรมประมง กระทรวงเกษตรและสหกรณ์ ศูนย์บัญชาการและบริหารจัดการทรัพยากรการประมง เพาะเลี้ยงสัตว์น้ำ",
                 status: "● กรมประมง",
-                mapUrl: "https://maps.google.com/?q=Department+of+Fisheries+Thailand",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851500,100.573900",
                 x: 1260,
                 y: 465
             },
@@ -1397,9 +1624,9 @@
                 title: "สถาบันวิจัยพืชสวน (Horticulture Research Institute)",
                 category: "สถาบันวิจัยการเกษตร",
                 icon: "🌱",
-                desc: "สถาบันวิจัยพืชสวน กรมวิชาการเกษตร ศูนย์กลางการวิจัย ปรับปรุงพันธุ์ และพัฒนาเทคโนโลยีการผลิตไม้ผล ไม้ดอกไม้ประดับ และพืชสวนครบวงจร",
+                desc: "สถาบันวิจัยพืชสวน กรมวิชาการเกษตร ศูนย์กลางการวิจัย ปรับปรุงพันธุ์ และพัฒนาเทคโนโลยีการผลิตพืชสวนครบวงจร",
                 status: "● สถาบันวิจัย",
-                mapUrl: "https://maps.google.com/?q=Horticulture+Research+Institute+Department+of+Agriculture",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854600,100.571200",
                 x: 960,
                 y: 285
             },
@@ -1407,9 +1634,9 @@
                 title: "อาคารปฏิบัติการวิทยาศาสตร์ (Science Laboratory)",
                 category: "อาคารปฏิบัติการและวิจัย",
                 icon: "🔬",
-                desc: "อาคารปฏิบัติการวิทยาศาสตร์ ศูนย์รวมห้องปฏิบัติการทดลองทางวิทยาศาสตร์และเทคโนโลยี เครื่องมือวิเคราะห์ขั้นสูง สนับสนุนการเรียนการสอนและวิจัย",
+                desc: "อาคารปฏิบัติการวิทยาศาสตร์ ศูนย์รวมห้องปฏิบัติการทดลองทางวิทยาศาสตร์และเทคโนโลยี เครื่องมือวิเคราะห์ขั้นสูง",
                 status: "● อาคารปฏิบัติการ",
-                mapUrl: "https://maps.google.com/?q=Kasetsart+University+Faculty+of+Science",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851200,100.568800",
                 x: 835,
                 y: 484
             },
@@ -1419,7 +1646,7 @@
                 icon: "🏸",
                 desc: "อาคารสนามแบดมินตันและยิมเนเซียม มก. ศูนย์ฝึกซ้อมและแข่งขันกีฬาในร่มมาตรฐานสากล ตั้งอยู่ทางทิศเหนือของสนามอินทรีจันทรสถิตย์",
                 status: "● ศูนย์กีฬาในร่ม",
-                mapUrl: "https://maps.google.com/?q=KU+Badminton+Court",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.852600,100.561500",
                 x: 290,
                 y: 445
             },
@@ -1427,21 +1654,11 @@
                 title: "อาคารกองกีฬา มหาวิทยาลัยเกษตรศาสตร์",
                 category: "หน่วยงานบริหารและบริการกีฬา",
                 icon: "🏆",
-                desc: "อาคารกองการกีฬา มก. ศูนย์ประสานงานและบริหารจัดการกิจกรรมกีฬา สันทนาการ และสุขภาพนิสิต ตั้งอยู่ริมถนนสุธรรมฯ ข้างสนามอินทรีจันทรสถิตย์",
+                desc: "อาคารกองการกีฬา มก. ศูนย์ประสานงานและบริหารจัดการกิจกรรมกีฬา สันทนาการ และสุขภาพนิสิต",
                 status: "● ศูนย์บริหารงานกีฬา",
-                mapUrl: "https://maps.google.com/?q=KU+Sports+Division",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851500,100.560100",
                 x: 170,
                 y: 520
-            },
-            vipa: {
-                title: "อาคารจอดรถวิภาวดีรังสิต",
-                category: "อาคารจอดรถ",
-                icon: "🅿️",
-                desc: "อาคารจอดรถฝั่งประตูวิภาวดีรังสิต เข้าได้จากประตูวิภาวดี หรือมาจากฝั่งพหลโยธิน (ซอยข้าง รพ.สัตว์) ให้วิ่งเชื่อมลงถนนจันทรสถิตย์ตรงไปสุดสาย สะดวกและปลอดภัย",
-                status: "● อาคารจอดรถ",
-                mapUrl: "https://maps.app.goo.gl/a6MZMWnCy87XcZ8p6",
-                x: 170,
-                y: 390
             },
             bts: {
                 title: "วงเวียน BTS ม.เกษตรศาสตร์ (N13)",
@@ -1449,7 +1666,7 @@
                 icon: "🚇",
                 desc: "วงเวียนติดแนวรั้วประตูทางออกสู่สถานีรถไฟฟ้า BTS ม.เกษตรศาสตร์ มีประตูคนเดินเข้า-ออกงานได้สะดวก",
                 status: "● วงเวียนและประตูคนเดิน",
-                mapUrl: "https://maps.google.com/?q=BTS+Kasetsart+University",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851080,100.576080",
                 x: 1415,
                 y: 540
             },
@@ -1459,7 +1676,7 @@
                 icon: "📚",
                 desc: "หอสมุดกลาง มก. ศูนย์การเรียนรู้และค้นคว้า อาคารสารนิเทศ 50 ปี เชื่อมต่อถนนระพีสาคริก",
                 status: "● พื้นที่การศึกษา",
-                mapUrl: "https://maps.google.com/?q=KU+Main+Library",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.853200,100.569200",
                 x: 680,
                 y: 340
             },
@@ -1469,7 +1686,7 @@
                 icon: "🏫",
                 desc: "โรงเรียนสาธิต มก. อาคารหอนาฬิกา ศูนย์วิจัยและพัฒนาการศึกษา คณะศึกษาศาสตร์",
                 status: "● สถาบันการศึกษา",
-                mapUrl: "https://maps.google.com/?q=Kasetsart+University+Laboratory+School",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.855000,100.562700",
                 x: 340,
                 y: 240
             },
@@ -1479,7 +1696,7 @@
                 icon: "🍽️",
                 desc: "โรงอาหารกลาง 2 (บาร์ใหม่) ศูนย์อาหารยอดนิยมใจกลางมหาวิทยาลัยเกษตรศาสตร์ บริการอาหารและเครื่องดื่มครบครัน",
                 status: "● ศูนย์อาหารกลาง",
-                mapUrl: "https://maps.google.com/?q=Bar+Mai+Kasetsart+University",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854580,100.568297",
                 x: 580,
                 y: 185
             },
@@ -1489,7 +1706,7 @@
                 icon: "🏛️",
                 desc: "อาคารเรียนรวมหลักและห้องบรรยายขนาดใหญ่ ศูนย์กลางการเรียนการสอนนิสิต มก.",
                 status: "● โซนวิชาการ",
-                mapUrl: "https://maps.google.com/?q=Sorn+3+Lecture+Building+Kasetsart",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851965,100.565811",
                 x: 430,
                 y: 415
             },
@@ -1499,7 +1716,7 @@
                 icon: "⚙️",
                 desc: "กลุ่มอาคารเรียนและห้องปฏิบัติการวิจัยคณะวิศวกรรมศาสตร์ ดงตาล มก.",
                 status: "● คณะวิชาการ",
-                mapUrl: "https://maps.google.com/?q=Faculty+of+Engineering+Kasetsart+University",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.850200,100.565500",
                 x: 520,
                 y: 580
             },
@@ -1509,7 +1726,7 @@
                 icon: "📊",
                 desc: "คณะเศรษฐศาสตร์ มก. อาคารเรียนและวิจัยเศรษฐศาสตร์และการเงินชั้นนำ",
                 status: "● คณะวิชาการ",
-                mapUrl: "https://maps.google.com/?q=Faculty+of+Economics+Kasetsart+University",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.850000,100.567000",
                 x: 615,
                 y: 580
             },
@@ -1519,7 +1736,7 @@
                 icon: "💻",
                 desc: "ศูนย์บริการคอมพิวเตอร์และระบบเครือข่าย Data Center หลัก มก. ตั้งอยู่ระหว่างประตู 3 และประตู 2 ริมถนนงามวงศ์วาน",
                 status: "● ศูนย์บริการไอที",
-                mapUrl: "https://maps.google.com/?q=Office+of+Computer+Services+Kasetsart+University",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.849000,100.566300",
                 x: 590,
                 y: 770
             },
@@ -1529,7 +1746,7 @@
                 icon: "⚽",
                 desc: "สนามกีฬาและลู่วิ่งมาตรฐานสากล มหาวิทยาลัยเกษตรศาสตร์ ลานกิจกรรมกีฬาและสุขภาพ",
                 status: "● สนามกีฬาหลัก",
-                mapUrl: "https://maps.google.com/?q=Insee+Chantharasatit+Stadium",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.850800,100.562300",
                 x: 320,
                 y: 580
             },
@@ -1539,7 +1756,7 @@
                 icon: "🐶",
                 desc: "โรงพยาบาลสัตว์ มก. (ฝั่งถนนพหลโยธิน) ตั้งอยู่ตรงมุมทางเข้าประตู 2 ชิดแนวรั้วมหาลัย ศูนย์บริการรักษาและบริบาลสัตว์เลี้ยง 🐶🐱🐾 ครบวงจร",
                 status: "● เปิดบริการสัตวแพทย์",
-                mapUrl: "https://maps.google.com/?q=Kasetsart+University+Veterinary+Teaching+Hospital+Bangkhen",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854200,100.575500",
                 x: 1395,
                 y: 330
             },
@@ -1547,9 +1764,9 @@
                 title: "คณะเทคนิคการสัตวแพทย์ ม.เกษตรศาสตร์",
                 category: "คณะและภาควิชา",
                 icon: "🔬",
-                desc: "คณะเทคนิคการสัตวแพทย์ มก. ตั้งอยู่ตรงมุมถนนแยก J7 ศูนย์การเรียนการสอนและวิจัยทางเทคโนโลยีสัตว์เลี้ยงและการพยาบาลสัตว์",
+                desc: "คณะเทคนิคการสัตวแพทย์ มก. ตั้งอยู่ตรงมุมถนนแยก J7 ศูนย์การเรียนการสอนและวิจัยทางเทคโนโลยีสัตว์เลี้ยง",
                 status: "● คณะวิชาการ",
-                mapUrl: "https://maps.google.com/?q=Faculty+of+Veterinary+Technology+Kasetsart+University",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.853500,100.573200",
                 x: 1215,
                 y: 320
             },
@@ -1557,15 +1774,198 @@
                 title: "หอประชุมใหญ่ มหาวิทยาลัยเกษตรศาสตร์",
                 category: "อาคารพิธีการและหอประชุม",
                 icon: "🏛️",
-                desc: "หอประชุมใหญ่ มก. ตั้งอยู่ติดถนนรอบสระพระพิรุณฝั่งตะวันตก (ช่วง J25 ถึง J22) ศูนย์กลางพิธีพระราชทานปริญญาบัตรและกิจกรรมสำคัญ",
+                desc: "หอประชุมใหญ่ มก. ตั้งอยู่ติดถนนรอบสระพระพิรุณฝั่งตะวันตก ศูนย์กลางพิธีพระราชทานปริญญาบัตรและกิจกรรมสำคัญ",
                 status: "● ศูนย์กลางพิธีการ",
-                mapUrl: "https://maps.google.com/?q=Kasetsart+University+Main+Auditorium",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.847596,100.570775",
                 x: 1130,
                 y: 760
             }
         };
 
+        // ================= REALTIME TELEMETRY & LIVE PARKING SYNC ENGINE =================
+        const SYNC_CHANNEL_NAME = 'ku_parking_sync';
+        const STORAGE_KEY = 'ku_loykrathong_parking';
+        const CLOUD_KEY = 'ku_parking_cloud_endpoint';
+
+        const syncChannel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel(SYNC_CHANNEL_NAME) : null;
+
+        const DEFAULT_PARKING_STATE = {
+            updatedAt: Date.now(),
+            lots: {
+                ngam1: { name: "งามวงศ์วาน 1", status: "open", capacity: 289 },
+                ngam2: { name: "งามวงศ์วาน 2", status: "open", capacity: 192 },
+                vipa:  { name: "วิภาวดี",     status: "open", capacity: 150 }
+            }
+        };
+
+        let currentParkingData = DEFAULT_PARKING_STATE;
+        let selectedKey = 'pond';
+
+        function loadLocalParkingData() {
+            try {
+                const s = localStorage.getItem(STORAGE_KEY);
+                return s ? JSON.parse(s) : DEFAULT_PARKING_STATE;
+            } catch (e) {
+                return DEFAULT_PARKING_STATE;
+            }
+        }
+
+        function updateParkingUI(data) {
+            if (!data || !data.lots) return;
+            currentParkingData = data;
+
+            const statusMap = {
+                open:    { text: 'ว่าง',     badgeClass: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40', stroke: '#10B981', color: '#34D399', fullText: '● เปิดบริการ (ว่าง)' },
+                warning: { text: 'ใกล้เต็ม', badgeClass: 'bg-amber-500/20 text-amber-400 border-amber-500/40', stroke: '#F59E0B', color: '#FCD34D', fullText: '● ชะลอรับรถ (ใกล้เต็ม)' },
+                full:    { text: 'เต็ม',     badgeClass: 'bg-red-500/20 text-red-400 border-red-500/40', stroke: '#EF4444', color: '#FCA5A5', fullText: '● งดรับรถ (ที่จอดเต็ม)' },
+                closed:  { text: 'ปิด',      badgeClass: 'bg-slate-700/60 text-slate-300 border-slate-600', stroke: '#64748B', color: '#CBD5E1', fullText: '● งดให้บริการ (ปิดอาคาร)' }
+            };
+
+            ['ngam1', 'ngam2', 'vipa'].forEach(id => {
+                const lot = data.lots[id] || { status: 'open' };
+                const st = lot.status || 'open';
+                const cfg = statusMap[st] || statusMap.open;
+                const nameShort = id === 'ngam1' ? 'งาม 1' : (id === 'ngam2' ? 'งาม 2' : 'วิภาวดี');
+
+                // 1. Update SVG dynamic badge
+                const rectEl = document.getElementById('svg-badge-rect-' + id);
+                const textEl = document.getElementById('svg-badge-text-' + id);
+                if (rectEl && textEl) {
+                    rectEl.setAttribute('stroke', cfg.stroke);
+                    textEl.setAttribute('fill', cfg.color);
+                    textEl.textContent = '🅿️ ' + nameShort + ' • ' + cfg.text;
+                }
+
+                // 2. Update Quick Selector Chip status pill
+                const chipEl = document.getElementById('chip-status-' + id);
+                if (chipEl) {
+                    chipEl.className = 'text-[8px] px-1 py-0.2 rounded font-bold border ' + cfg.badgeClass;
+                    chipEl.textContent = cfg.text;
+                }
+
+                // 3. Update LOCATIONS object status string
+                if (LOCATIONS[id]) {
+                    LOCATIONS[id].status = cfg.fullText;
+                }
+            });
+
+            // 4. If currently selected location is a parking lot, refresh dialog badge
+            if (LOCATIONS[selectedKey] && LOCATIONS[selectedKey].lotId) {
+                const curLot = data.lots[selectedKey] || { status: 'open' };
+                const curCfg = statusMap[curLot.status || 'open'] || statusMap.open;
+                const dialogStatus = document.getElementById('dialogStatus');
+                if (dialogStatus) {
+                    dialogStatus.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold border whitespace-nowrap ' + curCfg.badgeClass;
+                    dialogStatus.textContent = curCfg.fullText;
+                }
+            }
+        }
+
+        function initRealtimeSync() {
+            currentParkingData = loadLocalParkingData();
+            updateParkingUI(currentParkingData);
+
+            if (syncChannel) {
+                syncChannel.onmessage = (event) => {
+                    if (event.data && event.data.type === 'PARKING_UPDATE' && event.data.data) {
+                        updateParkingUI(event.data.data);
+                    }
+                };
+            }
+
+            window.addEventListener('storage', () => {
+                const fresh = loadLocalParkingData();
+                updateParkingUI(fresh);
+            });
+
+            // Cloud sync polling if configured
+            const cloudUrl = localStorage.getItem(CLOUD_KEY);
+            if (cloudUrl && cloudUrl.startsWith('http')) {
+                setInterval(async () => {
+                    try {
+                        const res = await fetch(cloudUrl, { cache: 'no-store' });
+                        if (res.ok) {
+                            const cloudData = await res.json();
+                            if (cloudData && cloudData.lots) {
+                                updateParkingUI(cloudData);
+                            }
+                        }
+                    } catch (e) {}
+                }, 6000);
+            }
+        }
+
+        // ================= COLLAPSIBLE BOTTOM SHEET LOGIC =================
+        let isSheetExpanded = false;
+
+        function toggleSheet() {
+            if (window.innerWidth >= 640) return; // Always visible on desktop
+            if (isSheetExpanded) {
+                collapseSheet();
+            } else {
+                expandSheet();
+            }
+        }
+
+        function expandSheet() {
+            isSheetExpanded = true;
+            const content = document.getElementById('sheetExpandedContent');
+            const backdrop = document.getElementById('sheetBackdrop');
+            const icon = document.getElementById('chevronIcon');
+            
+            if (content) {
+                content.style.maxHeight = '380px';
+                content.style.opacity = '1';
+            }
+            if (backdrop) {
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+            }
+            if (icon) {
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        function collapseSheet() {
+            isSheetExpanded = false;
+            const content = document.getElementById('sheetExpandedContent');
+            const backdrop = document.getElementById('sheetBackdrop');
+            const icon = document.getElementById('chevronIcon');
+            
+            if (content) {
+                content.style.maxHeight = '0px';
+                content.style.opacity = '0';
+            }
+            if (backdrop) {
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+            }
+            if (icon) {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Touch swipe drag gesture on bottom sheet handle
+        let sheetTouchStartY = 0;
+        const dragHandle = document.getElementById('sheetDragHandle');
+        if (dragHandle) {
+            dragHandle.addEventListener('touchstart', (e) => {
+                sheetTouchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            dragHandle.addEventListener('touchend', (e) => {
+                const deltaY = e.changedTouches[0].clientY - sheetTouchStartY;
+                if (deltaY < -25) {
+                    expandSheet();
+                } else if (deltaY > 25) {
+                    collapseSheet();
+                }
+            }, { passive: true });
+        }
+
+        // ================= SELECTION & NAVIGATION =================
         function selectLocation(key) {
+            selectedKey = key;
             const data = LOCATIONS[key];
             if (!data) return;
 
@@ -1573,123 +1973,252 @@
             document.getElementById('dialogCategory').textContent = data.category;
             document.getElementById('dialogIcon').textContent = data.icon;
             document.getElementById('dialogDesc').textContent = data.desc;
-            document.getElementById('dialogStatus').textContent = data.status;
-            document.getElementById('dialogMapBtn').href = data.mapUrl;
+            
+            const compactDesc = document.getElementById('dialogDescCompact');
+            if (compactDesc) compactDesc.textContent = data.desc;
 
-            document.querySelectorAll('#unifiedFooter .hud-btn').forEach(btn => btn.classList.remove('active'));
+            // Update Map Links
+            const navBtn = document.getElementById('dialogMapBtn');
+            const navBtnFull = document.getElementById('dialogMapBtnFull');
+            if (navBtn) navBtn.href = data.mapUrl;
+            if (navBtnFull) navBtnFull.href = data.mapUrl;
+
+            // Status Badge Formatting
+            const statusBadge = document.getElementById('dialogStatus');
+            if (statusBadge) {
+                if (data.lotId) {
+                    const lot = currentParkingData.lots?.[data.lotId] || { status: 'open' };
+                    const st = lot.status || 'open';
+                    if (st === 'full') {
+                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-red-500/20 text-red-400 border border-red-500/40 whitespace-nowrap';
+                        statusBadge.textContent = '● งดรับรถ (เต็ม)';
+                    } else if (st === 'warning') {
+                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-400 border border-amber-500/40 whitespace-nowrap';
+                        statusBadge.textContent = '● ชะลอรับรถ (ใกล้เต็ม)';
+                    } else if (st === 'closed') {
+                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-slate-700/60 text-slate-300 border border-slate-600 whitespace-nowrap';
+                        statusBadge.textContent = '● งดให้บริการ (ปิด)';
+                    } else {
+                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 whitespace-nowrap';
+                        statusBadge.textContent = '● เปิดบริการ (ว่าง)';
+                    }
+                } else {
+                    statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 whitespace-nowrap';
+                    statusBadge.textContent = data.status || '● ข้อมูลพิกัด';
+                }
+            }
+
+            // Highlight Active Selector Chip
+            document.querySelectorAll('#bottomSheet .hud-btn').forEach(btn => btn.classList.remove('active'));
             const activeBtn = document.getElementById('btn-' + key);
             if (activeBtn) {
                 activeBtn.classList.add('active');
-                activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
             }
 
+            // Move Reticle and Smooth Center & Auto-Zoom
             if (data.x !== undefined && data.y !== undefined) {
                 const classicReticle = document.getElementById('classicReticle');
                 if (classicReticle) {
                     classicReticle.setAttribute('transform', 'translate(' + data.x + ', ' + data.y + ')');
                 }
-                panTowards(data.x, data.y);
+                panTowards(data.x, data.y, 1.8);
             }
         }
 
-        // Pan & Zoom Engine
+        // ================= TOUCH & PAN-ZOOM ENGINE WITH EXACT SVG MEET MATH =================
         let scale = 1;
         let panX = 0;
         let panY = 0;
         const container = document.getElementById('mapContainer');
         const viewport = document.getElementById('mapViewport');
 
+        function getSvgScreenBounds() {
+            const svgW = 1600;
+            const svgH = 1000;
+            const svgAspect = svgW / svgH;
+            const viewW = viewport.clientWidth;
+            const viewH = viewport.clientHeight;
+            const viewAspect = viewW / viewH;
+            
+            let actualW, actualH, offsetX, offsetY;
+            if (viewAspect > svgAspect) {
+                actualH = viewH;
+                actualW = viewH * svgAspect;
+                offsetX = (viewW - actualW) / 2;
+                offsetY = 0;
+            } else {
+                actualW = viewW;
+                actualH = viewW / svgAspect;
+                offsetX = 0;
+                offsetY = (viewH - actualH) / 2;
+            }
+            return { actualW, actualH, offsetX, offsetY, viewW, viewH, svgW, svgH };
+        }
+
+        function clampPan() {
+            const bounds = getSvgScreenBounds();
+            const mapW = bounds.actualW * scale;
+            const mapH = bounds.actualH * scale;
+            
+            const maxPanX = Math.max(0, (mapW - bounds.viewW) / 2) + bounds.viewW * 0.45;
+            const maxPanY = Math.max(0, (mapH - bounds.viewH) / 2) + bounds.viewH * 0.45;
+            
+            panX = Math.min(Math.max(-maxPanX, panX), maxPanX);
+            panY = Math.min(Math.max(-maxPanY, panY), maxPanY);
+        }
+
         function updateTransform() {
             container.style.transform = 'translate(' + panX + 'px, ' + panY + 'px) scale(' + scale + ')';
         }
 
         function zoomMap(factor) {
-            const newScale = Math.min(Math.max(0.6, scale * factor), 4.5);
+            const newScale = Math.min(Math.max(0.65, scale * factor), 4.5);
             scale = newScale;
+            clampPan();
+            container.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
             updateTransform();
+            setTimeout(() => { container.style.transition = ''; }, 250);
         }
 
         function resetMapView() {
             scale = 1;
             panX = 0;
             panY = 0;
+            container.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
             updateTransform();
+            setTimeout(() => { container.style.transition = ''; }, 350);
         }
 
-        function panTowards(targetX, targetY) {
-            if (scale > 1.2) {
-                const svgW = 1600;
-                const svgH = 1000;
-                const viewW = viewport.clientWidth;
-                const viewH = viewport.clientHeight;
-                
-                panX = (viewW / 2) - (targetX / svgW * viewW) * scale;
-                panY = (viewH / 2) - (targetY / svgH * viewH) * scale;
-                updateTransform();
-            }
+        function panTowards(targetX, targetY, targetScale = 1.8) {
+            const bounds = getSvgScreenBounds();
+            scale = Math.max(scale, targetScale);
+            
+            const baseX = bounds.offsetX + (targetX / bounds.svgW) * bounds.actualW;
+            const baseY = bounds.offsetY + (targetY / bounds.svgH) * bounds.actualH;
+            
+            const centerX = bounds.viewW / 2;
+            const centerY = bounds.viewH / 2;
+            
+            // Compensate for compact bottom sheet on mobile screens
+            const sheetOffset = window.innerWidth < 640 ? 32 : 0;
+            
+            panX = (centerX - baseX) * scale;
+            panY = (centerY - sheetOffset - baseY) * scale;
+            
+            clampPan();
+            container.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+            updateTransform();
+            setTimeout(() => { container.style.transition = ''; }, 400);
         }
 
-        // Touch & Mouse Drag Panning
+        // Mouse Drag Panning
         let isDragging = false;
-        let startX = 0, startY = 0;
-        let initialPinchDist = 0;
-        let initialScale = 1;
+        let dragStartX = 0, dragStartY = 0;
+        let hasMoved = false;
 
         viewport.addEventListener('mousedown', (e) => {
             isDragging = true;
-            startX = e.clientX - panX;
-            startY = e.clientY - panY;
+            hasMoved = false;
+            dragStartX = e.clientX - panX;
+            dragStartY = e.clientY - panY;
+            container.style.transition = 'none';
         });
 
         window.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
-            panX = e.clientX - startX;
-            panY = e.clientY - startY;
+            const newPanX = e.clientX - dragStartX;
+            const newPanY = e.clientY - dragStartY;
+            if (Math.hypot(newPanX - panX, newPanY - panY) > 4) {
+                hasMoved = true;
+            }
+            panX = newPanX;
+            panY = newPanY;
+            clampPan();
             updateTransform();
         });
 
         window.addEventListener('mouseup', () => { isDragging = false; });
 
+        // Touch Panning & Two-Finger Pinch-to-Zoom with Focal Pivot
+        let initialPinchDist = 0;
+        let initialScale = 1;
+        let initialPanX = 0, initialPanY = 0;
+        let isPinching = false;
+
         viewport.addEventListener('touchstart', (e) => {
             if (e.touches.length === 1) {
                 isDragging = true;
-                startX = e.touches[0].clientX - panX;
-                startY = e.touches[0].clientY - panY;
+                isPinching = false;
+                hasMoved = false;
+                dragStartX = e.touches[0].clientX - panX;
+                dragStartY = e.touches[0].clientY - panY;
+                container.style.transition = 'none';
             } else if (e.touches.length === 2) {
                 isDragging = false;
+                isPinching = true;
                 initialPinchDist = Math.hypot(
                     e.touches[0].clientX - e.touches[1].clientX,
                     e.touches[0].clientY - e.touches[1].clientY
                 );
                 initialScale = scale;
+                initialPanX = panX;
+                initialPanY = panY;
+                container.style.transition = 'none';
             }
         }, { passive: true });
 
         viewport.addEventListener('touchmove', (e) => {
             if (isDragging && e.touches.length === 1) {
-                panX = e.touches[0].clientX - startX;
-                panY = e.touches[0].clientY - startY;
+                const newPanX = e.touches[0].clientX - dragStartX;
+                const newPanY = e.touches[0].clientY - dragStartY;
+                if (Math.hypot(newPanX - panX, newPanY - panY) > 5) {
+                    hasMoved = true;
+                }
+                panX = newPanX;
+                panY = newPanY;
+                clampPan();
                 updateTransform();
             } else if (e.touches.length === 2) {
-                const dist = Math.hypot(
+                hasMoved = true;
+                const currentDist = Math.hypot(
                     e.touches[0].clientX - e.touches[1].clientX,
                     e.touches[0].clientY - e.touches[1].clientY
                 );
                 if (initialPinchDist > 0) {
-                    scale = Math.min(Math.max(0.6, initialScale * (dist / initialPinchDist)), 4.5);
+                    const focalX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                    const focalY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+                    const newScale = Math.min(Math.max(0.65, initialScale * (currentDist / initialPinchDist)), 4.5);
+                    
+                    const centerX = viewport.clientWidth / 2;
+                    const centerY = viewport.clientHeight / 2;
+                    
+                    panX = focalX - centerX - (focalX - centerX - initialPanX) * (newScale / initialScale);
+                    panY = focalY - centerY - (focalY - centerY - initialPanY) * (newScale / initialScale);
+                    scale = newScale;
+                    clampPan();
                     updateTransform();
                 }
             }
         }, { passive: true });
 
-        viewport.addEventListener('touchend', () => { isDragging = false; });
+        viewport.addEventListener('touchend', () => { 
+            isDragging = false; 
+            isPinching = false;
+        });
 
+        // Wheel Zoom
         viewport.addEventListener('wheel', (e) => {
             e.preventDefault();
-            const delta = e.deltaY < 0 ? 1.12 : 0.9;
+            const delta = e.deltaY < 0 ? 1.15 : 0.87;
             zoomMap(delta);
         }, { passive: false });
 
+        window.addEventListener('resize', () => {
+            clampPan();
+            updateTransform();
+        });
+
+        // Share Feature
         function shareMap() {
             if (navigator.share) {
                 navigator.share({
@@ -1703,18 +2232,25 @@
             }
         }
 
+        // ================= APP INITIALIZATION =================
         window.addEventListener('DOMContentLoaded', () => {
-            // Bind click handlers to SVG interactive elements
+            // Bind click handlers to interactive SVG elements
             const clickMap = {
                 'building-pond': 'pond',
+                'zone-food-street': 'food_street',
                 'building-ngam1': 'ngam1',
                 'building-ngam2': 'ngam2',
+                'building-vipa': 'vipa',
+                'pin-restroom-auditorium': 'restroom_auditorium',
+                'pin-restroom-sorn3': 'restroom_sorn3',
+                'pin-restroom-barmai': 'restroom_barmai',
+                'pin-restroom-ngam': 'restroom_ngam',
+                'pin-restroom-vipa': 'restroom_vipa',
                 'building-krungsri': 'krungsri',
                 'building-doa-oae': 'doa_oae',
                 'building-fisheries': 'fisheries',
                 'building-horticulture': 'horticulture',
                 'building-sc-lab': 'sc_lab',
-                'building-vipa': 'vipa',
                 'roundabout-bts': 'bts',
                 'building-auditorium': 'auditorium',
                 'building-barmai': 'barmai',
@@ -1738,12 +2274,14 @@
                 if (el) {
                     el.style.cursor = 'pointer';
                     el.addEventListener('click', (e) => {
+                        if (hasMoved) return; // Prevent selection during drag
                         e.stopPropagation();
                         selectLocation(key);
                     });
                 }
             }
 
+            initRealtimeSync();
             selectLocation('pond');
         });
     </script>
