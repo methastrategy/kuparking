@@ -123,30 +123,18 @@
 
 <body id="appBody" class="bg-slate-100 text-slate-800 min-h-[100dvh] h-[100dvh] w-screen flex flex-col justify-between font-thai overflow-hidden select-none">
 
-    <!-- ================= TOP CLEAN HEADER ================= -->
-    <header class="w-full bg-white/95 border-b border-slate-200 px-3 py-2.5 sm:px-6 sm:py-3 flex items-center justify-between shrink-0 z-30 backdrop-blur-md shadow-xs">
+    <!-- ================= TOP CLEAN HEADER (MOBILE ONLY) ================= -->
+    <header class="w-full bg-white/95 border-b border-slate-200 px-3.5 py-2.5 flex md:hidden items-center justify-between shrink-0 z-30 backdrop-blur-md shadow-xs">
         <!-- Brand & Title -->
-        <div class="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
-            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 p-0.5 shadow-md shadow-emerald-500/20 shrink-0 flex items-center justify-center">
-                <span class="text-base sm:text-lg">🌿</span>
+        <div class="flex items-center space-x-2.5 min-w-0">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 p-0.5 shadow-md shadow-emerald-500/20 shrink-0 flex items-center justify-center">
+                <span class="text-base">🌿</span>
             </div>
             <div class="min-w-0">
-                <h1 id="headerTitle" class="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight truncate">
+                <h1 id="headerTitle" class="text-sm font-extrabold text-slate-900 tracking-tight truncate">
                     KuLoyKrathong
                 </h1>
             </div>
-        </div>
-
-        <!-- Action Controls: Reset View & Share -->
-        <div class="flex items-center space-x-2 shrink-0">
-            <button onclick="resetMapView()" aria-label="รีเซ็ตมุมมอง" class="hud-btn px-2.5 sm:px-3 py-1.5 text-slate-700 hover:text-emerald-700 rounded-lg shrink-0 flex items-center gap-1.5 text-xs font-bold min-h-[36px] bg-white border-slate-200 shadow-xs">
-                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
-                <span class="hidden sm:inline">รีเซ็ต</span>
-            </button>
-            <button onclick="shareMap()" aria-label="แชร์แผนผัง" class="hud-btn px-3 py-1.5 text-slate-700 hover:text-emerald-700 rounded-lg shrink-0 flex items-center gap-1.5 text-xs font-bold min-h-[36px] bg-white border-slate-200 shadow-xs">
-                <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
-                <span class="hidden sm:inline">แชร์</span>
-            </button>
         </div>
     </header>
 
@@ -157,6 +145,18 @@
         <!-- ================= DESKTOP LEFT SIDEBAR CONTROL PANEL ================= -->
         <aside id="desktopSidebar" class="hidden md:flex flex-col w-80 lg:w-88 shrink-0 bg-white/95 backdrop-blur-xl border-r border-slate-200 z-30 p-4 justify-between shadow-sm select-none">
             <div class="space-y-3">
+                <!-- Brand Header in Desktop Sidebar -->
+                <div class="flex items-center space-x-2.5 pb-3 border-b border-slate-100">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 p-0.5 shadow-md shadow-emerald-500/20 shrink-0 flex items-center justify-center">
+                        <span class="text-base">🌿</span>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="text-base font-extrabold text-slate-900 tracking-tight">
+                            KuLoyKrathong
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Header / Mode Info -->
                 <div class="pb-2.5 border-b border-slate-100">
                     <h2 class="text-sm font-extrabold text-slate-900 leading-snug">
