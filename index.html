@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-    <title>ผังอาคารจอดรถ ม.เกษตรศาสตร์ งานลอยกระทง 2569</title>
+    <title>ผังเส้นทางและอาคาร ม.เกษตรศาสตร์ (บางเขน)</title>
     <link rel="canonical" href="https://kuloykrathong.vercel.app">
-    <meta name="description" content="ผังอาคารจอดรถและพื้นที่จัดงานลอยกระทง มหาวิทยาลัยเกษตรศาสตร์ (บางเขน) 2569 พร้อมระบบนำทาง Google Maps แผนผังพิกัดจริง 100%">
+    <meta name="description" content="แผนผังถนน อาคารสำคัญ และประตูทางเข้า-ออก มหาวิทยาลัยเกษตรศาสตร์ (บางเขน) สำหรับนิสิต ผู้ค้า และการเดินทางทั่วไป พร้อมระบบนำทาง Google Maps">
     
     <!-- Open Graph & Social Cards -->
-    <meta property="og:title" content="ผังอาคารจอดรถ ม.เกษตรศาสตร์ งานลอยกระทง 2569">
-    <meta property="og:description" content="แผนผังอาคารจอดรถ จุดจัดงานริมสระพระพิรุณ และเส้นทางจราจร ม.เกษตรศาสตร์ (บางเขน)">
+    <meta property="og:title" content="ผังเส้นทางและอาคาร ม.เกษตรศาสตร์ (บางเขน)">
+    <meta property="og:description" content="แผนผังถนน อาคารสำคัญ และประตูทางเข้า-ออก มหาวิทยาลัยเกษตรศาสตร์ (บางเขน) พร้อมระบบนำทาง Google Maps">
     <meta property="og:image" content="https://kuloykrathong.vercel.app/og-image.png">
     <meta property="og:type" content="website">
 
@@ -133,14 +133,14 @@
             <div class="min-w-0">
                 <div class="flex items-center space-x-1.5 sm:space-x-2">
                     <h1 id="headerTitle" class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight truncate">
-                        ผังอาคารจอดรถ ม.เกษตรศาสตร์
+                        ผังเส้นทางและอาคาร ม.เกษตรศาสตร์
                     </h1>
                     <span id="headerBadge" class="text-[9px] bg-emerald-50 text-emerald-800 border border-emerald-300 px-1.5 py-0.2 rounded font-bold whitespace-nowrap">
-                        ฉบับทางการ 2.5D
+                        วิทยาเขตบางเขน
                     </span>
                 </div>
                 <p id="headerSubtitle" class="text-[10px] text-slate-500 truncate">
-                    แผนผังพิกัดจริง 100% • รองรับการซูม ขยาย และแตะดูพิกัดนำทาง
+                    แผนผังถนนและอาคาร สำหรับนิสิต ผู้ค้า และการเดินทางทั่วไป
                 </p>
             </div>
         </div>
@@ -160,71 +160,111 @@
         
         <!-- ================= DESKTOP LEFT SIDEBAR CONTROL PANEL ================= -->
         <aside id="desktopSidebar" class="hidden md:flex flex-col w-80 lg:w-88 shrink-0 bg-white/95 backdrop-blur-xl border-r border-slate-200 z-30 p-4 justify-between shadow-sm select-none">
-            <div class="space-y-3.5">
+            <div class="space-y-3">
                 <!-- Header / Mode Info -->
-                <div class="pb-3 border-b border-slate-100">
+                <div class="pb-2.5 border-b border-slate-100">
                     <div class="flex items-center space-x-2">
                         <span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
-                            งานลอยกระทง มก. 2569
+                            ม.เกษตรศาสตร์ (บางเขน)
                         </span>
-                        <span class="text-[11px] text-slate-400">พิกัดทางการ</span>
+                        <span class="text-[11px] text-slate-400">แผนผังถนนและอาคาร</span>
                     </div>
                     <h2 class="text-sm font-extrabold text-slate-900 mt-1.5 leading-snug">
-                        ผังอาคารจอดรถ & จุดจัดงาน
+                        เส้นทางและอาคารสำคัญ
                     </h2>
                     <p class="text-xs text-slate-500 mt-0.5">
-                        แตะ 4 จุดหลักบนแผนที่ หรือกดปุ่มด้านล่างเพื่อดูเส้นทาง
+                        แตะเลือกอาคารหรือประตู เพื่อดูพิกัดและเส้นทางนำทาง
                     </p>
                 </div>
 
-                <!-- 4 Primary Buttons -->
-                <div class="space-y-2">
-                    <!-- 1. Vipa -->
-                    <button onclick="selectLocation('vipa')" id="dt-btn-vipa" class="hud-btn w-full p-2.5 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
+                <!-- Primary Selection Buttons -->
+                <div class="space-y-1.5 max-h-[calc(100vh-290px)] overflow-y-auto pr-1 no-scrollbar">
+                    <!-- 1. Pond -->
+                    <button onclick="selectLocation('pond')" id="dt-btn-pond" class="hud-btn w-full p-2 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
                         <div class="flex items-center space-x-2.5">
-                            <span class="text-xl w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🅿️</span>
+                            <span class="text-lg w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🏛️</span>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900">สระพระพิรุณ</div>
+                                <div class="text-[10px] text-slate-500">สระน้ำใจกลาง มก. ด้านหน้าหอประชุมใหญ่</div>
+                            </div>
+                        </div>
+                    </button>
+
+                    <!-- 2. Auditorium -->
+                    <button onclick="selectLocation('auditorium')" id="dt-btn-auditorium" class="hud-btn w-full p-2 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="text-lg w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🏛️</span>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900">หอประชุมใหญ่ มก.</div>
+                                <div class="text-[10px] text-slate-500">ริมสระพระพิรุณ • ใกล้ประตู 1 งามวงศ์วาน</div>
+                            </div>
+                        </div>
+                    </button>
+
+                    <!-- 3. Library -->
+                    <button onclick="selectLocation('library')" id="dt-btn-library" class="hud-btn w-full p-2 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="text-lg w-8 h-8 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">📚</span>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900">สำนักหอสมุด (50 ปี)</div>
+                                <div class="text-[10px] text-slate-500">ศูนย์กลางการเรียนรู้และห้องสมุด มก.</div>
+                            </div>
+                        </div>
+                    </button>
+
+                    <!-- 4. Vipa Parking -->
+                    <button onclick="selectLocation('vipa')" id="dt-btn-vipa" class="hud-btn w-full p-2 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="text-lg w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🅿️</span>
                             <div>
                                 <div class="text-xs font-bold text-slate-900">อาคารจอดรถวิภาวดีรังสิต</div>
-                                <div class="text-[10px] text-slate-500">ฝั่งประตูวิภาวดี • ความจุ ~150 คัน</div>
+                                <div class="text-[10px] text-slate-500">เข้าทางประตูวิภาวดีรังสิต</div>
                             </div>
                         </div>
-                        <span id="dt-chip-vipa" class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-emerald-50 text-emerald-700 border border-emerald-300">ว่าง</span>
                     </button>
 
-                    <!-- 2. Ngam 1 -->
-                    <button onclick="selectLocation('ngam1')" id="dt-btn-ngam1" class="hud-btn w-full p-2.5 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
+                    <!-- 5. Ngam 1 Parking -->
+                    <button onclick="selectLocation('ngam1')" id="dt-btn-ngam1" class="hud-btn w-full p-2 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
                         <div class="flex items-center space-x-2.5">
-                            <span class="text-xl w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🅿️</span>
+                            <span class="text-lg w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🅿️</span>
                             <div>
                                 <div class="text-xs font-bold text-slate-900">อาคารจอดรถงามวงศ์วาน 1</div>
-                                <div class="text-[10px] text-slate-500">ประตู 1 งามวงศ์วาน • ความจุ ~289 คัน</div>
+                                <div class="text-[10px] text-slate-500">เข้าทางประตู 1 ถนนงามวงศ์วาน</div>
                             </div>
                         </div>
-                        <span id="dt-chip-ngam1" class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-emerald-50 text-emerald-700 border border-emerald-300">ว่าง</span>
                     </button>
 
-                    <!-- 3. Ngam 2 -->
-                    <button onclick="selectLocation('ngam2')" id="dt-btn-ngam2" class="hud-btn w-full p-2.5 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
+                    <!-- 6. Ngam 2 Parking -->
+                    <button onclick="selectLocation('ngam2')" id="dt-btn-ngam2" class="hud-btn w-full p-2 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
                         <div class="flex items-center space-x-2.5">
-                            <span class="text-xl w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🅿️</span>
+                            <span class="text-lg w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🅿️</span>
                             <div>
                                 <div class="text-xs font-bold text-slate-900">อาคารจอดรถงามวงศ์วาน 2</div>
-                                <div class="text-[10px] text-slate-500">ประตู 2 งามวงศ์วาน • ความจุ ~192 คัน</div>
+                                <div class="text-[10px] text-slate-500">เข้าทางประตู 2 ถนนงามวงศ์วาน</div>
                             </div>
                         </div>
-                        <span id="dt-chip-ngam2" class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-emerald-50 text-emerald-700 border border-emerald-300">ว่าง</span>
                     </button>
 
-                    <!-- 4. Pond -->
-                    <button onclick="selectLocation('pond')" id="dt-btn-pond" class="hud-btn w-full p-2.5 rounded-xl border flex items-center justify-between text-left transition hover:border-amber-500 group">
+                    <!-- 7. BTS Roundabout -->
+                    <button onclick="selectLocation('bts')" id="dt-btn-bts" class="hud-btn w-full p-2 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
                         <div class="flex items-center space-x-2.5">
-                            <span class="text-xl w-9 h-9 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🪔</span>
+                            <span class="text-lg w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🚇</span>
                             <div>
-                                <div class="text-xs font-bold text-amber-900">สระพระพิรุณ (จุดจัดงาน)</div>
-                                <div class="text-[10px] text-slate-500">จุดลอยกระทงหลักใจกลาง มก.</div>
+                                <div class="text-xs font-bold text-slate-900">สถานี BTS มหาวิทยาลัยเกษตรศาสตร์</div>
+                                <div class="text-[10px] text-slate-500">ทางออกติดประตูฝั่งพหลโยธิน</div>
                             </div>
                         </div>
-                        <span class="text-[9px] px-1.5 py-0.5 rounded font-bold bg-amber-50 text-amber-700 border border-amber-300">จัดงาน</span>
+                    </button>
+
+                    <!-- 8. Bar Mai Food Court -->
+                    <button onclick="selectLocation('barmai')" id="dt-btn-barmai" class="hud-btn w-full p-2 rounded-xl border flex items-center justify-between text-left transition hover:border-emerald-500 group">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="text-lg w-8 h-8 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition">🍽️</span>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900">โรงอาหารกลาง 2 (บาร์ใหม่)</div>
+                                <div class="text-[10px] text-slate-500">ศูนย์อาหาร เครื่องดื่ม จุดนัดพบ</div>
+                            </div>
+                        </div>
                     </button>
                 </div>
 
@@ -233,7 +273,7 @@
                     <div class="flex items-start justify-between">
                         <div>
                             <span id="dt-detailCategory" class="text-[9px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-300">
-                                อาคารจอดรถ
+                                อาคาร
                             </span>
                             <h3 id="dt-detailTitle" class="text-sm font-bold text-slate-900 mt-1">
                                 ชื่อสถานที่
@@ -255,14 +295,14 @@
                 <!-- Default Guidance Card (Shown when nothing is selected) -->
                 <div id="dt-guidePlaceholder" class="p-4 rounded-2xl bg-slate-50 border border-dashed border-slate-200 text-center">
                     <div class="text-2xl mb-1">🗺️</div>
-                    <div class="text-xs font-bold text-slate-800">มุมมองภาพรวมแผนที่ มก.</div>
-                    <div class="text-[11px] text-slate-500 mt-1 leading-relaxed">แตะที่อาคารจอดรถ 3 จุด หรือสระพระพิรุณบนแผนที่ เพื่อดูพิกัดและเส้นทางนำทาง</div>
+                    <div class="text-xs font-bold text-slate-800">แผนผัง มก. (บางเขน)</div>
+                    <div class="text-[11px] text-slate-500 mt-1 leading-relaxed">แตะที่อาคารหรือประตูบนแผนที่ เพื่อดูพิกัดและเส้นทางนำทาง</div>
                 </div>
             </div>
 
             <!-- Sidebar Footer -->
-            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-                <span>ผังพิกัด มก. 2569</span>
+            <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+                <span>ผังเส้นทาง มก. (บางเขน)</span>
                 <button onclick="resetMapView()" class="hover:text-emerald-700 font-bold flex items-center gap-1 text-slate-600">
                     <i data-lucide="refresh-cw" class="w-3 h-3"></i>
                     <span>รีเซ็ตมุมมอง</span>
@@ -1156,8 +1196,8 @@
     <circle cx="16" cy="-14" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="16" y="-10.5" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">P</text>
     <g id="svg-badge-ngam2" transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect id="svg-badge-rect-ngam2" x="-38" y="-9" width="76" height="18" rx="5" fill="#FFFFFF" stroke="#10B981" stroke-width="1.8" />
-      <text id="svg-badge-text-ngam2" x="0" y="3.5" fill="#065F46" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ งาม 2 • ว่าง</text>
+      <rect id="svg-badge-rect-ngam2" x="-42" y="-9" width="84" height="18" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8" />
+      <text id="svg-badge-text-ngam2" x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ อาคารจอดรถ 2</text>
     </g>
   </g>
 
@@ -1177,8 +1217,8 @@
     <circle cx="16" cy="-14" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="16" y="-10.5" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">P</text>
     <g id="svg-badge-ngam1" transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect id="svg-badge-rect-ngam1" x="-38" y="-9" width="76" height="18" rx="5" fill="#FFFFFF" stroke="#10B981" stroke-width="1.8" />
-      <text id="svg-badge-text-ngam1" x="0" y="3.5" fill="#065F46" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ งาม 1 • ว่าง</text>
+      <rect id="svg-badge-rect-ngam1" x="-42" y="-9" width="84" height="18" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8" />
+      <text id="svg-badge-text-ngam1" x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ อาคารจอดรถ 1</text>
     </g>
   </g>
 
@@ -1190,13 +1230,13 @@
     <circle cx="0" cy="-4" r="9" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
     <text x="0" y="-0.5" fill="#FFFFFF" font-size="9.5" font-weight="900" text-anchor="middle">P</text>
     <g id="svg-badge-vipa" transform="translate(0, 32)" filter="url(#badgeGlow)">
-      <rect id="svg-badge-rect-vipa" x="-38" y="-9" width="76" height="18" rx="5" fill="#FFFFFF" stroke="#10B981" stroke-width="1.8" />
-      <text id="svg-badge-text-vipa" x="0" y="3.5" fill="#065F46" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ วิภาวดี • ว่าง</text>
+      <rect id="svg-badge-rect-vipa" x="-46" y="-9" width="92" height="18" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8" />
+      <text id="svg-badge-text-vipa" x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ อาคารจอดรถวิภาวดี</text>
     </g>
   </g>
 
   <!-- [22] หอประชุมใหญ่ ม.เกษตรศาสตร์ (Main Auditorium - B11) -->
-  <g id="building-auditorium" class="building-card"  transform="translate(1130, 760)" filter="url(#celDrop)">
+  <g id="building-auditorium" class="building-card cursor-pointer" onclick="selectLocation('auditorium')" transform="translate(1130, 760)" filter="url(#celDrop)">
     <ellipse cx="0" cy="48" rx="56" ry="12" fill="#020617" opacity="0.35" />
     <rect x="-48" y="-36" width="96" height="72" rx="8" fill="#FFFBEB" stroke="#0F172A" stroke-width="2.5" />
     <polygon points="-55,-36 0,-58 55,-36" fill="#B45309" stroke="#0F172A" stroke-width="2.5" />
@@ -1215,7 +1255,7 @@
     </g>
   </g>
 
-  <!-- [23] สระพระพิรุณ (Sra Phra Phirun Loy Krathong Pond - B12) -->
+  <!-- [23] สระพระพิรุณ (Sra Phra Phirun Pond - B12) -->
   <g id="building-pond" class="building-card cursor-pointer" onclick="selectLocation('pond')" transform="translate(1340, 760)" filter="url(#celDrop)">
     <ellipse cx="0" cy="100" rx="55" ry="10" fill="#020617" opacity="0.35" />
     <rect x="-48" y="-95" width="96" height="190" rx="14" fill="#0F766E" stroke="#0F172A" stroke-width="2.5" />
@@ -1230,23 +1270,11 @@
       <path d="M -24 55 Q 0 50 24 55" />
     </g>
 
-    <!-- Floating Cute Golden Glowing Krathongs -->
-    <use href="#floatingKrathong" x="-14" y="-45" />
-    <use href="#floatingKrathong" x="16" y="-20" />
-    <use href="#floatingKrathong" x="-8" y="10" />
-    <use href="#floatingKrathong" x="14" y="38" />
-    <use href="#floatingKrathong" x="-12" y="65" />
-
-    <g transform="translate(0, -78)" filter="url(#goldGlow)">
-      <rect x="-35" y="-8.5" width="70" height="17" rx="5" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5" />
-      <text x="0" y="3.5" fill="#B45309" font-size="7.5" font-weight="900" text-anchor="middle">จุดจัดงานหลัก 🪔</text>
-    </g>
-
     <g transform="translate(0, 104)" filter="url(#badgeGlow)">
-      <rect x="-58" y="-11" width="116" height="22" rx="6" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8" />
-      <circle cx="-44" cy="0" r="5.5" fill="#0284C7" />
-      <text x="-44" y="2.5" fill="#FFFFFF" font-size="7.5" font-weight="900" text-anchor="middle">🪔</text>
-      <text x="8" y="4" fill="#0369A1" font-size="8.5" font-weight="900" text-anchor="middle">สระพระพิรุณ (จุดลอยกระทง)</text>
+      <rect x="-44" y="-11" width="88" height="22" rx="6" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8" />
+      <circle cx="-32" cy="0" r="5.5" fill="#0284C7" />
+      <text x="-32" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">🏛️</text>
+      <text x="8" y="4" fill="#0369A1" font-size="8.5" font-weight="900" text-anchor="middle">สระพระพิรุณ</text>
     </g>
   </g>
 
@@ -1285,49 +1313,6 @@
     <line x1="0" y1="-18" x2="0" y2="-23" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" />
     <circle cx="0" cy="-23" r="2.5" fill="#FEF08A" stroke="#78350F" stroke-width="0.8" />
   </g>
-
-  <!-- ================= 7. FESTIVAL ESSENTIALS: NIGHT MARKET & RESTROOMS ================= -->
-  <!-- Food Street / Night Market Promenade Zone -->
-  <g id="zone-food-street" class="building-card"  transform="translate(1235, 760)" filter="url(#badgeGlow)">
-    <rect x="-56" y="-12" width="112" height="24" rx="7" fill="#FFFFFF" stroke="#D97706" stroke-width="1.8" />
-    <circle cx="-42" cy="0" r="6" fill="#D97706" />
-    <text x="-42" y="3" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">🍢</text>
-    <text x="8" y="4" fill="#92400E" font-size="7.5" font-weight="900" text-anchor="middle">ถนนคนเดิน/ของกิน</text>
-  </g>
-
-  <!-- Restroom: Main Auditorium -->
-  <g id="pin-restroom-auditorium" class="building-card"  transform="translate(1185, 730)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
-    <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
-  </g>
-
-  <!-- Restroom: Sorn 3 -->
-  <g id="pin-restroom-sorn3" class="building-card"  transform="translate(480, 395)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
-    <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
-  </g>
-
-  <!-- Restroom: Bar Mai -->
-  <g id="pin-restroom-barmai" class="building-card"  transform="translate(635, 175)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
-    <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
-  </g>
-
-  <!-- Restroom: Ngamwongwan Parking -->
-  <g id="pin-restroom-ngam" class="building-card"  transform="translate(865, 730)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
-    <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
-  </g>
-
-  <!-- Restroom: Vibhavadi Parking -->
-  <g id="pin-restroom-vipa" class="building-card"  transform="translate(170, 345)" filter="url(#badgeGlow)">
-    <rect x="-25" y="-8.5" width="50" height="17" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.5" />
-    <text x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🚻 ห้องน้ำ</text>
-  </g>
-
-
-
-
 
   <!-- ================= 8. GATES BADGES ON FENCE ================= -->
   <!-- 8.1 Gate Vibhavadi -->
@@ -1456,27 +1441,24 @@
             <!-- 1. COMPACT HEADER BAR (Always Visible ~54px on mobile) -->
             <div id="compactHeader" onclick="toggleSheet()" class="px-3 sm:px-4 py-1.5 sm:py-2.5 flex items-center justify-between gap-2 cursor-pointer sm:cursor-default">
                 
-                <!-- Left: Icon + Title + Live Status Pill -->
+                <!-- Left: Icon + Title -->
                 <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
                     <span id="dialogIcon" class="text-xl sm:text-2xl shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center justify-center shadow-xs">
-                        🪔
+                        🏛️
                     </span>
                     <div class="min-w-0 flex-1">
-                        <div class="flex items-center gap-1.5 sm:gap-2">
-                            <h2 id="dialogTitle" class="text-xs sm:text-sm font-bold text-slate-900 truncate leading-tight">
-                                สระพระพิรุณ (จุดจัดงานลอยกระทง)
-                            </h2>
-                            <span id="dialogStatus" class="hidden text-[9px] px-2 py-0.5 rounded-full font-bold whitespace-nowrap"></span>
-                        </div>
+                        <h2 id="dialogTitle" class="text-xs sm:text-sm font-bold text-slate-900 truncate leading-tight">
+                            ผังเส้นทางและอาคาร มก.
+                        </h2>
                         <p id="dialogDescCompact" class="text-[10px] text-slate-500 truncate hidden sm:block mt-0.5">
-                            จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรม
+                            แตะอาคารบนแผนที่ เพื่อดูพิกัดและเส้นทางนำทาง
                         </p>
                     </div>
                 </div>
 
                 <!-- Right: Navigation CTA + Chevron Toggle -->
                 <div class="shrink-0 flex items-center gap-1.5" onclick="event.stopPropagation()">
-                    <!-- Compact Quick Navigate Button (High-Contrast Vivid Emerald) -->
+                    <!-- Compact Quick Navigate Button -->
                     <a id="dialogMapBtn" href="https://www.google.com/maps/dir/?api=1&destination=13.848135,100.572183" target="_blank" rel="noopener noreferrer" class="touch-target-44 px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold text-xs shadow-md shadow-emerald-950/60 active:scale-95 transition-all flex items-center gap-1.5 border border-emerald-400/40">
                         <i data-lucide="navigation" class="w-3.5 h-3.5 fill-white text-white"></i>
                         <span>นำทาง</span>
@@ -1495,47 +1477,43 @@
                 <!-- Category and Detailed Description -->
                 <div class="p-2 sm:p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-1">
                     <div class="flex items-center gap-2">
-                        <span id="dialogCategory" class="text-[9px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-300">
-                            งานลอยกระทงหลัก
+                        <span id="dialogCategory" class="text-[9px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-300">
+                            ม.เกษตรศาสตร์ (บางเขน)
                         </span>
                         <span id="dialogTelemetry" class="text-[10px] text-slate-500">
-                            ผังและพิกัดทางการ 100%
+                            ผังเส้นทางและอาคารสำคัญ
                         </span>
                     </div>
                     <p id="dialogDesc" class="text-xs text-slate-600 leading-relaxed font-normal">
-                        จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรมและร้านค้านิสิต
+                        แตะที่อาคารหรือประตูบนแผนที่ เพื่อดูพิกัดและเปิดนำทางด้วย Google Maps
                     </p>
                 </div>
 
-                <!-- Quick Selector Tray (4 primary buttons) -->
-                <div class="grid grid-cols-4 gap-1.5 sm:gap-2 pt-0.5">
-                    <button onclick="selectLocation('vipa')" id="btn-vipa" class="hud-btn p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
-                        <div class="flex items-center justify-between w-full">
-                            <span class="text-xs">🅿️</span>
-                            <span id="chip-status-vipa" class="text-[8px] px-1 py-0.2 rounded font-bold bg-emerald-500/20 text-emerald-400">ว่าง</span>
-                        </div>
-                        <div class="text-[11px] font-bold text-slate-700 truncate mt-0.5">วิภาวดี</div>
+                <!-- Quick Selector Tray (Scrollable chips) -->
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
+                    <button onclick="selectLocation('pond')" id="btn-pond" class="hud-btn px-2.5 py-1.5 text-xs font-bold rounded-xl border shrink-0 flex items-center gap-1">
+                        <span>🏛️</span><span>สระพระพิรุณ</span>
                     </button>
-                    <button onclick="selectLocation('ngam1')" id="btn-ngam1" class="hud-btn p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
-                        <div class="flex items-center justify-between w-full">
-                            <span class="text-xs">🅿️</span>
-                            <span id="chip-status-ngam1" class="text-[8px] px-1 py-0.2 rounded font-bold bg-emerald-500/20 text-emerald-400">ว่าง</span>
-                        </div>
-                        <div class="text-[11px] font-bold text-slate-700 truncate mt-0.5">งาม 1</div>
+                    <button onclick="selectLocation('auditorium')" id="btn-auditorium" class="hud-btn px-2.5 py-1.5 text-xs font-bold rounded-xl border shrink-0 flex items-center gap-1">
+                        <span>🏛️</span><span>หอประชุมใหญ่</span>
                     </button>
-                    <button onclick="selectLocation('ngam2')" id="btn-ngam2" class="hud-btn p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
-                        <div class="flex items-center justify-between w-full">
-                            <span class="text-xs">🅿️</span>
-                            <span id="chip-status-ngam2" class="text-[8px] px-1 py-0.2 rounded font-bold bg-emerald-500/20 text-emerald-400">ว่าง</span>
-                        </div>
-                        <div class="text-[11px] font-bold text-slate-700 truncate mt-0.5">งาม 2</div>
+                    <button onclick="selectLocation('library')" id="btn-library" class="hud-btn px-2.5 py-1.5 text-xs font-bold rounded-xl border shrink-0 flex items-center gap-1">
+                        <span>📚</span><span>สำนักหอสมุด</span>
                     </button>
-                    <button onclick="selectLocation('pond')" id="btn-pond" class="hud-btn active p-1.5 sm:p-2 text-left rounded-xl border flex flex-col justify-between min-h-[44px]">
-                        <div class="flex items-center justify-between w-full">
-                            <span class="text-xs">🪔</span>
-                            <span class="text-[8px] px-1 py-0.2 rounded font-bold bg-amber-500/20 text-amber-300">จัดงาน</span>
-                        </div>
-                        <div class="text-[11px] font-bold text-amber-800 truncate mt-0.5">สระพระพิรุณ</div>
+                    <button onclick="selectLocation('vipa')" id="btn-vipa" class="hud-btn px-2.5 py-1.5 text-xs font-bold rounded-xl border shrink-0 flex items-center gap-1">
+                        <span>🅿️</span><span>ที่จอดวิภาวดี</span>
+                    </button>
+                    <button onclick="selectLocation('ngam1')" id="btn-ngam1" class="hud-btn px-2.5 py-1.5 text-xs font-bold rounded-xl border shrink-0 flex items-center gap-1">
+                        <span>🅿️</span><span>ที่จอดงาม 1</span>
+                    </button>
+                    <button onclick="selectLocation('ngam2')" id="btn-ngam2" class="hud-btn px-2.5 py-1.5 text-xs font-bold rounded-xl border shrink-0 flex items-center gap-1">
+                        <span>🅿️</span><span>ที่จอดงาม 2</span>
+                    </button>
+                    <button onclick="selectLocation('bts')" id="btn-bts" class="hud-btn px-2.5 py-1.5 text-xs font-bold rounded-xl border shrink-0 flex items-center gap-1">
+                        <span>🚇</span><span>BTS มก.</span>
+                    </button>
+                    <button onclick="selectLocation('barmai')" id="btn-barmai" class="hud-btn px-2.5 py-1.5 text-xs font-bold rounded-xl border shrink-0 flex items-center gap-1">
+                        <span>🍽️</span><span>บาร์ใหม่</span>
                     </button>
                 </div>
 
@@ -1558,200 +1536,197 @@
         lucide.createIcons();
 
         // ================= LOCATION DATA MODEL (EXACT LAT, LNG UNIVERSAL INTENT MAP LINKS) =================
-                const ALLOWED_LOCATIONS = ['vipa', 'ngam1', 'ngam2', 'pond'];
-
         const LOCATIONS = {
             pond: {
-                title: "สระพระพิรุณ (จุดจัดงานลอยกระทง)",
-                category: "จุดจัดงานหลัก",
-                icon: "🪔",
-                desc: "จุดจัดงานลอยกระทงหลักใจกลาง มก. บรรยากาศกระทงและโคมไฟเรืองแสงริมผิวน้ำ พร้อมซุ้มกิจกรรมและร้านค้านิสิต",
+                title: "สระพระพิรุณ",
+                category: "แลนด์มาร์กสำคัญ",
+                icon: "🏛️",
+                desc: "สระน้ำแลนด์มาร์กใจกลางมหาวิทยาลัยเกษตรศาสตร์ ตั้งอยู่บริเวณด้านหน้าหอประชุมใหญ่",
                 mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848135,100.572183",
                 x: 1340,
                 y: 760
             },
-            ngam1: {
-                title: "อาคารจอดรถงามวงศ์วาน 1",
-                category: "อาคารจอดรถยนต์",
-                icon: "🅿️",
-                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน ตั้งอยู่ติดกับงามวงศ์วาน 2 ความจุตามผัง ~289 คัน ใกล้หอประชุมใหญ่และสระพระพิรุณ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848834,100.569431",
-                x: 920,
-                y: 770,
-                lotId: "ngam1"
+            auditorium: {
+                title: "หอประชุมใหญ่ ม.เกษตรศาสตร์",
+                category: "อาคารหลัก",
+                icon: "🏛️",
+                desc: "หอประชุมใหญ่ใจกลาง มก. ริมสระพระพิรุณ ใกล้สำนักหอสมุดและประตู 1 งามวงศ์วาน",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.847778,100.571389",
+                x: 1130,
+                y: 760
             },
-            ngam2: {
-                title: "อาคารจอดรถงามวงศ์วาน 2",
-                category: "อาคารจอดรถยนต์",
-                icon: "🅿️",
-                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน ตั้งอยู่ติดกับงามวงศ์วาน 1 ความจุตามผัง ~192 คัน ใกล้หอประชุมใหญ่และสระพระพิรุณ",
-                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848981,100.568347",
-                x: 810,
-                y: 770,
-                lotId: "ngam2"
+            library: {
+                title: "สำนักหอสมุด (อาคารสารนิเทศ 50 ปี)",
+                category: "อาคารบริการการศึกษา",
+                icon: "📚",
+                desc: "สำนักหอสมุดกลาง ม.เกษตรศาสตร์ ใจกลางวิทยาเขตบางเขน ศูนย์การเรียนรู้และค้นคว้า",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.849722,100.568333",
+                x: 680,
+                y: 340
             },
             vipa: {
                 title: "อาคารจอดรถวิภาวดีรังสิต",
-                category: "อาคารจอดรถยนต์",
+                category: "อาคารจอดรถ",
                 icon: "🅿️",
-                desc: "อาคารจอดรถฝั่งประตูวิภาวดีรังสิต เข้าได้จากถนนวิภาวดีรังสิต หรือมาจากฝั่งพหลโยธินเชื่อมลงถนนจันทรสถิตย์ ความจุตามผัง ~150 คัน",
+                desc: "อาคารจอดรถฝั่งถนนวิภาวดีรังสิต เข้าได้จากประตูวิภาวดีรังสิต",
                 mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.854083,100.558356",
                 x: 170,
-                y: 390,
-                lotId: "vipa"
+                y: 390
+            },
+            ngam1: {
+                title: "อาคารจอดรถงามวงศ์วาน 1",
+                category: "อาคารจอดรถ",
+                icon: "🅿️",
+                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน เข้าได้จากประตู 1 งามวงศ์วาน ใกล้หอประชุมใหญ่",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848834,100.569431",
+                x: 920,
+                y: 770
+            },
+            ngam2: {
+                title: "อาคารจอดรถงามวงศ์วาน 2",
+                category: "อาคารจอดรถ",
+                icon: "🅿️",
+                desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน เข้าได้จากประตู 2 งามวงศ์วาน",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848981,100.568347",
+                x: 810,
+                y: 770
+            },
+            bts: {
+                title: "สถานี BTS มหาวิทยาลัยเกษตรศาสตร์",
+                category: "ขนส่งสาธารณะ",
+                icon: "🚇",
+                desc: "สถานีรถไฟฟ้า BTS สายสีเขียว (N13) ฝั่งถนนพหลโยธิน มีสะพานเชื่อมเข้าประตูมหาวิทยาลัย",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.846667,100.574444",
+                x: 1415,
+                y: 540
+            },
+            barmai: {
+                title: "โรงอาหารกลาง 2 (บาร์ใหม่)",
+                category: "ศูนย์อาหาร",
+                icon: "🍽️",
+                desc: "โรงอาหารกลาง 2 (บาร์ใหม่) ศูนย์อาหารและเครื่องดื่มหลัก ใกล้โรงเรียนสาธิตเกษตรฯ",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.851944,100.567778",
+                x: 580,
+                y: 197
+            },
+            ocs: {
+                title: "สำนักบริการคอมพิวเตอร์",
+                category: "อาคารบริการการศึกษา",
+                icon: "💻",
+                desc: "สำนักบริการคอมพิวเตอร์ ถนนงามวงศ์วาน ใกล้ประตูงามวงศ์วาน 1",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.847500,100.567222",
+                x: 590,
+                y: 770
+            },
+            stadium: {
+                title: "สนามกีฬาอินทรีจันทรสถิตย์",
+                category: "ศูนย์กีฬา",
+                icon: "🏟️",
+                desc: "สนามกีฬากลาง มหาวิทยาลัยเกษตรศาสตร์ (บางเขน)",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.852778,100.563889",
+                x: 320,
+                y: 580
+            },
+            sorn3: {
+                title: "ศูนย์เรียนรวม 3 (ศร.3)",
+                category: "อาคารเรียนรวม",
+                icon: "🏛️",
+                desc: "อาคารเรียนรวม 3 ศูนย์กลางห้องบรรยายและกิจกรรมการศึกษา",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.850556,100.565278",
+                x: 430,
+                y: 415
+            },
+            eng: {
+                title: "คณะวิศวกรรมศาสตร์",
+                category: "คณะวิชา",
+                icon: "⚙️",
+                desc: "กลุ่มอาคารคณะวิศวกรรมศาสตร์ ม.เกษตรศาสตร์",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.849167,100.566111",
+                x: 520,
+                y: 580
+            },
+            satit: {
+                title: "โรงเรียนสาธิตเกษตรฯ",
+                category: "สถานศึกษา",
+                icon: "🏫",
+                desc: "โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์ ศูนย์วิจัยและพัฒนาการศึกษา",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.852500,100.563611",
+                x: 320,
+                y: 246
+            },
+            vet_hospital: {
+                title: "โรงพยาบาลสัตว์ มก. (บางเขน)",
+                category: "โรงพยาบาล",
+                icon: "🐾",
+                desc: "โรงพยาบาลสัตว์ มหาวิทยาลัยเกษตรศาสตร์ ฝั่งถนนพหลโยธิน",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.847778,100.573611",
+                x: 1395,
+                y: 330
+            },
+            gate_vipa: {
+                title: "ประตูวิภาวดีรังสิต",
+                category: "ประตูทางเข้า-ออก",
+                icon: "🚪",
+                desc: "ประตูทางเข้า-ออกฝั่งถนนวิภาวดีรังสิต เชื่อมต่อถนนสายหลักใน มก.",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.853611,100.557778",
+                x: 135,
+                y: 320
+            },
+            gate_ngam1: {
+                title: "ประตู 1 งามวงศ์วาน",
+                category: "ประตูทางเข้า-ออก",
+                icon: "🚪",
+                desc: "ประตูทางเข้า-ออกฝั่งถนนงามวงศ์วาน ใกล้หอประชุมใหญ่และอาคารจอดรถ 1",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848056,100.569167",
+                x: 1000,
+                y: 880
+            },
+            gate_ngam2: {
+                title: "ประตู 2 งามวงศ์วาน",
+                category: "ประตูทางเข้า-ออก",
+                icon: "🚪",
+                desc: "ประตูทางเข้า-ออกฝั่งถนนงามวงศ์วาน ใกล้อาคารจอดรถ 2",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.849167,100.568056",
+                x: 730,
+                y: 880
+            },
+            gate_ngam3: {
+                title: "ประตู 3 งามวงศ์วาน",
+                category: "ประตูทางเข้า-ออก",
+                icon: "🚪",
+                desc: "ประตูทางเข้า-ออกฝั่งถนนงามวงศ์วาน (ใกล้ศร.3 และสนามกีฬา)",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.850278,100.565833",
+                x: 450,
+                y: 880
+            },
+            gate_phahon1: {
+                title: "ประตู 1 พหลโยธิน",
+                category: "ประตูทางเข้า-ออก",
+                icon: "🚪",
+                desc: "ประตูทางเข้า-ออกฝั่งถนนพหลโยธิน ติดสถานี BTS มหาวิทยาลัยเกษตรศาสตร์",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.846111,100.573889",
+                x: 1470,
+                y: 760
+            },
+            gate_phahon2: {
+                title: "ประตู 2 พหลโยธิน",
+                category: "ประตูทางเข้า-ออก",
+                icon: "🚪",
+                desc: "ประตูทางเข้า-ออกฝั่งถนนพหลโยธิน (ใกล้ รพ.สัตว์ มก.)",
+                mapUrl: "https://www.google.com/maps/dir/?api=1&destination=13.848056,100.575000",
+                x: 1470,
+                y: 440
             }
         };
 
-        // ================= REALTIME TELEMETRY & LIVE PARKING SYNC ENGINE =================
-        const SYNC_CHANNEL_NAME = 'ku_parking_sync';
-        const STORAGE_KEY = 'ku_loykrathong_parking';
-        const CLOUD_KEY = 'ku_parking_cloud_endpoint';
-
-        const syncChannel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel(SYNC_CHANNEL_NAME) : null;
-
-        const DEFAULT_PARKING_STATE = {
-            updatedAt: Date.now(),
-            lots: {
-                ngam1: { name: "งามวงศ์วาน 1", status: "open", capacity: 289 },
-                ngam2: { name: "งามวงศ์วาน 2", status: "open", capacity: 192 },
-                vipa:  { name: "วิภาวดี",     status: "open", capacity: 150 }
-            }
-        };
-
-        let currentParkingData = DEFAULT_PARKING_STATE;
-        let selectedKey = 'pond';
-
-        function loadLocalParkingData() {
-            try {
-                const s = localStorage.getItem(STORAGE_KEY);
-                return s ? JSON.parse(s) : DEFAULT_PARKING_STATE;
-            } catch (e) {
-                return DEFAULT_PARKING_STATE;
-            }
-        }
-
-        function updateParkingUI(data) {
-            if (!data || !data.lots) return;
-            currentParkingData = data;
-
-            const statusMap = {
-                open:    { text: 'ว่าง',     badgeClass: 'bg-emerald-50 text-emerald-800 border-emerald-300', stroke: '#10B981', color: '#065F46', fullText: '' },
-                warning: { text: 'ใกล้เต็ม', badgeClass: 'bg-amber-50 text-amber-800 border-amber-300', stroke: '#F59E0B', color: '#B45309', fullText: '● ชะลอรับรถ (ใกล้เต็ม)' },
-                full:    { text: 'เต็ม',     badgeClass: 'bg-red-50 text-red-800 border-red-300', stroke: '#EF4444', color: '#B91C1C', fullText: '● งดรับรถ (ที่จอดเต็ม)' },
-                closed:  { text: 'ปิด',      badgeClass: 'bg-slate-100 text-slate-700 border-slate-300', stroke: '#64748B', color: '#334155', fullText: '● งดให้บริการ (ปิดอาคาร)' }
-            };
-
-            ['ngam1', 'ngam2', 'vipa'].forEach(id => {
-                const lot = data.lots[id] || { status: 'open' };
-                const st = lot.status || 'open';
-                const cfg = statusMap[st] || statusMap.open;
-                const nameShort = id === 'ngam1' ? 'งาม 1' : (id === 'ngam2' ? 'งาม 2' : 'วิภาวดี');
-
-                // 1. Update SVG dynamic badge
-                const rectEl = document.getElementById('svg-badge-rect-' + id);
-                const textEl = document.getElementById('svg-badge-text-' + id);
-                if (rectEl && textEl) {
-                    rectEl.setAttribute('stroke', cfg.stroke);
-                    textEl.setAttribute('fill', cfg.color);
-                    textEl.textContent = '🅿️ ' + nameShort + ' • ' + cfg.text;
-                }
-
-                // 2. Update Quick Selector Chip status pills (Mobile & Desktop)
-                const chipEl = document.getElementById('chip-status-' + id);
-                const dtChipEl = document.getElementById('dt-chip-' + id);
-                if (chipEl) {
-                    chipEl.className = 'text-[8px] px-1 py-0.2 rounded font-bold border ' + cfg.badgeClass;
-                    chipEl.textContent = cfg.text;
-                }
-                if (dtChipEl) {
-                    dtChipEl.className = 'text-[9px] px-1.5 py-0.5 rounded font-bold border ' + cfg.badgeClass;
-                    dtChipEl.textContent = cfg.text;
-                }
-
-                // 3. Update LOCATIONS object status string
-                if (LOCATIONS[id]) {
-                    LOCATIONS[id].status = cfg.fullText;
-                }
-            });
-
-            // 4. If currently selected location is a parking lot, refresh dialog badge
-            if (LOCATIONS[selectedKey] && LOCATIONS[selectedKey].lotId) {
-                const curLot = data.lots[selectedKey] || { status: 'open' };
-                const curCfg = statusMap[curLot.status || 'open'] || statusMap.open;
-                const dialogStatus = document.getElementById('dialogStatus');
-                if (dialogStatus) {
-                    if (curCfg.fullText) {
-                        dialogStatus.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold border whitespace-nowrap ' + curCfg.badgeClass;
-                        dialogStatus.textContent = curCfg.fullText;
-                        dialogStatus.classList.remove('hidden');
-                    } else {
-                        dialogStatus.className = 'hidden';
-                        dialogStatus.textContent = '';
-                    }
-                }
-            }
-        }
-
-        function getCloudEndpoint() {
-            try {
-                const params = new URLSearchParams(window.location.search);
-                const fromParam = params.get('sync') || params.get('cloud');
-                if (fromParam) {
-                    try { localStorage.setItem(CLOUD_KEY, fromParam); } catch (e) {}
-                    return fromParam;
-                }
-            } catch (e) {}
-            return localStorage.getItem(CLOUD_KEY) || '';
-        }
-
-        async function fetchCloudParkingData() {
-            const cloudUrl = getCloudEndpoint();
-            if (!cloudUrl || !cloudUrl.startsWith('http')) return;
-            try {
-                const res = await fetch(cloudUrl, { cache: 'no-store' });
-                if (res.ok) {
-                    const cloudData = await res.json();
-                    if (cloudData && cloudData.lots) {
-                        try {
-                            localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudData));
-                        } catch (e) {}
-                        updateParkingUI(cloudData);
-                    }
-                }
-            } catch (e) {}
-        }
-
-        function initRealtimeSync() {
-            currentParkingData = loadLocalParkingData();
-            updateParkingUI(currentParkingData);
-
-            if (syncChannel) {
-                syncChannel.onmessage = (event) => {
-                    if (event.data && event.data.type === 'PARKING_UPDATE' && event.data.data) {
-                        updateParkingUI(event.data.data);
-                    }
-                };
-            }
-
-            window.addEventListener('storage', () => {
-                const fresh = loadLocalParkingData();
-                updateParkingUI(fresh);
-            });
-
-            // Cloud sync: immediate initial fetch on load, then poll every 5s
-            const cloudUrl = getCloudEndpoint();
-            if (cloudUrl && cloudUrl.startsWith('http')) {
-                fetchCloudParkingData();
-                setInterval(fetchCloudParkingData, 5000);
-            }
-        }
+        let selectedKey = null;
 
         // ================= COLLAPSIBLE BOTTOM SHEET LOGIC =================
         let isSheetExpanded = false;
         let sheetHasSwiped = false;
 
         function toggleSheet() {
-            if (window.innerWidth >= 640) return; // Always visible on desktop
+            if (window.innerWidth >= 640) return;
             if (sheetHasSwiped) return;
             if (isSheetExpanded) {
                 collapseSheet();
@@ -1798,7 +1773,7 @@
             }
         }
 
-        // Touch swipe drag gestures on bottom sheet (handle and compact header)
+        // Touch swipe drag gestures on bottom sheet
         let sheetTouchStartY = 0;
         let sheetTouchStartX = 0;
         function bindSheetSwipe(el) {
@@ -1828,7 +1803,6 @@
         bindSheetSwipe(document.getElementById('sheetPanel'));
 
         // ================= SELECTION & NAVIGATION =================
-        
         function clearSelection() {
             selectedKey = null;
 
@@ -1853,19 +1827,14 @@
             const dialogDesc = document.getElementById('dialogDesc');
             const dialogCategory = document.getElementById('dialogCategory');
             const dialogIcon = document.getElementById('dialogIcon');
-            const dialogStatus = document.getElementById('dialogStatus');
             const navBtn = document.getElementById('dialogMapBtn');
             const navBtnFull = document.getElementById('dialogMapBtnFull');
 
-            if (dialogTitle) dialogTitle.textContent = 'ผังจุดจอดรถ & จุดจัดงาน';
-            if (dialogCategory) dialogCategory.textContent = 'งานลอยกระทง 2569';
-            if (dialogIcon) dialogIcon.textContent = '🌿';
-            if (dialogDescCompact) dialogDescCompact.textContent = 'แตะ 4 จุดหลักบนแผนที่ หรือเลือกจากรายการ';
-            if (dialogDesc) dialogDesc.textContent = 'แตะที่อาคารจอดรถ 3 จุด (วิภาวดี, งาม 1, งาม 2) หรือสระพระพิรุณ เพื่อดูพิกัดและเส้นทางนำทาง';
-            if (dialogStatus) {
-                dialogStatus.className = 'hidden';
-                dialogStatus.textContent = '';
-            }
+            if (dialogTitle) dialogTitle.textContent = 'ผังเส้นทางและอาคาร มก.';
+            if (dialogCategory) dialogCategory.textContent = 'ม.เกษตรศาสตร์ (บางเขน)';
+            if (dialogIcon) dialogIcon.textContent = '🏛️';
+            if (dialogDescCompact) dialogDescCompact.textContent = 'แตะอาคารบนแผนที่ เพื่อดูพิกัดและเส้นทางนำทาง';
+            if (dialogDesc) dialogDesc.textContent = 'แตะที่อาคารหรือประตูบนแผนที่ เพื่อดูพิกัดและเปิดนำทางด้วย Google Maps';
             if (navBtn) {
                 navBtn.classList.add('opacity-40', 'pointer-events-none');
             }
@@ -1875,16 +1844,14 @@
         }
 
         function selectLocation(key) {
-            // Strictly enforce only 4 allowed locations (vipa, ngam1, ngam2, pond)
-            if (!ALLOWED_LOCATIONS.includes(key)) return;
+            if (!LOCATIONS[key]) return;
             if (window.event && window.event.stopPropagation) {
                 window.event.stopPropagation();
             }
             selectedKey = key;
             const data = LOCATIONS[key];
-            if (!data) return;
 
-            // 1. Show & Move Map Pin Marker (Without Auto-Zoom)
+            // 1. Show & Move Map Pin Marker
             const pin = document.getElementById('mapPinMarker');
             if (pin && data.x !== undefined && data.y !== undefined) {
                 pin.style.display = 'block';
@@ -1892,13 +1859,16 @@
             }
 
             // 2. Update Mobile Bottom Sheet
-            document.getElementById('dialogTitle').textContent = data.title;
-            document.getElementById('dialogCategory').textContent = data.category;
-            document.getElementById('dialogIcon').textContent = data.icon;
-            document.getElementById('dialogDesc').textContent = data.desc;
-            
-            const compactDesc = document.getElementById('dialogDescCompact');
-            if (compactDesc) compactDesc.textContent = data.desc;
+            const dTitle = document.getElementById('dialogTitle');
+            const dCat = document.getElementById('dialogCategory');
+            const dIcon = document.getElementById('dialogIcon');
+            const dDesc = document.getElementById('dialogDesc');
+            const dCompact = document.getElementById('dialogDescCompact');
+            if (dTitle) dTitle.textContent = data.title;
+            if (dCat) dCat.textContent = data.category;
+            if (dIcon) dIcon.textContent = data.icon;
+            if (dDesc) dDesc.textContent = data.desc;
+            if (dCompact) dCompact.textContent = data.desc;
 
             const navBtn = document.getElementById('dialogMapBtn');
             const navBtnFull = document.getElementById('dialogMapBtnFull');
@@ -1926,42 +1896,13 @@
             if (dtDesc) dtDesc.textContent = data.desc;
             if (dtNavBtn) dtNavBtn.href = data.mapUrl;
 
-            // 4. Status Badge Formatting (Hidden for normal/open to remove clutter)
-            const statusBadge = document.getElementById('dialogStatus');
-            if (statusBadge) {
-                if (data.lotId) {
-                    const lot = currentParkingData.lots?.[data.lotId] || { status: 'open' };
-                    const st = lot.status || 'open';
-                    if (st === 'full') {
-                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-red-50 text-red-800 border border-red-300 whitespace-nowrap';
-                        statusBadge.textContent = '● งดรับรถ (เต็ม)';
-                        statusBadge.classList.remove('hidden');
-                    } else if (st === 'warning') {
-                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-amber-50 text-amber-800 border border-amber-300 whitespace-nowrap';
-                        statusBadge.textContent = '● ชะลอรับรถ (ใกล้เต็ม)';
-                        statusBadge.classList.remove('hidden');
-                    } else if (st === 'closed') {
-                        statusBadge.className = 'text-[9px] px-2 py-0.5 rounded-full font-bold bg-slate-100 text-slate-700 border border-slate-300 whitespace-nowrap';
-                        statusBadge.textContent = '● ปิดให้บริการ';
-                        statusBadge.classList.remove('hidden');
-                    } else {
-                        statusBadge.className = 'hidden';
-                        statusBadge.textContent = '';
-                    }
-                } else {
-                    statusBadge.className = 'hidden';
-                    statusBadge.textContent = '';
-                }
-            }
-
-            // 5. Highlight Active Buttons (Both Desktop and Mobile)
+            // 4. Highlight Active Buttons (Both Desktop and Mobile)
             document.querySelectorAll('.hud-btn').forEach(btn => btn.classList.remove('active'));
             const activeBtn = document.getElementById('btn-' + key);
             const activeDtBtn = document.getElementById('dt-btn-' + key);
             if (activeBtn) activeBtn.classList.add('active');
             if (activeDtBtn) activeDtBtn.classList.add('active');
         }
-
 
         // ================= TOUCH & PAN-ZOOM ENGINE WITH EXACT SVG MEET MATH =================
         let scale = 1;
@@ -2009,13 +1950,19 @@
             container.style.transform = 'translate(' + panX + 'px, ' + panY + 'px) scale(' + scale + ')';
         }
 
-        function zoomMap(factor) {
+        function zoomMap(factor, clientX, clientY) {
             const newScale = Math.min(Math.max(0.65, scale * factor), 4.5);
+            if (clientX !== undefined && clientY !== undefined) {
+                const centerX = viewport.clientWidth / 2;
+                const centerY = viewport.clientHeight / 2;
+                panX = clientX - centerX - (newScale / scale) * (clientX - centerX - panX);
+                panY = clientY - centerY - (newScale / scale) * (clientY - centerY - panY);
+            }
             scale = newScale;
             clampPan();
-            container.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+            container.style.transition = 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)';
             updateTransform();
-            setTimeout(() => { container.style.transition = ''; }, 250);
+            setTimeout(() => { container.style.transition = ''; }, 200);
         }
 
         function resetMapView() {
@@ -2029,14 +1976,11 @@
 
         function panTowards(targetX, targetY) {
             const bounds = getSvgScreenBounds();
-            // Retain current scale - NEVER force auto-zoom on click/tap
             const baseX = bounds.offsetX + (targetX / bounds.svgW) * bounds.actualW;
             const baseY = bounds.offsetY + (targetY / bounds.svgH) * bounds.actualH;
             
             const centerX = bounds.viewW / 2;
             const centerY = bounds.viewH / 2;
-            
-            // Compensate for compact bottom sheet on mobile screens (target shifted 32px up on screen)
             const sheetOffset = window.innerWidth < 640 ? 32 : 0;
             
             panX = (centerX - baseX) * scale;
@@ -2143,7 +2087,6 @@
 
         viewport.addEventListener('touchend', (e) => { 
             if (e.touches.length === 1) {
-                // If 1 finger remains on screen after 2-finger gesture, smoothly continue dragging
                 isDragging = true; 
                 isPinching = false;
                 dragStartX = e.touches[0].clientX - panX;
@@ -2153,22 +2096,6 @@
                 isPinching = false;
             }
         });
-
-        // Wheel Zoom with Focal Point
-        function zoomMap(factor, clientX, clientY) {
-            const newScale = Math.min(Math.max(0.65, scale * factor), 4.5);
-            if (clientX !== undefined && clientY !== undefined) {
-                const centerX = viewport.clientWidth / 2;
-                const centerY = viewport.clientHeight / 2;
-                panX = clientX - centerX - (newScale / scale) * (clientX - centerX - panX);
-                panY = clientY - centerY - (newScale / scale) * (clientY - centerY - panY);
-            }
-            scale = newScale;
-            clampPan();
-            container.style.transition = 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)';
-            updateTransform();
-            setTimeout(() => { container.style.transition = ''; }, 150);
-        }
 
         viewport.addEventListener('wheel', (e) => {
             e.preventDefault();
@@ -2185,8 +2112,8 @@
         function shareMap() {
             if (navigator.share) {
                 navigator.share({
-                    title: 'ผังอาคารจอดรถ ม.เกษตรศาสตร์ งานลอยกระทง 2569',
-                    text: 'แผนผังอาคารจอดรถ จุดจัดงานริมสระพระพิรุณ และเส้นทางจราจร ม.เกษตรศาสตร์ (บางเขน)',
+                    title: 'ผังเส้นทางและอาคาร ม.เกษตรศาสตร์ (บางเขน)',
+                    text: 'แผนผังถนน อาคารสำคัญ และประตูทางเข้า-ออก ม.เกษตรศาสตร์ (บางเขน)',
                     url: window.location.href
                 }).catch(() => {});
             } else {
@@ -2197,12 +2124,28 @@
 
         // ================= APP INITIALIZATION =================
         window.addEventListener('DOMContentLoaded', () => {
-            // Only 4 interactive buildings on the entire map
+            // Interactive campus buildings and gates
             const clickMap = {
+                'building-pond': 'pond',
+                'building-auditorium': 'auditorium',
+                'building-library': 'library',
+                'building-ocs': 'ocs',
+                'building-stadium': 'stadium',
                 'building-ngam1': 'ngam1',
                 'building-ngam2': 'ngam2',
                 'building-vipa': 'vipa',
-                'building-pond': 'pond'
+                'roundabout-bts': 'bts',
+                'building-barmai': 'barmai',
+                'building-sorn3': 'sorn3',
+                'building-eng': 'eng',
+                'building-satit': 'satit',
+                'building-vet-hospital': 'vet_hospital',
+                'gate-vipa': 'gate_vipa',
+                'gate-ngam1': 'gate_ngam1',
+                'gate-ngam2': 'gate_ngam2',
+                'gate-ngam3': 'gate_ngam3',
+                'gate-phahon1': 'gate_phahon1',
+                'gate-phahon2': 'gate_phahon2'
             };
 
             for (const [id, key] of Object.entries(clickMap)) {
@@ -2217,12 +2160,9 @@
                 }
             }
 
-            initRealtimeSync();
-
-            // On initial load, show full map overview without selecting anything
+            // Full map overview by default
             clearSelection();
             resetMapView();
-
         });
     </script>
 </body>
