@@ -137,8 +137,12 @@
             </div>
         </div>
 
-        <!-- Action Control: Share Button -->
+        <!-- Action Controls: Reset View & Share -->
         <div class="flex items-center space-x-2 shrink-0">
+            <button onclick="resetMapView()" aria-label="รีเซ็ตมุมมอง" class="hud-btn px-2.5 sm:px-3 py-1.5 text-slate-700 hover:text-emerald-700 rounded-lg shrink-0 flex items-center gap-1.5 text-xs font-bold min-h-[36px] bg-white border-slate-200 shadow-xs">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                <span class="hidden sm:inline">รีเซ็ต</span>
+            </button>
             <button onclick="shareMap()" aria-label="แชร์แผนผัง" class="hud-btn px-3 py-1.5 text-slate-700 hover:text-emerald-700 rounded-lg shrink-0 flex items-center gap-1.5 text-xs font-bold min-h-[36px] bg-white border-slate-200 shadow-xs">
                 <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
                 <span class="hidden sm:inline">แชร์</span>
@@ -1347,21 +1351,7 @@
                 </div>
             </div>
 
-            <!-- Floating Pan & Zoom Controls -->
-            <div class="absolute bottom-20 right-3 sm:bottom-4 sm:right-4 z-20 flex flex-col gap-1.5">
-                <div class="hud-panel p-1 flex flex-col sm:flex-row items-center gap-1 shadow-lg">
-                    <button onclick="zoomMap(1.2)" aria-label="ขยายแผนที่" class="hud-btn w-9 h-9 flex items-center justify-center text-slate-200 hover:text-white">
-                        <i data-lucide="plus" class="w-4 h-4"></i>
-                    </button>
-                    <button onclick="zoomMap(0.8)" aria-label="ย่อแผนที่" class="hud-btn w-9 h-9 flex items-center justify-center text-slate-200 hover:text-white">
-                        <i data-lucide="minus" class="w-4 h-4"></i>
-                    </button>
-                    <button onclick="resetMapView()" aria-label="มุมมองรวมทั้งหมด" class="hud-btn px-2.5 h-9 flex items-center justify-center text-xs font-bold text-slate-200 hover:text-white gap-1">
-                        <i data-lucide="maximize" class="w-3.5 h-3.5"></i>
-                        <span class="hidden sm:inline">ภาพรวม</span>
-                    </button>
-                </div>
-            </div>
+
         </main>
     </div>
 
