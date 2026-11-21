@@ -537,111 +537,93 @@
     <use href="#goldPillar" x="1470" y="740" /><use href="#goldPillar" x="1470" y="780" />
   </g>
 
-    <!-- ================= 5. REFINED SEAMLESS ROAD NETWORK ================= -->
+      <!-- ================= 5. REFINED SEAMLESS ROAD NETWORK ================= -->
   <!-- 5.0 Road Contact Soft Drop Shadow (Stroke 36, Opacity 0.38) -->
-  <g fill="none" stroke="#0B1220" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" opacity="0.38">
-    <!-- R01: ทางเข้าประตูวิภาวดี -->
-    <path d="M 90 320 L 200 320" />
-    <!-- R02: วงแหวนรอบบน หลังสาธิตฯ-บาร์ใหม่ -->
-    <path d="M 200 320 Q 200 175 270 145 L 996 12" />
-    <!-- R03: สายทะแยงเหนือ หน้าสาธิตฯ-หอสมุด 50 ปี-สัตวแพทย์ -->
-    <path d="M 200 380 L 1326 81" />
-    <!-- R04: สายทะแยง หลังพืชสวน-ข้างประมง-วงเวียน BTS -->
-    <path d="M 1019 159 L 1209 616" />
-    <!-- R05: วงแหวนรอบนอกตะวันตก & ถนนขวางสายใต้ หน้าอินทรีฯ-วิศวะ-เศรษฐศาสตร์ -->
-    <path d="M 200 320 L 200 660 Q 200 730 270 730 L 1000 730" />
-    <!-- R06: สายกลางตัดขวางตะวันตก-ตะวันออก ทะลุประตู 2 พหลโยธิน -->
-    <path d="M 198 544 L 526 543 L 921 418 L 1174 319 L 1309 414 L 1471 413 L 1524 416" />
-    <!-- R07: สายหลัก ประตู 1 งามวงศ์วาน ทะลุประตูหลังมอ -->
-    <path d="M 751 0 L 997 599 L 1000 910" />
-    <!-- R08: ทางเข้าประตูงามวงศ์วาน 3 -->
-    <path d="M 450 730 L 450 910" />
-    <!-- R09: ถนนข้างสนามอินทรีฯ & คณะวิศวะ (เยื้องขวาประตูงาม 3) -->
-    <path d="M 526 543 L 524 729" />
-    <!-- R10: ถนนข้างคณะเศรษฐศาสตร์ & อาคารวิทย์ (เยื้องขวาประตูงาม 2) -->
-    <path d="M 780 461 L 776 724" />
-    <!-- R11: ซอยขวางหน้าธนาคารกรุงศรี (ปรับระดับแกน Y) -->
-    <path d="M 777 644 L 971 558" />
-    <!-- R12: ซอยเฉียงเชื่อมหน้าหอประชุมใหญ่ -->
-    <path d="M 971 558 L 1155 472" />
-    <!-- R13: ทางเข้าประตูงามวงศ์วาน 2 -->
-    <path d="M 730 730 L 730 910" />
-    <!-- R14: ถนนทะแยงเชื่อมแยกประตู 1 สู่วงเวียน BTS -->
-    <path d="M 1000 730 L 1356 548" />
-    <!-- R15: ซอยเข้าสระพระพิรุณฝั่งเหนือ -->
-    <path d="M 1260 597 L 1260 660" />
-    <!-- R16: ถนนสี่เหลี่ยมรอบสระพระพิรุณ (Loop) -->
-    <path d="M 1260 660 L 1420 660 L 1420 860 L 1260 860 Z" />
-    <!-- R17: ทางออกประตู 1 พหลโยธิน (ข้างสระพระพิรุณ) -->
-    <path d="M 1420 760 L 1510 760" />
-    <!-- R18: วงเวียนสถานีรถไฟฟ้า BTS ม.เกษตรศาสตร์ -->
-    <path d="M 1356 548 C 1400 495 1467 511 1465 543 C 1456 558 1400 585 1342 559 Z" />
+  <g id="roadLayerShadow" fill="none" stroke="#0B1220" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" opacity="0.38">
+    <path d="M 90 320 L 200 320" data-road-id="R01" />
+    <path d="M 200 320 L 198 229 L 332 169 L 402 184 L 988 0" data-road-id="R02" />
+    <path d="M 250 431 L 805 234" data-road-id="R03" />
+    <path d="M 1000 224 L 1243 606" data-road-id="R04" />
+    <path d="M 200 320 L 308 561 L 310 686 Q 312 739 355 752 L 519 753 L 1001 759" data-road-id="R05" />
+    <path d="M 308 561 L 565 560 L 907 422 L 1125 313 L 1267 373 L 1305 395 L 1467 396 L 1529 395" data-road-id="R06" />
+    <path d="M 685 7 L 997 599 L 1000 910" data-road-id="R07" />
+    <path d="M 519 753 L 519 910" data-road-id="R08" />
+    <path d="M 565 560 L 564 754" data-road-id="R09" />
+    <path d="M 763 485 L 856 674 L 856 760" data-road-id="R10" />
+    <path d="M 838 639 L 1149 463" data-road-id="R11" />
+    <path d="M 732 757 L 733 926" data-road-id="R13" />
+    <path d="M 1000 730 L 1356 548" data-road-id="R14" />
+    <path d="M 1294 581 L 1294 659" data-road-id="R15" />
+    <path d="M 1294 659 L 1420 660 L 1420 860 L 1296 860 Z" data-road-id="R16" />
+    <path d="M 1420 760 L 1510 760" data-road-id="R17" />
+    <path d="M 1356 548 C 1400 495 1467 511 1465 543 C 1456 558 1400 585 1342 559 Z" data-road-id="R18" />
+    <path d="M 841 303 L 1033 202 Q 1101 168 1048 117 L 954 0" data-road-id="R19" />
   </g>
 
   <!-- 5.1 Cartoon Cream Curb / Pavement Border (Stroke 30, #F8FAFC, Fully Rounded Seamless) -->
-  <g fill="none" stroke="#F8FAFC" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 90 320 L 200 320" stroke-linecap="butt" />
-    <path d="M 200 320 Q 200 175 270 145 L 996 12" />
-    <path d="M 200 380 L 1326 81" />
-    <path d="M 1019 159 L 1209 616" />
-    <path d="M 200 320 L 200 660 Q 200 730 270 730 L 1000 730" />
-    <path d="M 198 544 L 526 543 L 921 418 L 1174 319 L 1309 414 L 1471 413 L 1524 416" stroke-linecap="butt" />
-    <path d="M 751 0 L 997 599 L 1000 910" stroke-linecap="butt" />
-    <path d="M 450 730 L 450 910" stroke-linecap="butt" />
-    <path d="M 526 543 L 524 729" />
-    <path d="M 780 461 L 776 724" />
-    <path d="M 777 644 L 971 558" />
-    <path d="M 971 558 L 1155 472" />
-    <path d="M 730 730 L 730 910" stroke-linecap="butt" />
-    <path d="M 1000 730 L 1356 548" />
-    <path d="M 1260 597 L 1260 660" />
-    <path d="M 1260 660 L 1420 660 L 1420 860 L 1260 860 Z" />
-    <path d="M 1420 760 L 1510 760" stroke-linecap="butt" />
-    <path d="M 1356 548 C 1400 495 1467 511 1465 543 C 1456 558 1400 585 1342 559 Z" />
+  <g id="roadLayerCurb" fill="none" stroke="#F8FAFC" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 90 320 L 200 320" stroke-linecap="butt" data-road-id="R01" />
+    <path d="M 200 320 L 198 229 L 332 169 L 402 184 L 988 0" data-road-id="R02" />
+    <path d="M 250 431 L 805 234" data-road-id="R03" />
+    <path d="M 1000 224 L 1243 606" data-road-id="R04" />
+    <path d="M 200 320 L 308 561 L 310 686 Q 312 739 355 752 L 519 753 L 1001 759" data-road-id="R05" />
+    <path d="M 308 561 L 565 560 L 907 422 L 1125 313 L 1267 373 L 1305 395 L 1467 396 L 1529 395" stroke-linecap="butt" data-road-id="R06" />
+    <path d="M 685 7 L 997 599 L 1000 910" stroke-linecap="butt" data-road-id="R07" />
+    <path d="M 519 753 L 519 910" stroke-linecap="butt" data-road-id="R08" />
+    <path d="M 565 560 L 564 754" data-road-id="R09" />
+    <path d="M 763 485 L 856 674 L 856 760" data-road-id="R10" />
+    <path d="M 838 639 L 1149 463" data-road-id="R11" />
+    <path d="M 732 757 L 733 926" stroke-linecap="butt" data-road-id="R13" />
+    <path d="M 1000 730 L 1356 548" data-road-id="R14" />
+    <path d="M 1294 581 L 1294 659" data-road-id="R15" />
+    <path d="M 1294 659 L 1420 660 L 1420 860 L 1296 860 Z" data-road-id="R16" />
+    <path d="M 1420 760 L 1510 760" stroke-linecap="butt" data-road-id="R17" />
+    <path d="M 1356 548 C 1400 495 1467 511 1465 543 C 1456 558 1400 585 1342 559 Z" data-road-id="R18" />
+    <path d="M 841 303 L 1033 202 Q 1101 168 1048 117 L 954 0" data-road-id="R19" />
   </g>
 
   <!-- 5.2 Inner Road Surface Core (Warm Pavement Slate, Width 22, Rounded) -->
-  <g fill="none" stroke="url(#warmRoadSurface)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 90 320 L 200 320" stroke-linecap="butt" />
-    <path d="M 200 320 Q 200 175 270 145 L 996 12" />
-    <path d="M 200 380 L 1326 81" />
-    <path d="M 1019 159 L 1209 616" />
-    <path d="M 200 320 L 200 660 Q 200 730 270 730 L 1000 730" />
-    <path d="M 198 544 L 526 543 L 921 418 L 1174 319 L 1309 414 L 1471 413 L 1524 416" stroke-linecap="butt" />
-    <path d="M 751 0 L 997 599 L 1000 910" stroke-linecap="butt" />
-    <path d="M 450 730 L 450 910" stroke-linecap="butt" />
-    <path d="M 526 543 L 524 729" />
-    <path d="M 780 461 L 776 724" />
-    <path d="M 777 644 L 971 558" />
-    <path d="M 971 558 L 1155 472" />
-    <path d="M 730 730 L 730 910" stroke-linecap="butt" />
-    <path d="M 1000 730 L 1356 548" />
-    <path d="M 1260 597 L 1260 660" />
-    <path d="M 1260 660 L 1420 660 L 1420 860 L 1260 860 Z" />
-    <path d="M 1420 760 L 1510 760" stroke-linecap="butt" />
-    <path d="M 1356 548 C 1400 495 1467 511 1465 543 C 1456 558 1400 585 1342 559 Z" />
+  <g id="roadLayerSurface" fill="none" stroke="url(#warmRoadSurface)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 90 320 L 200 320" stroke-linecap="butt" data-road-id="R01" />
+    <path d="M 200 320 L 198 229 L 332 169 L 402 184 L 988 0" data-road-id="R02" />
+    <path d="M 250 431 L 805 234" data-road-id="R03" />
+    <path d="M 1000 224 L 1243 606" data-road-id="R04" />
+    <path d="M 200 320 L 308 561 L 310 686 Q 312 739 355 752 L 519 753 L 1001 759" data-road-id="R05" />
+    <path d="M 308 561 L 565 560 L 907 422 L 1125 313 L 1267 373 L 1305 395 L 1467 396 L 1529 395" stroke-linecap="butt" data-road-id="R06" />
+    <path d="M 685 7 L 997 599 L 1000 910" stroke-linecap="butt" data-road-id="R07" />
+    <path d="M 519 753 L 519 910" stroke-linecap="butt" data-road-id="R08" />
+    <path d="M 565 560 L 564 754" data-road-id="R09" />
+    <path d="M 763 485 L 856 674 L 856 760" data-road-id="R10" />
+    <path d="M 838 639 L 1149 463" data-road-id="R11" />
+    <path d="M 732 757 L 733 926" stroke-linecap="butt" data-road-id="R13" />
+    <path d="M 1000 730 L 1356 548" data-road-id="R14" />
+    <path d="M 1294 581 L 1294 659" data-road-id="R15" />
+    <path d="M 1294 659 L 1420 660 L 1420 860 L 1296 860 Z" data-road-id="R16" />
+    <path d="M 1420 760 L 1510 760" stroke-linecap="butt" data-road-id="R17" />
+    <path d="M 1356 548 C 1400 495 1467 511 1465 543 C 1456 558 1400 585 1342 559 Z" data-road-id="R18" />
+    <path d="M 841 303 L 1033 202 Q 1101 168 1048 117 L 954 0" data-road-id="R19" />
   </g>
 
   <!-- 5.3 Warm Butter-Yellow Centerline (Stroke 2, Dasharray 7 7) -->
-  <g fill="none" stroke="#FEF08A" stroke-width="2" stroke-dasharray="7 7" opacity="0.9" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 90 320 L 200 320" />
-    <path d="M 200 320 Q 200 175 270 145 L 996 12" />
-    <path d="M 200 380 L 1326 81" />
-    <path d="M 1019 159 L 1209 616" />
-    <path d="M 200 320 L 200 660 Q 200 730 270 730 L 1000 730" />
-    <path d="M 198 544 L 526 543 L 921 418 L 1174 319 L 1309 414 L 1471 413 L 1524 416" />
-    <path d="M 751 0 L 997 599 L 1000 910" />
-    <path d="M 450 730 L 450 910" />
-    <path d="M 526 543 L 524 729" />
-    <path d="M 780 461 L 776 724" />
-    <path d="M 777 644 L 971 558" />
-    <path d="M 971 558 L 1155 472" />
-    <path d="M 730 730 L 730 910" />
-    <path d="M 1000 730 L 1356 548" />
-    <path d="M 1260 597 L 1260 660" />
-    <path d="M 1260 660 L 1420 660 L 1420 860 L 1260 860 Z" />
-    <path d="M 1420 760 L 1510 760" />
-    <path d="M 1356 548 C 1400 495 1467 511 1465 543 C 1456 558 1400 585 1342 559 Z" />
+  <g id="roadLayerCenterline" fill="none" stroke="#FEF08A" stroke-width="2" stroke-dasharray="7 7" opacity="0.9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 90 320 L 200 320" data-road-id="R01" />
+    <path d="M 200 320 L 198 229 L 332 169 L 402 184 L 988 0" data-road-id="R02" />
+    <path d="M 250 431 L 805 234" data-road-id="R03" />
+    <path d="M 1000 224 L 1243 606" data-road-id="R04" />
+    <path d="M 200 320 L 308 561 L 310 686 Q 312 739 355 752 L 519 753 L 1001 759" data-road-id="R05" />
+    <path d="M 308 561 L 565 560 L 907 422 L 1125 313 L 1267 373 L 1305 395 L 1467 396 L 1529 395" data-road-id="R06" />
+    <path d="M 685 7 L 997 599 L 1000 910" data-road-id="R07" />
+    <path d="M 519 753 L 519 910" data-road-id="R08" />
+    <path d="M 565 560 L 564 754" data-road-id="R09" />
+    <path d="M 763 485 L 856 674 L 856 760" data-road-id="R10" />
+    <path d="M 838 639 L 1149 463" data-road-id="R11" />
+    <path d="M 732 757 L 733 926" data-road-id="R13" />
+    <path d="M 1000 730 L 1356 548" data-road-id="R14" />
+    <path d="M 1294 581 L 1294 659" data-road-id="R15" />
+    <path d="M 1294 659 L 1420 660 L 1420 860 L 1296 860 Z" data-road-id="R16" />
+    <path d="M 1420 760 L 1510 760" data-road-id="R17" />
+    <path d="M 1356 548 C 1400 495 1467 511 1465 543 C 1456 558 1400 585 1342 559 Z" data-road-id="R18" />
+    <path d="M 841 303 L 1033 202 Q 1101 168 1048 117 L 954 0" data-road-id="R19" />
   </g>
 
   <!-- ================= 6. CUTE PUFFY ANIME TREES ROADSIDE & PARKS ================= -->
@@ -708,554 +690,556 @@
   <!-- ================= 7. 2.5D CEL-SHADED BUILDINGS & LANDMARKS ================= -->
 
   <!-- [1] โรงเรียนสาธิต มก. (Satit Kasetsart) -->
-  <g id="building-satit" class="building-card"  transform="translate(377, 320)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="44" rx="74" ry="14" fill="#020617" opacity="0.35" />
-    <rect x="-68" y="-38" width="136" height="76" rx="8" fill="#FFFBEB" stroke="#0F172A" stroke-width="2.5" />
-    <rect x="-65" y="4" width="130" height="31" rx="5" fill="#FEF3C7" opacity="0.6" />
-    <polygon points="-75,-38 0,-64 75,-38" fill="#B91C1C" stroke="#0F172A" stroke-width="2.5" />
-    <polygon points="-71,-38 0,-60 71,-38" fill="#DC2626" />
-    <polygon points="-71,-38 0,-60 0,-38" fill="#EF4444" />
+  <g id="building-satit" class="building-card" transform="translate(342, 272) scale(1.10)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="44" rx="74" ry="14" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-68" y="-38" width="136" height="76" rx="8" fill="#FFFBEB" stroke="#0F172A" stroke-width="2.5"></rect>
+    <rect x="-65" y="4" width="130" height="31" rx="5" fill="#FEF3C7" opacity="0.6"></rect>
+    <polygon points="-75,-38 0,-64 75,-38" fill="#B91C1C" stroke="#0F172A" stroke-width="2.5"></polygon>
+    <polygon points="-71,-38 0,-60 71,-38" fill="#DC2626"></polygon>
+    <polygon points="-71,-38 0,-60 0,-38" fill="#EF4444"></polygon>
     <g transform="translate(0, -62)">
-      <rect x="-15" y="-22" width="30" height="24" rx="3" fill="#FEF3C7" stroke="#0F172A" stroke-width="2" />
-      <polygon points="-17,-22 0,-37 17,-22" fill="#B91C1C" stroke="#0F172A" stroke-width="2" />
-      <polygon points="-14,-21 0,-34 0,-21" fill="#EF4444" />
-      <circle cx="0" cy="-9" r="6.5" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5" />
-      <line x1="0" y1="-9" x2="0" y2="-13.5" stroke="#B91C1C" stroke-width="1.5" stroke-linecap="round" />
-      <line x1="0" y1="-9" x2="3" y2="-9" stroke="#0F172A" stroke-width="1.5" stroke-linecap="round" />
+      <rect x="-15" y="-22" width="30" height="24" rx="3" fill="#FEF3C7" stroke="#0F172A" stroke-width="2"></rect>
+      <polygon points="-17,-22 0,-37 17,-22" fill="#B91C1C" stroke="#0F172A" stroke-width="2"></polygon>
+      <polygon points="-14,-21 0,-34 0,-21" fill="#EF4444"></polygon>
+      <circle cx="0" cy="-9" r="6.5" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.5"></circle>
+      <line x1="0" y1="-9" x2="0" y2="-13.5" stroke="#B91C1C" stroke-width="1.5" stroke-linecap="round"></line>
+      <line x1="0" y1="-9" x2="3" y2="-9" stroke="#0F172A" stroke-width="1.5" stroke-linecap="round"></line>
     </g>
     <g fill="#93C5FD" stroke="#0F172A" stroke-width="1.4">
-      <rect x="-56" y="-28" width="22" height="18" rx="3" /><rect x="-26" y="-28" width="22" height="18" rx="3" />
-      <rect x="4" y="-28" width="22" height="18" rx="3" /><rect x="34" y="-28" width="22" height="18" rx="3" />
-      <rect x="-56" y="-2" width="22" height="18" rx="3" /><rect x="-26" y="-2" width="22" height="18" rx="3" />
-      <rect x="4" y="-2" width="22" height="18" rx="3" /><rect x="34" y="-2" width="22" height="18" rx="3" />
+      <rect x="-56" y="-28" width="22" height="18" rx="3"></rect><rect x="-26" y="-28" width="22" height="18" rx="3"></rect>
+      <rect x="4" y="-28" width="22" height="18" rx="3"></rect><rect x="34" y="-28" width="22" height="18" rx="3"></rect>
+      <rect x="-56" y="-2" width="22" height="18" rx="3"></rect><rect x="-26" y="-2" width="22" height="18" rx="3"></rect>
+      <rect x="4" y="-2" width="22" height="18" rx="3"></rect><rect x="34" y="-2" width="22" height="18" rx="3"></rect>
     </g>
     <g fill="#FFFFFF" opacity="0.65">
-      <polygon points="-54,-26 -44,-26 -52,-18 -54,-18" />
-      <polygon points="-24,-26 -14,-26 -22,-18 -24,-18" />
-      <polygon points="6,-26 16,-26 8,-18 6,-18" />
-      <polygon points="36,-26 46,-26 38,-18 36,-18" />
+      <polygon points="-54,-26 -44,-26 -52,-18 -54,-18"></polygon>
+      <polygon points="-24,-26 -14,-26 -22,-18 -24,-18"></polygon>
+      <polygon points="6,-26 16,-26 8,-18 6,-18"></polygon>
+      <polygon points="36,-26 46,-26 38,-18 36,-18"></polygon>
     </g>
-    <line x1="-54" y1="-38" x2="-54" y2="-66" stroke="#475569" stroke-width="2" stroke-linecap="round" />
-    <circle cx="-54" cy="-66" r="2" fill="#F59E0B" />
-    <rect x="-52" y="-65" width="16" height="10" fill="#DC2626" rx="1" />
-    <rect x="-52" y="-63" width="16" height="6" fill="#FFFFFF" />
-    <rect x="-52" y="-61.5" width="16" height="3" fill="#1D4ED8" />
+    <line x1="-54" y1="-38" x2="-54" y2="-66" stroke="#475569" stroke-width="2" stroke-linecap="round"></line>
+    <circle cx="-54" cy="-66" r="2" fill="#F59E0B"></circle>
+    <rect x="-52" y="-65" width="16" height="10" fill="#DC2626" rx="1"></rect>
+    <rect x="-52" y="-63" width="16" height="6" fill="#FFFFFF"></rect>
+    <rect x="-52" y="-61.5" width="16" height="3" fill="#1D4ED8"></rect>
     <g transform="translate(0, 50)" filter="url(#badgeGlow)">
-      <rect x="-72" y="-12" width="144" height="24" rx="7" fill="#0F172A" stroke="#DC2626" stroke-width="1.8" />
-      <circle cx="-57" cy="0" r="6" fill="#DC2626" />
+      <rect x="-72" y="-12" width="144" height="24" rx="7" fill="#0F172A" stroke="#DC2626" stroke-width="1.8"></rect>
+      <circle cx="-57" cy="0" r="6" fill="#DC2626"></circle>
       <text x="-57" y="3" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">🏫</text>
       <text x="6" y="4" fill="#FFFFFF" font-size="9" font-weight="800" text-anchor="middle">โรงเรียนสาธิต ม.เกษตรฯ</text>
     </g>
   </g>
 
   <!-- [2] โรงอาหารกลาง 2 (บาร์ใหม่) -->
-  <g id="building-barmai" class="building-card"  transform="translate(701, 210) scale(0.74) rotate(-29)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="40" rx="74" ry="14" fill="#020617" opacity="0.35" />
-    <rect x="-65" y="-32" width="130" height="64" rx="8" fill="#ECFDF5" stroke="#0F172A" stroke-width="2.5" />
-    <polygon points="-72,-32 0,-54 72,-32" fill="#047857" stroke="#0F172A" stroke-width="2.5" />
-    <polygon points="-68,-32 0,-50 68,-32" fill="#10B981" />
-    <polygon points="-68,-32 0,-50 0,-32" fill="#34D399" />
+  <g id="building-barmai" class="building-card" transform="translate(676, 190) scale(1.10) rotate(-19)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="40" rx="74" ry="14" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-65" y="-32" width="130" height="64" rx="8" fill="#ECFDF5" stroke="#0F172A" stroke-width="2.5"></rect>
+    <polygon points="-72,-32 0,-54 72,-32" fill="#047857" stroke="#0F172A" stroke-width="2.5"></polygon>
+    <polygon points="-68,-32 0,-50 68,-32" fill="#10B981"></polygon>
+    <polygon points="-68,-32 0,-50 0,-32" fill="#34D399"></polygon>
     <g fill="#A7F3D0" stroke="#065F46" stroke-width="1.2">
-      <rect x="-52" y="-24" width="20" height="12" rx="3" />
-      <rect x="-26" y="-24" width="20" height="12" rx="3" />
-      <rect x="6" y="-24" width="20" height="12" rx="3" />
-      <rect x="32" y="-24" width="20" height="12" rx="3" />
+      <rect x="-52" y="-24" width="20" height="12" rx="3"></rect>
+      <rect x="-26" y="-24" width="20" height="12" rx="3"></rect>
+      <rect x="6" y="-24" width="20" height="12" rx="3"></rect>
+      <rect x="32" y="-24" width="20" height="12" rx="3"></rect>
     </g>
-    <rect x="-38" y="-2" width="76" height="28" rx="4" fill="#FFFFFF" stroke="#059669" stroke-width="1.5" />
+    <rect x="-38" y="-2" width="76" height="28" rx="4" fill="#FFFFFF" stroke="#059669" stroke-width="1.5"></rect>
     <g transform="translate(-18, 12)">
-      <rect x="-14" y="-9" width="28" height="18" rx="3" fill="#EA580C" stroke="#9A3412" stroke-width="1" />
+      <rect x="-14" y="-9" width="28" height="18" rx="3" fill="#EA580C" stroke="#9A3412" stroke-width="1"></rect>
       <text x="0" y="3.5" fill="#FFFFFF" font-size="9" text-anchor="middle">🍜</text>
     </g>
     <g transform="translate(18, 12)">
-      <rect x="-14" y="-9" width="28" height="18" rx="3" fill="#D97706" stroke="#78350F" stroke-width="1" />
+      <rect x="-14" y="-9" width="28" height="18" rx="3" fill="#D97706" stroke="#78350F" stroke-width="1"></rect>
       <text x="0" y="3.5" fill="#FFFFFF" font-size="9" text-anchor="middle">🧋</text>
     </g>
     <g transform="translate(0, 44)" filter="url(#badgeGlow)">
-      <rect x="-72" y="-12" width="144" height="24" rx="7" fill="#0F172A" stroke="#10B981" stroke-width="1.8" />
-      <circle cx="-57" cy="0" r="6" fill="#059669" />
+      <rect x="-72" y="-12" width="144" height="24" rx="7" fill="#0F172A" stroke="#10B981" stroke-width="1.8"></rect>
+      <circle cx="-57" cy="0" r="6" fill="#059669"></circle>
       <text x="-57" y="3" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">🍽️</text>
       <text x="6" y="4" fill="#FFFFFF" font-size="9" font-weight="800" text-anchor="middle">โรงอาหารกลาง 2 (บาร์ใหม่)</text>
     </g>
   </g>
 
   <!-- [3] ศูนย์เรียนรวม 3 (ศร.3) -->
-  <g id="building-sorn3" class="building-card"  transform="translate(610, 440) rotate(-25)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="40" rx="66" ry="12" fill="#020617" opacity="0.35" />
-    <rect x="-58" y="-30" width="116" height="60" rx="7" fill="#F0FDF4" stroke="#0F172A" stroke-width="2.5" />
-    <path d="M -62 -30 Q 0 -56 62 -30 Z" fill="#047857" stroke="#0F172A" stroke-width="2.5" />
-    <path d="M -58 -30 Q 0 -52 58 -30 Z" fill="#10B981" />
-    <path d="M -58 -30 Q 0 -52 0 -30 Z" fill="#34D399" />
-    <path d="M -40 20 A 40 40 0 0 1 40 20 Z" fill="#065F46" stroke="#0F172A" stroke-width="1.5" />
-    <circle cx="0" cy="10" r="5" fill="#FDE047" stroke="#B45309" stroke-width="1" />
+  <g id="building-sorn3" class="building-card" transform="translate(590, 402) scale(1.30) rotate(-21)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="40" rx="66" ry="12" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-58" y="-30" width="116" height="60" rx="7" fill="#F0FDF4" stroke="#0F172A" stroke-width="2.5"></rect>
+    <path d="M -62 -30 Q 0 -56 62 -30 Z" fill="#047857" stroke="#0F172A" stroke-width="2.5"></path>
+    <path d="M -58 -30 Q 0 -52 58 -30 Z" fill="#10B981"></path>
+    <path d="M -58 -30 Q 0 -52 0 -30 Z" fill="#34D399"></path>
+    <path d="M -40 20 A 40 40 0 0 1 40 20 Z" fill="#065F46" stroke="#0F172A" stroke-width="1.5"></path>
+    <circle cx="0" cy="10" r="5" fill="#FDE047" stroke="#B45309" stroke-width="1"></circle>
     <g transform="translate(0, 42)" filter="url(#badgeGlow)">
-      <rect x="-60" y="-12" width="120" height="24" rx="7" fill="#0F172A" stroke="#10B981" stroke-width="1.8" />
+      <rect x="-60" y="-12" width="120" height="24" rx="7" fill="#0F172A" stroke="#10B981" stroke-width="1.8"></rect>
       <text x="0" y="4" fill="#FFFFFF" font-size="9" font-weight="800" text-anchor="middle">🏛️ ศูนย์เรียนรวม 3 (ศร.3)</text>
     </g>
   </g>
 
   <!-- [4] สำนักหอสมุด มก. (อาคารสารนิเทศ 50 ปี) -->
-  <g id="building-library" class="building-card"  transform="translate(827, 425) scale(0.77) rotate(-24)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="40" rx="66" ry="12" fill="#020617" opacity="0.35" />
-    <rect x="-56" y="-32" width="112" height="64" rx="8" fill="#F0F9FF" stroke="#0F172A" stroke-width="2.5" />
-    <rect x="-60" y="-38" width="120" height="11" rx="4" fill="#0284C7" stroke="#0F172A" stroke-width="2" />
-    <rect x="-58" y="-37" width="58" height="9" rx="3" fill="#38BDF8" />
+  <g id="building-library" class="building-card" transform="translate(783, 381) scale(1.10) rotate(-24)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="40" rx="66" ry="12" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-56" y="-32" width="112" height="64" rx="8" fill="#F0F9FF" stroke="#0F172A" stroke-width="2.5"></rect>
+    <rect x="-60" y="-38" width="120" height="11" rx="4" fill="#0284C7" stroke="#0F172A" stroke-width="2"></rect>
+    <rect x="-58" y="-37" width="58" height="9" rx="3" fill="#38BDF8"></rect>
     <g transform="translate(0, -38)">
-      <rect x="-18" y="-11" width="36" height="11" rx="3" fill="#F59E0B" stroke="#0F172A" stroke-width="1.5" />
-      <circle cx="0" cy="-5.5" r="3.5" fill="#FFFFFF" stroke="#0F172A" stroke-width="1" />
+      <rect x="-18" y="-11" width="36" height="11" rx="3" fill="#F59E0B" stroke="#0F172A" stroke-width="1.5"></rect>
+      <circle cx="0" cy="-5.5" r="3.5" fill="#FFFFFF" stroke="#0F172A" stroke-width="1"></circle>
       <text x="0" y="-3.5" font-size="5" text-anchor="middle">📖</text>
     </g>
     <g stroke="#0284C7" stroke-width="2.2" stroke-linecap="round" opacity="0.85">
-      <line x1="-46" y1="-18" x2="46" y2="-18" /><line x1="-46" y1="-10" x2="46" y2="-10" />
-      <line x1="-46" y1="-2" x2="46" y2="-2" /><line x1="-46" y1="6" x2="46" y2="6" />
-      <line x1="-46" y1="14" x2="46" y2="14" />
+      <line x1="-46" y1="-18" x2="46" y2="-18"></line><line x1="-46" y1="-10" x2="46" y2="-10"></line>
+      <line x1="-46" y1="-2" x2="46" y2="-2"></line><line x1="-46" y1="6" x2="46" y2="6"></line>
+      <line x1="-46" y1="14" x2="46" y2="14"></line>
     </g>
     <g transform="translate(0, 44)" filter="url(#badgeGlow)">
-      <rect x="-64" y="-12" width="128" height="24" rx="7" fill="#0F172A" stroke="#0284C7" stroke-width="1.8" />
+      <rect x="-64" y="-12" width="128" height="24" rx="7" fill="#0F172A" stroke="#0284C7" stroke-width="1.8"></rect>
       <text x="0" y="4" fill="#FFFFFF" font-size="9" font-weight="800" text-anchor="middle">📚 สำนักหอสมุด (50 ปี)</text>
     </g>
   </g>
 
   <!-- [5] สถาบันวิจัยพืชสวน (Horticulture Research Institute - B18) -->
-  <g id="building-horticulture" class="building-card"  transform="translate(966, 367) scale(0.91) rotate(-31)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="26" rx="52" ry="10" fill="#020617" opacity="0.35" />
-    <rect x="-44" y="8" width="88" height="13" rx="3" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5" />
-    <rect x="-40" y="-24" width="80" height="36" rx="5" fill="#F0FDF4" stroke="#0F172A" stroke-width="2" />
-    <polygon points="-43,-24 0,-42 43,-24" fill="#059669" stroke="#0F172A" stroke-width="2" />
-    <polygon points="-40,-24 0,-38 0,-24" fill="#34D399" />
-    <polygon points="0,-24 0,-38 40,-24" fill="#10B981" />
-    <line x1="0" y1="-42" x2="0" y2="-24" stroke="#0F172A" stroke-width="1.5" />
-    <circle cx="0" cy="-10" r="7" fill="#DCFCE7" stroke="#059669" stroke-width="1" />
+  <g id="building-horticulture" class="building-card" transform="translate(945, 305) scale(1.30) rotate(-27)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="26" rx="52" ry="10" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-44" y="8" width="88" height="13" rx="3" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5"></rect>
+    <rect x="-40" y="-24" width="80" height="36" rx="5" fill="#F0FDF4" stroke="#0F172A" stroke-width="2"></rect>
+    <polygon points="-43,-24 0,-42 43,-24" fill="#059669" stroke="#0F172A" stroke-width="2"></polygon>
+    <polygon points="-40,-24 0,-38 0,-24" fill="#34D399"></polygon>
+    <polygon points="0,-24 0,-38 40,-24" fill="#10B981"></polygon>
+    <line x1="0" y1="-42" x2="0" y2="-24" stroke="#0F172A" stroke-width="1.5"></line>
+    <circle cx="0" cy="-10" r="7" fill="#DCFCE7" stroke="#059669" stroke-width="1"></circle>
     <text x="0" y="-6.5" font-size="7.5" text-anchor="middle">🌱</text>
     <g fill="#A7F3D0" stroke="#059669" stroke-width="1">
-      <rect x="-32" y="-2" width="18" height="9" rx="2" />
-      <rect x="14" y="-2" width="18" height="9" rx="2" />
+      <rect x="-32" y="-2" width="18" height="9" rx="2"></rect>
+      <rect x="14" y="-2" width="18" height="9" rx="2"></rect>
     </g>
     <g transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect x="-58" y="-10" width="116" height="20" rx="5.5" fill="#0F172A" stroke="#10B981" stroke-width="1.6" />
-      <circle cx="-45" cy="0" r="5" fill="#059669" />
+      <rect x="-58" y="-10" width="116" height="20" rx="5.5" fill="#0F172A" stroke="#10B981" stroke-width="1.6"></rect>
+      <circle cx="-45" cy="0" r="5" fill="#059669"></circle>
       <text x="-45" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">🌱</text>
       <text x="7" y="3.5" fill="#A7F3D0" font-size="8" font-weight="800" text-anchor="middle">สถาบันวิจัยพืชสวน</text>
     </g>
   </g>
 
   <!-- [6] คณะเทคนิคการสัตวแพทย์ (Faculty of Veterinary Technology - B4) -->
-  <g id="building-vet-tech" class="building-card"  transform="translate(1202, 281) scale(0.94) rotate(28)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="38" rx="58" ry="11" fill="#020617" opacity="0.35" />
-    <rect x="-52" y="-28" width="104" height="56" rx="7" fill="#FAF5FF" stroke="#0F172A" stroke-width="2.5" />
-    <polygon points="-57,-28 -20,-42 20,-42 57,-28" fill="#6D28D9" stroke="#0F172A" stroke-width="2" />
-    <polygon points="-53,-28 -18,-39 0,-39 0,-28" fill="#A78BFA" />
-    <polygon points="0,-28 0,-39 18,-39 53,-28" fill="#8B5CF6" />
+  <g id="building-vet-tech" class="building-card" transform="translate(1186, 235) scale(1.15) rotate(22)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="38" rx="58" ry="11" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-52" y="-28" width="104" height="56" rx="7" fill="#FAF5FF" stroke="#0F172A" stroke-width="2.5"></rect>
+    <polygon points="-57,-28 -20,-42 20,-42 57,-28" fill="#6D28D9" stroke="#0F172A" stroke-width="2"></polygon>
+    <polygon points="-53,-28 -18,-39 0,-39 0,-28" fill="#A78BFA"></polygon>
+    <polygon points="0,-28 0,-39 18,-39 53,-28" fill="#8B5CF6"></polygon>
     <g fill="#E9D5FF" stroke="#6D28D9" stroke-width="1">
-      <rect x="-42" y="-18" width="22" height="14" rx="2.5" />
-      <rect x="-11" y="-18" width="22" height="14" rx="2.5" />
-      <rect x="20" y="-18" width="22" height="14" rx="2.5" />
+      <rect x="-42" y="-18" width="22" height="14" rx="2.5"></rect>
+      <rect x="-11" y="-18" width="22" height="14" rx="2.5"></rect>
+      <rect x="20" y="-18" width="22" height="14" rx="2.5"></rect>
     </g>
-    <circle cx="-20" cy="9" r="6.5" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1" />
-    <circle cx="20" cy="9" r="6.5" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1" />
+    <circle cx="-20" cy="9" r="6.5" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1"></circle>
+    <circle cx="20" cy="9" r="6.5" fill="#DDD6FE" stroke="#7C3AED" stroke-width="1"></circle>
     <text x="-20" y="12" font-size="7.5" text-anchor="middle">🔬</text>
     <text x="20" y="12" font-size="7.5" text-anchor="middle">🧬</text>
     <g transform="translate(0, 40)" filter="url(#badgeGlow)">
-      <rect x="-62" y="-12" width="124" height="24" rx="7" fill="#0F172A" stroke="#7C3AED" stroke-width="1.8" />
+      <rect x="-62" y="-12" width="124" height="24" rx="7" fill="#0F172A" stroke="#7C3AED" stroke-width="1.8"></rect>
       <text x="0" y="4" fill="#FFFFFF" font-size="8.5" font-weight="800" text-anchor="middle">🔬 เทคนิคการสัตวแพทย์</text>
     </g>
   </g>
 
   <!-- [7] โรงพยาบาลสัตว์ มก. (KU Veterinary Teaching Hospital - B5) -->
-  <g id="building-vet-hospital" class="building-card"  transform="translate(1393, 334) scale(1.12)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="40" rx="58" ry="12" fill="#020617" opacity="0.35" />
-    <rect x="-54" y="-30" width="108" height="60" rx="7" fill="#FFF1F2" stroke="#0F172A" stroke-width="2.5" />
-    <polygon points="-59,-30 0,-50 59,-30" fill="#BE123C" stroke="#0F172A" stroke-width="2" />
-    <polygon points="-55,-30 0,-46 0,-30" fill="#FB7185" />
-    <polygon points="0,-30 0,-46 55,-30" fill="#F43F5E" />
+  <g id="building-vet-hospital" class="building-card" transform="translate(1383, 288) scale(1.35)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="40" rx="58" ry="12" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-54" y="-30" width="108" height="60" rx="7" fill="#FFF1F2" stroke="#0F172A" stroke-width="2.5"></rect>
+    <polygon points="-59,-30 0,-50 59,-30" fill="#BE123C" stroke="#0F172A" stroke-width="2"></polygon>
+    <polygon points="-55,-30 0,-46 0,-30" fill="#FB7185"></polygon>
+    <polygon points="0,-30 0,-46 55,-30" fill="#F43F5E"></polygon>
     <g transform="translate(-24, 2)">
-      <rect x="-10" y="-10" width="20" height="20" rx="3" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.5" />
-      <rect x="-2.5" y="-7" width="5" height="14" fill="#E11D48" rx="1" />
-      <rect x="-7" y="-2.5" width="14" height="5" fill="#E11D48" rx="1" />
+      <rect x="-10" y="-10" width="20" height="20" rx="3" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.5"></rect>
+      <rect x="-2.5" y="-7" width="5" height="14" fill="#E11D48" rx="1"></rect>
+      <rect x="-7" y="-2.5" width="14" height="5" fill="#E11D48" rx="1"></rect>
     </g>
     <g transform="translate(24, 2)">
-      <circle cx="0" cy="0" r="10.5" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="10.5" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.5"></circle>
       <text x="0" y="4.5" font-size="9.5" text-anchor="middle">🐶</text>
     </g>
     <g transform="translate(0, 42)" filter="url(#badgeGlow)">
-      <rect x="-60" y="-12" width="120" height="24" rx="7" fill="#0F172A" stroke="#E11D48" stroke-width="1.8" />
+      <rect x="-60" y="-12" width="120" height="24" rx="7" fill="#0F172A" stroke="#E11D48" stroke-width="1.8"></rect>
       <text x="0" y="4" fill="#FFFFFF" font-size="8.5" font-weight="800" text-anchor="middle">🏥 โรงพยาบาลสัตว์ มก.</text>
     </g>
   </g>
 
   <!-- [8] สนามอินทรีจันทรสถิตย์ (Insee Stadium - B6) -->
-  <g id="building-stadium" class="building-card"  transform="translate(470, 673)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="56" rx="90" ry="16" fill="#020617" opacity="0.35" />
-    <rect x="-85" y="-45" width="170" height="90" rx="26" fill="#DC2626" stroke="#0F172A" stroke-width="2.5" />
-    <rect x="-76" y="-38" width="152" height="76" rx="22" fill="#EA580C" stroke="#FED7AA" stroke-width="1.8" />
-    <rect x="-71" y="-33" width="142" height="66" rx="18" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="4 4" opacity="0.75" />
-    <rect x="-62" y="-28" width="124" height="56" rx="8" fill="#16A34A" stroke="#FFFFFF" stroke-width="1.5" />
-    <rect x="-62" y="-28" width="62" height="56" rx="8" fill="#22C55E" opacity="0.4" />
-    <line x1="0" y1="-28" x2="0" y2="28" stroke="#FFFFFF" stroke-width="1.5" />
-    <circle cx="0" cy="0" r="14" fill="none" stroke="#FFFFFF" stroke-width="1.5" />
-    <circle cx="0" cy="0" r="2" fill="#FFFFFF" />
-    <rect x="-62" y="-12" width="14" height="24" fill="none" stroke="#FFFFFF" stroke-width="1.2" />
-    <rect x="48" y="-12" width="14" height="24" fill="none" stroke="#FFFFFF" stroke-width="1.2" />
+  <g id="building-stadium" class="building-card" transform="translate(434, 650) scale(1.14)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="56" rx="90" ry="16" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-85" y="-45" width="170" height="90" rx="26" fill="#DC2626" stroke="#0F172A" stroke-width="2.5"></rect>
+    <rect x="-76" y="-38" width="152" height="76" rx="22" fill="#EA580C" stroke="#FED7AA" stroke-width="1.8"></rect>
+    <rect x="-71" y="-33" width="142" height="66" rx="18" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="4 4" opacity="0.75"></rect>
+    <rect x="-62" y="-28" width="124" height="56" rx="8" fill="#16A34A" stroke="#FFFFFF" stroke-width="1.5"></rect>
+    <rect x="-62" y="-28" width="62" height="56" rx="8" fill="#22C55E" opacity="0.4"></rect>
+    <line x1="0" y1="-28" x2="0" y2="28" stroke="#FFFFFF" stroke-width="1.5"></line>
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#FFFFFF" stroke-width="1.5"></circle>
+    <circle cx="0" cy="0" r="2" fill="#FFFFFF"></circle>
+    <rect x="-62" y="-12" width="14" height="24" fill="none" stroke="#FFFFFF" stroke-width="1.2"></rect>
+    <rect x="48" y="-12" width="14" height="24" fill="none" stroke="#FFFFFF" stroke-width="1.2"></rect>
     <g transform="translate(0, 58)" filter="url(#badgeGlow)">
-      <rect x="-72" y="-12" width="144" height="24" rx="7" fill="#0F172A" stroke="#16A34A" stroke-width="1.8" />
+      <rect x="-72" y="-12" width="144" height="24" rx="7" fill="#0F172A" stroke="#16A34A" stroke-width="1.8"></rect>
       <text x="0" y="4" fill="#FFFFFF" font-size="8.8" font-weight="800" text-anchor="middle">⚽ สนามอินทรีจันทรสถิตย์</text>
     </g>
   </g>
 
   <!-- [9] สนามแบดมินตัน (KU Badminton Courts / Gymnasium - B20) -->
-  <g id="building-badminton" class="building-card"  transform="translate(377, 517) scale(0.72)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="32" rx="58" ry="11" fill="#020617" opacity="0.35" />
-    <rect x="-48" y="-25" width="96" height="50" rx="9" fill="#ECFDF5" stroke="#0F172A" stroke-width="2.5" />
-    <path d="M -52 -25 Q 0 -47 52 -25 Z" fill="#047857" stroke="#0F172A" stroke-width="2" />
-    <path d="M -48 -25 Q 0 -43 48 -25 Z" fill="#10B981" />
-    <path d="M -48 -25 Q 0 -43 0 -25 Z" fill="#34D399" />
-    <rect x="-36" y="-12" width="72" height="24" rx="3" fill="#065F46" stroke="#FFFFFF" stroke-width="1" />
-    <line x1="0" y1="-12" x2="0" y2="12" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="2 2" />
-    <line x1="-24" y1="-12" x2="-24" y2="12" stroke="#FFFFFF" stroke-width="0.8" opacity="0.8" />
-    <line x1="24" y1="-12" x2="24" y2="12" stroke="#FFFFFF" stroke-width="0.8" opacity="0.8" />
+  <g id="building-badminton" class="building-card" transform="translate(400, 468) scale(1.25)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="32" rx="58" ry="11" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-48" y="-25" width="96" height="50" rx="9" fill="#ECFDF5" stroke="#0F172A" stroke-width="2.5"></rect>
+    <path d="M -52 -25 Q 0 -47 52 -25 Z" fill="#047857" stroke="#0F172A" stroke-width="2"></path>
+    <path d="M -48 -25 Q 0 -43 48 -25 Z" fill="#10B981"></path>
+    <path d="M -48 -25 Q 0 -43 0 -25 Z" fill="#34D399"></path>
+    <rect x="-36" y="-12" width="72" height="24" rx="3" fill="#065F46" stroke="#FFFFFF" stroke-width="1"></rect>
+    <line x1="0" y1="-12" x2="0" y2="12" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="2 2"></line>
+    <line x1="-24" y1="-12" x2="-24" y2="12" stroke="#FFFFFF" stroke-width="0.8" opacity="0.8"></line>
+    <line x1="24" y1="-12" x2="24" y2="12" stroke="#FFFFFF" stroke-width="0.8" opacity="0.8"></line>
     <g transform="translate(0, -2)">
-      <circle cx="0" cy="2" r="3" fill="#FFFFFF" stroke="#0F172A" stroke-width="0.8" />
-      <polygon points="-3,2 0,-8 3,2" fill="#F8FAFC" stroke="#0F172A" stroke-width="0.8" />
+      <circle cx="0" cy="2" r="3" fill="#FFFFFF" stroke="#0F172A" stroke-width="0.8"></circle>
+      <polygon points="-3,2 0,-8 3,2" fill="#F8FAFC" stroke="#0F172A" stroke-width="0.8"></polygon>
     </g>
     <g transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect x="-58" y="-10" width="116" height="20" rx="5.5" fill="#0F172A" stroke="#10B981" stroke-width="1.6" />
-      <circle cx="-45" cy="0" r="5" fill="#059669" />
+      <rect x="-58" y="-10" width="116" height="20" rx="5.5" fill="#0F172A" stroke="#10B981" stroke-width="1.6"></rect>
+      <circle cx="-45" cy="0" r="5" fill="#059669"></circle>
       <text x="-45" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">🏸</text>
       <text x="7" y="3.5" fill="#A7F3D0" font-size="8" font-weight="800" text-anchor="middle">สนามแบดมินตัน</text>
     </g>
   </g>
 
   <!-- [10] อาคารกองกีฬา (KU Sports Division - B21) -->
-  <g id="building-sports" class="building-card"  transform="translate(239, 565) scale(1.66)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="26" rx="30" ry="8" fill="#020617" opacity="0.35" />
-    <rect x="-26" y="-20" width="52" height="40" rx="6" fill="#FFF7ED" stroke="#0F172A" stroke-width="2" />
-    <polygon points="-29,-20 0,-34 29,-20" fill="#C2410C" stroke="#0F172A" stroke-width="2" />
-    <polygon points="-26,-20 0,-30 0,-20" fill="#FB923C" />
-    <polygon points="0,-20 0,-30 26,-20" fill="#F97316" />
+  <g id="building-sports" class="building-card" transform="translate(213, 517) scale(1.90)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="26" rx="30" ry="8" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-26" y="-20" width="52" height="40" rx="6" fill="#FFF7ED" stroke="#0F172A" stroke-width="2"></rect>
+    <polygon points="-29,-20 0,-34 29,-20" fill="#C2410C" stroke="#0F172A" stroke-width="2"></polygon>
+    <polygon points="-26,-20 0,-30 0,-20" fill="#FB923C"></polygon>
+    <polygon points="0,-20 0,-30 26,-20" fill="#F97316"></polygon>
     <g transform="translate(0, -5)">
-      <rect x="-14" y="-3" width="28" height="16" rx="2" fill="#FED7AA" stroke="#EA580C" stroke-width="0.8" />
+      <rect x="-14" y="-3" width="28" height="16" rx="2" fill="#FED7AA" stroke="#EA580C" stroke-width="0.8"></rect>
       <text x="0" y="8.5" font-size="9" text-anchor="middle">🏆</text>
     </g>
     <g transform="translate(0, 30)" filter="url(#badgeGlow)">
-      <rect x="-46" y="-9" width="92" height="18" rx="5" fill="#0F172A" stroke="#EA580C" stroke-width="1.4" />
-      <circle cx="-35" cy="0" r="4.5" fill="#EA580C" />
+      <rect x="-46" y="-9" width="92" height="18" rx="5" fill="#0F172A" stroke="#EA580C" stroke-width="1.4"></rect>
+      <circle cx="-35" cy="0" r="4.5" fill="#EA580C"></circle>
       <text x="-35" y="2.5" fill="#FFFFFF" font-size="6" font-weight="900" text-anchor="middle">🏢</text>
       <text x="5" y="3.5" fill="#FDBA74" font-size="7.5" font-weight="800" text-anchor="middle">อาคารกองกีฬา</text>
     </g>
   </g>
 
   <!-- [11] คณะวิศวกรรมศาสตร์ (Faculty of Engineering) -->
-  <g id="building-eng" class="building-card"  transform="translate(680, 673) scale(1.13)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="40" rx="64" ry="12" fill="#020617" opacity="0.35" />
-    <rect x="-56" y="-34" width="112" height="68" rx="8" fill="#FEF2F2" stroke="#0F172A" stroke-width="2.5" />
-    <rect x="-56" y="14" width="112" height="18" rx="4" fill="#991B1B" stroke="#0F172A" stroke-width="1.5" />
-    <polygon points="-52,-34 -38,-50 -38,-34" fill="#DC2626" stroke="#0F172A" stroke-width="1.5" />
-    <polygon points="-34,-34 -20,-50 -20,-34" fill="#DC2626" stroke="#0F172A" stroke-width="1.5" />
-    <polygon points="-16,-34 -2,-50 -2,-34" fill="#DC2626" stroke="#0F172A" stroke-width="1.5" />
-    <polygon points="-50,-35 -39,-48 -39,-35" fill="#F87171" />
-    <polygon points="-32,-35 -21,-48 -21,-35" fill="#F87171" />
-    <polygon points="-14,-35 -3,-48 -3,-35" fill="#F87171" />
+  <g id="building-eng" class="building-card" transform="translate(660, 615) scale(1.30)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="40" rx="64" ry="12" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-56" y="-34" width="112" height="68" rx="8" fill="#FEF2F2" stroke="#0F172A" stroke-width="2.5"></rect>
+    <rect x="-56" y="14" width="112" height="18" rx="4" fill="#991B1B" stroke="#0F172A" stroke-width="1.5"></rect>
+    <polygon points="-52,-34 -38,-50 -38,-34" fill="#DC2626" stroke="#0F172A" stroke-width="1.5"></polygon>
+    <polygon points="-34,-34 -20,-50 -20,-34" fill="#DC2626" stroke="#0F172A" stroke-width="1.5"></polygon>
+    <polygon points="-16,-34 -2,-50 -2,-34" fill="#DC2626" stroke="#0F172A" stroke-width="1.5"></polygon>
+    <polygon points="-50,-35 -39,-48 -39,-35" fill="#F87171"></polygon>
+    <polygon points="-32,-35 -21,-48 -21,-35" fill="#F87171"></polygon>
+    <polygon points="-14,-35 -3,-48 -3,-35" fill="#F87171"></polygon>
     <g transform="translate(24, -12)">
-      <circle cx="0" cy="0" r="19" fill="#EA580C" stroke="#0F172A" stroke-width="2" />
-      <circle cx="0" cy="0" r="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" />
+      <circle cx="0" cy="0" r="19" fill="#EA580C" stroke="#0F172A" stroke-width="2"></circle>
+      <circle cx="0" cy="0" r="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2"></circle>
       <text x="0" y="4" fill="#7C2D12" font-size="8.5" font-weight="900" text-anchor="middle">KU</text>
     </g>
     <g transform="translate(-6, 44)" filter="url(#badgeGlow)">
-      <rect x="-56" y="-11" width="112" height="22" rx="6" fill="#0F172A" stroke="#B91C1C" stroke-width="1.8" />
+      <rect x="-56" y="-11" width="112" height="22" rx="6" fill="#0F172A" stroke="#B91C1C" stroke-width="1.8"></rect>
       <text x="0" y="3.8" fill="#FFFFFF" font-size="8" font-weight="800" text-anchor="middle">⚙️ คณะวิศวกรรมศาสตร์</text>
     </g>
   </g>
 
   <!-- [12] คณะเศรษฐศาสตร์ (Faculty of Economics) -->
-  <g id="building-econ" class="building-card"  transform="translate(792, 705) scale(0.78)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="40" rx="55" ry="12" fill="#020617" opacity="0.35" />
-    <rect x="-46" y="-34" width="92" height="68" rx="8" fill="#EFF6FF" stroke="#0F172A" stroke-width="2.5" />
-    <polygon points="-48,-34 -15,-34 -15,-48 20,-48 20,-58 48,-58 48,-34" fill="#1D4ED8" stroke="#0F172A" stroke-width="2" />
+  <g id="building-econ" class="building-card" transform="translate(783, 690)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="40" rx="55" ry="12" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-46" y="-34" width="92" height="68" rx="8" fill="#EFF6FF" stroke="#0F172A" stroke-width="2.5"></rect>
+    <polygon points="-48,-34 -15,-34 -15,-48 20,-48 20,-58 48,-58 48,-34" fill="#1D4ED8" stroke="#0F172A" stroke-width="2"></polygon>
     <g transform="translate(0, 16)">
-      <rect x="-18" y="-10" width="6" height="10" rx="1" fill="#93C5FD" stroke="#0F172A" stroke-width="0.8" />
-      <rect x="-9" y="-14" width="6" height="14" rx="1" fill="#60A5FA" stroke="#0F172A" stroke-width="0.8" />
-      <rect x="0" y="-18" width="6" height="18" rx="1" fill="#2563EB" stroke="#0F172A" stroke-width="0.8" />
-      <rect x="9" y="-22" width="6" height="22" rx="1" fill="#1D4ED8" stroke="#0F172A" stroke-width="0.8" />
-      <polyline points="-20,-6 -8,-12 2,-16 12,-25" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" />
+      <rect x="-18" y="-10" width="6" height="10" rx="1" fill="#93C5FD" stroke="#0F172A" stroke-width="0.8"></rect>
+      <rect x="-9" y="-14" width="6" height="14" rx="1" fill="#60A5FA" stroke="#0F172A" stroke-width="0.8"></rect>
+      <rect x="0" y="-18" width="6" height="18" rx="1" fill="#2563EB" stroke="#0F172A" stroke-width="0.8"></rect>
+      <rect x="9" y="-22" width="6" height="22" rx="1" fill="#1D4ED8" stroke="#0F172A" stroke-width="0.8"></rect>
+      <polyline points="-20,-6 -8,-12 2,-16 12,-25" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"></polyline>
     </g>
     <g transform="translate(6, 44)" filter="url(#badgeGlow)">
-      <rect x="-48" y="-11" width="96" height="22" rx="6" fill="#0F172A" stroke="#2563EB" stroke-width="1.8" />
+      <rect x="-48" y="-11" width="96" height="22" rx="6" fill="#0F172A" stroke="#2563EB" stroke-width="1.8"></rect>
       <text x="0" y="3.8" fill="#FFFFFF" font-size="8" font-weight="800" text-anchor="middle">📊 คณะเศรษฐศาสตร์</text>
     </g>
   </g>
 
   <!-- [13] อาคารปฏิบัติการวิทยาศาสตร์ (Science Laboratory - B19) -->
-  <g id="building-sc-lab" class="building-card"  transform="translate(889, 565) scale(1.04) rotate(-32)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="24" rx="48" ry="10" fill="#020617" opacity="0.35" />
-    <rect x="-40" y="8" width="80" height="13" rx="3" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5" />
-    <rect x="-38" y="-24" width="76" height="38" rx="5" fill="#F5F3FF" stroke="#0F172A" stroke-width="2" />
-    <rect x="-38" y="-24" width="76" height="14" rx="4" fill="#4F46E5" stroke="#0F172A" stroke-width="1.2" />
+  <g id="building-sc-lab" class="building-card" transform="translate(862, 517) scale(1.45) rotate(-27)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="24" rx="48" ry="10" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-40" y="8" width="80" height="13" rx="3" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5"></rect>
+    <rect x="-38" y="-24" width="76" height="38" rx="5" fill="#F5F3FF" stroke="#0F172A" stroke-width="2"></rect>
+    <rect x="-38" y="-24" width="76" height="14" rx="4" fill="#4F46E5" stroke="#0F172A" stroke-width="1.2"></rect>
     <text x="0" y="-14.5" fill="#EEF2FF" font-size="7" font-weight="900" text-anchor="middle">SCIENCE LAB</text>
-    <rect x="-32" y="-6" width="64" height="8" rx="2" fill="#E0E7FF" stroke="#818CF8" stroke-width="1" />
-    <rect x="-12" y="3" width="24" height="13" rx="2" fill="#C7D2FE" stroke="#6366F1" stroke-width="1" />
-    <circle cx="0" cy="9.5" r="2.5" fill="#22C55E" />
+    <rect x="-32" y="-6" width="64" height="8" rx="2" fill="#E0E7FF" stroke="#818CF8" stroke-width="1"></rect>
+    <rect x="-12" y="3" width="24" height="13" rx="2" fill="#C7D2FE" stroke="#6366F1" stroke-width="1"></rect>
+    <circle cx="0" cy="9.5" r="2.5" fill="#22C55E"></circle>
     <g transform="translate(0, 28)" filter="url(#badgeGlow)">
-      <rect x="-66" y="-10" width="132" height="20" rx="5.5" fill="#0F172A" stroke="#818CF8" stroke-width="1.6" />
-      <circle cx="-52" cy="0" r="5" fill="#4F46E5" />
+      <rect x="-66" y="-10" width="132" height="20" rx="5.5" fill="#0F172A" stroke="#818CF8" stroke-width="1.6"></rect>
+      <circle cx="-52" cy="0" r="5" fill="#4F46E5"></circle>
       <text x="-52" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">🔬</text>
       <text x="7" y="3.5" fill="#C7D2FE" font-size="7.8" font-weight="800" text-anchor="middle">อาคารปฏิบัติการวิทยาศาสตร์</text>
     </g>
   </g>
 
   <!-- [14] ธนาคารกรุงศรีอยุธยา (สาขา ม.เกษตรศาสตร์ - B15) -->
-  <g id="building-krungsri" class="building-card"  transform="translate(945, 691) scale(1.01) rotate(-1)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="24" rx="48" ry="10" fill="#020617" opacity="0.35" />
-    <rect x="-40" y="8" width="80" height="13" rx="3" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5" />
-    <rect x="-38" y="-24" width="76" height="40" rx="5" fill="#FFFFFF" stroke="#0F172A" stroke-width="2" />
-    <rect x="-38" y="-24" width="76" height="16" rx="4" fill="#F59E0B" stroke="#0F172A" stroke-width="1.5" />
-    <line x1="-36" y1="-22.5" x2="36" y2="-22.5" stroke="#FEF08A" stroke-width="1.5" stroke-linecap="round" />
+  <g id="building-krungsri" class="building-card" transform="translate(921, 690) scale(1.20) rotate(-1)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="24" rx="48" ry="10" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-40" y="8" width="80" height="13" rx="3" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5"></rect>
+    <rect x="-38" y="-24" width="76" height="40" rx="5" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"></rect>
+    <rect x="-38" y="-24" width="76" height="16" rx="4" fill="#F59E0B" stroke="#0F172A" stroke-width="1.5"></rect>
+    <line x1="-36" y1="-22.5" x2="36" y2="-22.5" stroke="#FEF08A" stroke-width="1.5" stroke-linecap="round"></line>
     <g transform="translate(-23, -16)">
-      <circle cx="0" cy="0" r="5" fill="#FFFFFF" stroke="#0F172A" stroke-width="0.8" />
-      <path d="M -3 2 Q 0 -3.5 3 2 Z" fill="#D97706" />
-      <circle cx="0" cy="-1.8" r="1.3" fill="#F59E0B" />
+      <circle cx="0" cy="0" r="5" fill="#FFFFFF" stroke="#0F172A" stroke-width="0.8"></circle>
+      <path d="M -3 2 Q 0 -3.5 3 2 Z" fill="#D97706"></path>
+      <circle cx="0" cy="-1.8" r="1.3" fill="#F59E0B"></circle>
     </g>
     <text x="8" y="-13.5" fill="#78350F" font-size="7" font-weight="900" text-anchor="middle">krungsri กรุงศรี</text>
-    <rect x="-32" y="-4" width="28" height="17" rx="2" fill="#E0F2FE" stroke="#0284C7" stroke-width="1" />
-    <line x1="-18" y1="-4" x2="-18" y2="13" stroke="#0284C7" stroke-width="1" />
-    <polygon points="-30,-2 -22,-2 -27,11 -30,11" fill="#FFFFFF" opacity="0.5" />
-    <rect x="4" y="-4" width="28" height="17" rx="2" fill="#FEF3C7" stroke="#D97706" stroke-width="1" />
-    <rect x="8" y="-1.5" width="20" height="12" rx="2" fill="#F59E0B" stroke="#B45309" stroke-width="0.8" />
-    <rect x="12" y="1" width="8" height="5" rx="1" fill="#0F172A" />
-    <circle cx="23" cy="3.5" r="1.5" fill="#22C55E" />
+    <rect x="-32" y="-4" width="28" height="17" rx="2" fill="#E0F2FE" stroke="#0284C7" stroke-width="1"></rect>
+    <line x1="-18" y1="-4" x2="-18" y2="13" stroke="#0284C7" stroke-width="1"></line>
+    <polygon points="-30,-2 -22,-2 -27,11 -30,11" fill="#FFFFFF" opacity="0.5"></polygon>
+    <rect x="4" y="-4" width="28" height="17" rx="2" fill="#FEF3C7" stroke="#D97706" stroke-width="1"></rect>
+    <rect x="8" y="-1.5" width="20" height="12" rx="2" fill="#F59E0B" stroke="#B45309" stroke-width="0.8"></rect>
+    <rect x="12" y="1" width="8" height="5" rx="1" fill="#0F172A"></rect>
+    <circle cx="23" cy="3.5" r="1.5" fill="#22C55E"></circle>
     <text x="16" y="0" fill="#78350F" font-size="3.8" font-weight="900" text-anchor="middle">ATM</text>
     <g transform="translate(0, 30)" filter="url(#badgeGlow)">
-      <rect x="-58" y="-10" width="116" height="20" rx="5.5" fill="#0F172A" stroke="#F59E0B" stroke-width="1.6" />
-      <circle cx="-45" cy="0" r="5" fill="#F59E0B" />
+      <rect x="-58" y="-10" width="116" height="20" rx="5.5" fill="#0F172A" stroke="#F59E0B" stroke-width="1.6"></rect>
+      <circle cx="-45" cy="0" r="5" fill="#F59E0B"></circle>
       <text x="-45" y="2.5" fill="#78350F" font-size="7" font-weight="900" text-anchor="middle">🪙</text>
       <text x="7" y="3.5" fill="#FEF08A" font-size="8" font-weight="800" text-anchor="middle">ธนาคารกรุงศรีอยุธยา</text>
     </g>
   </g>
 
   <!-- [15] คณะวนศาสตร์ (Faculty of Forestry - B22) -->
-  <g id="building-forestry" class="building-card"  transform="translate(1036, 476) scale(0.91) rotate(-32)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="30" rx="60" ry="11" fill="#020617" opacity="0.35" />
-    <rect x="-52" y="-26" width="104" height="50" rx="7" fill="#FEFCE8" stroke="#0F172A" stroke-width="2.5" />
-    <polygon points="-58,-26 0,-48 58,-26" fill="#14532D" stroke="#0F172A" stroke-width="2" />
-    <polygon points="-54,-26 0,-44 0,-26" fill="#22C55E" />
-    <polygon points="0,-26 0,-44 54,-26" fill="#16A34A" />
+  <g id="building-forestry" class="building-card" transform="translate(1027, 440) scale(1.10) rotate(-29)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="30" rx="60" ry="11" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-52" y="-26" width="104" height="50" rx="7" fill="#FEFCE8" stroke="#0F172A" stroke-width="2.5"></rect>
+    <polygon points="-58,-26 0,-48 58,-26" fill="#14532D" stroke="#0F172A" stroke-width="2"></polygon>
+    <polygon points="-54,-26 0,-44 0,-26" fill="#22C55E"></polygon>
+    <polygon points="0,-26 0,-44 54,-26" fill="#16A34A"></polygon>
     <g stroke="#78350F" stroke-width="1.5" fill="#B45309">
-      <rect x="-42" y="-12" width="6" height="32" rx="1.5" />
-      <rect x="-22" y="-12" width="6" height="32" rx="1.5" />
-      <rect x="16" y="-12" width="6" height="32" rx="1.5" />
-      <rect x="36" y="-12" width="6" height="32" rx="1.5" />
+      <rect x="-42" y="-12" width="6" height="32" rx="1.5"></rect>
+      <rect x="-22" y="-12" width="6" height="32" rx="1.5"></rect>
+      <rect x="16" y="-12" width="6" height="32" rx="1.5"></rect>
+      <rect x="36" y="-12" width="6" height="32" rx="1.5"></rect>
     </g>
     <g transform="translate(0, -6)">
-      <circle cx="0" cy="0" r="11" fill="#DCFCE7" stroke="#15803D" stroke-width="1.2" />
+      <circle cx="0" cy="0" r="11" fill="#DCFCE7" stroke="#15803D" stroke-width="1.2"></circle>
       <text x="0" y="4.5" font-size="10" text-anchor="middle">🌲</text>
     </g>
     <g transform="translate(0, 34)" filter="url(#badgeGlow)">
-      <rect x="-58" y="-10" width="116" height="20" rx="5.5" fill="#0F172A" stroke="#16A34A" stroke-width="1.6" />
-      <circle cx="-45" cy="0" r="5" fill="#15803D" />
+      <rect x="-58" y="-10" width="116" height="20" rx="5.5" fill="#0F172A" stroke="#16A34A" stroke-width="1.6"></rect>
+      <circle cx="-45" cy="0" r="5" fill="#15803D"></circle>
       <text x="-45" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">🌲</text>
       <text x="7" y="3.5" fill="#BBF7D0" font-size="8" font-weight="800" text-anchor="middle">คณะวนศาสตร์</text>
     </g>
   </g>
 
   <!-- [16] ห้องสมุดกรมวิชาการเกษตร และ สำนักงานเศรษฐกิจการเกษตร (B16) -->
-  <g id="building-doa-oae" class="building-card"  transform="translate(1101, 615) scale(1.13) rotate(-30)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="26" rx="58" ry="10" fill="#020617" opacity="0.35" />
-    <rect x="-50" y="10" width="100" height="14" rx="4" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5" />
+  <g id="building-doa-oae" class="building-card" transform="translate(1093, 595) scale(1.40) rotate(-27)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="26" rx="58" ry="10" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-50" y="10" width="100" height="14" rx="4" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5"></rect>
     <g transform="translate(-23, 0)">
-      <rect x="-24" y="-24" width="46" height="36" rx="4" fill="#F0FDF4" stroke="#0F172A" stroke-width="1.8" />
-      <polygon points="-27,-24 0,-38 27,-24" fill="#15803D" stroke="#0F172A" stroke-width="1.2" />
-      <rect x="-18" y="-12" width="34" height="6" rx="1.5" fill="#DCFCE7" />
-      <rect x="-18" y="-2" width="34" height="6" rx="1.5" fill="#DCFCE7" />
+      <rect x="-24" y="-24" width="46" height="36" rx="4" fill="#F0FDF4" stroke="#0F172A" stroke-width="1.8"></rect>
+      <polygon points="-27,-24 0,-38 27,-24" fill="#15803D" stroke="#0F172A" stroke-width="1.2"></polygon>
+      <rect x="-18" y="-12" width="34" height="6" rx="1.5" fill="#DCFCE7"></rect>
+      <rect x="-18" y="-2" width="34" height="6" rx="1.5" fill="#DCFCE7"></rect>
       <text x="0" y="8" font-size="7" text-anchor="middle">📖</text>
     </g>
     <g transform="translate(25, 0)">
-      <rect x="-23" y="-24" width="46" height="36" rx="4" fill="#EFF6FF" stroke="#0F172A" stroke-width="1.8" />
-      <polygon points="-26,-24 0,-38 26,-24" fill="#1D4ED8" stroke="#0F172A" stroke-width="1.2" />
-      <rect x="-17" y="-12" width="34" height="6" rx="1.5" fill="#DBEAFE" />
-      <rect x="-17" y="-2" width="34" height="6" rx="1.5" fill="#DBEAFE" />
+      <rect x="-23" y="-24" width="46" height="36" rx="4" fill="#EFF6FF" stroke="#0F172A" stroke-width="1.8"></rect>
+      <polygon points="-26,-24 0,-38 26,-24" fill="#1D4ED8" stroke="#0F172A" stroke-width="1.2"></polygon>
+      <rect x="-17" y="-12" width="34" height="6" rx="1.5" fill="#DBEAFE"></rect>
+      <rect x="-17" y="-2" width="34" height="6" rx="1.5" fill="#DBEAFE"></rect>
       <text x="0" y="8" font-size="7" text-anchor="middle">📊</text>
     </g>
-    <rect x="-6" y="-18" width="14" height="30" rx="2" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2" />
-    <rect x="-3" y="-6" width="8" height="18" rx="1.5" fill="#0284C7" />
+    <rect x="-6" y="-18" width="14" height="30" rx="2" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2"></rect>
+    <rect x="-3" y="-6" width="8" height="18" rx="1.5" fill="#0284C7"></rect>
     <g transform="translate(0, 34)" filter="url(#badgeGlow)">
-      <rect x="-76" y="-10" width="152" height="20" rx="5.5" fill="#0F172A" stroke="#10B981" stroke-width="1.6" />
+      <rect x="-76" y="-10" width="152" height="20" rx="5.5" fill="#0F172A" stroke="#10B981" stroke-width="1.6"></rect>
       <text x="0" y="3.5" fill="#A7F3D0" font-size="8" font-weight="800" text-anchor="middle">📚 ห้องสมุดกรมวิชาการเกษตร / สศก.</text>
     </g>
   </g>
 
   <!-- [17] กรมประมง (Department of Fisheries - B17) -->
-  <g id="building-fisheries" class="building-card"  transform="translate(1264, 503) scale(1.23) rotate(-33)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="28" rx="60" ry="11" fill="#020617" opacity="0.35" />
-    <rect x="-50" y="10" width="100" height="15" rx="4" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5" />
-    <rect x="-46" y="-26" width="92" height="40" rx="5" fill="#F0F9FF" stroke="#0F172A" stroke-width="2" />
-    <rect x="-16" y="-39" width="32" height="15" rx="4" fill="#0369A1" stroke="#0F172A" stroke-width="1.5" />
-    <circle cx="0" cy="-43" r="4" fill="#38BDF8" stroke="#0F172A" stroke-width="1" />
-    <line x1="0" y1="-43" x2="0" y2="-49" stroke="#38BDF8" stroke-width="1.5" stroke-linecap="round" />
-    <rect x="-46" y="-26" width="92" height="10" rx="3" fill="#0284C7" stroke="#0F172A" stroke-width="1" />
+  <g id="building-fisheries" class="building-card" transform="translate(1280, 484) scale(1.45) rotate(-27)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="28" rx="60" ry="11" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-50" y="10" width="100" height="15" rx="4" fill="#E2E8F0" stroke="#0F172A" stroke-width="1.5"></rect>
+    <rect x="-46" y="-26" width="92" height="40" rx="5" fill="#F0F9FF" stroke="#0F172A" stroke-width="2"></rect>
+    <rect x="-16" y="-39" width="32" height="15" rx="4" fill="#0369A1" stroke="#0F172A" stroke-width="1.5"></rect>
+    <circle cx="0" cy="-43" r="4" fill="#38BDF8" stroke="#0F172A" stroke-width="1"></circle>
+    <line x1="0" y1="-43" x2="0" y2="-49" stroke="#38BDF8" stroke-width="1.5" stroke-linecap="round"></line>
+    <rect x="-46" y="-26" width="92" height="10" rx="3" fill="#0284C7" stroke="#0F172A" stroke-width="1"></rect>
     <text x="0" y="-18.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle" letter-spacing="0.5">FISHERIES DEPT</text>
     <g fill="#BAE6FD" opacity="0.85">
-      <rect x="-38" y="-12" width="22" height="9" rx="2" />
-      <rect x="16" y="-12" width="22" height="9" rx="2" />
+      <rect x="-38" y="-12" width="22" height="9" rx="2"></rect>
+      <rect x="16" y="-12" width="22" height="9" rx="2"></rect>
     </g>
     <text x="0" y="3" font-size="9" text-anchor="middle">⚓</text>
     <g transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect x="-46" y="-10" width="92" height="20" rx="5.5" fill="#0F172A" stroke="#38BDF8" stroke-width="1.6" />
-      <circle cx="-34" cy="0" r="5" fill="#0284C7" />
+      <rect x="-46" y="-10" width="92" height="20" rx="5.5" fill="#0F172A" stroke="#38BDF8" stroke-width="1.6"></rect>
+      <circle cx="-34" cy="0" r="5" fill="#0284C7"></circle>
       <text x="-34" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">🐟</text>
       <text x="6" y="3.5" fill="#7DD3FC" font-size="8" font-weight="800" text-anchor="middle">กรมประมง</text>
     </g>
   </g>
 
   <!-- [18] สำนักบริการคอมพิวเตอร์ (OCS) - B8 -->
-  <g id="building-ocs" class="building-card"  transform="translate(627, 824) scale(0.82)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="34" rx="66" ry="11" fill="#020617" opacity="0.35" />
-    <rect x="-62" y="-28" width="124" height="56" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="2.5" />
-    <polygon points="-67,-28 -25,-42 25,-42 67,-28" fill="#1E293B" stroke="#0284C7" stroke-width="1.5" />
+  <g id="building-ocs" class="building-card" transform="translate(627, 824) scale(0.82)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="34" rx="66" ry="11" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-62" y="-28" width="124" height="56" rx="8" fill="#0F172A" stroke="#0284C7" stroke-width="2.5"></rect>
+    <polygon points="-67,-28 -25,-42 25,-42 67,-28" fill="#1E293B" stroke="#0284C7" stroke-width="1.5"></polygon>
     <g fill="#1E293B">
-      <rect x="-50" y="-8" width="28" height="14" rx="3" stroke="#38BDF8" stroke-width="1.2" />
-      <circle cx="-45" cy="-1" r="2" fill="#38BDF8" /><circle cx="-40" cy="-1" r="2" fill="#4ADE80" /><circle cx="-35" cy="-1" r="2" fill="#38BDF8" />
-      <rect x="-14" y="-8" width="28" height="14" rx="3" stroke="#38BDF8" stroke-width="1.2" />
-      <circle cx="-9" cy="-1" r="2" fill="#4ADE80" /><circle cx="-4" cy="-1" r="2" fill="#38BDF8" /><circle cx="1" cy="-1" r="2" fill="#4ADE80" />
-      <rect x="22" y="-8" width="28" height="14" rx="3" stroke="#38BDF8" stroke-width="1.2" />
-      <circle cx="27" cy="-1" r="2" fill="#38BDF8" /><circle cx="32" cy="-1" r="2" fill="#38BDF8" /><circle cx="37" cy="-1" r="2" fill="#4ADE80" />
+      <rect x="-50" y="-8" width="28" height="14" rx="3" stroke="#38BDF8" stroke-width="1.2"></rect>
+      <circle cx="-45" cy="-1" r="2" fill="#38BDF8"></circle><circle cx="-40" cy="-1" r="2" fill="#4ADE80"></circle><circle cx="-35" cy="-1" r="2" fill="#38BDF8"></circle>
+      <rect x="-14" y="-8" width="28" height="14" rx="3" stroke="#38BDF8" stroke-width="1.2"></rect>
+      <circle cx="-9" cy="-1" r="2" fill="#4ADE80"></circle><circle cx="-4" cy="-1" r="2" fill="#38BDF8"></circle><circle cx="1" cy="-1" r="2" fill="#4ADE80"></circle>
+      <rect x="22" y="-8" width="28" height="14" rx="3" stroke="#38BDF8" stroke-width="1.2"></rect>
+      <circle cx="27" cy="-1" r="2" fill="#38BDF8"></circle><circle cx="32" cy="-1" r="2" fill="#38BDF8"></circle><circle cx="37" cy="-1" r="2" fill="#4ADE80"></circle>
     </g>
     <g transform="translate(0, 38)" filter="url(#badgeGlow)">
-      <rect x="-70" y="-11" width="140" height="22" rx="6" fill="#0F172A" stroke="#0284C7" stroke-width="1.6" />
+      <rect x="-70" y="-11" width="140" height="22" rx="6" fill="#0F172A" stroke="#0284C7" stroke-width="1.6"></rect>
       <text x="0" y="4" fill="#FFFFFF" font-size="8.8" font-weight="800" text-anchor="middle">💻 สำนักบริการคอมพิวเตอร์ (OCS)</text>
     </g>
   </g>
 
   <!-- [19] อาคารจอดรถงามวงศ์วาน 2 (Ngamwongwan 2 Parking - B9) -->
-  <g id="building-ngam2" class="building-card cursor-pointer" onclick="selectLocation('ngam2')" transform="translate(827, 824) scale(1.23)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="32" rx="38" ry="10" fill="#020617" opacity="0.35" />
-    <rect x="-32" y="-26" width="64" height="52" rx="7" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.2" />
-    <polygon points="-36,-26 -16,-35 16,-35 36,-26" fill="#334155" stroke="#0F172A" stroke-width="1.5" />
+  <g id="building-ngam2" class="building-card cursor-pointer" onclick="selectLocation('ngam2')" transform="translate(811, 824) scale(1.43)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="32" rx="38" ry="10" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-32" y="-26" width="64" height="52" rx="7" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.2"></rect>
+    <polygon points="-36,-26 -16,-35 16,-35 36,-26" fill="#334155" stroke="#0F172A" stroke-width="1.5"></polygon>
     <g fill="#1E293B">
-      <rect x="-26" y="-18" width="38" height="6" rx="2" />
-      <rect x="-26" y="-8" width="38" height="6" rx="2" />
-      <rect x="-26" y="2" width="38" height="6" rx="2" />
-      <rect x="-26" y="12" width="38" height="6" rx="2" />
+      <rect x="-26" y="-18" width="38" height="6" rx="2"></rect>
+      <rect x="-26" y="-8" width="38" height="6" rx="2"></rect>
+      <rect x="-26" y="2" width="38" height="6" rx="2"></rect>
+      <rect x="-26" y="12" width="38" height="6" rx="2"></rect>
     </g>
-    <rect x="-22" y="-7" width="8" height="4" rx="1.5" fill="#EF4444" />
-    <rect x="-8" y="-7" width="8" height="4" rx="1.5" fill="#F59E0B" />
-    <rect x="6" y="-7" width="8" height="4" rx="1.5" fill="#3B82F6" />
-    <circle cx="16" cy="-14" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
+    <rect x="-22" y="-7" width="8" height="4" rx="1.5" fill="#EF4444"></rect>
+    <rect x="-8" y="-7" width="8" height="4" rx="1.5" fill="#F59E0B"></rect>
+    <rect x="6" y="-7" width="8" height="4" rx="1.5" fill="#3B82F6"></rect>
+    <circle cx="16" cy="-14" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5"></circle>
     <text x="16" y="-10.5" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">P</text>
     <g id="svg-badge-ngam2" transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect id="svg-badge-rect-ngam2" x="-42" y="-9" width="84" height="18" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8" />
+      <rect id="svg-badge-rect-ngam2" x="-42" y="-9" width="84" height="18" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8"></rect>
       <text id="svg-badge-text-ngam2" x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ อาคารจอดรถ 2</text>
     </g>
   </g>
+  
 
   <!-- [20] อาคารจอดรถงามวงศ์วาน 1 (Ngamwongwan 1 Parking - B10) -->
-  <g id="building-ngam1" class="building-card cursor-pointer" onclick="selectLocation('ngam1')" transform="translate(945, 824) scale(1.23)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="32" rx="38" ry="10" fill="#020617" opacity="0.35" />
-    <rect x="-32" y="-26" width="64" height="52" rx="7" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.2" />
-    <polygon points="-36,-26 -16,-35 16,-35 36,-26" fill="#334155" stroke="#0F172A" stroke-width="1.5" />
+  <g id="building-ngam1" class="building-card cursor-pointer" onclick="selectLocation('ngam1')" transform="translate(921, 824) scale(1.37)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="32" rx="38" ry="10" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-32" y="-26" width="64" height="52" rx="7" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.2"></rect>
+    <polygon points="-36,-26 -16,-35 16,-35 36,-26" fill="#334155" stroke="#0F172A" stroke-width="1.5"></polygon>
     <g fill="#1E293B">
-      <rect x="-26" y="-18" width="38" height="6" rx="2" />
-      <rect x="-26" y="-8" width="38" height="6" rx="2" />
-      <rect x="-26" y="2" width="38" height="6" rx="2" />
-      <rect x="-26" y="12" width="38" height="6" rx="2" />
+      <rect x="-26" y="-18" width="38" height="6" rx="2"></rect>
+      <rect x="-26" y="-8" width="38" height="6" rx="2"></rect>
+      <rect x="-26" y="2" width="38" height="6" rx="2"></rect>
+      <rect x="-26" y="12" width="38" height="6" rx="2"></rect>
     </g>
-    <rect x="-20" y="3" width="8" height="4" rx="1.5" fill="#10B981" />
-    <rect x="-6" y="3" width="8" height="4" rx="1.5" fill="#8B5CF6" />
-    <circle cx="16" cy="-14" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
+    <rect x="-20" y="3" width="8" height="4" rx="1.5" fill="#10B981"></rect>
+    <rect x="-6" y="3" width="8" height="4" rx="1.5" fill="#8B5CF6"></rect>
+    <circle cx="16" cy="-14" r="8" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5"></circle>
     <text x="16" y="-10.5" fill="#FFFFFF" font-size="8.5" font-weight="900" text-anchor="middle">P</text>
     <g id="svg-badge-ngam1" transform="translate(0, 36)" filter="url(#badgeGlow)">
-      <rect id="svg-badge-rect-ngam1" x="-42" y="-9" width="84" height="18" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8" />
+      <rect id="svg-badge-rect-ngam1" x="-42" y="-9" width="84" height="18" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8"></rect>
       <text id="svg-badge-text-ngam1" x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ อาคารจอดรถ 1</text>
     </g>
   </g>
+  
 
   <!-- [21] อาคารจอดรถวิภาวดีรังสิต (Vibhavadi Parking - B14) -->
-  <g id="building-vipa" class="building-card cursor-pointer" onclick="selectLocation('vipa')" transform="translate(183, 440) scale(1.27)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="30" rx="34" ry="9" fill="#020617" opacity="0.35" />
-    <rect x="-28" y="-24" width="56" height="48" rx="6" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.2" />
-    <polygon points="-31,-24 -14,-33 14,-33 31,-24" fill="#334155" stroke="#0F172A" stroke-width="1.5" />
-    <circle cx="0" cy="-4" r="9" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
+  <g id="building-vipa" class="building-card cursor-pointer" onclick="selectLocation('vipa')" transform="translate(174, 402) scale(1.45)" filter="url(#celDrop)">
+    <ellipse cx="0" cy="30" rx="34" ry="9" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-28" y="-24" width="56" height="48" rx="6" fill="#F8FAFC" stroke="#0F172A" stroke-width="2.2"></rect>
+    <polygon points="-31,-24 -14,-33 14,-33 31,-24" fill="#334155" stroke="#0F172A" stroke-width="1.5"></polygon>
+    <circle cx="0" cy="-4" r="9" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5"></circle>
     <text x="0" y="-0.5" fill="#FFFFFF" font-size="9.5" font-weight="900" text-anchor="middle">P</text>
     <g id="svg-badge-vipa" transform="translate(0, 32)" filter="url(#badgeGlow)">
-      <rect id="svg-badge-rect-vipa" x="-46" y="-9" width="92" height="18" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8" />
+      <rect id="svg-badge-rect-vipa" x="-46" y="-9" width="92" height="18" rx="5" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8"></rect>
       <text id="svg-badge-text-vipa" x="0" y="3.5" fill="#0369A1" font-size="7.5" font-weight="900" text-anchor="middle">🅿️ อาคารจอดรถวิภาวดี</text>
     </g>
   </g>
 
   <!-- [22] หอประชุมใหญ่ ม.เกษตรศาสตร์ (Main Auditorium - B11) -->
-  <g id="building-auditorium" transform="translate(1186, 760)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="48" rx="56" ry="12" fill="#020617" opacity="0.35" />
-    <rect x="-48" y="-36" width="96" height="72" rx="8" fill="#FFFBEB" stroke="#0F172A" stroke-width="2.5" />
-    <polygon points="-55,-36 0,-58 55,-36" fill="#B45309" stroke="#0F172A" stroke-width="2.5" />
-    <polygon points="-51,-36 0,-54 0,-36" fill="#FBBF24" />
-    <polygon points="0,-36 0,-54 51,-36" fill="#F59E0B" />
+  <g id="building-auditorium" transform="translate(1201, 743) scale(1.40)" filter="url(#celDrop)" >
+    <ellipse cx="0" cy="48" rx="56" ry="12" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-48" y="-36" width="96" height="72" rx="8" fill="#FFFBEB" stroke="#0F172A" stroke-width="2.5"></rect>
+    <polygon points="-55,-36 0,-58 55,-36" fill="#B45309" stroke="#0F172A" stroke-width="2.5"></polygon>
+    <polygon points="-51,-36 0,-54 0,-36" fill="#FBBF24"></polygon>
+    <polygon points="0,-36 0,-54 51,-36" fill="#F59E0B"></polygon>
     <g fill="#FDE047" stroke="#0F172A" stroke-width="1.2">
-      <rect x="-40" y="-24" width="8" height="48" rx="2" /><rect x="-24" y="-24" width="8" height="48" rx="2" />
-      <rect x="16" y="-24" width="8" height="48" rx="2" /><rect x="32" y="-24" width="8" height="48" rx="2" />
+      <rect x="-40" y="-24" width="8" height="48" rx="2"></rect><rect x="-24" y="-24" width="8" height="48" rx="2"></rect>
+      <rect x="16" y="-24" width="8" height="48" rx="2"></rect><rect x="32" y="-24" width="8" height="48" rx="2"></rect>
     </g>
-    <rect x="-10" y="-8" width="20" height="32" rx="3" fill="#D97706" stroke="#0F172A" stroke-width="1.5" />
-    <circle cx="-16" cy="4" r="3.5" fill="#EF4444" stroke="#0F172A" stroke-width="0.8" />
-    <circle cx="16" cy="4" r="3.5" fill="#EF4444" stroke="#0F172A" stroke-width="0.8" />
+    <rect x="-10" y="-8" width="20" height="32" rx="3" fill="#D97706" stroke="#0F172A" stroke-width="1.5"></rect>
+    <circle cx="-16" cy="4" r="3.5" fill="#EF4444" stroke="#0F172A" stroke-width="0.8"></circle>
+    <circle cx="16" cy="4" r="3.5" fill="#EF4444" stroke="#0F172A" stroke-width="0.8"></circle>
     <g transform="translate(0, 50)" filter="url(#badgeGlow)">
-      <rect x="-52" y="-12" width="104" height="24" rx="7" fill="#0F172A" stroke="#D97706" stroke-width="1.8" />
+      <rect x="-52" y="-12" width="104" height="24" rx="7" fill="#0F172A" stroke="#D97706" stroke-width="1.8"></rect>
       <text x="0" y="4" fill="#FEF08A" font-size="9" font-weight="800" text-anchor="middle">🏛️ หอประชุมใหญ่</text>
     </g>
   </g>
 
   <!-- [23] สระพระพิรุณ (Sra Phra Phirun Pond - B12) -->
   <g id="building-pond" class="building-card cursor-pointer" onclick="selectLocation('pond')" transform="translate(1356, 760) scale(0.79)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="100" rx="55" ry="10" fill="#020617" opacity="0.35" />
-    <rect x="-48" y="-95" width="96" height="190" rx="14" fill="#0F766E" stroke="#0F172A" stroke-width="2.5" />
-    <rect x="-42" y="-89" width="84" height="178" rx="10" fill="url(#poolWaterAnime)" stroke="#38BDF8" stroke-width="1.8" />
+    <ellipse cx="0" cy="100" rx="55" ry="10" fill="#020617" opacity="0.35"></ellipse>
+    <rect x="-48" y="-95" width="96" height="190" rx="14" fill="#0F766E" stroke="#0F172A" stroke-width="2.5"></rect>
+    <rect x="-42" y="-89" width="84" height="178" rx="10" fill="url(#poolWaterAnime)" stroke="#38BDF8" stroke-width="1.8"></rect>
     
     <!-- Water Ripple Arcs (Shin-chan / Anime Waves) -->
     <g fill="none" stroke="#BAE6FD" stroke-width="1.6" stroke-linecap="round" opacity="0.8">
-      <path d="M -25 -65 Q 0 -70 25 -65" />
-      <path d="M -30 -30 Q 0 -36 30 -30" />
-      <path d="M -20 -5 Q 0 -10 20 -5" />
-      <path d="M -28 20 Q 0 15 28 20" />
-      <path d="M -24 55 Q 0 50 24 55" />
+      <path d="M -25 -65 Q 0 -70 25 -65"></path>
+      <path d="M -30 -30 Q 0 -36 30 -30"></path>
+      <path d="M -20 -5 Q 0 -10 20 -5"></path>
+      <path d="M -28 20 Q 0 15 28 20"></path>
+      <path d="M -24 55 Q 0 50 24 55"></path>
     </g>
 
     <g transform="translate(0, 104)" filter="url(#badgeGlow)">
-      <rect x="-44" y="-11" width="88" height="22" rx="6" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8" />
-      <circle cx="-32" cy="0" r="5.5" fill="#0284C7" />
+      <rect x="-44" y="-11" width="88" height="22" rx="6" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.8"></rect>
+      <circle cx="-32" cy="0" r="5.5" fill="#0284C7"></circle>
       <text x="-32" y="2.5" fill="#FFFFFF" font-size="7" font-weight="900" text-anchor="middle">🏛️</text>
       <text x="8" y="4" fill="#0369A1" font-size="8.5" font-weight="900" text-anchor="middle">สระพระพิรุณ</text>
     </g>
   </g>
 
   <!-- [24] วงเวียน BTS ม.เกษตรศาสตร์ (BTS Station Roundabout - B13) -->
-  <g id="roundabout-bts" class="building-card"  transform="translate(1415, 540)" filter="url(#celDrop)">
-    <circle cx="0" cy="0" r="33" fill="#0F172A" stroke="#334155" stroke-width="2.5" />
-    <circle cx="0" cy="0" r="25" fill="#059669" stroke="#34D399" stroke-width="2" />
-    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8" />
-    <circle cx="0" cy="0" r="7" fill="#38BDF8" />
+  <g id="roundabout-bts" class="building-card" transform="translate(1415, 540)" filter="url(#celDrop)">
+    <circle cx="0" cy="0" r="33" fill="#0F172A" stroke="#334155" stroke-width="2.5"></circle>
+    <circle cx="0" cy="0" r="25" fill="#059669" stroke="#34D399" stroke-width="2"></circle>
+    <circle cx="0" cy="0" r="15" fill="#0F172A" stroke="#38BDF8" stroke-width="1.8"></circle>
+    <circle cx="0" cy="0" r="7" fill="#38BDF8"></circle>
     <text x="0" y="-1.5" fill="#FFFFFF" font-size="8" font-weight="900" text-anchor="middle">BTS</text>
     <text x="0" y="5.8" fill="#A7F3D0" font-size="5.5" font-weight="800" text-anchor="middle">N13</text>
     <!-- Cute Mini SkyTrain Locomotive Touching Fence -->
     <g transform="translate(25, -2)">
-      <rect x="-3" y="-10" width="7" height="20" rx="3" fill="#0284C7" stroke="#0F172A" stroke-width="1" />
-      <circle cx="0.5" cy="-6" r="1.5" fill="#FDE047" />
-      <circle cx="0.5" cy="6" r="1.5" fill="#EF4444" />
+      <rect x="-3" y="-10" width="7" height="20" rx="3" fill="#0284C7" stroke="#0F172A" stroke-width="1"></rect>
+      <circle cx="0.5" cy="-6" r="1.5" fill="#FDE047"></circle>
+      <circle cx="0.5" cy="6" r="1.5" fill="#EF4444"></circle>
     </g>
     <g transform="translate(0, 38)" filter="url(#badgeGlow)">
-      <rect x="-44" y="-9" width="88" height="18" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="1.4" />
+      <rect x="-44" y="-9" width="88" height="18" rx="5" fill="#0F172A" stroke="#10B981" stroke-width="1.4"></rect>
       <text x="0" y="3.5" fill="#A7F3D0" font-size="7.8" font-weight="800" text-anchor="middle">🚇 วงเวียน BTS (ติดรั้ว)</text>
     </g>
   </g>
 
   <!-- Red Hexagon Pavilion (ศาลา 6 เหลี่ยมสีแดง - Red Pagoda Pavilion) -->
-  <g id="sala-red-hexagon" transform="translate(1325, 615)" filter="url(#celDrop)">
-    <ellipse cx="0" cy="13" rx="15" ry="6" fill="#020617" opacity="0.38" />
-    <polygon points="0,7 12,2 12,-4 0,-7 -12,-4 -12,2" fill="#78350F" stroke="#0F172A" stroke-width="1.2" />
-    <line x1="-9" y1="2" x2="-9" y2="-9" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" />
-    <line x1="-3" y1="4" x2="-3" y2="-8" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" />
-    <line x1="3" y1="4" x2="3" y2="-8" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" />
-    <line x1="9" y1="2" x2="9" y2="-9" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" />
-    <polygon points="0,-18 14,-9 14,0 0,6 -14,0 -14,-9" fill="#B91C1C" stroke="#0F172A" stroke-width="2" />
-    <polygon points="0,-18 0,6 -14,0 -14,-9" fill="#EF4444" />
-    <polygon points="0,-18 14,-9 14,0 0,6" fill="#DC2626" />
-    <polygon points="0,-18 0,-6 -10,-8" fill="#F87171" />
-    <line x1="0" y1="-18" x2="0" y2="-23" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" />
-    <circle cx="0" cy="-23" r="2.5" fill="#FEF08A" stroke="#78350F" stroke-width="0.8" />
+  <g id="sala-red-hexagon" transform="translate(1325, 615)" filter="url(#celDrop)" >
+    <ellipse cx="0" cy="13" rx="15" ry="6" fill="#020617" opacity="0.38"></ellipse>
+    <polygon points="0,7 12,2 12,-4 0,-7 -12,-4 -12,2" fill="#78350F" stroke="#0F172A" stroke-width="1.2"></polygon>
+    <line x1="-9" y1="2" x2="-9" y2="-9" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"></line>
+    <line x1="-3" y1="4" x2="-3" y2="-8" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"></line>
+    <line x1="3" y1="4" x2="3" y2="-8" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"></line>
+    <line x1="9" y1="2" x2="9" y2="-9" stroke="#B45309" stroke-width="1.8" stroke-linecap="round"></line>
+    <polygon points="0,-18 14,-9 14,0 0,6 -14,0 -14,-9" fill="#B91C1C" stroke="#0F172A" stroke-width="2"></polygon>
+    <polygon points="0,-18 0,6 -14,0 -14,-9" fill="#EF4444"></polygon>
+    <polygon points="0,-18 14,-9 14,0 0,6" fill="#DC2626"></polygon>
+    <polygon points="0,-18 0,-6 -10,-8" fill="#F87171"></polygon>
+    <line x1="0" y1="-18" x2="0" y2="-23" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"></line>
+    <circle cx="0" cy="-23" r="2.5" fill="#FEF08A" stroke="#78350F" stroke-width="0.8"></circle>
   </g>
 
   <!-- ================= 8. GATES BADGES ON FENCE ================= -->
@@ -1462,8 +1446,8 @@
                 icon: "🅿️",
                 desc: "อาคารจอดรถฝั่งถนนวิภาวดีรังสิต เข้าได้จากประตูวิภาวดีรังสิต",
                 mapUrl: "https://maps.app.goo.gl/Cjj5nF6RgYSayEtV6",
-                x: 183,
-                y: 440
+                x: 174,
+                y: 402
             },
             ngam1: {
                 title: "อาคารจอดรถงาม 1",
@@ -1471,7 +1455,7 @@
                 icon: "🅿️",
                 desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน เข้าได้จากประตู 1 ถนนงามวงศ์วาน",
                 mapUrl: "https://maps.app.goo.gl/2R2azgbEbfftDqJk7",
-                x: 945,
+                x: 921,
                 y: 824
             },
             ngam2: {
@@ -1480,7 +1464,7 @@
                 icon: "🅿️",
                 desc: "อาคารจอดรถฝั่งถนนงามวงศ์วาน เข้าได้จากประตู 2 ถนนงามวงศ์วาน",
                 mapUrl: "https://maps.app.goo.gl/avos4aWYzd8EdP2s9",
-                x: 827,
+                x: 811,
                 y: 824
             },
             pond: {
