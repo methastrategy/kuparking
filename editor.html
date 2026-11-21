@@ -48,25 +48,53 @@
         }
         .node-handle {
             cursor: grab;
-            transition: r 0.15s ease, stroke-width 0.15s ease;
+            transition: r 0.15s ease, stroke-width 0.15s ease, filter 0.15s ease;
         }
         .node-handle:active, .node-handle.dragging {
             cursor: grabbing;
-            r: 14;
-            stroke-width: 4;
-            filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.9));
+            r: 14 !important;
+            stroke-width: 4 !important;
+            filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.95)) !important;
         }
         .node-handle:hover {
             r: 13;
         }
+        .node-handle-active {
+            stroke: #F59E0B !important;
+            stroke-width: 3.5 !important;
+            filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.9)) !important;
+        }
+        .node-handle-dimmed {
+            opacity: 0.35;
+        }
+        .road-interactive {
+            cursor: pointer;
+            transition: filter 0.2s ease;
+        }
+        .road-interactive:hover {
+            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8)) !important;
+        }
         .road-highlight {
             stroke: #38BDF8 !important;
-            filter: drop-shadow(0 0 12px #0284C7) !important;
+            filter: drop-shadow(0 0 14px #0284C7) !important;
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+        .bezier-guide {
+            pointer-events: none;
+            stroke: #38BDF8;
+            stroke-width: 1.5;
+            stroke-dasharray: 4 3;
+            opacity: 0.75;
+        }
+        .magnet-indicator {
+            pointer-events: none;
+            stroke: #10B981;
+            stroke-width: 2.5;
+            fill: rgba(16, 185, 129, 0.25);
+            animation: pulseSnap 0.7s infinite alternate;
+        }
+        @keyframes pulseSnap {
+            0% { r: 10px; opacity: 0.9; }
+            100% { r: 18px; opacity: 0.35; }
         }
         ::-webkit-scrollbar-track {
             background: rgba(15, 23, 42, 0.05);
@@ -101,36 +129,53 @@
             </div>
         </div>
 
-        <!-- Live Coordinate & Action Buttons -->
-        <div class="flex items-center space-x-2 sm:space-x-3">
+                <!-- Live Coordinate & Action Buttons -->
+        <div class="flex items-center space-x-1.5 sm:space-x-2.5">
             <!-- Coordinate HUD Badge -->
             <div id="hudCoordBadge" class="hidden md:flex items-center gap-2 bg-slate-800 border border-slate-700 px-3 py-1 rounded-lg text-xs font-mono text-emerald-400">
                 <span class="text-slate-400">พิกัด:</span>
                 <span id="hudCoords" class="font-bold">X: ---, Y: ---</span>
             </div>
 
-            <!-- Snap Mode Toggle -->
-            <button id="btnToggleSnap" onclick="toggleSnapMode()" class="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 px-3 py-1.5 rounded-lg border border-slate-700 transition" title="สลับโหมดดึงแยกพร้อมกัน">
-                <i data-lucide="link" class="w-3.5 h-3.5 text-amber-400" id="snapIcon"></i>
-                <span id="snapText" class="hidden sm:inline">รวมแยก: เปิด</span>
+            <!-- View Filter Mode: All vs Focus Road -->
+            <button id="btnToggleFilter" onclick="toggleFilterMode()" class="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 px-2.5 py-1.5 rounded-lg border border-slate-700 transition" title="สลับโหมด: แสดงทุกเส้น หรือ เฉพาะเส้นที่เลือก">
+                <i data-lucide="layers" class="w-3.5 h-3.5 text-sky-400" id="filterIcon"></i>
+                <span id="filterText" class="hidden sm:inline">มุมมอง: ทุกเส้น</span>
             </button>
 
+            <!-- Magnet Snapping Toggle -->
+            <button id="btnToggleMagnet" onclick="toggleMagnetMode()" class="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 px-2.5 py-1.5 rounded-lg border border-slate-700 transition" title="แม่เหล็กดูดจุดเชื่อมต่อใกล้เคียง (14px)">
+                <i data-lucide="magnet" class="w-3.5 h-3.5 text-amber-400" id="magnetIcon"></i>
+                <span id="magnetText" class="hidden sm:inline">แม่เหล็ก: เปิด</span>
+            </button>
+
+            <!-- Undo / Redo Group -->
+            <div class="flex items-center bg-slate-800 rounded-lg border border-slate-700 p-0.5">
+                <button id="btnUndo" onclick="undo()" class="p-1.5 text-slate-400 hover:text-white disabled:opacity-30 disabled:pointer-events-none rounded transition" title="ย้อนกลับ (Ctrl+Z)" disabled>
+                    <i data-lucide="undo-2" class="w-3.5 h-3.5"></i>
+                </button>
+                <div class="h-3.5 w-px bg-slate-700"></div>
+                <button id="btnRedo" onclick="redo()" class="p-1.5 text-slate-400 hover:text-white disabled:opacity-30 disabled:pointer-events-none rounded transition" title="ทำซ้ำ (Ctrl+Y)" disabled>
+                    <i data-lucide="redo-2" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+
             <!-- Toggle Handles -->
-            <button id="btnToggleHandles" onclick="toggleHandles()" class="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 px-3 py-1.5 rounded-lg border border-slate-700 transition" title="ซ่อน/แสดงจุดด้ามจับ">
-                <i data-lucide="eye" class="w-3.5 h-3.5 text-sky-400" id="handlesIcon"></i>
+            <button id="btnToggleHandles" onclick="toggleHandles()" class="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 px-2.5 py-1.5 rounded-lg border border-slate-700 transition" title="ซ่อน/แสดงจุดด้ามจับ">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-emerald-400" id="handlesIcon"></i>
                 <span class="hidden sm:inline">จุดด้ามจับ</span>
             </button>
 
             <!-- Reset Button -->
-            <button onclick="resetRoads()" class="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition" title="รีเซ็ตตำแหน่งกลับค่าเริ่มต้น">
+            <button onclick="resetRoads()" class="flex items-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 px-2.5 py-1.5 rounded-lg border border-slate-700 transition" title="รีเซ็ตตำแหน่งกลับค่าเริ่มต้น">
                 <i data-lucide="rotate-ccw" class="w-3.5 h-3.5 text-slate-400"></i>
                 <span class="hidden sm:inline">รีเซ็ต</span>
             </button>
 
             <!-- Export / Copy Button -->
-            <button onclick="copySvgCode()" class="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-1.5 rounded-lg shadow-md hover:shadow-emerald-500/20 transition active:scale-95">
+            <button onclick="copySvgCode()" class="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-md hover:shadow-emerald-500/20 transition active:scale-95">
                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                <span>คัดลอกโค้ด SVG</span>
+                <span>คัดลอก SVG</span>
             </button>
         </div>
     </header>
@@ -138,23 +183,29 @@
     <!-- ================= MAIN WORKSPACE (SIDEBAR + CANVAS) ================= -->
     <div class="flex-1 flex overflow-hidden relative">
 
-        <!-- Left Sidebar: Road Segments Directory R01-R18 -->
-        <aside class="w-72 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 z-20 hidden lg:flex">
-            <div class="p-3 border-b border-slate-800 flex items-center justify-between text-xs">
-                <span class="text-slate-400 font-bold uppercase tracking-wider">รายการถนน (R01 - R18)</span>
-                <span class="text-[10px] text-slate-500 font-mono">18 เส้นทาง</span>
+                <!-- Left Sidebar: Road Segments Directory R01-R18 -->
+        <aside class="w-80 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 z-20 hidden lg:flex">
+            <div class="p-3 border-b border-slate-800 flex items-center justify-between text-xs bg-slate-950/40">
+                <div>
+                    <span class="text-slate-300 font-bold uppercase tracking-wider block">รายการถนน (R01 - R18)</span>
+                    <span class="text-[10px] text-amber-400 font-medium">✨ ปรับแต่งอิสระเส้นต่อเส้น (52 จุด)</span>
+                </div>
+                <button onclick="selectRoad(null)" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-2 py-1 rounded border border-slate-700 transition" title="แสดงภาพรวมทุกเส้น">
+                    ดูทั้งหมด
+                </button>
             </div>
-            <div id="roadListContainer" class="flex-1 overflow-y-auto p-2 space-y-1">
+            <div id="roadListContainer" class="flex-1 overflow-y-auto p-2 space-y-1.5">
                 <!-- Dynamically generated road list items -->
             </div>
-            <div class="p-3 border-t border-slate-800 bg-slate-950/60 text-[11px] text-slate-400 space-y-1.5">
+            <div class="p-3 border-t border-slate-800 bg-slate-950/80 text-[11px] text-slate-400 space-y-1.5">
                 <div class="flex items-center gap-1.5 text-amber-400 font-bold">
-                    <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
-                    วิธีใช้งาน:
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                    คำแนะนำการปรับแต่ง:
                 </div>
-                <p>• คลิกแล้วลาก <b>วงกลมสีส้ม/ฟ้า</b> บนแผนที่เพื่อดัดเส้นถนนสด</p>
-                <p>• ใช้ลูกกลิ้งเมาส์เพื่อซูมเข้า/ออก หรือกด Spacebar + ลากเมาส์เพื่อแพน</p>
-                <p>• ปรับเสร็จกด <b>"คัดลอกโค้ด SVG"</b> ด้านบน</p>
+                <p>• <b>อิสระ 100%:</b> ทุกเส้นมีจุดหัว-ท้ายและจุดดัดของตัวเอง ไม่ดึงเส้นอื่นพัง</p>
+                <p>• <b>โฟกัสง่าย:</b> คลิกเส้นในรายการเพื่อดึงจุดของเส้นนั้นมาอยู่บนสุด</p>
+                <p>• <b>แม่เหล็กดูดจุด:</b> เมื่อลากจุดเข้าใกล้แยกอื่น (14px) ระบบจะดูดเชื่อมให้อัตโนมัติ</p>
+                <p>• <b>ปุ่มลัด:</b> Ctrl+Z ย้อนกลับ | Spacebar+ลาก เพื่อแพน</p>
             </div>
         </aside>
 
@@ -1283,149 +1334,150 @@
         </main>
     </div>
 
-    <!-- ================= EDITOR ENGINE SCRIPT ================= -->
+        <!-- ================= EDITOR ENGINE SCRIPT (INDEPENDENT PER-LINE ARCHITECTURE) ================= -->
     <script>
         lucide.createIcons();
 
-        // 1. Initial Road Segment Models (Parsed directly from commit 2c724a6)
+        // 1. Initial Road Segment Models - 100% Independent Per-Line Handles
+        // Every single road has its own unique, isolated endpoints and control points!
         const INITIAL_ROADS = [
             {
                 id: 'R01',
                 name: 'ทางเข้าประตูวิภาวดี',
                 commands: [
-                    { type: 'M', x: 90, y: 320, nodeId: 'J_VIPA_IN' },
-                    { type: 'L', x: 200, y: 320, nodeId: 'J_VIPA_MAIN' }
+                    { type: 'M', x: 90, y: 320, nodeId: 'R01_P0', role: 'start', label: 'R01 ปากทางประตูวิภาวดี' },
+                    { type: 'L', x: 200, y: 320, nodeId: 'R01_P1', role: 'end', label: 'R01 แยกวิภาวดี' }
                 ]
             },
             {
                 id: 'R02',
                 name: 'วงแหวนรอบบน หลังสาธิตฯ-บาร์ใหม่',
                 commands: [
-                    { type: 'M', x: 200, y: 320, nodeId: 'J_VIPA_MAIN' },
-                    { type: 'Q', qx: 200, qy: 175, qNodeId: 'Q_SATIT_CTRL', x: 270, y: 145, nodeId: 'J_SATIT_BEND' },
-                    { type: 'L', x: 1020, y: 145, nodeId: 'J_BARMAI_END' }
+                    { type: 'M', x: 200, y: 320, nodeId: 'R02_P0', role: 'start', label: 'R02 แยกวิภาวดี' },
+                    { type: 'Q', qx: 200, qy: 175, qNodeId: 'R02_Q_CTRL', qRole: 'ctrl', qLabel: 'R02 จุดดัดโค้งหลังสาธิต', x: 270, y: 145, nodeId: 'R02_P1', role: 'vertex', label: 'R02 โค้งหลังสาธิต' },
+                    { type: 'L', x: 1020, y: 145, nodeId: 'R02_P2', role: 'end', label: 'R02 ปลายทางบาร์ใหม่' }
                 ]
             },
             {
                 id: 'R03',
                 name: 'สายทะแยงเหนือ หน้าสาธิตฯ-หอสมุด 50 ปี-สัตวแพทย์',
                 commands: [
-                    { type: 'M', x: 200, y: 380, nodeId: 'J_SATIT_FRONT' },
-                    { type: 'L', x: 1420, y: 120, nodeId: 'J_VET_TOP' }
+                    { type: 'M', x: 200, y: 380, nodeId: 'R03_P0', role: 'start', label: 'R03 หน้าสาธิตฯ' },
+                    { type: 'L', x: 1420, y: 120, nodeId: 'R03_P1', role: 'end', label: 'R03 หอสมุด 50 ปี/สัตวแพทย์' }
                 ]
             },
             {
                 id: 'R04',
                 name: 'สายทะแยง หลังพืชสวน-ข้างประมง-วงเวียน BTS',
                 commands: [
-                    { type: 'M', x: 1020, y: 145, nodeId: 'J_BARMAI_END' },
-                    { type: 'L', x: 1200, y: 600, nodeId: 'J_FISHERY_MID' }
+                    { type: 'M', x: 1020, y: 145, nodeId: 'R04_P0', role: 'start', label: 'R04 หลังพืชสวน' },
+                    { type: 'L', x: 1200, y: 600, nodeId: 'R04_P1', role: 'end', label: 'R04 ข้างคณะประมง' }
                 ]
             },
             {
                 id: 'R05',
                 name: 'วงแหวนรอบนอกตะวันตก & ถนนขวางสายใต้ หน้าอินทรีฯ-วิศวะ-เศรษฐศาสตร์',
                 commands: [
-                    { type: 'M', x: 200, y: 320, nodeId: 'J_VIPA_MAIN' },
-                    { type: 'L', x: 200, y: 660, nodeId: 'J_WEST_CORNER_TOP' },
-                    { type: 'Q', qx: 200, qy: 730, qNodeId: 'Q_WEST_CORNER_CTRL', x: 270, y: 730, nodeId: 'J_WEST_CORNER_BOT' },
-                    { type: 'L', x: 1000, y: 730, nodeId: 'J_NGAM1_R05_CONN' }
+                    { type: 'M', x: 200, y: 320, nodeId: 'R05_P0', role: 'start', label: 'R05 แยกวิภาวดี' },
+                    { type: 'L', x: 200, y: 660, nodeId: 'R05_P1', role: 'vertex', label: 'R05 มุมบนฝั่งตะวันตก' },
+                    { type: 'Q', qx: 200, qy: 730, qNodeId: 'R05_Q_CTRL', qRole: 'ctrl', qLabel: 'R05 ดัดโค้งมุมล่าง', x: 270, y: 730, nodeId: 'R05_P2', role: 'vertex', label: 'R05 มุมล่างฝั่งตะวันตก' },
+                    { type: 'L', x: 1000, y: 730, nodeId: 'R05_P3', role: 'end', label: 'R05 แยกประตู 1 งามฯ' }
                 ]
             },
             {
                 id: 'R06',
                 name: 'สายกลางตัดขวางตะวันตก-ตะวันออก ทะลุประตู 2 พหลโยธิน',
                 commands: [
-                    { type: 'M', x: 200, y: 510, nodeId: 'J_R06_WEST' },
-                    { type: 'L', x: 495, y: 500, nodeId: 'J_INTRI_CORNER' },
-                    { type: 'L', x: 920, y: 440, nodeId: 'J_SCIENCE_FRONT' },
-                    { type: 'L', x: 1122, y: 375, nodeId: 'J_AGRI_CORNER' },
-                    { type: 'L', x: 1260, y: 370, nodeId: 'J_R06_MID_EAST' },
-                    { type: 'L', x: 1470, y: 440, nodeId: 'J_PHAHON2_INNER' },
-                    { type: 'L', x: 1510, y: 440, nodeId: 'J_PHAHON2_GATE' }
+                    { type: 'M', x: 200, y: 510, nodeId: 'R06_P0', role: 'start', label: 'R06 สายกลางตะวันตก' },
+                    { type: 'L', x: 495, y: 500, nodeId: 'R06_P1', role: 'vertex', label: 'R06 แยกหน้าสนามอินทรีฯ' },
+                    { type: 'L', x: 920, y: 440, nodeId: 'R06_P2', role: 'vertex', label: 'R06 แยกหน้าคณะวิทย์' },
+                    { type: 'L', x: 1122, y: 375, nodeId: 'R06_P3', role: 'vertex', label: 'R06 แยกหน้าคณะเกษตร' },
+                    { type: 'L', x: 1260, y: 370, nodeId: 'R06_P4', role: 'vertex', label: 'R06 แยกกลางตะวันออก' },
+                    { type: 'L', x: 1470, y: 440, nodeId: 'R06_P5', role: 'vertex', label: 'R06 ในรั้วประตู 2 พหลฯ' },
+                    { type: 'L', x: 1510, y: 440, nodeId: 'R06_P6', role: 'end', label: 'R06 ประตู 2 พหลโยธิน' }
                 ]
             },
             {
                 id: 'R07',
                 name: 'สายหลัก ประตู 1 งามวงศ์วาน ทะลุประตูหลังมอ',
                 commands: [
-                    { type: 'M', x: 768, y: 0, nodeId: 'J_NORTH_GATE' },
-                    { type: 'L', x: 1000, y: 670, nodeId: 'J_NGAM1_GATE' },
-                    { type: 'L', x: 1000, y: 910, nodeId: 'J_NGAM1_BOTTOM' }
+                    { type: 'M', x: 768, y: 0, nodeId: 'R07_P0', role: 'start', label: 'R07 ประตูหลัง ม.' },
+                    { type: 'L', x: 1000, y: 670, nodeId: 'R07_P1', role: 'vertex', label: 'R07 แยกประตู 1 งามฯ' },
+                    { type: 'L', x: 1000, y: 910, nodeId: 'R07_P2', role: 'end', label: 'R07 ประตู 1 งามวงศ์วาน' }
                 ]
             },
             {
                 id: 'R08',
                 name: 'ทางเข้าประตูงามวงศ์วาน 3',
                 commands: [
-                    { type: 'M', x: 450, y: 730, nodeId: 'J_NGAM3_TOP' },
-                    { type: 'L', x: 450, y: 910, nodeId: 'J_NGAM3_BOTTOM' }
+                    { type: 'M', x: 450, y: 730, nodeId: 'R08_P0', role: 'start', label: 'R08 แยกงามวงศ์วาน 3' },
+                    { type: 'L', x: 450, y: 910, nodeId: 'R08_P1', role: 'end', label: 'R08 ประตูงามวงศ์วาน 3' }
                 ]
             },
             {
                 id: 'R09',
                 name: 'ถนนข้างสนามอินทรีฯ & คณะวิศวะ (เยื้องขวาประตูงาม 3)',
                 commands: [
-                    { type: 'M', x: 495, y: 500, nodeId: 'J_INTRI_CORNER' },
-                    { type: 'L', x: 495, y: 730, nodeId: 'J_INTRI_BOTTOM' }
+                    { type: 'M', x: 495, y: 500, nodeId: 'R09_P0', role: 'start', label: 'R09 ข้างสนามอินทรีฯ' },
+                    { type: 'L', x: 495, y: 730, nodeId: 'R09_P1', role: 'end', label: 'R09 บรรจบถนนขวางใต้' }
                 ]
             },
             {
                 id: 'R10',
                 name: 'ถนนข้างคณะเศรษฐศาสตร์ & อาคารวิทย์ (เยื้องขวาประตูงาม 2)',
                 commands: [
-                    { type: 'M', x: 765, y: 462, nodeId: 'J_ECON_TOP' },
-                    { type: 'L', x: 765, y: 730, nodeId: 'J_ECON_BOTTOM' }
+                    { type: 'M', x: 765, y: 462, nodeId: 'R10_P0', role: 'start', label: 'R10 ข้างคณะเศรษฐศาสตร์' },
+                    { type: 'L', x: 765, y: 730, nodeId: 'R10_P1', role: 'end', label: 'R10 บรรจบถนนขวางใต้' }
                 ]
             },
             {
                 id: 'R11',
                 name: 'ซอยขวางหน้าธนาคารกรุงศรี (ปรับระดับแกน Y)',
                 commands: [
-                    { type: 'M', x: 765, y: 570, nodeId: 'J_KRUNGSRI_LEFT' },
-                    { type: 'L', x: 965, y: 570, nodeId: 'J_KRUNGSRI_RIGHT' }
+                    { type: 'M', x: 765, y: 570, nodeId: 'R11_P0', role: 'start', label: 'R11 ซอยกรุงศรี ซ้าย' },
+                    { type: 'L', x: 965, y: 570, nodeId: 'R11_P1', role: 'end', label: 'R11 ซอยกรุงศรี ขวา' }
                 ]
             },
             {
                 id: 'R12',
                 name: 'ซอยเฉียงเชื่อมหน้าหอประชุมใหญ่',
                 commands: [
-                    { type: 'M', x: 965, y: 570, nodeId: 'J_KRUNGSRI_RIGHT' },
-                    { type: 'L', x: 1156, y: 488, nodeId: 'J_AUDITORIUM_CONN' }
+                    { type: 'M', x: 965, y: 570, nodeId: 'R12_P0', role: 'start', label: 'R12 แยกหน้ากรุงศรี' },
+                    { type: 'L', x: 1156, y: 488, nodeId: 'R12_P1', role: 'end', label: 'R12 แยกหน้าหอประชุมใหญ่' }
                 ]
             },
             {
                 id: 'R13',
                 name: 'ทางเข้าประตูงามวงศ์วาน 2',
                 commands: [
-                    { type: 'M', x: 730, y: 730, nodeId: 'J_NGAM2_TOP' },
-                    { type: 'L', x: 730, y: 910, nodeId: 'J_NGAM2_BOTTOM' }
+                    { type: 'M', x: 730, y: 730, nodeId: 'R13_P0', role: 'start', label: 'R13 แยกงามวงศ์วาน 2' },
+                    { type: 'L', x: 730, y: 910, nodeId: 'R13_P1', role: 'end', label: 'R13 ประตูงามวงศ์วาน 2' }
                 ]
             },
             {
                 id: 'R14',
                 name: 'ถนนทะแยงเชื่อมแยกประตู 1 สู่วงเวียน BTS',
                 commands: [
-                    { type: 'M', x: 1000, y: 670, nodeId: 'J_NGAM1_GATE' },
-                    { type: 'L', x: 1370, y: 540, nodeId: 'J_BTS_ROUNDABOUT' }
+                    { type: 'M', x: 1000, y: 670, nodeId: 'R14_P0', role: 'start', label: 'R14 แยกประตู 1 งามฯ' },
+                    { type: 'L', x: 1370, y: 540, nodeId: 'R14_P1', role: 'end', label: 'R14 วงเวียน BTS' }
                 ]
             },
             {
                 id: 'R15',
                 name: 'ซอยเข้าสระพระพิรุณฝั่งเหนือ',
                 commands: [
-                    { type: 'M', x: 1260, y: 578, nodeId: 'J_POND_NORTH_ENT' },
-                    { type: 'L', x: 1260, y: 660, nodeId: 'J_POND_NW' }
+                    { type: 'M', x: 1260, y: 578, nodeId: 'R15_P0', role: 'start', label: 'R15 แยกเข้าสระพระพิรุณ' },
+                    { type: 'L', x: 1260, y: 660, nodeId: 'R15_P1', role: 'end', label: 'R15 มุมบนซ้ายสระ' }
                 ]
             },
             {
                 id: 'R16',
                 name: 'ถนนสี่เหลี่ยมรอบสระพระพิรุณ (Loop)',
                 commands: [
-                    { type: 'M', x: 1260, y: 660, nodeId: 'J_POND_NW' },
-                    { type: 'L', x: 1420, y: 660, nodeId: 'J_POND_NE' },
-                    { type: 'L', x: 1420, y: 860, nodeId: 'J_POND_SE' },
-                    { type: 'L', x: 1260, y: 860, nodeId: 'J_POND_SW' },
+                    { type: 'M', x: 1260, y: 660, nodeId: 'R16_P0', role: 'start', label: 'R16 สระมุม ตก./เหนือ' },
+                    { type: 'L', x: 1420, y: 660, nodeId: 'R16_P1', role: 'vertex', label: 'R16 สระมุม อ./เหนือ' },
+                    { type: 'L', x: 1420, y: 860, nodeId: 'R16_P2', role: 'vertex', label: 'R16 สระมุม อ./ใต้' },
+                    { type: 'L', x: 1260, y: 860, nodeId: 'R16_P3', role: 'vertex', label: 'R16 สระมุม ตก./ใต้' },
                     { type: 'Z' }
                 ]
             },
@@ -1433,27 +1485,81 @@
                 id: 'R17',
                 name: 'ทางออกประตู 1 พหลโยธิน (ข้างสระพระพิรุณ)',
                 commands: [
-                    { type: 'M', x: 1420, y: 760, nodeId: 'J_POND_EAST_EXIT' },
-                    { type: 'L', x: 1510, y: 760, nodeId: 'J_PHAHON1_GATE' }
+                    { type: 'M', x: 1420, y: 760, nodeId: 'R17_P0', role: 'start', label: 'R17 ขอบสระฝั่งตะวันออก' },
+                    { type: 'L', x: 1510, y: 760, nodeId: 'R17_P1', role: 'end', label: 'R17 ประตู 1 พหลโยธิน' }
                 ]
             },
             {
                 id: 'R18',
                 name: 'วงเวียนสถานีรถไฟฟ้า BTS ม.เกษตรศาสตร์',
                 commands: [
-                    { type: 'M', x: 1370, y: 540, nodeId: 'J_BTS_ROUNDABOUT' },
-                    { type: 'C', c1x: 1400, c1y: 495, c2x: 1455, c2y: 505, x: 1455, y: 540, nodeId: 'J_BTS_LOOP_E' },
-                    { type: 'C', c1x: 1455, c1y: 575, c2x: 1400, c2y: 585, x: 1370, y: 540, nodeId: 'J_BTS_ROUNDABOUT' },
+                    { type: 'M', x: 1370, y: 540, nodeId: 'R18_P0', role: 'start', label: 'R18 วงเวียน BTS (จุดเริ่ม)' },
+                    { 
+                        type: 'C', 
+                        c1x: 1400, c1y: 495, c1NodeId: 'R18_C1_CTRL1', c1Label: 'R18 โค้งบนด้ามจับ 1',
+                        c2x: 1455, c2y: 505, c2NodeId: 'R18_C1_CTRL2', c2Label: 'R18 โค้งบนด้ามจับ 2',
+                        x: 1455, y: 540, nodeId: 'R18_P1', role: 'vertex', label: 'R18 วงเวียน BTS ฝั่งขวา' 
+                    },
+                    { 
+                        type: 'C', 
+                        c1x: 1455, c1y: 575, c1NodeId: 'R18_C2_CTRL1', c1Label: 'R18 โค้งล่างด้ามจับ 1',
+                        c2x: 1400, c2y: 585, c2NodeId: 'R18_C2_CTRL2', c2Label: 'R18 โค้งล่างด้ามจับ 2',
+                        x: 1370, y: 540, nodeId: 'R18_P2', role: 'end', label: 'R18 วงเวียน BTS (จบวง)' 
+                    },
                     { type: 'Z' }
                 ]
             }
         ];
 
-        // Deep clone working roads
+        // State Machine
         let currentRoads = JSON.parse(JSON.stringify(INITIAL_ROADS));
-        let snapLock = true;
-        let showHandles = true;
-        let selectedRoadId = null;
+        let selectedRoadId = 'R01'; // Default focused road
+        let filterMode = 'all';     // 'all' or 'focus'
+        let magnetMode = true;      // Magnet snap to nearest points
+        let showHandles = true;     // Show/hide handle layer
+        const MAGNET_RADIUS = 14;   // Magnetic snapping threshold in SVG units
+
+        // Undo / Redo History
+        let undoStack = [];
+        let redoStack = [];
+
+        function saveHistoryState() {
+            undoStack.push(JSON.stringify(currentRoads));
+            if (undoStack.length > 50) undoStack.shift();
+            redoStack = [];
+            updateUndoRedoButtons();
+        }
+
+        function updateUndoRedoButtons() {
+            const btnUndo = document.getElementById('btnUndo');
+            const btnRedo = document.getElementById('btnRedo');
+            if (btnUndo) btnUndo.disabled = (undoStack.length === 0);
+            if (btnRedo) btnRedo.disabled = (redoStack.length === 0);
+        }
+
+        function undo() {
+            if (undoStack.length === 0) return;
+            redoStack.push(JSON.stringify(currentRoads));
+            currentRoads = JSON.parse(undoStack.pop());
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            updateUndoRedoButtons();
+            showToast('ย้อนกลับ (Undo) สำเร็จ');
+        }
+
+        function redo() {
+            if (redoStack.length === 0) return;
+            undoStack.push(JSON.stringify(currentRoads));
+            currentRoads = JSON.parse(redoStack.pop());
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            updateUndoRedoButtons();
+            showToast('ทำซ้ำ (Redo) สำเร็จ');
+        }
 
         // Viewport Transform State
         let scale = 1;
@@ -1467,36 +1573,72 @@
         const wrapper = document.getElementById('mapTransformWrapper');
         const svg = document.getElementById('cartoonPokemonCampusSvg');
 
-        // Build Master Node Map
+        // Master Nodes Map - 100% 1-to-1 Mapping (Every node has EXACTLY ONE owner)
         let masterNodes = {};
 
         function initNodes() {
             masterNodes = {};
             currentRoads.forEach(road => {
-                road.commands.forEach(cmd => {
+                road.commands.forEach((cmd, cmdIdx) => {
+                    // Main Anchor Point
                     if (cmd.nodeId) {
-                        if (!masterNodes[cmd.nodeId]) {
-                            masterNodes[cmd.nodeId] = {
-                                id: cmd.nodeId,
-                                x: cmd.x,
-                                y: cmd.y,
-                                isControl: false,
-                                connected: []
-                            };
-                        }
-                        masterNodes[cmd.nodeId].connected.push({ roadId: road.id, cmd: cmd, field: 'main' });
+                        masterNodes[cmd.nodeId] = {
+                            id: cmd.nodeId,
+                            x: cmd.x,
+                            y: cmd.y,
+                            roadId: road.id,
+                            cmdIndex: cmdIdx,
+                            type: 'anchor',
+                            role: cmd.role || (cmd.type === 'M' ? 'start' : 'vertex'),
+                            label: cmd.label || `${road.id} จุด ${cmdIdx + 1}`,
+                            cmd: cmd,
+                            field: 'main'
+                        };
                     }
+                    // Quadratic Bezier Control Point
                     if (cmd.qNodeId) {
-                        if (!masterNodes[cmd.qNodeId]) {
-                            masterNodes[cmd.qNodeId] = {
-                                id: cmd.qNodeId,
-                                x: cmd.qx,
-                                y: cmd.qy,
-                                isControl: true,
-                                connected: []
-                            };
-                        }
-                        masterNodes[cmd.qNodeId].connected.push({ roadId: road.id, cmd: cmd, field: 'quad' });
+                        masterNodes[cmd.qNodeId] = {
+                            id: cmd.qNodeId,
+                            x: cmd.qx,
+                            y: cmd.qy,
+                            roadId: road.id,
+                            cmdIndex: cmdIdx,
+                            type: 'quad',
+                            role: 'ctrl',
+                            label: cmd.qLabel || `${road.id} จุดดัด Q`,
+                            cmd: cmd,
+                            field: 'quad'
+                        };
+                    }
+                    // Cubic Bezier Control Point 1
+                    if (cmd.c1NodeId) {
+                        masterNodes[cmd.c1NodeId] = {
+                            id: cmd.c1NodeId,
+                            x: cmd.c1x,
+                            y: cmd.c1y,
+                            roadId: road.id,
+                            cmdIndex: cmdIdx,
+                            type: 'cubic1',
+                            role: 'ctrl',
+                            label: cmd.c1Label || `${road.id} จุดดัด C1`,
+                            cmd: cmd,
+                            field: 'c1'
+                        };
+                    }
+                    // Cubic Bezier Control Point 2
+                    if (cmd.c2NodeId) {
+                        masterNodes[cmd.c2NodeId] = {
+                            id: cmd.c2NodeId,
+                            x: cmd.c2x,
+                            y: cmd.c2y,
+                            roadId: road.id,
+                            cmdIndex: cmdIdx,
+                            type: 'cubic2',
+                            role: 'ctrl',
+                            label: cmd.c2Label || `${road.id} จุดดัด C2`,
+                            cmd: cmd,
+                            field: 'c2'
+                        };
                     }
                 });
             });
@@ -1521,10 +1663,8 @@
             return parts.join(' ');
         }
 
-        // Update All 4 SVG Layers for Roads
+        // Update All 4 SVG Layers for Roads & Attach Interactive Click Handlers
         function refreshRoadSvgLayers() {
-            // Find road layers in SVG
-            // 5.0 Shadow, 5.1 Curb, 5.2 Slate, 5.3 Centerline
             const groups = svg.querySelectorAll('g');
             let roadGroups = [];
             groups.forEach(g => {
@@ -1534,18 +1674,26 @@
                 }
             });
 
-            roadGroups.forEach(g => {
+            roadGroups.forEach((g, gIdx) => {
                 const paths = g.querySelectorAll('path');
                 currentRoads.forEach((r, idx) => {
                     if (paths[idx]) {
                         paths[idx].setAttribute('d', buildPathD(r));
-                        paths[idx].setAttribute('id', `path-${r.id}`);
+                        paths[idx].setAttribute('id', `path-${r.id}-${gIdx}`);
+                        paths[idx].classList.add('road-interactive');
+                        paths[idx].setAttribute('data-road-id', r.id);
+                        
+                        // Click road to select
+                        paths[idx].onclick = (e) => {
+                            e.stopPropagation();
+                            selectRoad(r.id);
+                        };
                     }
                 });
             });
         }
 
-        // Overlay Group for Draggable Handles
+        // Overlay Group for Draggable Handles & Guides
         let handlesGroup = null;
 
         function renderHandles() {
@@ -1557,51 +1705,170 @@
             handlesGroup.innerHTML = '';
             if (!showHandles) return;
 
-            Object.values(masterNodes).forEach(node => {
-                const isSharedJunction = node.connected.length > 1;
-                const isCtrl = node.isControl;
+            // Separate nodes: Background (other roads) vs Foreground (selected road)
+            const allNodesList = Object.values(masterNodes);
+            let backgroundNodes = [];
+            let foregroundNodes = [];
 
-                const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-                g.setAttribute('class', 'handle-item');
-                g.setAttribute('data-node-id', node.id);
+            allNodesList.forEach(node => {
+                if (selectedRoadId && node.roadId === selectedRoadId) {
+                    foregroundNodes.push(node);
+                } else {
+                    backgroundNodes.push(node);
+                }
+            });
 
-                // Halo circle for easier touch target
-                const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                hit.setAttribute('cx', node.x);
-                hit.setAttribute('cy', node.y);
-                hit.setAttribute('r', '18');
-                hit.setAttribute('fill', 'transparent');
-                hit.setAttribute('cursor', 'grab');
-                g.appendChild(hit);
+            // 1. Draw Bezier Tangent Guide Lines for Curves
+            const roadsToDrawGuides = selectedRoadId 
+                ? currentRoads.filter(r => r.id === selectedRoadId) 
+                : currentRoads;
 
-                // Visual Pin Handle Circle
-                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                circle.setAttribute('cx', node.x);
-                circle.setAttribute('cy', node.y);
-                circle.setAttribute('r', isCtrl ? '8' : (isSharedJunction ? '11' : '9'));
-                circle.setAttribute('fill', isCtrl ? '#38BDF8' : (isSharedJunction ? '#F59E0B' : '#FFFFFF'));
-                circle.setAttribute('stroke', isCtrl ? '#0369A1' : (isSharedJunction ? '#78350F' : '#047857'));
-                circle.setAttribute('stroke-width', '2.5');
-                circle.setAttribute('class', 'node-handle');
-                circle.setAttribute('filter', 'drop-shadow(0 2px 4px rgba(0,0,0,0.4))');
-                g.appendChild(circle);
+            roadsToDrawGuides.forEach(r => {
+                let prevPt = null;
+                r.commands.forEach(cmd => {
+                    if (cmd.type === 'M' || cmd.type === 'L') {
+                        prevPt = { x: cmd.x, y: cmd.y };
+                    } else if (cmd.type === 'Q') {
+                        if (prevPt) {
+                            const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                            line1.setAttribute('x1', prevPt.x);
+                            line1.setAttribute('y1', prevPt.y);
+                            line1.setAttribute('x2', cmd.qx);
+                            line1.setAttribute('y2', cmd.qy);
+                            line1.setAttribute('class', 'bezier-guide');
+                            handlesGroup.appendChild(line1);
+                        }
+                        const line2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        line2.setAttribute('x1', cmd.qx);
+                        line2.setAttribute('y1', cmd.qy);
+                        line2.setAttribute('x2', cmd.x);
+                        line2.setAttribute('y2', cmd.y);
+                        line2.setAttribute('class', 'bezier-guide');
+                        handlesGroup.appendChild(line2);
+                        prevPt = { x: cmd.x, y: cmd.y };
+                    } else if (cmd.type === 'C') {
+                        if (prevPt) {
+                            const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                            line1.setAttribute('x1', prevPt.x);
+                            line1.setAttribute('y1', prevPt.y);
+                            line1.setAttribute('x2', cmd.c1x);
+                            line1.setAttribute('y2', cmd.c1y);
+                            line1.setAttribute('class', 'bezier-guide');
+                            handlesGroup.appendChild(line1);
+                        }
+                        const line2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        line2.setAttribute('x1', cmd.c2x);
+                        line2.setAttribute('y1', cmd.c2y);
+                        line2.setAttribute('x2', cmd.x);
+                        line2.setAttribute('y2', cmd.y);
+                        line2.setAttribute('class', 'bezier-guide');
+                        handlesGroup.appendChild(line2);
+                        prevPt = { x: cmd.x, y: cmd.y };
+                    }
+                });
+            });
 
-                // Small center dot
-                const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                dot.setAttribute('cx', node.x);
-                dot.setAttribute('cy', node.y);
-                dot.setAttribute('r', '2.5');
-                dot.setAttribute('fill', isCtrl ? '#FFFFFF' : (isSharedJunction ? '#FFFFFF' : '#065F46'));
-                g.appendChild(dot);
+            // 2. Render Background Nodes (if filterMode is 'all')
+            if (filterMode === 'all') {
+                backgroundNodes.forEach(node => {
+                    createHandleElement(node, false);
+                });
+            }
 
-                bindNodeDrag(g, node);
-                handlesGroup.appendChild(g);
+            // 3. Render Foreground Nodes (Active Selected Road - ALWAYS TOP of DOM)
+            foregroundNodes.forEach(node => {
+                createHandleElement(node, true);
             });
         }
 
-        // Draggable Event Engine for Nodes
+        function createHandleElement(node, isSelected) {
+            const isCtrl = (node.type === 'quad' || node.type === 'cubic1' || node.type === 'cubic2');
+            const isStart = (node.role === 'start');
+            const isEnd = (node.role === 'end');
+
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            g.setAttribute('class', `handle-item ${isSelected ? 'handle-selected' : 'handle-inactive'}`);
+            g.setAttribute('data-node-id', node.id);
+            g.setAttribute('data-road-id', node.roadId);
+
+            // Generous Invisible Hit Target for Effortless Touch & Drag
+            const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            hit.setAttribute('cx', node.x);
+            hit.setAttribute('cy', node.y);
+            hit.setAttribute('r', isSelected ? '22' : '15');
+            hit.setAttribute('fill', 'transparent');
+            hit.setAttribute('cursor', 'grab');
+            g.appendChild(hit);
+
+            // Active Road Glow Pulse Halo
+            if (isSelected) {
+                const pulseHalo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                pulseHalo.setAttribute('cx', node.x);
+                pulseHalo.setAttribute('cy', node.y);
+                pulseHalo.setAttribute('r', isCtrl ? '13' : '15');
+                pulseHalo.setAttribute('fill', isCtrl ? 'rgba(56, 189, 248, 0.25)' : 'rgba(245, 158, 11, 0.3)');
+                pulseHalo.setAttribute('stroke', isCtrl ? '#38BDF8' : '#F59E0B');
+                pulseHalo.setAttribute('stroke-width', '1.5');
+                pulseHalo.setAttribute('stroke-dasharray', '3 2');
+                g.appendChild(pulseHalo);
+            }
+
+            // Visual Pin Circle
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', node.x);
+            circle.setAttribute('cy', node.y);
+
+            let rVal = '7.5';
+            let fillVal = '#FFFFFF';
+            let strokeVal = '#475569';
+            let strokeW = '2';
+
+            if (isCtrl) {
+                rVal = isSelected ? '9' : '6.5';
+                fillVal = '#38BDF8';
+                strokeVal = '#0369A1';
+                strokeW = '2.5';
+            } else if (isStart) {
+                rVal = isSelected ? '11' : '8';
+                fillVal = '#10B981';
+                strokeVal = '#064E3B';
+                strokeW = isSelected ? '3' : '2';
+            } else if (isEnd) {
+                rVal = isSelected ? '11' : '8';
+                fillVal = '#F59E0B';
+                strokeVal = '#78350F';
+                strokeW = isSelected ? '3' : '2';
+            } else {
+                rVal = isSelected ? '10' : '7.5';
+                fillVal = '#FFFFFF';
+                strokeVal = isSelected ? '#0F172A' : '#64748B';
+                strokeW = isSelected ? '2.5' : '1.8';
+            }
+
+            circle.setAttribute('r', rVal);
+            circle.setAttribute('fill', fillVal);
+            circle.setAttribute('stroke', strokeVal);
+            circle.setAttribute('stroke-width', strokeW);
+            circle.setAttribute('class', `node-handle ${isSelected ? 'node-handle-active' : (filterMode === 'all' && selectedRoadId ? 'node-handle-dimmed' : '')}`);
+            circle.setAttribute('filter', 'drop-shadow(0 2px 5px rgba(0,0,0,0.45))');
+            g.appendChild(circle);
+
+            // Small Distinctive Center Dot
+            const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            dot.setAttribute('cx', node.x);
+            dot.setAttribute('cy', node.y);
+            dot.setAttribute('r', isCtrl ? '2' : '2.5');
+            dot.setAttribute('fill', isCtrl ? '#FFFFFF' : (isStart || isEnd ? '#FFFFFF' : '#0F172A'));
+            g.appendChild(dot);
+
+            bindNodeDrag(g, node);
+            handlesGroup.appendChild(g);
+        }
+
+        // Draggable Event Engine for Nodes with Live Magnet Snapping
         let activeDragNode = null;
         let dragOffsetSvg = { x: 0, y: 0 };
+        let magnetRing = null;
 
         function screenToSvgCoords(screenX, screenY) {
             const pt = svg.createSVGPoint();
@@ -1614,7 +1881,13 @@
             const onStart = (e) => {
                 e.stopPropagation();
                 e.preventDefault();
+                saveHistoryState(); // Snapshot before drag
                 activeDragNode = node;
+
+                // Ensure road is selected when its handle is grabbed
+                if (selectedRoadId !== node.roadId) {
+                    selectRoad(node.roadId);
+                }
 
                 const clientX = e.touches ? e.touches[0].clientX : e.clientX;
                 const clientY = e.touches ? e.touches[0].clientY : e.clientY;
@@ -1641,36 +1914,65 @@
                 let targetX = Math.round(svgPt.x - dragOffsetSvg.x);
                 let targetY = Math.round(svgPt.y - dragOffsetSvg.y);
 
-                // Bound checking within campus
+                // Boundary Lock within Canvas (0,0) to (1600,1000)
                 targetX = Math.max(0, Math.min(1600, targetX));
                 targetY = Math.max(0, Math.min(1000, targetY));
 
-                const deltaX = targetX - activeDragNode.x;
-                const deltaY = targetY - activeDragNode.y;
+                // Live Magnet Snapping to Nearest Points
+                let snappedTo = null;
+                if (magnetMode && !e.altKey) {
+                    let minDistance = MAGNET_RADIUS;
+                    Object.values(masterNodes).forEach(other => {
+                        if (other.id !== activeDragNode.id) {
+                            const d = Math.hypot(other.x - targetX, other.y - targetY);
+                            if (d < minDistance) {
+                                minDistance = d;
+                                snappedTo = other;
+                            }
+                        }
+                    });
+
+                    if (snappedTo) {
+                        targetX = snappedTo.x;
+                        targetY = snappedTo.y;
+                        showMagnetRing(targetX, targetY);
+                    } else {
+                        hideMagnetRing();
+                    }
+                } else {
+                    hideMagnetRing();
+                }
 
                 activeDragNode.x = targetX;
                 activeDragNode.y = targetY;
 
-                // Sync to connected commands
-                activeDragNode.connected.forEach(conn => {
-                    if (conn.field === 'main') {
-                        conn.cmd.x = targetX;
-                        conn.cmd.y = targetY;
-                    } else if (conn.field === 'quad') {
-                        conn.cmd.qx = targetX;
-                        conn.cmd.qy = targetY;
-                    }
-                });
+                // Apply exclusively to activeDragNode's owned command!
+                if (activeDragNode.field === 'main') {
+                    activeDragNode.cmd.x = targetX;
+                    activeDragNode.cmd.y = targetY;
+                } else if (activeDragNode.field === 'quad') {
+                    activeDragNode.cmd.qx = targetX;
+                    activeDragNode.cmd.qy = targetY;
+                } else if (activeDragNode.field === 'c1') {
+                    activeDragNode.cmd.c1x = targetX;
+                    activeDragNode.cmd.c1y = targetY;
+                } else if (activeDragNode.field === 'c2') {
+                    activeDragNode.cmd.c2x = targetX;
+                    activeDragNode.cmd.c2y = targetY;
+                }
 
                 // Update Visuals
                 updateHandleElement(handleEl, targetX, targetY);
                 refreshRoadSvgLayers();
-                showNodeHud(activeDragNode, clientX, clientY);
+                showNodeHud(activeDragNode, clientX, clientY, snappedTo);
             };
 
             const onEnd = () => {
                 activeDragNode = null;
                 hideNodeHud();
+                hideMagnetRing();
+                renderHandles(); // Re-render cleanly with fresh guides
+                renderRoadList();
                 window.removeEventListener('mousemove', onMove);
                 window.removeEventListener('mouseup', onEnd);
                 window.removeEventListener('touchmove', onMove);
@@ -1689,17 +1991,38 @@
             });
         }
 
+        function showMagnetRing(x, y) {
+            if (!magnetRing) {
+                magnetRing = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                magnetRing.setAttribute('class', 'magnet-indicator');
+                svg.appendChild(magnetRing);
+            }
+            magnetRing.setAttribute('cx', x);
+            magnetRing.setAttribute('cy', y);
+            magnetRing.style.display = 'block';
+        }
+
+        function hideMagnetRing() {
+            if (magnetRing) {
+                magnetRing.style.display = 'none';
+            }
+        }
+
         // Floating Node HUD
         const floatingHud = document.getElementById('floatingNodeHud');
         const hudTitle = document.getElementById('hudNodeTitle');
         const hudCoords = document.getElementById('hudNodeCoords');
         const hudMainBadge = document.getElementById('hudCoords');
 
-        function showNodeHud(node, screenX, screenY) {
-            const connNames = node.connected.map(c => c.roadId).join(', ');
-            hudTitle.textContent = `${node.id} (${connNames})`;
-            hudCoords.textContent = `X: ${node.x}, Y: ${node.y}`;
-            hudMainBadge.textContent = `X: ${node.x}, Y: ${node.y} (${connNames})`;
+        function showNodeHud(node, screenX, screenY, snappedTo = null) {
+            hudTitle.innerHTML = `<span class="text-amber-400 font-extrabold">${node.roadId}</span>: ${node.label}`;
+            if (snappedTo) {
+                hudCoords.innerHTML = `<span class="text-emerald-400 font-bold">🧲 ดูดติดกับ: ${snappedTo.roadId} (${snappedTo.x}, ${snappedTo.y})</span>`;
+                hudMainBadge.textContent = `X: ${node.x}, Y: ${node.y} [🧲 ${snappedTo.roadId}]`;
+            } else {
+                hudCoords.textContent = `พิกัด: X ${node.x}, Y ${node.y}`;
+                hudMainBadge.textContent = `X: ${node.x}, Y: ${node.y} (${node.roadId})`;
+            }
 
             floatingHud.style.left = `${screenX}px`;
             floatingHud.style.top = `${screenY}px`;
@@ -1710,21 +2033,58 @@
             floatingHud.classList.add('hidden');
         }
 
-        // Toggle Functions
-        function toggleSnapMode() {
-            snapLock = !snapLock;
-            const text = document.getElementById('snapText');
-            const icon = document.getElementById('snapIcon');
-            if (snapLock) {
-                text.textContent = 'รวมแยก: เปิด';
-                icon.classList.remove('text-slate-400');
+        // Road Selection & Focus Handler
+        function selectRoad(roadId) {
+            selectedRoadId = roadId;
+
+            // Highlight in SVG
+            const allRoadPaths = svg.querySelectorAll('.road-interactive');
+            allRoadPaths.forEach(p => p.classList.remove('road-highlight'));
+
+            if (roadId) {
+                const targetPaths = svg.querySelectorAll(`[data-road-id="${roadId}"]`);
+                targetPaths.forEach(p => p.classList.add('road-highlight'));
+            }
+
+            renderHandles();
+            renderRoadList();
+        }
+
+        // Mode Toggles
+        function toggleFilterMode() {
+            filterMode = (filterMode === 'all') ? 'focus' : 'all';
+            const text = document.getElementById('filterText');
+            const icon = document.getElementById('filterIcon');
+
+            if (filterMode === 'focus') {
+                text.textContent = 'มุมมอง: เฉพาะเส้นที่เลือก';
+                icon.classList.remove('text-sky-400');
                 icon.classList.add('text-amber-400');
-                showToast('เปิดโหมด Auto-Snap: จุดแยกจะขยับพร้อมกันทั้งหมด');
+                showToast(`โหมดโฟกัส: แสดงเฉพาะจุดของ ${selectedRoadId || 'เส้นที่เลือก'}`);
             } else {
-                text.textContent = 'แยกอิสระ: ปิด';
+                text.textContent = 'มุมมอง: ทุกเส้น';
                 icon.classList.remove('text-amber-400');
-                icon.classList.add('text-slate-400');
-                showToast('เปิดโหมดอิสระ: จุดแยกขยับแยกเดี่ยวได้');
+                icon.classList.add('text-sky-400');
+                showToast('โหมดรวม: แสดงจุดของทุกเส้นทาง');
+            }
+            renderHandles();
+        }
+
+        function toggleMagnetMode() {
+            magnetMode = !magnetMode;
+            const text = document.getElementById('magnetText');
+            const icon = document.getElementById('magnetIcon');
+
+            if (magnetMode) {
+                text.textContent = 'แม่เหล็ก: เปิด';
+                icon.classList.remove('text-slate-500');
+                icon.classList.add('text-amber-400');
+                showToast('เปิดแม่เหล็กดูดจุด (14px): ดูดเชื่อมต่อแยกให้อัตโนมัติ');
+            } else {
+                text.textContent = 'แม่เหล็ก: ปิด';
+                icon.classList.remove('text-amber-400');
+                icon.classList.add('text-slate-500');
+                showToast('ปิดแม่เหล็ก: เคลื่อนย้ายอิสระระดับพิกเซล');
             }
         }
 
@@ -1734,24 +2094,26 @@
             const icon = document.getElementById('handlesIcon');
             if (showHandles) {
                 icon.classList.remove('text-slate-500');
-                icon.classList.add('text-sky-400');
+                icon.classList.add('text-emerald-400');
                 showToast('แสดงจุดด้ามจับ');
             } else {
-                icon.classList.remove('text-sky-400');
+                icon.classList.remove('text-emerald-400');
                 icon.classList.add('text-slate-500');
                 showToast('ซ่อนจุดด้ามจับ (พรีวิวแผนที่คลีน)');
             }
         }
 
         function resetRoads() {
+            saveHistoryState();
             currentRoads = JSON.parse(JSON.stringify(INITIAL_ROADS));
             initNodes();
             refreshRoadSvgLayers();
             renderHandles();
+            renderRoadList();
             showToast('รีเซ็ตตำแหน่งถนนกลับสู่ค่าเริ่มต้นเรียบร้อย');
         }
 
-        // Toast
+        // Toast Notification System
         function showToast(msg) {
             const toast = document.getElementById('toastNotification');
             const toastMsg = document.getElementById('toastMessage');
@@ -1764,12 +2126,12 @@
             }, 2500);
         }
 
-        // Generate Clean SVG Code for Copy
+        // Clean Production SVG Generator
         function generateCleanSvgCode() {
             let lines = [];
             lines.push('  <!-- ================= 5. REFINED SEAMLESS ROAD NETWORK ================= -->');
             
-            // Layer 1
+            // Layer 1: Soft Drop Shadow
             lines.push('  <!-- 5.0 Road Contact Soft Drop Shadow (Stroke 36, Opacity 0.38) -->');
             lines.push('  <g fill="none" stroke="#0B1220" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" opacity="0.38">');
             currentRoads.forEach(r => {
@@ -1778,7 +2140,7 @@
             });
             lines.push('  </g>\n');
 
-            // Layer 2
+            // Layer 2: Cream Curb
             lines.push('  <!-- 5.1 Cartoon Cream Curb / Pavement Border (Stroke 30, #F8FAFC, Fully Rounded Seamless) -->');
             lines.push('  <g fill="none" stroke="#F8FAFC" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">');
             currentRoads.forEach(r => {
@@ -1787,7 +2149,7 @@
             });
             lines.push('  </g>\n');
 
-            // Layer 3
+            // Layer 3: Warm Slate Surface
             lines.push('  <!-- 5.2 Inner Road Surface Core (Warm Pavement Slate, Width 22, Rounded) -->');
             lines.push('  <g fill="none" stroke="url(#warmRoadSurface)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">');
             currentRoads.forEach(r => {
@@ -1796,7 +2158,7 @@
             });
             lines.push('  </g>\n');
 
-            // Layer 4
+            // Layer 4: Butter-Yellow Centerline
             lines.push('  <!-- 5.3 Warm Butter-Yellow Centerline (Stroke 2, Dasharray 7 7) -->');
             lines.push('  <g fill="none" stroke="#FEF08A" stroke-width="2" stroke-dasharray="7 7" opacity="0.9" stroke-linecap="round" stroke-linejoin="round">');
             currentRoads.forEach(r => {
@@ -1812,57 +2174,67 @@
             navigator.clipboard.writeText(code).then(() => {
                 showToast('คัดลอกโค้ด SVG ถนนทั้ง 4 เลเยอร์แล้ว! ส่งให้ผู้ช่วยบันทึกได้ทันที');
             }).catch(err => {
-                // Fallback prompt
                 prompt('คัดลอกโค้ด SVG ด้านล่างนี้:', code);
             });
         }
 
-        // Render Road Directory List in Sidebar
+        // Render Sidebar Road Directory
         function renderRoadList() {
             const list = document.getElementById('roadListContainer');
             if (!list) return;
             list.innerHTML = '';
 
             currentRoads.forEach(r => {
+                const isSelected = (selectedRoadId === r.id);
+                const roadNodes = Object.values(masterNodes).filter(n => n.roadId === r.id);
+
                 const item = document.createElement('div');
-                item.className = 'p-2 rounded-lg bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 cursor-pointer transition flex items-center justify-between group';
+                item.className = `p-2.5 rounded-xl border cursor-pointer transition-all duration-200 ${
+                    isSelected 
+                        ? 'bg-amber-500/15 border-amber-500/50 shadow-md ring-1 ring-amber-500/30' 
+                        : 'bg-slate-800/60 hover:bg-slate-800 border-slate-700/60'
+                }`;
+
+                let pointsSummaryHtml = '';
+                if (isSelected) {
+                    pointsSummaryHtml = `
+                        <div class="mt-2 pt-2 border-t border-amber-500/20 space-y-1">
+                            ${roadNodes.map(n => `
+                                <div class="flex items-center justify-between text-[10px] text-slate-300 font-mono bg-slate-900/60 px-2 py-1 rounded">
+                                    <span class="truncate">${n.label}</span>
+                                    <span class="text-amber-400 font-bold shrink-0 ml-1">(${Math.round(n.x)}, ${Math.round(n.y)})</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+
                 item.innerHTML = `
-                    <div class="flex items-center gap-2 overflow-hidden">
-                        <span class="font-mono font-bold text-xs bg-slate-700 text-amber-300 px-1.5 py-0.5 rounded">${r.id}</span>
-                        <span class="text-xs text-slate-300 truncate group-hover:text-white transition">${r.name}</span>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2 overflow-hidden">
+                            <span class="font-mono font-bold text-xs px-2 py-0.5 rounded ${
+                                isSelected ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-700 text-amber-300'
+                            }">${r.id}</span>
+                            <span class="text-xs font-semibold truncate ${isSelected ? 'text-amber-200 font-bold' : 'text-slate-300'}>${r.name}</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 shrink-0 ml-2">
+                            <span class="text-[10px] text-slate-400 bg-slate-950/60 px-1.5 py-0.5 rounded font-mono">${roadNodes.length} จุด</span>
+                            <i data-lucide="${isSelected ? 'check-circle' : 'chevron-right'}" class="w-3.5 h-3.5 ${isSelected ? 'text-amber-400' : 'text-slate-500'}"></i>
+                        </div>
                     </div>
-                    <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 shrink-0"></i>
+                    ${pointsSummaryHtml}
                 `;
-                item.onclick = () => highlightRoad(r.id);
+
+                item.onclick = (e) => {
+                    e.stopPropagation();
+                    selectRoad(r.id);
+                };
                 list.appendChild(item);
             });
             lucide.createIcons();
         }
 
-        function highlightRoad(id) {
-            selectedRoadId = id;
-            // Flash road in SVG
-            const allPaths = svg.querySelectorAll(`path[id^="path-"]`);
-            allPaths.forEach(p => p.classList.remove('road-highlight'));
-
-            const targetPaths = svg.querySelectorAll(`path[id="path-${id}"]`);
-            targetPaths.forEach(p => {
-                p.classList.add('road-highlight');
-                setTimeout(() => p.classList.remove('road-highlight'), 2000);
-            });
-
-            // Focus on node
-            const r = currentRoads.find(x => x.id === id);
-            if (r && r.commands[0]) {
-                const n = masterNodes[r.commands[0].nodeId];
-                if (n) {
-                    showNodeHud(n, window.innerWidth / 2, window.innerHeight / 2);
-                    setTimeout(hideNodeHud, 1500);
-                }
-            }
-        }
-
-        // Canvas Zoom & Pan Handlers
+        // Viewport Zoom & Pan Handlers
         function updateCanvasTransform() {
             wrapper.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
         }
@@ -1906,6 +2278,27 @@
             const factor = e.deltaY < 0 ? 1.1 : 0.9;
             zoomEditor(factor);
         }, { passive: false });
+
+        // Keyboard Shortcuts: Ctrl+Z (Undo), Ctrl+Y (Redo), Escape (Deselect)
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
+                if (e.shiftKey) redo();
+                else undo();
+                e.preventDefault();
+            } else if ((e.ctrlKey || e.metaKey) && e.key === 'y') {
+                redo();
+                e.preventDefault();
+            } else if (e.key === 'Escape') {
+                selectRoad(null);
+            }
+        });
+
+        // Click on Canvas background deselects road
+        viewport.addEventListener('click', (e) => {
+            if (e.target === viewport || e.target === wrapper || e.target === svg) {
+                selectRoad(null);
+            }
+        });
 
         // Initialize Everything
         initNodes();
