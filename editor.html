@@ -183,29 +183,43 @@
     <!-- ================= MAIN WORKSPACE (SIDEBAR + CANVAS) ================= -->
     <div class="flex-1 flex overflow-hidden relative">
 
-                <!-- Left Sidebar: Road Segments Directory R01-R18 -->
-        <aside class="w-80 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 z-20 hidden lg:flex">
-            <div class="p-3 border-b border-slate-800 flex items-center justify-between text-xs bg-slate-950/40">
-                <div>
-                    <span class="text-slate-300 font-bold uppercase tracking-wider block">รายการถนน (R01 - R18)</span>
-                    <span class="text-[10px] text-amber-400 font-medium">✨ ปรับแต่งอิสระเส้นต่อเส้น (52 จุด)</span>
+                        <!-- Left Sidebar: Advanced Road Studio Directory -->
+        <aside class="w-84 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 z-20 hidden lg:flex" style="width: 22rem;">
+            <!-- Header -->
+            <div class="p-3 border-b border-slate-800 bg-slate-950/60">
+                <div class="flex items-center justify-between mb-2">
+                    <div>
+                        <span class="text-slate-200 font-bold uppercase tracking-wider text-xs block">สตูดิโอผังถนน</span>
+                        <span id="roadCountSubtext" class="text-[10px] text-amber-400 font-medium">18 เส้นทาง • 54 จุดอิสระ</span>
+                    </div>
+                    <button onclick="selectRoad(null)" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-2 py-1 rounded border border-slate-700 transition" title="แสดงภาพรวมทุกเส้น">
+                        ดูทั้งหมด
+                    </button>
                 </div>
-                <button onclick="selectRoad(null)" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-2 py-1 rounded border border-slate-700 transition" title="แสดงภาพรวมทุกเส้น">
-                    ดูทั้งหมด
-                </button>
+                <!-- Action Buttons: Add Road -->
+                <div class="flex items-center gap-1.5">
+                    <button onclick="addNewRoad()" class="flex-1 flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-1.5 px-3 rounded-lg shadow transition active:scale-95" title="สร้างเส้นทางถนนใหม่">
+                        <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+                        <span>+ เพิ่มเส้นถนนใหม่</span>
+                    </button>
+                </div>
             </div>
-            <div id="roadListContainer" class="flex-1 overflow-y-auto p-2 space-y-1.5">
-                <!-- Dynamically generated road list items -->
+
+            <!-- Road List Container -->
+            <div id="roadListContainer" class="flex-1 overflow-y-auto p-2 space-y-2">
+                <!-- Dynamically generated road cards with point inspector -->
             </div>
-            <div class="p-3 border-t border-slate-800 bg-slate-950/80 text-[11px] text-slate-400 space-y-1.5">
+
+            <!-- Footer Tips -->
+            <div class="p-3 border-t border-slate-800 bg-slate-950/80 text-[11px] text-slate-400 space-y-1 shrink-0">
                 <div class="flex items-center gap-1.5 text-amber-400 font-bold">
                     <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                    คำแนะนำการปรับแต่ง:
+                    เครื่องมือปรับแต่งขั้นสูง:
                 </div>
-                <p>• <b>อิสระ 100%:</b> ทุกเส้นมีจุดหัว-ท้ายและจุดดัดของตัวเอง ไม่ดึงเส้นอื่นพัง</p>
-                <p>• <b>โฟกัสง่าย:</b> คลิกเส้นในรายการเพื่อดึงจุดของเส้นนั้นมาอยู่บนสุด</p>
-                <p>• <b>แม่เหล็กดูดจุด:</b> เมื่อลากจุดเข้าใกล้แยกอื่น (14px) ระบบจะดูดเชื่อมให้อัตโนมัติ</p>
-                <p>• <b>ปุ่มลัด:</b> Ctrl+Z ย้อนกลับ | Spacebar+ลาก เพื่อแพน</p>
+                <p>• <b>เพิ่มจุด:</b> ดับเบิ้ลคลิกบนเส้นในแผนที่ หรือกด <b>[+ แทรก]</b> ในรายการ</p>
+                <p>• <b>ดัดโค้ง/ตรง:</b> กดปุ่ม <b>[∿ โค้ง]</b> หรือ <b>[— ตรง]</b> เพื่อเปลี่ยนชนิดท่อนถนน</p>
+                <p>• <b>เพิ่มเส้น:</b> กด <b>[+ เพิ่มเส้นถนนใหม่]</b> ด้านบน</p>
+                <p>• <b>แม่เหล็กดูดจุด:</b> ลากจุดใกล้แยกอื่น (14px) ระบบจะดูดเชื่อมต่อให้อัตโนมัติ</p>
             </div>
         </aside>
 
@@ -491,7 +505,7 @@
 
     <!-- ================= 5. REFINED SEAMLESS ROAD NETWORK ================= -->
   <!-- 5.0 Road Contact Soft Drop Shadow (Stroke 36, Opacity 0.38) -->
-  <g fill="none" stroke="#0B1220" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" opacity="0.38">
+  <g id="roadLayerShadow" fill="none" stroke="#0B1220" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" opacity="0.38">
     <!-- R01: ทางเข้าประตูวิภาวดี -->
     <path d="M 90 320 L 200 320" />
     <!-- R02: วงแหวนรอบบน หลังสาธิตฯ-บาร์ใหม่ -->
@@ -531,7 +545,7 @@
   </g>
 
   <!-- 5.1 Cartoon Cream Curb / Pavement Border (Stroke 30, #F8FAFC, Fully Rounded Seamless) -->
-  <g fill="none" stroke="#F8FAFC" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
+  <g id="roadLayerCurb" fill="none" stroke="#F8FAFC" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
     <path d="M 90 320 L 200 320" stroke-linecap="butt" />
     <path d="M 200 320 Q 200 175 270 145 L 996 12" />
     <path d="M 200 380 L 1326 81" />
@@ -553,7 +567,7 @@
   </g>
 
   <!-- 5.2 Inner Road Surface Core (Warm Pavement Slate, Width 22, Rounded) -->
-  <g fill="none" stroke="url(#warmRoadSurface)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+  <g id="roadLayerSurface" fill="none" stroke="url(#warmRoadSurface)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
     <path d="M 90 320 L 200 320" stroke-linecap="butt" />
     <path d="M 200 320 Q 200 175 270 145 L 996 12" />
     <path d="M 200 380 L 1326 81" />
@@ -575,7 +589,7 @@
   </g>
 
   <!-- 5.3 Warm Butter-Yellow Centerline (Stroke 2, Dasharray 7 7) -->
-  <g fill="none" stroke="#FEF08A" stroke-width="2" stroke-dasharray="7 7" opacity="0.9" stroke-linecap="round" stroke-linejoin="round">
+  <g id="roadLayerCenterline" fill="none" stroke="#FEF08A" stroke-width="2" stroke-dasharray="7 7" opacity="0.9" stroke-linecap="round" stroke-linejoin="round">
     <path d="M 90 320 L 200 320" />
     <path d="M 200 320 Q 200 175 270 145 L 996 12" />
     <path d="M 200 380 L 1326 81" />
@@ -1330,12 +1344,11 @@
         </main>
     </div>
 
-        <!-- ================= EDITOR ENGINE SCRIPT (INDEPENDENT PER-LINE ARCHITECTURE) ================= -->
+            <!-- ================= ADVANCED ROAD STUDIO ENGINE (V3 - FULL ROAD CREATION & CURVE CONVERSION) ================= -->
     <script>
         lucide.createIcons();
 
-        // 1. Initial Road Segment Models - 100% Independent Per-Line Handles
-        // Every single road has its own unique, isolated endpoints and control points!
+        // 1. Initial Road Segment Models
         const INITIAL_ROADS = [
             {
                 id: 'R01',
@@ -1509,11 +1522,11 @@
 
         // State Machine
         let currentRoads = JSON.parse(JSON.stringify(INITIAL_ROADS));
-        let selectedRoadId = 'R01'; // Default focused road
+        let selectedRoadId = 'R01';
         let filterMode = 'all';     // 'all' or 'focus'
-        let magnetMode = true;      // Magnet snap to nearest points
-        let showHandles = true;     // Show/hide handle layer
-        const MAGNET_RADIUS = 14;   // Magnetic snapping threshold in SVG units
+        let magnetMode = true;      // Magnet snap
+        let showHandles = true;
+        const MAGNET_RADIUS = 14;
 
         // Undo / Redo History
         let undoStack = [];
@@ -1569,7 +1582,7 @@
         const wrapper = document.getElementById('mapTransformWrapper');
         const svg = document.getElementById('cartoonPokemonCampusSvg');
 
-        // Master Nodes Map - 100% 1-to-1 Mapping (Every node has EXACTLY ONE owner)
+        // Master Nodes Map
         let masterNodes = {};
 
         function initNodes() {
@@ -1638,6 +1651,13 @@
                     }
                 });
             });
+
+            // Update subtext
+            const sub = document.getElementById('roadCountSubtext');
+            if (sub) {
+                const totalPts = Object.keys(masterNodes).length;
+                sub.textContent = `${currentRoads.length} เส้นทาง • ${totalPts} จุดอิสระ`;
+            }
         }
 
         // Render Path String from Commands
@@ -1659,37 +1679,336 @@
             return parts.join(' ');
         }
 
-        // Update All 4 SVG Layers for Roads & Attach Interactive Click Handlers
+        // Dynamic 4-Layer Synchronization (Handles Any Number of Roads Automatically)
         function refreshRoadSvgLayers() {
-            const groups = svg.querySelectorAll('g');
-            let roadGroups = [];
-            groups.forEach(g => {
-                const paths = g.querySelectorAll('path');
-                if (paths.length >= 17) {
-                    roadGroups.push(g);
-                }
-            });
+            const layerShadow = document.getElementById('roadLayerShadow');
+            const layerCurb = document.getElementById('roadLayerCurb');
+            const layerSurface = document.getElementById('roadLayerSurface');
+            const layerCenterline = document.getElementById('roadLayerCenterline');
 
-            roadGroups.forEach((g, gIdx) => {
-                const paths = g.querySelectorAll('path');
+            const roadGroups = [
+                { el: layerShadow, buttCaps: false },
+                { el: layerCurb, buttCaps: true },
+                { el: layerSurface, buttCaps: true },
+                { el: layerCenterline, buttCaps: false }
+            ];
+
+            roadGroups.forEach(({ el, buttCaps }) => {
+                if (!el) return;
+                let paths = Array.from(el.querySelectorAll('path'));
+                // Synchronize path count
+                while (paths.length < currentRoads.length) {
+                    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    el.appendChild(p);
+                    paths.push(p);
+                }
+                while (paths.length > currentRoads.length) {
+                    const p = paths.pop();
+                    p.remove();
+                }
+
                 currentRoads.forEach((r, idx) => {
-                    if (paths[idx]) {
-                        paths[idx].setAttribute('d', buildPathD(r));
-                        paths[idx].setAttribute('id', `path-${r.id}-${gIdx}`);
-                        paths[idx].classList.add('road-interactive');
-                        paths[idx].setAttribute('data-road-id', r.id);
-                        
-                        // Click road to select
-                        paths[idx].onclick = (e) => {
-                            e.stopPropagation();
-                            selectRoad(r.id);
-                        };
+                    const p = paths[idx];
+                    p.setAttribute('d', buildPathD(r));
+                    p.setAttribute('data-road-id', r.id);
+                    p.classList.add('road-interactive');
+
+                    if (buttCaps && ['R01', 'R06', 'R07', 'R08', 'R13', 'R17'].includes(r.id)) {
+                        p.setAttribute('stroke-linecap', 'butt');
+                    } else if (buttCaps) {
+                        p.removeAttribute('stroke-linecap');
                     }
+
+                    // Click road to select
+                    p.onclick = (e) => {
+                        e.stopPropagation();
+                        selectRoad(r.id);
+                    };
+
+                    // Double-click road to insert a new point right at cursor!
+                    p.ondblclick = (e) => {
+                        e.stopPropagation();
+                        insertPointAtScreenCoord(r.id, e.clientX, e.clientY);
+                    };
                 });
             });
         }
 
-        // Overlay Group for Draggable Handles & Guides
+        // ================= ROAD CREATION, POINT INSERTION & CONVERSION ENGINE =================
+
+        // 1. Add New Road Line
+        function addNewRoad() {
+            saveHistoryState();
+            let maxNum = 0;
+            currentRoads.forEach(r => {
+                const m = r.id.match(/^R(\d+)$/);
+                if (m) {
+                    const n = parseInt(m[1], 10);
+                    if (n > maxNum) maxNum = n;
+                }
+            });
+            const nextNum = maxNum + 1;
+            const nextId = 'R' + (nextNum < 10 ? '0' + nextNum : nextNum);
+
+            // Default placement near center of campus
+            const startX = 750 + ((nextNum * 25) % 200);
+            const startY = 480 + ((nextNum * 20) % 150);
+            const endX = startX + 130;
+            const endY = startY + 50;
+
+            const newRoad = {
+                id: nextId,
+                name: `เส้นทางใหม่ ${nextId}`,
+                commands: [
+                    { type: 'M', x: startX, y: startY, nodeId: `${nextId}_P0`, role: 'start', label: `${nextId} จุดเริ่มต้น` },
+                    { type: 'L', x: endX, y: endY, nodeId: `${nextId}_P1`, role: 'end', label: `${nextId} จุดสิ้นสุด` }
+                ]
+            };
+
+            currentRoads.push(newRoad);
+            initNodes();
+            refreshRoadSvgLayers();
+            selectRoad(nextId);
+            showToast(`✨ เพิ่มเส้นทางใหม่ [${nextId}] เรียบร้อยแล้ว! ปรับแต่งได้ทันที`);
+        }
+
+        // 2. Delete Road
+        function deleteRoad(roadId) {
+            if (currentRoads.length <= 1) {
+                showToast('ต้องมีเส้นทางถนนอย่างน้อย 1 เส้นทาง');
+                return;
+            }
+            if (!confirm(`คุณต้องการลบเส้นทาง "${roadId}" หรือไม่?`)) return;
+
+            saveHistoryState();
+            currentRoads = currentRoads.filter(r => r.id !== roadId);
+            if (selectedRoadId === roadId) {
+                selectedRoadId = currentRoads[0]?.id || null;
+            }
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`ลบเส้นทาง ${roadId} เรียบร้อยแล้ว`);
+        }
+
+        // 3. Rename Road
+        function updateRoadName(roadId, newName) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (road && newName.trim()) {
+                saveHistoryState();
+                road.name = newName.trim();
+                renderRoadList();
+            }
+        }
+
+        // 4. Add Point to End of Road
+        function addPointToEnd(roadId) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road) return;
+            saveHistoryState();
+
+            const lastCmd = road.commands[road.commands.length - 1];
+            const prevCmd = road.commands.length >= 2 ? road.commands[road.commands.length - 2] : null;
+
+            let newX = lastCmd.x + 80;
+            let newY = lastCmd.y + 40;
+            if (prevCmd) {
+                const dx = lastCmd.x - (prevCmd.x ?? prevCmd.qx ?? prevCmd.c2x ?? 0);
+                const dy = lastCmd.y - (prevCmd.y ?? prevCmd.qy ?? prevCmd.c2y ?? 0);
+                const dist = Math.hypot(dx, dy) || 1;
+                newX = Math.round(lastCmd.x + (dx / dist) * 75);
+                newY = Math.round(lastCmd.y + (dy / dist) * 75);
+            }
+            newX = Math.max(50, Math.min(1550, newX));
+            newY = Math.max(50, Math.min(950, newY));
+
+            if (lastCmd.role === 'end') lastCmd.role = 'vertex';
+
+            const newIndex = road.commands.length;
+            const newNodeId = `${road.id}_P${newIndex}`;
+
+            road.commands.push({
+                type: 'L',
+                x: newX,
+                y: newY,
+                nodeId: newNodeId,
+                role: 'end',
+                label: `${road.id} จุดที่ ${newIndex + 1}`
+            });
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`เพิ่มจุดต่อท้ายบน ${road.id} เรียบร้อย (${newX}, ${newY})`);
+        }
+
+        // 5. Insert Point After Specific Command Index
+        function insertPointAfter(roadId, cmdIdx) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road || cmdIdx >= road.commands.length - 1) return;
+            saveHistoryState();
+
+            const curr = road.commands[cmdIdx];
+            const next = road.commands[cmdIdx + 1];
+
+            const midX = Math.round((curr.x + next.x) / 2);
+            const midY = Math.round((curr.y + next.y) / 2);
+
+            const newNodeId = `${road.id}_P_INS_${Date.now().toString().slice(-4)}`;
+            road.commands.splice(cmdIdx + 1, 0, {
+                type: 'L',
+                x: midX,
+                y: midY,
+                nodeId: newNodeId,
+                role: 'vertex',
+                label: `${road.id} จุดแทรกกึ่งกลาง`
+            });
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`แทรกจุดใหม่กึ่งกลางบน ${road.id} สำเร็จ`);
+        }
+
+        // 6. Delete Point from Road
+        function deletePoint(roadId, cmdIdx) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road || road.commands.length <= 2) {
+                showToast('ถนนต้องมีอย่างน้อย 2 จุด (ไม่สามารถลบได้อีก)');
+                return;
+            }
+            saveHistoryState();
+            road.commands.splice(cmdIdx, 1);
+
+            // Re-assign roles
+            if (road.commands[0]) road.commands[0].role = 'start';
+            const last = road.commands[road.commands.length - 1];
+            if (last && last.type !== 'Z') last.role = 'end';
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast('ลบจุดเรียบร้อยแล้ว');
+        }
+
+        // 7. Convert Segment to Curve (Quadratic Bezier 'Q')
+        function convertSegmentToCurve(roadId, cmdIdx) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road || cmdIdx <= 0 || cmdIdx >= road.commands.length) return;
+            const cmd = road.commands[cmdIdx];
+            const prev = road.commands[cmdIdx - 1];
+            if (cmd.type !== 'L') return;
+
+            saveHistoryState();
+            const mx = (prev.x + cmd.x) / 2;
+            const my = (prev.y + cmd.y) / 2;
+            const dx = cmd.x - prev.x;
+            const dy = cmd.y - prev.y;
+
+            // Offset perpendicular to line by 25% length
+            const qx = Math.round(mx - dy * 0.25);
+            const qy = Math.round(my + dx * 0.25);
+
+            cmd.type = 'Q';
+            cmd.qx = qx;
+            cmd.qy = qy;
+            cmd.qNodeId = `${road.id}_Q_${cmdIdx}`;
+            cmd.qRole = 'ctrl';
+            cmd.qLabel = `${road.id} ดัดโค้ง`;
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`ดัดเป็น "เส้นโค้ง (Q)" แล้ว! ลากจุดสีฟ้าเพื่อปรับองศาโค้ง`);
+        }
+
+        // 8. Convert Segment to Straight Line ('L')
+        function convertSegmentToStraight(roadId, cmdIdx) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road || cmdIdx <= 0 || cmdIdx >= road.commands.length) return;
+            const cmd = road.commands[cmdIdx];
+            if (cmd.type !== 'Q' && cmd.type !== 'C') return;
+
+            saveHistoryState();
+            cmd.type = 'L';
+            delete cmd.qx;
+            delete cmd.qy;
+            delete cmd.qNodeId;
+            delete cmd.qRole;
+            delete cmd.qLabel;
+            delete cmd.c1x;
+            delete cmd.c1y;
+            delete cmd.c1NodeId;
+            delete cmd.c1Label;
+            delete cmd.c2x;
+            delete cmd.c2y;
+            delete cmd.c2NodeId;
+            delete cmd.c2Label;
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`เปลี่ยนกลับเป็น "เส้นตรง" เรียบร้อยแล้ว`);
+        }
+
+        // 9. Double-click on road to insert point at cursor location
+        function insertPointAtScreenCoord(roadId, screenX, screenY) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road) return;
+            const pt = screenToSvgCoords(screenX, screenY);
+            const clickX = Math.round(pt.x);
+            const clickY = Math.round(pt.y);
+
+            saveHistoryState();
+
+            let bestSegmentIdx = road.commands.length - 2;
+            let minDistance = Infinity;
+
+            for (let i = 0; i < road.commands.length - 1; i++) {
+                const c1 = road.commands[i];
+                const c2 = road.commands[i + 1];
+                const p1 = { x: c1.x, y: c1.y };
+                const p2 = { x: c2.x, y: c2.y };
+                const dist = distToSegment({ x: clickX, y: clickY }, p1, p2);
+                if (dist < minDistance) {
+                    minDistance = dist;
+                    bestSegmentIdx = i;
+                }
+            }
+
+            const newNodeId = `${road.id}_P_INS_${Date.now().toString().slice(-4)}`;
+            road.commands.splice(bestSegmentIdx + 1, 0, {
+                type: 'L',
+                x: clickX,
+                y: clickY,
+                nodeId: newNodeId,
+                role: 'vertex',
+                label: `${road.id} จุดแทรก (${clickX}, ${clickY})`
+            });
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`แทรกจุดใหม่บน ${road.id} ที่พิกัด (${clickX}, ${clickY}) แล้ว!`);
+        }
+
+        function distToSegment(p, v, w) {
+            const l2 = (v.x - w.x) ** 2 + (v.y - w.y) ** 2;
+            if (l2 === 0) return Math.hypot(p.x - v.x, p.y - v.y);
+            let t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
+            t = Math.max(0, Math.min(1, t));
+            return Math.hypot(p.x - (v.x + t * (w.x - v.x)), p.y - (v.y + t * (w.y - v.y)));
+        }
+
+        // ================= OVERLAY HANDLES & INTERACTIVE CONTROLS =================
+
         let handlesGroup = null;
 
         function renderHandles() {
@@ -1701,7 +2020,6 @@
             handlesGroup.innerHTML = '';
             if (!showHandles) return;
 
-            // Separate nodes: Background (other roads) vs Foreground (selected road)
             const allNodesList = Object.values(masterNodes);
             let backgroundNodes = [];
             let foregroundNodes = [];
@@ -1714,7 +2032,7 @@
                 }
             });
 
-            // 1. Draw Bezier Tangent Guide Lines for Curves
+            // 1. Draw Bezier Tangent Guide Lines
             const roadsToDrawGuides = selectedRoadId 
                 ? currentRoads.filter(r => r.id === selectedRoadId) 
                 : currentRoads;
@@ -1771,7 +2089,7 @@
                 });
             }
 
-            // 3. Render Foreground Nodes (Active Selected Road - ALWAYS TOP of DOM)
+            // 3. Render Foreground Nodes (Active Selected Road - Top of DOM)
             foregroundNodes.forEach(node => {
                 createHandleElement(node, true);
             });
@@ -1787,7 +2105,7 @@
             g.setAttribute('data-node-id', node.id);
             g.setAttribute('data-road-id', node.roadId);
 
-            // Generous Invisible Hit Target for Effortless Touch & Drag
+            // Large hit target
             const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
             hit.setAttribute('cx', node.x);
             hit.setAttribute('cy', node.y);
@@ -1796,7 +2114,7 @@
             hit.setAttribute('cursor', 'grab');
             g.appendChild(hit);
 
-            // Active Road Glow Pulse Halo
+            // Active Glow Halo
             if (isSelected) {
                 const pulseHalo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
                 pulseHalo.setAttribute('cx', node.x);
@@ -1809,7 +2127,7 @@
                 g.appendChild(pulseHalo);
             }
 
-            // Visual Pin Circle
+            // Pin Circle
             const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
             circle.setAttribute('cx', node.x);
             circle.setAttribute('cy', node.y);
@@ -1849,7 +2167,7 @@
             circle.setAttribute('filter', 'drop-shadow(0 2px 5px rgba(0,0,0,0.45))');
             g.appendChild(circle);
 
-            // Small Distinctive Center Dot
+            // Center Dot
             const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
             dot.setAttribute('cx', node.x);
             dot.setAttribute('cy', node.y);
@@ -1861,7 +2179,7 @@
             handlesGroup.appendChild(g);
         }
 
-        // Draggable Event Engine for Nodes with Live Magnet Snapping
+        // Draggable Event Engine with Magnet Snapping
         let activeDragNode = null;
         let dragOffsetSvg = { x: 0, y: 0 };
         let magnetRing = null;
@@ -1877,10 +2195,9 @@
             const onStart = (e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                saveHistoryState(); // Snapshot before drag
+                saveHistoryState();
                 activeDragNode = node;
 
-                // Ensure road is selected when its handle is grabbed
                 if (selectedRoadId !== node.roadId) {
                     selectRoad(node.roadId);
                 }
@@ -1910,11 +2227,9 @@
                 let targetX = Math.round(svgPt.x - dragOffsetSvg.x);
                 let targetY = Math.round(svgPt.y - dragOffsetSvg.y);
 
-                // Boundary Lock within Canvas (0,0) to (1600,1000)
                 targetX = Math.max(0, Math.min(1600, targetX));
                 targetY = Math.max(0, Math.min(1000, targetY));
 
-                // Live Magnet Snapping to Nearest Points
                 let snappedTo = null;
                 if (magnetMode && !e.altKey) {
                     let minDistance = MAGNET_RADIUS;
@@ -1942,7 +2257,6 @@
                 activeDragNode.x = targetX;
                 activeDragNode.y = targetY;
 
-                // Apply exclusively to activeDragNode's owned command!
                 if (activeDragNode.field === 'main') {
                     activeDragNode.cmd.x = targetX;
                     activeDragNode.cmd.y = targetY;
@@ -1957,7 +2271,6 @@
                     activeDragNode.cmd.c2y = targetY;
                 }
 
-                // Update Visuals
                 updateHandleElement(handleEl, targetX, targetY);
                 refreshRoadSvgLayers();
                 showNodeHud(activeDragNode, clientX, clientY, snappedTo);
@@ -1967,7 +2280,7 @@
                 activeDragNode = null;
                 hideNodeHud();
                 hideMagnetRing();
-                renderHandles(); // Re-render cleanly with fresh guides
+                renderHandles();
                 renderRoadList();
                 window.removeEventListener('mousemove', onMove);
                 window.removeEventListener('mouseup', onEnd);
@@ -2033,7 +2346,6 @@
         function selectRoad(roadId) {
             selectedRoadId = roadId;
 
-            // Highlight in SVG
             const allRoadPaths = svg.querySelectorAll('.road-interactive');
             allRoadPaths.forEach(p => p.classList.remove('road-highlight'));
 
@@ -2174,7 +2486,7 @@
             });
         }
 
-        // Render Sidebar Road Directory
+        // Render Comprehensive Sidebar with Road Inspector, Curve/Straight toggles & Point Management
         function renderRoadList() {
             const list = document.getElementById('roadListContainer');
             if (!list) return;
@@ -2184,48 +2496,104 @@
                 const isSelected = (selectedRoadId === r.id);
                 const roadNodes = Object.values(masterNodes).filter(n => n.roadId === r.id);
 
-                const item = document.createElement('div');
-                item.className = `p-2.5 rounded-xl border cursor-pointer transition-all duration-200 ${
+                const card = document.createElement('div');
+                card.className = `rounded-xl border transition-all duration-200 overflow-hidden ${
                     isSelected 
-                        ? 'bg-amber-500/15 border-amber-500/50 shadow-md ring-1 ring-amber-500/30' 
-                        : 'bg-slate-800/60 hover:bg-slate-800 border-slate-700/60'
+                        ? 'bg-slate-800/90 border-amber-500/60 shadow-lg ring-1 ring-amber-500/30' 
+                        : 'bg-slate-800/50 hover:bg-slate-800 border-slate-700/60'
                 }`;
 
-                let pointsSummaryHtml = '';
+                // Card Header
+                let headerHtml = `
+                    <div class="p-2.5 flex items-center justify-between cursor-pointer ${isSelected ? 'bg-amber-500/10 border-b border-amber-500/20' : ''}" onclick="selectRoad('${r.id}')">
+                        <div class="flex items-center gap-2 overflow-hidden flex-1 mr-2">
+                            <span class="font-mono font-black text-xs px-2 py-0.5 rounded shrink-0 ${
+                                isSelected ? 'bg-amber-400 text-slate-950' : 'bg-slate-700 text-amber-300'
+                            }">${r.id}</span>
+                            ${isSelected ? `
+                                <input type="text" value="${r.name}" onchange="updateRoadName('${r.id}', this.value)" onclick="event.stopPropagation()" class="bg-slate-900 border border-slate-700 text-amber-200 text-xs px-2 py-0.5 rounded font-semibold w-full focus:outline-none focus:border-amber-400 truncate">
+                            ` : `
+                                <span class="text-xs font-semibold text-slate-300 truncate">${r.name}</span>
+                            `}
+                        </div>
+                        <div class="flex items-center gap-1.5 shrink-0">
+                            <span class="text-[10px] text-slate-400 bg-slate-950/60 px-1.5 py-0.5 rounded font-mono">${roadNodes.length} จุด</span>
+                            ${isSelected ? `
+                                <button onclick="event.stopPropagation(); deleteRoad('${r.id}')" class="text-slate-500 hover:text-rose-400 p-1 rounded hover:bg-slate-700 transition" title="ลบเส้นทางนี้">
+                                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                                </button>
+                            ` : `
+                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-500"></i>
+                            `}
+                        </div>
+                    </div>
+                `;
+
+                // Card Body: Point Management & Curve/Straight toggles (shown when active)
+                let bodyHtml = '';
                 if (isSelected) {
-                    pointsSummaryHtml = `
-                        <div class="mt-2 pt-2 border-t border-amber-500/20 space-y-1">
-                            ${roadNodes.map(n => `
-                                <div class="flex items-center justify-between text-[10px] text-slate-300 font-mono bg-slate-900/60 px-2 py-1 rounded">
-                                    <span class="truncate">${n.label}</span>
-                                    <span class="text-amber-400 font-bold shrink-0 ml-1">(${Math.round(n.x)}, ${Math.round(n.y)})</span>
-                                </div>
-                            `).join('')}
+                    bodyHtml = `
+                        <div class="p-2.5 space-y-1.5 bg-slate-950/40">
+                            <!-- Points List -->
+                            <div class="space-y-1.5">
+                                ${r.commands.map((cmd, idx) => {
+                                    if (cmd.type === 'Z') return '';
+                                    const isStart = (cmd.type === 'M');
+                                    const isCurve = (cmd.type === 'Q' || cmd.type === 'C');
+                                    const isStraight = (cmd.type === 'L');
+
+                                    return `
+                                        <div class="bg-slate-900/80 border border-slate-700/60 p-1.5 rounded-lg text-[10px] space-y-1">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-1.5">
+                                                    <span class="w-2 h-2 rounded-full ${isStart ? 'bg-emerald-400' : (isCurve ? 'bg-sky-400' : 'bg-amber-400')}"></span>
+                                                    <span class="font-bold text-slate-200">จุดที่ ${idx + 1} [${cmd.type}]</span>
+                                                    <span class="text-slate-400 font-mono">(${Math.round(cmd.x)}, ${Math.round(cmd.y)})</span>
+                                                </div>
+                                                <div class="flex items-center gap-1">
+                                                    ${isStraight ? `
+                                                        <button onclick="convertSegmentToCurve('${r.id}', ${idx})" class="bg-sky-950 hover:bg-sky-800 text-sky-300 border border-sky-700/60 px-1.5 py-0.5 rounded font-semibold transition" title="ดัดท่อนนี้ให้เป็นเส้นโค้ง (Q)">
+                                                            ∿ โค้ง
+                                                        </button>
+                                                    ` : ''}
+                                                    ${isCurve ? `
+                                                        <button onclick="convertSegmentToStraight('${r.id}', ${idx})" class="bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-600 px-1.5 py-0.5 rounded font-semibold transition" title="เปลี่ยนกลับเป็นเส้นตรง (L)">
+                                                            — ตรง
+                                                        </button>
+                                                    ` : ''}
+                                                    ${idx < r.commands.length - 1 ? `
+                                                        <button onclick="insertPointAfter('${r.id}', ${idx})" class="bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700 px-1.5 py-0.5 rounded font-bold transition" title="แทรกจุดกึ่งกลาง">
+                                                            +
+                                                        </button>
+                                                    ` : ''}
+                                                    ${!isStart && r.commands.length > 2 ? `
+                                                        <button onclick="deletePoint('${r.id}', ${idx})" class="text-slate-500 hover:text-rose-400 hover:bg-slate-800 px-1.5 py-0.5 rounded transition" title="ลบจุดนี้">
+                                                            ×
+                                                        </button>
+                                                    ` : ''}
+                                                </div>
+                                            </div>
+                                            ${cmd.type === 'Q' ? `
+                                                <div class="pl-3 text-[9px] text-sky-300 font-mono flex items-center gap-1">
+                                                    <span>↳ จุดดัดโค้ง Q: (${Math.round(cmd.qx)}, ${Math.round(cmd.qy)})</span>
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+
+                            <!-- Add Point Button at End -->
+                            <button onclick="addPointToEnd('${r.id}')" class="w-full flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-white text-xs font-bold py-2 rounded-lg border border-slate-700 transition mt-2 active:scale-98">
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                                <span>+ เพิ่มจุดต่อท้ายเส้นทาง</span>
+                            </button>
                         </div>
                     `;
                 }
 
-                item.innerHTML = `
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2 overflow-hidden">
-                            <span class="font-mono font-bold text-xs px-2 py-0.5 rounded ${
-                                isSelected ? 'bg-amber-400 text-slate-950 font-black' : 'bg-slate-700 text-amber-300'
-                            }">${r.id}</span>
-                            <span class="text-xs font-semibold truncate ${isSelected ? 'text-amber-200 font-bold' : 'text-slate-300'}>${r.name}</span>
-                        </div>
-                        <div class="flex items-center gap-1.5 shrink-0 ml-2">
-                            <span class="text-[10px] text-slate-400 bg-slate-950/60 px-1.5 py-0.5 rounded font-mono">${roadNodes.length} จุด</span>
-                            <i data-lucide="${isSelected ? 'check-circle' : 'chevron-right'}" class="w-3.5 h-3.5 ${isSelected ? 'text-amber-400' : 'text-slate-500'}"></i>
-                        </div>
-                    </div>
-                    ${pointsSummaryHtml}
-                `;
-
-                item.onclick = (e) => {
-                    e.stopPropagation();
-                    selectRoad(r.id);
-                };
-                list.appendChild(item);
+                card.innerHTML = headerHtml + bodyHtml;
+                list.appendChild(card);
             });
             lucide.createIcons();
         }
@@ -2301,6 +2669,21 @@
         refreshRoadSvgLayers();
         renderHandles();
         renderRoadList();
+        // Expose to window for global console & testing access
+        window.currentRoads = currentRoads;
+        window.masterNodes = masterNodes;
+        window.addNewRoad = addNewRoad;
+        window.deleteRoad = deleteRoad;
+        window.convertSegmentToCurve = convertSegmentToCurve;
+        window.convertSegmentToStraight = convertSegmentToStraight;
+        window.addPointToEnd = addPointToEnd;
+        window.insertPointAfter = insertPointAfter;
+        window.deletePoint = deletePoint;
+        window.selectRoad = selectRoad;
+        window.toggleFilterMode = toggleFilterMode;
+        window.toggleMagnetMode = toggleMagnetMode;
+        window.undo = undo;
+        window.redo = redo;
     </script>
 </body>
 </html>
