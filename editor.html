@@ -106,6 +106,52 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #94A3B8;
         }
+    
+        .building-interactive {
+            cursor: grab;
+            transition: filter 0.15s ease;
+        }
+        .building-interactive:hover {
+            filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.9)) !important;
+        }
+        .building-selected {
+            filter: drop-shadow(0 0 18px rgba(16, 185, 129, 0.95)) !important;
+        }
+        .building-bbox {
+            stroke: #10B981;
+            stroke-width: 2;
+            fill: rgba(16, 185, 129, 0.08);
+            stroke-dasharray: 4 3;
+            pointer-events: none;
+        }
+        .building-handle {
+            fill: #10B981;
+            stroke: #FFFFFF;
+            stroke-width: 2;
+            cursor: pointer;
+            transition: r 0.15s ease, fill 0.15s ease;
+        }
+        .building-handle:hover {
+            r: 7.5;
+            fill: #F59E0B;
+        }
+        .rotate-stem {
+            stroke: #10B981;
+            stroke-width: 1.5;
+            stroke-dasharray: 3 2;
+            pointer-events: none;
+        }
+        .rotate-handle {
+            fill: #F59E0B;
+            stroke: #FFFFFF;
+            stroke-width: 2;
+            cursor: grab;
+            transition: r 0.15s ease;
+        }
+        .rotate-handle:hover {
+            r: 8;
+        }
+
     </style>
 </head>
 <body class="h-full w-full overflow-hidden bg-slate-900 text-slate-800 flex flex-col font-sans">
@@ -123,9 +169,18 @@
                     <i data-lucide="map-pin" class="w-4 h-4 text-amber-400"></i>
                     Road Studio
                 </span>
-                <span class="text-[11px] bg-amber-500/20 text-amber-300 font-bold px-2 py-0.5 rounded-full border border-amber-500/30">
-                    Live WYSIWYG
-                </span>
+                <span class="text-[11px] bg-amber-500/20 text-amber-300 font-bold px-2 py-0.5 rounded-full border border-amber-500/30 hidden xl:inline">Live WYSIWYG</span>
+            </div>
+            <!-- Dual-Studio Mode Switcher: Roads vs Buildings -->
+            <div class="flex items-center bg-slate-800 p-0.5 rounded-lg border border-slate-700 ml-1">
+                <button id="tabModeRoads" onclick="switchStudioMode('roads')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition bg-amber-500 text-slate-950 shadow">
+                    <i data-lucide="map" class="w-3.5 h-3.5"></i>
+                    <span>ผังถนน</span>
+                </button>
+                <button id="tabModeBuildings" onclick="switchStudioMode('buildings')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition text-slate-400 hover:text-white">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5"></i>
+                    <span>อาคาร & สถานที่</span>
+                </button>
             </div>
         </div>
 
@@ -173,7 +228,7 @@
             </button>
 
             <!-- Export / Copy Button -->
-            <button onclick="copySvgCode()" class="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-md hover:shadow-emerald-500/20 transition active:scale-95">
+            <button onclick="openExportModal()" class="flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-md hover:shadow-emerald-500/20 transition active:scale-95">
                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                 <span>คัดลอก SVG</span>
             </button>
@@ -183,43 +238,169 @@
     <!-- ================= MAIN WORKSPACE (SIDEBAR + CANVAS) ================= -->
     <div class="flex-1 flex overflow-hidden relative">
 
-                        <!-- Left Sidebar: Advanced Road Studio Directory -->
-        <aside class="w-84 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 z-20 hidden lg:flex" style="width: 22rem;">
-            <!-- Header -->
-            <div class="p-3 border-b border-slate-800 bg-slate-950/60">
-                <div class="flex items-center justify-between mb-2">
-                    <div>
-                        <span class="text-slate-200 font-bold uppercase tracking-wider text-xs block">สตูดิโอผังถนน</span>
-                        <span id="roadCountSubtext" class="text-[10px] text-amber-400 font-medium">18 เส้นทาง • 54 จุดอิสระ</span>
+                                <!-- Left Sidebar: Unified Road & Building Studio -->
+        <aside class="w-84 bg-slate-900 border-r border-slate-800 flex flex-col shrink-0 z-20 hidden lg:flex" style="width: 22.5rem;">
+            
+            <!-- ================= PANE 1: ROADS STUDIO ================= -->
+            <div id="roadSidebarPane" class="flex-1 flex flex-col overflow-hidden">
+                <!-- Road Header -->
+                <div class="p-3 border-b border-slate-800 bg-slate-950/60">
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <span class="text-slate-200 font-bold uppercase tracking-wider text-xs block">สตูดิโอผังถนน</span>
+                            <span id="roadCountSubtext" class="text-[10px] text-amber-400 font-medium">18 เส้นทาง • 54 จุดอิสระ</span>
+                        </div>
+                        <button onclick="selectRoad(null)" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-2 py-1 rounded border border-slate-700 transition" title="แสดงภาพรวมทุกเส้น">
+                            ดูทั้งหมด
+                        </button>
                     </div>
-                    <button onclick="selectRoad(null)" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-2 py-1 rounded border border-slate-700 transition" title="แสดงภาพรวมทุกเส้น">
-                        ดูทั้งหมด
-                    </button>
+                    <div class="flex items-center gap-1.5">
+                        <button onclick="addNewRoad()" class="flex-1 flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-1.5 px-3 rounded-lg shadow transition active:scale-95" title="สร้างเส้นทางถนนใหม่">
+                            <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+                            <span>+ เพิ่มเส้นถนนใหม่</span>
+                        </button>
+                    </div>
                 </div>
-                <!-- Action Buttons: Add Road -->
-                <div class="flex items-center gap-1.5">
-                    <button onclick="addNewRoad()" class="flex-1 flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-1.5 px-3 rounded-lg shadow transition active:scale-95" title="สร้างเส้นทางถนนใหม่">
-                        <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
-                        <span>+ เพิ่มเส้นถนนใหม่</span>
-                    </button>
+
+                <!-- Road List Container -->
+                <div id="roadListContainer" class="flex-1 overflow-y-auto p-2 space-y-2">
+                    <!-- Dynamically generated road cards -->
+                </div>
+
+                <!-- Road Footer Tips -->
+                <div class="p-3 border-t border-slate-800 bg-slate-950/80 text-[11px] text-slate-400 space-y-1 shrink-0">
+                    <div class="flex items-center gap-1.5 text-amber-400 font-bold">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        เครื่องมือปรับแต่งถนน:
+                    </div>
+                    <p>• <b>เพิ่มจุด:</b> ดับเบิ้ลคลิกบนเส้นในแผนที่ หรือกด <b>[+]</b> ในรายการ</p>
+                    <p>• <b>ดัดโค้ง/ตรง:</b> กดปุ่ม <b>[∿ โค้ง]</b> หรือ <b>[— ตรง]</b> เพื่อเปลี่ยนชนิดท่อน</p>
+                    <p>• <b>แม่เหล็กดูดจุด:</b> ลากจุดใกล้แยกอื่น (14px) ระบบจะดูดเชื่อมต่อให้อัตโนมัติ</p>
                 </div>
             </div>
 
-            <!-- Road List Container -->
-            <div id="roadListContainer" class="flex-1 overflow-y-auto p-2 space-y-2">
-                <!-- Dynamically generated road cards with point inspector -->
-            </div>
-
-            <!-- Footer Tips -->
-            <div class="p-3 border-t border-slate-800 bg-slate-950/80 text-[11px] text-slate-400 space-y-1 shrink-0">
-                <div class="flex items-center gap-1.5 text-amber-400 font-bold">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                    เครื่องมือปรับแต่งขั้นสูง:
+            <!-- ================= PANE 2: BUILDINGS & LANDMARKS STUDIO ================= -->
+            <div id="buildingSidebarPane" class="flex-1 flex-col overflow-hidden hidden">
+                <!-- Building Header & Search -->
+                <div class="p-3 border-b border-slate-800 bg-slate-950/60 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-slate-200 font-bold uppercase tracking-wider text-xs block">ตำแหน่ง & ขนาดอาคาร</span>
+                            <span id="buildingCountSubtext" class="text-[10px] text-emerald-400 font-medium">31 อาคารและสถานที่</span>
+                        </div>
+                        <button onclick="selectBuilding(null)" class="text-[11px] bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-2 py-1 rounded border border-slate-700 transition" title="ยกเลิกการเลือก">
+                            มุมมองรวม
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <input type="text" id="buildingSearchInput" oninput="filterBuildingList(this.value)" placeholder="🔍 ค้นหาอาคาร, คณะ, ประตู..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 transition">
+                    </div>
                 </div>
-                <p>• <b>เพิ่มจุด:</b> ดับเบิ้ลคลิกบนเส้นในแผนที่ หรือกด <b>[+ แทรก]</b> ในรายการ</p>
-                <p>• <b>ดัดโค้ง/ตรง:</b> กดปุ่ม <b>[∿ โค้ง]</b> หรือ <b>[— ตรง]</b> เพื่อเปลี่ยนชนิดท่อนถนน</p>
-                <p>• <b>เพิ่มเส้น:</b> กด <b>[+ เพิ่มเส้นถนนใหม่]</b> ด้านบน</p>
-                <p>• <b>แม่เหล็กดูดจุด:</b> ลากจุดใกล้แยกอื่น (14px) ระบบจะดูดเชื่อมต่อให้อัตโนมัติ</p>
+
+                <!-- Building Inspector Panel (Shown when an building is selected) -->
+                <div id="buildingInspectorPanel" class="p-3 border-b border-slate-800 bg-slate-950/90 hidden space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-1.5 overflow-hidden">
+                            <span class="text-emerald-400 font-bold text-xs">🏢 ปรับแต่ง:</span>
+                            <span id="inspectorBuildingName" class="text-xs font-bold text-white truncate">ชื่ออาคาร</span>
+                        </div>
+                        <button onclick="resetSelectedBuilding()" class="text-[10px] text-slate-400 hover:text-amber-300 flex items-center gap-1 px-1.5 py-0.5 rounded border border-slate-700 hover:bg-slate-800 transition" title="คืนค่าพิกัดและขนาดเดิม">
+                            <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+                            <span>รีเซ็ต</span>
+                        </button>
+                    </div>
+
+                    <!-- Position X & Y -->
+                    <div class="space-y-1.5">
+                        <div class="text-[10px] text-slate-400 font-semibold uppercase flex items-center justify-between">
+                            <span>พิกัดตำแหน่ง (Position)</span>
+                            <span id="inspectorCoordsText" class="font-mono text-emerald-400">X: 0, Y: 0</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="flex items-center bg-slate-900 border border-slate-700 rounded-lg px-2 py-1">
+                                <span class="text-[10px] font-bold text-slate-400 mr-1.5">X:</span>
+                                <input type="number" id="inputBuildingX" onchange="updateSelectedBuildingPosition(this.value, null)" class="w-full bg-transparent text-xs text-white font-mono focus:outline-none">
+                            </div>
+                            <div class="flex items-center bg-slate-900 border border-slate-700 rounded-lg px-2 py-1">
+                                <span class="text-[10px] font-bold text-slate-400 mr-1.5">Y:</span>
+                                <input type="number" id="inputBuildingY" onchange="updateSelectedBuildingPosition(null, this.value)" class="w-full bg-transparent text-xs text-white font-mono focus:outline-none">
+                            </div>
+                        </div>
+                        <!-- D-Pad Nudge Buttons for Pixel-Perfect Alignment -->
+                        <div class="flex items-center justify-center gap-1 pt-1">
+                            <button onclick="nudgeBuilding(0, -5)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 p-1.5 rounded border border-slate-700 transition" title="ขยับขึ้น 5px">
+                                <i data-lucide="chevron-up" class="w-3.5 h-3.5"></i>
+                            </button>
+                            <button onclick="nudgeBuilding(-5, 0)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 p-1.5 rounded border border-slate-700 transition" title="ขยับซ้าย 5px">
+                                <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
+                            </button>
+                            <button onclick="nudgeBuilding(5, 0)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 p-1.5 rounded border border-slate-700 transition" title="ขยับขวา 5px">
+                                <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                            </button>
+                            <button onclick="nudgeBuilding(0, 5)" class="bg-slate-800 hover:bg-slate-700 text-slate-300 p-1.5 rounded border border-slate-700 transition" title="ขยับลง 5px">
+                                <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Size / Scale Slider -->
+                    <div class="space-y-1">
+                        <div class="flex items-center justify-between text-[10px]">
+                            <span class="text-slate-400 font-semibold uppercase">ขนาด (Size / Scale)</span>
+                            <span id="inspectorScaleText" class="font-mono text-emerald-400 font-bold">100%</span>
+                        </div>
+                        <input type="range" id="inputBuildingScale" min="0.4" max="2.0" step="0.05" value="1.0" oninput="updateSelectedBuildingScale(this.value)" class="w-full accent-emerald-500 cursor-pointer">
+                        <div class="flex items-center justify-between gap-1 pt-0.5 text-[9px] text-slate-400">
+                            <button onclick="updateSelectedBuildingScale(0.75)" class="bg-slate-800 hover:bg-slate-700 px-1.5 py-0.5 rounded border border-slate-700">75%</button>
+                            <button onclick="updateSelectedBuildingScale(1.0)" class="bg-slate-800 hover:bg-slate-700 px-1.5 py-0.5 rounded border border-slate-700 font-bold text-emerald-400">100% (ปกติ)</button>
+                            <button onclick="updateSelectedBuildingScale(1.25)" class="bg-slate-800 hover:bg-slate-700 px-1.5 py-0.5 rounded border border-slate-700">125%</button>
+                            <button onclick="updateSelectedBuildingScale(1.5)" class="bg-slate-800 hover:bg-slate-700 px-1.5 py-0.5 rounded border border-slate-700">150% (เด่น)</button>
+                        </div>
+                    </div>
+
+                    <!-- Rotation Slider -->
+                    <div class="space-y-1">
+                        <div class="flex items-center justify-between text-[10px]">
+                            <span class="text-slate-400 font-semibold uppercase">การหมุน (Rotation)</span>
+                            <span id="inspectorRotateText" class="font-mono text-amber-400 font-bold">0°</span>
+                        </div>
+                        <input type="range" id="inputBuildingRotate" min="-180" max="180" step="5" value="0" oninput="updateSelectedBuildingRotate(this.value)" class="w-full accent-amber-500 cursor-pointer">
+                        <div class="flex items-center justify-between gap-1 pt-0.5 text-[9px] text-slate-400">
+                            <button onclick="updateSelectedBuildingRotate(0)" class="bg-slate-800 hover:bg-slate-700 px-1.5 py-0.5 rounded border border-slate-700 text-amber-400 font-bold">0° ตรง</button>
+                            <button onclick="updateSelectedBuildingRotate(45)" class="bg-slate-800 hover:bg-slate-700 px-1.5 py-0.5 rounded border border-slate-700">45°</button>
+                            <button onclick="updateSelectedBuildingRotate(90)" class="bg-slate-800 hover:bg-slate-700 px-1.5 py-0.5 rounded border border-slate-700">90°</button>
+                            <button onclick="updateSelectedBuildingRotate(180)" class="bg-slate-800 hover:bg-slate-700 px-1.5 py-0.5 rounded border border-slate-700">180°</button>
+                        </div>
+                    </div>
+
+                    <!-- Layering Z-Order -->
+                    <div class="flex items-center gap-1.5 pt-1 text-[10px]">
+                        <button onclick="bringBuildingToFront()" class="flex-1 flex items-center justify-center gap-1 bg-slate-800 hover:bg-slate-700 text-slate-300 py-1 rounded border border-slate-700 transition" title="นำมาไว้เลเยอร์บนสุด">
+                            <i data-lucide="bring-to-front" class="w-3 h-3 text-emerald-400"></i>
+                            <span>ไว้หน้าสุด</span>
+                        </button>
+                        <button onclick="sendBuildingToBack()" class="flex-1 flex items-center justify-center gap-1 bg-slate-800 hover:bg-slate-700 text-slate-300 py-1 rounded border border-slate-700 transition" title="ส่งไปไว้เลเยอร์ล่างสุด">
+                            <i data-lucide="send-to-back" class="w-3 h-3 text-slate-400"></i>
+                            <span>ไว้หลังสุด</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Building Directory List -->
+                <div id="buildingListContainer" class="flex-1 overflow-y-auto p-2 space-y-1.5">
+                    <!-- Dynamically generated building cards -->
+                </div>
+
+                <!-- Building Footer Tips -->
+                <div class="p-3 border-t border-slate-800 bg-slate-950/80 text-[11px] text-slate-400 space-y-1 shrink-0">
+                    <div class="flex items-center gap-1.5 text-emerald-400 font-bold">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        วิธีปรับแต่งอาคาร:
+                    </div>
+                    <p>• <b>ย้ายตำแหน่ง:</b> คลิกแล้วลากตัวอาคารบนแผนที่ได้โดยตรง 60fps</p>
+                    <p>• <b>ปรับขนาด:</b> ลาก <b>จุดสี่มุม</b> เพื่อย่อ/ขยาย หรือเลื่อนแถบสเกลในเมนู</p>
+                    <p>• <b>หมุนองศา:</b> ลาก <b>จุดสีส้มด้านบน</b> เพื่อหมุนมุมอาคาร</p>
+                </div>
             </div>
         </aside>
 
@@ -1344,11 +1525,11 @@
         </main>
     </div>
 
-            <!-- ================= ADVANCED ROAD STUDIO ENGINE (V3 - FULL ROAD CREATION & CURVE CONVERSION) ================= -->
+                <!-- ================= UNIFIED ROAD & BUILDING STUDIO ENGINE (V4 PRO) ================= -->
     <script>
         lucide.createIcons();
 
-        // 1. Initial Road Segment Models
+        // 1. Initial Road Segment Models (100% Independent)
         const INITIAL_ROADS = [
             {
                 id: 'R01',
@@ -1520,9 +1701,48 @@
             }
         ];
 
-        // State Machine
+        // 2. Initial Buildings & Landmarks Registry
+        const INITIAL_BUILDINGS = [
+            { id: 'building-satit', name: 'โรงเรียนสาธิต ม.เกษตรฯ', icon: '🏫', x: 320, y: 246, scale: 1.0, rotate: 0 },
+            { id: 'building-barmai', name: 'โรงอาหารกลาง 2 (บาร์ใหม่)', icon: '🍽️', x: 580, y: 197, scale: 1.0, rotate: 0 },
+            { id: 'building-sorn3', name: 'ศูนย์เรียนรวม 3 (ศร.3)', icon: '📚', x: 430, y: 415, scale: 1.0, rotate: 0 },
+            { id: 'building-library', name: 'สำนักหอสมุด (50 ปี)', icon: '📖', x: 680, y: 340, scale: 1.0, rotate: 0 },
+            { id: 'building-horticulture', name: 'ภาควิชาพืชสวน', icon: '🌿', x: 960, y: 285, scale: 1.0, rotate: 0 },
+            { id: 'building-vet-tech', name: 'คณะเทคนิคการสัตวแพทย์', icon: '🐾', x: 1215, y: 320, scale: 1.0, rotate: 0 },
+            { id: 'building-vet-hospital', name: 'โรงพยาบาลสัตว์ มก.', icon: '🏥', x: 1395, y: 330, scale: 1.0, rotate: 0 },
+            { id: 'building-stadium', name: 'สนามอินทรีจันทรสถิตย์', icon: '⚽', x: 320, y: 580, scale: 1.0, rotate: 0 },
+            { id: 'building-badminton', name: 'สนามแบดมินตัน', icon: '🏸', x: 290, y: 445, scale: 1.0, rotate: 0 },
+            { id: 'building-sports', name: 'อาคารกองกีฬา', icon: '🏢', x: 170, y: 520, scale: 1.0, rotate: 0 },
+            { id: 'building-eng', name: 'คณะวิศวกรรมศาสตร์', icon: '⚙️', x: 575, y: 580, scale: 1.0, rotate: 0 },
+            { id: 'building-econ', name: 'คณะเศรษฐศาสตร์', icon: '📊', x: 670, y: 580, scale: 1.0, rotate: 0 },
+            { id: 'building-sc-lab', name: 'อาคารปฏิบัติการวิทยาศาสตร์', icon: '🔬', x: 835, y: 484, scale: 1.0, rotate: 0 },
+            { id: 'building-krungsri', name: 'ธนาคารกรุงศรีอยุธยา', icon: '🪙', x: 885, y: 630, scale: 1.0, rotate: 0 },
+            { id: 'building-forestry', name: 'คณะวนศาสตร์', icon: '🌲', x: 1030, y: 442, scale: 1.0, rotate: 0 },
+            { id: 'building-doa-oae', name: 'กรมวิชาการเกษตร / สศก.', icon: '🌾', x: 1060, y: 582, scale: 1.0, rotate: 0 },
+            { id: 'building-fisheries', name: 'คณะประมง', icon: '🐟', x: 1260, y: 465, scale: 1.0, rotate: 0 },
+            { id: 'building-ocs', name: 'สำนักบริการคอมพิวเตอร์ (OCS)', icon: '💻', x: 590, y: 805, scale: 1.0, rotate: 0 },
+            { id: 'building-ngam2', name: 'อาคารจอดรถงาม 2', icon: '🅿️', x: 810, y: 805, scale: 1.0, rotate: 0 },
+            { id: 'building-ngam1', name: 'อาคารจอดรถงาม 1', icon: '🅿️', x: 920, y: 805, scale: 1.0, rotate: 0 },
+            { id: 'building-vipa', name: 'อาคารจอดรถวิภาวดี', icon: '🅿️', x: 170, y: 390, scale: 1.0, rotate: 0 },
+            { id: 'building-auditorium', name: 'หอประชุมใหญ่', icon: '🏛️', x: 1130, y: 760, scale: 1.0, rotate: 0 },
+            { id: 'building-pond', name: 'สระพระพิรุณ', icon: '🌊', x: 1340, y: 760, scale: 1.0, rotate: 0 },
+            { id: 'roundabout-bts', name: 'วงเวียน BTS (ติดรั้ว)', icon: '🚇', x: 1415, y: 540, scale: 1.0, rotate: 0 },
+            { id: 'sala-red-hexagon', name: 'ศาลา 6 เหลี่ยมสีแดง', icon: '⛩️', x: 1325, y: 615, scale: 1.0, rotate: 0 },
+            { id: 'gate-vipa', name: 'ประตูวิภาวดี', icon: '🚪', x: 135, y: 320, scale: 1.0, rotate: 0 },
+            { id: 'gate-ngam3', name: 'ประตู 3 งามวงศ์วาน', icon: '🚪', x: 450, y: 880, scale: 1.0, rotate: 0 },
+            { id: 'gate-ngam2', name: 'ประตู 2 งามวงศ์วาน', icon: '🚪', x: 730, y: 880, scale: 1.0, rotate: 0 },
+            { id: 'gate-ngam1', name: 'ประตู 1 งามวงศ์วาน', icon: '🚪', x: 1000, y: 880, scale: 1.0, rotate: 0 },
+            { id: 'gate-phahon2', name: 'ประตู 2 พหลโยธิน', icon: '🚪', x: 1470, y: 440, scale: 1.0, rotate: 0 },
+            { id: 'gate-phahon1', name: 'ประตู 1 พหลโยธิน', icon: '🚪', x: 1470, y: 760, scale: 1.0, rotate: 0 }
+        ];
+
+        // Studio State Machines
+        let studioMode = 'roads'; // 'roads' or 'buildings'
         let currentRoads = JSON.parse(JSON.stringify(INITIAL_ROADS));
+        let currentBuildings = JSON.parse(JSON.stringify(INITIAL_BUILDINGS));
         let selectedRoadId = 'R01';
+        let selectedBuildingId = null;
+
         let filterMode = 'all';     // 'all' or 'focus'
         let magnetMode = true;      // Magnet snap
         let showHandles = true;
@@ -1533,7 +1753,11 @@
         let redoStack = [];
 
         function saveHistoryState() {
-            undoStack.push(JSON.stringify(currentRoads));
+            const snapshot = {
+                roads: JSON.parse(JSON.stringify(currentRoads)),
+                buildings: JSON.parse(JSON.stringify(currentBuildings))
+            };
+            undoStack.push(JSON.stringify(snapshot));
             if (undoStack.length > 50) undoStack.shift();
             redoStack = [];
             updateUndoRedoButtons();
@@ -1548,24 +1772,52 @@
 
         function undo() {
             if (undoStack.length === 0) return;
-            redoStack.push(JSON.stringify(currentRoads));
-            currentRoads = JSON.parse(undoStack.pop());
+            const currentSnapshot = {
+                roads: JSON.parse(JSON.stringify(currentRoads)),
+                buildings: JSON.parse(JSON.stringify(currentBuildings))
+            };
+            redoStack.push(JSON.stringify(currentSnapshot));
+            const prev = JSON.parse(undoStack.pop());
+            currentRoads = prev.roads;
+            currentBuildings = prev.buildings;
+
             initNodes();
             refreshRoadSvgLayers();
-            renderHandles();
-            renderRoadList();
+            applyAllBuildingTransforms();
+            if (studioMode === 'roads') {
+                renderHandles();
+                renderRoadList();
+            } else {
+                renderBuildingOverlay();
+                renderBuildingList();
+                updateBuildingInspector();
+            }
             updateUndoRedoButtons();
             showToast('ย้อนกลับ (Undo) สำเร็จ');
         }
 
         function redo() {
             if (redoStack.length === 0) return;
-            undoStack.push(JSON.stringify(currentRoads));
-            currentRoads = JSON.parse(redoStack.pop());
+            const currentSnapshot = {
+                roads: JSON.parse(JSON.stringify(currentRoads)),
+                buildings: JSON.parse(JSON.stringify(currentBuildings))
+            };
+            undoStack.push(JSON.stringify(currentSnapshot));
+            const next = JSON.parse(redoStack.pop());
+            currentRoads = next.roads;
+            currentBuildings = next.buildings;
+
             initNodes();
             refreshRoadSvgLayers();
-            renderHandles();
-            renderRoadList();
+            applyAllBuildingTransforms();
+            if (studioMode === 'roads') {
+                renderHandles();
+                renderRoadList();
+            } else {
+                renderBuildingOverlay();
+                renderBuildingList();
+                updateBuildingInspector();
+            }
             updateUndoRedoButtons();
             showToast('ทำซ้ำ (Redo) สำเร็จ');
         }
@@ -1589,7 +1841,6 @@
             masterNodes = {};
             currentRoads.forEach(road => {
                 road.commands.forEach((cmd, cmdIdx) => {
-                    // Main Anchor Point
                     if (cmd.nodeId) {
                         masterNodes[cmd.nodeId] = {
                             id: cmd.nodeId,
@@ -1604,7 +1855,6 @@
                             field: 'main'
                         };
                     }
-                    // Quadratic Bezier Control Point
                     if (cmd.qNodeId) {
                         masterNodes[cmd.qNodeId] = {
                             id: cmd.qNodeId,
@@ -1619,7 +1869,6 @@
                             field: 'quad'
                         };
                     }
-                    // Cubic Bezier Control Point 1
                     if (cmd.c1NodeId) {
                         masterNodes[cmd.c1NodeId] = {
                             id: cmd.c1NodeId,
@@ -1634,7 +1883,6 @@
                             field: 'c1'
                         };
                     }
-                    // Cubic Bezier Control Point 2
                     if (cmd.c2NodeId) {
                         masterNodes[cmd.c2NodeId] = {
                             id: cmd.c2NodeId,
@@ -1652,7 +1900,6 @@
                 });
             });
 
-            // Update subtext
             const sub = document.getElementById('roadCountSubtext');
             if (sub) {
                 const totalPts = Object.keys(masterNodes).length;
@@ -1660,7 +1907,6 @@
             }
         }
 
-        // Render Path String from Commands
         function buildPathD(road) {
             let parts = [];
             road.commands.forEach(cmd => {
@@ -1679,7 +1925,6 @@
             return parts.join(' ');
         }
 
-        // Dynamic 4-Layer Synchronization (Handles Any Number of Roads Automatically)
         function refreshRoadSvgLayers() {
             const layerShadow = document.getElementById('roadLayerShadow');
             const layerCurb = document.getElementById('roadLayerCurb');
@@ -1696,7 +1941,6 @@
             roadGroups.forEach(({ el, buttCaps }) => {
                 if (!el) return;
                 let paths = Array.from(el.querySelectorAll('path'));
-                // Synchronize path count
                 while (paths.length < currentRoads.length) {
                     const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                     el.appendChild(p);
@@ -1719,14 +1963,14 @@
                         p.removeAttribute('stroke-linecap');
                     }
 
-                    // Click road to select
                     p.onclick = (e) => {
+                        if (studioMode !== 'roads') return;
                         e.stopPropagation();
                         selectRoad(r.id);
                     };
 
-                    // Double-click road to insert a new point right at cursor!
                     p.ondblclick = (e) => {
+                        if (studioMode !== 'roads') return;
                         e.stopPropagation();
                         insertPointAtScreenCoord(r.id, e.clientX, e.clientY);
                     };
@@ -1734,281 +1978,580 @@
             });
         }
 
-        // ================= ROAD CREATION, POINT INSERTION & CONVERSION ENGINE =================
+        // ================= DUAL-STUDIO SWITCHER =================
+        function switchStudioMode(mode) {
+            studioMode = mode;
+            const tabRoads = document.getElementById('tabModeRoads');
+            const tabBuildings = document.getElementById('tabModeBuildings');
+            const roadPane = document.getElementById('roadSidebarPane');
+            const buildingPane = document.getElementById('buildingSidebarPane');
 
-        // 1. Add New Road Line
-        function addNewRoad() {
-            saveHistoryState();
-            let maxNum = 0;
-            currentRoads.forEach(r => {
-                const m = r.id.match(/^R(\d+)$/);
-                if (m) {
-                    const n = parseInt(m[1], 10);
-                    if (n > maxNum) maxNum = n;
+            if (mode === 'roads') {
+                tabRoads.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition bg-amber-500 text-slate-950 shadow';
+                tabBuildings.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition text-slate-400 hover:text-white';
+                roadPane.classList.remove('hidden');
+                buildingPane.classList.add('hidden');
+                
+                // Hide building overlay, show road handles
+                hideBuildingOverlay();
+                renderHandles();
+                showToast('สลับสู่โหมด: ผังเส้นทางถนน');
+            } else {
+                tabBuildings.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition bg-emerald-500 text-slate-950 shadow';
+                tabRoads.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition text-slate-400 hover:text-white';
+                buildingPane.classList.remove('hidden');
+                buildingPane.classList.add('flex');
+                roadPane.classList.add('hidden');
+
+                // Hide road handles, setup building overlay
+                if (handlesGroup) handlesGroup.innerHTML = '';
+                bindBuildingInteractions();
+                renderBuildingList();
+                if (selectedBuildingId) {
+                    renderBuildingOverlay();
+                    updateBuildingInspector();
+                }
+                showToast('สลับสู่โหมด: ปรับแต่งตำแหน่ง & ขนาดอาคาร');
+            }
+        }
+
+        // ================= BUILDINGS & LANDMARKS ENGINE =================
+        let buildingOverlayGroup = null;
+
+        function applyAllBuildingTransforms() {
+            currentBuildings.forEach(b => {
+                const el = document.getElementById(b.id);
+                if (el) {
+                    let t = `translate(${Math.round(b.x)}, ${Math.round(b.y)})`;
+                    if (b.scale && b.scale !== 1.0) {
+                        t += ` scale(${b.scale.toFixed(2)})`;
+                    }
+                    if (b.rotate && b.rotate !== 0) {
+                        t += ` rotate(${Math.round(b.rotate)})`;
+                    }
+                    el.setAttribute('transform', t);
                 }
             });
-            const nextNum = maxNum + 1;
-            const nextId = 'R' + (nextNum < 10 ? '0' + nextNum : nextNum);
+        }
 
-            // Default placement near center of campus
-            const startX = 750 + ((nextNum * 25) % 200);
-            const startY = 480 + ((nextNum * 20) % 150);
-            const endX = startX + 130;
-            const endY = startY + 50;
+        function bindBuildingInteractions() {
+            currentBuildings.forEach(b => {
+                const el = document.getElementById(b.id);
+                if (!el) return;
+                el.classList.add('building-interactive');
 
-            const newRoad = {
-                id: nextId,
-                name: `เส้นทางใหม่ ${nextId}`,
-                commands: [
-                    { type: 'M', x: startX, y: startY, nodeId: `${nextId}_P0`, role: 'start', label: `${nextId} จุดเริ่มต้น` },
-                    { type: 'L', x: endX, y: endY, nodeId: `${nextId}_P1`, role: 'end', label: `${nextId} จุดสิ้นสุด` }
-                ]
+                el.onclick = (e) => {
+                    if (studioMode !== 'buildings') return;
+                    e.stopPropagation();
+                    selectBuilding(b.id);
+                };
+
+                // Drag handling directly on SVG building card
+                el.onmousedown = (e) => {
+                    if (studioMode !== 'buildings') return;
+                    e.stopPropagation();
+                    startBuildingDrag(e, b);
+                };
+                el.ontouchstart = (e) => {
+                    if (studioMode !== 'buildings') return;
+                    e.stopPropagation();
+                    startBuildingDrag(e, b);
+                };
+            });
+        }
+
+        function selectBuilding(buildingId) {
+            selectedBuildingId = buildingId;
+            currentBuildings.forEach(b => {
+                const el = document.getElementById(b.id);
+                if (el) {
+                    if (b.id === buildingId) {
+                        el.classList.add('building-selected');
+                    } else {
+                        el.classList.remove('building-selected');
+                    }
+                }
+            });
+
+            if (buildingId) {
+                renderBuildingOverlay();
+                updateBuildingInspector();
+            } else {
+                hideBuildingOverlay();
+                const panel = document.getElementById('buildingInspectorPanel');
+                if (panel) panel.classList.add('hidden');
+            }
+            renderBuildingList();
+        }
+
+        function updateBuildingInspector() {
+            const b = currentBuildings.find(x => x.id === selectedBuildingId);
+            const panel = document.getElementById('buildingInspectorPanel');
+            if (!b || !panel) return;
+
+            panel.classList.remove('hidden');
+            document.getElementById('inspectorBuildingName').textContent = b.name;
+            document.getElementById('inspectorCoordsText').textContent = `X: ${Math.round(b.x)}, Y: ${Math.round(b.y)}`;
+            document.getElementById('inputBuildingX').value = Math.round(b.x);
+            document.getElementById('inputBuildingY').value = Math.round(b.y);
+
+            const scaleVal = (b.scale || 1.0);
+            document.getElementById('inputBuildingScale').value = scaleVal;
+            document.getElementById('inspectorScaleText').textContent = `${Math.round(scaleVal * 100)}%`;
+
+            const rotateVal = (b.rotate || 0);
+            document.getElementById('inputBuildingRotate').value = rotateVal;
+            document.getElementById('inspectorRotateText').textContent = `${Math.round(rotateVal)}°`;
+        }
+
+        function updateSelectedBuildingPosition(newX, newY) {
+            const b = currentBuildings.find(x => x.id === selectedBuildingId);
+            if (!b) return;
+            saveHistoryState();
+            if (newX !== null) b.x = Math.max(0, Math.min(1600, parseFloat(newX) || 0));
+            if (newY !== null) b.y = Math.max(0, Math.min(1000, parseFloat(newY) || 0));
+            applyAllBuildingTransforms();
+            renderBuildingOverlay();
+            updateBuildingInspector();
+        }
+
+        function updateSelectedBuildingScale(newScale) {
+            const b = currentBuildings.find(x => x.id === selectedBuildingId);
+            if (!b) return;
+            saveHistoryState();
+            b.scale = Math.max(0.4, Math.min(2.5, parseFloat(newScale) || 1.0));
+            applyAllBuildingTransforms();
+            renderBuildingOverlay();
+            updateBuildingInspector();
+        }
+
+        function updateSelectedBuildingRotate(newRotate) {
+            const b = currentBuildings.find(x => x.id === selectedBuildingId);
+            if (!b) return;
+            saveHistoryState();
+            b.rotate = Math.round(parseFloat(newRotate) || 0);
+            applyAllBuildingTransforms();
+            renderBuildingOverlay();
+            updateBuildingInspector();
+        }
+
+        function nudgeBuilding(dx, dy) {
+            const b = currentBuildings.find(x => x.id === selectedBuildingId);
+            if (!b) return;
+            saveHistoryState();
+            b.x = Math.max(0, Math.min(1600, b.x + dx));
+            b.y = Math.max(0, Math.min(1000, b.y + dy));
+            applyAllBuildingTransforms();
+            renderBuildingOverlay();
+            updateBuildingInspector();
+        }
+
+        function resetSelectedBuilding() {
+            const b = currentBuildings.find(x => x.id === selectedBuildingId);
+            const init = INITIAL_BUILDINGS.find(x => x.id === selectedBuildingId);
+            if (!b || !init) return;
+            saveHistoryState();
+            b.x = init.x;
+            b.y = init.y;
+            b.scale = init.scale;
+            b.rotate = init.rotate;
+            applyAllBuildingTransforms();
+            renderBuildingOverlay();
+            updateBuildingInspector();
+            showToast(`รีเซ็ตอาคาร ${b.name} เรียบร้อย`);
+        }
+
+        function bringBuildingToFront() {
+            const b = currentBuildings.find(x => x.id === selectedBuildingId);
+            const el = document.getElementById(b?.id);
+            if (!el || !el.parentNode) return;
+            saveHistoryState();
+            el.parentNode.appendChild(el);
+            showToast(`นำ ${b.name} มาไว้เลเยอร์บนสุด`);
+        }
+
+        function sendBuildingToBack() {
+            const b = currentBuildings.find(x => x.id === selectedBuildingId);
+            const el = document.getElementById(b?.id);
+            if (!el || !el.parentNode) return;
+            saveHistoryState();
+            el.parentNode.insertBefore(el, el.parentNode.firstChild);
+            showToast(`ส่ง ${b.name} ไปไว้เลเยอร์ล่างสุด`);
+        }
+
+        // ================= BUILDING TRANSFORM OVERLAY (SELECTION BOX & HANDLES) =================
+        function renderBuildingOverlay() {
+            if (!buildingOverlayGroup) {
+                buildingOverlayGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                buildingOverlayGroup.setAttribute('id', 'buildingOverlayGroup');
+                svg.appendChild(buildingOverlayGroup);
+            }
+            buildingOverlayGroup.innerHTML = '';
+            if (studioMode !== 'buildings' || !selectedBuildingId) return;
+
+            const b = currentBuildings.find(x => x.id === selectedBuildingId);
+            const el = document.getElementById(selectedBuildingId);
+            if (!b || !el) return;
+
+            // Compute local bounding box with padding
+            let bbox = { x: -65, y: -45, width: 130, height: 90 };
+            try {
+                const realBox = el.getBBox();
+                if (realBox && realBox.width > 10) {
+                    bbox = realBox;
+                }
+            } catch (err) {}
+
+            const pad = 12;
+            const bx = (bbox.x - pad);
+            const by = (bbox.y - pad);
+            const bw = (bbox.width + pad * 2);
+            const bh = (bbox.height + pad * 2);
+
+            const scaleVal = b.scale || 1.0;
+            const rotVal = b.rotate || 0;
+
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            g.setAttribute('transform', `translate(${b.x}, ${b.y}) scale(${scaleVal}) rotate(${rotVal})`);
+
+            // Selection Rect
+            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            rect.setAttribute('x', bx);
+            rect.setAttribute('y', by);
+            rect.setAttribute('width', bw);
+            rect.setAttribute('height', bh);
+            rect.setAttribute('rx', '8');
+            rect.setAttribute('class', 'building-bbox');
+            g.appendChild(rect);
+
+            // Rotate Stem Line & Handle (Top Center)
+            const stem = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            stem.setAttribute('x1', bx + bw / 2);
+            stem.setAttribute('y1', by);
+            stem.setAttribute('x2', bx + bw / 2);
+            stem.setAttribute('y2', by - 24);
+            stem.setAttribute('class', 'rotate-stem');
+            g.appendChild(stem);
+
+            const rotHandle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            rotHandle.setAttribute('cx', bx + bw / 2);
+            rotHandle.setAttribute('cy', by - 24);
+            rotHandle.setAttribute('r', '6');
+            rotHandle.setAttribute('class', 'rotate-handle');
+            rotHandle.setAttribute('title', 'ลากเพื่อหมุนองศาอาคาร');
+            bindBuildingRotateHandle(rotHandle, b);
+            g.appendChild(rotHandle);
+
+            // 4 Corner Resize / Scale Handles
+            const corners = [
+                { id: 'TL', x: bx, y: by, cursor: 'nwse-resize' },
+                { id: 'TR', x: bx + bw, y: by, cursor: 'nesw-resize' },
+                { id: 'BR', x: bx + bw, y: by + bh, cursor: 'nwse-resize' },
+                { id: 'BL', x: bx, y: by + bh, cursor: 'nesw-resize' }
+            ];
+
+            const initialDiag = Math.hypot(bw / 2, bh / 2) || 1;
+
+            corners.forEach(c => {
+                const h = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                h.setAttribute('cx', c.x);
+                h.setAttribute('cy', c.y);
+                h.setAttribute('r', '5.5');
+                h.setAttribute('class', 'building-handle');
+                h.style.cursor = c.cursor;
+                h.setAttribute('title', 'ลากเพื่อปรับขนาดอาคาร');
+                bindBuildingScaleHandle(h, b, initialDiag);
+                g.appendChild(h);
+            });
+
+            buildingOverlayGroup.appendChild(g);
+        }
+
+        function hideBuildingOverlay() {
+            if (buildingOverlayGroup) buildingOverlayGroup.innerHTML = '';
+        }
+
+        // Building Dragging Event Engine
+        let activeDragBuilding = null;
+        let dragOffsetBuilding = { x: 0, y: 0 };
+
+        function startBuildingDrag(e, b) {
+            e.preventDefault();
+            saveHistoryState();
+            selectBuilding(b.id);
+            activeDragBuilding = b;
+
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            const svgPt = screenToSvgCoords(clientX, clientY);
+
+            dragOffsetBuilding.x = svgPt.x - b.x;
+            dragOffsetBuilding.y = svgPt.y - b.y;
+
+            const onMove = (ev) => {
+                if (!activeDragBuilding) return;
+                ev.preventDefault();
+                const curClientX = ev.touches ? ev.touches[0].clientX : ev.clientX;
+                const curClientY = ev.touches ? ev.touches[0].clientY : ev.clientY;
+                const curPt = screenToSvgCoords(curClientX, curClientY);
+
+                let targetX = Math.round(curPt.x - dragOffsetBuilding.x);
+                let targetY = Math.round(curPt.y - dragOffsetBuilding.y);
+
+                targetX = Math.max(50, Math.min(1550, targetX));
+                targetY = Math.max(50, Math.min(950, targetY));
+
+                // Magnet Snapping to Adjacent Buildings
+                if (magnetMode && !ev.altKey) {
+                    let minDistance = MAGNET_RADIUS;
+                    let snapped = null;
+                    currentBuildings.forEach(other => {
+                        if (other.id !== activeDragBuilding.id) {
+                            if (Math.abs(other.x - targetX) < minDistance) {
+                                targetX = other.x;
+                                snapped = true;
+                            }
+                            if (Math.abs(other.y - targetY) < minDistance) {
+                                targetY = other.y;
+                                snapped = true;
+                            }
+                        }
+                    });
+                }
+
+                activeDragBuilding.x = targetX;
+                activeDragBuilding.y = targetY;
+
+                applyAllBuildingTransforms();
+                renderBuildingOverlay();
+                updateBuildingInspector();
+                showNodeHud({ id: activeDragBuilding.id, label: activeDragBuilding.name, x: targetX, y: targetY }, curClientX, curClientY);
             };
 
-            currentRoads.push(newRoad);
-            initNodes();
-            refreshRoadSvgLayers();
-            selectRoad(nextId);
-            showToast(`✨ เพิ่มเส้นทางใหม่ [${nextId}] เรียบร้อยแล้ว! ปรับแต่งได้ทันที`);
+            const onEnd = () => {
+                activeDragBuilding = null;
+                hideNodeHud();
+                window.removeEventListener('mousemove', onMove);
+                window.removeEventListener('mouseup', onEnd);
+                window.removeEventListener('touchmove', onMove);
+                window.removeEventListener('touchend', onEnd);
+            };
+
+            window.addEventListener('mousemove', onMove);
+            window.addEventListener('mouseup', onEnd);
+            window.addEventListener('touchmove', onMove, { passive: false });
+            window.addEventListener('touchend', onEnd);
         }
 
-        // 2. Delete Road
-        function deleteRoad(roadId) {
-            if (currentRoads.length <= 1) {
-                showToast('ต้องมีเส้นทางถนนอย่างน้อย 1 เส้นทาง');
-                return;
-            }
-            if (!confirm(`คุณต้องการลบเส้นทาง "${roadId}" หรือไม่?`)) return;
-
-            saveHistoryState();
-            currentRoads = currentRoads.filter(r => r.id !== roadId);
-            if (selectedRoadId === roadId) {
-                selectedRoadId = currentRoads[0]?.id || null;
-            }
-            initNodes();
-            refreshRoadSvgLayers();
-            renderHandles();
-            renderRoadList();
-            showToast(`ลบเส้นทาง ${roadId} เรียบร้อยแล้ว`);
-        }
-
-        // 3. Rename Road
-        function updateRoadName(roadId, newName) {
-            const road = currentRoads.find(r => r.id === roadId);
-            if (road && newName.trim()) {
+        // Corner Handle Drag to Scale
+        function bindBuildingScaleHandle(handleEl, b, initialDiag) {
+            const onStart = (e) => {
+                e.stopPropagation();
+                e.preventDefault();
                 saveHistoryState();
-                road.name = newName.trim();
-                renderRoadList();
-            }
+                const startScale = b.scale || 1.0;
+
+                const onMove = (ev) => {
+                    ev.preventDefault();
+                    const clientX = ev.touches ? ev.touches[0].clientX : ev.clientX;
+                    const clientY = ev.touches ? ev.touches[0].clientY : ev.clientY;
+                    const pt = screenToSvgCoords(clientX, clientY);
+
+                    const currentDist = Math.hypot(pt.x - b.x, pt.y - b.y);
+                    let newScale = (currentDist / initialDiag);
+                    newScale = Math.max(0.4, Math.min(2.5, newScale));
+
+                    b.scale = parseFloat(newScale.toFixed(2));
+                    applyAllBuildingTransforms();
+                    renderBuildingOverlay();
+                    updateBuildingInspector();
+                    showNodeHud({ id: b.id, label: `ขนาด: ${Math.round(b.scale * 100)}%`, x: Math.round(b.x), y: Math.round(b.y) }, clientX, clientY);
+                };
+
+                const onEnd = () => {
+                    hideNodeHud();
+                    window.removeEventListener('mousemove', onMove);
+                    window.removeEventListener('mouseup', onEnd);
+                    window.removeEventListener('touchmove', onMove);
+                    window.removeEventListener('touchend', onEnd);
+                };
+
+                window.addEventListener('mousemove', onMove);
+                window.addEventListener('mouseup', onEnd);
+                window.addEventListener('touchmove', onMove, { passive: false });
+                window.addEventListener('touchend', onEnd);
+            };
+
+            handleEl.addEventListener('mousedown', onStart);
+            handleEl.addEventListener('touchstart', onStart, { passive: false });
         }
 
-        // 4. Add Point to End of Road
-        function addPointToEnd(roadId) {
-            const road = currentRoads.find(r => r.id === roadId);
-            if (!road) return;
-            saveHistoryState();
+        // Rotate Handle Drag to Rotate
+        function bindBuildingRotateHandle(handleEl, b) {
+            const onStart = (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                saveHistoryState();
 
-            const lastCmd = road.commands[road.commands.length - 1];
-            const prevCmd = road.commands.length >= 2 ? road.commands[road.commands.length - 2] : null;
+                const onMove = (ev) => {
+                    ev.preventDefault();
+                    const clientX = ev.touches ? ev.touches[0].clientX : ev.clientX;
+                    const clientY = ev.touches ? ev.touches[0].clientY : ev.clientY;
+                    const pt = screenToSvgCoords(clientX, clientY);
 
-            let newX = lastCmd.x + 80;
-            let newY = lastCmd.y + 40;
-            if (prevCmd) {
-                const dx = lastCmd.x - (prevCmd.x ?? prevCmd.qx ?? prevCmd.c2x ?? 0);
-                const dy = lastCmd.y - (prevCmd.y ?? prevCmd.qy ?? prevCmd.c2y ?? 0);
-                const dist = Math.hypot(dx, dy) || 1;
-                newX = Math.round(lastCmd.x + (dx / dist) * 75);
-                newY = Math.round(lastCmd.y + (dy / dist) * 75);
-            }
-            newX = Math.max(50, Math.min(1550, newX));
-            newY = Math.max(50, Math.min(950, newY));
+                    const angleRad = Math.atan2(pt.y - b.y, pt.x - b.x);
+                    let deg = Math.round(angleRad * 180 / Math.PI + 90);
+                    if (deg > 180) deg -= 360;
+                    if (deg < -180) deg += 360;
 
-            if (lastCmd.role === 'end') lastCmd.role = 'vertex';
+                    // Snap to 15 degrees if Shift is held
+                    if (ev.shiftKey) {
+                        deg = Math.round(deg / 15) * 15;
+                    }
 
-            const newIndex = road.commands.length;
-            const newNodeId = `${road.id}_P${newIndex}`;
+                    b.rotate = deg;
+                    applyAllBuildingTransforms();
+                    renderBuildingOverlay();
+                    updateBuildingInspector();
+                    showNodeHud({ id: b.id, label: `มุมหมุน: ${deg}°`, x: Math.round(b.x), y: Math.round(b.y) }, clientX, clientY);
+                };
 
-            road.commands.push({
-                type: 'L',
-                x: newX,
-                y: newY,
-                nodeId: newNodeId,
-                role: 'end',
-                label: `${road.id} จุดที่ ${newIndex + 1}`
+                const onEnd = () => {
+                    hideNodeHud();
+                    window.removeEventListener('mousemove', onMove);
+                    window.removeEventListener('mouseup', onEnd);
+                    window.removeEventListener('touchmove', onMove);
+                    window.removeEventListener('touchend', onEnd);
+                };
+
+                window.addEventListener('mousemove', onMove);
+                window.addEventListener('mouseup', onEnd);
+                window.addEventListener('touchmove', onMove, { passive: false });
+                window.addEventListener('touchend', onEnd);
+            };
+
+            handleEl.addEventListener('mousedown', onStart);
+            handleEl.addEventListener('touchstart', onStart, { passive: false });
+        }
+
+        // Render Building Directory in Sidebar
+        function renderBuildingList() {
+            const list = document.getElementById('buildingListContainer');
+            if (!list) return;
+            const searchInput = document.getElementById('buildingSearchInput');
+            const query = (searchInput?.value || '').toLowerCase().trim();
+
+            list.innerHTML = '';
+            const filtered = currentBuildings.filter(b => 
+                !query || b.name.toLowerCase().includes(query) || b.id.toLowerCase().includes(query)
+            );
+
+            filtered.forEach(b => {
+                const isSelected = (selectedBuildingId === b.id);
+                const item = document.createElement('div');
+                item.className = `p-2.5 rounded-xl border cursor-pointer transition-all duration-200 ${
+                    isSelected 
+                        ? 'bg-emerald-500/15 border-emerald-500/60 shadow-md ring-1 ring-emerald-500/30' 
+                        : 'bg-slate-800/60 hover:bg-slate-800 border-slate-700/60'
+                }`;
+
+                const scalePct = Math.round((b.scale || 1.0) * 100);
+                const rotateDeg = Math.round(b.rotate || 0);
+
+                item.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2 overflow-hidden flex-1 mr-2">
+                            <span class="text-sm shrink-0">${b.icon || '🏢'}</span>
+                            <span class="text-xs font-semibold truncate ${isSelected ? 'text-emerald-300 font-bold' : 'text-slate-300'}">${b.name}</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 shrink-0 text-[10px] font-mono text-slate-400">
+                            ${scalePct !== 100 ? `<span class="bg-emerald-950 text-emerald-400 px-1 rounded">${scalePct}%</span>` : ''}
+                            ${rotateDeg !== 0 ? `<span class="bg-amber-950 text-amber-400 px-1 rounded">${rotateDeg}°</span>` : ''}
+                            <span class="bg-slate-900 px-1.5 py-0.5 rounded text-slate-300">(${Math.round(b.x)}, ${Math.round(b.y)})</span>
+                        </div>
+                    </div>
+                `;
+
+                item.onclick = () => selectBuilding(b.id);
+                list.appendChild(item);
             });
-
-            initNodes();
-            refreshRoadSvgLayers();
-            renderHandles();
-            renderRoadList();
-            showToast(`เพิ่มจุดต่อท้ายบน ${road.id} เรียบร้อย (${newX}, ${newY})`);
+            lucide.createIcons();
         }
 
-        // 5. Insert Point After Specific Command Index
-        function insertPointAfter(roadId, cmdIdx) {
-            const road = currentRoads.find(r => r.id === roadId);
-            if (!road || cmdIdx >= road.commands.length - 1) return;
-            saveHistoryState();
-
-            const curr = road.commands[cmdIdx];
-            const next = road.commands[cmdIdx + 1];
-
-            const midX = Math.round((curr.x + next.x) / 2);
-            const midY = Math.round((curr.y + next.y) / 2);
-
-            const newNodeId = `${road.id}_P_INS_${Date.now().toString().slice(-4)}`;
-            road.commands.splice(cmdIdx + 1, 0, {
-                type: 'L',
-                x: midX,
-                y: midY,
-                nodeId: newNodeId,
-                role: 'vertex',
-                label: `${road.id} จุดแทรกกึ่งกลาง`
-            });
-
-            initNodes();
-            refreshRoadSvgLayers();
-            renderHandles();
-            renderRoadList();
-            showToast(`แทรกจุดใหม่กึ่งกลางบน ${road.id} สำเร็จ`);
+        function filterBuildingList() {
+            renderBuildingList();
         }
 
-        // 6. Delete Point from Road
-        function deletePoint(roadId, cmdIdx) {
-            const road = currentRoads.find(r => r.id === roadId);
-            if (!road || road.commands.length <= 2) {
-                showToast('ถนนต้องมีอย่างน้อย 2 จุด (ไม่สามารถลบได้อีก)');
-                return;
+        // ================= EXPORT SVG MODAL ENGINE =================
+        let activeExportTab = 'roads';
+
+        function openExportModal() {
+            const modal = document.getElementById('exportSvgModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                switchExportTab(studioMode === 'buildings' ? 'buildings' : 'roads');
             }
-            saveHistoryState();
-            road.commands.splice(cmdIdx, 1);
-
-            // Re-assign roles
-            if (road.commands[0]) road.commands[0].role = 'start';
-            const last = road.commands[road.commands.length - 1];
-            if (last && last.type !== 'Z') last.role = 'end';
-
-            initNodes();
-            refreshRoadSvgLayers();
-            renderHandles();
-            renderRoadList();
-            showToast('ลบจุดเรียบร้อยแล้ว');
         }
 
-        // 7. Convert Segment to Curve (Quadratic Bezier 'Q')
-        function convertSegmentToCurve(roadId, cmdIdx) {
-            const road = currentRoads.find(r => r.id === roadId);
-            if (!road || cmdIdx <= 0 || cmdIdx >= road.commands.length) return;
-            const cmd = road.commands[cmdIdx];
-            const prev = road.commands[cmdIdx - 1];
-            if (cmd.type !== 'L') return;
-
-            saveHistoryState();
-            const mx = (prev.x + cmd.x) / 2;
-            const my = (prev.y + cmd.y) / 2;
-            const dx = cmd.x - prev.x;
-            const dy = cmd.y - prev.y;
-
-            // Offset perpendicular to line by 25% length
-            const qx = Math.round(mx - dy * 0.25);
-            const qy = Math.round(my + dx * 0.25);
-
-            cmd.type = 'Q';
-            cmd.qx = qx;
-            cmd.qy = qy;
-            cmd.qNodeId = `${road.id}_Q_${cmdIdx}`;
-            cmd.qRole = 'ctrl';
-            cmd.qLabel = `${road.id} ดัดโค้ง`;
-
-            initNodes();
-            refreshRoadSvgLayers();
-            renderHandles();
-            renderRoadList();
-            showToast(`ดัดเป็น "เส้นโค้ง (Q)" แล้ว! ลากจุดสีฟ้าเพื่อปรับองศาโค้ง`);
+        function closeExportModal() {
+            const modal = document.getElementById('exportSvgModal');
+            if (modal) modal.classList.add('hidden');
         }
 
-        // 8. Convert Segment to Straight Line ('L')
-        function convertSegmentToStraight(roadId, cmdIdx) {
-            const road = currentRoads.find(r => r.id === roadId);
-            if (!road || cmdIdx <= 0 || cmdIdx >= road.commands.length) return;
-            const cmd = road.commands[cmdIdx];
-            if (cmd.type !== 'Q' && cmd.type !== 'C') return;
+        function switchExportTab(tab) {
+            activeExportTab = tab;
+            const btnRoads = document.getElementById('modalTabRoads');
+            const btnBuildings = document.getElementById('modalTabBuildings');
+            const btnFull = document.getElementById('modalTabFull');
+            const textarea = document.getElementById('modalExportTextarea');
 
-            saveHistoryState();
-            cmd.type = 'L';
-            delete cmd.qx;
-            delete cmd.qy;
-            delete cmd.qNodeId;
-            delete cmd.qRole;
-            delete cmd.qLabel;
-            delete cmd.c1x;
-            delete cmd.c1y;
-            delete cmd.c1NodeId;
-            delete cmd.c1Label;
-            delete cmd.c2x;
-            delete cmd.c2y;
-            delete cmd.c2NodeId;
-            delete cmd.c2Label;
+            const inactiveClass = 'flex-1 py-1.5 text-xs font-bold rounded-lg transition text-slate-400 hover:text-white';
+            const activeRoadClass = 'flex-1 py-1.5 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow';
+            const activeBuildingClass = 'flex-1 py-1.5 text-xs font-bold rounded-lg transition bg-emerald-500 text-slate-950 shadow';
 
-            initNodes();
-            refreshRoadSvgLayers();
-            renderHandles();
-            renderRoadList();
-            showToast(`เปลี่ยนกลับเป็น "เส้นตรง" เรียบร้อยแล้ว`);
-        }
+            btnRoads.className = (tab === 'roads') ? activeRoadClass : inactiveClass;
+            btnBuildings.className = (tab === 'buildings') ? activeBuildingClass : inactiveClass;
+            btnFull.className = (tab === 'full') ? activeRoadClass : inactiveClass;
 
-        // 9. Double-click on road to insert point at cursor location
-        function insertPointAtScreenCoord(roadId, screenX, screenY) {
-            const road = currentRoads.find(r => r.id === roadId);
-            if (!road) return;
-            const pt = screenToSvgCoords(screenX, screenY);
-            const clickX = Math.round(pt.x);
-            const clickY = Math.round(pt.y);
-
-            saveHistoryState();
-
-            let bestSegmentIdx = road.commands.length - 2;
-            let minDistance = Infinity;
-
-            for (let i = 0; i < road.commands.length - 1; i++) {
-                const c1 = road.commands[i];
-                const c2 = road.commands[i + 1];
-                const p1 = { x: c1.x, y: c1.y };
-                const p2 = { x: c2.x, y: c2.y };
-                const dist = distToSegment({ x: clickX, y: clickY }, p1, p2);
-                if (dist < minDistance) {
-                    minDistance = dist;
-                    bestSegmentIdx = i;
-                }
+            if (tab === 'roads') {
+                textarea.value = generateCleanSvgCode();
+            } else if (tab === 'buildings') {
+                textarea.value = generateBuildingsSvgCode();
+            } else {
+                textarea.value = generateFullMapSvgCode();
             }
+        }
 
-            const newNodeId = `${road.id}_P_INS_${Date.now().toString().slice(-4)}`;
-            road.commands.splice(bestSegmentIdx + 1, 0, {
-                type: 'L',
-                x: clickX,
-                y: clickY,
-                nodeId: newNodeId,
-                role: 'vertex',
-                label: `${road.id} จุดแทรก (${clickX}, ${clickY})`
+        function copyModalSvgCode() {
+            const textarea = document.getElementById('modalExportTextarea');
+            if (!textarea) return;
+            navigator.clipboard.writeText(textarea.value).then(() => {
+                showToast('คัดลอกโค้ด SVG เรียบร้อยแล้ว! ส่งให้ผู้ช่วยนำไปอัปเดตได้เลย');
+                closeExportModal();
+            }).catch(err => {
+                prompt('คัดลอกโค้ดด้านล่างนี้:', textarea.value);
             });
-
-            initNodes();
-            refreshRoadSvgLayers();
-            renderHandles();
-            renderRoadList();
-            showToast(`แทรกจุดใหม่บน ${road.id} ที่พิกัด (${clickX}, ${clickY}) แล้ว!`);
         }
 
-        function distToSegment(p, v, w) {
-            const l2 = (v.x - w.x) ** 2 + (v.y - w.y) ** 2;
-            if (l2 === 0) return Math.hypot(p.x - v.x, p.y - v.y);
-            let t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
-            t = Math.max(0, Math.min(1, t));
-            return Math.hypot(p.x - (v.x + t * (w.x - v.x)), p.y - (v.y + t * (w.y - v.y)));
+        function generateBuildingsSvgCode() {
+            let lines = [];
+            lines.push('  <!-- ================= 7. 2.5D CEL-SHADED BUILDINGS & LANDMARKS ================= -->');
+            lines.push('  <!-- ตำแหน่ง, ขนาด และองศาที่ปรับแต่งแล้ว: -->');
+            currentBuildings.forEach(b => {
+                let t = `translate(${Math.round(b.x)}, ${Math.round(b.y)})`;
+                if (b.scale && b.scale !== 1.0) t += ` scale(${b.scale.toFixed(2)})`;
+                if (b.rotate && b.rotate !== 0) t += ` rotate(${Math.round(b.rotate)})`;
+                lines.push(`  <!-- [${b.id}] ${b.name} -> transform="${t}" -->`);
+            });
+            return lines.join('\n');
         }
 
-        // ================= OVERLAY HANDLES & INTERACTIVE CONTROLS =================
+        function generateFullMapSvgCode() {
+            const svgEl = document.getElementById('cartoonPokemonCampusSvg');
+            return svgEl ? svgEl.outerHTML : '';
+        }
 
+        // ================= OVERLAY HANDLES (FOR ROADS) =================
         let handlesGroup = null;
 
         function renderHandles() {
@@ -2018,7 +2561,7 @@
                 svg.appendChild(handlesGroup);
             }
             handlesGroup.innerHTML = '';
-            if (!showHandles) return;
+            if (!showHandles || studioMode !== 'roads') return;
 
             const allNodesList = Object.values(masterNodes);
             let backgroundNodes = [];
@@ -2032,7 +2575,7 @@
                 }
             });
 
-            // 1. Draw Bezier Tangent Guide Lines
+            // Draw Tangent Lines for Curves
             const roadsToDrawGuides = selectedRoadId 
                 ? currentRoads.filter(r => r.id === selectedRoadId) 
                 : currentRoads;
@@ -2082,17 +2625,10 @@
                 });
             });
 
-            // 2. Render Background Nodes (if filterMode is 'all')
             if (filterMode === 'all') {
-                backgroundNodes.forEach(node => {
-                    createHandleElement(node, false);
-                });
+                backgroundNodes.forEach(node => createHandleElement(node, false));
             }
-
-            // 3. Render Foreground Nodes (Active Selected Road - Top of DOM)
-            foregroundNodes.forEach(node => {
-                createHandleElement(node, true);
-            });
+            foregroundNodes.forEach(node => createHandleElement(node, true));
         }
 
         function createHandleElement(node, isSelected) {
@@ -2105,7 +2641,6 @@
             g.setAttribute('data-node-id', node.id);
             g.setAttribute('data-road-id', node.roadId);
 
-            // Large hit target
             const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
             hit.setAttribute('cx', node.x);
             hit.setAttribute('cy', node.y);
@@ -2114,7 +2649,6 @@
             hit.setAttribute('cursor', 'grab');
             g.appendChild(hit);
 
-            // Active Glow Halo
             if (isSelected) {
                 const pulseHalo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
                 pulseHalo.setAttribute('cx', node.x);
@@ -2127,7 +2661,6 @@
                 g.appendChild(pulseHalo);
             }
 
-            // Pin Circle
             const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
             circle.setAttribute('cx', node.x);
             circle.setAttribute('cy', node.y);
@@ -2167,7 +2700,6 @@
             circle.setAttribute('filter', 'drop-shadow(0 2px 5px rgba(0,0,0,0.45))');
             g.appendChild(circle);
 
-            // Center Dot
             const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
             dot.setAttribute('cx', node.x);
             dot.setAttribute('cy', node.y);
@@ -2312,25 +2844,22 @@
         }
 
         function hideMagnetRing() {
-            if (magnetRing) {
-                magnetRing.style.display = 'none';
-            }
+            if (magnetRing) magnetRing.style.display = 'none';
         }
 
-        // Floating Node HUD
         const floatingHud = document.getElementById('floatingNodeHud');
         const hudTitle = document.getElementById('hudNodeTitle');
         const hudCoords = document.getElementById('hudNodeCoords');
         const hudMainBadge = document.getElementById('hudCoords');
 
         function showNodeHud(node, screenX, screenY, snappedTo = null) {
-            hudTitle.innerHTML = `<span class="text-amber-400 font-extrabold">${node.roadId}</span>: ${node.label}`;
+            hudTitle.innerHTML = `<span class="text-amber-400 font-extrabold">${node.roadId || ''}</span> ${node.label}`;
             if (snappedTo) {
-                hudCoords.innerHTML = `<span class="text-emerald-400 font-bold">🧲 ดูดติดกับ: ${snappedTo.roadId} (${snappedTo.x}, ${snappedTo.y})</span>`;
-                hudMainBadge.textContent = `X: ${node.x}, Y: ${node.y} [🧲 ${snappedTo.roadId}]`;
+                hudCoords.innerHTML = `<span class="text-emerald-400 font-bold">🧲 ดูดติดกับ: ${snappedTo.roadId || ''} (${snappedTo.x}, ${snappedTo.y})</span>`;
+                hudMainBadge.textContent = `X: ${node.x}, Y: ${node.y} [🧲 ${snappedTo.roadId || ''}]`;
             } else {
                 hudCoords.textContent = `พิกัด: X ${node.x}, Y ${node.y}`;
-                hudMainBadge.textContent = `X: ${node.x}, Y: ${node.y} (${node.roadId})`;
+                hudMainBadge.textContent = `X: ${node.x}, Y: ${node.y}`;
             }
 
             floatingHud.style.left = `${screenX}px`;
@@ -2342,10 +2871,8 @@
             floatingHud.classList.add('hidden');
         }
 
-        // Road Selection & Focus Handler
         function selectRoad(roadId) {
             selectedRoadId = roadId;
-
             const allRoadPaths = svg.querySelectorAll('.road-interactive');
             allRoadPaths.forEach(p => p.classList.remove('road-highlight'));
 
@@ -2358,7 +2885,6 @@
             renderRoadList();
         }
 
-        // Mode Toggles
         function toggleFilterMode() {
             filterMode = (filterMode === 'all') ? 'focus' : 'all';
             const text = document.getElementById('filterText');
@@ -2387,7 +2913,7 @@
                 text.textContent = 'แม่เหล็ก: เปิด';
                 icon.classList.remove('text-slate-500');
                 icon.classList.add('text-amber-400');
-                showToast('เปิดแม่เหล็กดูดจุด (14px): ดูดเชื่อมต่อแยกให้อัตโนมัติ');
+                showToast('เปิดแม่เหล็กดูดจุด (14px): เชื่อมต่อแยกให้อัตโนมัติ');
             } else {
                 text.textContent = 'แม่เหล็ก: ปิด';
                 icon.classList.remove('text-amber-400');
@@ -2398,7 +2924,7 @@
 
         function toggleHandles() {
             showHandles = !showHandles;
-            renderHandles();
+            if (studioMode === 'roads') renderHandles();
             const icon = document.getElementById('handlesIcon');
             if (showHandles) {
                 icon.classList.remove('text-slate-500');
@@ -2407,7 +2933,7 @@
             } else {
                 icon.classList.remove('text-emerald-400');
                 icon.classList.add('text-slate-500');
-                showToast('ซ่อนจุดด้ามจับ (พรีวิวแผนที่คลีน)');
+                showToast('ซ่อนจุดด้ามจับ');
             }
         }
 
@@ -2421,7 +2947,6 @@
             showToast('รีเซ็ตตำแหน่งถนนกลับสู่ค่าเริ่มต้นเรียบร้อย');
         }
 
-        // Toast Notification System
         function showToast(msg) {
             const toast = document.getElementById('toastNotification');
             const toastMsg = document.getElementById('toastMessage');
@@ -2434,12 +2959,10 @@
             }, 2500);
         }
 
-        // Clean Production SVG Generator
+        // Clean SVG Generator (Section 5)
         function generateCleanSvgCode() {
             let lines = [];
             lines.push('  <!-- ================= 5. REFINED SEAMLESS ROAD NETWORK ================= -->');
-            
-            // Layer 1: Soft Drop Shadow
             lines.push('  <!-- 5.0 Road Contact Soft Drop Shadow (Stroke 36, Opacity 0.38) -->');
             lines.push('  <g fill="none" stroke="#0B1220" stroke-width="36" stroke-linecap="round" stroke-linejoin="round" opacity="0.38">');
             currentRoads.forEach(r => {
@@ -2448,7 +2971,6 @@
             });
             lines.push('  </g>\n');
 
-            // Layer 2: Cream Curb
             lines.push('  <!-- 5.1 Cartoon Cream Curb / Pavement Border (Stroke 30, #F8FAFC, Fully Rounded Seamless) -->');
             lines.push('  <g fill="none" stroke="#F8FAFC" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">');
             currentRoads.forEach(r => {
@@ -2457,7 +2979,6 @@
             });
             lines.push('  </g>\n');
 
-            // Layer 3: Warm Slate Surface
             lines.push('  <!-- 5.2 Inner Road Surface Core (Warm Pavement Slate, Width 22, Rounded) -->');
             lines.push('  <g fill="none" stroke="url(#warmRoadSurface)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">');
             currentRoads.forEach(r => {
@@ -2466,7 +2987,6 @@
             });
             lines.push('  </g>\n');
 
-            // Layer 4: Butter-Yellow Centerline
             lines.push('  <!-- 5.3 Warm Butter-Yellow Centerline (Stroke 2, Dasharray 7 7) -->');
             lines.push('  <g fill="none" stroke="#FEF08A" stroke-width="2" stroke-dasharray="7 7" opacity="0.9" stroke-linecap="round" stroke-linejoin="round">');
             currentRoads.forEach(r => {
@@ -2477,16 +2997,266 @@
             return lines.join('\n');
         }
 
-        function copySvgCode() {
-            const code = generateCleanSvgCode();
-            navigator.clipboard.writeText(code).then(() => {
-                showToast('คัดลอกโค้ด SVG ถนนทั้ง 4 เลเยอร์แล้ว! ส่งให้ผู้ช่วยบันทึกได้ทันที');
-            }).catch(err => {
-                prompt('คัดลอกโค้ด SVG ด้านล่างนี้:', code);
+        // Road Studio Functions
+        function addNewRoad() {
+            saveHistoryState();
+            let maxNum = 0;
+            currentRoads.forEach(r => {
+                const m = r.id.match(/^R(\d+)$/);
+                if (m) {
+                    const n = parseInt(m[1], 10);
+                    if (n > maxNum) maxNum = n;
+                }
             });
+            const nextNum = maxNum + 1;
+            const nextId = 'R' + (nextNum < 10 ? '0' + nextNum : nextNum);
+
+            const startX = 750 + ((nextNum * 25) % 200);
+            const startY = 480 + ((nextNum * 20) % 150);
+            const endX = startX + 130;
+            const endY = startY + 50;
+
+            const newRoad = {
+                id: nextId,
+                name: `เส้นทางใหม่ ${nextId}`,
+                commands: [
+                    { type: 'M', x: startX, y: startY, nodeId: `${nextId}_P0`, role: 'start', label: `${nextId} จุดเริ่มต้น` },
+                    { type: 'L', x: endX, y: endY, nodeId: `${nextId}_P1`, role: 'end', label: `${nextId} จุดสิ้นสุด` }
+                ]
+            };
+
+            currentRoads.push(newRoad);
+            initNodes();
+            refreshRoadSvgLayers();
+            selectRoad(nextId);
+            showToast(`✨ เพิ่มเส้นทางใหม่ [${nextId}] เรียบร้อยแล้ว!`);
         }
 
-        // Render Comprehensive Sidebar with Road Inspector, Curve/Straight toggles & Point Management
+        function deleteRoad(roadId) {
+            if (currentRoads.length <= 1) {
+                showToast('ต้องมีเส้นทางถนนอย่างน้อย 1 เส้นทาง');
+                return;
+            }
+            if (!confirm(`คุณต้องการลบเส้นทาง "${roadId}" หรือไม่?`)) return;
+
+            saveHistoryState();
+            currentRoads = currentRoads.filter(r => r.id !== roadId);
+            if (selectedRoadId === roadId) {
+                selectedRoadId = currentRoads[0]?.id || null;
+            }
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`ลบเส้นทาง ${roadId} เรียบร้อยแล้ว`);
+        }
+
+        function updateRoadName(roadId, newName) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (road && newName.trim()) {
+                saveHistoryState();
+                road.name = newName.trim();
+                renderRoadList();
+            }
+        }
+
+        function addPointToEnd(roadId) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road) return;
+            saveHistoryState();
+
+            const lastCmd = road.commands[road.commands.length - 1];
+            const prevCmd = road.commands.length >= 2 ? road.commands[road.commands.length - 2] : null;
+
+            let newX = lastCmd.x + 80;
+            let newY = lastCmd.y + 40;
+            if (prevCmd) {
+                const dx = lastCmd.x - (prevCmd.x ?? prevCmd.qx ?? prevCmd.c2x ?? 0);
+                const dy = lastCmd.y - (prevCmd.y ?? prevCmd.qy ?? prevCmd.c2y ?? 0);
+                const dist = Math.hypot(dx, dy) || 1;
+                newX = Math.round(lastCmd.x + (dx / dist) * 75);
+                newY = Math.round(lastCmd.y + (dy / dist) * 75);
+            }
+            newX = Math.max(50, Math.min(1550, newX));
+            newY = Math.max(50, Math.min(950, newY));
+
+            if (lastCmd.role === 'end') lastCmd.role = 'vertex';
+
+            const newIndex = road.commands.length;
+            const newNodeId = `${road.id}_P${newIndex}`;
+
+            road.commands.push({
+                type: 'L',
+                x: newX,
+                y: newY,
+                nodeId: newNodeId,
+                role: 'end',
+                label: `${road.id} จุดที่ ${newIndex + 1}`
+            });
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`เพิ่มจุดต่อท้ายบน ${road.id} เรียบร้อย`);
+        }
+
+        function insertPointAfter(roadId, cmdIdx) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road || cmdIdx >= road.commands.length - 1) return;
+            saveHistoryState();
+
+            const curr = road.commands[cmdIdx];
+            const next = road.commands[cmdIdx + 1];
+
+            const midX = Math.round((curr.x + next.x) / 2);
+            const midY = Math.round((curr.y + next.y) / 2);
+
+            const newNodeId = `${road.id}_P_INS_${Date.now().toString().slice(-4)}`;
+            road.commands.splice(cmdIdx + 1, 0, {
+                type: 'L',
+                x: midX,
+                y: midY,
+                nodeId: newNodeId,
+                role: 'vertex',
+                label: `${road.id} จุดแทรกกึ่งกลาง`
+            });
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`แทรกจุดใหม่กึ่งกลางบน ${road.id} สำเร็จ`);
+        }
+
+        function deletePoint(roadId, cmdIdx) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road || road.commands.length <= 2) {
+                showToast('ถนนต้องมีอย่างน้อย 2 จุด (ไม่สามารถลบได้อีก)');
+                return;
+            }
+            saveHistoryState();
+            road.commands.splice(cmdIdx, 1);
+
+            if (road.commands[0]) road.commands[0].role = 'start';
+            const last = road.commands[road.commands.length - 1];
+            if (last && last.type !== 'Z') last.role = 'end';
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast('ลบจุดเรียบร้อยแล้ว');
+        }
+
+        function convertSegmentToCurve(roadId, cmdIdx) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road || cmdIdx <= 0 || cmdIdx >= road.commands.length) return;
+            const cmd = road.commands[cmdIdx];
+            const prev = road.commands[cmdIdx - 1];
+            if (cmd.type !== 'L') return;
+
+            saveHistoryState();
+            const mx = (prev.x + cmd.x) / 2;
+            const my = (prev.y + cmd.y) / 2;
+            const dx = cmd.x - prev.x;
+            const dy = cmd.y - prev.y;
+
+            const qx = Math.round(mx - dy * 0.25);
+            const qy = Math.round(my + dx * 0.25);
+
+            cmd.type = 'Q';
+            cmd.qx = qx;
+            cmd.qy = qy;
+            cmd.qNodeId = `${road.id}_Q_${cmdIdx}`;
+            cmd.qRole = 'ctrl';
+            cmd.qLabel = `${road.id} ดัดโค้ง`;
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`ดัดเป็น "เส้นโค้ง (Q)" แล้ว! ลากจุดสีฟ้าเพื่อปรับองศาโค้ง`);
+        }
+
+        function convertSegmentToStraight(roadId, cmdIdx) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road || cmdIdx <= 0 || cmdIdx >= road.commands.length) return;
+            const cmd = road.commands[cmdIdx];
+            if (cmd.type !== 'Q' && cmd.type !== 'C') return;
+
+            saveHistoryState();
+            cmd.type = 'L';
+            delete cmd.qx;
+            delete cmd.qy;
+            delete cmd.qNodeId;
+            delete cmd.qRole;
+            delete cmd.qLabel;
+            delete cmd.c1x;
+            delete cmd.c1y;
+            delete cmd.c1NodeId;
+            delete cmd.c1Label;
+            delete cmd.c2x;
+            delete cmd.c2y;
+            delete cmd.c2NodeId;
+            delete cmd.c2Label;
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`เปลี่ยนกลับเป็น "เส้นตรง" เรียบร้อยแล้ว`);
+        }
+
+        function insertPointAtScreenCoord(roadId, screenX, screenY) {
+            const road = currentRoads.find(r => r.id === roadId);
+            if (!road) return;
+            const pt = screenToSvgCoords(screenX, screenY);
+            const clickX = Math.round(pt.x);
+            const clickY = Math.round(pt.y);
+
+            saveHistoryState();
+
+            let bestSegmentIdx = road.commands.length - 2;
+            let minDistance = Infinity;
+
+            for (let i = 0; i < road.commands.length - 1; i++) {
+                const c1 = road.commands[i];
+                const c2 = road.commands[i + 1];
+                const p1 = { x: c1.x, y: c1.y };
+                const p2 = { x: c2.x, y: c2.y };
+                const dist = distToSegment({ x: clickX, y: clickY }, p1, p2);
+                if (dist < minDistance) {
+                    minDistance = dist;
+                    bestSegmentIdx = i;
+                }
+            }
+
+            const newNodeId = `${road.id}_P_INS_${Date.now().toString().slice(-4)}`;
+            road.commands.splice(bestSegmentIdx + 1, 0, {
+                type: 'L',
+                x: clickX,
+                y: clickY,
+                nodeId: newNodeId,
+                role: 'vertex',
+                label: `${road.id} จุดแทรก (${clickX}, ${clickY})`
+            });
+
+            initNodes();
+            refreshRoadSvgLayers();
+            renderHandles();
+            renderRoadList();
+            showToast(`แทรกจุดใหม่บน ${road.id} สำเร็จ!`);
+        }
+
+        function distToSegment(p, v, w) {
+            const l2 = (v.x - w.x) ** 2 + (v.y - w.y) ** 2;
+            if (l2 === 0) return Math.hypot(p.x - v.x, p.y - v.y);
+            let t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
+            t = Math.max(0, Math.min(1, t));
+            return Math.hypot(p.x - (v.x + t * (w.x - v.x)), p.y - (v.y + t * (w.y - v.y)));
+        }
+
         function renderRoadList() {
             const list = document.getElementById('roadListContainer');
             if (!list) return;
@@ -2503,7 +3273,6 @@
                         : 'bg-slate-800/50 hover:bg-slate-800 border-slate-700/60'
                 }`;
 
-                // Card Header
                 let headerHtml = `
                     <div class="p-2.5 flex items-center justify-between cursor-pointer ${isSelected ? 'bg-amber-500/10 border-b border-amber-500/20' : ''}" onclick="selectRoad('${r.id}')">
                         <div class="flex items-center gap-2 overflow-hidden flex-1 mr-2">
@@ -2529,12 +3298,10 @@
                     </div>
                 `;
 
-                // Card Body: Point Management & Curve/Straight toggles (shown when active)
                 let bodyHtml = '';
                 if (isSelected) {
                     bodyHtml = `
                         <div class="p-2.5 space-y-1.5 bg-slate-950/40">
-                            <!-- Points List -->
                             <div class="space-y-1.5">
                                 ${r.commands.map((cmd, idx) => {
                                     if (cmd.type === 'Z') return '';
@@ -2582,8 +3349,6 @@
                                     `;
                                 }).join('')}
                             </div>
-
-                            <!-- Add Point Button at End -->
                             <button onclick="addPointToEnd('${r.id}')" class="w-full flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-white text-xs font-bold py-2 rounded-lg border border-slate-700 transition mt-2 active:scale-98">
                                 <i data-lucide="plus" class="w-3.5 h-3.5"></i>
                                 <span>+ เพิ่มจุดต่อท้ายเส้นทาง</span>
@@ -2615,9 +3380,8 @@
             updateCanvasTransform();
         }
 
-        // Viewport Drag to Pan
         viewport.addEventListener('mousedown', (e) => {
-            if (e.target.tagName.toLowerCase() === 'circle') return;
+            if (e.target.tagName.toLowerCase() === 'circle' || e.target.classList.contains('building-interactive')) return;
             isPanning = true;
             panStartX = e.clientX - panX;
             panStartY = e.clientY - panY;
@@ -2636,14 +3400,12 @@
             viewport.style.cursor = 'crosshair';
         });
 
-        // Wheel Zoom
         viewport.addEventListener('wheel', (e) => {
             e.preventDefault();
             const factor = e.deltaY < 0 ? 1.1 : 0.9;
             zoomEditor(factor);
         }, { passive: false });
 
-        // Keyboard Shortcuts: Ctrl+Z (Undo), Ctrl+Y (Redo), Escape (Deselect)
         window.addEventListener('keydown', (e) => {
             if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
                 if (e.shiftKey) redo();
@@ -2653,25 +3415,25 @@
                 redo();
                 e.preventDefault();
             } else if (e.key === 'Escape') {
-                selectRoad(null);
+                if (studioMode === 'roads') selectRoad(null);
+                else selectBuilding(null);
             }
         });
 
-        // Click on Canvas background deselects road
         viewport.addEventListener('click', (e) => {
             if (e.target === viewport || e.target === wrapper || e.target === svg) {
-                selectRoad(null);
+                if (studioMode === 'roads') selectRoad(null);
+                else selectBuilding(null);
             }
         });
 
-        // Initialize Everything
-        initNodes();
-        refreshRoadSvgLayers();
-        renderHandles();
-        renderRoadList();
-        // Expose to window for global console & testing access
+        // ================= GLOBAL WINDOW EXPORTS =================
         window.currentRoads = currentRoads;
+        window.currentBuildings = currentBuildings;
         window.masterNodes = masterNodes;
+        window.switchStudioMode = switchStudioMode;
+        window.selectRoad = selectRoad;
+        window.selectBuilding = selectBuilding;
         window.addNewRoad = addNewRoad;
         window.deleteRoad = deleteRoad;
         window.convertSegmentToCurve = convertSegmentToCurve;
@@ -2679,11 +3441,30 @@
         window.addPointToEnd = addPointToEnd;
         window.insertPointAfter = insertPointAfter;
         window.deletePoint = deletePoint;
-        window.selectRoad = selectRoad;
+        window.updateSelectedBuildingPosition = updateSelectedBuildingPosition;
+        window.updateSelectedBuildingScale = updateSelectedBuildingScale;
+        window.updateSelectedBuildingRotate = updateSelectedBuildingRotate;
+        window.nudgeBuilding = nudgeBuilding;
+        window.resetSelectedBuilding = resetSelectedBuilding;
+        window.bringBuildingToFront = bringBuildingToFront;
+        window.sendBuildingToBack = sendBuildingToBack;
+        window.openExportModal = openExportModal;
+        window.closeExportModal = closeExportModal;
+        window.switchExportTab = switchExportTab;
+        window.copyModalSvgCode = copyModalSvgCode;
         window.toggleFilterMode = toggleFilterMode;
         window.toggleMagnetMode = toggleMagnetMode;
         window.undo = undo;
         window.redo = redo;
+
+        // Initialize Everything
+        initNodes();
+        refreshRoadSvgLayers();
+        applyAllBuildingTransforms();
+        bindBuildingInteractions();
+        renderHandles();
+        renderRoadList();
     </script>
+
 </body>
 </html>
