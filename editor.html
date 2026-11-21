@@ -3466,5 +3466,55 @@
         renderRoadList();
     </script>
 
+
+    <!-- ================= EXPORT SVG MODAL ================= -->
+    <div id="exportSvgModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh] animate-in fade-in zoom-in-95 duration-150">
+            <!-- Modal Header -->
+            <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="code-2" class="w-5 h-5 text-emerald-400"></i>
+                    <span class="text-base font-bold text-white">ส่งออกโค้ด SVG (Export SVG)</span>
+                </div>
+                <button onclick="closeExportModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content & Tabs -->
+            <div class="p-4 flex-1 flex flex-col overflow-hidden space-y-3">
+                <div class="flex items-center gap-2 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                    <button id="modalTabRoads" onclick="switchExportTab('roads')" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition bg-amber-500 text-slate-950 shadow">
+                        🛣️ ผังถนน (Section 5)
+                    </button>
+                    <button id="modalTabBuildings" onclick="switchExportTab('buildings')" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition text-slate-400 hover:text-white">
+                        🏢 ตำแหน่งอาคาร (Section 7)
+                    </button>
+                    <button id="modalTabFull" onclick="switchExportTab('full')" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition text-slate-400 hover:text-white">
+                        🗺️ แผนที่ทั้งหมด (Full Map)
+                    </button>
+                </div>
+
+                <div class="flex-1 flex flex-col relative">
+                    <textarea id="modalExportTextarea" readonly class="w-full flex-1 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-emerald-300 resize-none focus:outline-none focus:border-emerald-500/50" rows="12"></textarea>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-4 border-t border-slate-800 bg-slate-950/80 flex items-center justify-between">
+                <span class="text-xs text-slate-400">💡 คัดลอกแล้วส่งให้ผู้ช่วย AI อัปเดตเข้า index.html ได้ทันที</span>
+                <div class="flex items-center gap-2">
+                    <button onclick="closeExportModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs rounded-xl transition">
+                        ปิด
+                    </button>
+                    <button onclick="copyModalSvgCode()" class="flex items-center gap-1.5 px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition active:scale-95">
+                        <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                        <span>คัดลอกโค้ดนี้</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
